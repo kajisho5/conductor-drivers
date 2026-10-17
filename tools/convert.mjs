@@ -37,7 +37,7 @@ export const ALLOWED_LICENSES = new Set(['MIT', 'ISC', 'BSD-2-Clause', 'BSD-3-Cl
 export const APP_MIN_VERSION = '0.6.0';
 
 /** アプリに組み込みの定義がある機器（取り込まない） */
-export const BUILTIN_REPLACES = new Set(['bmd-atem', 'roland-v160hd', 'roland-v80hd', 'roland-vr120hd', 'osee-gostream-series']);
+export const BUILTIN_REPLACES = new Set(['bmd-atem', 'roland-v160hd', 'roland-v80hd', 'roland-vr120hd', 'osee-gostream-series', 'bmd-hyperdeck', 'bmd-videohub', 'obs-studio', 'behringer-x32', 'behringer-wing']);
 
 function fieldType(t) {
   switch (t) {
