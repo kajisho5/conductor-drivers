@@ -189,3 +189,15 @@ test('数の欄の基準の値が近いと離す（overlap を避ける）', asy
   assert.equal(b.y, '6');
   assert.equal(b.v, 0);
 });
+
+test('選択肢の欄の数とも離す', async () => {
+  const { planAction } = await import('../tools/plan.mjs');
+  const runs = planAction({
+    id: 'b',
+    options: [
+      { id: 'x', type: 'dropdown', default: '0', choices: [{ id: '0' }, { id: '1' }] },
+      { id: 'v', type: 'number', default: 0, min: -100, max: 100 },
+    ],
+  });
+  assert.equal(runs[0].options.v, 5);
+});

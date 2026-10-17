@@ -83,6 +83,12 @@ function numericBase(o, v) {
  */
 export function distinctNumericBases(options, base) {
   const used = [];
+  // 選択肢の欄は値を変えられないので、先に「使っている数」として数えておく
+  for (const o of options) {
+    if (o.type !== 'dropdown') continue;
+    const v = base[o.id];
+    if (v !== undefined && v !== null && v !== '' && Number.isFinite(Number(v))) used.push(Number(v));
+  }
   for (const o of options) {
     const n = numericBase(o, base[o.id]);
     if (n === null || !Number.isFinite(n)) continue;
