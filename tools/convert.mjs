@@ -4,6 +4,35 @@
  */
 import { deriveBytesAction, deriveHttpAction, MARKER_HOST } from './derive.mjs';
 
+/**
+ * 1 つの動作のテンプレートを作る。UDP の複数の通・HTTP の複数のリクエストは、順番ごとに作って send と more に分ける。
+ */
+export function deriveAction(def, runs, transport) {
+  const one = (rs) => (transport === 'http' ? deriveHttpAction(def, rs) : deriveBytesAction(def, rs, transport));
+  const first = one(runs);
+  if (first.ok || !/multi-(datagram|request)/.test(String(first.reason))) return first;
+  const base = runs.find((r) => r.role === 'base');
+  const n = base.sends.length;
+  if (n < 2 || n > 8) return first;
+  const parts = [];
+  for (let i = 0; i < n; i++) {
+    const sub = runs.map((r) => (r.sends.length === n ? { ...r, sends: [r.sends[i]] } : { ...r, sends: r.sends.length === 0 ? [] : r.sends }));
+    const res = one(sub);
+    if (!res.ok) return { ok: false, reason: `part${i}-${res.reason}` };
+    parts.push(res);
+  }
+  const maps = {};
+  for (const p of parts) {
+    for (const [k, v] of Object.entries(p.maps)) {
+      if (maps[k] && JSON.stringify(maps[k]) !== JSON.stringify(v)) return { ok: false, reason: 'parts-map-differs' };
+      maps[k] = v;
+    }
+    if (transport !== 'http' && p.port !== parts[0].port) return { ok: false, reason: 'parts-port-differs' };
+    if (transport === 'http' && p.origin !== parts[0].origin) return { ok: false, reason: 'parts-origin-differs' };
+  }
+  return { ...parts[0], send: parts[0].send, more: parts.slice(1).map((p) => p.send), maps };
+}
+
 export const ALLOWED_LICENSES = new Set(['MIT', 'ISC', 'BSD-2-Clause', 'BSD-3-Clause', 'Apache-2.0', '0BSD', 'Unlicense']);
 export const APP_MIN_VERSION = '0.6.0';
 
@@ -29,15 +58,32 @@ function fieldType(t) {
 function convertField(f, overrides = {}) {
   const type = fieldType(f.type);
   if (!type) return null;
-  const out = { id: String(f.id), label: String(f.label ?? f.id).slice(0, 80), type };
-  if (f.default !== undefined && typeof f.default !== 'object') out.default = type === 'select' ? String(f.default) : f.default;
-  if (type === 'select') out.choices = (f.choices ?? []).map((c) => ({ id: String(c.id), label: String(c.label ?? c.id).slice(0, 80) }));
-  if (type === 'number') {
+  const choices = type === 'select' ? (f.choices ?? []).filter((c) => c && c.id !== undefined).map((c) => ({ id: String(c.id), label: String(c.label ?? c.id).slice(0, 80) })) : [];
+  const t = type === 'select' && choices.length === 0 ? 'text' : type;
+  const out = { id: String(f.id), label: String(f.label || f.id).slice(0, 80), type: t };
+  if (f.default !== undefined && f.default !== null && typeof f.default !== 'object') out.default = t === 'select' || t === 'text' ? String(f.default) : f.default;
+  if (t === 'select') out.choices = choices;
+  if (t === 'number') {
     if (typeof f.min === 'number') out.min = f.min;
     if (typeof f.max === 'number') out.max = f.max;
   }
   if (f.tooltip) out.help = String(f.tooltip).slice(0, 200);
   return { ...out, ...overrides };
+}
+
+/** 同じ id の欄が 2 つあれば後のものを捨てる（アプリの検証で重複を通さないため） */
+function uniqueFields(fields) {
+  const seen = new Set();
+  return fields.filter((f) => {
+    if (!f || seen.has(f.id)) return false;
+    seen.add(f.id);
+    return true;
+  });
+}
+
+/** アプリの定義 id に使える形（小文字・英数字・-_.） */
+export function defId(moduleId) {
+  return `m-${String(moduleId).toLowerCase().replace(/[^a-z0-9_.-]/g, '-')}`;
 }
 
 function colorHex(n) {
@@ -114,7 +160,7 @@ export function convertModule(raw) {
       report.reasons['not-run'] = (report.reasons['not-run'] ?? 0) + 1;
       continue;
     }
-    const res = transport === 'http' ? deriveHttpAction(def, runs) : deriveBytesAction(def, runs, transport);
+    const res = deriveAction(def, runs, transport);
     if (!res.ok) {
       const key = String(res.reason).split(':')[0];
       report.reasons[key] = (report.reasons[key] ?? 0) + 1;
@@ -133,8 +179,9 @@ export function convertModule(raw) {
         continue;
       }
     }
-    const options = (def.options ?? []).map((o) => convertField(o)).filter(Boolean);
+    const options = uniqueFields((def.options ?? []).map((o) => convertField(o)).filter(Boolean));
     const action = { id: String(def.id), name: String(def.name ?? def.id).slice(0, 80), options, send: res.send };
+    if (res.more && res.more.length > 0) action.more = res.more;
     if (Object.keys(res.maps).length > 0) action.maps = res.maps;
     actions.push(action);
   }
@@ -150,7 +197,7 @@ export function convertModule(raw) {
   let portId = null;
   for (const f of raw.configFields) {
     if (raw.config[f.id] === MARKER_HOST && !hostId) hostId = f.id;
-    else if (port !== null && f.type === 'number' && Number(raw.config[f.id]) === port && !portId) portId = f.id;
+    else if (port !== null && (f.type === 'number' || f.type === 'textinput') && raw.config[f.id] !== '' && Number(raw.config[f.id]) === port && !portId) portId = f.id;
   }
   if (transport === 'http') {
     const sameHost = origin && new URL(origin).hostname === MARKER_HOST;
@@ -164,7 +211,17 @@ export function convertModule(raw) {
     });
   } else {
     configFields.push({ id: 'host', label: 'IP アドレス', type: 'text', placeholder: '192.168.0.10', pattern: '^[A-Za-z0-9.:\\-]+$', mono: true });
-    configFields.push({ id: 'port', label: 'ポート', type: 'number', default: port, min: 1, max: 65535 });
+    // 元の設定でポートが空欄だった時は、記録用に入れた仮の番号なので既定値にしない
+    const portField = raw.configFields.find((f) => f.id === portId);
+    const portBlank = portField && (portField.default === undefined || portField.default === '' || portField.default === null);
+    configFields.push({
+      id: 'port',
+      label: 'ポート',
+      type: 'number',
+      ...(portBlank ? { help: '機器の説明書にあるポート番号を入れてください' } : { default: port }),
+      min: 1,
+      max: 65535,
+    });
   }
   for (const f of raw.configFields) {
     if (f.id === hostId || f.id === portId) continue;
@@ -194,15 +251,16 @@ export function convertModule(raw) {
     });
   }
 
+  const finalConfig = uniqueFields(configFields);
   const def = {
     format: 1,
-    id: `m-${m.id}`,
+    id: defId(m.id),
     name: report.name,
     category: m.manufacturer || 'その他',
     version: String(m.version ?? '0.0.0'),
     minAppVersion: APP_MIN_VERSION,
     transport,
-    configFields,
+    configFields: finalConfig,
     actions,
     feedbacks: [],
     variables: [],

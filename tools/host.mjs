@@ -13,6 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import EJSON from './ejson.mjs';
 import { planRuns } from './plan.mjs';
+import { responderFor } from './responders.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const MARKER_HOST = '10.11.12.13';
@@ -35,11 +36,25 @@ function listen(server) {
 }
 
 /** 受け皿（TCP は読み捨て、HTTP は 200 {} を返す） */
-async function startSinks(onCapture) {
+async function startSinks(onCapture, responder) {
   const sockets = new Set();
   const tcp = createTcpServer((s) => {
     sockets.add(s);
-    s.on('data', () => undefined);
+    let buf = '';
+    if (responder?.onConnect) {
+      const hello = responder.onConnect();
+      if (hello) setTimeout(() => s.write(hello), 20);
+    }
+    s.on('data', (d) => {
+      if (!responder?.onLine) return;
+      buf += d.toString('latin1');
+      const parts = buf.split(responder.split ?? /\r?\n/);
+      buf = parts.pop() ?? '';
+      for (const line of parts) {
+        const r = responder.onLine(line);
+        if (r) s.write(r);
+      }
+    });
     s.on('error', () => undefined);
     s.on('close', () => sockets.delete(s));
   });
@@ -82,15 +97,23 @@ async function startSinks(onCapture) {
 /** 設定の既定値。IP らしい欄には目印の IP を入れる */
 export function buildConfig(fields) {
   const config = {};
+  let nextPort = 9000;
   for (const f of fields ?? []) {
     if (!f || !f.id) continue;
+    const label = String(f.label ?? '');
     const looksHost =
       f.type === 'textinput' &&
       (/^(host|ip|ipaddress|address|ip_address|hostname|server)$/i.test(f.id) ||
-        /ip|host/i.test(f.label ?? '') ||
+        /\b(ip|host|hostname)\b/i.test(label) ||
         String(f.regex ?? '').includes('25[0-5]'));
+    const looksPort = /port/i.test(f.id) || /\bport\b/i.test(label);
+    const empty = f.default === undefined || f.default === '' || f.default === null;
     if (looksHost) config[f.id] = MARKER_HOST;
-    else if (f.default !== undefined) config[f.id] = f.default;
+    else if (looksPort && empty && (f.type === 'textinput' || f.type === 'number')) {
+      // 空のポート欄があると接続しないモジュールがあるので、仮の番号を入れる
+      config[f.id] = f.type === 'number' ? nextPort : String(nextPort);
+      nextPort += 1;
+    } else if (!empty) config[f.id] = f.default;
     else if (f.type === 'checkbox') config[f.id] = false;
     else if (f.type === 'number') config[f.id] = f.min ?? 0;
     else if (f.type === 'dropdown') config[f.id] = f.choices?.[0]?.id;
@@ -133,7 +156,7 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
 
   let bucket = [];
   const capture = (ev) => bucket.push(ev);
-  const sinks = await startSinks(capture);
+  const sinks = await startSinks(capture, responderFor(manifest.id));
 
   const child = spawn(process.execPath, ['--require', path.join(HERE, 'capture.cjs'), entry], {
     cwd: moduleDir,
