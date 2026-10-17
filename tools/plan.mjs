@@ -156,8 +156,9 @@ export function planRuns(actionDefs, { maxRuns = 1500 } = {}) {
   for (const def of actionDefs ?? []) {
     const r = planAction(def);
     if (runs.length + r.length > maxRuns) {
+      // 入りきらない動作だけ飛ばし、後ろの小さい動作は試す
       truncated = true;
-      break;
+      continue;
     }
     runs.push(...r);
   }
