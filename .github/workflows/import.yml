@@ -79,6 +79,8 @@ jobs:
             echo "変化なし"
           else
             git commit -m "defs: モジュールから作り直す"
+            # 実行中に main へ別の変更が入っても保存できるように（作るファイルはこの手順だけが書く）
+            git pull --rebase -X theirs origin main
             git push
           fi
       - uses: actions/upload-artifact@v4
