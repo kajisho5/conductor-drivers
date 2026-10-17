@@ -36,13 +36,13 @@
  ],
  "actions": [
   {
-   "id": "mute",
-   "name": "Volume Mute",
+   "id": "playToggle",
+   "name": "Play/Pause Toggle",
    "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=Q57fpJH&b64=1"
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q57rbJQ&b64=1"
    }
   }
  ],

@@ -90,30 +90,6 @@
    }
   },
   {
-   "id": "next",
-   "name": "Transport: Next",
-   "options": [
-    {
-     "id": "autostart",
-     "label": "Autostart",
-     "type": "boolean",
-     "default": false,
-     "help": "Set to `true` to automatically start the timer after the action is triggered."
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/v1/next?room_id=YOUR-ID&api_key=YOUR-KEY{{option.autostart|map}}"
-   },
-   "maps": {
-    "autostart": {
-     "false": "",
-     "true": "&autostart=true"
-    }
-   }
-  },
-  {
    "id": "previous",
    "name": "Transport: Previous",
    "options": [
@@ -294,8 +270,8 @@
    }
   },
   {
-   "id": "start_timer",
-   "name": "Timer: Start",
+   "id": "stop_timer",
+   "name": "Timer: Stop",
    "options": [
     {
      "id": "index",
@@ -316,7 +292,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/v1/start_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
+    "path": "/v1/stop_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
    }
   },
   {
@@ -539,17 +515,6 @@
    }
   },
   {
-   "id": "Next",
-   "category": "Transport",
-   "name": "Next",
-   "text": "Next",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "next",
-    "options": {}
-   }
-  },
-  {
    "id": "+1min",
    "category": "Transport",
    "name": "+1min",
@@ -698,13 +663,13 @@
    }
   },
   {
-   "id": "Start a timer",
+   "id": "Stop a timer",
    "category": "Timer",
-   "name": "Start a timer",
-   "text": "Start #2",
+   "name": "Stop a timer",
+   "text": "Stop #2",
    "backgroundColor": "#000000",
    "action": {
-    "definitionId": "start_timer",
+    "definitionId": "stop_timer",
     "options": {
      "index": 2
     }

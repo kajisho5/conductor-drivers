@@ -21,11 +21,11 @@
   "actions": 28,
   "converted": 6,
   "reasons": {
-   "too-many-choices": 10,
+   "map-twice": 10,
    "no-send": 7,
    "part0-osc-multi-datagram": 1,
    "osc-arg-count": 2,
-   "part0-too-many-choices": 1,
+   "part0-map-twice": 1,
    "osc-type-text-slot": 1
   },
   "errors": [],
@@ -121,10 +121,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 58,
-  "converted": 51,
+  "converted": 50,
   "reasons": {
    "no-send": 3,
-   "text-slot": 1,
+   "text-slot": 2,
    "verify-mismatch": 3
   },
   "errors": [],
@@ -221,7 +221,9 @@
   "converted": 12,
   "reasons": {
    "verify-path": 1,
-   "verify-multi-request": 3,
+   "verify-multi-request": 1,
+   "part0-verify-multi-request": 1,
+   "parts-map-differs": 1,
    "path-overlap": 1
   },
   "errors": [],
@@ -265,10 +267,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 14,
-  "converted": 2,
+  "converted": 4,
   "reasons": {
-   "too-many-choices": 10,
-   "overlap": 2
+   "overlap": 9,
+   "too-many-choices": 1
   },
   "errors": [],
   "truncated": false,
@@ -281,11 +283,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 40,
-  "converted": 17,
+  "converted": 23,
   "reasons": {
    "overlap": 13,
    "no-send": 2,
-   "too-many-choices": 7,
+   "too-many-choices": 1,
    "number-slot": 1
   },
   "errors": [],
@@ -301,8 +303,7 @@
   "actions": 9,
   "converted": 1,
   "reasons": {
-   "overlap": 6,
-   "too-many-choices": 2
+   "overlap": 8
   },
   "errors": [],
   "truncated": false,
@@ -328,11 +329,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 21,
-  "converted": 8,
+  "converted": 7,
   "reasons": {
    "overlap": 11,
    "number-slot": 1,
-   "too-many-choices": 1
+   "too-many-choices": 2
   },
   "errors": [],
   "truncated": false,
@@ -413,7 +414,7 @@
   "converted": 10,
   "reasons": {
    "error": 3,
-   "part0-verify-multi-request": 1
+   "part1-path-too-many-choices": 1
   },
   "errors": [],
   "truncated": false,
@@ -581,13 +582,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 1,
-  "reasons": {
-   "no-send": 9
-  },
+  "converted": 0,
+  "reasons": {},
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "no-send"
  },
  {
   "id": "audac-mtx",
@@ -1139,25 +1138,25 @@
   "license": "MIT",
   "status": "ok",
   "actions": 98,
-  "converted": 16,
+  "converted": 22,
   "reasons": {
-   "part0-osc-string-overlap": 9,
-   "osc-multi-datagram": 3,
-   "part0-too-many-choices": 1,
-   "no-send": 30,
+   "part0-osc-string-overlap": 10,
+   "osc-multi-datagram": 4,
+   "no-send": 31,
    "multi-datagram": 1,
-   "part0-osc-address-too-many-choices": 2,
+   "part2-osc-string-overlap": 1,
    "part0-osc-no-send": 1,
-   "error": 4,
-   "part0-osc-address-overlap": 9,
+   "error": 5,
+   "part0-osc-address-overlap": 10,
    "verify-osc-int": 1,
    "osc-string-overlap": 1,
    "part0-verify-osc-address": 7,
    "part0-verify-osc-int": 1,
-   "not-run": 12
+   "part0-osc-multi-datagram": 1,
+   "two-options-one-arg": 2
   },
   "errors": [],
-  "truncated": true,
+  "truncated": false,
   "result": "partial"
  },
  {
@@ -1468,7 +1467,7 @@
   "actions": 30,
   "converted": 29,
   "reasons": {
-   "too-many-choices": 1
+   "overlap": 1
   },
   "errors": [],
   "truncated": false,
@@ -1664,9 +1663,9 @@
   "license": "ISC",
   "status": "ok",
   "actions": 11,
-  "converted": 10,
+  "converted": 9,
   "reasons": {
-   "verify-multi-request": 1
+   "verify-multi-request": 2
   },
   "errors": [],
   "truncated": false,
@@ -1711,8 +1710,7 @@
   "actions": 6,
   "converted": 0,
   "reasons": {
-   "number-slot": 3,
-   "overlap": 1,
+   "number-slot": 4,
    "no-send": 2
   },
   "errors": [],
@@ -1747,7 +1745,8 @@
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part0-path-text-slot": 2
+   "part0-path-text-slot": 1,
+   "part1-path-text-slot": 1
   },
   "errors": [],
   "truncated": false,
@@ -1890,13 +1889,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 67,
-  "converted": 66,
-  "reasons": {
-   "too-many-choices": 1
-  },
+  "converted": 67,
+  "reasons": {},
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "full"
  },
  {
   "id": "christie-spyder",
@@ -1918,14 +1915,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 42,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
    "no-send": 40,
+   "verify-no-send": 1,
    "error": 1
   },
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "chyronhego-lyric",
@@ -2211,12 +2209,11 @@
   "actions": 50,
   "converted": 6,
   "reasons": {
-   "too-many-choices": 13,
-   "overlap": 11,
-   "option-breaks-send": 8,
-   "number-slot": 5,
-   "no-send": 6,
-   "text-slot": 1
+   "overlap": 22,
+   "option-breaks-send": 9,
+   "text-slot": 2,
+   "number-slot": 6,
+   "no-send": 5
   },
   "errors": [],
   "truncated": false,
@@ -2536,10 +2533,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 6,
+  "converted": 7,
   "reasons": {
    "number-slot": 2,
-   "no-send": 2,
+   "no-send": 1,
    "text-slot": 1
   },
   "errors": [],
@@ -2806,8 +2803,9 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 5,
-   "text-slot": 2
+   "option-breaks-send": 4,
+   "text-slot": 1,
+   "no-send": 2
   },
   "errors": [],
   "truncated": false,
@@ -3318,7 +3316,8 @@
   "actions": 2,
   "converted": 0,
   "reasons": {
-   "number-slot": 2
+   "option-breaks-send": 1,
+   "number-slot": 1
   },
   "errors": [],
   "truncated": false,
@@ -3400,9 +3399,8 @@
   "actions": 4,
   "converted": 1,
   "reasons": {
-   "too-many-choices": 1,
-   "no-send": 1,
-   "overlap": 1
+   "overlap": 2,
+   "no-send": 1
   },
   "errors": [],
   "truncated": false,
@@ -4175,9 +4173,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 20,
-  "converted": 2,
+  "converted": 1,
   "reasons": {
-   "no-send": 17,
+   "no-send": 18,
    "verify-no-send": 1
   },
   "errors": [],
@@ -4222,7 +4220,8 @@
   "converted": 0,
   "reasons": {
    "error": 9,
-   "no-send": 13
+   "no-send": 12,
+   "verify-no-send": 1
   },
   "errors": [],
   "truncated": false,
@@ -4578,7 +4577,7 @@
   "reasons": {
    "overlap": 2,
    "number-slot": 1,
-   "too-many-choices": 1,
+   "text-slot": 1,
    "error": 1
   },
   "errors": [],
@@ -5664,15 +5663,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 131,
-  "converted": 52,
+  "converted": 53,
   "reasons": {
    "number-slot": 55,
    "verify-mismatch": 1,
    "option-breaks-send": 1,
-   "overlap": 12,
-   "text-slot": 4,
+   "overlap": 13,
+   "text-slot": 6,
    "error": 1,
-   "too-many-choices": 4,
    "no-send": 1
   },
   "errors": [],
@@ -5688,7 +5686,7 @@
   "actions": 2,
   "converted": 0,
   "reasons": {
-   "too-many-choices": 1,
+   "overlap": 1,
    "text-slot": 1
   },
   "errors": [],
@@ -5752,7 +5750,7 @@
    "verify-no-send": 6,
    "verify-path": 23,
    "no-send": 1,
-   "part0-path-too-many-choices": 1
+   "part0-verify-path": 1
   },
   "errors": [],
   "truncated": false,
@@ -6019,8 +6017,7 @@
   "converted": 15,
   "reasons": {
    "no-send": 3,
-   "parts-map-differs": 1,
-   "verify-multi-request": 1,
+   "parts-map-differs": 2,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -6085,9 +6082,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 5,
-  "converted": 3,
+  "converted": 4,
   "reasons": {
-   "no-send": 2
+   "verify-no-send": 1
   },
   "errors": [],
   "truncated": false,
@@ -6802,9 +6799,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 38,
-  "converted": 35,
+  "converted": 37,
   "reasons": {
-   "too-many-choices": 3
+   "overlap": 1
   },
   "errors": [],
   "truncated": false,
@@ -7275,12 +7272,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 66,
-  "converted": 47,
+  "converted": 49,
   "reasons": {
    "no-send": 11,
-   "overlap": 2,
+   "overlap": 3,
    "part0-option-breaks-send": 1,
-   "too-many-choices": 3,
    "verify-mismatch": 1,
    "error": 1
   },
@@ -7295,13 +7291,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 65,
-  "converted": 33,
+  "converted": 34,
   "reasons": {
    "number-slot": 7,
    "multi-datagram": 4,
    "no-send": 10,
-   "part0-number-slot": 10,
-   "verify-no-send": 1
+   "part0-number-slot": 10
   },
   "errors": [],
   "truncated": false,
@@ -7451,8 +7446,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 32,
-  "converted": 28,
+  "converted": 27,
   "reasons": {
+   "parts-map-differs": 1,
    "verify-multi-request": 2,
    "path-number-slot": 1,
    "path-overlap": 1
@@ -7468,12 +7464,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 129,
-  "converted": 65,
+  "converted": 64,
   "reasons": {
-   "text-slot": 15,
-   "option-breaks-send": 4,
-   "verify-mismatch": 14,
-   "no-send": 18,
+   "text-slot": 14,
+   "option-breaks-send": 3,
+   "verify-mismatch": 16,
+   "no-send": 19,
    "overlap": 11,
    "number-slot": 2
   },
@@ -7610,10 +7606,13 @@
   "status": "ok",
   "actions": 10,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 9,
+   "verify-no-send": 1
+  },
   "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-spotifycontroller",

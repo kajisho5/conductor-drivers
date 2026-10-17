@@ -28,7 +28,6 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | arri-tally | 2.0.2 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-arri-tally.git |
 | aten-matrix | 2.0.2 | MIT | Noah Callaway | https://github.com/bitfocus/companion-module-aten-matrix.git |
 | atlasied-atmosphere | 1.2.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-atlasied-atmosphere.git |
-| attend2it-speakertimer | 1.0.0-beta3 | MIT | Gareth Risdale | https://github.com/bitfocus/companion-module-attend2it-speakertimer.git |
 | audac-mtx | 2.0.0 | MIT | Jelle van Abbema | https://github.com/bitfocus/companion-module-audac-mtx.get |
 | aver-ptz | 1.2.0 | MIT | Colbix | https://github.com/bitfocus/companion-module-aver-ptz.git |
 | avmediatools-protimer | 2.0.1 | MIT | Sander Kamp, Jeffrey Davidsz | https://github.com/bitfocus/companion-module-avmediatools-protimer.git |
@@ -71,7 +70,6 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | chamsys-magicq-udp | 2.1.0 | MIT | Per Røine | https://github.com/bitfocus/companion-module-chamsys-magicq-udp.git |
 | christie-projector | 4.1.0 | MIT | Joseph Adams, Per Røine, Andreas Thomsen | https://github.com/bitfocus/companion-module-christie-projector.git |
 | christie-spyder | 2.3.0 | ISC | Per Røine, John A Knight, Jr | https://github.com/bitfocus/companion-module-christie-spyder.git |
-| churchapps-freeshow | 1.1.0 | MIT | Kristoffer Vassbø | https://github.com/bitfocus/companion-module-churchapps-freeshow.git |
 | chyronhego-lyric | 1.0.2 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-chyronhego-lyric.git |
 | cinegy-capture | 1.1.5 | MIT | Leopold Strobl | https://github.com/bitfocus/companion-module-cinegy-capture.git |
 | classx-mixboard | 1.2.0 | MIT | Dar-dev | https://github.com/bitfocus/companion-module-classx-mixboard.git |

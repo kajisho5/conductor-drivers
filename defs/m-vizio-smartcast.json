@@ -64,7 +64,7 @@
     "kind": "http",
     "method": "PUT",
     "path": "/pairing/start",
-    "body": "{\"DEVICE_NAME\":\"node-app-1792203539600\",\"DEVICE_ID\":\"node-app-1792203539600\"}",
+    "body": "{\"DEVICE_NAME\":\"node-app-1792206633148\",\"DEVICE_ID\":\"node-app-1792206633148\"}",
     "contentType": "application/json"
    }
   },
@@ -82,7 +82,7 @@
     "kind": "http",
     "method": "PUT",
     "path": "/pairing/pair",
-    "body": "{\"DEVICE_ID\":\"node-app-1792203539600\",\"CHALLENGE_TYPE\":1,\"RESPONSE_VALUE\":\"QB0x\",\"PAIRING_REQ_TOKEN\":\"\"}",
+    "body": "{\"DEVICE_ID\":\"node-app-1792206633148\",\"CHALLENGE_TYPE\":1,\"RESPONSE_VALUE\":\"QB0x\",\"PAIRING_REQ_TOKEN\":\"\"}",
     "contentType": "application/json"
    }
   }

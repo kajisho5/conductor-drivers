@@ -393,7 +393,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "SNR,Factory Defaults\\r\\n",
+    "data": "SNR,Factory Defaults\\r\\nGS\\r\\n",
     "encoding": "text"
    }
   },
@@ -421,7 +421,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "SNN\\r\\nGS\\r\\n",
+    "data": "SNN\\r\\n",
     "encoding": "text"
    }
   },

@@ -1237,7 +1237,7 @@
    ],
    "send": {
     "kind": "osc",
-    "address": "{{option.sel}}/led",
+    "address": "/{{option.sel|map}}/led",
     "args": [
      {
       "type": "i",
@@ -1248,11 +1248,105 @@
    "more": [
     {
      "kind": "osc",
-     "address": "{{option.sel}}/led",
+     "address": "/{{option.sel|map}}/led",
      "args": []
     }
    ],
    "maps": {
+    "sel": {
+     "/ch/1": "ch/1",
+     "/ch/2": "ch/2",
+     "/ch/3": "ch/3",
+     "/ch/4": "ch/4",
+     "/ch/5": "ch/5",
+     "/ch/6": "ch/6",
+     "/ch/7": "ch/7",
+     "/ch/8": "ch/8",
+     "/ch/9": "ch/9",
+     "/ch/10": "ch/10",
+     "/ch/11": "ch/11",
+     "/ch/12": "ch/12",
+     "/ch/13": "ch/13",
+     "/ch/14": "ch/14",
+     "/ch/15": "ch/15",
+     "/ch/16": "ch/16",
+     "/ch/17": "ch/17",
+     "/ch/18": "ch/18",
+     "/ch/19": "ch/19",
+     "/ch/20": "ch/20",
+     "/ch/21": "ch/21",
+     "/ch/22": "ch/22",
+     "/ch/23": "ch/23",
+     "/ch/24": "ch/24",
+     "/ch/25": "ch/25",
+     "/ch/26": "ch/26",
+     "/ch/27": "ch/27",
+     "/ch/28": "ch/28",
+     "/ch/29": "ch/29",
+     "/ch/30": "ch/30",
+     "/ch/31": "ch/31",
+     "/ch/32": "ch/32",
+     "/ch/33": "ch/33",
+     "/ch/34": "ch/34",
+     "/ch/35": "ch/35",
+     "/ch/36": "ch/36",
+     "/ch/37": "ch/37",
+     "/ch/38": "ch/38",
+     "/ch/39": "ch/39",
+     "/ch/40": "ch/40",
+     "/aux/1": "aux/1",
+     "/aux/2": "aux/2",
+     "/aux/3": "aux/3",
+     "/aux/4": "aux/4",
+     "/aux/5": "aux/5",
+     "/aux/6": "aux/6",
+     "/aux/7": "aux/7",
+     "/aux/8": "aux/8",
+     "/bus/1": "bus/1",
+     "/bus/2": "bus/2",
+     "/bus/3": "bus/3",
+     "/bus/4": "bus/4",
+     "/bus/5": "bus/5",
+     "/bus/6": "bus/6",
+     "/bus/7": "bus/7",
+     "/bus/8": "bus/8",
+     "/bus/9": "bus/9",
+     "/bus/10": "bus/10",
+     "/bus/11": "bus/11",
+     "/bus/12": "bus/12",
+     "/bus/13": "bus/13",
+     "/bus/14": "bus/14",
+     "/bus/15": "bus/15",
+     "/bus/16": "bus/16",
+     "/mtx/1": "mtx/1",
+     "/mtx/2": "mtx/2",
+     "/mtx/3": "mtx/3",
+     "/mtx/4": "mtx/4",
+     "/mtx/5": "mtx/5",
+     "/mtx/6": "mtx/6",
+     "/mtx/7": "mtx/7",
+     "/mtx/8": "mtx/8",
+     "/main/1": "main/1",
+     "/main/2": "main/2",
+     "/main/3": "main/3",
+     "/main/4": "main/4",
+     "/dca/1": "dca/1",
+     "/dca/2": "dca/2",
+     "/dca/3": "dca/3",
+     "/dca/4": "dca/4",
+     "/dca/5": "dca/5",
+     "/dca/6": "dca/6",
+     "/dca/7": "dca/7",
+     "/dca/8": "dca/8",
+     "/dca/9": "dca/9",
+     "/dca/10": "dca/10",
+     "/dca/11": "dca/11",
+     "/dca/12": "dca/12",
+     "/dca/13": "dca/13",
+     "/dca/14": "dca/14",
+     "/dca/15": "dca/15",
+     "/dca/16": "dca/16"
+    },
     "led": {
      "0": "0",
      "1": "1",
@@ -1706,6 +1800,1166 @@
    }
   },
   {
+   "id": "set-icon",
+   "name": "Set Channel Icon",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      },
+      {
+       "id": "/dca/1",
+       "label": "DCA 1"
+      },
+      {
+       "id": "/dca/2",
+       "label": "DCA 2"
+      },
+      {
+       "id": "/dca/3",
+       "label": "DCA 3"
+      },
+      {
+       "id": "/dca/4",
+       "label": "DCA 4"
+      },
+      {
+       "id": "/dca/5",
+       "label": "DCA 5"
+      },
+      {
+       "id": "/dca/6",
+       "label": "DCA 6"
+      },
+      {
+       "id": "/dca/7",
+       "label": "DCA 7"
+      },
+      {
+       "id": "/dca/8",
+       "label": "DCA 8"
+      },
+      {
+       "id": "/dca/9",
+       "label": "DCA 9"
+      },
+      {
+       "id": "/dca/10",
+       "label": "DCA 10"
+      },
+      {
+       "id": "/dca/11",
+       "label": "DCA 11"
+      },
+      {
+       "id": "/dca/12",
+       "label": "DCA 12"
+      },
+      {
+       "id": "/dca/13",
+       "label": "DCA 13"
+      },
+      {
+       "id": "/dca/14",
+       "label": "DCA 14"
+      },
+      {
+       "id": "/dca/15",
+       "label": "DCA 15"
+      },
+      {
+       "id": "/dca/16",
+       "label": "DCA 16"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "icon_use_variables",
+     "label": "Use Variables for Icon",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "icon",
+     "label": "Icon",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Empty"
+      },
+      {
+       "id": "1",
+       "label": "XLR Connector"
+      },
+      {
+       "id": "2",
+       "label": "Jack Connector"
+      },
+      {
+       "id": "3",
+       "label": "Mini Jack Connector"
+      },
+      {
+       "id": "4",
+       "label": "RCA Connector"
+      },
+      {
+       "id": "5",
+       "label": "Fader"
+      },
+      {
+       "id": "6",
+       "label": "FX"
+      },
+      {
+       "id": "7",
+       "label": "Matrix"
+      },
+      {
+       "id": "8",
+       "label": "Bass Clef"
+      },
+      {
+       "id": "9",
+       "label": "Treble Clef"
+      },
+      {
+       "id": "10",
+       "label": "Routing"
+      },
+      {
+       "id": "11",
+       "label": "Bus"
+      },
+      {
+       "id": "12",
+       "label": "Sum"
+      },
+      {
+       "id": "13",
+       "label": "Smile"
+      },
+      {
+       "id": "14",
+       "label": "Wing Logo"
+      },
+      {
+       "id": "100",
+       "label": "Microphone"
+      },
+      {
+       "id": "101",
+       "label": "Wireless Microphone"
+      },
+      {
+       "id": "102",
+       "label": "Handheld Microphone"
+      },
+      {
+       "id": "103",
+       "label": "Condenser Microphone"
+      },
+      {
+       "id": "104",
+       "label": "Boundary Microphone"
+      },
+      {
+       "id": "105",
+       "label": "Lapel Microphone"
+      },
+      {
+       "id": "106",
+       "label": "Boundary Microphone (Alternative)"
+      },
+      {
+       "id": "107",
+       "label": "Headset Microphone"
+      },
+      {
+       "id": "108",
+       "label": "Overhead Microphone"
+      },
+      {
+       "id": "109",
+       "label": "Speaker Icon"
+      },
+      {
+       "id": "110",
+       "label": "Studio Microphone"
+      },
+      {
+       "id": "111",
+       "label": "Podcast Microphone"
+      },
+      {
+       "id": "112",
+       "label": "Choir"
+      },
+      {
+       "id": "113",
+       "label": "Female Vocal"
+      },
+      {
+       "id": "114",
+       "label": "Male Vocal"
+      },
+      {
+       "id": "200",
+       "label": "Kick In"
+      },
+      {
+       "id": "201",
+       "label": "Kick Out"
+      },
+      {
+       "id": "202",
+       "label": "Snare Top"
+      },
+      {
+       "id": "203",
+       "label": "Snare Bottom"
+      },
+      {
+       "id": "204",
+       "label": "Snare Drum"
+      },
+      {
+       "id": "205",
+       "label": "Hi-Hat"
+      },
+      {
+       "id": "206",
+       "label": "High Tom"
+      },
+      {
+       "id": "207",
+       "label": "Mid Tom"
+      },
+      {
+       "id": "208",
+       "label": "Low Tom"
+      },
+      {
+       "id": "209",
+       "label": "Floor Tom"
+      },
+      {
+       "id": "210",
+       "label": "Drum"
+      },
+      {
+       "id": "211",
+       "label": "Crash Cymbal"
+      },
+      {
+       "id": "212",
+       "label": "Ride Cymbal"
+      },
+      {
+       "id": "213",
+       "label": "Cowbell"
+      },
+      {
+       "id": "214",
+       "label": "Tambourine"
+      },
+      {
+       "id": "215",
+       "label": "Bongos"
+      },
+      {
+       "id": "216",
+       "label": "Conga"
+      },
+      {
+       "id": "217",
+       "label": "Timpani"
+      },
+      {
+       "id": "218",
+       "label": "Cajon"
+      },
+      {
+       "id": "219",
+       "label": "Shaker"
+      },
+      {
+       "id": "220",
+       "label": "Marimba"
+      },
+      {
+       "id": "221",
+       "label": "Hang Drum"
+      },
+      {
+       "id": "222",
+       "label": "Triangle"
+      },
+      {
+       "id": "223",
+       "label": "Drum Machine"
+      },
+      {
+       "id": "224",
+       "label": "Claps"
+      },
+      {
+       "id": "300",
+       "label": "Electric Guitar 1"
+      },
+      {
+       "id": "301",
+       "label": "Electric Guitar 2"
+      },
+      {
+       "id": "302",
+       "label": "Violin"
+      },
+      {
+       "id": "303",
+       "label": "Oud"
+      },
+      {
+       "id": "304",
+       "label": "Acoustic Guitar"
+      },
+      {
+       "id": "305",
+       "label": "Electric Guitar 3"
+      },
+      {
+       "id": "306",
+       "label": "Electric Guitar 4"
+      },
+      {
+       "id": "307",
+       "label": "Electric Guitar 5"
+      },
+      {
+       "id": "308",
+       "label": "Double Bass"
+      },
+      {
+       "id": "309",
+       "label": "Viola"
+      },
+      {
+       "id": "310",
+       "label": "Cello"
+      },
+      {
+       "id": "311",
+       "label": "Baritone"
+      },
+      {
+       "id": "312",
+       "label": "Saxophone"
+      },
+      {
+       "id": "313",
+       "label": "Trombone"
+      },
+      {
+       "id": "314",
+       "label": "Trumpet"
+      },
+      {
+       "id": "315",
+       "label": "Harp"
+      },
+      {
+       "id": "316",
+       "label": "Organ"
+      },
+      {
+       "id": "317",
+       "label": "Harmonica"
+      },
+      {
+       "id": "318",
+       "label": "Transverse Flute"
+      },
+      {
+       "id": "319",
+       "label": "Clarinet"
+      },
+      {
+       "id": "400",
+       "label": "Grand Piano"
+      },
+      {
+       "id": "401",
+       "label": "Upright Piano"
+      },
+      {
+       "id": "402",
+       "label": "Synthesizer 1"
+      },
+      {
+       "id": "403",
+       "label": "Synthesizer 2"
+      },
+      {
+       "id": "404",
+       "label": "Synthesizer 3"
+      },
+      {
+       "id": "405",
+       "label": "Synthesizer 4"
+      },
+      {
+       "id": "406",
+       "label": "Keytar"
+      },
+      {
+       "id": "407",
+       "label": "Piano Stand"
+      },
+      {
+       "id": "408",
+       "label": "Piano Cross Stand"
+      },
+      {
+       "id": "409",
+       "label": "Hammond Organ"
+      },
+      {
+       "id": "500",
+       "label": "Full Amplifier"
+      },
+      {
+       "id": "501",
+       "label": "2x2 Cabinet"
+      },
+      {
+       "id": "502",
+       "label": "Cabinet"
+      },
+      {
+       "id": "503",
+       "label": "Speaker"
+      },
+      {
+       "id": "504",
+       "label": "Speaker Pair"
+      },
+      {
+       "id": "505",
+       "label": "Speaker with Microphone Set"
+      },
+      {
+       "id": "506",
+       "label": "Subwoofer"
+      },
+      {
+       "id": "507",
+       "label": "Studio Monitor"
+      },
+      {
+       "id": "508",
+       "label": "Studio Monitor 2"
+      },
+      {
+       "id": "509",
+       "label": "Column Speaker"
+      },
+      {
+       "id": "510",
+       "label": "Wall Speaker"
+      },
+      {
+       "id": "511",
+       "label": "Hanging Speaker"
+      },
+      {
+       "id": "512",
+       "label": "Speaker Stand"
+      },
+      {
+       "id": "513",
+       "label": "Speaker Stand Pair"
+      },
+      {
+       "id": "514",
+       "label": "Delay Speakers"
+      },
+      {
+       "id": "515",
+       "label": "Left Monitor"
+      },
+      {
+       "id": "516",
+       "label": "Right Monitor"
+      },
+      {
+       "id": "517",
+       "label": "Monitor"
+      },
+      {
+       "id": "518",
+       "label": "Large Monitor"
+      },
+      {
+       "id": "519",
+       "label": "Large Monitor Pair"
+      },
+      {
+       "id": "520",
+       "label": "Left Wedge Monitor"
+      },
+      {
+       "id": "521",
+       "label": "Right Wedge Monitor"
+      },
+      {
+       "id": "522",
+       "label": "Center Wedge Monitor"
+      },
+      {
+       "id": "523",
+       "label": "Line Array"
+      },
+      {
+       "id": "524",
+       "label": "Ceiling Speaker"
+      },
+      {
+       "id": "600",
+       "label": "Hand"
+      },
+      {
+       "id": "601",
+       "label": "Ear"
+      },
+      {
+       "id": "602",
+       "label": "Headphones"
+      },
+      {
+       "id": "603",
+       "label": "Speaker A"
+      },
+      {
+       "id": "604",
+       "label": "Speaker B"
+      },
+      {
+       "id": "605",
+       "label": "Laptop"
+      },
+      {
+       "id": "606",
+       "label": "MP3 Player"
+      },
+      {
+       "id": "607",
+       "label": "Smartphone"
+      },
+      {
+       "id": "608",
+       "label": "USB Drive"
+      },
+      {
+       "id": "609",
+       "label": "SD Card"
+      },
+      {
+       "id": "610",
+       "label": "CD"
+      },
+      {
+       "id": "611",
+       "label": "Turntable"
+      },
+      {
+       "id": "612",
+       "label": "Reel-to-Reel Player"
+      },
+      {
+       "id": "613",
+       "label": "Cassette Player"
+      },
+      {
+       "id": "614",
+       "label": "Patchbay"
+      }
+     ],
+     "help": "Available choices: 0=Empty, 1=XLR Connector, 2=Jack Connector, 3=Mini Jack Connector, 4=RCA Connector, 5=Fader, 6=FX, 7=Matrix, 8=Bass Clef, 9=Treble Clef, 10=Routing, 11=Bus, 12=Sum, 13=Smile, 14=Win"
+    },
+    {
+     "id": "icon_variables",
+     "label": "Icon",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 0=Empty, 1=XLR Connector, 2=Jack Connector, 3=Mini Jack Connector, 4=RCA Connector, 5=Fader, 6=FX, 7=Matrix, 8=Bass Clef, 9=Treble Clef, 10=Routing, 11=Bus, 12=Sum, 13=Smile, 14=Win"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/{{option.sel|map}}/icon",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.icon|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/{{option.sel|map}}/icon",
+     "args": []
+    }
+   ],
+   "maps": {
+    "sel": {
+     "/ch/1": "ch/1",
+     "/ch/2": "ch/2",
+     "/ch/3": "ch/3",
+     "/ch/4": "ch/4",
+     "/ch/5": "ch/5",
+     "/ch/6": "ch/6",
+     "/ch/7": "ch/7",
+     "/ch/8": "ch/8",
+     "/ch/9": "ch/9",
+     "/ch/10": "ch/10",
+     "/ch/11": "ch/11",
+     "/ch/12": "ch/12",
+     "/ch/13": "ch/13",
+     "/ch/14": "ch/14",
+     "/ch/15": "ch/15",
+     "/ch/16": "ch/16",
+     "/ch/17": "ch/17",
+     "/ch/18": "ch/18",
+     "/ch/19": "ch/19",
+     "/ch/20": "ch/20",
+     "/ch/21": "ch/21",
+     "/ch/22": "ch/22",
+     "/ch/23": "ch/23",
+     "/ch/24": "ch/24",
+     "/ch/25": "ch/25",
+     "/ch/26": "ch/26",
+     "/ch/27": "ch/27",
+     "/ch/28": "ch/28",
+     "/ch/29": "ch/29",
+     "/ch/30": "ch/30",
+     "/ch/31": "ch/31",
+     "/ch/32": "ch/32",
+     "/ch/33": "ch/33",
+     "/ch/34": "ch/34",
+     "/ch/35": "ch/35",
+     "/ch/36": "ch/36",
+     "/ch/37": "ch/37",
+     "/ch/38": "ch/38",
+     "/ch/39": "ch/39",
+     "/ch/40": "ch/40",
+     "/aux/1": "aux/1",
+     "/aux/2": "aux/2",
+     "/aux/3": "aux/3",
+     "/aux/4": "aux/4",
+     "/aux/5": "aux/5",
+     "/aux/6": "aux/6",
+     "/aux/7": "aux/7",
+     "/aux/8": "aux/8",
+     "/bus/1": "bus/1",
+     "/bus/2": "bus/2",
+     "/bus/3": "bus/3",
+     "/bus/4": "bus/4",
+     "/bus/5": "bus/5",
+     "/bus/6": "bus/6",
+     "/bus/7": "bus/7",
+     "/bus/8": "bus/8",
+     "/bus/9": "bus/9",
+     "/bus/10": "bus/10",
+     "/bus/11": "bus/11",
+     "/bus/12": "bus/12",
+     "/bus/13": "bus/13",
+     "/bus/14": "bus/14",
+     "/bus/15": "bus/15",
+     "/bus/16": "bus/16",
+     "/mtx/1": "mtx/1",
+     "/mtx/2": "mtx/2",
+     "/mtx/3": "mtx/3",
+     "/mtx/4": "mtx/4",
+     "/mtx/5": "mtx/5",
+     "/mtx/6": "mtx/6",
+     "/mtx/7": "mtx/7",
+     "/mtx/8": "mtx/8",
+     "/main/1": "main/1",
+     "/main/2": "main/2",
+     "/main/3": "main/3",
+     "/main/4": "main/4",
+     "/dca/1": "dca/1",
+     "/dca/2": "dca/2",
+     "/dca/3": "dca/3",
+     "/dca/4": "dca/4",
+     "/dca/5": "dca/5",
+     "/dca/6": "dca/6",
+     "/dca/7": "dca/7",
+     "/dca/8": "dca/8",
+     "/dca/9": "dca/9",
+     "/dca/10": "dca/10",
+     "/dca/11": "dca/11",
+     "/dca/12": "dca/12",
+     "/dca/13": "dca/13",
+     "/dca/14": "dca/14",
+     "/dca/15": "dca/15",
+     "/dca/16": "dca/16"
+    },
+    "icon": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "100": "100",
+     "101": "101",
+     "102": "102",
+     "103": "103",
+     "104": "104",
+     "105": "105",
+     "106": "106",
+     "107": "107",
+     "108": "108",
+     "109": "109",
+     "110": "110",
+     "111": "111",
+     "112": "112",
+     "113": "113",
+     "114": "114",
+     "200": "200",
+     "201": "201",
+     "202": "202",
+     "203": "203",
+     "204": "204",
+     "205": "205",
+     "206": "206",
+     "207": "207",
+     "208": "208",
+     "209": "209",
+     "210": "210",
+     "211": "211",
+     "212": "212",
+     "213": "213",
+     "214": "214",
+     "215": "215",
+     "216": "216",
+     "217": "217",
+     "218": "218",
+     "219": "219",
+     "220": "220",
+     "221": "221",
+     "222": "222",
+     "223": "223",
+     "224": "224",
+     "300": "300",
+     "301": "301",
+     "302": "302",
+     "303": "303",
+     "304": "304",
+     "305": "305",
+     "306": "306",
+     "307": "307",
+     "308": "308",
+     "309": "309",
+     "310": "310",
+     "311": "311",
+     "312": "312",
+     "313": "313",
+     "314": "314",
+     "315": "315",
+     "316": "316",
+     "317": "317",
+     "318": "318",
+     "319": "319",
+     "400": "400",
+     "401": "401",
+     "402": "402",
+     "403": "403",
+     "404": "404",
+     "405": "405",
+     "406": "406",
+     "407": "407",
+     "408": "408",
+     "409": "409",
+     "500": "500",
+     "501": "501",
+     "502": "502",
+     "503": "503",
+     "504": "504",
+     "505": "505",
+     "506": "506",
+     "507": "507",
+     "508": "508",
+     "509": "509",
+     "510": "510",
+     "511": "511",
+     "512": "512",
+     "513": "513",
+     "514": "514",
+     "515": "515",
+     "516": "516",
+     "517": "517",
+     "518": "518",
+     "519": "519",
+     "520": "520",
+     "521": "521",
+     "522": "522",
+     "523": "523",
+     "524": "524",
+     "600": "600",
+     "601": "601",
+     "602": "602",
+     "603": "603",
+     "604": "604",
+     "605": "605",
+     "606": "606",
+     "607": "607",
+     "608": "608",
+     "609": "609",
+     "610": "610",
+     "611": "611",
+     "612": "612",
+     "613": "613",
+     "614": "614"
+    }
+   }
+  },
+  {
    "id": "set-solo",
    "name": "Set Solo",
    "options": [
@@ -2138,7 +3392,7 @@
    ],
    "send": {
     "kind": "osc",
-    "address": "{{option.sel}}/$solo",
+    "address": "/{{option.sel|map}}/$solo",
     "args": [
      {
       "type": "i",
@@ -2149,12 +3403,536 @@
    "more": [
     {
      "kind": "osc",
-     "address": "{{option.sel}}/$solo",
+     "address": "/{{option.sel|map}}/$solo",
      "args": []
     }
    ],
    "maps": {
+    "sel": {
+     "/ch/1": "ch/1",
+     "/ch/2": "ch/2",
+     "/ch/3": "ch/3",
+     "/ch/4": "ch/4",
+     "/ch/5": "ch/5",
+     "/ch/6": "ch/6",
+     "/ch/7": "ch/7",
+     "/ch/8": "ch/8",
+     "/ch/9": "ch/9",
+     "/ch/10": "ch/10",
+     "/ch/11": "ch/11",
+     "/ch/12": "ch/12",
+     "/ch/13": "ch/13",
+     "/ch/14": "ch/14",
+     "/ch/15": "ch/15",
+     "/ch/16": "ch/16",
+     "/ch/17": "ch/17",
+     "/ch/18": "ch/18",
+     "/ch/19": "ch/19",
+     "/ch/20": "ch/20",
+     "/ch/21": "ch/21",
+     "/ch/22": "ch/22",
+     "/ch/23": "ch/23",
+     "/ch/24": "ch/24",
+     "/ch/25": "ch/25",
+     "/ch/26": "ch/26",
+     "/ch/27": "ch/27",
+     "/ch/28": "ch/28",
+     "/ch/29": "ch/29",
+     "/ch/30": "ch/30",
+     "/ch/31": "ch/31",
+     "/ch/32": "ch/32",
+     "/ch/33": "ch/33",
+     "/ch/34": "ch/34",
+     "/ch/35": "ch/35",
+     "/ch/36": "ch/36",
+     "/ch/37": "ch/37",
+     "/ch/38": "ch/38",
+     "/ch/39": "ch/39",
+     "/ch/40": "ch/40",
+     "/aux/1": "aux/1",
+     "/aux/2": "aux/2",
+     "/aux/3": "aux/3",
+     "/aux/4": "aux/4",
+     "/aux/5": "aux/5",
+     "/aux/6": "aux/6",
+     "/aux/7": "aux/7",
+     "/aux/8": "aux/8",
+     "/bus/1": "bus/1",
+     "/bus/2": "bus/2",
+     "/bus/3": "bus/3",
+     "/bus/4": "bus/4",
+     "/bus/5": "bus/5",
+     "/bus/6": "bus/6",
+     "/bus/7": "bus/7",
+     "/bus/8": "bus/8",
+     "/bus/9": "bus/9",
+     "/bus/10": "bus/10",
+     "/bus/11": "bus/11",
+     "/bus/12": "bus/12",
+     "/bus/13": "bus/13",
+     "/bus/14": "bus/14",
+     "/bus/15": "bus/15",
+     "/bus/16": "bus/16",
+     "/mtx/1": "mtx/1",
+     "/mtx/2": "mtx/2",
+     "/mtx/3": "mtx/3",
+     "/mtx/4": "mtx/4",
+     "/mtx/5": "mtx/5",
+     "/mtx/6": "mtx/6",
+     "/mtx/7": "mtx/7",
+     "/mtx/8": "mtx/8",
+     "/main/1": "main/1",
+     "/main/2": "main/2",
+     "/main/3": "main/3",
+     "/main/4": "main/4",
+     "/dca/1": "dca/1",
+     "/dca/2": "dca/2",
+     "/dca/3": "dca/3",
+     "/dca/4": "dca/4",
+     "/dca/5": "dca/5",
+     "/dca/6": "dca/6",
+     "/dca/7": "dca/7",
+     "/dca/8": "dca/8",
+     "/dca/9": "dca/9",
+     "/dca/10": "dca/10",
+     "/dca/11": "dca/11",
+     "/dca/12": "dca/12",
+     "/dca/13": "dca/13",
+     "/dca/14": "dca/14",
+     "/dca/15": "dca/15",
+     "/dca/16": "dca/16"
+    },
     "solo": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-delay",
+   "name": "Set Delay",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "delay_use_variables",
+     "label": "Use Variables for Delay",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "delay",
+     "label": "Delay",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "delay_variables",
+     "label": "Delay",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/{{option.sel|map}}on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.delay|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/{{option.sel|map}}on",
+     "args": []
+    }
+   ],
+   "maps": {
+    "sel": {
+     "/ch/1": "ch/1/in/set/dly",
+     "/ch/2": "ch/2/in/set/dly",
+     "/ch/3": "ch/3/in/set/dly",
+     "/ch/4": "ch/4/in/set/dly",
+     "/ch/5": "ch/5/in/set/dly",
+     "/ch/6": "ch/6/in/set/dly",
+     "/ch/7": "ch/7/in/set/dly",
+     "/ch/8": "ch/8/in/set/dly",
+     "/ch/9": "ch/9/in/set/dly",
+     "/ch/10": "ch/10/in/set/dly",
+     "/ch/11": "ch/11/in/set/dly",
+     "/ch/12": "ch/12/in/set/dly",
+     "/ch/13": "ch/13/in/set/dly",
+     "/ch/14": "ch/14/in/set/dly",
+     "/ch/15": "ch/15/in/set/dly",
+     "/ch/16": "ch/16/in/set/dly",
+     "/ch/17": "ch/17/in/set/dly",
+     "/ch/18": "ch/18/in/set/dly",
+     "/ch/19": "ch/19/in/set/dly",
+     "/ch/20": "ch/20/in/set/dly",
+     "/ch/21": "ch/21/in/set/dly",
+     "/ch/22": "ch/22/in/set/dly",
+     "/ch/23": "ch/23/in/set/dly",
+     "/ch/24": "ch/24/in/set/dly",
+     "/ch/25": "ch/25/in/set/dly",
+     "/ch/26": "ch/26/in/set/dly",
+     "/ch/27": "ch/27/in/set/dly",
+     "/ch/28": "ch/28/in/set/dly",
+     "/ch/29": "ch/29/in/set/dly",
+     "/ch/30": "ch/30/in/set/dly",
+     "/ch/31": "ch/31/in/set/dly",
+     "/ch/32": "ch/32/in/set/dly",
+     "/ch/33": "ch/33/in/set/dly",
+     "/ch/34": "ch/34/in/set/dly",
+     "/ch/35": "ch/35/in/set/dly",
+     "/ch/36": "ch/36/in/set/dly",
+     "/ch/37": "ch/37/in/set/dly",
+     "/ch/38": "ch/38/in/set/dly",
+     "/ch/39": "ch/39/in/set/dly",
+     "/ch/40": "ch/40/in/set/dly",
+     "/mtx/1": "mtx/1/dly/",
+     "/mtx/2": "mtx/2/dly/",
+     "/mtx/3": "mtx/3/dly/",
+     "/mtx/4": "mtx/4/dly/",
+     "/mtx/5": "mtx/5/dly/",
+     "/mtx/6": "mtx/6/dly/",
+     "/mtx/7": "mtx/7/dly/",
+     "/mtx/8": "mtx/8/dly/",
+     "/bus/1": "bus/1/dly/",
+     "/bus/2": "bus/2/dly/",
+     "/bus/3": "bus/3/dly/",
+     "/bus/4": "bus/4/dly/",
+     "/bus/5": "bus/5/dly/",
+     "/bus/6": "bus/6/dly/",
+     "/bus/7": "bus/7/dly/",
+     "/bus/8": "bus/8/dly/",
+     "/bus/9": "bus/9/dly/",
+     "/bus/10": "bus/10/dly/",
+     "/bus/11": "bus/11/dly/",
+     "/bus/12": "bus/12/dly/",
+     "/bus/13": "bus/13/dly/",
+     "/bus/14": "bus/14/dly/",
+     "/bus/15": "bus/15/dly/",
+     "/bus/16": "bus/16/dly/",
+     "/main/1": "main/1/dly/",
+     "/main/2": "main/2/dly/",
+     "/main/3": "main/3/dly/",
+     "/main/4": "main/4/dly/"
+    },
+    "delay": {
      "0": "0",
      "1": "1",
      "-1": "-1"
@@ -2820,7 +4598,7 @@
    ],
    "send": {
     "kind": "osc",
-    "address": "{{option.sel}}/eq/on",
+    "address": "/{{option.sel|map}}/eq/on",
     "args": [
      {
       "type": "i",
@@ -2831,11 +4609,89 @@
    "more": [
     {
      "kind": "osc",
-     "address": "{{option.sel}}/eq/on",
+     "address": "/{{option.sel|map}}/eq/on",
      "args": []
     }
    ],
    "maps": {
+    "sel": {
+     "/ch/1": "ch/1",
+     "/ch/2": "ch/2",
+     "/ch/3": "ch/3",
+     "/ch/4": "ch/4",
+     "/ch/5": "ch/5",
+     "/ch/6": "ch/6",
+     "/ch/7": "ch/7",
+     "/ch/8": "ch/8",
+     "/ch/9": "ch/9",
+     "/ch/10": "ch/10",
+     "/ch/11": "ch/11",
+     "/ch/12": "ch/12",
+     "/ch/13": "ch/13",
+     "/ch/14": "ch/14",
+     "/ch/15": "ch/15",
+     "/ch/16": "ch/16",
+     "/ch/17": "ch/17",
+     "/ch/18": "ch/18",
+     "/ch/19": "ch/19",
+     "/ch/20": "ch/20",
+     "/ch/21": "ch/21",
+     "/ch/22": "ch/22",
+     "/ch/23": "ch/23",
+     "/ch/24": "ch/24",
+     "/ch/25": "ch/25",
+     "/ch/26": "ch/26",
+     "/ch/27": "ch/27",
+     "/ch/28": "ch/28",
+     "/ch/29": "ch/29",
+     "/ch/30": "ch/30",
+     "/ch/31": "ch/31",
+     "/ch/32": "ch/32",
+     "/ch/33": "ch/33",
+     "/ch/34": "ch/34",
+     "/ch/35": "ch/35",
+     "/ch/36": "ch/36",
+     "/ch/37": "ch/37",
+     "/ch/38": "ch/38",
+     "/ch/39": "ch/39",
+     "/ch/40": "ch/40",
+     "/aux/1": "aux/1",
+     "/aux/2": "aux/2",
+     "/aux/3": "aux/3",
+     "/aux/4": "aux/4",
+     "/aux/5": "aux/5",
+     "/aux/6": "aux/6",
+     "/aux/7": "aux/7",
+     "/aux/8": "aux/8",
+     "/bus/1": "bus/1",
+     "/bus/2": "bus/2",
+     "/bus/3": "bus/3",
+     "/bus/4": "bus/4",
+     "/bus/5": "bus/5",
+     "/bus/6": "bus/6",
+     "/bus/7": "bus/7",
+     "/bus/8": "bus/8",
+     "/bus/9": "bus/9",
+     "/bus/10": "bus/10",
+     "/bus/11": "bus/11",
+     "/bus/12": "bus/12",
+     "/bus/13": "bus/13",
+     "/bus/14": "bus/14",
+     "/bus/15": "bus/15",
+     "/bus/16": "bus/16",
+     "/mtx/1": "mtx/1",
+     "/mtx/2": "mtx/2",
+     "/mtx/3": "mtx/3",
+     "/mtx/4": "mtx/4",
+     "/mtx/5": "mtx/5",
+     "/mtx/6": "mtx/6",
+     "/mtx/7": "mtx/7",
+     "/mtx/8": "mtx/8",
+     "/main/1": "main/1",
+     "/main/2": "main/2",
+     "/main/3": "main/3",
+     "/main/4": "main/4"
+    },
     "enable": {
      "0": "0",
      "1": "1",
@@ -3212,7 +5068,7 @@
    ],
    "send": {
     "kind": "osc",
-    "address": "{{option.sel}}/dyn/on",
+    "address": "/{{option.sel|map}}/dyn/on",
     "args": [
      {
       "type": "i",
@@ -3223,11 +5079,89 @@
    "more": [
     {
      "kind": "osc",
-     "address": "{{option.sel}}/dyn/on",
+     "address": "/{{option.sel|map}}/dyn/on",
      "args": []
     }
    ],
    "maps": {
+    "sel": {
+     "/ch/1": "ch/1",
+     "/ch/2": "ch/2",
+     "/ch/3": "ch/3",
+     "/ch/4": "ch/4",
+     "/ch/5": "ch/5",
+     "/ch/6": "ch/6",
+     "/ch/7": "ch/7",
+     "/ch/8": "ch/8",
+     "/ch/9": "ch/9",
+     "/ch/10": "ch/10",
+     "/ch/11": "ch/11",
+     "/ch/12": "ch/12",
+     "/ch/13": "ch/13",
+     "/ch/14": "ch/14",
+     "/ch/15": "ch/15",
+     "/ch/16": "ch/16",
+     "/ch/17": "ch/17",
+     "/ch/18": "ch/18",
+     "/ch/19": "ch/19",
+     "/ch/20": "ch/20",
+     "/ch/21": "ch/21",
+     "/ch/22": "ch/22",
+     "/ch/23": "ch/23",
+     "/ch/24": "ch/24",
+     "/ch/25": "ch/25",
+     "/ch/26": "ch/26",
+     "/ch/27": "ch/27",
+     "/ch/28": "ch/28",
+     "/ch/29": "ch/29",
+     "/ch/30": "ch/30",
+     "/ch/31": "ch/31",
+     "/ch/32": "ch/32",
+     "/ch/33": "ch/33",
+     "/ch/34": "ch/34",
+     "/ch/35": "ch/35",
+     "/ch/36": "ch/36",
+     "/ch/37": "ch/37",
+     "/ch/38": "ch/38",
+     "/ch/39": "ch/39",
+     "/ch/40": "ch/40",
+     "/aux/1": "aux/1",
+     "/aux/2": "aux/2",
+     "/aux/3": "aux/3",
+     "/aux/4": "aux/4",
+     "/aux/5": "aux/5",
+     "/aux/6": "aux/6",
+     "/aux/7": "aux/7",
+     "/aux/8": "aux/8",
+     "/bus/1": "bus/1",
+     "/bus/2": "bus/2",
+     "/bus/3": "bus/3",
+     "/bus/4": "bus/4",
+     "/bus/5": "bus/5",
+     "/bus/6": "bus/6",
+     "/bus/7": "bus/7",
+     "/bus/8": "bus/8",
+     "/bus/9": "bus/9",
+     "/bus/10": "bus/10",
+     "/bus/11": "bus/11",
+     "/bus/12": "bus/12",
+     "/bus/13": "bus/13",
+     "/bus/14": "bus/14",
+     "/bus/15": "bus/15",
+     "/bus/16": "bus/16",
+     "/mtx/1": "mtx/1",
+     "/mtx/2": "mtx/2",
+     "/mtx/3": "mtx/3",
+     "/mtx/4": "mtx/4",
+     "/mtx/5": "mtx/5",
+     "/mtx/6": "mtx/6",
+     "/mtx/7": "mtx/7",
+     "/mtx/8": "mtx/8",
+     "/main/1": "main/1",
+     "/main/2": "main/2",
+     "/main/3": "main/3",
+     "/main/4": "main/4"
+    },
     "enable": {
      "0": "0",
      "1": "1",
@@ -4020,6 +5954,255 @@
     "mon": {
      "1": "1",
      "2": "2"
+    }
+   }
+  },
+  {
+   "id": "recall-scene-by-name",
+   "name": "Recall Scene by Name",
+   "options": [
+    {
+     "id": "sceneName_use_variables",
+     "label": "Use Variables for Scene Name",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sceneName",
+     "label": "Scene Name",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: "
+    },
+    {
+     "id": "sceneName_variables",
+     "label": "Scene Name",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: "
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/$ctl/lib/$actionidx",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/$ctl/lib/$actionidx",
+     "args": []
+    },
+    {
+     "kind": "osc",
+     "address": "/$ctl/lib/$action",
+     "args": [
+      {
+       "type": "s",
+       "value": "GO"
+      }
+     ]
+    },
+    {
+     "kind": "osc",
+     "address": "/$ctl/lib/$action",
+     "args": []
+    }
+   ]
+  },
+  {
+   "id": "set-gpio-state",
+   "name": "Set GPIO State",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "GPIO 1"
+      },
+      {
+       "id": "2",
+       "label": "GPIO 2"
+      },
+      {
+       "id": "3",
+       "label": "GPIO 3"
+      },
+      {
+       "id": "4",
+       "label": "GPIO 4"
+      }
+     ],
+     "help": "Available choices: 1=GPIO 1, 2=GPIO 2, 3=GPIO 3, 4=GPIO 4"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 1=GPIO 1, 2=GPIO 2, 3=GPIO 3, 4=GPIO 4"
+    },
+    {
+     "id": "state_use_variables",
+     "label": "Use Variables for State",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "state_variables",
+     "label": "State",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/$ctl/gpio/{{option.sel|map}}/gpstate",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.state|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/$ctl/gpio/{{option.sel|map}}/gpstate",
+     "args": []
+    }
+   ],
+   "maps": {
+    "sel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "state": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "save-now",
+   "name": "Save",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/$ctl/cfg/$savenow",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/$ctl/cfg/$savenow",
+     "args": []
+    }
+   ]
+  },
+  {
+   "id": "main-alt-swtich",
+   "name": "Set Main/Alt Switch",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Alt"
+      },
+      {
+       "id": "0",
+       "label": "Main"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Available choices: 1=Alt, 0=Main, -1=Toggle"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 1=Alt, 0=Main, -1=Toggle"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/io/altsw",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.sel|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "sel": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
     }
    }
   }

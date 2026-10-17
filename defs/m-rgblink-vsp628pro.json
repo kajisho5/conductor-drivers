@@ -73,16 +73,16 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "<T007{{option.mode|map}}>",
+    "data": "<T008{{option.mode|map}}>",
     "encoding": "text"
    },
    "maps": {
     "mode": {
-     "11": "36B00011100F0",
-     "15": "46B00011500F5",
-     "16": "26B00001600F3",
-     "17": "56B00001700F7",
-     "19": "66B00001900FA"
+     "11": "A6B0001110007",
+     "15": "B6B000115000C",
+     "16": "96B000016000A",
+     "17": "C6B000017000E",
+     "19": "D6B0000190011"
     }
    }
   },
@@ -109,13 +109,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "<T007{{option.status|map}}00EE>",
+    "data": "<T008{{option.status|map}}0005>",
     "encoding": "text"
    },
    "maps": {
     "status": {
-     "01": "775000101",
-     "00": "875000100"
+     "01": "E75000101",
+     "00": "F75000100"
     }
    }
   },
@@ -142,13 +142,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "<T00B{{option.layer|map}}>",
+    "data": "<T00C{{option.layer|map}}>",
     "encoding": "text"
    },
    "maps": {
     "layer": {
-     "00": "16B020000001E",
-     "01": "26B0201000020"
+     "00": "86B0200000035",
+     "01": "96B0201000037"
     }
    }
   },
@@ -158,7 +158,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "<T00B368020100001E>",
+    "data": "<T00CA680201000035>",
     "encoding": "text"
    }
   },
@@ -168,7 +168,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "<T00B468020000001E>",
+    "data": "<T00CB680200000035>",
     "encoding": "text"
    }
   }

@@ -30,13 +30,13 @@
  ],
  "actions": [
   {
-   "id": "startSystemInfo",
-   "name": "Start System Information",
+   "id": "getFonts",
+   "name": "Get Installed Fonts",
    "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=rnpeekgf"
+    "path": "/socket.io/?EIO=4&transport=polling&t=thzo5i78"
    }
   }
  ],

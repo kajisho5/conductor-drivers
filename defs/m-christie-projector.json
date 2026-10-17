@@ -1155,6 +1155,279 @@
    }
   },
   {
+   "id": "key",
+   "name": "Key Code / Key Press",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Key",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      },
+      {
+       "id": "9",
+       "label": "9"
+      },
+      {
+       "id": "12",
+       "label": "Shift"
+      },
+      {
+       "id": "13",
+       "label": "Enter"
+      },
+      {
+       "id": "14",
+       "label": "Func"
+      },
+      {
+       "id": "22",
+       "label": "Proj"
+      },
+      {
+       "id": "27",
+       "label": "Exit"
+      },
+      {
+       "id": "41",
+       "label": "Cont"
+      },
+      {
+       "id": "44",
+       "label": "Menu"
+      },
+      {
+       "id": "46",
+       "label": "Power"
+      },
+      {
+       "id": "47",
+       "label": "OSD"
+      },
+      {
+       "id": "58",
+       "label": "Up (On)"
+      },
+      {
+       "id": "59",
+       "label": "Down (Off)"
+      },
+      {
+       "id": "60",
+       "label": "Left (-)"
+      },
+      {
+       "id": "61",
+       "label": "Lamp"
+      },
+      {
+       "id": "62",
+       "label": "Right (+)"
+      },
+      {
+       "id": "63",
+       "label": "Help"
+      },
+      {
+       "id": "64",
+       "label": "Input"
+      },
+      {
+       "id": "65",
+       "label": "Input 1 / BNC"
+      },
+      {
+       "id": "66",
+       "label": "Input 2 / DVI"
+      },
+      {
+       "id": "67",
+       "label": "Input 3 / VID"
+      },
+      {
+       "id": "68",
+       "label": "Input 4 / S-Vid"
+      },
+      {
+       "id": "69",
+       "label": "Input 5 / Opt-1"
+      },
+      {
+       "id": "70",
+       "label": "Input 6 / Opt-2"
+      },
+      {
+       "id": "71",
+       "label": "Zoom IN"
+      },
+      {
+       "id": "72",
+       "label": "Zoom Out"
+      },
+      {
+       "id": "73",
+       "label": "Focus IN"
+      },
+      {
+       "id": "74",
+       "label": "Focus Out"
+      },
+      {
+       "id": "75",
+       "label": "Lens H Right"
+      },
+      {
+       "id": "76",
+       "label": "Lens H Left"
+      },
+      {
+       "id": "77",
+       "label": "Lens V Up"
+      },
+      {
+       "id": "78",
+       "label": "Lens V Down"
+      },
+      {
+       "id": "80",
+       "label": "Bright"
+      },
+      {
+       "id": "81",
+       "label": "Channel"
+      },
+      {
+       "id": "82",
+       "label": "Test"
+      },
+      {
+       "id": "83",
+       "label": "Shutter"
+      },
+      {
+       "id": "84",
+       "label": "PIP"
+      },
+      {
+       "id": "85",
+       "label": "Gamma"
+      },
+      {
+       "id": "86",
+       "label": "Auto"
+      },
+      {
+       "id": "87",
+       "label": "Focus"
+      },
+      {
+       "id": "88",
+       "label": "Zoom"
+      },
+      {
+       "id": "89",
+       "label": "Swap"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(KEY {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0)(KEY 128",
+     "1": "1)(KEY 129",
+     "2": "2)(KEY 130",
+     "3": "3)(KEY 131",
+     "4": "4)(KEY 132",
+     "5": "5)(KEY 133",
+     "6": "6)(KEY 134",
+     "7": "7)(KEY 135",
+     "8": "8)(KEY 136",
+     "9": "9)(KEY 137",
+     "12": "12)(KEY 140",
+     "13": "13)(KEY 141",
+     "14": "14)(KEY 142",
+     "22": "22)(KEY 150",
+     "27": "27)(KEY 155",
+     "41": "41)(KEY 169",
+     "44": "44)(KEY 172",
+     "46": "46)(KEY 174",
+     "47": "47)(KEY 175",
+     "58": "58)(KEY 186",
+     "59": "59)(KEY 187",
+     "60": "60)(KEY 188",
+     "61": "61)(KEY 189",
+     "62": "62)(KEY 190",
+     "63": "63)(KEY 191",
+     "64": "64)(KEY 192",
+     "65": "65)(KEY 193",
+     "66": "66)(KEY 194",
+     "67": "67)(KEY 195",
+     "68": "68)(KEY 196",
+     "69": "69)(KEY 197",
+     "70": "70)(KEY 198",
+     "71": "71)(KEY 199",
+     "72": "72)(KEY 200",
+     "73": "73)(KEY 201",
+     "74": "74)(KEY 202",
+     "75": "75)(KEY 203",
+     "76": "76)(KEY 204",
+     "77": "77)(KEY 205",
+     "78": "78)(KEY 206",
+     "80": "80)(KEY 208",
+     "81": "81)(KEY 209",
+     "82": "82)(KEY 210",
+     "83": "83)(KEY 211",
+     "84": "84)(KEY 212",
+     "85": "85)(KEY 213",
+     "86": "86)(KEY 214",
+     "87": "87)(KEY 215",
+     "88": "88)(KEY 216",
+     "89": "89)(KEY 217"
+    }
+   }
+  },
+  {
    "id": "lcb",
    "name": "Lens Calibrate",
    "options": [
@@ -7625,6 +7898,656 @@
     "options": {
      "p1": "2",
      "p2": "16"
+    }
+   }
+  },
+  {
+   "id": "400",
+   "category": "Key Codes",
+   "name": "Key Code:0",
+   "text": "KEY: 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "401",
+   "category": "Key Codes",
+   "name": "Key Code:1",
+   "text": "KEY: 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "402",
+   "category": "Key Codes",
+   "name": "Key Code:2",
+   "text": "KEY: 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "403",
+   "category": "Key Codes",
+   "name": "Key Code:3",
+   "text": "KEY: 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "404",
+   "category": "Key Codes",
+   "name": "Key Code:4",
+   "text": "KEY: 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "405",
+   "category": "Key Codes",
+   "name": "Key Code:5",
+   "text": "KEY: 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "406",
+   "category": "Key Codes",
+   "name": "Key Code:6",
+   "text": "KEY: 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "407",
+   "category": "Key Codes",
+   "name": "Key Code:7",
+   "text": "KEY: 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "408",
+   "category": "Key Codes",
+   "name": "Key Code:8",
+   "text": "KEY: 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "8"
+    }
+   }
+  },
+  {
+   "id": "409",
+   "category": "Key Codes",
+   "name": "Key Code:9",
+   "text": "KEY: 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "9"
+    }
+   }
+  },
+  {
+   "id": "410",
+   "category": "Key Codes",
+   "name": "Key Code:Shift",
+   "text": "KEY: Shift",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "12"
+    }
+   }
+  },
+  {
+   "id": "411",
+   "category": "Key Codes",
+   "name": "Key Code:Enter",
+   "text": "KEY: Enter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "13"
+    }
+   }
+  },
+  {
+   "id": "412",
+   "category": "Key Codes",
+   "name": "Key Code:Func",
+   "text": "KEY: Func",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "14"
+    }
+   }
+  },
+  {
+   "id": "413",
+   "category": "Key Codes",
+   "name": "Key Code:Proj",
+   "text": "KEY: Proj",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "22"
+    }
+   }
+  },
+  {
+   "id": "414",
+   "category": "Key Codes",
+   "name": "Key Code:Exit",
+   "text": "KEY: Exit",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "27"
+    }
+   }
+  },
+  {
+   "id": "415",
+   "category": "Key Codes",
+   "name": "Key Code:Cont",
+   "text": "KEY: Cont",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "41"
+    }
+   }
+  },
+  {
+   "id": "416",
+   "category": "Key Codes",
+   "name": "Key Code:Menu",
+   "text": "KEY: Menu",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "44"
+    }
+   }
+  },
+  {
+   "id": "417",
+   "category": "Key Codes",
+   "name": "Key Code:Power",
+   "text": "KEY: Power",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "46"
+    }
+   }
+  },
+  {
+   "id": "418",
+   "category": "Key Codes",
+   "name": "Key Code:OSD",
+   "text": "KEY: OSD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "47"
+    }
+   }
+  },
+  {
+   "id": "419",
+   "category": "Key Codes",
+   "name": "Key Code:Up (On)",
+   "text": "KEY: Up (On)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "58"
+    }
+   }
+  },
+  {
+   "id": "420",
+   "category": "Key Codes",
+   "name": "Key Code:Down (Off)",
+   "text": "KEY: Down (Off)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "59"
+    }
+   }
+  },
+  {
+   "id": "421",
+   "category": "Key Codes",
+   "name": "Key Code:Left (-)",
+   "text": "KEY: Left (-)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "60"
+    }
+   }
+  },
+  {
+   "id": "422",
+   "category": "Key Codes",
+   "name": "Key Code:Lamp",
+   "text": "KEY: Lamp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "61"
+    }
+   }
+  },
+  {
+   "id": "423",
+   "category": "Key Codes",
+   "name": "Key Code:Right (+)",
+   "text": "KEY: Right (+)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "62"
+    }
+   }
+  },
+  {
+   "id": "424",
+   "category": "Key Codes",
+   "name": "Key Code:Help",
+   "text": "KEY: Help",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "63"
+    }
+   }
+  },
+  {
+   "id": "425",
+   "category": "Key Codes",
+   "name": "Key Code:Input",
+   "text": "KEY: Input",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "64"
+    }
+   }
+  },
+  {
+   "id": "426",
+   "category": "Key Codes",
+   "name": "Key Code:Input 1 / BNC",
+   "text": "KEY: Input 1 / BNC",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "65"
+    }
+   }
+  },
+  {
+   "id": "427",
+   "category": "Key Codes",
+   "name": "Key Code:Input 2 / DVI",
+   "text": "KEY: Input 2 / DVI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "66"
+    }
+   }
+  },
+  {
+   "id": "428",
+   "category": "Key Codes",
+   "name": "Key Code:Input 3 / VID",
+   "text": "KEY: Input 3 / VID",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "67"
+    }
+   }
+  },
+  {
+   "id": "429",
+   "category": "Key Codes",
+   "name": "Key Code:Input 4 / S-Vid",
+   "text": "KEY: Input 4 / S-Vid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "68"
+    }
+   }
+  },
+  {
+   "id": "430",
+   "category": "Key Codes",
+   "name": "Key Code:Input 5 / Opt-1",
+   "text": "KEY: Input 5 / Opt-1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "69"
+    }
+   }
+  },
+  {
+   "id": "431",
+   "category": "Key Codes",
+   "name": "Key Code:Input 6 / Opt-2",
+   "text": "KEY: Input 6 / Opt-2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "70"
+    }
+   }
+  },
+  {
+   "id": "432",
+   "category": "Key Codes",
+   "name": "Key Code:Zoom IN",
+   "text": "KEY: Zoom IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "71"
+    }
+   }
+  },
+  {
+   "id": "433",
+   "category": "Key Codes",
+   "name": "Key Code:Zoom Out",
+   "text": "KEY: Zoom Out",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "72"
+    }
+   }
+  },
+  {
+   "id": "434",
+   "category": "Key Codes",
+   "name": "Key Code:Focus IN",
+   "text": "KEY: Focus IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "73"
+    }
+   }
+  },
+  {
+   "id": "435",
+   "category": "Key Codes",
+   "name": "Key Code:Focus Out",
+   "text": "KEY: Focus Out",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "74"
+    }
+   }
+  },
+  {
+   "id": "436",
+   "category": "Key Codes",
+   "name": "Key Code:Lens H Right",
+   "text": "KEY: Lens H Right",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "75"
+    }
+   }
+  },
+  {
+   "id": "437",
+   "category": "Key Codes",
+   "name": "Key Code:Lens H Left",
+   "text": "KEY: Lens H Left",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "76"
+    }
+   }
+  },
+  {
+   "id": "438",
+   "category": "Key Codes",
+   "name": "Key Code:Lens V Up",
+   "text": "KEY: Lens V Up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "77"
+    }
+   }
+  },
+  {
+   "id": "439",
+   "category": "Key Codes",
+   "name": "Key Code:Lens V Down",
+   "text": "KEY: Lens V Down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "78"
+    }
+   }
+  },
+  {
+   "id": "440",
+   "category": "Key Codes",
+   "name": "Key Code:Bright",
+   "text": "KEY: Bright",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "80"
+    }
+   }
+  },
+  {
+   "id": "441",
+   "category": "Key Codes",
+   "name": "Key Code:Channel",
+   "text": "KEY: Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "81"
+    }
+   }
+  },
+  {
+   "id": "442",
+   "category": "Key Codes",
+   "name": "Key Code:Test",
+   "text": "KEY: Test",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "82"
+    }
+   }
+  },
+  {
+   "id": "443",
+   "category": "Key Codes",
+   "name": "Key Code:Shutter",
+   "text": "KEY: Shutter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "83"
+    }
+   }
+  },
+  {
+   "id": "444",
+   "category": "Key Codes",
+   "name": "Key Code:PIP",
+   "text": "KEY: PIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "84"
+    }
+   }
+  },
+  {
+   "id": "445",
+   "category": "Key Codes",
+   "name": "Key Code:Gamma",
+   "text": "KEY: Gamma",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "85"
+    }
+   }
+  },
+  {
+   "id": "446",
+   "category": "Key Codes",
+   "name": "Key Code:Auto",
+   "text": "KEY: Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "86"
+    }
+   }
+  },
+  {
+   "id": "447",
+   "category": "Key Codes",
+   "name": "Key Code:Focus",
+   "text": "KEY: Focus",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "87"
+    }
+   }
+  },
+  {
+   "id": "448",
+   "category": "Key Codes",
+   "name": "Key Code:Zoom",
+   "text": "KEY: Zoom",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "88"
+    }
+   }
+  },
+  {
+   "id": "449",
+   "category": "Key Codes",
+   "name": "Key Code:Swap",
+   "text": "KEY: Swap",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "p1": "89"
     }
    }
   },

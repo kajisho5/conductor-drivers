@@ -66,6 +66,16 @@
    }
   },
   {
+   "id": "fader_increase_stop",
+   "name": "Stop Increasing Fader Level",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "fader_level=86\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
    "id": "fader_decrease_once",
    "name": "Decrease Fader Level 1 Point and Stop",
    "options": [],

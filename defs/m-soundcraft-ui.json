@@ -1164,6 +1164,1154 @@
      "b": "1"
     }
    }
+  },
+  {
+   "id": "patchingsetroute",
+   "name": "Patching: Configure patch route (Ui24R only)",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source (from)",
+     "type": "select",
+     "default": "none",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "hw.0",
+       "label": "HW INS: 1"
+      },
+      {
+       "id": "hw.1",
+       "label": "HW INS: 2"
+      },
+      {
+       "id": "hw.2",
+       "label": "HW INS: 3"
+      },
+      {
+       "id": "hw.3",
+       "label": "HW INS: 4"
+      },
+      {
+       "id": "hw.4",
+       "label": "HW INS: 5"
+      },
+      {
+       "id": "hw.5",
+       "label": "HW INS: 6"
+      },
+      {
+       "id": "hw.6",
+       "label": "HW INS: 7"
+      },
+      {
+       "id": "hw.7",
+       "label": "HW INS: 8"
+      },
+      {
+       "id": "hw.8",
+       "label": "HW INS: 9"
+      },
+      {
+       "id": "hw.9",
+       "label": "HW INS: 10"
+      },
+      {
+       "id": "hw.10",
+       "label": "HW INS: 11"
+      },
+      {
+       "id": "hw.11",
+       "label": "HW INS: 12"
+      },
+      {
+       "id": "hw.12",
+       "label": "HW INS: 13"
+      },
+      {
+       "id": "hw.13",
+       "label": "HW INS: 14"
+      },
+      {
+       "id": "hw.14",
+       "label": "HW INS: 15"
+      },
+      {
+       "id": "hw.15",
+       "label": "HW INS: 16"
+      },
+      {
+       "id": "hw.16",
+       "label": "HW INS: 17"
+      },
+      {
+       "id": "hw.17",
+       "label": "HW INS: 18"
+      },
+      {
+       "id": "hw.18",
+       "label": "HW INS: 19"
+      },
+      {
+       "id": "hw.19",
+       "label": "HW INS: 20"
+      },
+      {
+       "id": "li.0",
+       "label": "HW INS: LI L"
+      },
+      {
+       "id": "li.1",
+       "label": "HW INS: LI R"
+      },
+      {
+       "id": "ua.0",
+       "label": "USB-A: 1"
+      },
+      {
+       "id": "ua.1",
+       "label": "USB-A: 2"
+      },
+      {
+       "id": "ua.2",
+       "label": "USB-A: 3"
+      },
+      {
+       "id": "ua.3",
+       "label": "USB-A: 4"
+      },
+      {
+       "id": "ua.4",
+       "label": "USB-A: 5"
+      },
+      {
+       "id": "ua.5",
+       "label": "USB-A: 6"
+      },
+      {
+       "id": "ua.6",
+       "label": "USB-A: 7"
+      },
+      {
+       "id": "ua.7",
+       "label": "USB-A: 8"
+      },
+      {
+       "id": "ua.8",
+       "label": "USB-A: 9"
+      },
+      {
+       "id": "ua.9",
+       "label": "USB-A: 10"
+      },
+      {
+       "id": "ua.10",
+       "label": "USB-A: 11"
+      },
+      {
+       "id": "ua.11",
+       "label": "USB-A: 12"
+      },
+      {
+       "id": "ua.12",
+       "label": "USB-A: 13"
+      },
+      {
+       "id": "ua.13",
+       "label": "USB-A: 14"
+      },
+      {
+       "id": "ua.14",
+       "label": "USB-A: 15"
+      },
+      {
+       "id": "ua.15",
+       "label": "USB-A: 16"
+      },
+      {
+       "id": "ua.16",
+       "label": "USB-A: 17"
+      },
+      {
+       "id": "ua.17",
+       "label": "USB-A: 18"
+      },
+      {
+       "id": "ua.18",
+       "label": "USB-A: 19"
+      },
+      {
+       "id": "ua.19",
+       "label": "USB-A: 20"
+      },
+      {
+       "id": "ua.20",
+       "label": "USB-A: 21"
+      },
+      {
+       "id": "ua.21",
+       "label": "USB-A: 22"
+      },
+      {
+       "id": "ub.0",
+       "label": "USB-DAW: 1"
+      },
+      {
+       "id": "ub.1",
+       "label": "USB-DAW: 2"
+      },
+      {
+       "id": "ub.2",
+       "label": "USB-DAW: 3"
+      },
+      {
+       "id": "ub.3",
+       "label": "USB-DAW: 4"
+      },
+      {
+       "id": "ub.4",
+       "label": "USB-DAW: 5"
+      },
+      {
+       "id": "ub.5",
+       "label": "USB-DAW: 6"
+      },
+      {
+       "id": "ub.6",
+       "label": "USB-DAW: 7"
+      },
+      {
+       "id": "ub.7",
+       "label": "USB-DAW: 8"
+      },
+      {
+       "id": "ub.8",
+       "label": "USB-DAW: 9"
+      },
+      {
+       "id": "ub.9",
+       "label": "USB-DAW: 10"
+      },
+      {
+       "id": "ub.10",
+       "label": "USB-DAW: 11"
+      },
+      {
+       "id": "ub.11",
+       "label": "USB-DAW: 12"
+      },
+      {
+       "id": "ub.12",
+       "label": "USB-DAW: 13"
+      },
+      {
+       "id": "ub.13",
+       "label": "USB-DAW: 14"
+      },
+      {
+       "id": "ub.14",
+       "label": "USB-DAW: 15"
+      },
+      {
+       "id": "ub.15",
+       "label": "USB-DAW: 16"
+      },
+      {
+       "id": "ub.16",
+       "label": "USB-DAW: 17"
+      },
+      {
+       "id": "ub.17",
+       "label": "USB-DAW: 18"
+      },
+      {
+       "id": "ub.18",
+       "label": "USB-DAW: 19"
+      },
+      {
+       "id": "ub.19",
+       "label": "USB-DAW: 20"
+      },
+      {
+       "id": "ub.20",
+       "label": "USB-DAW: 21"
+      },
+      {
+       "id": "ub.21",
+       "label": "USB-DAW: 22"
+      },
+      {
+       "id": "ub.22",
+       "label": "USB-DAW: 23"
+      },
+      {
+       "id": "ub.23",
+       "label": "USB-DAW: 24"
+      },
+      {
+       "id": "ub.24",
+       "label": "USB-DAW: 25"
+      },
+      {
+       "id": "ub.25",
+       "label": "USB-DAW: 26"
+      },
+      {
+       "id": "ub.26",
+       "label": "USB-DAW: 27"
+      },
+      {
+       "id": "ub.27",
+       "label": "USB-DAW: 28"
+      },
+      {
+       "id": "ub.28",
+       "label": "USB-DAW: 29"
+      },
+      {
+       "id": "ub.29",
+       "label": "USB-DAW: 30"
+      },
+      {
+       "id": "ub.30",
+       "label": "USB-DAW: 31"
+      },
+      {
+       "id": "ub.31",
+       "label": "USB-DAW: 32"
+      },
+      {
+       "id": "cs.0",
+       "label": "CASCADE INS: 1"
+      },
+      {
+       "id": "cs.1",
+       "label": "CASCADE INS: 2"
+      },
+      {
+       "id": "cs.2",
+       "label": "CASCADE INS: 3"
+      },
+      {
+       "id": "cs.3",
+       "label": "CASCADE INS: 4"
+      },
+      {
+       "id": "cs.4",
+       "label": "CASCADE INS: 5"
+      },
+      {
+       "id": "cs.5",
+       "label": "CASCADE INS: 6"
+      },
+      {
+       "id": "cs.6",
+       "label": "CASCADE INS: 7"
+      },
+      {
+       "id": "cs.7",
+       "label": "CASCADE INS: 8"
+      },
+      {
+       "id": "cs.8",
+       "label": "CASCADE INS: 9"
+      },
+      {
+       "id": "cs.9",
+       "label": "CASCADE INS: 10"
+      },
+      {
+       "id": "cs.10",
+       "label": "CASCADE INS: 11"
+      },
+      {
+       "id": "cs.11",
+       "label": "CASCADE INS: 12"
+      },
+      {
+       "id": "cs.12",
+       "label": "CASCADE INS: 13"
+      },
+      {
+       "id": "cs.13",
+       "label": "CASCADE INS: 14"
+      },
+      {
+       "id": "cs.14",
+       "label": "CASCADE INS: 15"
+      },
+      {
+       "id": "cs.15",
+       "label": "CASCADE INS: 16"
+      },
+      {
+       "id": "cs.16",
+       "label": "CASCADE INS: 17"
+      },
+      {
+       "id": "cs.17",
+       "label": "CASCADE INS: 18"
+      },
+      {
+       "id": "cs.18",
+       "label": "CASCADE INS: 19"
+      },
+      {
+       "id": "cs.19",
+       "label": "CASCADE INS: 20"
+      },
+      {
+       "id": "cs.20",
+       "label": "CASCADE INS: 21"
+      },
+      {
+       "id": "cs.21",
+       "label": "CASCADE INS: 22"
+      },
+      {
+       "id": "cs.22",
+       "label": "CASCADE INS: 23"
+      },
+      {
+       "id": "cs.23",
+       "label": "CASCADE INS: 24"
+      },
+      {
+       "id": "cs.24",
+       "label": "CASCADE INS: 25"
+      },
+      {
+       "id": "cs.25",
+       "label": "CASCADE INS: 26"
+      },
+      {
+       "id": "cs.26",
+       "label": "CASCADE INS: 27"
+      },
+      {
+       "id": "cs.27",
+       "label": "CASCADE INS: 28"
+      },
+      {
+       "id": "cs.28",
+       "label": "CASCADE INS: 29"
+      },
+      {
+       "id": "cs.29",
+       "label": "CASCADE INS: 30"
+      },
+      {
+       "id": "cs.30",
+       "label": "CASCADE INS: 31"
+      },
+      {
+       "id": "cs.31",
+       "label": "CASCADE INS: 32"
+      },
+      {
+       "id": "m.0",
+       "label": "MASTERS: ML"
+      },
+      {
+       "id": "m.1",
+       "label": "MASTERS: MR"
+      },
+      {
+       "id": "a.0",
+       "label": "MASTERS: A1"
+      },
+      {
+       "id": "a.1",
+       "label": "MASTERS: A2"
+      },
+      {
+       "id": "a.2",
+       "label": "MASTERS: A3"
+      },
+      {
+       "id": "a.3",
+       "label": "MASTERS: A4"
+      },
+      {
+       "id": "a.4",
+       "label": "MASTERS: A5"
+      },
+      {
+       "id": "a.5",
+       "label": "MASTERS: A6"
+      },
+      {
+       "id": "a.6",
+       "label": "MASTERS: A7"
+      },
+      {
+       "id": "a.7",
+       "label": "MASTERS: A8"
+      },
+      {
+       "id": "a.8",
+       "label": "MASTERS: A9"
+      },
+      {
+       "id": "a.9",
+       "label": "MASTERS: A10"
+      },
+      {
+       "id": "hp.0",
+       "label": "MASTERS: HD1L"
+      },
+      {
+       "id": "hp.1",
+       "label": "MASTERS: HD1R"
+      },
+      {
+       "id": "hp.2",
+       "label": "MASTERS: HD2L"
+      },
+      {
+       "id": "hp.3",
+       "label": "MASTERS: HD2R"
+      }
+     ]
+    },
+    {
+     "id": "destination",
+     "label": "Destination (to)",
+     "type": "select",
+     "default": "i.0.src",
+     "choices": [
+      {
+       "id": "i.0.src",
+       "label": "CHANNELS: 1"
+      },
+      {
+       "id": "i.1.src",
+       "label": "CHANNELS: 2"
+      },
+      {
+       "id": "i.2.src",
+       "label": "CHANNELS: 3"
+      },
+      {
+       "id": "i.3.src",
+       "label": "CHANNELS: 4"
+      },
+      {
+       "id": "i.4.src",
+       "label": "CHANNELS: 5"
+      },
+      {
+       "id": "i.5.src",
+       "label": "CHANNELS: 6"
+      },
+      {
+       "id": "i.6.src",
+       "label": "CHANNELS: 7"
+      },
+      {
+       "id": "i.7.src",
+       "label": "CHANNELS: 8"
+      },
+      {
+       "id": "i.8.src",
+       "label": "CHANNELS: 9"
+      },
+      {
+       "id": "i.9.src",
+       "label": "CHANNELS: 10"
+      },
+      {
+       "id": "i.10.src",
+       "label": "CHANNELS: 11"
+      },
+      {
+       "id": "i.11.src",
+       "label": "CHANNELS: 12"
+      },
+      {
+       "id": "i.12.src",
+       "label": "CHANNELS: 13"
+      },
+      {
+       "id": "i.13.src",
+       "label": "CHANNELS: 14"
+      },
+      {
+       "id": "i.14.src",
+       "label": "CHANNELS: 15"
+      },
+      {
+       "id": "i.15.src",
+       "label": "CHANNELS: 16"
+      },
+      {
+       "id": "i.16.src",
+       "label": "CHANNELS: 17"
+      },
+      {
+       "id": "i.17.src",
+       "label": "CHANNELS: 18"
+      },
+      {
+       "id": "i.18.src",
+       "label": "CHANNELS: 19"
+      },
+      {
+       "id": "i.19.src",
+       "label": "CHANNELS: 20"
+      },
+      {
+       "id": "i.20.src",
+       "label": "CHANNELS: 21"
+      },
+      {
+       "id": "i.21.src",
+       "label": "CHANNELS: 22"
+      },
+      {
+       "id": "i.22.src",
+       "label": "CHANNELS: 23"
+      },
+      {
+       "id": "i.23.src",
+       "label": "CHANNELS: 24"
+      },
+      {
+       "id": "l.0.src",
+       "label": "CHANNELS: LINE IN L"
+      },
+      {
+       "id": "l.1.src",
+       "label": "CHANNELS: LINE IN R"
+      },
+      {
+       "id": "hwoutm.0.src",
+       "label": "HW OUTS: MASTER L"
+      },
+      {
+       "id": "hwoutm.1.src",
+       "label": "HW OUTS: MASTER R"
+      },
+      {
+       "id": "hwoutaux.0.src",
+       "label": "HW OUTS: AUX 1"
+      },
+      {
+       "id": "hwoutaux.1.src",
+       "label": "HW OUTS: AUX 2"
+      },
+      {
+       "id": "hwoutaux.2.src",
+       "label": "HW OUTS: AUX 3"
+      },
+      {
+       "id": "hwoutaux.3.src",
+       "label": "HW OUTS: AUX 4"
+      },
+      {
+       "id": "hwoutaux.4.src",
+       "label": "HW OUTS: AUX 5"
+      },
+      {
+       "id": "hwoutaux.5.src",
+       "label": "HW OUTS: AUX 6"
+      },
+      {
+       "id": "hwoutaux.6.src",
+       "label": "HW OUTS: AUX 7"
+      },
+      {
+       "id": "hwoutaux.7.src",
+       "label": "HW OUTS: AUX 8"
+      },
+      {
+       "id": "hwouthp.0.src",
+       "label": "HW OUTS: H1L"
+      },
+      {
+       "id": "hwouthp.1.src",
+       "label": "HW OUTS: H1R"
+      },
+      {
+       "id": "hwouthp.2.src",
+       "label": "HW OUTS: H2L"
+      },
+      {
+       "id": "hwouthp.3.src",
+       "label": "HW OUTS: H2R"
+      },
+      {
+       "id": "casc.0.src",
+       "label": "CASCADE OUTS: SLOT 1"
+      },
+      {
+       "id": "casc.1.src",
+       "label": "CASCADE OUTS: SLOT 2"
+      },
+      {
+       "id": "casc.2.src",
+       "label": "CASCADE OUTS: SLOT 3"
+      },
+      {
+       "id": "casc.3.src",
+       "label": "CASCADE OUTS: SLOT 4"
+      },
+      {
+       "id": "casc.4.src",
+       "label": "CASCADE OUTS: SLOT 5"
+      },
+      {
+       "id": "casc.5.src",
+       "label": "CASCADE OUTS: SLOT 6"
+      },
+      {
+       "id": "casc.6.src",
+       "label": "CASCADE OUTS: SLOT 7"
+      },
+      {
+       "id": "casc.7.src",
+       "label": "CASCADE OUTS: SLOT 8"
+      },
+      {
+       "id": "casc.8.src",
+       "label": "CASCADE OUTS: SLOT 9"
+      },
+      {
+       "id": "casc.9.src",
+       "label": "CASCADE OUTS: SLOT 10"
+      },
+      {
+       "id": "casc.10.src",
+       "label": "CASCADE OUTS: SLOT 11"
+      },
+      {
+       "id": "casc.11.src",
+       "label": "CASCADE OUTS: SLOT 12"
+      },
+      {
+       "id": "casc.12.src",
+       "label": "CASCADE OUTS: SLOT 13"
+      },
+      {
+       "id": "casc.13.src",
+       "label": "CASCADE OUTS: SLOT 14"
+      },
+      {
+       "id": "casc.14.src",
+       "label": "CASCADE OUTS: SLOT 15"
+      },
+      {
+       "id": "casc.15.src",
+       "label": "CASCADE OUTS: SLOT 16"
+      },
+      {
+       "id": "casc.16.src",
+       "label": "CASCADE OUTS: SLOT 17"
+      },
+      {
+       "id": "casc.17.src",
+       "label": "CASCADE OUTS: SLOT 18"
+      },
+      {
+       "id": "casc.18.src",
+       "label": "CASCADE OUTS: SLOT 19"
+      },
+      {
+       "id": "casc.19.src",
+       "label": "CASCADE OUTS: SLOT 20"
+      },
+      {
+       "id": "casc.20.src",
+       "label": "CASCADE OUTS: SLOT 21"
+      },
+      {
+       "id": "casc.21.src",
+       "label": "CASCADE OUTS: SLOT 22"
+      },
+      {
+       "id": "casc.22.src",
+       "label": "CASCADE OUTS: SLOT 23"
+      },
+      {
+       "id": "casc.23.src",
+       "label": "CASCADE OUTS: SLOT 24"
+      },
+      {
+       "id": "casc.24.src",
+       "label": "CASCADE OUTS: SLOT 25"
+      },
+      {
+       "id": "casc.25.src",
+       "label": "CASCADE OUTS: SLOT 26"
+      },
+      {
+       "id": "casc.26.src",
+       "label": "CASCADE OUTS: SLOT 27"
+      },
+      {
+       "id": "casc.27.src",
+       "label": "CASCADE OUTS: SLOT 28"
+      },
+      {
+       "id": "casc.28.src",
+       "label": "CASCADE OUTS: SLOT 29"
+      },
+      {
+       "id": "casc.29.src",
+       "label": "CASCADE OUTS: SLOT 30"
+      },
+      {
+       "id": "casc.30.src",
+       "label": "CASCADE OUTS: SLOT 31"
+      },
+      {
+       "id": "casc.31.src",
+       "label": "CASCADE OUTS: SLOT 32"
+      },
+      {
+       "id": "i.0.scsrc",
+       "label": "SOUNDCHECK: CH 1"
+      },
+      {
+       "id": "i.1.scsrc",
+       "label": "SOUNDCHECK: CH 2"
+      },
+      {
+       "id": "i.2.scsrc",
+       "label": "SOUNDCHECK: CH 3"
+      },
+      {
+       "id": "i.3.scsrc",
+       "label": "SOUNDCHECK: CH 4"
+      },
+      {
+       "id": "i.4.scsrc",
+       "label": "SOUNDCHECK: CH 5"
+      },
+      {
+       "id": "i.5.scsrc",
+       "label": "SOUNDCHECK: CH 6"
+      },
+      {
+       "id": "i.6.scsrc",
+       "label": "SOUNDCHECK: CH 7"
+      },
+      {
+       "id": "i.7.scsrc",
+       "label": "SOUNDCHECK: CH 8"
+      },
+      {
+       "id": "i.8.scsrc",
+       "label": "SOUNDCHECK: CH 9"
+      },
+      {
+       "id": "i.9.scsrc",
+       "label": "SOUNDCHECK: CH 10"
+      },
+      {
+       "id": "i.10.scsrc",
+       "label": "SOUNDCHECK: CH 11"
+      },
+      {
+       "id": "i.11.scsrc",
+       "label": "SOUNDCHECK: CH 12"
+      },
+      {
+       "id": "i.12.scsrc",
+       "label": "SOUNDCHECK: CH 13"
+      },
+      {
+       "id": "i.13.scsrc",
+       "label": "SOUNDCHECK: CH 14"
+      },
+      {
+       "id": "i.14.scsrc",
+       "label": "SOUNDCHECK: CH 15"
+      },
+      {
+       "id": "i.15.scsrc",
+       "label": "SOUNDCHECK: CH 16"
+      },
+      {
+       "id": "i.16.scsrc",
+       "label": "SOUNDCHECK: CH 17"
+      },
+      {
+       "id": "i.17.scsrc",
+       "label": "SOUNDCHECK: CH 18"
+      },
+      {
+       "id": "i.18.scsrc",
+       "label": "SOUNDCHECK: CH 19"
+      },
+      {
+       "id": "i.19.scsrc",
+       "label": "SOUNDCHECK: CH 20"
+      },
+      {
+       "id": "i.20.scsrc",
+       "label": "SOUNDCHECK: CH 21"
+      },
+      {
+       "id": "i.21.scsrc",
+       "label": "SOUNDCHECK: CH 22"
+      },
+      {
+       "id": "i.22.scsrc",
+       "label": "SOUNDCHECK: CH 23"
+      },
+      {
+       "id": "i.23.scsrc",
+       "label": "SOUNDCHECK: CH 24"
+      },
+      {
+       "id": "l.0.scsrc",
+       "label": "SOUNDCHECK: LINE IN L"
+      },
+      {
+       "id": "l.1.scsrc",
+       "label": "SOUNDCHECK: LINE IN R"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETS^{{option.destination|map}}src^{{option.source|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "destination": {
+     "i.0.src": "i.0.",
+     "i.1.src": "i.1.",
+     "i.2.src": "i.2.",
+     "i.3.src": "i.3.",
+     "i.4.src": "i.4.",
+     "i.5.src": "i.5.",
+     "i.6.src": "i.6.",
+     "i.7.src": "i.7.",
+     "i.8.src": "i.8.",
+     "i.9.src": "i.9.",
+     "i.10.src": "i.10.",
+     "i.11.src": "i.11.",
+     "i.12.src": "i.12.",
+     "i.13.src": "i.13.",
+     "i.14.src": "i.14.",
+     "i.15.src": "i.15.",
+     "i.16.src": "i.16.",
+     "i.17.src": "i.17.",
+     "i.18.src": "i.18.",
+     "i.19.src": "i.19.",
+     "i.20.src": "i.20.",
+     "i.21.src": "i.21.",
+     "i.22.src": "i.22.",
+     "i.23.src": "i.23.",
+     "l.0.src": "l.0.",
+     "l.1.src": "l.1.",
+     "hwoutm.0.src": "hwoutm.0.",
+     "hwoutm.1.src": "hwoutm.1.",
+     "hwoutaux.0.src": "hwoutaux.0.",
+     "hwoutaux.1.src": "hwoutaux.1.",
+     "hwoutaux.2.src": "hwoutaux.2.",
+     "hwoutaux.3.src": "hwoutaux.3.",
+     "hwoutaux.4.src": "hwoutaux.4.",
+     "hwoutaux.5.src": "hwoutaux.5.",
+     "hwoutaux.6.src": "hwoutaux.6.",
+     "hwoutaux.7.src": "hwoutaux.7.",
+     "hwouthp.0.src": "hwouthp.0.",
+     "hwouthp.1.src": "hwouthp.1.",
+     "hwouthp.2.src": "hwouthp.2.",
+     "hwouthp.3.src": "hwouthp.3.",
+     "casc.0.src": "casc.0.",
+     "casc.1.src": "casc.1.",
+     "casc.2.src": "casc.2.",
+     "casc.3.src": "casc.3.",
+     "casc.4.src": "casc.4.",
+     "casc.5.src": "casc.5.",
+     "casc.6.src": "casc.6.",
+     "casc.7.src": "casc.7.",
+     "casc.8.src": "casc.8.",
+     "casc.9.src": "casc.9.",
+     "casc.10.src": "casc.10.",
+     "casc.11.src": "casc.11.",
+     "casc.12.src": "casc.12.",
+     "casc.13.src": "casc.13.",
+     "casc.14.src": "casc.14.",
+     "casc.15.src": "casc.15.",
+     "casc.16.src": "casc.16.",
+     "casc.17.src": "casc.17.",
+     "casc.18.src": "casc.18.",
+     "casc.19.src": "casc.19.",
+     "casc.20.src": "casc.20.",
+     "casc.21.src": "casc.21.",
+     "casc.22.src": "casc.22.",
+     "casc.23.src": "casc.23.",
+     "casc.24.src": "casc.24.",
+     "casc.25.src": "casc.25.",
+     "casc.26.src": "casc.26.",
+     "casc.27.src": "casc.27.",
+     "casc.28.src": "casc.28.",
+     "casc.29.src": "casc.29.",
+     "casc.30.src": "casc.30.",
+     "casc.31.src": "casc.31.",
+     "i.0.scsrc": "i.0.sc",
+     "i.1.scsrc": "i.1.sc",
+     "i.2.scsrc": "i.2.sc",
+     "i.3.scsrc": "i.3.sc",
+     "i.4.scsrc": "i.4.sc",
+     "i.5.scsrc": "i.5.sc",
+     "i.6.scsrc": "i.6.sc",
+     "i.7.scsrc": "i.7.sc",
+     "i.8.scsrc": "i.8.sc",
+     "i.9.scsrc": "i.9.sc",
+     "i.10.scsrc": "i.10.sc",
+     "i.11.scsrc": "i.11.sc",
+     "i.12.scsrc": "i.12.sc",
+     "i.13.scsrc": "i.13.sc",
+     "i.14.scsrc": "i.14.sc",
+     "i.15.scsrc": "i.15.sc",
+     "i.16.scsrc": "i.16.sc",
+     "i.17.scsrc": "i.17.sc",
+     "i.18.scsrc": "i.18.sc",
+     "i.19.scsrc": "i.19.sc",
+     "i.20.scsrc": "i.20.sc",
+     "i.21.scsrc": "i.21.sc",
+     "i.22.scsrc": "i.22.sc",
+     "i.23.scsrc": "i.23.sc",
+     "l.0.scsrc": "l.0.sc",
+     "l.1.scsrc": "l.1.sc"
+    },
+    "source": {
+     "none": "none",
+     "hw.0": "hw.0",
+     "hw.1": "hw.1",
+     "hw.2": "hw.2",
+     "hw.3": "hw.3",
+     "hw.4": "hw.4",
+     "hw.5": "hw.5",
+     "hw.6": "hw.6",
+     "hw.7": "hw.7",
+     "hw.8": "hw.8",
+     "hw.9": "hw.9",
+     "hw.10": "hw.10",
+     "hw.11": "hw.11",
+     "hw.12": "hw.12",
+     "hw.13": "hw.13",
+     "hw.14": "hw.14",
+     "hw.15": "hw.15",
+     "hw.16": "hw.16",
+     "hw.17": "hw.17",
+     "hw.18": "hw.18",
+     "hw.19": "hw.19",
+     "li.0": "li.0",
+     "li.1": "li.1",
+     "ua.0": "ua.0",
+     "ua.1": "ua.1",
+     "ua.2": "ua.2",
+     "ua.3": "ua.3",
+     "ua.4": "ua.4",
+     "ua.5": "ua.5",
+     "ua.6": "ua.6",
+     "ua.7": "ua.7",
+     "ua.8": "ua.8",
+     "ua.9": "ua.9",
+     "ua.10": "ua.10",
+     "ua.11": "ua.11",
+     "ua.12": "ua.12",
+     "ua.13": "ua.13",
+     "ua.14": "ua.14",
+     "ua.15": "ua.15",
+     "ua.16": "ua.16",
+     "ua.17": "ua.17",
+     "ua.18": "ua.18",
+     "ua.19": "ua.19",
+     "ua.20": "ua.20",
+     "ua.21": "ua.21",
+     "ub.0": "ub.0",
+     "ub.1": "ub.1",
+     "ub.2": "ub.2",
+     "ub.3": "ub.3",
+     "ub.4": "ub.4",
+     "ub.5": "ub.5",
+     "ub.6": "ub.6",
+     "ub.7": "ub.7",
+     "ub.8": "ub.8",
+     "ub.9": "ub.9",
+     "ub.10": "ub.10",
+     "ub.11": "ub.11",
+     "ub.12": "ub.12",
+     "ub.13": "ub.13",
+     "ub.14": "ub.14",
+     "ub.15": "ub.15",
+     "ub.16": "ub.16",
+     "ub.17": "ub.17",
+     "ub.18": "ub.18",
+     "ub.19": "ub.19",
+     "ub.20": "ub.20",
+     "ub.21": "ub.21",
+     "ub.22": "ub.22",
+     "ub.23": "ub.23",
+     "ub.24": "ub.24",
+     "ub.25": "ub.25",
+     "ub.26": "ub.26",
+     "ub.27": "ub.27",
+     "ub.28": "ub.28",
+     "ub.29": "ub.29",
+     "ub.30": "ub.30",
+     "ub.31": "ub.31",
+     "cs.0": "cs.0",
+     "cs.1": "cs.1",
+     "cs.2": "cs.2",
+     "cs.3": "cs.3",
+     "cs.4": "cs.4",
+     "cs.5": "cs.5",
+     "cs.6": "cs.6",
+     "cs.7": "cs.7",
+     "cs.8": "cs.8",
+     "cs.9": "cs.9",
+     "cs.10": "cs.10",
+     "cs.11": "cs.11",
+     "cs.12": "cs.12",
+     "cs.13": "cs.13",
+     "cs.14": "cs.14",
+     "cs.15": "cs.15",
+     "cs.16": "cs.16",
+     "cs.17": "cs.17",
+     "cs.18": "cs.18",
+     "cs.19": "cs.19",
+     "cs.20": "cs.20",
+     "cs.21": "cs.21",
+     "cs.22": "cs.22",
+     "cs.23": "cs.23",
+     "cs.24": "cs.24",
+     "cs.25": "cs.25",
+     "cs.26": "cs.26",
+     "cs.27": "cs.27",
+     "cs.28": "cs.28",
+     "cs.29": "cs.29",
+     "cs.30": "cs.30",
+     "cs.31": "cs.31",
+     "m.0": "m.0",
+     "m.1": "m.1",
+     "a.0": "a.0",
+     "a.1": "a.1",
+     "a.2": "a.2",
+     "a.3": "a.3",
+     "a.4": "a.4",
+     "a.5": "a.5",
+     "a.6": "a.6",
+     "a.7": "a.7",
+     "a.8": "a.8",
+     "a.9": "a.9",
+     "hp.0": "hp.0",
+     "hp.1": "hp.1",
+     "hp.2": "hp.2",
+     "hp.3": "hp.3"
+    }
+   }
   }
  ],
  "feedbacks": [],
