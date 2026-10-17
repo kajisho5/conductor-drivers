@@ -61,6 +61,8 @@ export function applyFilter(value, filter, mapping) {
     return (neg ? '-' : '') + body.padStart(Number(pad[1]), '0');
   }
   switch (filter) {
+    case 'url':
+      return encodeURIComponent(s);
     case 'hexstr':
       return hexOf(new TextEncoder().encode(s));
     case 'u8':
