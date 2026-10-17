@@ -347,46 +347,32 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261017_0106"
+    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261017_0135"
    }
   },
   {
-   "id": "schedulerActivity",
-   "name": "Scheduler Activity",
-   "options": [
-    {
-     "id": "activity",
-     "label": "Determine what should be active during a scheduled event",
-     "type": "select",
-     "default": "SchedulerActivity&value=1",
-     "choices": [
-      {
-       "id": "SchedulerActivity&value=1",
-       "label": "Record Only"
-      },
-      {
-       "id": "SchedulerActivity&value=2",
-       "label": "Stream Only"
-      },
-      {
-       "id": "SchedulerActivity&value=3",
-       "label": "Record and Stream"
-      }
-     ]
-    }
-   ],
+   "id": "eraseAllClips",
+   "name": "Erase All Clips",
+   "options": [],
    "send": {
     "kind": "http",
-    "method": "GET",
-    "path": "/config?action=set&paramid=eParamID_SchedulerActivity&value={{option.activity|map}}"
+    "method": "POST",
+    "path": "/clips",
+    "body": "action=delete&recdest=0&clipname=*",
+    "contentType": "application/x-www-form-urlencoded"
    },
-   "maps": {
-    "activity": {
-     "SchedulerActivity&value=1": "1",
-     "SchedulerActivity&value=2": "2",
-     "SchedulerActivity&value=3": "3"
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
     }
-   }
+   ]
   }
  ],
  "feedbacks": [],

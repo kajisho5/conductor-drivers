@@ -30,9 +30,8 @@
     {
      "id": "output",
      "label": "Output",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -50,16 +49,14 @@
     {
      "id": "output",
      "label": "Output",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "input",
      "label": "Input",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -109,9 +106,8 @@
     {
      "id": "input",
      "label": "Input",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -211,9 +207,8 @@
     {
      "id": "playlist",
      "label": "Playlist",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -229,9 +224,8 @@
     {
      "id": "playlist",
      "label": "Playlist",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -247,9 +241,8 @@
     {
      "id": "playlist",
      "label": "Playlist",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -265,9 +258,8 @@
     {
      "id": "playlist",
      "label": "Playlist",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -283,9 +275,8 @@
     {
      "id": "playlist",
      "label": "Playlist",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -301,9 +292,8 @@
     {
      "id": "playlist",
      "label": "Playlist",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "item",
@@ -325,9 +315,8 @@
     {
      "id": "playlist",
      "label": "Playlist",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "item",

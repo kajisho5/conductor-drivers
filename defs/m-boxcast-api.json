@@ -51,7 +51,7 @@
    "id": "pollingrate",
    "label": "Polling Rate for Current State (in ms)",
    "type": "text",
-   "default": 1000
+   "default": "1000"
   },
   {
    "id": "verbose",
@@ -68,13 +68,7 @@
     {
      "id": "channel",
      "label": "Channel",
-     "type": "select",
-     "choices": [
-      {
-       "id": "undefined",
-       "label": "No Channels Available"
-      }
-     ]
+     "type": "text"
     }
    ],
    "send": {

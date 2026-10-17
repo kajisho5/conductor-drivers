@@ -19,7 +19,7 @@
    "id": "port",
    "label": "ポート",
    "type": "number",
-   "default": 0,
+   "help": "機器の説明書にあるポート番号を入れてください",
    "min": 1,
    "max": 65535
   }

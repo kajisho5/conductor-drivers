@@ -931,6 +931,32 @@
    }
   },
   {
+   "id": "presetTime",
+   "name": "Preset - Recall Time",
+   "options": [
+    {
+     "id": "val",
+     "label": "Time Seconds",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=OSJ:29:1&res=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23UPVS{{option.val|hexu|pad3}}&res=1"
+    }
+   ]
+  },
+  {
    "id": "restart",
    "name": "System - Restart",
    "options": [

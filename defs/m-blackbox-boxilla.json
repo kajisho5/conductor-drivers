@@ -42,20 +42,17 @@
     {
      "id": "username",
      "label": "Username",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "connection_name",
      "label": "Connection name",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "receiver_name",
      "label": "Receiver name",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {

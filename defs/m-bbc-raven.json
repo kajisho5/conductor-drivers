@@ -74,8 +74,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -91,8 +90,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -108,8 +106,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -125,8 +122,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -142,8 +138,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -159,8 +154,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -186,8 +180,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -203,8 +196,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "lockstate",
@@ -232,8 +224,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -249,8 +240,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -266,8 +256,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "framecount",
@@ -291,8 +280,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "framecount",
@@ -316,8 +304,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -333,8 +320,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -350,8 +336,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -367,8 +352,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -384,8 +368,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -401,8 +384,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -418,8 +400,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -435,8 +416,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -452,8 +432,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -469,8 +448,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -486,8 +464,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -503,8 +480,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "clipids",
@@ -526,8 +502,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "clipids",
@@ -549,8 +524,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "clipids",
@@ -572,8 +546,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "index",
@@ -597,8 +570,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "frame",
@@ -622,8 +594,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -639,8 +610,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -656,8 +626,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -673,8 +642,7 @@
     {
      "id": "port",
      "label": "Port ID",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "loopflag",

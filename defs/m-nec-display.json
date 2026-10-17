@@ -49,7 +49,7 @@
    "id": "rate",
    "label": "Polling Rate (ms)",
    "type": "text",
-   "default": 20000
+   "default": "20000"
   },
   {
    "id": "verbose",

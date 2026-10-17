@@ -27,7 +27,7 @@
    "id": "poll_interval",
    "label": "Delay Poll Interval (ms)",
    "type": "text",
-   "default": 1000
+   "default": "1000"
   },
   {
    "id": "debug_logging",

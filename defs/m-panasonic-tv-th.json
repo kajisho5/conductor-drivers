@@ -171,7 +171,7 @@
    "id": "pollTime",
    "label": "Polling Interval (milliseconds)",
    "type": "text",
-   "default": 1000
+   "default": "1000"
   },
   {
    "id": "verbose",
@@ -209,7 +209,7 @@
      "id": "action",
      "label": "Volume 0-100%",
      "type": "text",
-     "default": 50
+     "default": "50"
     }
    ],
    "send": {

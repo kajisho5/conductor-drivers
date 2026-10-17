@@ -27,7 +27,7 @@
    "id": "user_id",
    "label": "User ID",
    "type": "text",
-   "default": 1
+   "default": "1"
   },
   {
    "id": "use_slip",

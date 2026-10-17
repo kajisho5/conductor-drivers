@@ -81,13 +81,13 @@
      "id": "idx",
      "label": "Preset Index",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "dur",
      "label": "Duration (Optional)",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {
@@ -104,13 +104,13 @@
      "id": "sidx",
      "label": "Script ID/Register ID",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "cidx",
      "label": "Script Cue",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "type",
@@ -165,7 +165,7 @@
      "id": "dur",
      "label": "duration",
      "type": "text",
-     "default": 60
+     "default": "60"
     },
     {
      "id": "lay",
@@ -210,7 +210,7 @@
      "id": "lay",
      "label": "Layer(s) input multiple layers space delimited",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {
@@ -233,7 +233,7 @@
      "id": "dur",
      "label": "duration",
      "type": "text",
-     "default": 60
+     "default": "60"
     }
    ],
    "send": {
@@ -250,13 +250,13 @@
      "id": "fkrid",
      "label": "Funktion key ID",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "lay",
      "label": "Layer(s) input multiple layers space delimited",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {
@@ -289,7 +289,7 @@
      "id": "output",
      "label": "Output(s)input multiple outputs space delimited",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {
@@ -312,13 +312,13 @@
      "id": "dur",
      "label": "duration",
      "type": "text",
-     "default": 60
+     "default": "60"
     },
     {
      "id": "dev",
      "label": "Device(s)",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {

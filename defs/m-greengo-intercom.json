@@ -1,0 +1,278 @@
+{
+ "format": 1,
+ "id": "m-greengo-intercom",
+ "name": "Green-GO Intercom Remote (OSC)",
+ "category": "Green-GO",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "help": "機器の説明書にあるポート番号を入れてください",
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "deviceType",
+   "label": "Device Type",
+   "type": "select",
+   "default": "BPX",
+   "choices": [
+    {
+     "id": "BPX",
+     "label": "BPX(SP)"
+    },
+    {
+     "id": "MCX",
+     "label": "MCX(D)"
+    },
+    {
+     "id": "WPX",
+     "label": "WPX"
+    },
+    {
+     "id": "DNTI",
+     "label": "DNTI"
+    },
+    {
+     "id": "Q4WR",
+     "label": "Q4WR"
+    },
+    {
+     "id": "RDX",
+     "label": "RDX"
+    },
+    {
+     "id": "SI2WR",
+     "label": "Si2WR"
+    },
+    {
+     "id": "SI4WR",
+     "label": "Si4WR"
+    }
+   ],
+   "help": "Select the type of Green-GO device you are connecting to"
+  },
+  {
+   "id": "channels",
+   "label": "Channel Count",
+   "type": "number",
+   "default": 6,
+   "min": 1,
+   "max": 6,
+   "help": "Define the amount of channels to control via this module (1 - 6)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "channelCall",
+   "name": "Send Channel Call",
+   "options": [
+    {
+     "id": "chId",
+     "label": "Channel ID (1 - 6)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 6,
+     "help": "Define the channel ID"
+    },
+    {
+     "id": "callState",
+     "label": "Call Signal State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Inactive"
+      },
+      {
+       "id": "1",
+       "label": "Call"
+      },
+      {
+       "id": "2",
+       "label": "Alert Call"
+      }
+     ],
+     "help": "Select the call signal state"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ggo/cmd/channel/call",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.callState|map}}"
+     },
+     {
+      "type": "i",
+      "value": "{{option.chId}}"
+     }
+    ]
+   },
+   "maps": {
+    "callState": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "identifyDevice",
+   "name": "Identify Device",
+   "options": [
+    {
+     "id": "identifyState",
+     "label": "Identify State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Idle"
+      },
+      {
+       "id": "1",
+       "label": "Identify"
+      }
+     ],
+     "help": "Select identify state"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ggo/cmd/identify",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.identifyState|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "identifyState": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "inputSource",
+   "name": "Set Input Source",
+   "options": [
+    {
+     "id": "activeInput",
+     "label": "Active Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "-4",
+       "label": "2.5 kHz"
+      },
+      {
+       "id": "-3",
+       "label": "1.2 kHz"
+      },
+      {
+       "id": "-2",
+       "label": "1 kHz"
+      },
+      {
+       "id": "-1",
+       "label": "375 Hz"
+      },
+      {
+       "id": "0",
+       "label": "Headset"
+      },
+      {
+       "id": "1",
+       "label": "Front-Mic"
+      },
+      {
+       "id": "2",
+       "label": "Line-In"
+      },
+      {
+       "id": "4",
+       "label": "Muted"
+      }
+     ],
+     "help": "Select the active input source"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ggo/cmd/audio/source",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.activeInput|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "activeInput": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "4": "4",
+     "-4": "-4",
+     "-3": "-3",
+     "-2": "-2",
+     "-1": "-1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "device_identify",
+   "category": "Others",
+   "name": "Identify the device",
+   "text": "Identify",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "identifyDevice",
+    "options": {
+     "identifyState": 1
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-greengo-intercom",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Timo Toups"
+  }
+ ],
+ "source": {
+  "module": "greengo-intercom",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Timo Toups"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-greengo-intercom.git"
+ }
+}

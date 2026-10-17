@@ -26,9 +26,8 @@
   {
    "id": "variant",
    "label": "Variant",
-   "type": "select",
-   "default": "1",
-   "choices": []
+   "type": "text",
+   "default": "1"
   }
  ],
  "actions": [

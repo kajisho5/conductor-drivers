@@ -214,6 +214,30 @@
    }
   },
   {
+   "id": "eraseClipByDrop",
+   "name": "Erase Clip By List",
+   "options": [
+    {
+     "id": "idx",
+     "label": "Clip Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_ClipToDelete&value=&configid=0"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/json?action=connect&configid=0"
+    }
+   ]
+  },
+  {
    "id": "customTake",
    "name": "Set Custom Take Number",
    "options": [
@@ -231,6 +255,30 @@
     "method": "GET",
     "path": "/config?action=set&paramid=eParamID_CustomTake&value={{option.idx}}&configid=0"
    }
+  },
+  {
+   "id": "customClipName",
+   "name": "Set Custom Clip Name",
+   "options": [
+    {
+     "id": "clipname",
+     "label": "Clip Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_UseCustomClipName&value=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=set&paramid=eParamID_CustomClipName&value={{option.clipname}}"
+    }
+   ]
   },
   {
    "id": "customClipNameByChannel",
@@ -281,9 +329,8 @@
     {
      "id": "idx",
      "label": "Clip Name",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {

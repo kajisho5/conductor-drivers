@@ -72,9 +72,8 @@
     {
      "id": "templateId",
      "label": "Select Job Template",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "fileName",

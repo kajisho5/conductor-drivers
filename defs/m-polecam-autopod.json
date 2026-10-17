@@ -24,6 +24,23 @@
  ],
  "actions": [
   {
+   "id": "up",
+   "name": "Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23PTS5075&res=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23V%3F&res=1"
+    }
+   ]
+  },
+  {
    "id": "down",
    "name": "Down",
    "options": [],
@@ -42,6 +59,23 @@
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23PTS7525&res=1"
    }
+  },
+  {
+   "id": "right",
+   "name": "Right",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23PTS2525&res=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23RER&res=1"
+    }
+   ]
   },
   {
    "id": "stopud",
@@ -71,6 +105,16 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23APC7FFF7FFF&res=1"
+   }
+  },
+  {
+   "id": "ptSpeedD",
+   "name": "Up/Down/Left/Right - Speed Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23RER&res=1"
    }
   },
   {
@@ -104,6 +148,80 @@
    }
   },
   {
+   "id": "dualLegPancake",
+   "name": "Pancake",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R16&res=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23AXI&res=1"
+    }
+   ]
+  },
+  {
+   "id": "autoCalibrate",
+   "name": "Set autocalibration",
+   "options": [
+    {
+     "id": "val",
+     "label": "Auto calibration",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23D1{{option.val|map}}&res=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23D1&res=1"
+    }
+   ],
+   "maps": {
+    "val": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "demoMode",
+   "name": "Start Demo Mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R14&res=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23APC&res=1"
+    }
+   ]
+  },
+  {
    "id": "stopDemoMode",
    "name": "Stop Demo Mode",
    "options": [],
@@ -122,6 +240,16 @@
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R18&res=1"
    }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot device",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R19&res=1"
+   }
   }
  ],
  "feedbacks": [],
@@ -135,6 +263,17 @@
    "backgroundColor": "#000000",
    "action": {
     "definitionId": "home",
+    "options": {}
+   }
+  },
+  {
+   "id": "pan-tilt-speed-down",
+   "category": "Up/Down/Left/Right",
+   "name": "Speed Down",
+   "text": "SPEED\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ptSpeedD",
     "options": {}
    }
   },
@@ -172,6 +311,28 @@
    }
   },
   {
+   "id": "dualLegPancake",
+   "category": "Options/Operations",
+   "name": "Pancake",
+   "text": "Pancake",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "dualLegPancake",
+    "options": {}
+   }
+  },
+  {
+   "id": "demoMode",
+   "category": "Options/Operations",
+   "name": "Start demo mode",
+   "text": "Start demo mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "demoMode",
+    "options": {}
+   }
+  },
+  {
    "id": "stopDemoMode",
    "category": "Options/Operations",
    "name": "Stop demo mode",
@@ -202,6 +363,19 @@
    "action": {
     "definitionId": "calib",
     "options": {}
+   }
+  },
+  {
+   "id": "autocal",
+   "category": "Options/Operations",
+   "name": "Autocalibrate",
+   "text": "Auto calibrate:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "autoCalibrate",
+    "options": {
+     "val": "1"
+    }
    }
   }
  ],

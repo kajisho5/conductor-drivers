@@ -24,12 +24,6 @@
    "max": 65535
   },
   {
-   "id": "remotePort",
-   "label": "OSC Port to Send To",
-   "type": "text",
-   "default": "50010"
-  },
-  {
    "id": "localPort",
    "label": "OSC Port to Listen To",
    "type": "text",

@@ -145,6 +145,1122 @@
  ],
  "actions": [
   {
+   "id": "set-auto-source-switch",
+   "name": "Set Channel/Aux Auto Source Switch",
+   "options": [
+    {
+     "id": "channel_use_variables",
+     "label": "Use Variables for Channel",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "channel_variables",
+     "label": "Channel",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "auto_source_use_variables",
+     "label": "Use Variables for Auto Source Switch",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "auto_source",
+     "label": "Auto Source Switch",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Individual"
+      },
+      {
+       "id": "1",
+       "label": "Global"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Available choices: 0=Individual, 1=Global, -1=Toggle"
+    },
+    {
+     "id": "auto_source_variables",
+     "label": "Auto Source Switch",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 0=Individual, 1=Global, -1=Toggle"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/{{option.channel|map}}/in/set/srcauto",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.auto_source|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/{{option.channel|map}}/in/set/srcauto",
+     "args": []
+    }
+   ],
+   "maps": {
+    "channel": {
+     "/ch/1": "ch/1",
+     "/ch/2": "ch/2",
+     "/ch/3": "ch/3",
+     "/ch/4": "ch/4",
+     "/ch/5": "ch/5",
+     "/ch/6": "ch/6",
+     "/ch/7": "ch/7",
+     "/ch/8": "ch/8",
+     "/ch/9": "ch/9",
+     "/ch/10": "ch/10",
+     "/ch/11": "ch/11",
+     "/ch/12": "ch/12",
+     "/ch/13": "ch/13",
+     "/ch/14": "ch/14",
+     "/ch/15": "ch/15",
+     "/ch/16": "ch/16",
+     "/ch/17": "ch/17",
+     "/ch/18": "ch/18",
+     "/ch/19": "ch/19",
+     "/ch/20": "ch/20",
+     "/ch/21": "ch/21",
+     "/ch/22": "ch/22",
+     "/ch/23": "ch/23",
+     "/ch/24": "ch/24",
+     "/ch/25": "ch/25",
+     "/ch/26": "ch/26",
+     "/ch/27": "ch/27",
+     "/ch/28": "ch/28",
+     "/ch/29": "ch/29",
+     "/ch/30": "ch/30",
+     "/ch/31": "ch/31",
+     "/ch/32": "ch/32",
+     "/ch/33": "ch/33",
+     "/ch/34": "ch/34",
+     "/ch/35": "ch/35",
+     "/ch/36": "ch/36",
+     "/ch/37": "ch/37",
+     "/ch/38": "ch/38",
+     "/ch/39": "ch/39",
+     "/ch/40": "ch/40",
+     "/aux/1": "aux/1",
+     "/aux/2": "aux/2",
+     "/aux/3": "aux/3",
+     "/aux/4": "aux/4",
+     "/aux/5": "aux/5",
+     "/aux/6": "aux/6",
+     "/aux/7": "aux/7",
+     "/aux/8": "aux/8"
+    },
+    "auto_source": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-main-alt",
+   "name": "Set Channel/Aux Main/Alt",
+   "options": [
+    {
+     "id": "channel_use_variables",
+     "label": "Use Variables for Channel",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "channel_variables",
+     "label": "Channel",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "main_alt_use_variables",
+     "label": "Use Variables for Source",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "main_alt",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Main"
+      },
+      {
+       "id": "1",
+       "label": "Alt"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Available choices: 0=Main, 1=Alt, -1=Toggle"
+    },
+    {
+     "id": "main_alt_variables",
+     "label": "Source",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 0=Main, 1=Alt, -1=Toggle"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/{{option.channel|map}}/in/set/altsrc",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.main_alt|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/{{option.channel|map}}/in/set/altsrc",
+     "args": []
+    }
+   ],
+   "maps": {
+    "channel": {
+     "/ch/1": "ch/1",
+     "/ch/2": "ch/2",
+     "/ch/3": "ch/3",
+     "/ch/4": "ch/4",
+     "/ch/5": "ch/5",
+     "/ch/6": "ch/6",
+     "/ch/7": "ch/7",
+     "/ch/8": "ch/8",
+     "/ch/9": "ch/9",
+     "/ch/10": "ch/10",
+     "/ch/11": "ch/11",
+     "/ch/12": "ch/12",
+     "/ch/13": "ch/13",
+     "/ch/14": "ch/14",
+     "/ch/15": "ch/15",
+     "/ch/16": "ch/16",
+     "/ch/17": "ch/17",
+     "/ch/18": "ch/18",
+     "/ch/19": "ch/19",
+     "/ch/20": "ch/20",
+     "/ch/21": "ch/21",
+     "/ch/22": "ch/22",
+     "/ch/23": "ch/23",
+     "/ch/24": "ch/24",
+     "/ch/25": "ch/25",
+     "/ch/26": "ch/26",
+     "/ch/27": "ch/27",
+     "/ch/28": "ch/28",
+     "/ch/29": "ch/29",
+     "/ch/30": "ch/30",
+     "/ch/31": "ch/31",
+     "/ch/32": "ch/32",
+     "/ch/33": "ch/33",
+     "/ch/34": "ch/34",
+     "/ch/35": "ch/35",
+     "/ch/36": "ch/36",
+     "/ch/37": "ch/37",
+     "/ch/38": "ch/38",
+     "/ch/39": "ch/39",
+     "/ch/40": "ch/40",
+     "/aux/1": "aux/1",
+     "/aux/2": "aux/2",
+     "/aux/3": "aux/3",
+     "/aux/4": "aux/4",
+     "/aux/5": "aux/5",
+     "/aux/6": "aux/6",
+     "/aux/7": "aux/7",
+     "/aux/8": "aux/8"
+    },
+    "main_alt": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-scribble-light",
+   "name": "Set Scribble Light",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      },
+      {
+       "id": "/dca/1",
+       "label": "DCA 1"
+      },
+      {
+       "id": "/dca/2",
+       "label": "DCA 2"
+      },
+      {
+       "id": "/dca/3",
+       "label": "DCA 3"
+      },
+      {
+       "id": "/dca/4",
+       "label": "DCA 4"
+      },
+      {
+       "id": "/dca/5",
+       "label": "DCA 5"
+      },
+      {
+       "id": "/dca/6",
+       "label": "DCA 6"
+      },
+      {
+       "id": "/dca/7",
+       "label": "DCA 7"
+      },
+      {
+       "id": "/dca/8",
+       "label": "DCA 8"
+      },
+      {
+       "id": "/dca/9",
+       "label": "DCA 9"
+      },
+      {
+       "id": "/dca/10",
+       "label": "DCA 10"
+      },
+      {
+       "id": "/dca/11",
+       "label": "DCA 11"
+      },
+      {
+       "id": "/dca/12",
+       "label": "DCA 12"
+      },
+      {
+       "id": "/dca/13",
+       "label": "DCA 13"
+      },
+      {
+       "id": "/dca/14",
+       "label": "DCA 14"
+      },
+      {
+       "id": "/dca/15",
+       "label": "DCA 15"
+      },
+      {
+       "id": "/dca/16",
+       "label": "DCA 16"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "led_use_variables",
+     "label": "Use Variables for Scribble Light",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "led",
+     "label": "Scribble Light",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "led_variables",
+     "label": "Scribble Light",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "{{option.sel}}/led",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.led|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "{{option.sel}}/led",
+     "args": []
+    }
+   ],
+   "maps": {
+    "led": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
    "id": "set-name",
    "name": "Set Name",
    "options": [
@@ -588,10 +1704,3618 @@
      }
     ]
    }
+  },
+  {
+   "id": "set-solo",
+   "name": "Set Solo",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      },
+      {
+       "id": "/dca/1",
+       "label": "DCA 1"
+      },
+      {
+       "id": "/dca/2",
+       "label": "DCA 2"
+      },
+      {
+       "id": "/dca/3",
+       "label": "DCA 3"
+      },
+      {
+       "id": "/dca/4",
+       "label": "DCA 4"
+      },
+      {
+       "id": "/dca/5",
+       "label": "DCA 5"
+      },
+      {
+       "id": "/dca/6",
+       "label": "DCA 6"
+      },
+      {
+       "id": "/dca/7",
+       "label": "DCA 7"
+      },
+      {
+       "id": "/dca/8",
+       "label": "DCA 8"
+      },
+      {
+       "id": "/dca/9",
+       "label": "DCA 9"
+      },
+      {
+       "id": "/dca/10",
+       "label": "DCA 10"
+      },
+      {
+       "id": "/dca/11",
+       "label": "DCA 11"
+      },
+      {
+       "id": "/dca/12",
+       "label": "DCA 12"
+      },
+      {
+       "id": "/dca/13",
+       "label": "DCA 13"
+      },
+      {
+       "id": "/dca/14",
+       "label": "DCA 14"
+      },
+      {
+       "id": "/dca/15",
+       "label": "DCA 15"
+      },
+      {
+       "id": "/dca/16",
+       "label": "DCA 16"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "solo_use_variables",
+     "label": "Use Variables for Solo",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "solo_variables",
+     "label": "Solo",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "{{option.sel}}/$solo",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "{{option.sel}}/$solo",
+     "args": []
+    }
+   ],
+   "maps": {
+    "solo": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-gate-on",
+   "name": "Set Gate On",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "enable_use_variables",
+     "label": "Use Variables for Enable",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "enable",
+     "label": "Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "enable_variables",
+     "label": "Enable",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ch/{{option.sel|map}}/gate/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.enable|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/ch/{{option.sel|map}}/gate/on",
+     "args": []
+    }
+   ],
+   "maps": {
+    "sel": {
+     "/ch/1": "1",
+     "/ch/2": "2",
+     "/ch/3": "3",
+     "/ch/4": "4",
+     "/ch/5": "5",
+     "/ch/6": "6",
+     "/ch/7": "7",
+     "/ch/8": "8",
+     "/ch/9": "9",
+     "/ch/10": "10",
+     "/ch/11": "11",
+     "/ch/12": "12",
+     "/ch/13": "13",
+     "/ch/14": "14",
+     "/ch/15": "15",
+     "/ch/16": "16",
+     "/ch/17": "17",
+     "/ch/18": "18",
+     "/ch/19": "19",
+     "/ch/20": "20",
+     "/ch/21": "21",
+     "/ch/22": "22",
+     "/ch/23": "23",
+     "/ch/24": "24",
+     "/ch/25": "25",
+     "/ch/26": "26",
+     "/ch/27": "27",
+     "/ch/28": "28",
+     "/ch/29": "29",
+     "/ch/30": "30",
+     "/ch/31": "31",
+     "/ch/32": "32",
+     "/ch/33": "33",
+     "/ch/34": "34",
+     "/ch/35": "35",
+     "/ch/36": "36",
+     "/ch/37": "37",
+     "/ch/38": "38",
+     "/ch/39": "39",
+     "/ch/40": "40"
+    },
+    "enable": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-eq-on",
+   "name": "Set EQ On",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "enable_use_variables",
+     "label": "Use Variables for Enable",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "enable",
+     "label": "Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "enable_variables",
+     "label": "Enable",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "{{option.sel}}/eq/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.enable|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "{{option.sel}}/eq/on",
+     "args": []
+    }
+   ],
+   "maps": {
+    "enable": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-dynamics-on",
+   "name": "Set Dynamics On",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "enable_use_variables",
+     "label": "Use Variables for Enable",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "enable",
+     "label": "Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "enable_variables",
+     "label": "Enable",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "{{option.sel}}/dyn/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.enable|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "{{option.sel}}/dyn/on",
+     "args": []
+    }
+   ],
+   "maps": {
+    "enable": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-channel-eq-parameter",
+   "name": "Set Channel EQ Parameter",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      }
+     ]
+    },
+    {
+     "id": "model",
+     "label": "Model",
+     "type": "select",
+     "default": "STD",
+     "choices": [
+      {
+       "id": "STD",
+       "label": "Standard EQ"
+      },
+      {
+       "id": "SOUL",
+       "label": "Soul Analog EQ"
+      },
+      {
+       "id": "E88",
+       "label": "Even 88-Formant EQ"
+      },
+      {
+       "id": "E84",
+       "label": "Even 84 EQ"
+      },
+      {
+       "id": "F110",
+       "label": "Focusrite ISA 110 EQ"
+      },
+      {
+       "id": "PULSAR",
+       "label": "Pulsar P1a/M5 EQ"
+      },
+      {
+       "id": "MACH",
+       "label": "Mach EQ4"
+      }
+     ]
+    },
+    {
+     "id": "band",
+     "label": "Band",
+     "type": "select",
+     "default": "l",
+     "choices": [
+      {
+       "id": "l",
+       "label": "Low"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "h",
+       "label": "High"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ch/{{option.channel|map}}/eq/mdl",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.model|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/ch/{{option.channel|map}}/eq/mdl",
+     "args": []
+    }
+   ],
+   "maps": {
+    "channel": {
+     "/ch/1": "1",
+     "/ch/2": "2",
+     "/ch/3": "3",
+     "/ch/4": "4",
+     "/ch/5": "5",
+     "/ch/6": "6",
+     "/ch/7": "7",
+     "/ch/8": "8",
+     "/ch/9": "9",
+     "/ch/10": "10",
+     "/ch/11": "11",
+     "/ch/12": "12",
+     "/ch/13": "13",
+     "/ch/14": "14",
+     "/ch/15": "15",
+     "/ch/16": "16",
+     "/ch/17": "17",
+     "/ch/18": "18",
+     "/ch/19": "19",
+     "/ch/20": "20",
+     "/ch/21": "21",
+     "/ch/22": "22",
+     "/ch/23": "23",
+     "/ch/24": "24",
+     "/ch/25": "25",
+     "/ch/26": "26",
+     "/ch/27": "27",
+     "/ch/28": "28",
+     "/ch/29": "29",
+     "/ch/30": "30",
+     "/ch/31": "31",
+     "/ch/32": "32",
+     "/ch/33": "33",
+     "/ch/34": "34",
+     "/ch/35": "35",
+     "/ch/36": "36",
+     "/ch/37": "37",
+     "/ch/38": "38",
+     "/ch/39": "39",
+     "/ch/40": "40"
+    },
+    "model": {
+     "STD": "STD",
+     "SOUL": "SOUL",
+     "E88": "E88",
+     "E84": "E84",
+     "F110": "F110",
+     "PULSAR": "PULSAR",
+     "MACH": "MACH"
+    }
+   }
+  },
+  {
+   "id": "open-session",
+   "name": "WLive: Open Session",
+   "options": [
+    {
+     "id": "card_use_variables",
+     "label": "Use Variables for Card",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "card",
+     "label": "Card",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Card 1"
+      },
+      {
+       "id": "2",
+       "label": "Card 2"
+      }
+     ],
+     "help": "Available choices: 1=Card 1, 2=Card 2"
+    },
+    {
+     "id": "card_variables",
+     "label": "Card",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 1=Card 1, 2=Card 2"
+    },
+    {
+     "id": "session",
+     "label": "Session Number",
+     "type": "text",
+     "default": "1",
+     "help": "undefined (Min: 1, Max: 100)"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/cards/wlive/{{option.card|map}}/$ctl/opensession",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.session}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/cards/wlive/{{option.card|map}}/$ctl/opensession",
+     "args": []
+    }
+   ],
+   "maps": {
+    "card": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set-position",
+   "name": "WLive: Set Position",
+   "options": [
+    {
+     "id": "card_use_variables",
+     "label": "Use Variables for Card",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "card",
+     "label": "Card",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Card 1"
+      },
+      {
+       "id": "2",
+       "label": "Card 2"
+      }
+     ],
+     "help": "Available choices: 1=Card 1, 2=Card 2"
+    },
+    {
+     "id": "card_variables",
+     "label": "Card",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 1=Card 1, 2=Card 2"
+    },
+    {
+     "id": "position",
+     "label": "Position (ms)",
+     "type": "text",
+     "default": "0",
+     "help": "undefined (Min: 0, Max: 36000000)"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/cards/wlive/{{option.card|map}}/$ctl/stime",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.position}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/cards/wlive/{{option.card|map}}/$ctl/stime",
+     "args": []
+    },
+    {
+     "kind": "osc",
+     "address": "/cards/wlive/{{option.card|map}}/$ctl/gotomarker",
+     "args": [
+      {
+       "type": "i",
+       "value": "101"
+      }
+     ]
+    },
+    {
+     "kind": "osc",
+     "address": "/cards/wlive/{{option.card|map}}/$ctl/gotomarker",
+     "args": []
+    }
+   ],
+   "maps": {
+    "card": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set-solo-mute",
+   "name": "Set Solo Mute",
+   "options": [
+    {
+     "id": "mute_use_variables",
+     "label": "Use Variables for Mute",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "-1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to Mute, Unmute or Toggle your selected target"
+    },
+    {
+     "id": "mute_variables",
+     "label": "Mute",
+     "type": "text",
+     "default": "",
+     "help": "Mute: 1, Unmute: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/cfg/solo/mute",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/cfg/solo/mute",
+     "args": []
+    }
+   ],
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-solo-dim",
+   "name": "Set Solo Dim",
+   "options": [
+    {
+     "id": "dim_use_variables",
+     "label": "Use Variables for Dim",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "dim",
+     "label": "Dim",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "dim_variables",
+     "label": "Dim",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/cfg/solo/$dim",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.dim|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/cfg/solo/$dim",
+     "args": []
+    }
+   ],
+   "maps": {
+    "dim": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-solo-mono",
+   "name": "Set Solo Mono",
+   "options": [
+    {
+     "id": "mono_use_variables",
+     "label": "Use Variables for Mono",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "mono",
+     "label": "Mono",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Select whether to turn On, Off, or Toggle your selected target"
+    },
+    {
+     "id": "mono_variables",
+     "label": "Mono",
+     "type": "text",
+     "default": "",
+     "help": "On: 1, Off: 0, Toggle: -1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/cfg/solo/$mono",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mono|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/cfg/solo/$mono",
+     "args": []
+    }
+   ],
+   "maps": {
+    "mono": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-solo-swap",
+   "name": "Set Solo LR Swap",
+   "options": [
+    {
+     "id": "swap_use_variables",
+     "label": "Use Variables for Swap",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "swap",
+     "label": "Swap",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Swap"
+      },
+      {
+       "id": "0",
+       "label": "Don't Swap"
+      },
+      {
+       "id": "-1",
+       "label": "Toggle"
+      }
+     ],
+     "help": "Available choices: 1=Swap, 0=Don't Swap, -1=Toggle"
+    },
+    {
+     "id": "swap_variables",
+     "label": "Swap",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 1=Swap, 0=Don't Swap, -1=Toggle"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/cfg/solo/$flip",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.swap|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/cfg/solo/$flip",
+     "args": []
+    }
+   ],
+   "maps": {
+    "swap": {
+     "0": "0",
+     "1": "1",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "set-monitor-pfl-dim",
+   "name": "Set Monitor PFL Dim",
+   "options": [
+    {
+     "id": "mon_use_variables",
+     "label": "Use Variables for Monitor",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "mon",
+     "label": "Monitor",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor 1"
+      },
+      {
+       "id": "2",
+       "label": "Monitor 2"
+      }
+     ],
+     "help": "Available choices: 1=Monitor 1, 2=Monitor 2"
+    },
+    {
+     "id": "mon_variables",
+     "label": "Monitor",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: 1=Monitor 1, 2=Monitor 2"
+    },
+    {
+     "id": "dim",
+     "label": "Dim [dB]",
+     "type": "text",
+     "default": "10",
+     "help": "undefined (Min: 0, Max: 40)"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/cfg/mon/{{option.mon|map}}/pfldim",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.dim}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/cfg/mon/{{option.mon|map}}/pfldim",
+     "args": []
+    }
+   ],
+   "maps": {
+    "mon": {
+     "1": "1",
+     "2": "2"
+    }
+   }
   }
  ],
  "feedbacks": [],
  "variables": [],
+ "presets": [
+  {
+   "id": "ch1-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/1",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch2-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/2",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch3-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/3",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch4-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/4",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch5-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/5",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch6-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/6",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch7-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/7",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch8-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/8",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch9-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/9",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch10-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/10",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch11-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/11",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch12-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/12",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch13-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/13",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch14-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/14",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch15-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/15",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch16-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/16",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch17-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/17",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch18-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/18",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch19-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/19",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch20-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/20",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch21-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/21",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch22-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/22",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch23-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/23",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch24-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/24",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch25-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/25",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch26-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/26",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch27-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/27",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch28-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/28",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch29-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/29",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch30-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/30",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch31-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/31",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch32-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/32",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch33-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/33",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch34-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/34",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch35-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/35",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch36-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/36",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch37-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/37",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch38-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/38",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch39-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/39",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "ch40-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/ch/40",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux1-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/1",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux2-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/2",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux3-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/3",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux4-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/4",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux5-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/5",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux6-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/6",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux7-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/7",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "aux8-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/aux/8",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus1-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/1",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus2-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/2",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus3-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/3",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus4-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/4",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus5-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/5",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus6-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/6",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus7-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/7",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus8-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/8",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus9-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/9",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus10-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/10",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus11-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/11",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus12-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/12",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus13-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/13",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus14-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/14",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus15-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/15",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "bus16-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/bus/16",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx1-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/1",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx2-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/2",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx3-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/3",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx4-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/4",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx5-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/5",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx6-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/6",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx7-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/7",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "mtx8-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/mtx/8",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "main1-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/main/1",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "main2-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/main/2",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "main3-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/main/3",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "main4-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/main/4",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca1-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/1",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca2-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/2",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca3-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/3",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca4-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/4",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca5-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/5",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca6-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/6",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca7-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/7",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca8-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/8",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca9-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/9",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca10-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/10",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca11-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/11",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca12-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/12",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca13-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/13",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca14-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/14",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca15-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/15",
+     "solo": -1
+    }
+   }
+  },
+  {
+   "id": "dca16-solo-button",
+   "category": "Solo",
+   "name": "SoloButton",
+   "text": "let name = 'Solo'const realName = let ha",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set-solo",
+    "options": {
+     "sel": "/dca/16",
+     "solo": -1
+    }
+   }
+  }
+ ],
  "evidence": [
   {
    "title": "公開 OSS のモジュールから自動変換（MIT）",

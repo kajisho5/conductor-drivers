@@ -200,7 +200,7 @@
      "id": "key",
      "label": "Keyer",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "transD",
@@ -291,13 +291,13 @@
      "id": "takeID",
      "label": "take ID",
      "type": "text",
-     "default": 0
+     "default": "0"
     },
     {
      "id": "Layer",
      "label": "Layer",
      "type": "text",
-     "default": 0
+     "default": "0"
     }
    ],
    "send": {
@@ -314,7 +314,7 @@
      "id": "takeID",
      "label": "take ID",
      "type": "text",
-     "default": 0
+     "default": "0"
     }
    ],
    "send": {

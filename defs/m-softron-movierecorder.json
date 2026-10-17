@@ -84,9 +84,8 @@
     {
      "id": "source",
      "label": "Source",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -102,9 +101,8 @@
     {
      "id": "source",
      "label": "Source",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -120,9 +118,8 @@
     {
      "id": "source",
      "label": "Source",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -138,9 +135,8 @@
     {
      "id": "source",
      "label": "Source",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "recordName",
@@ -164,9 +160,8 @@
     {
      "id": "source",
      "label": "Source",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {

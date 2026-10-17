@@ -39,6 +39,68 @@
     "method": "GET",
     "path": "/api/presets"
    }
+  },
+  {
+   "id": "change_preset",
+   "name": "Change Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "None"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/users/login/1",
+    "body": "{\"password\":\"\",\"isAdmin\":true}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/api/users/login/1",
+     "body": "{\"password\":\"\",\"isAdmin\":true}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "PATCH",
+     "path": "/api/presets/selected",
+     "body": "{\"presetId\":\"None\",\"accessMode\":\"shared\"}",
+     "contentType": "application/json"
+    }
+   ]
+  },
+  {
+   "id": "disconnect",
+   "name": "Disconnect",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/users/login/1",
+    "body": "{\"password\":\"\",\"isAdmin\":true}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "PATCH",
+     "path": "/api/presets/selected",
+     "body": "{\"presetId\":0,\"accessMode\":\"shared\"}",
+     "contentType": "application/json"
+    }
+   ]
   }
  ],
  "feedbacks": [],

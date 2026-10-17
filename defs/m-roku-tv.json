@@ -128,8 +128,7 @@
     {
      "id": "app",
      "label": "App",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {

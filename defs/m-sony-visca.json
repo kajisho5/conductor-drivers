@@ -1314,9 +1314,8 @@
     {
      "id": "val",
      "label": "Brightness setting",
-     "type": "select",
-     "default": "11",
-     "choices": []
+     "type": "text",
+     "default": "11"
     }
    ],
    "send": {

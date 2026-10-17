@@ -127,7 +127,7 @@
      "id": "address",
      "label": "DCC Address",
      "type": "text",
-     "default": 3,
+     "default": "3",
      "help": "Use $(conn1:locoAddress) if you want to change the DCC address using a separate select loco action button"
     },
     {
@@ -175,7 +175,7 @@
      "id": "address",
      "label": "DCC Address",
      "type": "text",
-     "default": 3,
+     "default": "3",
      "help": "Use $(conn1:locoAddress) if you want to change the DCC address using a separate select loco action button"
     },
     {

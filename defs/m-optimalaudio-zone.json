@@ -32,9 +32,8 @@
     {
      "id": "routine",
      "label": "Routine",
-     "type": "select",
-     "default": "1",
-     "choices": []
+     "type": "text",
+     "default": "1"
     }
    ],
    "send": {
@@ -50,9 +49,8 @@
     {
      "id": "zone",
      "label": "Zone",
-     "type": "select",
-     "default": "1",
-     "choices": []
+     "type": "text",
+     "default": "1"
     },
     {
      "id": "source",

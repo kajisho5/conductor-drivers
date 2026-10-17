@@ -24,12 +24,6 @@
    "max": 65535
   },
   {
-   "id": "tcpPort",
-   "label": "TCP Port (Default: 9923)",
-   "type": "text",
-   "default": 9923
-  },
-  {
    "id": "satEnable",
    "label": "Enable",
    "type": "boolean",

@@ -11,7 +11,7 @@
    "id": "baseUrl",
    "label": "URL の先頭",
    "type": "text",
-   "default": "http://192.168.0.10",
+   "default": "http://192.168.0.10:9000",
    "placeholder": "http://192.168.0.10",
    "mono": true
   }
@@ -68,23 +68,6 @@
    }
   },
   {
-   "id": "select",
-   "name": "Select Clip",
-   "options": [
-    {
-     "id": "clip",
-     "label": "Clip ID",
-     "type": "text",
-     "default": "0"
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/api/select/{{option.clip}}"
-   }
-  },
-  {
    "id": "goto",
    "name": "Go to",
    "options": [
@@ -123,8 +106,8 @@
    }
   },
   {
-   "id": "rotate",
-   "name": "Set Rotation of Asset",
+   "id": "setAction",
+   "name": "Set Action of Asset",
    "options": [
     {
      "id": "clip",
@@ -133,30 +116,30 @@
      "default": "0"
     },
     {
-     "id": "rotation",
-     "label": "Rotation",
+     "id": "action",
+     "label": "Action",
      "type": "select",
-     "default": "0",
+     "default": "true",
      "choices": [
       {
        "id": "0",
-       "label": "0"
+       "label": "pause"
       },
       {
-       "id": "90",
-       "label": "90"
+       "id": "1",
+       "label": "playNext"
       },
       {
-       "id": "180",
-       "label": "180"
+       "id": "2",
+       "label": "next"
       },
       {
-       "id": "270",
-       "label": "270"
+       "id": "3",
+       "label": "loop"
       },
       {
-       "id": "360",
-       "label": "360"
+       "id": "4",
+       "label": "reset"
       }
      ]
     }
@@ -164,15 +147,16 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/api/asset/{{option.clip}}/rotate/{{option.rotation|map}}0"
+    "path": "/api/asset/{{option.clip}}/action/{{option.action|map}}"
    },
    "maps": {
-    "rotation": {
-     "0": "",
-     "90": "9",
-     "180": "18",
-     "270": "27",
-     "360": "36"
+    "action": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "true": "true"
     }
    }
   },
@@ -234,656 +218,6 @@
    "action": {
     "definitionId": "stop",
     "options": {}
-   }
-  },
-  {
-   "id": "select_0",
-   "category": "Clips",
-   "name": "Select Clip 0",
-   "text": "Select Clip 0",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 0
-    }
-   }
-  },
-  {
-   "id": "select_1",
-   "category": "Clips",
-   "name": "Select Clip 1",
-   "text": "Select Clip 1",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 1
-    }
-   }
-  },
-  {
-   "id": "select_2",
-   "category": "Clips",
-   "name": "Select Clip 2",
-   "text": "Select Clip 2",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 2
-    }
-   }
-  },
-  {
-   "id": "select_3",
-   "category": "Clips",
-   "name": "Select Clip 3",
-   "text": "Select Clip 3",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 3
-    }
-   }
-  },
-  {
-   "id": "select_4",
-   "category": "Clips",
-   "name": "Select Clip 4",
-   "text": "Select Clip 4",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 4
-    }
-   }
-  },
-  {
-   "id": "select_5",
-   "category": "Clips",
-   "name": "Select Clip 5",
-   "text": "Select Clip 5",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 5
-    }
-   }
-  },
-  {
-   "id": "select_6",
-   "category": "Clips",
-   "name": "Select Clip 6",
-   "text": "Select Clip 6",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 6
-    }
-   }
-  },
-  {
-   "id": "select_7",
-   "category": "Clips",
-   "name": "Select Clip 7",
-   "text": "Select Clip 7",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 7
-    }
-   }
-  },
-  {
-   "id": "select_8",
-   "category": "Clips",
-   "name": "Select Clip 8",
-   "text": "Select Clip 8",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 8
-    }
-   }
-  },
-  {
-   "id": "select_9",
-   "category": "Clips",
-   "name": "Select Clip 9",
-   "text": "Select Clip 9",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 9
-    }
-   }
-  },
-  {
-   "id": "select_10",
-   "category": "Clips",
-   "name": "Select Clip 10",
-   "text": "Select Clip 10",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 10
-    }
-   }
-  },
-  {
-   "id": "select_11",
-   "category": "Clips",
-   "name": "Select Clip 11",
-   "text": "Select Clip 11",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 11
-    }
-   }
-  },
-  {
-   "id": "select_12",
-   "category": "Clips",
-   "name": "Select Clip 12",
-   "text": "Select Clip 12",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 12
-    }
-   }
-  },
-  {
-   "id": "select_13",
-   "category": "Clips",
-   "name": "Select Clip 13",
-   "text": "Select Clip 13",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 13
-    }
-   }
-  },
-  {
-   "id": "select_14",
-   "category": "Clips",
-   "name": "Select Clip 14",
-   "text": "Select Clip 14",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 14
-    }
-   }
-  },
-  {
-   "id": "select_15",
-   "category": "Clips",
-   "name": "Select Clip 15",
-   "text": "Select Clip 15",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 15
-    }
-   }
-  },
-  {
-   "id": "select_16",
-   "category": "Clips",
-   "name": "Select Clip 16",
-   "text": "Select Clip 16",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 16
-    }
-   }
-  },
-  {
-   "id": "select_17",
-   "category": "Clips",
-   "name": "Select Clip 17",
-   "text": "Select Clip 17",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 17
-    }
-   }
-  },
-  {
-   "id": "select_18",
-   "category": "Clips",
-   "name": "Select Clip 18",
-   "text": "Select Clip 18",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 18
-    }
-   }
-  },
-  {
-   "id": "select_19",
-   "category": "Clips",
-   "name": "Select Clip 19",
-   "text": "Select Clip 19",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 19
-    }
-   }
-  },
-  {
-   "id": "select_20",
-   "category": "Clips",
-   "name": "Select Clip 20",
-   "text": "Select Clip 20",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 20
-    }
-   }
-  },
-  {
-   "id": "select_21",
-   "category": "Clips",
-   "name": "Select Clip 21",
-   "text": "Select Clip 21",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 21
-    }
-   }
-  },
-  {
-   "id": "select_22",
-   "category": "Clips",
-   "name": "Select Clip 22",
-   "text": "Select Clip 22",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 22
-    }
-   }
-  },
-  {
-   "id": "select_23",
-   "category": "Clips",
-   "name": "Select Clip 23",
-   "text": "Select Clip 23",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 23
-    }
-   }
-  },
-  {
-   "id": "select_24",
-   "category": "Clips",
-   "name": "Select Clip 24",
-   "text": "Select Clip 24",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 24
-    }
-   }
-  },
-  {
-   "id": "select_25",
-   "category": "Clips",
-   "name": "Select Clip 25",
-   "text": "Select Clip 25",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 25
-    }
-   }
-  },
-  {
-   "id": "select_26",
-   "category": "Clips",
-   "name": "Select Clip 26",
-   "text": "Select Clip 26",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 26
-    }
-   }
-  },
-  {
-   "id": "select_27",
-   "category": "Clips",
-   "name": "Select Clip 27",
-   "text": "Select Clip 27",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 27
-    }
-   }
-  },
-  {
-   "id": "select_28",
-   "category": "Clips",
-   "name": "Select Clip 28",
-   "text": "Select Clip 28",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 28
-    }
-   }
-  },
-  {
-   "id": "select_29",
-   "category": "Clips",
-   "name": "Select Clip 29",
-   "text": "Select Clip 29",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 29
-    }
-   }
-  },
-  {
-   "id": "select_30",
-   "category": "Clips",
-   "name": "Select Clip 30",
-   "text": "Select Clip 30",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 30
-    }
-   }
-  },
-  {
-   "id": "select_31",
-   "category": "Clips",
-   "name": "Select Clip 31",
-   "text": "Select Clip 31",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 31
-    }
-   }
-  },
-  {
-   "id": "select_32",
-   "category": "Clips",
-   "name": "Select Clip 32",
-   "text": "Select Clip 32",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 32
-    }
-   }
-  },
-  {
-   "id": "select_33",
-   "category": "Clips",
-   "name": "Select Clip 33",
-   "text": "Select Clip 33",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 33
-    }
-   }
-  },
-  {
-   "id": "select_34",
-   "category": "Clips",
-   "name": "Select Clip 34",
-   "text": "Select Clip 34",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 34
-    }
-   }
-  },
-  {
-   "id": "select_35",
-   "category": "Clips",
-   "name": "Select Clip 35",
-   "text": "Select Clip 35",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 35
-    }
-   }
-  },
-  {
-   "id": "select_36",
-   "category": "Clips",
-   "name": "Select Clip 36",
-   "text": "Select Clip 36",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 36
-    }
-   }
-  },
-  {
-   "id": "select_37",
-   "category": "Clips",
-   "name": "Select Clip 37",
-   "text": "Select Clip 37",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 37
-    }
-   }
-  },
-  {
-   "id": "select_38",
-   "category": "Clips",
-   "name": "Select Clip 38",
-   "text": "Select Clip 38",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 38
-    }
-   }
-  },
-  {
-   "id": "select_39",
-   "category": "Clips",
-   "name": "Select Clip 39",
-   "text": "Select Clip 39",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 39
-    }
-   }
-  },
-  {
-   "id": "select_40",
-   "category": "Clips",
-   "name": "Select Clip 40",
-   "text": "Select Clip 40",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 40
-    }
-   }
-  },
-  {
-   "id": "select_41",
-   "category": "Clips",
-   "name": "Select Clip 41",
-   "text": "Select Clip 41",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 41
-    }
-   }
-  },
-  {
-   "id": "select_42",
-   "category": "Clips",
-   "name": "Select Clip 42",
-   "text": "Select Clip 42",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 42
-    }
-   }
-  },
-  {
-   "id": "select_43",
-   "category": "Clips",
-   "name": "Select Clip 43",
-   "text": "Select Clip 43",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 43
-    }
-   }
-  },
-  {
-   "id": "select_44",
-   "category": "Clips",
-   "name": "Select Clip 44",
-   "text": "Select Clip 44",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 44
-    }
-   }
-  },
-  {
-   "id": "select_45",
-   "category": "Clips",
-   "name": "Select Clip 45",
-   "text": "Select Clip 45",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 45
-    }
-   }
-  },
-  {
-   "id": "select_46",
-   "category": "Clips",
-   "name": "Select Clip 46",
-   "text": "Select Clip 46",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 46
-    }
-   }
-  },
-  {
-   "id": "select_47",
-   "category": "Clips",
-   "name": "Select Clip 47",
-   "text": "Select Clip 47",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 47
-    }
-   }
-  },
-  {
-   "id": "select_48",
-   "category": "Clips",
-   "name": "Select Clip 48",
-   "text": "Select Clip 48",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 48
-    }
-   }
-  },
-  {
-   "id": "select_49",
-   "category": "Clips",
-   "name": "Select Clip 49",
-   "text": "Select Clip 49",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "select",
-    "options": {
-     "clip": 49
-    }
    }
   }
  ],

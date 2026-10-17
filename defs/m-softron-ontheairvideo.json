@@ -313,9 +313,8 @@
     {
      "id": "project",
      "label": "CG Project",
-     "type": "select",
+     "type": "text",
      "default": "",
-     "choices": [],
      "help": "Select a CG project"
     }
    ],
@@ -332,9 +331,8 @@
     {
      "id": "project",
      "label": "CG Project",
-     "type": "select",
+     "type": "text",
      "default": "",
-     "choices": [],
      "help": "Select a CG project"
     }
    ],
@@ -351,9 +349,8 @@
     {
      "id": "project",
      "label": "CG Project",
-     "type": "select",
+     "type": "text",
      "default": "",
-     "choices": [],
      "help": "Select a CG project"
     }
    ],
@@ -370,9 +367,8 @@
     {
      "id": "action",
      "label": "Action",
-     "type": "select",
+     "type": "text",
      "default": "",
-     "choices": [],
      "help": "Select an available action to run"
     },
     {

@@ -121,8 +121,7 @@
     {
      "id": "preset",
      "label": "Preset Name",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {

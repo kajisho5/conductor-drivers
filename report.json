@@ -19,12 +19,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 28,
-  "converted": 4,
+  "converted": 6,
   "reasons": {
    "too-many-choices": 10,
-   "multi-datagram": 4,
    "no-send": 7,
+   "part0-osc-multi-datagram": 1,
    "osc-arg-count": 2,
+   "part0-too-many-choices": 1,
    "osc-type-text-slot": 1
   },
   "errors": [],
@@ -38,13 +39,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 3,
-  "converted": 1,
-  "reasons": {
-   "multi-request": 2
-  },
+  "converted": 3,
+  "reasons": {},
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "full"
  },
  {
   "id": "adder-infinity-aim",
@@ -53,13 +52,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 5,
-  "converted": 4,
-  "reasons": {
-   "multi-request": 1
-  },
+  "converted": 5,
+  "reasons": {},
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "full"
  },
  {
   "id": "adder-infinity-alif",
@@ -68,13 +65,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 3,
-  "converted": 1,
-  "reasons": {
-   "multi-request": 2
-  },
+  "converted": 3,
+  "reasons": {},
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "full"
  },
  {
   "id": "adder-infinity100xseries",
@@ -226,8 +221,8 @@
   "converted": 12,
   "reasons": {
    "verify-path": 1,
-   "verify-multi-request": 2,
-   "multi-request": 1,
+   "verify-multi-request": 1,
+   "parts-map-differs": 2,
    "path-overlap": 1
   },
   "errors": [],
@@ -241,9 +236,8 @@
   "license": "MIT",
   "status": "ok",
   "actions": 21,
-  "converted": 18,
+  "converted": 20,
   "reasons": {
-   "multi-request": 2,
    "verify-multi-request": 1
   },
   "errors": [],
@@ -257,10 +251,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 5,
-  "converted": 3,
+  "converted": 4,
   "reasons": {
-   "no-send": 1,
-   "multi-request": 1
+   "no-send": 1
   },
   "errors": [],
   "truncated": false,
@@ -273,9 +266,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 14,
-  "converted": 1,
+  "converted": 2,
   "reasons": {
-   "too-many-choices": 11,
+   "too-many-choices": 10,
    "overlap": 2
   },
   "errors": [],
@@ -421,7 +414,7 @@
   "converted": 10,
   "reasons": {
    "error": 3,
-   "multi-request": 1
+   "part0-verify-multi-request": 1
   },
   "errors": [],
   "truncated": false,
@@ -911,11 +904,13 @@
   "name": "AxelTech VJ Pro",
   "manufacturer": "AxelTech",
   "license": "MIT",
-  "status": "ok",
+  "status": "error",
   "actions": 8,
   "converted": 0,
   "reasons": {},
-  "errors": [],
+  "errors": [
+   "module exited (1)"
+  ],
   "truncated": false,
   "result": "no-send"
  },
@@ -1131,7 +1126,7 @@
   "actions": 6,
   "converted": 1,
   "reasons": {
-   "origin-differs": 5
+   "error": 5
   },
   "errors": [],
   "truncated": false,
@@ -1144,14 +1139,21 @@
   "license": "MIT",
   "status": "ok",
   "actions": 98,
-  "converted": 1,
+  "converted": 16,
   "reasons": {
-   "multi-datagram": 46,
+   "part0-osc-string-overlap": 9,
    "osc-multi-datagram": 3,
+   "part0-too-many-choices": 1,
    "no-send": 30,
+   "multi-datagram": 1,
+   "part0-osc-address-too-many-choices": 2,
+   "part0-osc-no-send": 1,
    "error": 4,
+   "part0-osc-address-overlap": 9,
    "verify-osc-int": 1,
    "osc-string-overlap": 1,
+   "part0-verify-osc-address": 7,
+   "part0-verify-osc-int": 1,
    "not-run": 12
   },
   "errors": [],
@@ -1662,9 +1664,9 @@
   "license": "ISC",
   "status": "ok",
   "actions": 11,
-  "converted": 10,
+  "converted": 9,
   "reasons": {
-   "verify-multi-request": 1
+   "verify-multi-request": 2
   },
   "errors": [],
   "truncated": false,
@@ -1709,9 +1711,8 @@
   "actions": 6,
   "converted": 0,
   "reasons": {
-   "number-slot": 3,
-   "overlap": 1,
-   "no-send": 2
+   "no-send": 4,
+   "number-slot": 2
   },
   "errors": [],
   "truncated": false,
@@ -1737,13 +1738,16 @@
   "license": "MIT",
   "status": "ok",
   "actions": 107,
-  "converted": 69,
+  "converted": 78,
   "reasons": {
    "no-send": 18,
-   "multi-request": 13,
    "verify-multi-request": 4,
    "error": 1,
-   "verify-no-send": 2
+   "part1-path-number-slot": 1,
+   "verify-no-send": 2,
+   "multi-request": 1,
+   "part1-path-text-slot": 1,
+   "part0-path-text-slot": 1
   },
   "errors": [],
   "truncated": false,
@@ -1910,15 +1914,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 42,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 39,
+   "no-send": 40,
    "verify-no-send": 1,
    "error": 1
   },
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "chyronhego-lyric",
@@ -2058,15 +2062,13 @@
   "name": "CombiTech VidBlasterX",
   "manufacturer": "CombiTech",
   "license": "MIT",
-  "status": "error",
+  "status": "ok",
   "actions": 21,
-  "converted": 0,
+  "converted": 21,
   "reasons": {},
-  "errors": [
-   "module exited (1)"
-  ],
+  "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "full"
  },
  {
   "id": "companion-satellite",
@@ -2187,9 +2189,8 @@
   "license": "MIT",
   "status": "ok",
   "actions": 15,
-  "converted": 12,
+  "converted": 13,
   "reasons": {
-   "multi-request": 1,
    "no-send": 2
   },
   "errors": [],
@@ -2206,10 +2207,10 @@
   "converted": 6,
   "reasons": {
    "too-many-choices": 13,
-   "overlap": 12,
-   "option-breaks-send": 9,
-   "number-slot": 4,
-   "no-send": 5,
+   "overlap": 10,
+   "option-breaks-send": 10,
+   "number-slot": 6,
+   "no-send": 4,
    "text-slot": 1
   },
   "errors": [],
@@ -2504,13 +2505,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 5,
-  "reasons": {
-   "multi-request": 1
-  },
+  "converted": 6,
+  "reasons": {},
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "full"
  },
  {
   "id": "dmxcontrolprojects-dmxcontrol3",
@@ -2532,10 +2531,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 6,
+  "converted": 7,
   "reasons": {
    "number-slot": 2,
-   "no-send": 2,
+   "no-send": 1,
    "text-slot": 1
   },
   "errors": [],
@@ -2667,10 +2666,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 47,
-  "converted": 18,
+  "converted": 43,
   "reasons": {
-   "multi-datagram": 26,
    "no-send": 1,
+   "part0-map-twice": 1,
    "osc-number": 1,
    "two-options-one-arg": 1
   },
@@ -2829,9 +2828,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 5,
-  "converted": 1,
+  "converted": 3,
   "reasons": {
-   "multi-datagram": 4
+   "part0-number-slot": 2
   },
   "errors": [],
   "truncated": false,
@@ -3009,9 +3008,8 @@
   "license": "MIT",
   "status": "ok",
   "actions": 15,
-  "converted": 5,
+  "converted": 13,
   "reasons": {
-   "multi-request": 8,
    "no-send": 2
   },
   "errors": [],
@@ -3040,7 +3038,7 @@
   "actions": 2,
   "converted": 0,
   "reasons": {
-   "multi-datagram": 1,
+   "part0-option-breaks-send": 1,
    "no-send": 1
   },
   "errors": [],
@@ -3058,7 +3056,7 @@
   "reasons": {
    "no-send": 3,
    "number-slot": 1,
-   "text-slot": 1
+   "option-breaks-send": 1
   },
   "errors": [],
   "truncated": false,
@@ -3270,11 +3268,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 0,
-  "reasons": {},
+  "converted": 5,
+  "reasons": {
+   "no-send": 1
+  },
   "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "generic-ptpv2-client",
@@ -3535,9 +3535,8 @@
   "license": "MIT",
   "status": "ok",
   "actions": 8,
-  "converted": 4,
+  "converted": 5,
   "reasons": {
-   "multi-datagram": 1,
    "number-slot": 2,
    "no-send": 1
   },
@@ -3673,11 +3672,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 12,
-  "converted": 0,
-  "reasons": {},
+  "converted": 3,
+  "reasons": {
+   "two-options-one-arg": 8,
+   "osc-arg-count": 1
+  },
   "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "greenhippo-hippotizer-rest",
@@ -3689,7 +3691,7 @@
   "converted": 7,
   "reasons": {
    "verify-multi-request": 2,
-   "multi-request": 1,
+   "part0-verify-multi-request": 1,
    "path-overlap": 1
   },
   "errors": [],
@@ -4165,10 +4167,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 20,
-  "converted": 1,
+  "converted": 2,
   "reasons": {
-   "no-send": 18,
-   "verify-no-send": 1
+   "no-send": 18
   },
   "errors": [],
   "truncated": false,
@@ -4212,7 +4213,8 @@
   "converted": 0,
   "reasons": {
    "error": 9,
-   "no-send": 13
+   "no-send": 12,
+   "verify-no-send": 1
   },
   "errors": [],
   "truncated": false,
@@ -4227,8 +4229,8 @@
   "actions": 77,
   "converted": 0,
   "reasons": {
-   "no-send": 74,
-   "verify-no-send": 3
+   "verify-no-send": 2,
+   "no-send": 75
   },
   "errors": [],
   "truncated": false,
@@ -4306,9 +4308,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 13,
-  "converted": 2,
+  "converted": 11,
   "reasons": {
-   "multi-request": 11
+   "part0-body-number-slot": 1,
+   "multi-request": 1
   },
   "errors": [],
   "truncated": false,
@@ -5127,11 +5130,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 17,
-  "converted": 12,
+  "converted": 15,
   "reasons": {
    "no-send": 1,
-   "error": 1,
-   "multi-request": 3
+   "error": 1
   },
   "errors": [],
   "truncated": false,
@@ -5533,7 +5535,7 @@
   "actions": 31,
   "converted": 29,
   "reasons": {
-   "multi-datagram": 1,
+   "part1-verify-osc-int": 1,
    "osc-arg-count": 1
   },
   "errors": [],
@@ -5728,13 +5730,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 50,
-  "converted": 11,
+  "converted": 12,
   "reasons": {
    "path-overlap": 7,
    "verify-no-send": 6,
    "verify-path": 23,
    "no-send": 1,
-   "multi-request": 2
+   "part0-path-too-many-choices": 1
   },
   "errors": [],
   "truncated": false,
@@ -5901,9 +5903,8 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 2,
+  "converted": 3,
   "reasons": {
-   "multi-datagram": 1,
    "number-slot": 3
   },
   "errors": [],
@@ -5999,12 +6000,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 22,
-  "converted": 10,
+  "converted": 17,
   "reasons": {
-   "multi-request": 7,
    "verify-no-send": 1,
-   "no-send": 2,
-   "verify-multi-request": 2
+   "no-send": 1,
+   "verify-multi-request": 2,
+   "part0-verify-multi-request": 1
   },
   "errors": [],
   "truncated": false,
@@ -6017,11 +6018,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 19,
-  "converted": 9,
+  "converted": 13,
   "reasons": {
    "body-number-slot": 1,
    "no-send": 4,
-   "multi-request": 5
+   "multi-request": 1
   },
   "errors": [],
   "truncated": false,
@@ -6240,10 +6241,13 @@
   "status": "ok",
   "actions": 29,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "parts-origin-differs": 27,
+   "error": 2
+  },
   "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "resi-decoders",
@@ -6312,7 +6316,8 @@
   "actions": 18,
   "converted": 8,
   "reasons": {
-   "multi-datagram": 2,
+   "part0-overlap": 1,
+   "part0-option-breaks-send": 1,
    "verify-mismatch": 3,
    "option-breaks-send": 1,
    "overlap": 3,
@@ -6642,10 +6647,11 @@
   "actions": 25,
   "converted": 18,
   "reasons": {
-   "multi-datagram": 2,
+   "part0-option-breaks-send": 1,
    "option-breaks-send": 3,
    "text-slot": 1,
-   "number-slot": 1
+   "number-slot": 1,
+   "part0-overlap": 1
   },
   "errors": [],
   "truncated": false,
@@ -6962,10 +6968,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 27,
-  "converted": 19,
+  "converted": 21,
   "reasons": {
-   "no-send": 6,
-   "multi-request": 2
+   "no-send": 6
   },
   "errors": [],
   "truncated": false,
@@ -7122,9 +7127,8 @@
   "license": "MIT",
   "status": "ok",
   "actions": 16,
-  "converted": 11,
+  "converted": 13,
   "reasons": {
-   "multi-datagram": 2,
    "map-twice": 1,
    "verify-osc-float": 1,
    "verify-osc-int": 1
@@ -7243,7 +7247,7 @@
   "reasons": {
    "no-send": 11,
    "overlap": 2,
-   "multi-datagram": 1,
+   "part0-option-breaks-send": 1,
    "too-many-choices": 3,
    "verify-mismatch": 1,
    "error": 1
@@ -7409,9 +7413,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 32,
-  "converted": 26,
+  "converted": 27,
   "reasons": {
-   "verify-multi-request": 4,
+   "verify-multi-request": 3,
    "path-number-slot": 1,
    "path-overlap": 1
   },
@@ -7428,12 +7432,12 @@
   "actions": 129,
   "converted": 64,
   "reasons": {
-   "text-slot": 16,
-   "option-breaks-send": 5,
-   "verify-mismatch": 17,
-   "no-send": 18,
-   "overlap": 8,
-   "number-slot": 1
+   "text-slot": 14,
+   "option-breaks-send": 3,
+   "verify-mismatch": 16,
+   "no-send": 19,
+   "overlap": 11,
+   "number-slot": 2
   },
   "errors": [],
   "truncated": false,
@@ -7569,8 +7573,8 @@
   "actions": 10,
   "converted": 0,
   "reasons": {
-   "verify-no-send": 1,
-   "no-send": 9
+   "no-send": 8,
+   "verify-no-send": 2
   },
   "errors": [],
   "truncated": false,
@@ -7583,13 +7587,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 19,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 18
+   "no-send": 18,
+   "verify-no-send": 1
   },
   "errors": [],
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "techministry-tallyarbiter",
@@ -7612,10 +7617,14 @@
   "status": "ok",
   "actions": 8,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 6,
+   "verify-no-send": 1,
+   "error": 1
+  },
   "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "telegram-bot",
@@ -8326,9 +8335,8 @@
   "license": "MIT",
   "status": "ok",
   "actions": 52,
-  "converted": 44,
+  "converted": 45,
   "reasons": {
-   "multi-request": 1,
    "path-number-slot": 6,
    "origin-varies": 1
   },
@@ -8556,11 +8564,10 @@
   "license": "MIT",
   "status": "error",
   "actions": 170,
-  "converted": 27,
+  "converted": 29,
   "reasons": {
    "no-send": 11,
    "error": 1,
-   "multi-datagram": 2,
    "not-run": 129
   },
   "errors": [

@@ -260,9 +260,8 @@
     {
      "id": "dst",
      "label": "Destination :",
-     "type": "select",
-     "default": "00",
-     "choices": []
+     "type": "text",
+     "default": "00"
     },
     {
      "id": "mode",

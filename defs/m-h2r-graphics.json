@@ -266,9 +266,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -357,8 +356,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "line_one",
@@ -386,8 +384,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "animationName",
@@ -447,8 +444,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "body",
@@ -471,8 +467,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "imageName",
@@ -482,8 +477,7 @@
     {
      "id": "imageFilename",
      "label": "Image",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -501,8 +495,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "title",
@@ -530,8 +523,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "name",
@@ -559,15 +551,14 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
     "kind": "http",
     "method": "POST",
     "path": "/api/ABCD/graphic/undefined/update",
-    "body": "{\"refreshCount\":1792199296897}",
+    "body": "{\"refreshCount\":1792200994851}",
     "contentType": "application/json"
    }
   },
@@ -578,8 +569,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "text",
@@ -602,8 +592,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -621,8 +610,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -640,8 +628,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -659,8 +646,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "body",
@@ -683,8 +669,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "status",
@@ -724,8 +709,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "team",
@@ -838,15 +822,14 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
     "kind": "http",
     "method": "POST",
     "path": "/api/ABCD/graphic/undefined/update",
-    "body": "{\"removePinCount\":1792199301311}",
+    "body": "{\"removePinCount\":1792200999280}",
     "contentType": "application/json"
    }
   },
@@ -857,9 +840,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "position",
@@ -934,9 +916,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "x",
@@ -962,9 +943,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "y",
@@ -990,9 +970,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "x",
@@ -1026,9 +1005,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "scale",
@@ -1054,15 +1032,13 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "theme",
      "label": "Theme",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -1140,9 +1116,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "override",
@@ -1212,9 +1187,8 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -1232,8 +1206,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "tool",
@@ -1298,8 +1271,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "color",
@@ -1369,8 +1341,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "brushSize",
@@ -1396,8 +1367,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -1415,8 +1385,7 @@
     {
      "id": "graphicId",
      "label": "Graphic",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {

@@ -18,6 +18,223 @@
  ],
  "actions": [
   {
+   "id": "play_playlist",
+   "name": "Play Playlist",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playlist ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/playlist/play",
+    "body": "{\"id\":\"{{option.id}}\"}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
+   "id": "playlist_toggle_playback",
+   "name": "Playlist: Toggle Play/Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/playlist/playback/play",
+    "body": ""
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
+   "id": "playlist_play_next",
+   "name": "Playlist: Play Next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/v1/playlist/playback/next",
+    "body": ""
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
+   "id": "playlist_play_previous",
+   "name": "Playlist: Play Previous",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/v1/playlist/playback/previous",
+    "body": ""
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
+   "id": "playlist_toggle_shuffle",
+   "name": "Playlist: Toggle Shuffle",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/playlist/playback/shuffle",
+    "body": "{\"shuffle\":true}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
+   "id": "playlist_toggle_repeat",
+   "name": "Playlist: Toggle Repeat",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/playlist/playback/repeat",
+    "body": "{\"repeat\":\"track\"}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
+   "id": "playlist_set_repeat",
+   "name": "Playlist: Set Repeat",
+   "options": [
+    {
+     "id": "repeat_state",
+     "label": "Repeat State",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "track",
+       "label": "Track"
+      },
+      {
+       "id": "playlist",
+       "label": "Playlist"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/playlist/playback/repeat",
+    "body": "{\"repeat\":\"{{option.repeat_state|map}}\"}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ],
+   "maps": {
+    "repeat_state": {
+     "off": "off",
+     "track": "track",
+     "playlist": "playlist"
+    }
+   }
+  },
+  {
+   "id": "playlist_toggle_mute",
+   "name": "Playlist: Toggle Mute",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/playlist/playback/mute",
+    "body": "{\"mute\":true}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
+   "id": "playlist_adjust_volume",
+   "name": "Playlist: Adjust Volume",
+   "options": [
+    {
+     "id": "volume_step",
+     "label": "Volume Step",
+     "type": "number",
+     "default": 10,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/playlist/playback/volume",
+    "body": "{\"volume\":null}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/playlist/playback"
+    }
+   ]
+  },
+  {
    "id": "soundboard_play_sound",
    "name": "Soundboard: Play Sound",
    "options": [

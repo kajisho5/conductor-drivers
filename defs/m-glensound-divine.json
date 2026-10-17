@@ -196,6 +196,23 @@
    }
   },
   {
+   "id": "set_mute",
+   "name": "Mute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "4753204374726c0014000303424954460e000000",
+    "encoding": "hex"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "4753204374726c001000070342495446",
+     "encoding": "hex"
+    }
+   ]
+  },
+  {
    "id": "unset_mute",
    "name": "Unmute",
    "options": [],

@@ -102,7 +102,7 @@
      "id": "amount",
      "label": "Increment/Decrement Amount",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {

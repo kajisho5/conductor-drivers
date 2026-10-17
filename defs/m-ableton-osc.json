@@ -199,6 +199,101 @@
    }
   },
   {
+   "id": "device_toggle",
+   "name": "Device - Toggle",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "1_1",
+     "choices": [
+      {
+       "id": "1_1",
+       "label": "T1 > D1"
+      }
+     ]
+    },
+    {
+     "id": "parameter",
+     "label": "Parameter Index (Default 1 = On/Off)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000
+    },
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      },
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/live/device/start_listen/parameter/value",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     },
+     {
+      "type": "i",
+      "value": "0"
+     },
+     {
+      "type": "i",
+      "value": "{{option.parameter|lin:1:-1}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/live/device/set/parameter/value",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      },
+      {
+       "type": "i",
+       "value": "0"
+      },
+      {
+       "type": "i",
+       "value": "{{option.parameter|lin:1:-1}}"
+      },
+      {
+       "type": "f",
+       "value": "{{option.state|map}}"
+      }
+     ]
+    }
+   ],
+   "maps": {
+    "state": {
+     "toggle": "1",
+     "on": "1",
+     "off": "0"
+    }
+   }
+  },
+  {
    "id": "fade_stop_track",
    "name": "Track - Fade Out and Stop",
    "options": [
@@ -349,10 +444,40 @@
      "8": "7"
     }
    }
+  },
+  {
+   "id": "scan_project",
+   "name": "Project - Scan",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/live/song/get/num_tracks",
+    "args": []
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/live/song/get/num_scenes",
+     "args": []
+    }
+   ]
   }
  ],
  "feedbacks": [],
  "variables": [],
+ "presets": [
+  {
+   "id": "utility_scan",
+   "category": "0. Start Here",
+   "name": "Scan Project",
+   "text": "🔍 Scan\nProject",
+   "backgroundColor": "#ffc0ff",
+   "action": {
+    "definitionId": "scan_project",
+    "options": {}
+   }
+  }
+ ],
  "evidence": [
   {
    "title": "公開 OSS のモジュールから自動変換（MIT）",

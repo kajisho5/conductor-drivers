@@ -428,6 +428,115 @@
    }
   },
   {
+   "id": "startOutputToneGenerator",
+   "name": "Diagnostics: Start Tone Generator",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "CH 1"
+      },
+      {
+       "id": "2",
+       "label": "CH 2"
+      },
+      {
+       "id": "3",
+       "label": "CH 3"
+      },
+      {
+       "id": "4",
+       "label": "CH 4"
+      },
+      {
+       "id": "5",
+       "label": "CH 5"
+      },
+      {
+       "id": "6",
+       "label": "CH 6"
+      },
+      {
+       "id": "7",
+       "label": "CH 7"
+      },
+      {
+       "id": "8",
+       "label": "CH 8"
+      }
+     ]
+    },
+    {
+     "id": "frequency",
+     "label": "Frequency (Hz)",
+     "type": "number",
+     "default": 1000,
+     "min": 10,
+     "max": 20000
+    },
+    {
+     "id": "level",
+     "label": "Level (V or dBFS)",
+     "type": "number",
+     "default": -20,
+     "min": -60,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/ToneGenerator/Frequency/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.frequency}}}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/ToneGenerator/Level/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.level}}}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/ToneGenerator/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":true}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    }
+   ],
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
    "id": "stopOutputToneGenerator",
    "name": "Diagnostics: Stop Tone Generator",
    "options": [
@@ -491,6 +600,130 @@
     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/ToneGenerator/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
     "contentType": "application/json"
    },
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "startImpedanceMeasure",
+   "name": "Diagnostics: Start Impedance Measure",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "CH 1"
+      },
+      {
+       "id": "2",
+       "label": "CH 2"
+      },
+      {
+       "id": "3",
+       "label": "CH 3"
+      },
+      {
+       "id": "4",
+       "label": "CH 4"
+      },
+      {
+       "id": "5",
+       "label": "CH 5"
+      },
+      {
+       "id": "6",
+       "label": "CH 6"
+      },
+      {
+       "id": "7",
+       "label": "CH 7"
+      },
+      {
+       "id": "8",
+       "label": "CH 8"
+      }
+     ]
+    },
+    {
+     "id": "frequency",
+     "label": "Frequency (Hz)",
+     "type": "number",
+     "default": 1000,
+     "min": 10,
+     "max": 20000
+    },
+    {
+     "id": "min",
+     "label": "Min Level",
+     "type": "number",
+     "default": -30,
+     "min": -60,
+     "max": 0
+    },
+    {
+     "id": "max",
+     "label": "Max Level",
+     "type": "number",
+     "default": -10,
+     "min": -60,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputImpedanceMeasure/Frequency/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.frequency}}}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputImpedanceMeasure/MinLevel/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.min}}}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputImpedanceMeasure/MaxLevel/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.max}}}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputImpedanceMeasure/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":true}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    }
+   ],
    "maps": {
     "channel": {
      "1": "0",
@@ -582,6 +815,130 @@
    }
   },
   {
+   "id": "enableToneDetection",
+   "name": "Diagnostics: Enable Tone Detection",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "CH 1"
+      },
+      {
+       "id": "2",
+       "label": "CH 2"
+      },
+      {
+       "id": "3",
+       "label": "CH 3"
+      },
+      {
+       "id": "4",
+       "label": "CH 4"
+      },
+      {
+       "id": "5",
+       "label": "CH 5"
+      },
+      {
+       "id": "6",
+       "label": "CH 6"
+      },
+      {
+       "id": "7",
+       "label": "CH 7"
+      },
+      {
+       "id": "8",
+       "label": "CH 8"
+      }
+     ]
+    },
+    {
+     "id": "frequency",
+     "label": "Frequency (Hz)",
+     "type": "number",
+     "default": 1000,
+     "min": 10,
+     "max": 20000
+    },
+    {
+     "id": "min",
+     "label": "Min Threshold",
+     "type": "number",
+     "default": -40,
+     "min": -80,
+     "max": 0
+    },
+    {
+     "id": "max",
+     "label": "Max Threshold",
+     "type": "number",
+     "default": -10,
+     "min": -80,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputToneDetection/Frequency/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.frequency}}}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputToneDetection/MinLevel/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.min}}}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputToneDetection/MaxLevel/Value\",\"data\":{\"type\":20,\"floatValue\":{{option.max}}}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputToneDetection/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":true}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    }
+   ],
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
    "id": "disableToneDetection",
    "name": "Diagnostics: Disable Tone Detection",
    "options": [
@@ -657,6 +1014,99 @@
      "8": "7"
     }
    }
+  },
+  {
+   "id": "stopAllDiagnostics",
+   "name": "Diagnostics: Stop All (Channel)",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "CH 1"
+      },
+      {
+       "id": "2",
+       "label": "CH 2"
+      },
+      {
+       "id": "3",
+       "label": "CH 3"
+      },
+      {
+       "id": "4",
+       "label": "CH 4"
+      },
+      {
+       "id": "5",
+       "label": "CH 5"
+      },
+      {
+       "id": "6",
+       "label": "CH 6"
+      },
+      {
+       "id": "7",
+       "label": "CH 7"
+      },
+      {
+       "id": "8",
+       "label": "CH 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/ToneGenerator/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputImpedanceMeasure/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/am",
+     "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputToneDetection/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+     "contentType": "application/json"
+    }
+   ],
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
   }
  ],
  "feedbacks": [],
@@ -716,6 +1166,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch1",
+   "category": "CH1 Diagnostics",
+   "name": "CH1 Tone Start",
+   "text": "CH1\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch1",
    "category": "CH1 Diagnostics",
    "name": "CH1 Tone Stop",
@@ -726,6 +1192,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 1
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch1",
+   "category": "CH1 Diagnostics",
+   "name": "CH1 Impedance Start",
+   "text": "CH1\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -744,6 +1227,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch1",
+   "category": "CH1 Diagnostics",
+   "name": "CH1 Detection Enable",
+   "text": "CH1\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch1",
    "category": "CH1 Diagnostics",
    "name": "CH1 Detection Disable",
@@ -751,6 +1251,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch1",
+   "category": "CH1 Diagnostics",
+   "name": "CH1 Stop All",
+   "text": "CH1\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 1
@@ -772,6 +1286,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch2",
+   "category": "CH2 Diagnostics",
+   "name": "CH2 Tone Start",
+   "text": "CH2\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch2",
    "category": "CH2 Diagnostics",
    "name": "CH2 Tone Stop",
@@ -782,6 +1312,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 2
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch2",
+   "category": "CH2 Diagnostics",
+   "name": "CH2 Impedance Start",
+   "text": "CH2\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -800,6 +1347,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch2",
+   "category": "CH2 Diagnostics",
+   "name": "CH2 Detection Enable",
+   "text": "CH2\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch2",
    "category": "CH2 Diagnostics",
    "name": "CH2 Detection Disable",
@@ -807,6 +1371,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch2",
+   "category": "CH2 Diagnostics",
+   "name": "CH2 Stop All",
+   "text": "CH2\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 2
@@ -828,6 +1406,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch3",
+   "category": "CH3 Diagnostics",
+   "name": "CH3 Tone Start",
+   "text": "CH3\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch3",
    "category": "CH3 Diagnostics",
    "name": "CH3 Tone Stop",
@@ -838,6 +1432,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 3
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch3",
+   "category": "CH3 Diagnostics",
+   "name": "CH3 Impedance Start",
+   "text": "CH3\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -856,6 +1467,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch3",
+   "category": "CH3 Diagnostics",
+   "name": "CH3 Detection Enable",
+   "text": "CH3\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch3",
    "category": "CH3 Diagnostics",
    "name": "CH3 Detection Disable",
@@ -863,6 +1491,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch3",
+   "category": "CH3 Diagnostics",
+   "name": "CH3 Stop All",
+   "text": "CH3\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 3
@@ -884,6 +1526,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch4",
+   "category": "CH4 Diagnostics",
+   "name": "CH4 Tone Start",
+   "text": "CH4\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch4",
    "category": "CH4 Diagnostics",
    "name": "CH4 Tone Stop",
@@ -894,6 +1552,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 4
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch4",
+   "category": "CH4 Diagnostics",
+   "name": "CH4 Impedance Start",
+   "text": "CH4\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -912,6 +1587,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch4",
+   "category": "CH4 Diagnostics",
+   "name": "CH4 Detection Enable",
+   "text": "CH4\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch4",
    "category": "CH4 Diagnostics",
    "name": "CH4 Detection Disable",
@@ -919,6 +1611,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch4",
+   "category": "CH4 Diagnostics",
+   "name": "CH4 Stop All",
+   "text": "CH4\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 4
@@ -940,6 +1646,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch5",
+   "category": "CH5 Diagnostics",
+   "name": "CH5 Tone Start",
+   "text": "CH5\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch5",
    "category": "CH5 Diagnostics",
    "name": "CH5 Tone Stop",
@@ -950,6 +1672,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 5
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch5",
+   "category": "CH5 Diagnostics",
+   "name": "CH5 Impedance Start",
+   "text": "CH5\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -968,6 +1707,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch5",
+   "category": "CH5 Diagnostics",
+   "name": "CH5 Detection Enable",
+   "text": "CH5\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch5",
    "category": "CH5 Diagnostics",
    "name": "CH5 Detection Disable",
@@ -975,6 +1731,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch5",
+   "category": "CH5 Diagnostics",
+   "name": "CH5 Stop All",
+   "text": "CH5\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 5
@@ -996,6 +1766,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch6",
+   "category": "CH6 Diagnostics",
+   "name": "CH6 Tone Start",
+   "text": "CH6\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch6",
    "category": "CH6 Diagnostics",
    "name": "CH6 Tone Stop",
@@ -1006,6 +1792,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 6
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch6",
+   "category": "CH6 Diagnostics",
+   "name": "CH6 Impedance Start",
+   "text": "CH6\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -1024,6 +1827,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch6",
+   "category": "CH6 Diagnostics",
+   "name": "CH6 Detection Enable",
+   "text": "CH6\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch6",
    "category": "CH6 Diagnostics",
    "name": "CH6 Detection Disable",
@@ -1031,6 +1851,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch6",
+   "category": "CH6 Diagnostics",
+   "name": "CH6 Stop All",
+   "text": "CH6\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 6
@@ -1052,6 +1886,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch7",
+   "category": "CH7 Diagnostics",
+   "name": "CH7 Tone Start",
+   "text": "CH7\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch7",
    "category": "CH7 Diagnostics",
    "name": "CH7 Tone Stop",
@@ -1062,6 +1912,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 7
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch7",
+   "category": "CH7 Diagnostics",
+   "name": "CH7 Impedance Start",
+   "text": "CH7\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -1080,6 +1947,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch7",
+   "category": "CH7 Diagnostics",
+   "name": "CH7 Detection Enable",
+   "text": "CH7\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch7",
    "category": "CH7 Diagnostics",
    "name": "CH7 Detection Disable",
@@ -1087,6 +1971,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch7",
+   "category": "CH7 Diagnostics",
+   "name": "CH7 Stop All",
+   "text": "CH7\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 7
@@ -1108,6 +2006,22 @@
    }
   },
   {
+   "id": "diag_tone_start_ch8",
+   "category": "CH8 Diagnostics",
+   "name": "CH8 Tone Start",
+   "text": "CH8\nTONE ON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "startOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8,
+     "frequency": 1000,
+     "level": -20
+    }
+   }
+  },
+  {
    "id": "diag_tone_stop_ch8",
    "category": "CH8 Diagnostics",
    "name": "CH8 Tone Stop",
@@ -1118,6 +2032,23 @@
     "options": {
      "device": "10.11.12.13",
      "channel": 8
+    }
+   }
+  },
+  {
+   "id": "diag_imp_start_ch8",
+   "category": "CH8 Diagnostics",
+   "name": "CH8 Impedance Start",
+   "text": "CH8\nIMP ON",
+   "backgroundColor": "#ffd700",
+   "action": {
+    "definitionId": "startImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8,
+     "frequency": 1000,
+     "min": -30,
+     "max": -10
     }
    }
   },
@@ -1136,6 +2067,23 @@
    }
   },
   {
+   "id": "diag_det_enable_ch8",
+   "category": "CH8 Diagnostics",
+   "name": "CH8 Detection Enable",
+   "text": "CH8\nDETECT ON",
+   "backgroundColor": "#0050a0",
+   "action": {
+    "definitionId": "enableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8,
+     "frequency": 1000,
+     "min": -40,
+     "max": -10
+    }
+   }
+  },
+  {
    "id": "diag_det_disable_ch8",
    "category": "CH8 Diagnostics",
    "name": "CH8 Detection Disable",
@@ -1143,6 +2091,20 @@
    "backgroundColor": "#505050",
    "action": {
     "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8
+    }
+   }
+  },
+  {
+   "id": "diag_stop_all_ch8",
+   "category": "CH8 Diagnostics",
+   "name": "CH8 Stop All",
+   "text": "CH8\nSTOP ALL",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "stopAllDiagnostics",
     "options": {
      "device": "10.11.12.13",
      "channel": 8

@@ -46,9 +46,8 @@
     {
      "id": "mac",
      "label": "Switch Mac Address",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "port",
@@ -74,9 +73,8 @@
     {
      "id": "mac",
      "label": "Switch Mac Address",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "port",

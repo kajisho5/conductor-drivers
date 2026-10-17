@@ -136,6 +136,28 @@
    }
   },
   {
+   "id": "refresh_choices",
+   "name": "Refresh Devices and Presets",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/?v=14&method=get_channels&token=undefined&page=1"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/api/?v=14&method=get_devices&device_type=rx&token=undefined&page=1"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/api/?v=14&method=get_presets&token=undefined&page=1"
+    }
+   ]
+  },
+  {
    "id": "connect_preset",
    "name": "Connect Preset",
    "options": [

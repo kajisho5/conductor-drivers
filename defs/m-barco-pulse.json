@@ -33,7 +33,7 @@
    "id": "interval",
    "label": "Update Interval",
    "type": "text",
-   "default": 2000
+   "default": "2000"
   },
   {
    "id": "verbose",

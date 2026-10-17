@@ -11,7 +11,7 @@
    "id": "baseUrl",
    "label": "URL の先頭",
    "type": "text",
-   "default": "https://192.168.0.10",
+   "default": "https://192.168.0.10:9000",
    "placeholder": "http://192.168.0.10",
    "mono": true
   },

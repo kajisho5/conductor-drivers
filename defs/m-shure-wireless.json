@@ -196,7 +196,7 @@
      "id": "gain",
      "label": "Gain Value (dB)",
      "type": "text",
-     "default": 0
+     "default": "0"
     }
    ],
    "send": {
@@ -225,7 +225,7 @@
      "id": "gain",
      "label": "Gain Value (dB)",
      "type": "text",
-     "default": 3
+     "default": "3"
     }
    ],
    "send": {
@@ -254,7 +254,7 @@
      "id": "gain",
      "label": "Gain Value (dB)",
      "type": "text",
-     "default": 3
+     "default": "3"
     }
    ],
    "send": {

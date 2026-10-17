@@ -369,7 +369,7 @@
      "id": "id_settransitionduration",
      "label": "Duration (in s)",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {
@@ -402,7 +402,7 @@
      "id": "id_setspeed",
      "label": "Value (0 to 100)",
      "type": "text",
-     "default": 100
+     "default": "100"
     },
     {
      "id": "id_setspeed_camera",
@@ -432,31 +432,31 @@
      "id": "id_sendabspan",
      "label": "Pan Value (-2048 to 2048)",
      "type": "text",
-     "default": 0
+     "default": "0"
     },
     {
      "id": "id_sendabstilt",
      "label": "Tilt Value (-2048 to 2048)",
      "type": "text",
-     "default": 0
+     "default": "0"
     },
     {
      "id": "id_sendabsroll",
      "label": "Roll Value (-2048 to 2048)",
      "type": "text",
-     "default": 0
+     "default": "0"
     },
     {
      "id": "id_sendabszoom",
      "label": "Zoom Value (0 to 4096)",
      "type": "text",
-     "default": 0
+     "default": "0"
     },
     {
      "id": "id_sendabsduration",
      "label": "Transition duration (s)",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {

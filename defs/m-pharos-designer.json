@@ -83,7 +83,7 @@
      "id": "rate",
      "label": "Rate (0.1 to 1 is default timeline rate)",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "position",

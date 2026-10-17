@@ -743,13 +743,13 @@
      "id": "x",
      "label": "X-coordinate",
      "type": "text",
-     "default": 100
+     "default": "100"
     },
     {
      "id": "y",
      "label": "Y-coordinate",
      "type": "text",
-     "default": 100
+     "default": "100"
     }
    ],
    "send": {

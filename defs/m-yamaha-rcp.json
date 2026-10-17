@@ -203,13 +203,13 @@
      "id": "X",
      "label": "CustomFaderBank",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Y",
      "label": "A",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -846,7 +846,7 @@
      "id": "Y",
      "label": "CustomFaderBank",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -1483,13 +1483,13 @@
      "id": "X",
      "label": "CustomFaderBank",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Y",
      "label": "C",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -2126,7 +2126,7 @@
      "id": "Y",
      "label": "CustomFaderBank",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -2763,13 +2763,13 @@
      "id": "X",
      "label": "CustomFaderBank",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Y",
      "label": "Master",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -3406,13 +3406,13 @@
      "id": "X",
      "label": "CustomFaderBank",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Y",
      "label": "SourceCh",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -4049,7 +4049,7 @@
      "id": "X",
      "label": "DanteOutPort",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -5674,7 +5674,7 @@
      "id": "X",
      "label": "DCA",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -5748,7 +5748,7 @@
      "id": "X",
      "label": "DCA",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -5771,7 +5771,7 @@
      "id": "X",
      "label": "DigitalOutPort",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7066,7 +7066,7 @@
      "id": "X",
      "label": "Mix",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7140,7 +7140,7 @@
      "id": "X",
      "label": "Mix",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7369,7 +7369,7 @@
      "id": "X",
      "label": "Mix",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7506,7 +7506,7 @@
      "id": "X",
      "label": "Mtrx",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7580,7 +7580,7 @@
      "id": "X",
      "label": "Mtrx",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7809,7 +7809,7 @@
      "id": "X",
      "label": "Mtrx",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7832,7 +7832,7 @@
      "id": "X",
      "label": "MuteMaster",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -7855,7 +7855,7 @@
      "id": "X",
      "label": "OmniOutPort",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -9736,7 +9736,7 @@
      "id": "Y",
      "label": "Recorder",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -9759,7 +9759,7 @@
      "id": "Val",
      "label": "Recall",
      "type": "text",
-     "default": 0
+     "default": "0"
     }
    ],
    "send": {
@@ -9796,7 +9796,7 @@
      "id": "Val",
      "label": "Store",
      "type": "text",
-     "default": 0
+     "default": "0"
     }
    ],
    "send": {
@@ -9813,7 +9813,7 @@
      "id": "Y",
      "label": "SlotOut1Port",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -9836,7 +9836,7 @@
      "id": "Y",
      "label": "SlotOut2Port",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -9859,7 +9859,7 @@
      "id": "Y",
      "label": "SlotOut3Port",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -9882,7 +9882,7 @@
      "id": "X",
      "label": "St",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -9956,7 +9956,7 @@
      "id": "X",
      "label": "St",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",
@@ -10185,7 +10185,7 @@
      "id": "X",
      "label": "St",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "Val",

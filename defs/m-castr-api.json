@@ -52,8 +52,7 @@
     {
      "id": "stream",
      "label": "Stream",
-     "type": "select",
-     "choices": [],
+     "type": "text",
      "help": "use either the stream name or the stream id, variables are expanded"
     },
     {

@@ -70,15 +70,13 @@
     {
      "id": "video_mode",
      "label": "Video Mode",
-     "type": "select",
-     "default": "Auto",
-     "choices": []
+     "type": "text",
+     "default": "Auto"
     },
     {
      "id": "platform",
      "label": "Platform",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "server",
@@ -97,9 +95,8 @@
     {
      "id": "quality",
      "label": "Quality",
-     "type": "select",
-     "default": "Streaming Medium",
-     "choices": []
+     "type": "text",
+     "default": "Streaming Medium"
     }
    ],
    "send": {
@@ -133,15 +130,13 @@
     {
      "id": "platform",
      "label": "Platform",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "video_mode",
      "label": "Video Mode",
-     "type": "select",
-     "default": "Auto",
-     "choices": []
+     "type": "text",
+     "default": "Auto"
     },
     {
      "id": "customURL",
@@ -160,9 +155,8 @@
     {
      "id": "quality",
      "label": "Quality",
-     "type": "select",
-     "default": "Streaming Medium",
-     "choices": []
+     "type": "text",
+     "default": "Streaming Medium"
     }
    ],
    "send": {
@@ -211,9 +205,8 @@
     {
      "id": "video_mode",
      "label": "Video Mode",
-     "type": "select",
-     "default": "Auto",
-     "choices": []
+     "type": "text",
+     "default": "Auto"
     }
    ],
    "send": {
@@ -229,9 +222,8 @@
     {
      "id": "quality",
      "label": "Quality",
-     "type": "select",
-     "default": "Streaming Medium",
-     "choices": []
+     "type": "text",
+     "default": "Streaming Medium"
     }
    ],
    "send": {

@@ -41,7 +41,7 @@
    "id": "pollingrate",
    "label": "Polling Rate (in ms)",
    "type": "text",
-   "default": 1000
+   "default": "1000"
   },
   {
    "id": "verbose",
@@ -64,7 +64,7 @@
     "kind": "http",
     "method": "PUT",
     "path": "/pairing/start",
-    "body": "{\"DEVICE_NAME\":\"node-app-1792199331077\",\"DEVICE_ID\":\"node-app-1792199331077\"}",
+    "body": "{\"DEVICE_NAME\":\"node-app-1792201026466\",\"DEVICE_ID\":\"node-app-1792201026466\"}",
     "contentType": "application/json"
    }
   },
@@ -82,7 +82,7 @@
     "kind": "http",
     "method": "PUT",
     "path": "/pairing/pair",
-    "body": "{\"DEVICE_ID\":\"node-app-1792199331077\",\"CHALLENGE_TYPE\":1,\"RESPONSE_VALUE\":\"QB0x\",\"PAIRING_REQ_TOKEN\":\"\"}",
+    "body": "{\"DEVICE_ID\":\"node-app-1792201026466\",\"CHALLENGE_TYPE\":1,\"RESPONSE_VALUE\":\"QB0x\",\"PAIRING_REQ_TOKEN\":\"\"}",
     "contentType": "application/json"
    }
   }

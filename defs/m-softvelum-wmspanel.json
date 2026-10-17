@@ -50,9 +50,8 @@
     {
      "id": "server_id",
      "label": "Select Server",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "src_app",

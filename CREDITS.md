@@ -70,13 +70,13 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | chamsys-magicq-udp | 2.1.0 | MIT | Per Røine | https://github.com/bitfocus/companion-module-chamsys-magicq-udp.git |
 | christie-projector | 4.1.0 | MIT | Joseph Adams, Per Røine, Andreas Thomsen | https://github.com/bitfocus/companion-module-christie-projector.git |
 | christie-spyder | 2.3.0 | ISC | Per Røine, John A Knight, Jr | https://github.com/bitfocus/companion-module-christie-spyder.git |
-| churchapps-freeshow | 1.1.0 | MIT | Kristoffer Vassbø | https://github.com/bitfocus/companion-module-churchapps-freeshow.git |
 | chyronhego-lyric | 1.0.2 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-chyronhego-lyric.git |
 | cinegy-capture | 1.1.5 | MIT | Leopold Strobl | https://github.com/bitfocus/companion-module-cinegy-capture.git |
 | classx-mixboard | 1.2.0 | MIT | Dar-dev | https://github.com/bitfocus/companion-module-classx-mixboard.git |
 | cockos-reaper | 2.4.1 | MIT | Oliver Herman, Oded Davidov | https://github.com/bitfocus/companion-module-cockos-reaper.git |
 | coda-linus | 1.0.3 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-coda-linus.git |
 | colorlight-grandshow | 1.0.3 | MIT | wuwei | https://github.com/bitfocus/companion-module-colorlight-grandshow.git |
+| combitech-vidblasterx | 1.0.1 | MIT | Jens Frank | https://github.com/bitfocus/companion-module-combitech-vidblasterx.git |
 | creativeland-capacitimer | 1.0.1 | MIT | Tom Hillmeyer | https://github.com/bitfocus/companion-module-creativeland-capacitimer.git |
 | creativeland-mediacontrolbridge | 1.0.7 | MIT | Tom Hillmeyer | https://github.com/bitfocus/companion-module-creativeland-mediacontrolbridge.git |
 | cyberpower-pdu | 2.1.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-cyberpower-pdu.git |
@@ -111,6 +111,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | foobar2000-foobar2000 | 1.0.4 | MIT | jateute | https://github.com/bitfocus/companion-module-foobar2000-foobar2000.git |
 | fora-mfr | 1.0.2 | MIT | Dan Hall | https://github.com/bitfocus/companion-module-fora-mfr.git |
 | foscam-ptz | 2.0.0 | MIT | Bastiaan Rodenburg | https://github.com/bitfocus/companion-module-foscam-ptz.git |
+| generic-pjlink | 2.4.0 | MIT | John Knight, Jr, Per Roine, Jamie McConchie, Joseph Adams | https://github.com/bitfocus/companion-module-generic-pjlink.git |
 | generic-speedtest | 2.0.1 | MIT | Bryce Seifert | https://github.com/bitfocus/companion-module-generic-speedtest.git |
 | generic-swp02 | 1.2.4 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-generic-swp02.git |
 | generic-swp08 | 2.0.9 | MIT | Peter Daniel, Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-generic-swp08.git |
@@ -119,6 +120,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | globalcache-itac-cc | 2.0.5 | MIT | Joseph Adams, Casey Selph | https://github.com/bitfocus/companion-module-globalcache-itac-cc.git |
 | globalcache-itac-ir | 2.0.3 | MIT | Casey Selph, Joseph Adams | https://github.com/bitfocus/companion-module-globalcache-itac-ir.git |
 | globalcache-itac-sl | 2.0.0 | MIT | Casey Selph, Joseph Adams | https://github.com/bitfocus/companion-module-globalcache-itac-sl.git |
+| greengo-intercom | 1.0.2 | MIT | Timo Toups | https://github.com/bitfocus/companion-module-greengo-intercom.git |
 | greenhippo-hippotizer-rest | 1.0.1 | MIT | Leon Dickens | https://github.com/bitfocus/companion-module-greenhippo-hippotizer-rest.git |
 | gudesystems-smartpdu | 1.0.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-gudesystems-smartpdu.git |
 | h2r-graphics | 3.9.0 | MIT | John Barker | https://github.com/bitfocus/companion-module-h2r-graphics.git |
@@ -253,7 +255,6 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | syncer-live | 1.0.0 | MIT | Tobias Messner | https://github.com/bitfocus/companion-module-syncer-live.git |
 | tascam-bdmp1 | 1.0.0 | MIT | Christian Volmering | https://github.com/bitfocus/companion-module-tascam-bdmp1.git |
 | tasmota-http | 1.0.4 | MIT | jens frank | https://github.com/bitfocus/companion-module-tasmota-http.git |
-| techministry-spotifycontroller | 2.3.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-techministry-spotifycontroller.git |
 | telestream-prism | 1.3.1 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-telestream-prism.git |
 | televic-confero | 1.0.0 | MIT | Stijn Bryq | https://github.com/bitfocus/companion-module-televic-confero.git |
 | telos-25-seven-program-delay-manager | 1.1.1 | MIT | Chris Lane | https://github.com/bitfocus/companion-module-telos-25-seven-program-delay-manager |

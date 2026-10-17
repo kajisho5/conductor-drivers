@@ -27,7 +27,7 @@
    "id": "interval",
    "label": "Update Interval",
    "type": "text",
-   "default": 5000
+   "default": "5000"
   },
   {
    "id": "verbose",
@@ -1417,9 +1417,8 @@
     {
      "id": "p1",
      "label": "Select Filter",
-     "type": "select",
-     "default": "0",
-     "choices": []
+     "type": "text",
+     "default": "0"
     }
    ],
    "send": {

@@ -19,7 +19,7 @@
    "id": "sib_ip_port",
    "label": "Sport In The Box api port",
    "type": "text",
-   "default": 8080,
+   "default": "8080",
    "help": "Default is 8080"
   },
   {
@@ -64,9 +64,8 @@
     {
      "id": "sib_action_trigger_event",
      "label": "TriggerID",
-     "type": "select",
-     "default": "-1",
-     "choices": []
+     "type": "text",
+     "default": "-1"
     }
    ],
    "send": {

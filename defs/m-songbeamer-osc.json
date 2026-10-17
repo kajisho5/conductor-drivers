@@ -19,15 +19,9 @@
    "id": "port",
    "label": "ポート",
    "type": "number",
-   "default": 0,
+   "help": "機器の説明書にあるポート番号を入れてください",
    "min": 1,
    "max": 65535
-  },
-  {
-   "id": "remote_port",
-   "label": "Target Port",
-   "type": "text",
-   "help": "OSC Port used in Songbeamer default is 10023"
   },
   {
    "id": "local_port",
@@ -141,6 +135,114 @@
    }
   },
   {
+   "id": "presentation_language",
+   "name": "Change languages to be displayed",
+   "options": [
+    {
+     "id": "presentation_language_primary",
+     "label": "Choose primary language",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "#1"
+      },
+      {
+       "id": "2",
+       "label": "#2"
+      },
+      {
+       "id": "3",
+       "label": "#3"
+      },
+      {
+       "id": "4",
+       "label": "#4"
+      }
+     ]
+    },
+    {
+     "id": "presentation_language",
+     "label": "Combination of id-number of languages to be displayed",
+     "type": "text",
+     "default": "1234",
+     "help": "Choose any combination of 1234 or type ALL"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/presentation/primarylanguage",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.presentation_language_primary|map}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/presentation/language",
+     "args": [
+      {
+       "type": "s",
+       "value": "{{option.presentation_language}}"
+      }
+     ]
+    }
+   ],
+   "maps": {
+    "presentation_language_primary": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "presentation_message",
+   "name": "Change presentation message text",
+   "options": [
+    {
+     "id": "presentation_message_visible",
+     "label": "Show Message",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "presentation_message_text",
+     "label": "Message",
+     "type": "text",
+     "default": "",
+     "help": "Type any message to display"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/presentation/message/text",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.presentation_message_text}}"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/presentation/message/visible",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "stage_message_text",
    "name": "Change stage message text",
    "options": [
@@ -208,7 +310,7 @@
      "id": "stage_timerinit_seconds",
      "label": "Set length of timer in seconds",
      "type": "text",
-     "default": 60,
+     "default": "60",
      "help": "The length of the timer to set as seconds"
     }
    ],

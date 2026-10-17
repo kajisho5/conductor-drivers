@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-10-17T01:19:44.935Z",
+ "generatedAt": "2026-10-17T01:47:59.002Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -9,9 +9,9 @@
    "transport": "udp",
    "version": "1.2.2",
    "minAppVersion": "0.6.0",
-   "actions": 4,
+   "actions": 6,
    "allActions": 28,
-   "bytes": 6107
+   "bytes": 8192
   },
   {
    "id": "m-adder-avm",
@@ -20,9 +20,9 @@
    "transport": "http",
    "version": "1.2.2",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 3,
    "allActions": 3,
-   "bytes": 1320
+   "bytes": 2652
   },
   {
    "id": "m-adder-infinity-aim",
@@ -31,9 +31,9 @@
    "transport": "http",
    "version": "2.1.4",
    "minAppVersion": "0.6.0",
-   "actions": 4,
+   "actions": 5,
    "allActions": 5,
-   "bytes": 6028
+   "bytes": 6533
   },
   {
    "id": "m-adder-infinity-alif",
@@ -42,9 +42,9 @@
    "transport": "http",
    "version": "1.0.0-beta1",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 3,
    "allActions": 3,
-   "bytes": 1198
+   "bytes": 2521
   },
   {
    "id": "m-aetaaudio-codecs",
@@ -88,7 +88,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 17,
-   "bytes": 10440
+   "bytes": 10100
   },
   {
    "id": "m-aja-kipro",
@@ -97,9 +97,9 @@
    "transport": "http",
    "version": "3.4.0",
    "minAppVersion": "0.6.0",
-   "actions": 18,
+   "actions": 20,
    "allActions": 21,
-   "bytes": 9020
+   "bytes": 9944
   },
   {
    "id": "m-aja-kumo",
@@ -108,9 +108,9 @@
    "transport": "http",
    "version": "2.2.1",
    "minAppVersion": "0.6.0",
-   "actions": 3,
+   "actions": 4,
    "allActions": 5,
-   "bytes": 9723
+   "bytes": 11097
   },
   {
    "id": "m-allenheath-ahm",
@@ -119,9 +119,9 @@
    "transport": "tcp",
    "version": "2.3.0",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 2,
    "allActions": 14,
-   "bytes": 10234
+   "bytes": 19100
   },
   {
    "id": "m-allenheath-avantis",
@@ -341,7 +341,7 @@
    "minAppVersion": "0.6.0",
    "actions": 4,
    "allActions": 4,
-   "bytes": 3373
+   "bytes": 3307
   },
   {
    "id": "m-axis-ptz",
@@ -396,7 +396,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 14,
-   "bytes": 10374
+   "bytes": 10354
   },
   {
    "id": "m-barco-pulse",
@@ -407,7 +407,7 @@
    "minAppVersion": "0.6.0",
    "actions": 10,
    "allActions": 22,
-   "bytes": 12599
+   "bytes": 12601
   },
   {
    "id": "m-bbc-raven",
@@ -418,7 +418,7 @@
    "minAppVersion": "0.6.0",
    "actions": 37,
    "allActions": 37,
-   "bytes": 16800
+   "bytes": 16096
   },
   {
    "id": "m-beaware-conferencecaptioning",
@@ -429,7 +429,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 6,
-   "bytes": 1544
+   "bytes": 1678
   },
   {
    "id": "m-behringer-wing",
@@ -438,9 +438,9 @@
    "transport": "udp",
    "version": "2.3.0-beta.2",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 16,
    "allActions": 98,
-   "bytes": 12332
+   "bytes": 101822
   },
   {
    "id": "m-behringer-xair",
@@ -473,7 +473,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 10,
-   "bytes": 2972
+   "bytes": 2974
   },
   {
    "id": "m-binary-moipcontroller",
@@ -484,7 +484,7 @@
    "minAppVersion": "0.6.0",
    "actions": 10,
    "allActions": 10,
-   "bytes": 4102
+   "bytes": 4038
   },
   {
    "id": "m-blackbox-boxilla",
@@ -495,7 +495,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 1,
-   "bytes": 1887
+   "bytes": 1821
   },
   {
    "id": "m-bmd-gpi-and-tally-interface",
@@ -561,7 +561,7 @@
    "minAppVersion": "0.6.0",
    "actions": 9,
    "allActions": 9,
-   "bytes": 7385
+   "bytes": 7209
   },
   {
    "id": "m-boinx-mimolive",
@@ -594,7 +594,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 8,
-   "bytes": 2473
+   "bytes": 2365
   },
   {
    "id": "m-brompton-tessera",
@@ -614,9 +614,9 @@
    "transport": "http",
    "version": "2.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 10,
+   "actions": 9,
    "allActions": 11,
-   "bytes": 16114
+   "bytes": 4149
   },
   {
    "id": "m-cablematters-matrix",
@@ -647,9 +647,9 @@
    "transport": "http",
    "version": "2.4.0",
    "minAppVersion": "0.6.0",
-   "actions": 69,
+   "actions": 78,
    "allActions": 107,
-   "bytes": 86324
+   "bytes": 99198
   },
   {
    "id": "m-captionkit-api",
@@ -682,7 +682,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 2,
-   "bytes": 2394
+   "bytes": 2372
   },
   {
    "id": "m-chamsys-magicq-osc",
@@ -715,7 +715,7 @@
    "minAppVersion": "0.6.0",
    "actions": 66,
    "allActions": 67,
-   "bytes": 141109
+   "bytes": 141089
   },
   {
    "id": "m-christie-spyder",
@@ -726,18 +726,7 @@
    "minAppVersion": "0.6.0",
    "actions": 9,
    "allActions": 9,
-   "bytes": 6560
-  },
-  {
-   "id": "m-churchapps-freeshow",
-   "name": "ChurchApps FreeShow",
-   "category": "ChurchApps",
-   "transport": "http",
-   "version": "1.1.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 42,
-   "bytes": 1412
+   "bytes": 6584
   },
   {
    "id": "m-chyronhego-lyric",
@@ -759,7 +748,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 3,
-   "bytes": 2717
+   "bytes": 2695
   },
   {
    "id": "m-classx-mixboard",
@@ -770,7 +759,7 @@
    "minAppVersion": "0.6.0",
    "actions": 9,
    "allActions": 16,
-   "bytes": 9449
+   "bytes": 9513
   },
   {
    "id": "m-cockos-reaper",
@@ -804,6 +793,17 @@
    "actions": 18,
    "allActions": 18,
    "bytes": 6135
+  },
+  {
+   "id": "m-combitech-vidblasterx",
+   "name": "CombiTech VidBlasterX",
+   "category": "CombiTech",
+   "transport": "tcp",
+   "version": "1.0.1",
+   "minAppVersion": "0.6.0",
+   "actions": 21,
+   "allActions": 21,
+   "bytes": 7998
   },
   {
    "id": "m-creativeland-capacitimer",
@@ -845,9 +845,9 @@
    "transport": "http",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 12,
+   "actions": 13,
    "allActions": 15,
-   "bytes": 10832
+   "bytes": 11350
   },
   {
    "id": "m-dan-dugan-automixer",
@@ -858,7 +858,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 50,
-   "bytes": 9659
+   "bytes": 9963
   },
   {
    "id": "m-dashare-multiplay",
@@ -891,7 +891,7 @@
    "minAppVersion": "0.6.0",
    "actions": 100,
    "allActions": 123,
-   "bytes": 64237
+   "bytes": 64129
   },
   {
    "id": "m-dcc-ex-commandstation",
@@ -902,7 +902,7 @@
    "minAppVersion": "0.6.0",
    "actions": 10,
    "allActions": 12,
-   "bytes": 34755
+   "bytes": 34759
   },
   {
    "id": "m-denon-receiver",
@@ -966,9 +966,9 @@
    "transport": "http",
    "version": "2.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 5,
+   "actions": 6,
    "allActions": 6,
-   "bytes": 3565
+   "bytes": 4586
   },
   {
    "id": "m-dolby-cinemaprocessor",
@@ -977,9 +977,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 6,
+   "actions": 7,
    "allActions": 11,
-   "bytes": 3412
+   "bytes": 3611
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -1023,7 +1023,7 @@
    "minAppVersion": "0.6.0",
    "actions": 11,
    "allActions": 13,
-   "bytes": 10795
+   "bytes": 10797
   },
   {
    "id": "m-equipson-lightshark",
@@ -1032,9 +1032,9 @@
    "transport": "udp",
    "version": "2.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 18,
+   "actions": 43,
    "allActions": 47,
-   "bytes": 9850
+   "bytes": 19908
   },
   {
    "id": "m-etc-echo",
@@ -1056,7 +1056,7 @@
    "minAppVersion": "0.6.0",
    "actions": 5,
    "allActions": 15,
-   "bytes": 3107
+   "bytes": 3109
   },
   {
    "id": "m-etcaudiovisuel-onlyview",
@@ -1067,7 +1067,7 @@
    "minAppVersion": "0.6.0",
    "actions": 23,
    "allActions": 23,
-   "bytes": 13798
+   "bytes": 13862
   },
   {
    "id": "m-etl-rfmatrix",
@@ -1098,9 +1098,9 @@
    "transport": "udp",
    "version": "1.0.2",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 3,
    "allActions": 5,
-   "bytes": 6759
+   "bytes": 8949
   },
   {
    "id": "m-extron-mmx-tcp",
@@ -1166,7 +1166,7 @@
    "minAppVersion": "0.6.0",
    "actions": 7,
    "allActions": 11,
-   "bytes": 7335
+   "bytes": 7313
   },
   {
    "id": "m-foscam-ptz",
@@ -1175,9 +1175,20 @@
    "transport": "http",
    "version": "2.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 5,
+   "actions": 13,
    "allActions": 15,
-   "bytes": 2345
+   "bytes": 10783
+  },
+  {
+   "id": "m-generic-pjlink",
+   "name": "JBMIA Projector / PJLink",
+   "category": "JBMIA",
+   "transport": "tcp",
+   "version": "2.4.0",
+   "minAppVersion": "0.6.0",
+   "actions": 5,
+   "allActions": 6,
+   "bytes": 4644
   },
   {
    "id": "m-generic-speedtest",
@@ -1199,7 +1210,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 4,
-   "bytes": 1943
+   "bytes": 1921
   },
   {
    "id": "m-generic-swp08",
@@ -1230,9 +1241,9 @@
    "transport": "udp",
    "version": "1.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 4,
+   "actions": 5,
    "allActions": 8,
-   "bytes": 4303
+   "bytes": 4612
   },
   {
    "id": "m-globalcache-itac-cc",
@@ -1268,6 +1279,17 @@
    "bytes": 2220
   },
   {
+   "id": "m-greengo-intercom",
+   "name": "Green-GO Intercom Remote (OSC)",
+   "category": "Green-GO",
+   "transport": "udp",
+   "version": "1.0.2",
+   "minAppVersion": "0.6.0",
+   "actions": 3,
+   "allActions": 12,
+   "bytes": 4899
+  },
+  {
    "id": "m-greenhippo-hippotizer-rest",
    "name": "Green Hippo Hippotizer",
    "category": "Green Hippo",
@@ -1287,7 +1309,7 @@
    "minAppVersion": "0.6.0",
    "actions": 3,
    "allActions": 4,
-   "bytes": 2521
+   "bytes": 2455
   },
   {
    "id": "m-h2r-graphics",
@@ -1298,7 +1320,7 @@
    "minAppVersion": "0.6.0",
    "actions": 38,
    "allActions": 46,
-   "bytes": 27607
+   "bytes": 26925
   },
   {
    "id": "m-haivision-kbencoder",
@@ -1309,7 +1331,7 @@
    "minAppVersion": "0.6.0",
    "actions": 4,
    "allActions": 6,
-   "bytes": 2447
+   "bytes": 2359
   },
   {
    "id": "m-hdkatov-visca",
@@ -1353,7 +1375,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 3,
-   "bytes": 2985
+   "bytes": 2965
   },
   {
    "id": "m-ictag-easyvideo",
@@ -1364,7 +1386,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 8,
-   "bytes": 4327
+   "bytes": 4391
   },
   {
    "id": "m-idk-fdx",
@@ -1472,9 +1494,9 @@
    "transport": "http",
    "version": "4.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 2,
    "allActions": 20,
-   "bytes": 1169
+   "bytes": 1396
   },
   {
    "id": "m-irisdown-countdowntimer",
@@ -1516,9 +1538,9 @@
    "transport": "http",
    "version": "1.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 2,
+   "actions": 11,
    "allActions": 13,
-   "bytes": 1633
+   "bytes": 5723
   },
   {
    "id": "m-klang-app",
@@ -1573,7 +1595,7 @@
    "minAppVersion": "0.6.0",
    "actions": 14,
    "allActions": 35,
-   "bytes": 5916
+   "bytes": 6240
   },
   {
    "id": "m-lgtv-prodisplay",
@@ -1672,7 +1694,7 @@
    "minAppVersion": "0.6.0",
    "actions": 3,
    "allActions": 5,
-   "bytes": 9550
+   "bytes": 9552
   },
   {
    "id": "m-malighting-msc",
@@ -1683,7 +1705,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 6,
-   "bytes": 4207
+   "bytes": 4268
   },
   {
    "id": "m-matrox-monarch",
@@ -1705,7 +1727,7 @@
    "minAppVersion": "0.6.0",
    "actions": 7,
    "allActions": 8,
-   "bytes": 11196
+   "bytes": 11210
   },
   {
    "id": "m-mixtech-theatremix",
@@ -1760,7 +1782,7 @@
    "minAppVersion": "0.6.0",
    "actions": 4,
    "allActions": 13,
-   "bytes": 2779
+   "bytes": 2784
   },
   {
    "id": "m-mt-viki-matrix",
@@ -1782,7 +1804,7 @@
    "minAppVersion": "0.6.0",
    "actions": 14,
    "allActions": 28,
-   "bytes": 17967
+   "bytes": 17901
   },
   {
    "id": "m-nanoleaf-shapes",
@@ -1791,9 +1813,9 @@
    "transport": "http",
    "version": "1.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 12,
+   "actions": 15,
    "allActions": 17,
-   "bytes": 5811
+   "bytes": 8545
   },
   {
    "id": "m-nec-display",
@@ -1804,7 +1826,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 4,
-   "bytes": 2150
+   "bytes": 2152
   },
   {
    "id": "m-netron-en",
@@ -1892,7 +1914,7 @@
    "minAppVersion": "0.6.0",
    "actions": 8,
    "allActions": 10,
-   "bytes": 4116
+   "bytes": 4094
   },
   {
    "id": "m-novastar-controller",
@@ -1903,7 +1925,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 7,
-   "bytes": 10566
+   "bytes": 10544
   },
   {
    "id": "m-novastar-mediaserver",
@@ -1980,7 +2002,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 4,
-   "bytes": 2494
+   "bytes": 2450
   },
   {
    "id": "m-osee-gostream",
@@ -1991,7 +2013,7 @@
    "minAppVersion": "0.6.0",
    "actions": 52,
    "allActions": 131,
-   "bytes": 71606
+   "bytes": 71584
   },
   {
    "id": "m-panasonic-av-hsw10",
@@ -2033,9 +2055,9 @@
    "transport": "http",
    "version": "1.2.0",
    "minAppVersion": "0.6.0",
-   "actions": 11,
+   "actions": 12,
    "allActions": 50,
-   "bytes": 17737
+   "bytes": 18213
   },
   {
    "id": "m-panasonic-kairos",
@@ -2046,7 +2068,7 @@
    "minAppVersion": "0.6.0",
    "actions": 8,
    "allActions": 16,
-   "bytes": 69249
+   "bytes": 69117
   },
   {
    "id": "m-panasonic-ptz",
@@ -2068,7 +2090,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 6,
-   "bytes": 6183
+   "bytes": 6187
   },
   {
    "id": "m-phabrix-qx",
@@ -2090,7 +2112,7 @@
    "minAppVersion": "0.6.0",
    "actions": 4,
    "allActions": 4,
-   "bytes": 5462
+   "bytes": 5464
   },
   {
    "id": "m-philips-wiz-bulbs",
@@ -2099,9 +2121,9 @@
    "transport": "udp",
    "version": "1.0.2",
    "minAppVersion": "0.6.0",
-   "actions": 2,
+   "actions": 3,
    "allActions": 6,
-   "bytes": 1915
+   "bytes": 2270
   },
   {
    "id": "m-pixelhue-mediaserver",
@@ -2121,9 +2143,9 @@
    "transport": "http",
    "version": "1.0.3",
    "minAppVersion": "0.6.0",
-   "actions": 10,
+   "actions": 17,
    "allActions": 22,
-   "bytes": 4489
+   "bytes": 7656
   },
   {
    "id": "m-powersoft-amplifiers",
@@ -2132,9 +2154,9 @@
    "transport": "http",
    "version": "1.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 9,
+   "actions": 13,
    "allActions": 19,
-   "bytes": 24795
+   "bytes": 47874
   },
   {
    "id": "m-presentationtools-aps",
@@ -2167,7 +2189,7 @@
    "minAppVersion": "0.6.0",
    "actions": 3,
    "allActions": 5,
-   "bytes": 68559
+   "bytes": 68571
   },
   {
    "id": "m-ptzoptics-visca",
@@ -2200,7 +2222,7 @@
    "minAppVersion": "0.6.0",
    "actions": 14,
    "allActions": 14,
-   "bytes": 5539
+   "bytes": 5547
   },
   {
    "id": "m-resi-decoders",
@@ -2255,7 +2277,7 @@
    "minAppVersion": "0.6.0",
    "actions": 5,
    "allActions": 12,
-   "bytes": 6240
+   "bytes": 6304
   },
   {
    "id": "m-roku-tv",
@@ -2266,7 +2288,7 @@
    "minAppVersion": "0.6.0",
    "actions": 5,
    "allActions": 8,
-   "bytes": 9663
+   "bytes": 9641
   },
   {
    "id": "m-roland-v600uhd",
@@ -2299,7 +2321,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 14,
-   "bytes": 6452
+   "bytes": 6460
   },
   {
    "id": "m-rossvideo-xpression",
@@ -2486,7 +2508,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 7,
-   "bytes": 5670
+   "bytes": 5676
   },
   {
    "id": "m-simedia-yesapi",
@@ -2508,7 +2530,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 9,
-   "bytes": 4984
+   "bytes": 4877
   },
   {
    "id": "m-smartavi-ipmatrix",
@@ -2528,9 +2550,9 @@
    "transport": "http",
    "version": "1.1.2",
    "minAppVersion": "0.6.0",
-   "actions": 19,
+   "actions": 21,
    "allActions": 27,
-   "bytes": 9476
+   "bytes": 10601
   },
   {
    "id": "m-snapav-wattbox",
@@ -2552,7 +2574,7 @@
    "minAppVersion": "0.6.0",
    "actions": 9,
    "allActions": 12,
-   "bytes": 3756
+   "bytes": 3646
   },
   {
    "id": "m-softron-mreplay",
@@ -2563,7 +2585,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 13,
-   "bytes": 19685
+   "bytes": 19443
   },
   {
    "id": "m-softron-multicamlogger",
@@ -2574,7 +2596,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 7,
-   "bytes": 2821
+   "bytes": 2777
   },
   {
    "id": "m-softron-ontheairvideo",
@@ -2585,7 +2607,7 @@
    "minAppVersion": "0.6.0",
    "actions": 15,
    "allActions": 18,
-   "bytes": 20207
+   "bytes": 20119
   },
   {
    "id": "m-softvelum-nimble-streamer",
@@ -2607,7 +2629,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 23,
-   "bytes": 6136
+   "bytes": 6114
   },
   {
    "id": "m-songbeamer-osc",
@@ -2616,9 +2638,9 @@
    "transport": "udp",
    "version": "2.3.2",
    "minAppVersion": "0.6.0",
-   "actions": 11,
+   "actions": 13,
    "allActions": 16,
-   "bytes": 10754
+   "bytes": 12702
   },
   {
    "id": "m-sony-bravia-simpleip",
@@ -2651,7 +2673,7 @@
    "minAppVersion": "0.6.0",
    "actions": 47,
    "allActions": 66,
-   "bytes": 43742
+   "bytes": 43720
   },
   {
    "id": "m-sounddevices-pixnet",
@@ -2682,9 +2704,9 @@
    "transport": "http",
    "version": "2.3.1",
    "minAppVersion": "0.6.0",
-   "actions": 26,
+   "actions": 27,
    "allActions": 32,
-   "bytes": 15388
+   "bytes": 16006
   },
   {
    "id": "m-studiocoast-vmix",
@@ -2695,7 +2717,7 @@
    "minAppVersion": "0.6.0",
    "actions": 64,
    "allActions": 129,
-   "bytes": 118126
+   "bytes": 112102
   },
   {
    "id": "m-symetrix-dsp",
@@ -2742,17 +2764,6 @@
    "bytes": 2245
   },
   {
-   "id": "m-techministry-spotifycontroller",
-   "name": "Tech Ministry Spotify Controller",
-   "category": "Tech Ministry",
-   "transport": "http",
-   "version": "2.3.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 19,
-   "bytes": 1534
-  },
-  {
    "id": "m-telestream-prism",
    "name": "Telestream Prism / MPI2 / MPX2 / MPD / MPP / MPS",
    "category": "Telestream",
@@ -2783,7 +2794,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 5,
-   "bytes": 3663
+   "bytes": 3665
   },
   {
    "id": "m-tesla-smart",
@@ -2849,7 +2860,7 @@
    "minAppVersion": "0.6.0",
    "actions": 17,
    "allActions": 17,
-   "bytes": 6864
+   "bytes": 6644
   },
   {
    "id": "m-toolsonair-justincapture",
@@ -2882,7 +2893,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 3,
-   "bytes": 2646
+   "bytes": 2602
   },
   {
    "id": "m-vbaudio-voicemeeter",
@@ -2904,7 +2915,7 @@
    "minAppVersion": "0.6.0",
    "actions": 20,
    "allActions": 22,
-   "bytes": 34437
+   "bytes": 34441
   },
   {
    "id": "m-videolan-vlc",
@@ -2915,7 +2926,7 @@
    "minAppVersion": "0.6.0",
    "actions": 11,
    "allActions": 18,
-   "bytes": 6316
+   "bytes": 6320
   },
   {
    "id": "m-visualproductions-iocore",
@@ -2948,7 +2959,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 8,
-   "bytes": 4163
+   "bytes": 4141
   },
   {
    "id": "m-vivitek-projector",
@@ -2970,7 +2981,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 7,
-   "bytes": 2358
+   "bytes": 2360
   },
   {
    "id": "m-vizrt-mosart",
@@ -2979,9 +2990,9 @@
    "transport": "http",
    "version": "1.0.5",
    "minAppVersion": "0.6.0",
-   "actions": 44,
+   "actions": 45,
    "allActions": 52,
-   "bytes": 38151
+   "bytes": 38688
   },
   {
    "id": "m-vizrt-tcp-engine-trio",
@@ -3036,7 +3047,7 @@
    "minAppVersion": "0.6.0",
    "actions": 44,
    "allActions": 118,
-   "bytes": 180731
+   "bytes": 180793
   },
   {
    "id": "m-zoom-osc-iso",
@@ -3045,9 +3056,9 @@
    "transport": "udp",
    "version": "4.9.1",
    "minAppVersion": "0.6.0",
-   "actions": 27,
+   "actions": 29,
    "allActions": 170,
-   "bytes": 18858
+   "bytes": 19986
   },
   {
    "id": "m-zoom-tiles",

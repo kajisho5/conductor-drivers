@@ -386,9 +386,8 @@
     {
      "id": "name",
      "label": "Scene Name",
-     "type": "select",
+     "type": "text",
      "default": "Factory Defaults",
-     "choices": [],
      "help": "Max Length: 15 char"
     }
    ],
@@ -405,9 +404,8 @@
     {
      "id": "name",
      "label": "Scene Name",
-     "type": "select",
+     "type": "text",
      "default": "New Scene",
-     "choices": [],
      "help": "Max Length: 15 char"
     }
    ],
@@ -424,25 +422,6 @@
    "send": {
     "kind": "bytes",
     "data": "SNN\\r\\n",
-    "encoding": "text"
-   }
-  },
-  {
-   "id": "sc_delete",
-   "name": "Scene - Delete",
-   "options": [
-    {
-     "id": "name",
-     "label": "Scene Name",
-     "type": "select",
-     "default": "",
-     "choices": [],
-     "help": "Max Length: 15 char. \",\" \";\" Forbidden."
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "GS\\r\\n",
     "encoding": "text"
    }
   },
@@ -476,6 +455,42 @@
     "mode": {
      "FP": "FP",
      "RM": "RM"
+    }
+   }
+  },
+  {
+   "id": "system_channeloffset",
+   "name": "System - Automix Channel Offset",
+   "options": [
+    {
+     "id": "offset",
+     "label": "Input Offset",
+     "type": "select",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Madi Input 1"
+      }
+     ],
+     "help": "Input channel mapped to Automix Channel 1"
+    },
+    {
+     "id": "query",
+     "label": "Query",
+     "type": "boolean",
+     "default": false,
+     "help": "Query will poll current configured channel offset"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.query|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "query": {
+     "false": "CFS,1",
+     "true": "GS"
     }
    }
   },
@@ -535,8 +550,8 @@
      "GSA": "A",
      "GSS": "S",
      "GSI": "I",
-     "GSO": "O",
-     "GSM": "M\\r\\nGS",
+     "GSO": "O\\r\\nGS",
+     "GSM": "M",
      "GSN": "N",
      "GSX": "X"
     }

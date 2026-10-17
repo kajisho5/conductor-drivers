@@ -571,6 +571,28 @@
    }
   },
   {
+   "id": "stop",
+   "name": "PTZ Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/ptz.cgi?action=stop&channel=1&code=Left&arg1=1&arg2=1&arg3=0"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/ptz.cgi?action=stop&channel=1&code=ZoomWide&arg1=0&arg2=0&arg3=0"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/ptz.cgi?action=stop&channel=1&code=FocusFar&arg1=0&arg2=0&arg3=0"
+    }
+   ]
+  },
+  {
    "id": "zoomI",
    "name": "Zoom In",
    "options": [],

@@ -52,9 +52,8 @@
     {
      "id": "layer",
      "label": "Scene/Layer",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     },
     {
      "id": "sourceAB",
@@ -75,9 +74,8 @@
     {
      "id": "source",
      "label": "Source",
-     "type": "select",
-     "default": "1",
-     "choices": []
+     "type": "text",
+     "default": "1"
     }
    ],
    "send": {
@@ -99,9 +97,8 @@
     {
      "id": "scene",
      "label": "Scene",
-     "type": "select",
-     "default": "1",
-     "choices": []
+     "type": "text",
+     "default": "1"
     }
    ],
    "send": {
@@ -117,9 +114,8 @@
     {
      "id": "scene",
      "label": "Scene",
-     "type": "select",
-     "default": "1",
-     "choices": []
+     "type": "text",
+     "default": "1"
     }
    ],
    "send": {
@@ -135,9 +131,8 @@
     {
      "id": "layer",
      "label": "Transition",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -153,9 +148,8 @@
     {
      "id": "layer",
      "label": "Transition",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {

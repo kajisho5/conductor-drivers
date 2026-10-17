@@ -594,6 +594,40 @@
    }
   },
   {
+   "id": "gotoNextGalleryPage",
+   "name": "Goto Next Gallery Page",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/me/galleryPageNext",
+    "args": []
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/zoom/getGalleryOrder",
+     "args": []
+    }
+   ]
+  },
+  {
+   "id": "gotoPreviousGalleryPage",
+   "name": "Goto Previous Gallery Page",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/me/galleryPagePrev",
+    "args": []
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/zoom/getGalleryOrder",
+     "args": []
+    }
+   ]
+  },
+  {
    "id": "setSpeakerView",
    "name": "Set Speaker View",
    "options": [],
@@ -650,9 +684,8 @@
     {
      "id": "user",
      "label": "User",
-     "type": "select",
-     "default": "0",
-     "choices": []
+     "type": "text",
+     "default": "0"
     },
     {
      "id": "name",
@@ -831,6 +864,28 @@
    "backgroundColor": "#e6e6e6",
    "action": {
     "definitionId": "setSpeakerView",
+    "options": {}
+   }
+  },
+  {
+   "id": "Next_Gallery_Page",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Next_Gallery_Page",
+   "text": "Next Gallery Page",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "gotoNextGalleryPage",
+    "options": {}
+   }
+  },
+  {
+   "id": "Previous_Gallery_Page",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Previous_Gallery_Page",
+   "text": "Previous Gallery Page",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "gotoPreviousGalleryPage",
     "options": {}
    }
   },

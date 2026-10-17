@@ -40,6 +40,23 @@
  ],
  "actions": [
   {
+   "id": "bulbOn",
+   "name": "Turn Bulb On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"id\":1,\"method\":\"setPilot\",\"params\":{\"state\":true}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"id\":1,\"method\":\"getPilot\",\"params\":{}}",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
    "id": "bulbOff",
    "name": "Turn Bulb Off",
    "options": [],

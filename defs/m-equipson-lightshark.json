@@ -46,6 +46,60 @@
  ],
  "actions": [
   {
+   "id": "pageUp",
+   "name": "Button: Page Up",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Page/Up",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Page/Up",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pageDown",
+   "name": "Button: Page Down",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Page/Down",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Page/Down",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "syncPlaybacks",
    "name": "Sync: Playbacks",
    "options": [],
@@ -102,6 +156,276 @@
      "1": "1"
     }
    }
+  },
+  {
+   "id": "edit",
+   "name": "Button: Edit",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Edit",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Edit",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "update",
+   "name": "Button: Update",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Update",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Update",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "delete",
+   "name": "Button: Delete",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Delete",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Delete",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "copy",
+   "name": "Button: Copy",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Copy",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Copy",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "move",
+   "name": "Button: Move",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Move",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Move",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "set",
+   "name": "Button: Set",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Set",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Set",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fan",
+   "name": "Button: Fan",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Fan",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Fan",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "find",
+   "name": "Button: Find",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Find",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Find",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "clear",
+   "name": "Button: Clear",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Clear",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Clear",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rec",
+   "name": "Button: Rec",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Rec",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Rec",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "playbackFaderLevelAbs",
@@ -200,6 +524,71 @@
    }
   },
   {
+   "id": "mainPlaybackControl",
+   "name": "Main Playback Control (Go, Stop, etc.)",
+   "options": [
+    {
+     "id": "selectedAction",
+     "label": "Action",
+     "type": "select",
+     "default": "Go",
+     "choices": [
+      {
+       "id": "Go",
+       "label": "Go"
+      },
+      {
+       "id": "Stop",
+       "label": "Stop"
+      },
+      {
+       "id": "Prev",
+       "label": "Previous"
+      },
+      {
+       "id": "Next",
+       "label": "Next"
+      },
+      {
+       "id": "Pause",
+       "label": "Pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/{{option.selectedAction|map}}/Main",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/{{option.selectedAction|map}}/Main",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ],
+   "maps": {
+    "selectedAction": {
+     "Go": "Go",
+     "Stop": "Stop",
+     "Prev": "Prev",
+     "Next": "Next",
+     "Pause": "Pause"
+    }
+   }
+  },
+  {
    "id": "grandmasterFaderLevelAbsolute",
    "name": "GrandMaster Fader Level [absolute]",
    "options": [
@@ -278,6 +667,303 @@
      "4": "4"
     }
    }
+  },
+  {
+   "id": "selectFixture",
+   "name": "Button: Select Fixture",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/SelectFixture",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/SelectFixture",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "selectGroup",
+   "name": "Button: Select Group",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/SelectGroup",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/SelectGroup",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "selectionNext",
+   "name": "Button: Selection Next",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/SelectionNext",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/SelectionNext",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "selectionPrev",
+   "name": "Button: Selection Previous",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/SelectionPrevious",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/SelectionPrevious",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "intensity",
+   "name": "Button: Intensity",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Intensity",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Intensity",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "position",
+   "name": "Button: Position",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Position",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Position",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "colour",
+   "name": "Button: Colour",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Colour",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Colour",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beam",
+   "name": "Button: Beam",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Beam",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Beam",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "advanced",
+   "name": "Button: Advanced",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Advanced",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Advanced",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gobo",
+   "name": "Button: Gobo",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Gobo",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Gobo",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fx",
+   "name": "Button: Fx",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Fx",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/Fx",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "triggerExecRow",
@@ -403,6 +1089,33 @@
      "2": "0"
     }
    }
+  },
+  {
+   "id": "releaseAll",
+   "name": "Button: Release All",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/StopAll",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   },
+   "more": [
+    {
+     "kind": "osc",
+     "address": "/LS/StopAll",
+     "args": [
+      {
+       "type": "i",
+       "value": "0"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "masterChaseTap",

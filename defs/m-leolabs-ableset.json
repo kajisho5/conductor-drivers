@@ -24,6 +24,13 @@
    "max": 65535
   },
   {
+   "id": "serverHost",
+   "label": "Server Hosts/IPs",
+   "type": "text",
+   "default": "127.0.0.1",
+   "help": "Please enter the host(s) you'd like to connect to. If AbleSet is running on the same computer as Companion, leave this as 127.0.0.1. You can provide multiple hosts separated by commas for a redundant "
+  },
+  {
    "id": "fineUpdates",
    "label": "Fine Updates",
    "type": "boolean",
@@ -42,7 +49,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=warkwaZnXBpYpCo9ZwpvNr"
+      "value": "uuid=6qDoMaS1e1k963BbwXQnob"
      }
     ]
    }
@@ -57,7 +64,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=mgvM6X3R61XFfEHDkmpWi7"
+      "value": "uuid=49Amd12LzmLrX4V8qkUYvB"
      }
     ]
    }
@@ -72,7 +79,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=njYNBa2tszYS4HGzQgf3ih"
+      "value": "uuid=sAhpMEcfbhMSSQGXRbuXxQ"
      }
     ]
    }
@@ -87,7 +94,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=rHG9hKfN4vFt6CUTGtr5Kv"
+      "value": "uuid=qJdPxK2qCtZqi3YmHTwMAP"
      }
     ]
    }
@@ -102,7 +109,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=817eNxS3hRjDTjes63sbrS"
+      "value": "uuid=3WAvZzV5NEk9dzZNgi3PSx"
      }
     ]
    }
@@ -117,7 +124,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=uuTHsAMhGDB6KjPtheZBFd"
+      "value": "uuid=kHC3p7ZQYpghiQie7hEshp"
      }
     ]
    }
@@ -132,7 +139,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=rQwejg4Z3Df2WzKF38hjFo"
+      "value": "uuid=8TVxFSpJN8SGXyij2m8fka"
      }
     ]
    }
@@ -147,7 +154,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=jEetE2SHbYJUYG7mQdWLwu"
+      "value": "uuid=eFz9UgrpYmtxjjtjww4mzg"
      }
     ]
    }
@@ -162,7 +169,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=h2Wvsd8dY6cFeVchSGdTgP"
+      "value": "uuid=qYjCqnkaKSdizU7ZFF5wqa"
      }
     ]
    }
@@ -177,7 +184,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=9SB1rid9EhJtAJ4zK7Q1Ak"
+      "value": "uuid=gcSsbAsGYDXJ5bFqEWxcaJ"
      }
     ]
    }
@@ -192,7 +199,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=75J9B1SNJfXGbmygJV21JV"
+      "value": "uuid=3dvjQBXwHQAc9SGSHan3Cz"
      }
     ]
    }
@@ -207,7 +214,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=e43NV4TnNYQgEBEmDsFH4g"
+      "value": "uuid=bAVNQA2k8ZXgVXbUDAui7B"
      }
     ]
    }
@@ -222,7 +229,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=e3PfZ5wRMTnpGKD8jbEW8r"
+      "value": "uuid=51DZLfMC8JYzWR3s4XtuTu"
      }
     ]
    }
@@ -237,7 +244,7 @@
     "args": [
      {
       "type": "s",
-      "value": "uuid=oReMPJx8F9FRh3mpt6tyKN"
+      "value": "uuid=mUisDPV6yF9dTDbRDNzuS4"
      }
     ]
    }

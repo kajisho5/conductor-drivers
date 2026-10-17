@@ -24,7 +24,17 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=Q57PdtP&b64=1"
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q57W69E&b64=1"
+   }
+  },
+  {
+   "id": "get_live_commentators",
+   "name": "Load Commentators from VC.",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q57W6Jk&b64=1"
    }
   }
  ],

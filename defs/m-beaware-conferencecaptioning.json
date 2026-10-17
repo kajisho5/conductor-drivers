@@ -19,6 +19,11 @@
    "id": "streamName",
    "label": "Stream name",
    "type": "text"
+  },
+  {
+   "id": "localhostUrl",
+   "label": "Localhost URL in this format 10.0.0.199:8080/index.html (optional)",
+   "type": "text"
   }
  ],
  "actions": [

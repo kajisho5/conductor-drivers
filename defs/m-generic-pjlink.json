@@ -1,0 +1,261 @@
+{
+ "format": 1,
+ "id": "m-generic-pjlink",
+ "name": "JBMIA Projector / PJLink",
+ "category": "JBMIA",
+ "version": "2.4.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 4352,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "PJLink password (empty for none)",
+   "type": "text"
+  },
+  {
+   "id": "pollTime",
+   "label": "Enter polling time in seconds",
+   "type": "number",
+   "default": 10
+  },
+  {
+   "id": "debug",
+   "label": "Enable extra debugging information",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "muteState",
+   "name": "Change Projector Mute State ",
+   "options": [
+    {
+     "id": "item",
+     "label": "Select Mute",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Not Muted"
+      },
+      {
+       "id": "1",
+       "label": "Video Mute"
+      },
+      {
+       "id": "2",
+       "label": "Audio Mute"
+      },
+      {
+       "id": "3",
+       "label": "A/V mute"
+      }
+     ]
+    },
+    {
+     "id": "opt",
+     "label": "Select State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "%1AVMT {{option.item|map}}{{option.opt|map}}\\r%1AVMT ?\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "item": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    },
+    "opt": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "freezeState",
+   "name": "Change Projector Freeze State",
+   "options": [
+    {
+     "id": "opt",
+     "label": "Select Freeze State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "%2FREZ {{option.opt|map}}\\r%2FREZ ?\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "opt": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "inputToggle",
+   "name": "Switch Projector Input",
+   "options": [
+    {
+     "id": "inputNum",
+     "label": "Select input",
+     "type": "select",
+     "choices": [
+      {
+       "id": "11",
+       "label": "RGB1 (11)"
+      },
+      {
+       "id": "12",
+       "label": "RGB2 (12)"
+      },
+      {
+       "id": "31",
+       "label": "DVI-D (31)"
+      },
+      {
+       "id": "32",
+       "label": "HDMI (32)"
+      },
+      {
+       "id": "33",
+       "label": "Digital link (33)"
+      },
+      {
+       "id": "34",
+       "label": "SDI1 (34)"
+      },
+      {
+       "id": "35",
+       "label": "SDI2 (35)"
+      },
+      {
+       "id": "52",
+       "label": "LAN (52)"
+      },
+      {
+       "id": "56",
+       "label": "HDBaseT (56)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "%1INPT {{option.inputNum|map}}\\r%1INPT ?\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "inputNum": {
+     "11": "11",
+     "12": "12",
+     "31": "31",
+     "32": "32",
+     "33": "33",
+     "34": "34",
+     "35": "35",
+     "52": "52",
+     "56": "56"
+    }
+   }
+  },
+  {
+   "id": "volumeUp",
+   "name": "Speaker Volume - Increase by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "%1SVOL 1\\r%1SVOL ?\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volumeDown",
+   "name": "Speaker Volume - Decrease by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "%1SVOL 0\\r%1SVOL ?\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-generic-pjlink",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John Knight, Jr, Per Roine, Jamie McConchie, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "generic-pjlink",
+  "version": "2.4.0",
+  "license": "MIT",
+  "maintainers": [
+   "John Knight, Jr",
+   "Per Roine",
+   "Jamie McConchie",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-generic-pjlink.git"
+ }
+}

@@ -424,6 +424,30 @@
    }
   },
   {
+   "id": "videowallmode",
+   "name": "Video Wall Mode (Control Command)",
+   "options": [
+    {
+     "id": "MicEffect",
+     "label": "Mic Effect",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/videowallmode?MicEffect={{option.MicEffect}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/mosart/api/v1/command/controlcommand/videowallmode?MicEffect={{option.MicEffect}}"
+    }
+   ]
+  },
+  {
    "id": "release_background",
    "name": "Release Background (Control Command)",
    "options": [

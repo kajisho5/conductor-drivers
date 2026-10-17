@@ -25,14 +25,14 @@
    "id": "src_count",
    "label": "Source Count",
    "type": "text",
-   "default": 16,
+   "default": "16",
    "help": "Number of inputs/sources the router has."
   },
   {
    "id": "dest_count",
    "label": "Destination Count",
    "type": "text",
-   "default": 4,
+   "default": "4",
    "help": "Number of outputs/destinations the router has."
   }
  ],
@@ -333,6 +333,86 @@
      "6": "6",
      "7": "7",
      "8": "8"
+    }
+   }
+  },
+  {
+   "id": "swap_sources",
+   "name": "Swap sources",
+   "options": [
+    {
+     "id": "dest_A",
+     "label": "destination A",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1:  "
+      },
+      {
+       "id": "2",
+       "label": "2:  "
+      },
+      {
+       "id": "3",
+       "label": "3:  "
+      },
+      {
+       "id": "4",
+       "label": "4:  "
+      }
+     ]
+    },
+    {
+     "id": "dest_B",
+     "label": "destination B",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1:  "
+      },
+      {
+       "id": "2",
+       "label": "2:  "
+      },
+      {
+       "id": "3",
+       "label": "3:  "
+      },
+      {
+       "id": "4",
+       "label": "4:  "
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&configid=0&paramid=eParamID_XPT_Destination{{option.dest_A|map}}_Status&value=undefined"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=set&configid=0&paramid=eParamID_XPT_Destination{{option.dest_B|map}}_Status&value=undefined"
+    }
+   ],
+   "maps": {
+    "dest_A": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "dest_B": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
     }
    }
   }

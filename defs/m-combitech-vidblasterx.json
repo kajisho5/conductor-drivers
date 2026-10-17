@@ -1,0 +1,434 @@
+{
+ "format": 1,
+ "id": "m-combitech-vidblasterx",
+ "name": "CombiTech VidBlasterX",
+ "category": "CombiTech",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "help": "機器の説明書にあるポート番号を入れてください",
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "debug",
+   "label": "Enable debug logging (verbose)",
+   "type": "boolean"
+  }
+ ],
+ "actions": [
+  {
+   "id": "auto",
+   "name": "Switcher: Auto",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite PGM 1, auto\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "take",
+   "name": "Switcher: Take",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite PGM 1, take\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "program",
+   "name": "Switcher: Program",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite PGM 1, select, undefined\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "preview",
+   "name": "Switcher: Preview",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite PVW 1, select, undefined\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "raw_read",
+   "name": "Raw: apiread",
+   "options": [
+    {
+     "id": "command",
+     "label": "apiread command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiread {{option.command}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "raw_write",
+   "name": "Raw: apiwrite",
+   "options": [
+    {
+     "id": "command",
+     "label": "apiwrite command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite {{option.command}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "player_play",
+   "name": "Player: play",
+   "options": [
+    {
+     "id": "player",
+     "label": "Player",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, play\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "player_pause",
+   "name": "Player: pause",
+   "options": [
+    {
+     "id": "player",
+     "label": "Player",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, pause\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "player_stop",
+   "name": "Player: stop",
+   "options": [
+    {
+     "id": "player",
+     "label": "Player",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, stop\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "player_position",
+   "name": "Player: Seek position",
+   "options": [
+    {
+     "id": "player",
+     "label": "Player",
+     "type": "text"
+    },
+    {
+     "id": "position",
+     "label": "Position (timestamp in ms or a percentage followed by a \"%\" sign)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, position, {{option.position}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "player_open",
+   "name": "Player: Open file",
+   "options": [
+    {
+     "id": "player",
+     "label": "Player",
+     "type": "text"
+    },
+    {
+     "id": "path",
+     "label": "Filename (including path)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, file, {{option.path}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "still_open",
+   "name": "Still store: Open file",
+   "options": [
+    {
+     "id": "stillStore",
+     "label": "Still store",
+     "type": "text"
+    },
+    {
+     "id": "path",
+     "label": "Filename (including path)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, file, {{option.path}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "still_grab",
+   "name": "Still store: Grab image",
+   "options": [
+    {
+     "id": "stillStore",
+     "label": "Still store",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, grab\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "still_source",
+   "name": "Still store: Select video source",
+   "options": [
+    {
+     "id": "stillStore",
+     "label": "Still store",
+     "type": "text"
+    },
+    {
+     "id": "source",
+     "label": "Video Source",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, videosource, undefined\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timer_start",
+   "name": "Timer: Start",
+   "options": [
+    {
+     "id": "timer",
+     "label": "Timer",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, start\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timer_stop",
+   "name": "Timer: Stop",
+   "options": [
+    {
+     "id": "timer",
+     "label": "Timer",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, stop\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timer_reset",
+   "name": "Timer: Reset",
+   "options": [
+    {
+     "id": "timer",
+     "label": "Timer",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, reset\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "powerpoint_open",
+   "name": "Powerpoint: Open file",
+   "options": [
+    {
+     "id": "powerpoint",
+     "label": "Powerpoint module",
+     "type": "text"
+    },
+    {
+     "id": "path",
+     "label": "Filename (including path)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, file, {{option.path}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "powerpoint_next",
+   "name": "Powerpoint: Next slide",
+   "options": [
+    {
+     "id": "powerpoint",
+     "label": "Powerpoint module",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, next\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "powerpoint_previous",
+   "name": "Powerpoint: Previous slide",
+   "options": [
+    {
+     "id": "powerpoint",
+     "label": "Powerpoint module",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite undefined, prev\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mixer_volume",
+   "name": "Audio Mixer: Set volume",
+   "options": [
+    {
+     "id": "source",
+     "label": "Audio source",
+     "type": "text"
+    },
+    {
+     "id": "volume",
+     "label": "Volume (0-100)",
+     "type": "number",
+     "default": 80,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "apiwrite Audio Mixer 1, volume, {{option.source}}, {{option.volume}}%\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "auto",
+   "category": "Switcher",
+   "name": "AUTO",
+   "text": "AUTO",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto",
+    "options": {}
+   }
+  },
+  {
+   "id": "take",
+   "category": "Switcher",
+   "name": "TAKE",
+   "text": "TAKE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "take",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-combitech-vidblasterx",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jens Frank"
+  }
+ ],
+ "source": {
+  "module": "combitech-vidblasterx",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Jens Frank"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-combitech-vidblasterx.git"
+ }
+}

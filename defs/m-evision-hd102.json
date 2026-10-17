@@ -38,6 +38,86 @@
  ],
  "actions": [
   {
+   "id": "freeze",
+   "name": "Freeze",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "ON"
+      },
+      {
+       "id": "OFF",
+       "label": "OFF"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8411223344{{option.state|map}}0000",
+    "encoding": "hex"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "8411223344{{option.state|map}}0000",
+     "encoding": "hex"
+    }
+   ],
+   "maps": {
+    "state": {
+     "ON": "01",
+     "OFF": "00"
+    }
+   }
+  },
+  {
+   "id": "blackout",
+   "name": "Blackout",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "ON"
+      },
+      {
+       "id": "OFF",
+       "label": "OFF"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8111223344{{option.state|map}}0000",
+    "encoding": "hex"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "8111223344{{option.state|map}}0000",
+     "encoding": "hex"
+    }
+   ],
+   "maps": {
+    "state": {
+     "ON": "00",
+     "OFF": "01"
+    }
+   }
+  },
+  {
    "id": "test_pattern",
    "name": "Send Test Pattern",
    "options": [
@@ -139,6 +219,58 @@
  "feedbacks": [],
  "variables": [],
  "presets": [
+  {
+   "id": "freeze_on",
+   "category": "Basics",
+   "name": "Freeze ON",
+   "text": "Freeze ON",
+   "backgroundColor": "#0080ff",
+   "action": {
+    "definitionId": "freeze",
+    "options": {
+     "state": "ON"
+    }
+   }
+  },
+  {
+   "id": "freeze_off",
+   "category": "Basics",
+   "name": "Freeze OFF",
+   "text": "Freeze OFF",
+   "backgroundColor": "#b4b4b4",
+   "action": {
+    "definitionId": "freeze",
+    "options": {
+     "state": "OFF"
+    }
+   }
+  },
+  {
+   "id": "blackout_on",
+   "category": "Basics",
+   "name": "Blackout ON",
+   "text": "Blackout ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "state": "ON"
+    }
+   }
+  },
+  {
+   "id": "blackout_off",
+   "category": "Basics",
+   "name": "Blackout OFF",
+   "text": "Blackout OFF",
+   "backgroundColor": "#c8c8c8",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "state": "OFF"
+    }
+   }
+  },
   {
    "id": "test_pattern_0",
    "category": "Test Patterns",

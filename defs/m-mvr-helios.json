@@ -241,9 +241,8 @@
     {
      "id": "still",
      "label": "Select Still",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -552,9 +551,8 @@
     {
      "id": "preset",
      "label": "Preset Name",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -572,9 +570,8 @@
     {
      "id": "group",
      "label": "Select Group",
-     "type": "select",
-     "default": "0",
-     "choices": []
+     "type": "text",
+     "default": "0"
     },
     {
      "id": "intensity",

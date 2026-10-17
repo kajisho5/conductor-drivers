@@ -63,13 +63,13 @@
      "id": "group",
      "label": "Group (1 - 5)",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "id",
      "label": "Camera ID",
      "type": "text",
-     "default": 1
+     "default": "1"
     }
    ],
    "send": {
@@ -86,25 +86,25 @@
      "id": "group",
      "label": "Group (1 - 5)",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "id",
      "label": "Camera ID",
      "type": "text",
-     "default": 1
+     "default": "1"
     },
     {
      "id": "preset",
      "label": "Preset (1 - 255",
      "type": "text",
-     "default": 0
+     "default": "0"
     },
     {
      "id": "speed",
      "label": "Preset Speed (1 - 24)",
      "type": "text",
-     "default": 24
+     "default": "24"
     }
    ],
    "send": {

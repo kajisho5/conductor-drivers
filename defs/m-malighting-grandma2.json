@@ -570,7 +570,7 @@
      "id": "steps",
      "label": "Steps to move wheel (+/-)",
      "type": "text",
-     "default": 1,
+     "default": "1",
      "help": "Negative numbers move down"
     }
    ],

@@ -24,8 +24,7 @@
     {
      "id": "module",
      "label": "Module",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "button",
@@ -48,8 +47,7 @@
     {
      "id": "module",
      "label": "Module",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "button",
@@ -84,8 +82,7 @@
     {
      "id": "module",
      "label": "Module",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "pin",

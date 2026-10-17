@@ -36,8 +36,7 @@
     {
      "id": "channel",
      "label": "channel",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -54,8 +53,7 @@
     {
      "id": "channel",
      "label": "Channel",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -72,8 +70,7 @@
     {
      "id": "channel",
      "label": "Channel",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -90,8 +87,7 @@
     {
      "id": "channel",
      "label": "Channel",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {

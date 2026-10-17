@@ -93,9 +93,8 @@
     {
      "id": "uri",
      "label": "URI",
-     "type": "select",
+     "type": "text",
      "default": "",
-     "choices": [],
      "help": "Should be formatted similar to: udp://239.192.65.2:5000?hwchan=1"
     }
    ],

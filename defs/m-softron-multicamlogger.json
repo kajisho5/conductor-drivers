@@ -69,9 +69,8 @@
     {
      "id": "angle",
      "label": "Input",
-     "type": "select",
-     "default": "0",
-     "choices": []
+     "type": "text",
+     "default": "0"
     }
    ],
    "send": {
@@ -87,9 +86,8 @@
     {
      "id": "angle",
      "label": "Input",
-     "type": "select",
-     "default": "0",
-     "choices": []
+     "type": "text",
+     "default": "0"
     }
    ],
    "send": {

@@ -76,6 +76,56 @@
    }
   },
   {
+   "id": "notification",
+   "name": "Send a Notification to the LCD",
+   "options": [
+    {
+     "id": "title",
+     "label": "Title",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "priority",
+     "label": "Priority",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 2
+    },
+    {
+     "id": "duration",
+     "label": "Duration",
+     "type": "number",
+     "default": 10,
+     "min": 5,
+     "max": 30
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/oled/notification/time",
+    "body": "{\"time\":{{option.duration}}}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/api/oled/notification",
+     "body": "{\"priority\":{{option.priority}},\"title\":\"{{option.title}}\",\"message\":\"{{option.message}}\"}",
+     "contentType": "application/json"
+    }
+   ]
+  },
+  {
    "id": "set_strip",
    "name": "Set LED Strip",
    "options": [

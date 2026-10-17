@@ -78,6 +78,64 @@
  ],
  "actions": [
   {
+   "id": "trigTrigger",
+   "name": "Trig a trigger",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "Paramaters UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/trigger/{{option.uuid}}",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/api/live/objects/undefined"
+    }
+   ]
+  },
+  {
+   "id": "parameterStateIndex",
+   "name": "Parameters state",
+   "options": [
+    {
+     "id": "parUuid",
+     "label": "Paramaters UUID",
+     "type": "text",
+     "default": "0"
+    },
+    {
+     "id": "bankUuid",
+     "label": "Bank UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.parUuid}}/trigger?state=apply",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/api/live/objects/{{option.bankUuid}}"
+    }
+   ]
+  },
+  {
    "id": "markersMove",
    "name": "TimeLines Marker Move",
    "options": [

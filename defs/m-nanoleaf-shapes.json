@@ -261,6 +261,140 @@
     "body": "{\"select\":\"x\"}",
     "contentType": "application/json"
    }
+  },
+  {
+   "id": "setColorPicker",
+   "name": "Set Color (using color picker)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"hue\":{\"value\":60}}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "PUT",
+     "path": "/api/v1/state",
+     "body": "{\"sat\":{\"value\":100}}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "PUT",
+     "path": "/api/v1/state",
+     "body": "{\"brightness\":{\"value\":100}}",
+     "contentType": "application/json"
+    }
+   ]
+  },
+  {
+   "id": "setHsvColor",
+   "name": "Set HSV Color",
+   "options": [
+    {
+     "id": "hue",
+     "label": "Hue",
+     "type": "number",
+     "default": 120,
+     "min": 0,
+     "max": 360
+    },
+    {
+     "id": "saturation",
+     "label": "Saturation",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"hue\":{\"value\":{{option.hue}}}}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "PUT",
+     "path": "/api/v1/state",
+     "body": "{\"sat\":{\"value\":{{option.saturation}}}}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "PUT",
+     "path": "/api/v1/state",
+     "body": "{\"brightness\":{\"value\":{{option.value}}}}",
+     "contentType": "application/json"
+    }
+   ]
+  },
+  {
+   "id": "setHslColor",
+   "name": "Set HSL Color",
+   "options": [
+    {
+     "id": "hue",
+     "label": "Hue",
+     "type": "number",
+     "default": 120,
+     "min": 0,
+     "max": 359
+    },
+    {
+     "id": "saturation",
+     "label": "Saturation",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "lightness",
+     "label": "Lightness",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"hue\":{\"value\":{{option.hue}}}}",
+    "contentType": "application/json"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "PUT",
+     "path": "/api/v1/state",
+     "body": "{\"sat\":{\"value\":{{option.saturation}}}}",
+     "contentType": "application/json"
+    },
+    {
+     "kind": "http",
+     "method": "PUT",
+     "path": "/api/v1/state",
+     "body": "{\"brightness\":{\"value\":{{option.lightness}}}}",
+     "contentType": "application/json"
+    }
+   ]
   }
  ],
  "feedbacks": [],

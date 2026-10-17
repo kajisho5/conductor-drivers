@@ -30,6 +30,486 @@
  ],
  "actions": [
   {
+   "id": "left",
+   "name": "Pan Left",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveLeft"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveLeft"
+    }
+   }
+  },
+  {
+   "id": "right",
+   "name": "Pan Right",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveRight"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveRight"
+    }
+   }
+  },
+  {
+   "id": "up",
+   "name": "Tilt Up",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveUp"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveUp"
+    }
+   }
+  },
+  {
+   "id": "down",
+   "name": "Tilt Down",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveDown"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveDown"
+    }
+   }
+  },
+  {
+   "id": "upleft",
+   "name": "Pan Up/Left",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveTopLeft"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveTopLeft"
+    }
+   }
+  },
+  {
+   "id": "upright",
+   "name": "Pan Up/Right",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveTopRight"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveTopRight"
+    }
+   }
+  },
+  {
+   "id": "downleft",
+   "name": "Pan Down/Left",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveBottomLeft"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveBottomLeft"
+    }
+   }
+  },
+  {
+   "id": "downright",
+   "name": "Pan Down/Right",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 fast"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4 slow"
+      },
+      {
+       "id": "-1",
+       "label": "Default speed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd={{option.speed|map}}"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzMoveBottomRight"
+    }
+   ],
+   "maps": {
+    "speed": {
+     "0": "setPTZSpeed&speed=0",
+     "1": "setPTZSpeed&speed=1",
+     "2": "setPTZSpeed&speed=2",
+     "3": "setPTZSpeed&speed=3",
+     "4": "setPTZSpeed&speed=4",
+     "-1": "ptzMoveBottomRight"
+    }
+   }
+  },
+  {
    "id": "zoomI",
    "name": "Zoom In",
    "options": [],

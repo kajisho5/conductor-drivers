@@ -70,9 +70,8 @@
     {
      "id": "button",
      "label": "Button",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -88,9 +87,8 @@
     {
      "id": "switch",
      "label": "Switch",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -106,9 +104,8 @@
     {
      "id": "switch",
      "label": "Switch",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -124,9 +121,8 @@
     {
      "id": "switch",
      "label": "Switch",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -142,9 +138,8 @@
     {
      "id": "shortcut",
      "label": "Shortcut",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -160,9 +155,8 @@
     {
      "id": "timer",
      "label": "Timer",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -178,9 +172,8 @@
     {
      "id": "timer",
      "label": "Timer",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -206,9 +199,8 @@
     {
      "id": "project",
      "label": "Project",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -238,9 +230,8 @@
     {
      "id": "episode",
      "label": "Episode",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {
@@ -258,9 +249,8 @@
     {
      "id": "block",
      "label": "Item",
-     "type": "select",
-     "default": "",
-     "choices": []
+     "type": "text",
+     "default": ""
     }
    ],
    "send": {

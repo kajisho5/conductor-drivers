@@ -84,9 +84,8 @@
     {
      "id": "brightness",
      "label": "brightness",
-     "type": "select",
-     "default": "0",
-     "choices": []
+     "type": "text",
+     "default": "0"
     }
    ],
    "send": {

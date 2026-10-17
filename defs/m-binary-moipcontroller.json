@@ -27,7 +27,7 @@
    "id": "audioRx_index",
    "label": "Audio Receiver Index",
    "type": "text",
-   "default": 1
+   "default": "1"
   }
  ],
  "actions": [
@@ -38,14 +38,12 @@
     {
      "id": "tx",
      "label": "Source (Tx)",
-     "type": "select",
-     "choices": []
+     "type": "text"
     },
     {
      "id": "rx",
      "label": "Destination (Rx)",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
@@ -61,8 +59,7 @@
     {
      "id": "rx",
      "label": "Destination (Rx)",
-     "type": "select",
-     "choices": []
+     "type": "text"
     }
    ],
    "send": {
