@@ -1,0 +1,225 @@
+{
+ "format": 1,
+ "id": "m-peavy-ratc",
+ "name": "Peavy NION n3 / NION n6 / NION nE / NION nX",
+ "category": "Peavy",
+ "version": "1.1.4",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 1632,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "v2",
+   "label": "Use V2",
+   "type": "boolean",
+   "default": true,
+   "help": "Turn off to use RATCv1"
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": "defaultuser"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "password"
+  }
+ ],
+ "actions": [
+  {
+   "id": "controlGet",
+   "name": "Control Get",
+   "options": [
+    {
+     "id": "alias",
+     "label": "Control Alias",
+     "type": "text",
+     "default": "",
+     "help": "Alias must not contain \""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cg \"\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "controlSet",
+   "name": "Control Set",
+   "options": [
+    {
+     "id": "alias",
+     "label": "Control Alias",
+     "type": "text",
+     "default": "",
+     "help": "Alias must not contain \""
+    },
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "1",
+     "help": "Variable must return a number, up to 3 decimal places."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cs \"\" {{option.value}}.000\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "controlSetInc",
+   "name": "Control Set - Increment",
+   "options": [
+    {
+     "id": "alias",
+     "label": "Control Alias",
+     "type": "text",
+     "default": "",
+     "help": "Alias must not contain \""
+    },
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "1",
+     "help": "Variable must return a postive number, up to 3 decimal places."
+    },
+    {
+     "id": "pos",
+     "label": "+/-",
+     "type": "select",
+     "default": "++",
+     "choices": [
+      {
+       "id": "++",
+       "label": "Positive"
+      },
+      {
+       "id": "--",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cs \"\" {{option.pos|map}}{{option.value}}.000\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pos": {
+     "++": "++",
+     "--": "--"
+    }
+   }
+  },
+  {
+   "id": "changeGroupControlAdd",
+   "name": "Change Group Control Add",
+   "options": [
+    {
+     "id": "alias",
+     "label": "Control Alias",
+     "type": "text",
+     "default": "",
+     "help": "Alias must not contain \""
+    },
+    {
+     "id": "changeGroup",
+     "label": "Change Group",
+     "type": "text",
+     "default": "",
+     "help": "Variable must not contain \""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cgca \"{{option.changeGroup}}\" \"\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "changeGroupControlRemove",
+   "name": "Change Group Control Remove",
+   "options": [
+    {
+     "id": "alias",
+     "label": "Control Alias",
+     "type": "text",
+     "default": "",
+     "help": "Alias must not contain \""
+    },
+    {
+     "id": "changeGroup",
+     "label": "Change Group",
+     "type": "text",
+     "default": "",
+     "help": "Variable must not contain \""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cgcr \"\"{{option.changeGroup}}\" \"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "changeGroupClear",
+   "name": "Change Group Clear",
+   "options": [
+    {
+     "id": "changeGroup",
+     "label": "Change Group",
+     "type": "text",
+     "default": "",
+     "help": "Variable must not contain \""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cgc \"{{option.changeGroup}}\"\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-peavy-ratc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka。機器の返事（あいさつ・ログイン）を待ってから送るモジュールで、返事の中身は推測。ログインが要る機器では動かないことがある"
+  }
+ ],
+ "source": {
+  "module": "peavy-ratc",
+  "version": "1.1.4",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-peavy-ratc.git"
+ }
+}

@@ -30,23 +30,13 @@
  ],
  "actions": [
   {
-   "id": "shutdown_cancel",
-   "name": "Cancel Shutdown",
+   "id": "macLogout",
+   "name": "Mac | Logout",
    "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=x2itn3oj"
-   }
-  },
-  {
-   "id": "openGoogleMeet",
-   "name": "Start Google Meet",
-   "options": [],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=x2pbek8t"
+    "path": "/socket.io/?EIO=4&transport=polling&t=ya78g2up"
    }
   }
  ],

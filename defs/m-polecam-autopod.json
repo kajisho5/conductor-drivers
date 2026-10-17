@@ -105,14 +105,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23APC7FFF7FFF&res=1"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23D1&res=1"
-    }
-   ]
+   }
   },
   {
    "id": "splitDualLeg",
@@ -147,7 +140,7 @@
     {
      "kind": "http",
      "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23APC&res=1"
+     "path": "/cgi-bin/aw_ptz?cmd=%23D1&res=1"
     }
    ]
   },
@@ -204,7 +197,7 @@
     {
      "kind": "http",
      "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23RER&res=1"
+     "path": "/cgi-bin/aw_ptz?cmd=%23APC&res=1"
     }
    ]
   }

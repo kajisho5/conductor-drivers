@@ -1,0 +1,284 @@
+{
+ "format": 1,
+ "id": "m-kiloview-ndi",
+ "name": "Kiloview N40 / N50 / N60 / N5 / N6",
+ "category": "Kiloview",
+ "version": "2.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "useAuth",
+   "label": "Use Authentication",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "mode",
+   "label": "Default Mode (if not known yet)",
+   "type": "select",
+   "default": "encoder",
+   "choices": [
+    {
+     "id": "encoder",
+     "label": "Encoder"
+    },
+    {
+     "id": "decoder",
+     "label": "Decoder"
+    }
+   ]
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling (necessary for feedbacks and variables)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollingrate",
+   "label": "Polling Rate for Current State (in ms)",
+   "type": "text",
+   "default": "1000"
+  },
+  {
+   "id": "pollingrate_sources",
+   "label": "Polling Rate for new NDI Sources (in ms)",
+   "type": "text",
+   "default": "10000"
+  },
+  {
+   "id": "picManage",
+   "label": "Enable Picture Management Functions",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "modeSwitch",
+   "name": "Set Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "encoder",
+     "choices": [
+      {
+       "id": "encoder",
+       "label": "Encoder"
+      },
+      {
+       "id": "decoder",
+       "label": "Decoder"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/mode/switch",
+    "body": "{\"mode\":\"{{option.mode|map}}coder\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "mode": {
+     "encoder": "en",
+     "decoder": "de"
+    }
+   }
+  },
+  {
+   "id": "toggleMode",
+   "name": "Toggle Mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/mode/switch",
+    "body": "{\"mode\":\"decoder\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot Device",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/sys/reboot",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "reconnect",
+   "name": "Reset all NDI Connections",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/sys/reconnect",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "restore",
+   "name": "Restore to Factory Settings",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/sys/restore",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "encoder_setAudioSignalType",
+   "name": "Set Audio Signal Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Audio Signal Type",
+     "type": "select",
+     "default": "embedded",
+     "choices": [
+      {
+       "id": "embedded",
+       "label": "Embedded"
+      },
+      {
+       "id": "analog",
+       "label": "Analog"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/encoder/ndi/set_audio",
+    "body": "{\"type\":\"{{option.type|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "type": {
+     "embedded": "embedded",
+     "analog": "analog"
+    }
+   }
+  },
+  {
+   "id": "encoder_setVolume",
+   "name": "Set Audio Volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 200,
+     "help": "(0-200)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/encoder/ndi/set_audio",
+    "body": "{\"volume\":{{option.volume}}}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "General",
+   "name": "Set Converter Mode to Encoder",
+   "text": "Encoder",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "modeSwitch",
+    "options": {
+     "mode": "encoder"
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "General",
+   "name": "Set Converter Mode to Decoder",
+   "text": "Decoder",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "modeSwitch",
+    "options": {
+     "mode": "decoder"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "General",
+   "name": "Toggle Converter Mode",
+   "text": "Toggle Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleMode",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-kiloview-ndi",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Håkon Nessjøen。機器の返事（あいさつ・ログイン）を待ってから送るモジュールで、返事の中身は推測。ログインが要る機器では動かないことがある"
+  }
+ ],
+ "source": {
+  "module": "kiloview-ndi",
+  "version": "2.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Håkon Nessjøen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-kiloview-ndi.git"
+ }
+}

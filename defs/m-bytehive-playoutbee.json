@@ -85,6 +85,25 @@
    }
   },
   {
+   "id": "goto",
+   "name": "Go to",
+   "options": [
+    {
+     "id": "time",
+     "label": "Time",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/goto/{{option.time}}"
+   }
+  },
+  {
    "id": "last",
    "name": "Go to last ",
    "options": [
@@ -159,8 +178,8 @@
    }
   },
   {
-   "id": "rotate",
-   "name": "Set Rotation of Asset",
+   "id": "volume",
+   "name": "Set Volume of Asset",
    "options": [
     {
      "id": "clip",
@@ -169,47 +188,16 @@
      "default": "0"
     },
     {
-     "id": "rotation",
-     "label": "Rotation",
-     "type": "select",
-     "default": "0",
-     "choices": [
-      {
-       "id": "0",
-       "label": "0"
-      },
-      {
-       "id": "90",
-       "label": "90"
-      },
-      {
-       "id": "180",
-       "label": "180"
-      },
-      {
-       "id": "270",
-       "label": "270"
-      },
-      {
-       "id": "360",
-       "label": "360"
-      }
-     ]
+     "id": "volume",
+     "label": "Volume",
+     "type": "text",
+     "default": "0"
     }
    ],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/api/asset/{{option.clip}}/rotate/{{option.rotation|map}}0"
-   },
-   "maps": {
-    "rotation": {
-     "0": "",
-     "90": "9",
-     "180": "18",
-     "270": "27",
-     "360": "36"
-    }
+    "path": "/api/asset/{{option.clip}}/volume/{{option.volume}}"
    }
   }
  ],

@@ -1,0 +1,296 @@
+{
+ "format": 1,
+ "id": "m-grassvalley-amp",
+ "name": "Grass Valley AMP",
+ "category": "Grass Valley",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3811,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "channel",
+   "label": "AMP Channel",
+   "type": "text",
+   "default": "Vtr1"
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS00042001\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_loop",
+   "name": "Loop playback (On/Off)",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "On"
+      },
+      {
+       "id": "00",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS000641420{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "01": "1",
+     "00": "0"
+    }
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS00042000\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "rw",
+   "name": "Shuttle Reverse",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "74",
+     "choices": [
+      {
+       "id": "48",
+       "label": "0.32x"
+      },
+      {
+       "id": "39",
+       "label": "0.16x"
+      },
+      {
+       "id": "30",
+       "label": "0.8x"
+      },
+      {
+       "id": "20",
+       "label": "0.4x"
+      },
+      {
+       "id": "10",
+       "label": "0.2x"
+      },
+      {
+       "id": "74",
+       "label": "2x"
+      },
+      {
+       "id": "83",
+       "label": "4x"
+      },
+      {
+       "id": "93",
+       "label": "8x"
+      },
+      {
+       "id": "103",
+       "label": "16x"
+      },
+      {
+       "id": "112",
+       "label": "32x"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS000{{option.speed|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "speed": {
+     "10": "52123a",
+     "20": "6212314",
+     "30": "621231e",
+     "39": "6212327",
+     "48": "6212330",
+     "74": "621234a",
+     "83": "6212353",
+     "93": "621235d",
+     "103": "6212367",
+     "112": "6212370"
+    }
+   }
+  },
+  {
+   "id": "ff",
+   "name": "Shuttle Forward",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "74",
+     "choices": [
+      {
+       "id": "48",
+       "label": "0.32x"
+      },
+      {
+       "id": "39",
+       "label": "0.16x"
+      },
+      {
+       "id": "30",
+       "label": "0.8x"
+      },
+      {
+       "id": "20",
+       "label": "0.4x"
+      },
+      {
+       "id": "10",
+       "label": "0.2x"
+      },
+      {
+       "id": "74",
+       "label": "2x"
+      },
+      {
+       "id": "83",
+       "label": "4x"
+      },
+      {
+       "id": "93",
+       "label": "8x"
+      },
+      {
+       "id": "103",
+       "label": "16x"
+      },
+      {
+       "id": "112",
+       "label": "32x"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS000{{option.speed|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "speed": {
+     "10": "52113a",
+     "20": "6211314",
+     "30": "621131e",
+     "39": "6211327",
+     "48": "6211330",
+     "74": "621134a",
+     "83": "6211353",
+     "93": "621135d",
+     "103": "6211367",
+     "112": "6211370"
+    }
+   }
+  },
+  {
+   "id": "eject",
+   "name": "Eject",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS0004200f\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "record",
+   "name": "Record",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS00042002\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadclip",
+   "name": "Load clip",
+   "options": [
+    {
+     "id": "clip",
+     "label": "Clip name",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "",
+       "label": " - None - "
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CMDS00124A1400020000\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-grassvalley-amp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Håkon Nessjøen。機器の返事（あいさつ・ログイン）を待ってから送るモジュールで、返事の中身は推測。ログインが要る機器では動かないことがある"
+  }
+ ],
+ "source": {
+  "module": "grassvalley-amp",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Håkon Nessjøen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-grassvalley-amp.git"
+ }
+}

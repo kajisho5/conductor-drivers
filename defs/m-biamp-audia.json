@@ -1,0 +1,294 @@
+{
+ "format": 1,
+ "id": "m-biamp-audia",
+ "name": "Biamp Audia / Nexia",
+ "category": "Biamp",
+ "version": "2.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variableCount",
+   "label": "Variable Count",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 20
+  },
+  {
+   "id": "variable1",
+   "label": "Variable 1",
+   "type": "text"
+  },
+  {
+   "id": "variable2",
+   "label": "Variable 2",
+   "type": "text"
+  },
+  {
+   "id": "variable3",
+   "label": "Variable 3",
+   "type": "text"
+  },
+  {
+   "id": "variable4",
+   "label": "Variable 4",
+   "type": "text"
+  },
+  {
+   "id": "variable5",
+   "label": "Variable 5",
+   "type": "text"
+  },
+  {
+   "id": "variable6",
+   "label": "Variable 6",
+   "type": "text"
+  },
+  {
+   "id": "variable7",
+   "label": "Variable 7",
+   "type": "text"
+  },
+  {
+   "id": "variable8",
+   "label": "Variable 8",
+   "type": "text"
+  },
+  {
+   "id": "variable9",
+   "label": "Variable 9",
+   "type": "text"
+  },
+  {
+   "id": "variable10",
+   "label": "Variable 10",
+   "type": "text"
+  },
+  {
+   "id": "variable11",
+   "label": "Variable 11",
+   "type": "text"
+  },
+  {
+   "id": "variable12",
+   "label": "Variable 12",
+   "type": "text"
+  },
+  {
+   "id": "variable13",
+   "label": "Variable 13",
+   "type": "text"
+  },
+  {
+   "id": "variable14",
+   "label": "Variable 14",
+   "type": "text"
+  },
+  {
+   "id": "variable15",
+   "label": "Variable 15",
+   "type": "text"
+  },
+  {
+   "id": "variable16",
+   "label": "Variable 16",
+   "type": "text"
+  },
+  {
+   "id": "variable17",
+   "label": "Variable 17",
+   "type": "text"
+  },
+  {
+   "id": "variable18",
+   "label": "Variable 18",
+   "type": "text"
+  },
+  {
+   "id": "variable19",
+   "label": "Variable 19",
+   "type": "text"
+  },
+  {
+   "id": "variable20",
+   "label": "Variable 20",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "incFaderLevel",
+   "name": "Increment/Decrement Fader Level",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "select",
+     "default": "INC",
+     "choices": [
+      {
+       "id": "INC",
+       "label": "Increment"
+      },
+      {
+       "id": "DEC",
+       "label": "Decrement"
+      }
+     ]
+    },
+    {
+     "id": "deviceID",
+     "label": "Device ID",
+     "type": "text",
+     "default": "1",
+     "help": "Insert device ID"
+    },
+    {
+     "id": "instanceID",
+     "label": "Instance ID",
+     "type": "text",
+     "default": "1",
+     "help": "Insert instance ID"
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "text",
+     "default": "1",
+     "help": "Insert instance ID"
+    },
+    {
+     "id": "amount",
+     "label": "Increment/Decrement Amount",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.command|map}}C {{option.deviceID}} FDRLVL {{option.instanceID}} {{option.channel}} {{option.amount}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "command": {
+     "INC": "IN",
+     "DEC": "DE"
+    }
+   }
+  },
+  {
+   "id": "faderMute",
+   "name": "Fader Mute",
+   "options": [
+    {
+     "id": "deviceID",
+     "label": "Device ID",
+     "type": "text",
+     "default": "1",
+     "help": "Insert device ID"
+    },
+    {
+     "id": "instanceID",
+     "label": "Instance ID",
+     "type": "text",
+     "default": "1",
+     "help": "Insert instance ID"
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "text",
+     "default": "1",
+     "help": "Insert instance ID"
+    },
+    {
+     "id": "muteStatus",
+     "label": "Status",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SET {{option.deviceID}} FDRMUTE {{option.instanceID}} {{option.channel}} {{option.muteStatus|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "muteStatus": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "customCommand",
+   "name": "Custom Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text",
+     "default": "",
+     "help": "Insert Command String"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.command}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-biamp-audia",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：David Stevens。機器の返事（あいさつ・ログイン）を待ってから送るモジュールで、返事の中身は推測。ログインが要る機器では動かないことがある"
+  }
+ ],
+ "source": {
+  "module": "biamp-audia",
+  "version": "2.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "David Stevens"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-biamp-audia.git"
+ }
+}

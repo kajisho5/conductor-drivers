@@ -1,0 +1,140 @@
+{
+ "format": 1,
+ "id": "m-slack-webhooks",
+ "name": "Slack Webhooks",
+ "category": "Slack",
+ "version": "3.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:9000",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "slackURL",
+   "label": "Slack Incoming Webhook URL",
+   "type": "text"
+  },
+  {
+   "id": "predefined1",
+   "label": "Predefined Message #1",
+   "type": "text"
+  },
+  {
+   "id": "predefined2",
+   "label": "Predefined Message #2",
+   "type": "text"
+  },
+  {
+   "id": "predefined3",
+   "label": "Predefined Message #3",
+   "type": "text"
+  },
+  {
+   "id": "predefined4",
+   "label": "Predefined Message #4",
+   "type": "text"
+  },
+  {
+   "id": "predefined5",
+   "label": "Predefined Message #5",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "predefined",
+   "name": "Send Predefined Message",
+   "options": [
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "select",
+     "default": "predefined1",
+     "choices": [
+      {
+       "id": "predefined1",
+       "label": "Predefined Message #1"
+      },
+      {
+       "id": "predefined2",
+       "label": "Predefined Message #2"
+      },
+      {
+       "id": "predefined3",
+       "label": "Predefined Message #3"
+      },
+      {
+       "id": "predefined4",
+       "label": "Predefined Message #4"
+      },
+      {
+       "id": "predefined5",
+       "label": "Predefined Message #5"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "{\"timeout\":0,\"text\":\"Predefined Message #{{option.message|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "message": {
+     "predefined1": "1",
+     "predefined2": "2",
+     "predefined3": "3",
+     "predefined4": "4",
+     "predefined5": "5"
+    }
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Send Custom Message",
+   "options": [
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "{\"timeout\":0,\"text\":\"{{option.message}}\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-slack-webhooks",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Bryce Seifert"
+  }
+ ],
+ "source": {
+  "module": "slack-webhooks",
+  "version": "3.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Bryce Seifert"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-slack-webhooks.git"
+ }
+}

@@ -136,6 +136,13 @@
    "help": "Forward all received OSC messages to another OSC endpoint"
   },
   {
+   "id": "oscForwardingHost",
+   "label": "OSC Forwarding Host",
+   "type": "text",
+   "default": "",
+   "help": "IP address or hostname to forward OSC messages to"
+  },
+  {
    "id": "debugMode",
    "label": "Enable Debug Mode",
    "type": "boolean",
@@ -2960,6 +2967,1348 @@
    }
   },
   {
+   "id": "restore-gain",
+   "name": "Restore Gain",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "fadeDuration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000,
+     "help": "Set the desired duration of the transition in milliseconds. Be aware that the minimal temporal resolution is defined by the Fader Update Rate setting of the module."
+    },
+    {
+     "id": "fadeAlgorithm",
+     "label": "Algorithm",
+     "type": "select",
+     "default": "linear",
+     "choices": [
+      {
+       "id": "linear",
+       "label": "Linear"
+      },
+      {
+       "id": "quadratic",
+       "label": "Quadratic"
+      },
+      {
+       "id": "cubic",
+       "label": "Cubic"
+      },
+      {
+       "id": "quartic",
+       "label": "Quartic"
+      },
+      {
+       "id": "quintic",
+       "label": "Quintic"
+      },
+      {
+       "id": "sinusoidal",
+       "label": "Sinusoidal"
+      },
+      {
+       "id": "exponential",
+       "label": "Exponential"
+      },
+      {
+       "id": "circular",
+       "label": "Circular"
+      },
+      {
+       "id": "elastic",
+       "label": "Elastic"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "bounce",
+       "label": "Bounce"
+      }
+     ],
+     "help": "Select the algorithm with which the fade is performed."
+    },
+    {
+     "id": "fadeType",
+     "label": "Fade type",
+     "type": "select",
+     "default": "ease-in-out",
+     "choices": [
+      {
+       "id": "ease-in",
+       "label": "Ease-In"
+      },
+      {
+       "id": "ease-out",
+       "label": "Ease-Out"
+      },
+      {
+       "id": "ease-in-out",
+       "label": "Ease-In-Out"
+      }
+     ],
+     "help": "Select how to ease your algorithm. Easing avoids abrupt changes in value"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ch/1/in/set/$g",
+    "args": [
+     {
+      "type": "f",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "restore-fader",
+   "name": "Restore Level",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      },
+      {
+       "id": "/dca/1",
+       "label": "DCA 1"
+      },
+      {
+       "id": "/dca/2",
+       "label": "DCA 2"
+      },
+      {
+       "id": "/dca/3",
+       "label": "DCA 3"
+      },
+      {
+       "id": "/dca/4",
+       "label": "DCA 4"
+      },
+      {
+       "id": "/dca/5",
+       "label": "DCA 5"
+      },
+      {
+       "id": "/dca/6",
+       "label": "DCA 6"
+      },
+      {
+       "id": "/dca/7",
+       "label": "DCA 7"
+      },
+      {
+       "id": "/dca/8",
+       "label": "DCA 8"
+      },
+      {
+       "id": "/dca/9",
+       "label": "DCA 9"
+      },
+      {
+       "id": "/dca/10",
+       "label": "DCA 10"
+      },
+      {
+       "id": "/dca/11",
+       "label": "DCA 11"
+      },
+      {
+       "id": "/dca/12",
+       "label": "DCA 12"
+      },
+      {
+       "id": "/dca/13",
+       "label": "DCA 13"
+      },
+      {
+       "id": "/dca/14",
+       "label": "DCA 14"
+      },
+      {
+       "id": "/dca/15",
+       "label": "DCA 15"
+      },
+      {
+       "id": "/dca/16",
+       "label": "DCA 16"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "fadeDuration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000,
+     "help": "Set the desired duration of the transition in milliseconds. Be aware that the minimal temporal resolution is defined by the Fader Update Rate setting of the module."
+    },
+    {
+     "id": "fadeAlgorithm",
+     "label": "Algorithm",
+     "type": "select",
+     "default": "linear",
+     "choices": [
+      {
+       "id": "linear",
+       "label": "Linear"
+      },
+      {
+       "id": "quadratic",
+       "label": "Quadratic"
+      },
+      {
+       "id": "cubic",
+       "label": "Cubic"
+      },
+      {
+       "id": "quartic",
+       "label": "Quartic"
+      },
+      {
+       "id": "quintic",
+       "label": "Quintic"
+      },
+      {
+       "id": "sinusoidal",
+       "label": "Sinusoidal"
+      },
+      {
+       "id": "exponential",
+       "label": "Exponential"
+      },
+      {
+       "id": "circular",
+       "label": "Circular"
+      },
+      {
+       "id": "elastic",
+       "label": "Elastic"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "bounce",
+       "label": "Bounce"
+      }
+     ],
+     "help": "Select the algorithm with which the fade is performed."
+    },
+    {
+     "id": "fadeType",
+     "label": "Fade type",
+     "type": "select",
+     "default": "ease-in-out",
+     "choices": [
+      {
+       "id": "ease-in",
+       "label": "Ease-In"
+      },
+      {
+       "id": "ease-out",
+       "label": "Ease-Out"
+      },
+      {
+       "id": "ease-in-out",
+       "label": "Ease-In-Out"
+      }
+     ],
+     "help": "Select how to ease your algorithm. Easing avoids abrupt changes in value"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ch/1/fdr",
+    "args": [
+     {
+      "type": "f",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "restore-panorama",
+   "name": "Restore Panorama",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "fadeDuration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000,
+     "help": "Set the desired duration of the transition in milliseconds. Be aware that the minimal temporal resolution is defined by the Fader Update Rate setting of the module."
+    },
+    {
+     "id": "fadeAlgorithm",
+     "label": "Algorithm",
+     "type": "select",
+     "default": "linear",
+     "choices": [
+      {
+       "id": "linear",
+       "label": "Linear"
+      },
+      {
+       "id": "quadratic",
+       "label": "Quadratic"
+      },
+      {
+       "id": "cubic",
+       "label": "Cubic"
+      },
+      {
+       "id": "quartic",
+       "label": "Quartic"
+      },
+      {
+       "id": "quintic",
+       "label": "Quintic"
+      },
+      {
+       "id": "sinusoidal",
+       "label": "Sinusoidal"
+      },
+      {
+       "id": "exponential",
+       "label": "Exponential"
+      },
+      {
+       "id": "circular",
+       "label": "Circular"
+      },
+      {
+       "id": "elastic",
+       "label": "Elastic"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "bounce",
+       "label": "Bounce"
+      }
+     ],
+     "help": "Select the algorithm with which the fade is performed."
+    },
+    {
+     "id": "fadeType",
+     "label": "Fade type",
+     "type": "select",
+     "default": "ease-in-out",
+     "choices": [
+      {
+       "id": "ease-in",
+       "label": "Ease-In"
+      },
+      {
+       "id": "ease-out",
+       "label": "Ease-Out"
+      },
+      {
+       "id": "ease-in-out",
+       "label": "Ease-In-Out"
+      }
+     ],
+     "help": "Select how to ease your algorithm. Easing avoids abrupt changes in value"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ch/1/pan",
+    "args": [
+     {
+      "type": "f",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
    "id": "set-solo",
    "name": "Set Solo",
    "options": [
@@ -5167,6 +6516,999 @@
      "1": "1",
      "-1": "-1"
     }
+   }
+  },
+  {
+   "id": "restore-send-fader",
+   "name": "Restore Send Level",
+   "options": [
+    {
+     "id": "send_src_dest_use_variables",
+     "label": "Use Variables for Source and Destination",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "src",
+     "label": "From",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      }
+     ]
+    },
+    {
+     "id": "dest",
+     "label": "To",
+     "type": "select",
+     "default": "/bus/1",
+     "choices": [
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      }
+     ]
+    },
+    {
+     "id": "mainDest",
+     "label": "To",
+     "type": "select",
+     "default": "/mtx/1",
+     "choices": [
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      }
+     ]
+    },
+    {
+     "id": "send_src_variables",
+     "label": "From",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "send_dest_variables",
+     "label": "To",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /bus/1=Bus 1, /bus/2=Bus 2, /bus/3=Bus 3, /bus/4=Bus 4, /bus/5=Bus 5, /bus/6=Bus 6, /bus/7=Bus 7, /bus/8=Bus 8, /bus/9=Bus 9, /bus/10=Bus 10, /bus/11=Bus 11, /bus/12=Bus 12, /bus/13"
+    },
+    {
+     "id": "fadeDuration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000,
+     "help": "Set the desired duration of the transition in milliseconds. Be aware that the minimal temporal resolution is defined by the Fader Update Rate setting of the module."
+    },
+    {
+     "id": "fadeAlgorithm",
+     "label": "Algorithm",
+     "type": "select",
+     "default": "linear",
+     "choices": [
+      {
+       "id": "linear",
+       "label": "Linear"
+      },
+      {
+       "id": "quadratic",
+       "label": "Quadratic"
+      },
+      {
+       "id": "cubic",
+       "label": "Cubic"
+      },
+      {
+       "id": "quartic",
+       "label": "Quartic"
+      },
+      {
+       "id": "quintic",
+       "label": "Quintic"
+      },
+      {
+       "id": "sinusoidal",
+       "label": "Sinusoidal"
+      },
+      {
+       "id": "exponential",
+       "label": "Exponential"
+      },
+      {
+       "id": "circular",
+       "label": "Circular"
+      },
+      {
+       "id": "elastic",
+       "label": "Elastic"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "bounce",
+       "label": "Bounce"
+      }
+     ],
+     "help": "Select the algorithm with which the fade is performed."
+    },
+    {
+     "id": "fadeType",
+     "label": "Fade type",
+     "type": "select",
+     "default": "ease-in-out",
+     "choices": [
+      {
+       "id": "ease-in",
+       "label": "Ease-In"
+      },
+      {
+       "id": "ease-out",
+       "label": "Ease-Out"
+      },
+      {
+       "id": "ease-in-out",
+       "label": "Ease-In-Out"
+      }
+     ],
+     "help": "Select how to ease your algorithm. Easing avoids abrupt changes in value"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ch/1/send/1/lvl",
+    "args": [
+     {
+      "type": "f",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "restore-send-panorama",
+   "name": "Restore Send Panorama",
+   "options": [
+    {
+     "id": "src_use_variables",
+     "label": "Use Variables for From",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "src",
+     "label": "From",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "src_variables",
+     "label": "From",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "dest_use_variables",
+     "label": "Use Variables for To",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "dest",
+     "label": "To",
+     "type": "select",
+     "default": "/bus/1",
+     "choices": [
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      }
+     ],
+     "help": "Available choices: /bus/1=Bus 1, /bus/2=Bus 2, /bus/3=Bus 3, /bus/4=Bus 4, /bus/5=Bus 5, /bus/6=Bus 6, /bus/7=Bus 7, /bus/8=Bus 8, /bus/9=Bus 9, /bus/10=Bus 10, /bus/11=Bus 11, /bus/12=Bus 12, /bus/13"
+    },
+    {
+     "id": "dest_variables",
+     "label": "To",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /bus/1=Bus 1, /bus/2=Bus 2, /bus/3=Bus 3, /bus/4=Bus 4, /bus/5=Bus 5, /bus/6=Bus 6, /bus/7=Bus 7, /bus/8=Bus 8, /bus/9=Bus 9, /bus/10=Bus 10, /bus/11=Bus 11, /bus/12=Bus 12, /bus/13"
+    },
+    {
+     "id": "fadeDuration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000,
+     "help": "Set the desired duration of the transition in milliseconds. Be aware that the minimal temporal resolution is defined by the Fader Update Rate setting of the module."
+    },
+    {
+     "id": "fadeAlgorithm",
+     "label": "Algorithm",
+     "type": "select",
+     "default": "linear",
+     "choices": [
+      {
+       "id": "linear",
+       "label": "Linear"
+      },
+      {
+       "id": "quadratic",
+       "label": "Quadratic"
+      },
+      {
+       "id": "cubic",
+       "label": "Cubic"
+      },
+      {
+       "id": "quartic",
+       "label": "Quartic"
+      },
+      {
+       "id": "quintic",
+       "label": "Quintic"
+      },
+      {
+       "id": "sinusoidal",
+       "label": "Sinusoidal"
+      },
+      {
+       "id": "exponential",
+       "label": "Exponential"
+      },
+      {
+       "id": "circular",
+       "label": "Circular"
+      },
+      {
+       "id": "elastic",
+       "label": "Elastic"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "bounce",
+       "label": "Bounce"
+      }
+     ],
+     "help": "Select the algorithm with which the fade is performed."
+    },
+    {
+     "id": "fadeType",
+     "label": "Fade type",
+     "type": "select",
+     "default": "ease-in-out",
+     "choices": [
+      {
+       "id": "ease-in",
+       "label": "Ease-In"
+      },
+      {
+       "id": "ease-out",
+       "label": "Ease-Out"
+      },
+      {
+       "id": "ease-in-out",
+       "label": "Ease-In-Out"
+      }
+     ],
+     "help": "Select how to ease your algorithm. Easing avoids abrupt changes in value"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/ch/1/send/1/pan",
+    "args": [
+     {
+      "type": "f",
+      "value": "0"
+     }
+    ]
    }
   },
   {

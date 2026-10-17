@@ -9,6 +9,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -29,6 +30,7 @@
    "osc-type-text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -42,6 +44,7 @@
   "converted": 3,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -55,6 +58,7 @@
   "converted": 5,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -68,6 +72,7 @@
   "converted": 3,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -83,6 +88,7 @@
    "body-text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -98,6 +104,7 @@
   "errors": [
    "init timed out"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -111,6 +118,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -128,6 +136,7 @@
    "verify-mismatch": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -143,6 +152,7 @@
    "body-text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -156,6 +166,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -169,6 +180,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -182,6 +194,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -195,6 +208,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -208,6 +222,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -218,15 +233,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 17,
-  "converted": 12,
+  "converted": 13,
   "reasons": {
    "verify-path": 1,
    "verify-multi-request": 1,
-   "part0-verify-multi-request": 1,
    "parts-map-differs": 1,
    "path-overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -242,6 +257,7 @@
    "verify-multi-request": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -257,6 +273,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -273,6 +290,7 @@
    "too-many-choices": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -291,6 +309,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -306,6 +325,7 @@
    "overlap": 8
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -319,6 +339,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -336,6 +357,7 @@
    "too-many-choices": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -355,6 +377,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -368,6 +391,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -383,6 +407,7 @@
    "no-send": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -401,6 +426,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -417,6 +443,7 @@
    "part1-path-too-many-choices": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -432,6 +459,7 @@
    "overlap": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -447,6 +475,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -462,6 +491,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -475,6 +505,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -490,6 +521,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -505,6 +537,7 @@
   "errors": [
    "init timed out"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -518,6 +551,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -531,6 +565,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -544,6 +579,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -557,6 +593,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -572,6 +609,7 @@
    "verify-mismatch": 9
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -582,13 +620,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 9
+   "no-send": 9,
+   "verify-no-send": 1
   },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "audac-mtx",
@@ -602,6 +642,7 @@
    "number-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -615,6 +656,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -628,6 +670,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -641,6 +684,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -654,6 +698,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -667,6 +712,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -680,6 +726,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -693,6 +740,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -709,6 +757,7 @@
    "no-send": 18
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -722,6 +771,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -737,6 +787,7 @@
    "error": 7
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -750,6 +801,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -766,6 +818,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -779,6 +832,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -794,6 +848,7 @@
    "body-overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -809,6 +864,7 @@
   "errors": [
    "ENOENT: no such file or directory, open '/home/companion/python/config/buttons_list.json'"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -824,6 +880,7 @@
   "errors": [
    "t.handles is not iterable"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -842,6 +899,7 @@
    "text-slot": 28
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -857,6 +915,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -872,6 +931,7 @@
    "map-in-path-and-body": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -885,6 +945,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -898,6 +959,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -913,6 +975,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -928,6 +991,7 @@
    "error": 24
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -941,6 +1005,7 @@
   "converted": 7,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -956,6 +1021,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -969,6 +1035,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -985,6 +1052,7 @@
    "error": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -998,6 +1066,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1013,6 +1082,7 @@
    "body-text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -1028,6 +1098,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1043,6 +1114,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1056,6 +1128,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1072,6 +1145,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1087,6 +1161,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1102,6 +1177,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -1115,6 +1191,7 @@
   "converted": 37,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1127,9 +1204,10 @@
   "actions": 6,
   "converted": 1,
   "reasons": {
-   "error": 5
+   "origin-differs": 5
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1140,24 +1218,26 @@
   "license": "MIT",
   "status": "ok",
   "actions": 98,
-  "converted": 22,
+  "converted": 27,
   "reasons": {
    "part0-osc-string-overlap": 10,
    "osc-multi-datagram": 4,
-   "no-send": 31,
+   "osc-no-send": 15,
+   "no-send": 9,
    "multi-datagram": 1,
    "part2-osc-string-overlap": 1,
    "part0-osc-no-send": 1,
    "error": 5,
-   "part0-osc-address-overlap": 10,
+   "part0-osc-address-overlap": 11,
    "verify-osc-int": 1,
    "osc-string-overlap": 1,
-   "part0-verify-osc-address": 7,
+   "part0-verify-osc-address": 8,
    "part0-verify-osc-int": 1,
    "part0-osc-multi-datagram": 1,
    "two-options-one-arg": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1173,6 +1253,7 @@
   "errors": [
    "module did not register"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -1195,6 +1276,7 @@
    "verify-osc-int": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1208,6 +1290,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1218,11 +1301,16 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 0,
-  "reasons": {},
+  "converted": 3,
+  "reasons": {
+   "error": 1,
+   "number-slot": 1,
+   "no-send": 1
+  },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "biamp-tesira",
@@ -1239,6 +1327,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1252,6 +1341,7 @@
   "converted": 10,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1267,6 +1357,7 @@
   "errors": [
    "init timed out"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -1280,6 +1371,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1293,6 +1385,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1306,6 +1399,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1319,6 +1413,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1332,6 +1427,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1345,8 +1441,9 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "excluded-name"
  },
  {
   "id": "bitfocusas-listener",
@@ -1355,13 +1452,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 14,
-  "converted": 13,
-  "reasons": {
-   "text-slot": 1
-  },
+  "converted": 0,
+  "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "excluded-name"
  },
  {
   "id": "blackbox-boxilla",
@@ -1373,6 +1469,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1386,6 +1483,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1401,6 +1499,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1414,6 +1513,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1427,6 +1527,7 @@
   "converted": 10,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1440,6 +1541,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1457,6 +1559,7 @@
    "no-send": 8
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1472,6 +1575,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1489,6 +1593,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1502,6 +1607,7 @@
   "converted": 9,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1517,6 +1623,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1530,6 +1637,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1543,6 +1651,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1556,6 +1665,7 @@
   "converted": 12,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1569,6 +1679,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1582,6 +1693,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1597,6 +1709,7 @@
    "no-send": 6
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1612,6 +1725,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1627,6 +1741,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1642,6 +1757,7 @@
    "no-send": 33
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1655,6 +1771,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1665,12 +1782,12 @@
   "license": "ISC",
   "status": "ok",
   "actions": 11,
-  "converted": 9,
+  "converted": 10,
   "reasons": {
-   "part1-path-number-slot": 1,
    "verify-multi-request": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1686,6 +1803,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1701,6 +1819,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1713,10 +1832,12 @@
   "actions": 6,
   "converted": 0,
   "reasons": {
-   "number-slot": 4,
+   "number-slot": 3,
+   "overlap": 1,
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -1730,6 +1851,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1743,14 +1865,16 @@
   "converted": 78,
   "reasons": {
    "no-send": 18,
-   "verify-multi-request": 4,
+   "verify-multi-request": 3,
    "error": 1,
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part1-path-text-slot": 2
+   "part1-path-text-slot": 2,
+   "parts-map-differs": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1764,6 +1888,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1777,6 +1902,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1793,6 +1919,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1808,6 +1935,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1825,6 +1953,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1842,6 +1971,7 @@
    "verify-osc-address": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1855,6 +1985,7 @@
   "converted": 10,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1868,6 +1999,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1881,6 +2013,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -1894,6 +2027,7 @@
   "converted": 67,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1907,6 +2041,7 @@
   "converted": 9,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -1917,15 +2052,16 @@
   "license": "MIT",
   "status": "ok",
   "actions": 42,
-  "converted": 0,
+  "converted": 1,
   "reasons": {
-   "no-send": 40,
+   "no-send": 39,
    "verify-no-send": 1,
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "partial"
  },
  {
   "id": "chyronhego-lyric",
@@ -1940,6 +2076,7 @@
    "verify-no-send": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1955,6 +2092,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1966,10 +2104,14 @@
   "status": "ok",
   "actions": 32,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 31,
+   "option-breaks-send": 1
+  },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "classx-mixboard",
@@ -1983,6 +2125,7 @@
    "no-send": 7
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -1998,6 +2141,7 @@
    "option-breaks-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2016,6 +2160,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2029,6 +2174,7 @@
   "converted": 5,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2042,6 +2188,7 @@
   "converted": 18,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2059,6 +2206,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -2072,6 +2220,7 @@
   "converted": 21,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2085,8 +2234,9 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "excluded-name"
  },
  {
   "id": "creativeland-capacitimer",
@@ -2101,6 +2251,7 @@
    "verify-body": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2114,6 +2265,7 @@
   "converted": 5,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2127,6 +2279,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2140,6 +2293,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2153,6 +2307,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2168,6 +2323,7 @@
   "errors": [
    "Cannot read properties of undefined (reading 'id')"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -2184,6 +2340,7 @@
    "option-breaks-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2199,6 +2356,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2211,13 +2369,15 @@
   "actions": 50,
   "converted": 6,
   "reasons": {
-   "overlap": 23,
-   "option-breaks-send": 11,
+   "overlap": 21,
+   "option-breaks-send": 9,
    "text-slot": 2,
-   "number-slot": 3,
+   "number-slot": 6,
+   "verify-mismatch": 1,
    "no-send": 5
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2231,6 +2391,7 @@
   "converted": 15,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2244,6 +2405,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2257,6 +2419,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2273,6 +2436,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2288,6 +2452,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2305,6 +2470,7 @@
    "verify-osc-float": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2321,6 +2487,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2334,6 +2501,7 @@
   "converted": 7,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2349,6 +2517,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2362,6 +2531,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2375,6 +2545,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2388,6 +2559,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2403,6 +2575,7 @@
   "errors": [
    "init timed out"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -2419,6 +2592,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2432,6 +2606,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2445,6 +2620,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2458,6 +2634,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2471,6 +2648,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2486,6 +2664,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2499,6 +2678,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2512,6 +2692,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2525,6 +2706,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2535,13 +2717,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 6,
+  "converted": 8,
   "reasons": {
    "number-slot": 2,
-   "no-send": 2,
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2555,6 +2737,7 @@
   "converted": 45,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2570,6 +2753,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2583,6 +2767,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2598,6 +2783,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2608,13 +2794,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 3,
-  "reasons": {
-   "error": 3
-  },
+  "converted": 0,
+  "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "excluded-name"
  },
  {
   "id": "emotimo-st4",
@@ -2631,6 +2816,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2646,6 +2832,7 @@
   "errors": [
    "t.forEach is not a function"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -2662,6 +2849,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2680,6 +2868,7 @@
    "two-options-one-arg": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2693,6 +2882,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2706,6 +2896,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2719,6 +2910,7 @@
   "converted": 10,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2734,6 +2926,7 @@
    "text-slot": 10
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2749,6 +2942,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2762,6 +2956,7 @@
   "converted": 23,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -2778,6 +2973,7 @@
    "overlap": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2793,6 +2989,7 @@
    "no-send": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2805,10 +3002,11 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 5,
-   "text-slot": 2
+   "option-breaks-send": 6,
+   "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -2824,6 +3022,7 @@
    "error": 7
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -2839,6 +3038,7 @@
    "part0-number-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2854,6 +3054,7 @@
    "overlap": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2869,6 +3070,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2882,6 +3084,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2898,6 +3101,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2911,6 +3115,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2932,6 +3137,7 @@
    "error": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -2945,6 +3151,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -2960,6 +3167,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -2975,6 +3183,7 @@
    "overlap": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -2988,6 +3197,7 @@
   "converted": 7,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -3004,6 +3214,7 @@
    "text-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3019,6 +3230,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3032,6 +3244,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3048,6 +3261,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -3062,9 +3276,10 @@
   "reasons": {
    "no-send": 3,
    "number-slot": 1,
-   "option-breaks-send": 1
+   "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -3078,6 +3293,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3091,6 +3307,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3104,6 +3321,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3117,6 +3335,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3130,6 +3349,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3143,6 +3363,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3156,6 +3377,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3171,6 +3393,7 @@
   "errors": [
    "Failed to initialise RtMidi"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -3184,6 +3407,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3197,6 +3421,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3210,6 +3435,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3223,6 +3449,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3238,6 +3465,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3251,6 +3479,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3264,6 +3493,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3279,6 +3509,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3292,6 +3523,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3305,6 +3537,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3320,6 +3553,7 @@
    "number-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -3333,6 +3567,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3346,6 +3581,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3359,6 +3595,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -3374,6 +3611,7 @@
    "text-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -3387,6 +3625,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3403,6 +3642,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3421,6 +3661,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3436,6 +3677,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -3449,6 +3691,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3464,6 +3707,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3477,6 +3721,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3490,6 +3735,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3503,6 +3749,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3516,6 +3763,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3529,6 +3777,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3545,6 +3794,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3558,6 +3808,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3571,6 +3822,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -3584,6 +3836,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -3599,6 +3852,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3614,6 +3868,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3627,6 +3882,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3640,6 +3896,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3650,11 +3907,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 9,
-  "converted": 0,
-  "reasons": {},
+  "converted": 8,
+  "reasons": {
+   "text-slot": 1
+  },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "grassvalley-kframe",
@@ -3666,6 +3926,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3682,6 +3943,7 @@
    "osc-arg-count": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3699,6 +3961,7 @@
    "path-overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3714,6 +3977,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3734,6 +3998,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3747,6 +4012,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3760,6 +4026,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3775,6 +4042,7 @@
    "error": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3793,6 +4061,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3809,6 +4078,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3822,6 +4092,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3837,6 +4108,7 @@
    "no-send": 6
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3850,6 +4122,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3863,6 +4136,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3876,6 +4150,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3889,6 +4164,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3905,6 +4181,7 @@
    "verify-no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -3918,6 +4195,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -3933,6 +4211,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3948,6 +4227,7 @@
    "mixed": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3963,6 +4243,7 @@
    "verify-osc-int": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -3976,6 +4257,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -3989,6 +4271,7 @@
   "converted": 15,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4005,6 +4288,7 @@
    "no-send": 5
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -4021,6 +4305,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -4037,6 +4322,7 @@
    "error": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4050,6 +4336,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4067,6 +4354,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4080,6 +4368,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4095,6 +4384,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4108,6 +4398,7 @@
   "converted": 7,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4121,6 +4412,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4137,6 +4429,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4150,6 +4443,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4166,6 +4460,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4182,6 +4477,7 @@
    "verify-no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4195,6 +4491,7 @@
   "converted": 9,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4210,6 +4507,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4226,6 +4524,7 @@
    "no-send": 13
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -4236,12 +4535,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 77,
-  "converted": 2,
+  "converted": 1,
   "reasons": {
-   "no-send": 74,
+   "no-send": 75,
    "verify-no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4255,6 +4555,7 @@
   "converted": 57,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4268,6 +4569,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4281,6 +4583,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4294,6 +4597,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4307,6 +4611,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4319,11 +4624,13 @@
   "actions": 13,
   "converted": 8,
   "reasons": {
-   "part0-body-text-slot": 2,
+   "part0-body-text-slot": 1,
    "part0-body-number-slot": 1,
-   "body-text-slot": 2
+   "body-text-slot": 2,
+   "multi-request": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4337,6 +4644,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4345,15 +4653,16 @@
   "name": "Kiloview N40 / N50 / N60 / N5 / N6",
   "manufacturer": "Kiloview",
   "license": "MIT",
-  "status": "error",
-  "actions": 11,
-  "converted": 0,
-  "reasons": {},
-  "errors": [
-   "module exited (1)"
-  ],
+  "status": "ok",
+  "actions": 8,
+  "converted": 7,
+  "reasons": {
+   "error": 1
+  },
+  "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "kissbox-gpio",
@@ -4365,6 +4674,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4378,6 +4688,7 @@
   "converted": 8,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4391,6 +4702,7 @@
   "converted": 12,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4404,6 +4716,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4417,6 +4730,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4432,6 +4746,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4447,6 +4762,7 @@
    "number-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4463,6 +4779,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -4482,6 +4799,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4495,6 +4813,7 @@
   "converted": 14,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4508,6 +4827,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4523,6 +4843,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4536,6 +4857,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4551,6 +4873,7 @@
   "errors": [
    "this.rgb is not a function"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -4564,6 +4887,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4582,6 +4906,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -4595,6 +4920,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4608,6 +4934,7 @@
   "converted": 20,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4621,6 +4948,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4634,6 +4962,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4649,6 +4978,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4665,6 +4995,7 @@
    "verify-no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4678,6 +5009,7 @@
   "converted": 12,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4691,6 +5023,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4704,6 +5037,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4719,6 +5053,7 @@
    "path-overlap": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4734,6 +5069,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4747,6 +5083,7 @@
   "converted": 24,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4760,6 +5097,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4773,6 +5111,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4788,6 +5127,7 @@
    "overlap": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4801,6 +5141,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4817,6 +5158,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4832,6 +5174,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4845,6 +5188,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4858,6 +5202,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4871,6 +5216,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4884,6 +5230,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4897,6 +5244,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4910,6 +5258,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -4923,6 +5272,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4936,6 +5286,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4949,6 +5300,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4962,6 +5314,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -4977,6 +5330,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -4992,6 +5346,7 @@
    "no-send": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5008,6 +5363,7 @@
    "port-differs": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5021,6 +5377,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5034,6 +5391,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5047,6 +5405,7 @@
   "converted": 43,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5060,6 +5419,7 @@
   "converted": 72,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5076,6 +5436,7 @@
    "verify-multi-request": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5091,6 +5452,7 @@
    "error": 9
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5107,6 +5469,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5120,6 +5483,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5136,6 +5500,7 @@
    "error": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5152,6 +5517,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5169,6 +5535,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5182,6 +5549,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5195,6 +5563,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5208,6 +5577,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5221,6 +5591,7 @@
   "converted": 3,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5236,6 +5607,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5251,6 +5623,7 @@
    "overlap": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5264,6 +5637,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5277,6 +5651,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5290,6 +5665,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5303,6 +5679,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5316,6 +5693,7 @@
   "converted": 3,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5329,6 +5707,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5342,6 +5721,7 @@
   "converted": 33,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5355,6 +5735,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5368,6 +5749,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5383,6 +5765,7 @@
    "text-slot": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5398,6 +5781,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5413,6 +5797,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5428,6 +5813,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5445,6 +5831,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5458,6 +5845,7 @@
   "converted": 22,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5471,6 +5859,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5487,6 +5876,7 @@
    "too-many-choices": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5500,6 +5890,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5513,6 +5904,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5526,6 +5918,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5539,6 +5932,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5555,6 +5949,7 @@
    "osc-arg-count": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5568,6 +5963,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5583,6 +5979,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5596,6 +5993,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5611,6 +6009,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5626,6 +6025,7 @@
    "number-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5641,6 +6041,7 @@
   "errors": [
    "init timed out"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -5654,6 +6055,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5675,6 +6077,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5691,6 +6094,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -5707,6 +6111,7 @@
    "verify-no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5722,6 +6127,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5735,6 +6141,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5754,6 +6161,7 @@
    "part0-verify-path": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5771,6 +6179,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5784,6 +6193,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5797,6 +6207,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5812,6 +6223,7 @@
    "no-send": 13
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5825,6 +6237,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5838,6 +6251,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5848,11 +6262,16 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 0,
-  "reasons": {},
+  "converted": 6,
+  "reasons": {
+   "no-send": 1,
+   "error": 1,
+   "option-breaks-send": 2
+  },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "phabrix-qx",
@@ -5866,6 +6285,7 @@
    "body-number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5879,6 +6299,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -5892,6 +6313,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5908,6 +6330,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -5923,6 +6346,7 @@
    "number-slot": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5936,6 +6360,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5953,6 +6378,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -5966,6 +6392,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5979,6 +6406,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -5992,6 +6420,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "license"
  },
@@ -6005,6 +6434,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "license"
  },
@@ -6017,12 +6447,14 @@
   "actions": 22,
   "converted": 15,
   "reasons": {
-   "no-send": 3,
+   "verify-no-send": 1,
+   "no-send": 2,
    "parts-map-differs": 1,
    "verify-multi-request": 1,
    "part0-verify-multi-request": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6040,6 +6472,7 @@
    "multi-request": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6059,6 +6492,7 @@
    "error": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6074,6 +6508,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6090,6 +6525,7 @@
    "verify-no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6110,6 +6546,7 @@
    "verify-no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6125,6 +6562,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6138,6 +6576,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6151,6 +6590,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6167,6 +6607,7 @@
    "option-breaks-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -6180,6 +6621,7 @@
   "converted": 14,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6193,6 +6635,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6211,6 +6654,7 @@
    "part0-text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6226,6 +6670,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6239,6 +6684,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6255,6 +6701,7 @@
    "error": 10
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6271,6 +6718,7 @@
    "error": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -6284,6 +6732,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6299,6 +6748,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6316,6 +6766,7 @@
    "error": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6329,6 +6780,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6349,6 +6801,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6366,6 +6819,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6379,6 +6833,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6392,6 +6847,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6407,6 +6863,7 @@
    "no-send": 11
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6420,6 +6877,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6433,6 +6891,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6451,6 +6910,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6462,10 +6922,14 @@
   "status": "ok",
   "actions": 24,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "option-breaks-send": 1,
+   "no-send": 23
+  },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "roland-v160hd",
@@ -6482,6 +6946,7 @@
    "verify-mismatch": 18
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "builtin"
  },
@@ -6497,6 +6962,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6510,6 +6976,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6526,6 +6993,7 @@
    "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "builtin"
  },
@@ -6542,6 +7010,7 @@
    "no-send": 10
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -6555,6 +7024,7 @@
   "converted": 27,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6568,6 +7038,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6583,6 +7054,7 @@
    "verify-mismatch": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6596,6 +7068,7 @@
   "converted": 22,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6609,6 +7082,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6624,6 +7098,7 @@
    "no-send": 12
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6637,6 +7112,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6652,6 +7128,7 @@
    "error": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -6670,6 +7147,7 @@
    "option-breaks-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6682,13 +7160,13 @@
   "actions": 25,
   "converted": 18,
   "reasons": {
-   "part0-option-breaks-send": 1,
+   "part0-option-breaks-send": 2,
    "option-breaks-send": 3,
    "text-slot": 1,
-   "number-slot": 1,
-   "part0-overlap": 1
+   "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6702,6 +7180,7 @@
   "converted": 17,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6721,6 +7200,7 @@
    "part0-verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6734,6 +7214,7 @@
   "converted": 3,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6747,6 +7228,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6760,6 +7242,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6773,6 +7256,7 @@
   "converted": 3,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6786,6 +7270,7 @@
   "converted": 12,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6801,6 +7286,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6816,6 +7302,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6831,6 +7318,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6844,6 +7332,7 @@
   "converted": 10,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6857,6 +7346,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6872,6 +7362,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6885,6 +7376,7 @@
   "converted": 13,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -6900,6 +7392,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6913,6 +7406,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6929,6 +7423,7 @@
    "error": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6942,6 +7437,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6955,6 +7451,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -6970,6 +7467,7 @@
    "no-send": 7
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -6980,11 +7478,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 3,
-  "converted": 0,
-  "reasons": {},
+  "converted": 2,
+  "reasons": {
+   "body-text-slot": 1
+  },
   "errors": [],
+  "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "smartavi-ipmatrix",
@@ -6999,6 +7500,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7014,6 +7516,7 @@
    "no-send": 6
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7029,6 +7532,7 @@
   "errors": [
    "init timed out"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -7042,6 +7546,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7055,6 +7560,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7068,6 +7574,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7083,6 +7590,7 @@
    "no-send": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7098,6 +7606,7 @@
    "body-overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7113,6 +7622,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7128,6 +7638,7 @@
    "no-send": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7143,6 +7654,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7158,6 +7670,7 @@
    "no-send": 22
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7175,6 +7688,7 @@
    "verify-osc-int": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7188,6 +7702,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7203,6 +7718,7 @@
    "error": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7216,6 +7732,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7227,10 +7744,13 @@
   "status": "ok",
   "actions": 16,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "error": 16
+  },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "sony-ptz",
@@ -7245,6 +7765,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -7261,6 +7782,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7274,6 +7796,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7293,6 +7816,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7311,6 +7835,7 @@
    "part0-number-slot": 10
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7324,6 +7849,7 @@
   "converted": 14,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7337,6 +7863,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7350,6 +7877,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7363,6 +7891,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7379,6 +7908,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7394,6 +7924,7 @@
   "errors": [
    "init timed out"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -7407,6 +7938,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7420,6 +7952,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7435,6 +7968,7 @@
    "overlap": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -7448,6 +7982,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7460,10 +7995,13 @@
   "actions": 32,
   "converted": 27,
   "reasons": {
-   "verify-multi-request": 4,
+   "verify-multi-request": 2,
+   "path-number-slot": 1,
+   "part1-path-number-slot": 1,
    "path-overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7474,16 +8012,17 @@
   "license": "MIT",
   "status": "ok",
   "actions": 129,
-  "converted": 64,
+  "converted": 65,
   "reasons": {
-   "text-slot": 14,
-   "option-breaks-send": 3,
-   "verify-mismatch": 16,
+   "text-slot": 15,
+   "option-breaks-send": 4,
+   "verify-mismatch": 17,
    "no-send": 19,
-   "overlap": 11,
-   "number-slot": 2
+   "overlap": 8,
+   "number-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7499,6 +8038,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7512,6 +8052,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7525,6 +8066,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7540,6 +8082,7 @@
    "text-slot": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7553,6 +8096,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7566,6 +8110,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7579,6 +8124,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7592,6 +8138,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7605,6 +8152,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7616,13 +8164,11 @@
   "status": "ok",
   "actions": 10,
   "converted": 0,
-  "reasons": {
-   "no-send": 9,
-   "verify-no-send": 1
-  },
+  "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "no-send"
  },
  {
   "id": "techministry-spotifycontroller",
@@ -7631,13 +8177,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 19,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 18
+   "no-send": 18,
+   "verify-no-send": 1
   },
   "errors": [],
+  "chatty": true,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "techministry-tallyarbiter",
@@ -7649,6 +8197,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7666,6 +8215,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": true,
   "truncated": false,
   "result": "list-only"
  },
@@ -7679,6 +8229,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7697,6 +8248,7 @@
    "error": 20
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7712,6 +8264,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7725,6 +8278,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7741,6 +8295,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7754,6 +8309,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7767,6 +8323,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7780,6 +8337,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7796,6 +8354,7 @@
    "verify-mismatch": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7809,6 +8368,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7822,6 +8382,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7835,6 +8396,7 @@
   "converted": 4,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7848,6 +8410,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7864,6 +8427,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7877,6 +8441,7 @@
   "converted": 17,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -7890,6 +8455,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7906,6 +8472,7 @@
    "body-text-slot": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -7919,6 +8486,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7932,6 +8500,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7945,6 +8514,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7958,6 +8528,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7971,6 +8542,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -7986,6 +8558,7 @@
   "errors": [
    "e.state.sources.map is not a function or its return value is not iterable"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -7999,6 +8572,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8012,6 +8586,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8030,6 +8605,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -8043,6 +8619,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8056,6 +8633,7 @@
   "converted": 2,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -8069,6 +8647,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8082,6 +8661,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8095,6 +8675,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8110,6 +8691,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8123,6 +8705,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8136,6 +8719,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8149,6 +8733,7 @@
   "converted": 5,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -8162,6 +8747,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8183,6 +8769,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8196,6 +8783,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8209,6 +8797,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8224,6 +8813,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8237,6 +8827,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8253,6 +8844,7 @@
    "error": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8270,6 +8862,7 @@
    "verify-no-send": 4
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8285,6 +8878,7 @@
    "text-slot": 5
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -8298,6 +8892,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8311,6 +8906,7 @@
   "converted": 10,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -8324,6 +8920,7 @@
   "converted": 10,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -8340,6 +8937,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8353,6 +8951,7 @@
   "converted": 6,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -8370,6 +8969,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8386,6 +8986,7 @@
    "origin-varies": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8399,6 +9000,7 @@
   "converted": 1,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "full"
  },
@@ -8412,6 +9014,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8425,6 +9028,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8440,6 +9044,7 @@
    "no-send": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8455,6 +9060,7 @@
   "errors": [
    "supabaseUrl is required."
   ],
+  "chatty": false,
   "truncated": false,
   "result": "failed"
  },
@@ -8471,6 +9077,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8488,6 +9095,7 @@
    "overlap": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8503,6 +9111,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8519,6 +9128,7 @@
    "option-breaks-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -8536,6 +9146,7 @@
    "verify-mismatch": 2
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8549,6 +9160,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8564,6 +9176,7 @@
    "option-breaks-send": 3
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -8577,6 +9190,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8590,6 +9204,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8603,6 +9218,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  },
@@ -8622,6 +9238,7 @@
   "errors": [
    "module exited (1)"
   ],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8638,6 +9255,7 @@
    "no-send": 1
   },
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "partial"
  },
@@ -8651,6 +9269,7 @@
   "converted": 0,
   "reasons": {},
   "errors": [],
+  "chatty": false,
   "truncated": false,
   "result": "no-send"
  }

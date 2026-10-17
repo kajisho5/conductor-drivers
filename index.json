@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-10-17T05:01:52.094Z",
+ "generatedAt": "2026-10-17T05:36:10.831Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -86,9 +86,9 @@
    "transport": "http",
    "version": "2.4.2",
    "minAppVersion": "0.6.0",
-   "actions": 12,
+   "actions": 13,
    "allActions": 17,
-   "bytes": 9826
+   "bytes": 10931
   },
   {
    "id": "m-aja-kipro",
@@ -267,17 +267,6 @@
    "bytes": 10067
   },
   {
-   "id": "m-attend2it-speakertimer",
-   "name": "Attend2IT Speakertimer.co.uk",
-   "category": "Attend2IT",
-   "transport": "http",
-   "version": "1.0.0-beta3",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 10,
-   "bytes": 1383
-  },
-  {
    "id": "m-audac-mtx",
    "name": "Audac MTX48/88",
    "category": "Audac",
@@ -438,9 +427,9 @@
    "transport": "udp",
    "version": "2.3.0-beta.2",
    "minAppVersion": "0.6.0",
-   "actions": 22,
+   "actions": 27,
    "allActions": 98,
-   "bytes": 144448
+   "bytes": 187924
   },
   {
    "id": "m-behringer-xair",
@@ -465,6 +454,17 @@
    "bytes": 1550
   },
   {
+   "id": "m-biamp-audia",
+   "name": "Biamp Audia / Nexia",
+   "category": "Biamp",
+   "transport": "tcp",
+   "version": "2.0.3",
+   "minAppVersion": "0.6.0",
+   "actions": 3,
+   "allActions": 6,
+   "bytes": 5439
+  },
+  {
    "id": "m-biamp-tesira",
    "name": "Biamp TesiraFORTE",
    "category": "Biamp",
@@ -485,17 +485,6 @@
    "actions": 10,
    "allActions": 10,
    "bytes": 4038
-  },
-  {
-   "id": "m-bitfocusas-listener",
-   "name": "Bitfocus Listener",
-   "category": "Bitfocus",
-   "transport": "ws",
-   "version": "1.0.3",
-   "minAppVersion": "0.6.0",
-   "actions": 13,
-   "allActions": 14,
-   "bytes": 6529
   },
   {
    "id": "m-blackbox-boxilla",
@@ -614,9 +603,9 @@
    "transport": "http",
    "version": "2.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 9,
+   "actions": 10,
    "allActions": 11,
-   "bytes": 16292
+   "bytes": 16133
   },
   {
    "id": "m-cablematters-matrix",
@@ -738,6 +727,17 @@
    "actions": 9,
    "allActions": 9,
    "bytes": 6584
+  },
+  {
+   "id": "m-churchapps-freeshow",
+   "name": "ChurchApps FreeShow",
+   "category": "ChurchApps",
+   "transport": "http",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 42,
+   "bytes": 1434
   },
   {
    "id": "m-chyronhego-lyric",
@@ -880,7 +880,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 50,
-   "bytes": 9446
+   "bytes": 9971
   },
   {
    "id": "m-dashare-multiplay",
@@ -999,9 +999,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 6,
+   "actions": 8,
    "allActions": 11,
-   "bytes": 3412
+   "bytes": 3810
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -1024,17 +1024,6 @@
    "actions": 1,
    "allActions": 2,
    "bytes": 2304
-  },
-  {
-   "id": "m-elgato-keylight",
-   "name": "Elgato Key Light / Ring Light",
-   "category": "Elgato",
-   "transport": "http",
-   "version": "3.0.0",
-   "minAppVersion": "0.6.0",
-   "actions": 3,
-   "allActions": 6,
-   "bytes": 9290
   },
   {
    "id": "m-emotimo-st4",
@@ -1312,6 +1301,17 @@
    "bytes": 2220
   },
   {
+   "id": "m-grassvalley-amp",
+   "name": "Grass Valley AMP",
+   "category": "Grass Valley",
+   "transport": "tcp",
+   "version": "2.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 8,
+   "allActions": 9,
+   "bytes": 5138
+  },
+  {
    "id": "m-greengo-intercom",
    "name": "Green-GO Intercom Remote (OSC)",
    "category": "Green-GO",
@@ -1474,7 +1474,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 5,
-   "bytes": 1899
+   "bytes": 1902
   },
   {
    "id": "m-intelix-matrix",
@@ -1571,9 +1571,9 @@
    "transport": "http",
    "version": "1.9.0",
    "minAppVersion": "0.6.0",
-   "actions": 2,
+   "actions": 1,
    "allActions": 77,
-   "bytes": 1622
+   "bytes": 1407
   },
   {
    "id": "m-joy-playdeck",
@@ -1607,6 +1607,17 @@
    "actions": 8,
    "allActions": 13,
    "bytes": 4422
+  },
+  {
+   "id": "m-kiloview-ndi",
+   "name": "Kiloview N40 / N50 / N60 / N5 / N6",
+   "category": "Kiloview",
+   "transport": "http",
+   "version": "2.1.1",
+   "minAppVersion": "0.6.0",
+   "actions": 7,
+   "allActions": 8,
+   "bytes": 5726
   },
   {
    "id": "m-klang-app",
@@ -2203,6 +2214,17 @@
    "bytes": 6187
   },
   {
+   "id": "m-peavy-ratc",
+   "name": "Peavy NION n3 / NION n6 / NION nE / NION nX",
+   "category": "Peavy",
+   "transport": "tcp",
+   "version": "1.1.4",
+   "minAppVersion": "0.6.0",
+   "actions": 6,
+   "allActions": 10,
+   "bytes": 4662
+  },
+  {
    "id": "m-phabrix-qx",
    "name": "Phabrix QX12G",
    "category": "Phabrix",
@@ -2255,7 +2277,7 @@
    "minAppVersion": "0.6.0",
    "actions": 15,
    "allActions": 22,
-   "bytes": 6445
+   "bytes": 6323
   },
   {
    "id": "m-powersoft-amplifiers",
@@ -2709,6 +2731,17 @@
    "bytes": 4877
   },
   {
+   "id": "m-slack-webhooks",
+   "name": "Slack Webhooks",
+   "category": "Slack",
+   "transport": "http",
+   "version": "3.0.2",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 3,
+   "bytes": 2863
+  },
+  {
    "id": "m-smartavi-ipmatrix",
    "name": "Smart-AVI MU-88 / MXU-88 / MXCORE",
    "category": "Smart-AVI",
@@ -2893,7 +2926,7 @@
    "minAppVersion": "0.6.0",
    "actions": 27,
    "allActions": 32,
-   "bytes": 16175
+   "bytes": 16071
   },
   {
    "id": "m-studiocoast-vmix",
@@ -2902,9 +2935,9 @@
    "transport": "tcp",
    "version": "4.2.0",
    "minAppVersion": "0.6.0",
-   "actions": 64,
+   "actions": 65,
    "allActions": 129,
-   "bytes": 112102
+   "bytes": 120616
   },
   {
    "id": "m-symetrix-dsp",
@@ -2949,17 +2982,6 @@
    "actions": 2,
    "allActions": 2,
    "bytes": 2245
-  },
-  {
-   "id": "m-techministry-spotifycontroller",
-   "name": "Tech Ministry Spotify Controller",
-   "category": "Tech Ministry",
-   "transport": "http",
-   "version": "2.3.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 19,
-   "bytes": 1756
   },
   {
    "id": "m-telestream-prism",
