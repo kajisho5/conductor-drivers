@@ -347,7 +347,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261017_0708"
+    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261017_0724"
    }
   },
   {
@@ -360,7 +360,39 @@
     "path": "/clips",
     "body": "action=delete&recdest=0&clipname=*",
     "contentType": "application/x-www-form-urlencoded"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    }
+   ]
   },
   {
    "id": "schedulerEnabled",
@@ -392,6 +424,44 @@
     "enabled": {
      "SchedulerEnabled&value=0": "0",
      "SchedulerEnabled&value=1": "1"
+    }
+   }
+  },
+  {
+   "id": "schedulerActivity",
+   "name": "Scheduler Activity",
+   "options": [
+    {
+     "id": "activity",
+     "label": "Determine what should be active during a scheduled event",
+     "type": "select",
+     "default": "SchedulerActivity&value=1",
+     "choices": [
+      {
+       "id": "SchedulerActivity&value=1",
+       "label": "Record Only"
+      },
+      {
+       "id": "SchedulerActivity&value=2",
+       "label": "Stream Only"
+      },
+      {
+       "id": "SchedulerActivity&value=3",
+       "label": "Record and Stream"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_SchedulerActivity&value={{option.activity|map}}"
+   },
+   "maps": {
+    "activity": {
+     "SchedulerActivity&value=1": "1",
+     "SchedulerActivity&value=2": "2",
+     "SchedulerActivity&value=3": "3"
     }
    }
   }

@@ -35,14 +35,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/api/pause"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/socket.io/?EIO=4&transport=polling&t=Q58iDjx&b64=1"
-    }
-   ]
+   }
   },
   {
    "id": "stop",
@@ -111,25 +104,6 @@
    }
   },
   {
-   "id": "last",
-   "name": "Go to last ",
-   "options": [
-    {
-     "id": "time",
-     "label": "Time",
-     "type": "number",
-     "default": 0,
-     "min": 0,
-     "max": 999999
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/api/last/{{option.time}}"
-   }
-  },
-  {
    "id": "setAction",
    "name": "Set Action of Asset",
    "options": [
@@ -181,6 +155,60 @@
      "3": "3",
      "4": "4",
      "true": "true"
+    }
+   }
+  },
+  {
+   "id": "rotate",
+   "name": "Set Rotation of Asset",
+   "options": [
+    {
+     "id": "clip",
+     "label": "Clip",
+     "type": "text",
+     "default": "0"
+    },
+    {
+     "id": "rotation",
+     "label": "Rotation",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0"
+      },
+      {
+       "id": "90",
+       "label": "90"
+      },
+      {
+       "id": "180",
+       "label": "180"
+      },
+      {
+       "id": "270",
+       "label": "270"
+      },
+      {
+       "id": "360",
+       "label": "360"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/asset/{{option.clip}}/rotate/{{option.rotation|map}}0"
+   },
+   "maps": {
+    "rotation": {
+     "0": "",
+     "90": "9",
+     "180": "18",
+     "270": "27",
+     "360": "36"
     }
    }
   },

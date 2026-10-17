@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-10-17T07:22:41.095Z",
+ "generatedAt": "2026-10-17T07:38:42.778Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -86,9 +86,9 @@
    "transport": "http",
    "version": "2.4.2",
    "minAppVersion": "0.6.0",
-   "actions": 13,
+   "actions": 14,
    "allActions": 17,
-   "bytes": 10529
+   "bytes": 12199
   },
   {
    "id": "m-aja-kipro",
@@ -119,9 +119,9 @@
    "transport": "tcp",
    "version": "2.3.0",
    "minAppVersion": "0.6.0",
-   "actions": 4,
+   "actions": 3,
    "allActions": 14,
-   "bytes": 1344090
+   "bytes": 1333012
   },
   {
    "id": "m-analogway-coreplay",
@@ -221,17 +221,6 @@
    "actions": 15,
    "allActions": 24,
    "bytes": 10067
-  },
-  {
-   "id": "m-attend2it-speakertimer",
-   "name": "Attend2IT Speakertimer.co.uk",
-   "category": "Attend2IT",
-   "transport": "http",
-   "version": "1.0.0-beta3",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 10,
-   "bytes": 1571
   },
   {
    "id": "m-audac-mtx",
@@ -416,9 +405,9 @@
    "transport": "tcp",
    "version": "2.0.3",
    "minAppVersion": "0.6.0",
-   "actions": 3,
+   "actions": 4,
    "allActions": 6,
-   "bytes": 5439
+   "bytes": 5647
   },
   {
    "id": "m-biamp-tesira",
@@ -550,7 +539,7 @@
    "minAppVersion": "0.6.0",
    "actions": 10,
    "allActions": 11,
-   "bytes": 16274
+   "bytes": 16688
   },
   {
    "id": "m-cablematters-matrix",
@@ -933,9 +922,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 6,
+   "actions": 7,
    "allActions": 11,
-   "bytes": 3412
+   "bytes": 3611
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -999,9 +988,9 @@
    "transport": "udp",
    "version": "0.2.2",
    "minAppVersion": "0.6.0",
-   "actions": 9,
+   "actions": 8,
    "allActions": 10,
-   "bytes": 32330
+   "bytes": 6000
   },
   {
    "id": "m-etc-eos",
@@ -1486,17 +1475,6 @@
    "actions": 9,
    "allActions": 10,
    "bytes": 5066
-  },
-  {
-   "id": "m-josephadams-scriptlauncher",
-   "name": "Joseph Adams Script Launcher",
-   "category": "Joseph Adams",
-   "transport": "http",
-   "version": "1.9.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 77,
-   "bytes": 1419
   },
   {
    "id": "m-joy-playdeck",
@@ -2189,7 +2167,7 @@
    "minAppVersion": "0.6.0",
    "actions": 15,
    "allActions": 22,
-   "bytes": 6445
+   "bytes": 6323
   },
   {
    "id": "m-powersoft-amplifiers",
@@ -2233,7 +2211,7 @@
    "minAppVersion": "0.6.0",
    "actions": 3,
    "allActions": 5,
-   "bytes": 68571
+   "bytes": 57327
   },
   {
    "id": "m-ptzoptics-visca",
@@ -2275,9 +2253,9 @@
    "transport": "ws",
    "version": "2.1.2",
    "minAppVersion": "0.6.0",
-   "actions": 23,
+   "actions": 24,
    "allActions": 32,
-   "bytes": 10839
+   "bytes": 11571
   },
   {
    "id": "m-red-rcp2",
@@ -2561,9 +2539,9 @@
    "transport": "tcp",
    "version": "2.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 9,
+   "actions": 8,
    "allActions": 10,
-   "bytes": 8375
+   "bytes": 7476
   },
   {
    "id": "m-shure-mxw",
@@ -2792,9 +2770,9 @@
    "transport": "ws",
    "version": "3.10.0",
    "minAppVersion": "0.6.0",
-   "actions": 35,
+   "actions": 36,
    "allActions": 65,
-   "bytes": 45692
+   "bytes": 47098
   },
   {
    "id": "m-sounddevices-pixnet",
@@ -2825,9 +2803,9 @@
    "transport": "http",
    "version": "2.3.1",
    "minAppVersion": "0.6.0",
-   "actions": 26,
+   "actions": 29,
    "allActions": 32,
-   "bytes": 14986
+   "bytes": 18112
   },
   {
    "id": "m-symetrix-dsp",
@@ -2874,15 +2852,15 @@
    "bytes": 2245
   },
   {
-   "id": "m-techministry-spotifycontroller",
-   "name": "Tech Ministry Spotify Controller",
+   "id": "m-techministry-tallyarbiter",
+   "name": "Tech Ministry Tally Arbiter",
    "category": "Tech Ministry",
    "transport": "http",
-   "version": "2.3.0",
+   "version": "2.2.1",
    "minAppVersion": "0.6.0",
    "actions": 1,
-   "allActions": 19,
-   "bytes": 1541
+   "allActions": 3,
+   "bytes": 1519
   },
   {
    "id": "m-telestream-prism",
@@ -3199,9 +3177,9 @@
    "transport": "tcp",
    "version": "3.5.10",
    "minAppVersion": "0.6.0",
-   "actions": 45,
+   "actions": 44,
    "allActions": 118,
-   "bytes": 207396
+   "bytes": 205426
   },
   {
    "id": "m-zoom-osc-iso",

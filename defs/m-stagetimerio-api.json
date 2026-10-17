@@ -63,7 +63,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/v1/start_or_stop?room_id=YOUR-ID&api_key=YOUR-KEY"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/socket.io/?EIO=4&transport=polling&t=2ov0sc3u"
+    }
+   ]
   },
   {
    "id": "reset",
@@ -138,6 +145,24 @@
    }
   },
   {
+   "id": "add_time",
+   "name": "Transport: Add time",
+   "options": [
+    {
+     "id": "amount",
+     "label": "Amount",
+     "type": "text",
+     "default": "1m",
+     "help": "An amount of time specified by a number followed by a divison of time. Eg. `5s` for 5 seconds, `10m` for 10 minutes, etc."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/add_time?room_id=YOUR-ID&api_key=YOUR-KEY&amount={{option.amount}}"
+   }
+  },
+  {
    "id": "subtract_time",
    "name": "Transport: Subtract time",
    "options": [
@@ -193,7 +218,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/v1/enable_blackout?room_id=YOUR-ID&api_key=YOUR-KEY"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/v1/socket.io/?EIO=4&transport=polling&t=2owv8xal"
+    }
+   ]
   },
   {
    "id": "disable_blackout",
@@ -328,6 +360,32 @@
    }
   },
   {
+   "id": "start_or_stop_timer",
+   "name": "Timer: Toggle playback",
+   "options": [
+    {
+     "id": "index",
+     "label": "Timer index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99,
+     "help": "Index of a timer to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second timer from the top, set `index=2`."
+    },
+    {
+     "id": "timer_id",
+     "label": "Timer ID",
+     "type": "text",
+     "help": "The ID of the timer you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/start_or_stop_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
+   }
+  },
+  {
    "id": "reset_timer",
    "name": "Timer: Reset",
    "options": [
@@ -377,6 +435,32 @@
     "kind": "http",
     "method": "GET",
     "path": "/v1/show_message?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&message_id={{option.message_id}}"
+   }
+  },
+  {
+   "id": "hide_message",
+   "name": "Message: Hide",
+   "options": [
+    {
+     "id": "index",
+     "label": "Message index",
+     "type": "number",
+     "default": "",
+     "min": 1,
+     "max": 99,
+     "help": "Index of a message to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second message from the top, set `index=2`. Leave blank to target active or first message."
+    },
+    {
+     "id": "message_id",
+     "label": "Message ID",
+     "type": "text",
+     "help": "The ID of the message you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/hide_message?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&message_id={{option.message_id}}"
    }
   },
   {
@@ -506,6 +590,19 @@
    }
   },
   {
+   "id": "+1min",
+   "category": "Transport",
+   "name": "+1min",
+   "text": "+1min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "add_time",
+    "options": {
+     "amount": "1m"
+    }
+   }
+  },
+  {
    "id": "-1m",
    "category": "Transport",
    "name": "-1m",
@@ -519,6 +616,19 @@
    }
   },
   {
+   "id": "+30s",
+   "category": "Transport",
+   "name": "+30s",
+   "text": "+30s",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "add_time",
+    "options": {
+     "amount": "30s"
+    }
+   }
+  },
+  {
    "id": "-30s",
    "category": "Transport",
    "name": "-30s",
@@ -528,6 +638,19 @@
     "definitionId": "subtract_time",
     "options": {
      "amount": "30s"
+    }
+   }
+  },
+  {
+   "id": "+5min",
+   "category": "Transport",
+   "name": "+5min",
+   "text": "+5min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "add_time",
+    "options": {
+     "amount": "5m"
     }
    }
   },
@@ -661,6 +784,19 @@
    "backgroundColor": "#000000",
    "action": {
     "definitionId": "show_message",
+    "options": {
+     "index": ""
+    }
+   }
+  },
+  {
+   "id": "Hide message",
+   "category": "Message",
+   "name": "Hide message",
+   "text": "Hide",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "hide_message",
     "options": {
      "index": ""
     }

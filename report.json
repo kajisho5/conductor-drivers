@@ -233,10 +233,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 17,
-  "converted": 13,
+  "converted": 14,
   "reasons": {
    "verify-path": 1,
-   "verify-multi-request": 2,
+   "verify-multi-request": 1,
    "path-overlap": 1
   },
   "errors": [],
@@ -283,9 +283,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 14,
-  "converted": 4,
+  "converted": 3,
   "reasons": {
-   "overlap": 9,
+   "overlap": 10,
    "too-many-choices": 1
   },
   "errors": [],
@@ -619,14 +619,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 1,
-  "reasons": {
-   "no-send": 9
-  },
+  "converted": 0,
+  "reasons": {},
   "errors": [],
-  "chatty": true,
+  "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "no-send"
  },
  {
   "id": "audac-mtx",
@@ -1264,11 +1262,12 @@
   "actions": 84,
   "converted": 36,
   "reasons": {
-   "osc-multi-datagram": 8,
-   "osc-no-send": 8,
+   "osc-no-send": 11,
    "no-send": 15,
+   "osc-multi-datagram": 5,
    "two-options-one-arg": 4,
-   "osc-address-overlap": 5,
+   "osc-address-too-many-choices": 3,
+   "osc-address-overlap": 2,
    "error": 3,
    "verify-osc-float": 3,
    "verify-osc-int": 2
@@ -1299,11 +1298,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 3,
+  "converted": 4,
   "reasons": {
    "error": 1,
-   "number-slot": 1,
-   "no-send": 1
+   "number-slot": 1
   },
   "errors": [],
   "chatty": true,
@@ -1782,7 +1780,7 @@
   "actions": 11,
   "converted": 10,
   "reasons": {
-   "verify-multi-request": 1
+   "part1-path-number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -1830,8 +1828,7 @@
   "actions": 6,
   "converted": 0,
   "reasons": {
-   "number-slot": 3,
-   "overlap": 1,
+   "number-slot": 4,
    "no-send": 2
   },
   "errors": [],
@@ -2051,8 +2048,8 @@
   "actions": 42,
   "converted": 0,
   "reasons": {
-   "no-send": 40,
-   "verify-no-send": 1,
+   "verify-no-send": 2,
+   "no-send": 39,
    "error": 1
   },
   "errors": [],
@@ -2714,10 +2711,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 6,
+  "converted": 7,
   "reasons": {
    "number-slot": 2,
-   "no-send": 2,
+   "no-send": 1,
    "text-slot": 1
   },
   "errors": [],
@@ -2904,9 +2901,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 9,
+  "converted": 8,
   "reasons": {
-   "number-slot": 1
+   "number-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -3001,8 +2998,8 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 5,
-   "text-slot": 2
+   "option-breaks-send": 6,
+   "text-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -3179,7 +3176,8 @@
   "actions": 3,
   "converted": 0,
   "reasons": {
-   "overlap": 3
+   "overlap": 2,
+   "verify-mismatch": 1
   },
   "errors": [],
   "chatty": false,
@@ -3274,8 +3272,7 @@
   "converted": 0,
   "reasons": {
    "option-breaks-send": 3,
-   "text-slot": 1,
-   "part0-number-slot": 1
+   "text-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -4176,11 +4173,14 @@
   "status": "ok",
   "actions": 6,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 5,
+   "verify-no-send": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "homeassistant-server",
@@ -4533,15 +4533,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 77,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
    "no-send": 75,
-   "verify-no-send": 1
+   "verify-no-send": 2
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "joy-playdeck",
@@ -6446,8 +6446,9 @@
   "actions": 22,
   "converted": 15,
   "reasons": {
-   "no-send": 3,
-   "parts-map-differs": 2,
+   "verify-no-send": 1,
+   "no-send": 2,
+   "verify-multi-request": 2,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -6518,8 +6519,7 @@
   "actions": 5,
   "converted": 3,
   "reasons": {
-   "no-send": 1,
-   "verify-no-send": 1
+   "verify-no-send": 2
   },
   "errors": [],
   "chatty": false,
@@ -6539,8 +6539,8 @@
    "too-many-choices": 1,
    "number-slot": 1,
    "no-send": 3,
-   "verify-mismatch": 1,
-   "verify-no-send": 1
+   "option-breaks-send": 1,
+   "overlap": 1
   },
   "errors": [],
   "chatty": false,
@@ -6643,12 +6643,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 32,
-  "converted": 23,
+  "converted": 24,
   "reasons": {
    "option-breaks-send": 4,
    "text-slot": 2,
-   "parts-map-differs": 2,
-   "part0-text-slot": 1
+   "part0-number-slot": 1,
+   "parts-map-differs": 1
   },
   "errors": [],
   "chatty": false,
@@ -7139,9 +7139,8 @@
   "converted": 6,
   "reasons": {
    "text-slot": 1,
-   "no-send": 1,
-   "verify-no-send": 1,
-   "option-breaks-send": 1
+   "no-send": 2,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -7191,9 +7190,8 @@
   "actions": 23,
   "converted": 10,
   "reasons": {
-   "option-breaks-send": 2,
+   "option-breaks-send": 3,
    "no-send": 8,
-   "overlap": 1,
    "error": 1,
    "part0-verify-mismatch": 1
   },
@@ -7311,9 +7309,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 9,
+  "converted": 8,
   "reasons": {
-   "no-send": 1
+   "no-send": 1,
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -7825,11 +7824,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 65,
-  "converted": 35,
+  "converted": 36,
   "reasons": {
-   "number-slot": 6,
-   "multi-datagram": 4,
-   "no-send": 10,
+   "number-slot": 5,
+   "multi-datagram": 1,
+   "no-send": 13,
    "part0-number-slot": 9,
    "part0-verify-no-send": 1
   },
@@ -7964,7 +7963,8 @@
   "actions": 4,
   "converted": 0,
   "reasons": {
-   "overlap": 4
+   "overlap": 3,
+   "verify-mismatch": 1
   },
   "errors": [],
   "chatty": false,
@@ -7992,10 +7992,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 32,
-  "converted": 26,
+  "converted": 29,
   "reasons": {
-   "verify-multi-request": 4,
-   "path-overlap": 2
+   "path-overlap": 2,
+   "verify-multi-request": 1
   },
   "errors": [],
   "chatty": false,
@@ -8009,14 +8009,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 129,
-  "converted": 65,
+  "converted": 63,
   "reasons": {
-   "text-slot": 15,
-   "option-breaks-send": 4,
-   "verify-mismatch": 14,
+   "text-slot": 16,
+   "option-breaks-send": 5,
+   "verify-mismatch": 17,
    "no-send": 18,
-   "overlap": 11,
-   "number-slot": 2
+   "overlap": 8,
+   "too-many-choices": 1,
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -8148,8 +8149,8 @@
   "actions": 6,
   "converted": 0,
   "reasons": {
-   "verify-no-send": 1,
-   "no-send": 5
+   "no-send": 5,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": true,
@@ -8164,11 +8165,14 @@
   "status": "ok",
   "actions": 10,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 9,
+   "verify-no-send": 1
+  },
   "errors": [],
-  "chatty": false,
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-spotifycontroller",
@@ -8177,14 +8181,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 19,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 18
+   "no-send": 18,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "techministry-tallyarbiter",
@@ -8193,12 +8198,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 3,
-  "converted": 0,
-  "reasons": {},
+  "converted": 1,
+  "reasons": {
+   "no-send": 1,
+   "error": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "techministry-timekeeper",
@@ -9138,9 +9146,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 118,
-  "converted": 45,
+  "converted": 44,
   "reasons": {
-   "overlap": 55,
+   "overlap": 56,
    "text-slot": 9,
    "verify-mismatch": 9
   },

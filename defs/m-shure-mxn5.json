@@ -132,57 +132,6 @@
    }
   },
   {
-   "id": "channel_incrementgain",
-   "name": "Incremental change of Audio Gain of Channel",
-   "options": [
-    {
-     "id": "channel",
-     "label": "Channel",
-     "type": "select",
-     "default": "1",
-     "choices": [
-      {
-       "id": "1",
-       "label": "Dante 1"
-      },
-      {
-       "id": "2",
-       "label": "Dante 2"
-      },
-      {
-       "id": "3",
-       "label": "Inputs Summed"
-      },
-      {
-       "id": "4",
-       "label": "Dante Output"
-      }
-     ]
-    },
-    {
-     "id": "gain",
-     "label": "Gain Increment",
-     "type": "number",
-     "default": 0,
-     "min": -18,
-     "max": 18
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES INC {{option.gain|lin:10:0}} >",
-    "encoding": "text"
-   },
-   "maps": {
-    "channel": {
-     "1": "1",
-     "2": "2",
-     "3": "3",
-     "4": "4"
-    }
-   }
-  },
-  {
    "id": "channel_setgain",
    "name": "Set Audio Gain of Channel",
    "options": [
