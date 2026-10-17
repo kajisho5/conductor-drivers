@@ -7,7 +7,7 @@ kajisho5/conductor（iPhone / iPad の機器操作アプリ）が読むドライ
 - 定義は公開 OSS のモジュールを GitHub Actions で動かして自動で作る。モジュールのプログラムをこのリポにも手元の作業環境にも置かない・動かさない（CI の中だけ）
 - ライセンスが MIT・ISC・BSD・Apache-2.0 などのモジュールだけ使う。CREDITS.md に出典を残す
 - 定義の表示文字列（name・evidence の title など）に、元のソフトの製品名・ロゴを使わない。メーカー名・機種名はよい
-- `defs/` `index.json` `REPORT.md` `CREDITS.md` は Actions が作る。手で直さない（直すなら tools/ を直して作り直す）
+- `defs/` `builtin/` `index.json` `REPORT.md` `CREDITS.md` は Actions が作る（`builtin/` はアプリに組み込みの定義がある機種の変換結果。アプリ側の scripts/drivers が組み込みの定義へ動作を足す）。手で直さない（直すなら tools/ を直して作り直す）
 - テスト・サンプルに実在の社名・人名・会場名を使わない（DEMO-SW-A 等）
 
 ## コマンド

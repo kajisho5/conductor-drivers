@@ -10,6 +10,10 @@ const [rawDir, repoRoot] = process.argv.slice(2);
 const defsDir = path.join(repoRoot, 'defs');
 rmSync(defsDir, { recursive: true, force: true });
 mkdirSync(defsDir, { recursive: true });
+// アプリに組み込みの定義がある機種の変換結果（アプリの scripts/drivers が組み込みの定義へ足す）
+const builtinDir = path.join(repoRoot, 'builtin');
+rmSync(builtinDir, { recursive: true, force: true });
+mkdirSync(builtinDir, { recursive: true });
 
 const reports = [];
 const index = [];
@@ -26,8 +30,12 @@ for (const f of readdirSync(rawDir).filter((x) => x.endsWith('.json')).sort()) {
     reports.push({ id: raw.module?.id ?? f, result: 'crashed', errors: raw.errors ?? [] });
     continue;
   }
-  const { def, report } = convertModule(raw);
+  const { def, builtin, report } = convertModule(raw);
   reports.push(report);
+  if (builtin) {
+    writeFileSync(path.join(builtinDir, `${builtin.id}.json`), `${JSON.stringify(builtin, null, 1)}\n`);
+    credits.push(raw.module);
+  }
   if (!def) continue;
   const json = `${JSON.stringify(def, null, 1)}\n`;
   writeFileSync(path.join(defsDir, `${def.id}.json`), json);
@@ -65,7 +73,7 @@ const lines = [
   `| no-send | ${count('no-send')} | 動作を実行しても何も送らなかった（返事待ち・独自の接続手順など） |`,
   `| failed / crashed | ${count('failed') + count('crashed') + count('unreadable')} | モジュールが起動しなかった |`,
   `| license | ${count('license')} | ライセンスが再利用を許していないので除外 |`,
-  `| builtin | ${count('builtin')} | アプリに組み込みの定義がある |`,
+  `| builtin | ${count('builtin')} | アプリに組み込みの定義がある（送れる動作は builtin/ に出し、組み込みの定義へ足す） |`,
   `| 合計 | ${reports.length} | |`,
   '',
   `送れる動作：${reports.reduce((s, r) => s + (r.converted ?? 0), 0)} / ${reports.reduce((s, r) => s + (r.actions ?? 0), 0)}`,
@@ -88,7 +96,7 @@ writeFileSync(path.join(repoRoot, 'REPORT.md'), lines.join('\n'));
 const creditLines = [
   '# 参考にした公開 OSS',
   '',
-  'defs/ の定義は、次の公開モジュールの動作を自動で記録して作ったものです。各モジュールの著作権は作者にあり、それぞれのライセンスに従います。',
+  'defs/・builtin/ の定義は、次の公開モジュールの動作を自動で記録して作ったものです。各モジュールの著作権は作者にあり、それぞれのライセンスに従います。',
   '',
   '| モジュール | 版 | ライセンス | 作者 | リポジトリ |',
   '|---|---|---|---|---|',

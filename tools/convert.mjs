@@ -107,7 +107,7 @@ function displayName(m) {
 }
 
 /**
- * @returns {{ def: object|null, report: object }}
+ * @returns {{ def: object|null, builtin?: object, report: object }}
  */
 export function convertModule(raw) {
   const m = raw.module;
@@ -123,10 +123,6 @@ export function convertModule(raw) {
     errors: raw.errors,
     truncated: raw.truncated,
   };
-  if (BUILTIN_REPLACES.has(m.id)) {
-    report.result = 'builtin';
-    return { def: null, report };
-  }
   if (!ALLOWED_LICENSES.has(m.license)) {
     report.result = 'license';
     return { def: null, report };
@@ -299,5 +295,10 @@ export function convertModule(raw) {
     source: { module: m.id, version: m.version, license: m.license, maintainers: m.maintainers, repository: m.repository },
   };
   report.result = actions.length === raw.actionDefs.length ? 'full' : 'partial';
+  // アプリに組み込みの定義がある機種：配信の一覧には入れず、組み込みの定義へ動作を足す材料として builtin/ に出す
+  if (BUILTIN_REPLACES.has(m.id)) {
+    report.result = 'builtin';
+    return { def: null, builtin: def, report };
+  }
   return { def, report };
 }
