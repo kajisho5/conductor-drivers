@@ -52,8 +52,8 @@
    "default": "Pick an interface IP...",
    "choices": [
     {
-     "id": "10.1.0.151",
-     "label": "10.1.0.151"
+     "id": "10.1.0.230",
+     "label": "10.1.0.230"
     }
    ]
   }

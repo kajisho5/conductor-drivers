@@ -30,13 +30,13 @@
  ],
  "actions": [
   {
-   "id": "macLogout",
-   "name": "Mac | Logout",
+   "id": "macKillFinder",
+   "name": "Mac | Restart Finder",
    "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=ya78g2up"
+    "path": "/socket.io/?EIO=4&transport=polling&t=23cnu4ln"
    }
   }
  ],

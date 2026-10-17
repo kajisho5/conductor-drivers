@@ -162,6 +162,60 @@
    }
   },
   {
+   "id": "setmasterchanneldelay",
+   "name": "Master channels: Set output delay",
+   "options": [
+    {
+     "id": "channelType",
+     "label": "Channel Type",
+     "type": "select",
+     "default": "i",
+     "choices": [
+      {
+       "id": "i",
+       "label": "Input"
+      },
+      {
+       "id": "l",
+       "label": "Line Input"
+      },
+      {
+       "id": "a",
+       "label": "AUX Master"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "time",
+     "label": "Delay time (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.delay^0.{{option.time|pad3}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "channelType": {
+     "i": "i",
+     "l": "l",
+     "a": "a"
+    }
+   }
+  },
+  {
    "id": "muteauxchannel",
    "name": "AUX channels: Mute",
    "options": [

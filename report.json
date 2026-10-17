@@ -236,8 +236,7 @@
   "converted": 13,
   "reasons": {
    "verify-path": 1,
-   "verify-multi-request": 1,
-   "parts-map-differs": 1,
+   "verify-multi-request": 2,
    "path-overlap": 1
   },
   "errors": [],
@@ -311,7 +310,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "allenheath-cq",
@@ -327,7 +326,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "allenheath-dlive-ilive",
@@ -359,7 +358,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "allenheath-sq",
@@ -379,7 +378,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "analogway-awj",
@@ -620,15 +619,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 0,
+  "converted": 1,
   "reasons": {
-   "no-send": 9,
-   "verify-no-send": 1
+   "no-send": 9
   },
   "errors": [],
   "chatty": true,
   "truncated": false,
-  "result": "list-only"
+  "result": "partial"
  },
  {
   "id": "audac-mtx",
@@ -1239,7 +1237,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "behringer-x32",
@@ -1266,9 +1264,9 @@
   "actions": 84,
   "converted": 36,
   "reasons": {
-   "osc-no-send": 11,
+   "osc-multi-datagram": 8,
+   "osc-no-send": 8,
    "no-send": 15,
-   "osc-multi-datagram": 5,
    "two-options-one-arg": 4,
    "osc-address-overlap": 5,
    "error": 3,
@@ -1595,7 +1593,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "bmd-webpresenter",
@@ -1865,13 +1863,12 @@
   "converted": 78,
   "reasons": {
    "no-send": 18,
-   "verify-multi-request": 3,
+   "verify-multi-request": 4,
    "error": 1,
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part1-path-text-slot": 2,
-   "parts-map-differs": 1
+   "part1-path-text-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -2052,16 +2049,16 @@
   "license": "MIT",
   "status": "ok",
   "actions": 42,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 39,
+   "no-send": 40,
    "verify-no-send": 1,
    "error": 1
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "chyronhego-lyric",
@@ -2369,11 +2366,11 @@
   "actions": 50,
   "converted": 6,
   "reasons": {
-   "overlap": 21,
+   "overlap": 22,
    "option-breaks-send": 9,
    "text-slot": 2,
-   "number-slot": 6,
    "verify-mismatch": 1,
+   "number-slot": 5,
    "no-send": 5
   },
   "errors": [],
@@ -2717,9 +2714,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 8,
+  "converted": 6,
   "reasons": {
    "number-slot": 2,
+   "no-send": 2,
    "text-slot": 1
   },
   "errors": [],
@@ -2845,8 +2843,7 @@
   "actions": 13,
   "converted": 11,
   "reasons": {
-   "path-number-slot": 1,
-   "no-send": 1
+   "path-number-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -2907,12 +2904,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 10,
-  "reasons": {},
+  "converted": 9,
+  "reasons": {
+   "number-slot": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "full"
+  "result": "partial"
  },
  {
   "id": "etc-eos",
@@ -3002,8 +3001,8 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 6,
-   "text-slot": 1
+   "option-breaks-send": 5,
+   "text-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -3139,7 +3138,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "figure53-qview",
@@ -3274,9 +3273,9 @@
   "actions": 5,
   "converted": 0,
   "reasons": {
-   "no-send": 3,
-   "number-slot": 1,
-   "text-slot": 1
+   "option-breaks-send": 3,
+   "text-slot": 1,
+   "part0-number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -3550,7 +3549,8 @@
   "actions": 2,
   "converted": 0,
   "reasons": {
-   "number-slot": 2
+   "option-breaks-send": 1,
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -4176,14 +4176,11 @@
   "status": "ok",
   "actions": 6,
   "converted": 0,
-  "reasons": {
-   "no-send": 5,
-   "verify-no-send": 1
-  },
+  "reasons": {},
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "no-send"
  },
  {
   "id": "homeassistant-server",
@@ -4521,7 +4518,8 @@
   "converted": 0,
   "reasons": {
    "error": 9,
-   "no-send": 13
+   "no-send": 12,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -5620,7 +5618,8 @@
   "actions": 4,
   "converted": 1,
   "reasons": {
-   "overlap": 3
+   "overlap": 2,
+   "verify-mismatch": 1
   },
   "errors": [],
   "chatty": false,
@@ -6225,7 +6224,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "panasonic-tv-th",
@@ -6447,10 +6446,8 @@
   "actions": 22,
   "converted": 15,
   "reasons": {
-   "verify-no-send": 1,
-   "no-send": 2,
-   "parts-map-differs": 1,
-   "verify-multi-request": 1,
+   "no-send": 3,
+   "parts-map-differs": 2,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -7160,10 +7157,11 @@
   "actions": 25,
   "converted": 18,
   "reasons": {
-   "part0-option-breaks-send": 2,
+   "part0-option-breaks-send": 1,
    "option-breaks-send": 3,
    "text-slot": 1,
-   "number-slot": 1
+   "number-slot": 1,
+   "part0-overlap": 1
   },
   "errors": [],
   "chatty": false,
@@ -7818,7 +7816,7 @@
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "soundcraft-ui",
@@ -7827,12 +7825,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 65,
-  "converted": 34,
+  "converted": 35,
   "reasons": {
-   "number-slot": 7,
+   "number-slot": 6,
    "multi-datagram": 4,
    "no-send": 10,
-   "part0-number-slot": 10
+   "part0-number-slot": 9,
+   "part0-verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -7993,12 +7992,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 32,
-  "converted": 27,
+  "converted": 26,
   "reasons": {
-   "verify-multi-request": 2,
-   "path-number-slot": 1,
-   "part1-path-number-slot": 1,
-   "path-overlap": 1
+   "verify-multi-request": 4,
+   "path-overlap": 2
   },
   "errors": [],
   "chatty": false,
@@ -8016,15 +8013,15 @@
   "reasons": {
    "text-slot": 15,
    "option-breaks-send": 4,
-   "verify-mismatch": 17,
-   "no-send": 19,
-   "overlap": 8,
-   "number-slot": 1
+   "verify-mismatch": 14,
+   "no-send": 18,
+   "overlap": 11,
+   "number-slot": 2
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "builtin"
  },
  {
   "id": "symetrix-dsp",
@@ -8150,11 +8147,14 @@
   "status": "ok",
   "actions": 6,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "verify-no-send": 1,
+   "no-send": 5
+  },
   "errors": [],
-  "chatty": false,
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-midirelay",
@@ -8177,15 +8177,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 19,
-  "converted": 0,
+  "converted": 1,
   "reasons": {
-   "no-send": 18,
-   "verify-no-send": 1
+   "no-send": 18
   },
   "errors": [],
-  "chatty": true,
+  "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "partial"
  },
  {
   "id": "techministry-tallyarbiter",
@@ -8761,7 +8760,7 @@
   "converted": 5,
   "reasons": {
    "no-send": 19,
-   "verify-no-send": 1,
+   "overlap": 1,
    "text-slot": 1,
    "error": 1,
    "not-run": 2
@@ -9139,11 +9138,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 118,
-  "converted": 44,
+  "converted": 45,
   "reasons": {
-   "overlap": 63,
+   "overlap": 55,
    "text-slot": 9,
-   "verify-mismatch": 2
+   "verify-mismatch": 9
   },
   "errors": [],
   "chatty": false,

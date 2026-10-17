@@ -24,7 +24,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=Q58K1O4&b64=1"
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q58iQ6W&b64=1"
    }
   }
  ],

@@ -35,7 +35,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/api/pause"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/socket.io/?EIO=4&transport=polling&t=Q58iDjx&b64=1"
+    }
+   ]
   },
   {
    "id": "stop",

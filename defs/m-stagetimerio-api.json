@@ -138,24 +138,6 @@
    }
   },
   {
-   "id": "add_time",
-   "name": "Transport: Add time",
-   "options": [
-    {
-     "id": "amount",
-     "label": "Amount",
-     "type": "text",
-     "default": "1m",
-     "help": "An amount of time specified by a number followed by a divison of time. Eg. `5s` for 5 seconds, `10m` for 10 minutes, etc."
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/v1/add_time?room_id=YOUR-ID&api_key=YOUR-KEY&amount={{option.amount}}"
-   }
-  },
-  {
    "id": "subtract_time",
    "name": "Transport: Subtract time",
    "options": [
@@ -398,8 +380,8 @@
    }
   },
   {
-   "id": "hide_message",
-   "name": "Message: Hide",
+   "id": "show_or_hide_message",
+   "name": "Message: Toggle visibility",
    "options": [
     {
      "id": "index",
@@ -420,7 +402,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/v1/hide_message?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&message_id={{option.message_id}}"
+    "path": "/v1/show_or_hide_message?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&message_id={{option.message_id}}"
    }
   },
   {
@@ -524,19 +506,6 @@
    }
   },
   {
-   "id": "+1min",
-   "category": "Transport",
-   "name": "+1min",
-   "text": "+1min",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "add_time",
-    "options": {
-     "amount": "1m"
-    }
-   }
-  },
-  {
    "id": "-1m",
    "category": "Transport",
    "name": "-1m",
@@ -550,19 +519,6 @@
    }
   },
   {
-   "id": "+30s",
-   "category": "Transport",
-   "name": "+30s",
-   "text": "+30s",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "add_time",
-    "options": {
-     "amount": "30s"
-    }
-   }
-  },
-  {
    "id": "-30s",
    "category": "Transport",
    "name": "-30s",
@@ -572,19 +528,6 @@
     "definitionId": "subtract_time",
     "options": {
      "amount": "30s"
-    }
-   }
-  },
-  {
-   "id": "+5min",
-   "category": "Transport",
-   "name": "+5min",
-   "text": "+5min",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "add_time",
-    "options": {
-     "amount": "5m"
     }
    }
   },
@@ -698,6 +641,19 @@
    }
   },
   {
+   "id": "Show/hide message",
+   "category": "Message",
+   "name": "Show/hide message",
+   "text": "Toggle",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "show_or_hide_message",
+    "options": {
+     "index": ""
+    }
+   }
+  },
+  {
    "id": "Show message",
    "category": "Message",
    "name": "Show message",
@@ -705,19 +661,6 @@
    "backgroundColor": "#000000",
    "action": {
     "definitionId": "show_message",
-    "options": {
-     "index": ""
-    }
-   }
-  },
-  {
-   "id": "Hide message",
-   "category": "Message",
-   "name": "Hide message",
-   "text": "Hide",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "hide_message",
     "options": {
      "index": ""
     }

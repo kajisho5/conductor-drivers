@@ -2294,7 +2294,7 @@
     "args": [
      {
       "type": "f",
-      "value": "{{option.sourceposition}}"
+      "value": "{{option.sourceposition|lin:1:0.000001}}"
      }
     ]
    }
@@ -2333,7 +2333,7 @@
     "args": [
      {
       "type": "f",
-      "value": "{{option.sourceposition|lin:-1:0}}"
+      "value": "{{option.sourceposition|lin:-1:-0.000001}}"
      }
     ]
    }
@@ -2372,7 +2372,7 @@
     "args": [
      {
       "type": "f",
-      "value": "{{option.sourceposition|lin:-1:0}}"
+      "value": "{{option.sourceposition|lin:-1:-0.000001}}"
      }
     ]
    }

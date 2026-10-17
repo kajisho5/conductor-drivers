@@ -110,7 +110,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/cgi-bin/joyctrl.cgi?f=directpresets&action=recall&group=1&camid=1&preset={{option.preset}}&presetspeed=24"
+    "path": "/cgi-bin/joyctrl.cgi?f=directpresets&action=recall&group=1&camid=6&preset={{option.preset}}&presetspeed=24"
    }
   }
  ],

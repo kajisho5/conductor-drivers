@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-10-17T05:36:10.831Z",
+ "generatedAt": "2026-10-17T07:22:41.095Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -88,7 +88,7 @@
    "minAppVersion": "0.6.0",
    "actions": 13,
    "allActions": 17,
-   "bytes": 10931
+   "bytes": 10529
   },
   {
    "id": "m-aja-kipro",
@@ -122,50 +122,6 @@
    "actions": 4,
    "allActions": 14,
    "bytes": 1344090
-  },
-  {
-   "id": "m-allenheath-avantis",
-   "name": "Allen & Heath Avantis",
-   "category": "Allen & Heath",
-   "transport": "tcp",
-   "version": "1.1.3",
-   "minAppVersion": "0.6.0",
-   "actions": 23,
-   "allActions": 40,
-   "bytes": 224987
-  },
-  {
-   "id": "m-allenheath-cq",
-   "name": "Allen Heath CQ-12T / CQ-18T / CQ-20B",
-   "category": "Allen Heath",
-   "transport": "tcp",
-   "version": "1.0.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 9,
-   "bytes": 1718
-  },
-  {
-   "id": "m-allenheath-dlive",
-   "name": "Allen & Heath dLive",
-   "category": "Allen & Heath",
-   "transport": "tcp",
-   "version": "1.0.1",
-   "minAppVersion": "0.6.0",
-   "actions": 7,
-   "allActions": 21,
-   "bytes": 88223
-  },
-  {
-   "id": "m-allenheath-sq",
-   "name": "Allen & Heath SQ5 / SQ6 / SQ7",
-   "category": "Allen & Heath",
-   "transport": "tcp",
-   "version": "3.0.0",
-   "minAppVersion": "0.6.0",
-   "actions": 11,
-   "allActions": 45,
-   "bytes": 239691
   },
   {
    "id": "m-analogway-coreplay",
@@ -265,6 +221,17 @@
    "actions": 15,
    "allActions": 24,
    "bytes": 10067
+  },
+  {
+   "id": "m-attend2it-speakertimer",
+   "name": "Attend2IT Speakertimer.co.uk",
+   "category": "Attend2IT",
+   "transport": "http",
+   "version": "1.0.0-beta3",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 10,
+   "bytes": 1571
   },
   {
    "id": "m-audac-mtx",
@@ -421,17 +388,6 @@
    "bytes": 1678
   },
   {
-   "id": "m-behringer-wing",
-   "name": "Behringer WING",
-   "category": "Behringer",
-   "transport": "udp",
-   "version": "2.3.0-beta.2",
-   "minAppVersion": "0.6.0",
-   "actions": 27,
-   "allActions": 98,
-   "bytes": 187924
-  },
-  {
    "id": "m-behringer-xair",
    "name": "Behringer/Midas XR/MR / XAir / XR12 / XR16 / X18 / XR18",
    "category": "Behringer/Midas",
@@ -542,17 +498,6 @@
    "bytes": 19542
   },
   {
-   "id": "m-bmd-videohub",
-   "name": "Blackmagic Design Videohub",
-   "category": "Blackmagic Design",
-   "transport": "tcp",
-   "version": "2.6.0",
-   "minAppVersion": "0.6.0",
-   "actions": 5,
-   "allActions": 18,
-   "bytes": 56991
-  },
-  {
    "id": "m-bmd-webpresenter",
    "name": "Blackmagic Design WebPresenter HD / WebPresenter 4K",
    "category": "Blackmagic Design",
@@ -605,7 +550,7 @@
    "minAppVersion": "0.6.0",
    "actions": 10,
    "allActions": 11,
-   "bytes": 16133
+   "bytes": 16274
   },
   {
    "id": "m-cablematters-matrix",
@@ -727,17 +672,6 @@
    "actions": 9,
    "allActions": 9,
    "bytes": 6584
-  },
-  {
-   "id": "m-churchapps-freeshow",
-   "name": "ChurchApps FreeShow",
-   "category": "ChurchApps",
-   "transport": "http",
-   "version": "1.1.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 42,
-   "bytes": 1434
   },
   {
    "id": "m-chyronhego-lyric",
@@ -913,7 +847,7 @@
    "minAppVersion": "0.6.0",
    "actions": 100,
    "allActions": 123,
-   "bytes": 64129
+   "bytes": 64160
   },
   {
    "id": "m-dcc-ex-commandstation",
@@ -999,9 +933,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 8,
+   "actions": 6,
    "allActions": 11,
-   "bytes": 3810
+   "bytes": 3412
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -1065,9 +999,9 @@
    "transport": "udp",
    "version": "0.2.2",
    "minAppVersion": "0.6.0",
-   "actions": 10,
+   "actions": 9,
    "allActions": 10,
-   "bytes": 36836
+   "bytes": 32330
   },
   {
    "id": "m-etc-eos",
@@ -1156,17 +1090,6 @@
    "actions": 2,
    "allActions": 4,
    "bytes": 4581
-  },
-  {
-   "id": "m-figure53-qlab-advance",
-   "name": "Figure 53 QLab with feedback",
-   "category": "Figure 53",
-   "transport": "tcp",
-   "version": "2.13.0",
-   "minAppVersion": "0.6.0",
-   "actions": 23,
-   "allActions": 67,
-   "bytes": 35479
   },
   {
    "id": "m-foobar2000-foobar2000",
@@ -1573,7 +1496,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 77,
-   "bytes": 1407
+   "bytes": 1419
   },
   {
    "id": "m-joy-playdeck",
@@ -2192,17 +2115,6 @@
    "bytes": 69117
   },
   {
-   "id": "m-panasonic-ptz",
-   "name": "Panasonic PTZ Camera",
-   "category": "Panasonic",
-   "transport": "http",
-   "version": "2.4.0",
-   "minAppVersion": "0.6.0",
-   "actions": 48,
-   "allActions": 61,
-   "bytes": 139867
-  },
-  {
    "id": "m-panasonic-tv-th",
    "name": "Panasonic TH-84EF1U / TH-75EF1U / TH-85EF1W / TH-75EF1W / TH-98SQ2HW / TH-86E…",
    "category": "Panasonic",
@@ -2277,7 +2189,7 @@
    "minAppVersion": "0.6.0",
    "actions": 15,
    "allActions": 22,
-   "bytes": 6323
+   "bytes": 6445
   },
   {
    "id": "m-powersoft-amplifiers",
@@ -2874,26 +2786,15 @@
    "bytes": 55953
   },
   {
-   "id": "m-sony-visca",
-   "name": "Sony VISCA",
-   "category": "Sony",
-   "transport": "udp",
-   "version": "2.7.5",
-   "minAppVersion": "0.6.0",
-   "actions": 49,
-   "allActions": 66,
-   "bytes": 56629
-  },
-  {
    "id": "m-soundcraft-ui",
    "name": "Soundcraft Ui12 / Ui16 / Ui24R",
    "category": "Soundcraft",
    "transport": "ws",
    "version": "3.10.0",
    "minAppVersion": "0.6.0",
-   "actions": 34,
+   "actions": 35,
    "allActions": 65,
-   "bytes": 44719
+   "bytes": 45692
   },
   {
    "id": "m-sounddevices-pixnet",
@@ -2924,20 +2825,9 @@
    "transport": "http",
    "version": "2.3.1",
    "minAppVersion": "0.6.0",
-   "actions": 27,
+   "actions": 26,
    "allActions": 32,
-   "bytes": 16071
-  },
-  {
-   "id": "m-studiocoast-vmix",
-   "name": "StudioCoast vMix",
-   "category": "StudioCoast",
-   "transport": "tcp",
-   "version": "4.2.0",
-   "minAppVersion": "0.6.0",
-   "actions": 65,
-   "allActions": 129,
-   "bytes": 120616
+   "bytes": 14986
   },
   {
    "id": "m-symetrix-dsp",
@@ -2982,6 +2872,17 @@
    "actions": 2,
    "allActions": 2,
    "bytes": 2245
+  },
+  {
+   "id": "m-techministry-spotifycontroller",
+   "name": "Tech Ministry Spotify Controller",
+   "category": "Tech Ministry",
+   "transport": "http",
+   "version": "2.3.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 19,
+   "bytes": 1541
   },
   {
    "id": "m-telestream-prism",
@@ -3298,9 +3199,9 @@
    "transport": "tcp",
    "version": "3.5.10",
    "minAppVersion": "0.6.0",
-   "actions": 44,
+   "actions": 45,
    "allActions": 118,
-   "bytes": 205426
+   "bytes": 207396
   },
   {
    "id": "m-zoom-osc-iso",
