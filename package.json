@@ -1,0 +1,13 @@
+{
+  "name": "conductor-drivers",
+  "private": true,
+  "type": "module",
+  "description": "conductor のドライバ定義（JSON）と、その変換の仕組み",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "import": "node tools/run-all.mjs modules raw && node tools/convert-all.mjs raw ."
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

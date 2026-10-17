@@ -1,0 +1,92 @@
+# 公開 OSS のモジュール一式を GitHub の使い捨て環境で動かして、送る内容を記録し、defs/ を作り直す。
+# モジュールの外への通信は tools/capture.cjs が横取りする（実機・外部には送らない）。
+name: import
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "モジュールの id をカンマ区切り（空なら全部）"
+        required: false
+        default: ""
+  schedule:
+    - cron: "17 18 * * 0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: import
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm test
+
+  run:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: モジュール一式を取得
+        run: git clone --depth 1 https://github.com/bitfocus/companion-bundled-modules modules
+      - name: 記録
+        run: node tools/run-all.mjs modules raw --shard ${{ matrix.shard }}/8 --jobs 6 ${{ inputs.only && format('--only {0}', inputs.only) || '' }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: raw-${{ matrix.shard }}
+          path: raw/
+          retention-days: 14
+
+  convert:
+    needs: run
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: raw-*
+          path: raw
+          merge-multiple: true
+      - name: 定義を作る
+        run: node tools/convert-all.mjs raw .
+      - name: 変わっていれば保存
+        if: ${{ !inputs.only }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add defs index.json report.json REPORT.md CREDITS.md
+          if git diff --cached --quiet; then
+            echo "変化なし"
+          else
+            git commit -m "defs: モジュールから作り直す"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: result
+          path: |
+            defs/
+            index.json
+            REPORT.md
+            report.json
+          retention-days: 14

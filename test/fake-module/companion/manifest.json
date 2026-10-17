@@ -1,0 +1,12 @@
+{
+  "id": "demo-sw-a",
+  "name": "demo-sw-a",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "git+https://example.invalid/demo-sw-a.git",
+  "maintainers": [{ "name": "DEMO AUTHOR" }],
+  "runtime": { "type": "node22", "api": "nodejs-ipc", "apiVersion": "1.14.0", "entrypoint": "../main.js" },
+  "manufacturer": "DEMO",
+  "products": ["SW-A"],
+  "keywords": []
+}
