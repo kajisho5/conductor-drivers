@@ -1,38 +1,38 @@
 # 変換の結果
 
-作成：2026-10-17T03:21:53.801Z
+作成：2026-10-17T05:01:52.094Z
 
 | 結果 | 数 | 意味 |
 |---|---|---|
 | full | 90 | 全部の動作を送れる |
-| partial | 209 | 一部の動作を送れる |
-| list-only | 38 | 動作の一覧は取れたが、送る内容を作れなかった |
-| no-send | 242 | 動作を実行しても何も送らなかった（返事待ち・独自の接続手順など） |
+| partial | 210 | 一部の動作を送れる |
+| list-only | 39 | 動作の一覧は取れたが、送る内容を作れなかった |
+| no-send | 241 | 動作を実行しても何も送らなかった（返事待ち・独自の接続手順など） |
 | failed / crashed | 16 | モジュールが起動しなかった |
 | license | 2 | ライセンスが再利用を許していないので除外 |
-| builtin | 3 | アプリに組み込みの定義がある |
+| builtin | 2 | アプリに組み込みの定義がある（送れる動作は builtin/ に出し、組み込みの定義へ足す） |
 | 合計 | 600 | |
 
-送れる動作：3816 / 8422
+送れる動作：3891 / 8422
 
 ## 送れなかった理由（動作の数）
 
-- no-send: 768
-- error: 235
-- overlap: 220
-- text-slot: 194
+- no-send: 783
+- error: 236
+- overlap: 226
+- text-slot: 193
 - not-run: 143
-- number-slot: 116
-- verify-mismatch: 68
-- option-breaks-send: 48
+- number-slot: 122
+- verify-mismatch: 86
+- option-breaks-send: 51
 - osc-no-send: 39
 - verify-path: 31
 - verify-no-send: 30
 - parts-origin-differs: 27
 - map-twice: 22
 - two-options-one-arg: 20
+- verify-multi-request: 15
 - path-overlap: 14
-- verify-multi-request: 13
 - part0-number-slot: 12
 - body-number-slot: 12
 - too-many-choices: 10
@@ -43,25 +43,29 @@
 - osc-multi-datagram: 9
 - osc-address-text-slot: 9
 - verify-osc-float: 8
-- path-number-slot: 8
 - mixed: 8
 - multi-datagram: 7
 - part0-verify-osc-address: 7
-- parts-map-differs: 6
+- path-number-slot: 7
 - verify-osc-int: 6
 - osc-string-number-slot: 6
 - osc-address-overlap: 5
-- multi-request: 5
-- part0-option-breaks-send: 5
 - osc-arg-count: 4
 - part0-verify-multi-request: 4
+- parts-map-differs: 4
+- multi-request: 4
+- part0-option-breaks-send: 4
 - port-differs: 4
 - body-overlap: 3
 - path-text-slot: 3
 - ws-binary: 3
 - part0-osc-multi-datagram: 2
 - part0-map-twice: 2
+- part1-path-number-slot: 2
+- part1-path-text-slot: 2
+- part0-body-text-slot: 2
 - osc-string-text-slot: 2
+- part0-overlap: 2
 - osc-type-text-slot: 1
 - part1-path-too-many-choices: 1
 - map-in-path-and-body: 1
@@ -69,17 +73,12 @@
 - part0-osc-no-send: 1
 - osc-string-overlap: 1
 - part0-verify-osc-int: 1
-- part1-path-number-slot: 1
-- part0-path-text-slot: 1
-- part1-path-text-slot: 1
 - verify-osc-address: 1
 - osc-number: 1
-- part0-body-text-slot: 1
 - part0-body-number-slot: 1
 - part1-verify-osc-int: 1
 - part0-verify-path: 1
 - part0-text-slot: 1
-- part0-overlap: 1
 - part0-verify-mismatch: 1
 - origin-varies: 1
 
@@ -95,7 +94,7 @@
 | adder-infinity100xseries | Adder Infinity 1000R Series / Infinity 2020R Series | list-only | 0 / 1 | MIT |
 | adder-xdip | Adder XDIP | failed | 0 / 5 | MIT |
 | adlerluiz-ytmdesktop | adlerluiz YouTube Music Desktop | no-send | 0 / 0 | MIT |
-| aetaaudio-codecs | AETA HIFISCOOP 3 / SCOOP 3 / SCOOP 4+ / SCOOPY+ / Scoop5 S / Scoop5 S-IP / Sc… | partial | 50 / 58 | MIT |
+| aetaaudio-codecs | AETA HIFISCOOP 3 / SCOOP 3 / SCOOP 4+ / SCOOPY+ / Scoop5 S / Scoop5 S-IP / Sc… | partial | 51 / 58 | MIT |
 | agf-characterworks | AGF Characterworks | partial | 2 / 3 | MIT |
 | aimedia-encoder-captions | AI Media AV 610 / HD 1492 / HD 492 | no-send | 0 / 0 | MIT |
 | aimedia-icap | AI Media iCap Portal | no-send | 0 / 1 | MIT |
@@ -126,7 +125,7 @@
 | arri-tally | Arri Alexa / Amira | full | 1 / 1 | MIT |
 | aten-matrix | ATEN Matrix | full | 2 / 2 | MIT |
 | atlasied-atmosphere | AtlasIED Atmosphere | partial | 15 / 24 | MIT |
-| attend2it-speakertimer | Attend2IT Speakertimer.co.uk | no-send | 0 / 10 | MIT |
+| attend2it-speakertimer | Attend2IT Speakertimer.co.uk | partial | 1 / 10 | MIT |
 | audac-mtx | Audac MTX48/88 | partial | 9 / 11 | MIT |
 | audinate-dante-ddm | Audinate Dante | no-send | 0 / 0 | MIT |
 | audinate-dantecontroller | Audinate Dante Controller | no-send | 0 / 0 | MIT |
@@ -181,7 +180,7 @@
 | bitfocus-cloud | Bitfocus Companion Cloud | no-send | 0 / 2 | MIT |
 | bitfocusas-listener | Bitfocus Listener | partial | 13 / 14 | MIT |
 | blackbox-boxilla | Blackbox Boxilla | full | 1 / 1 | MIT |
-| bmd-atem | Blackmagic Design ATEM | builtin | 0 / 47 | MIT |
+| bmd-atem | Blackmagic Design ATEM | no-send | 0 / 47 | MIT |
 | bmd-gpi-and-tally-interface | Blackmagic Design GPI and Tally Interface | partial | 1 / 3 | MIT |
 | bmd-hyperdeck | Blackmagic Design Hyperdeck | no-send | 0 / 24 | MIT |
 | bmd-multiview4 | Blackmagic Design Multiview 4 | full | 10 / 10 | MIT |
@@ -261,7 +260,7 @@
 | disguise-osc | Disguise OSC | no-send | 0 / 35 | MIT |
 | disguise-smc | Disguise - SMC | full | 6 / 6 | MIT |
 | dmxcontrolprojects-dmxcontrol3 | DMXControl Projects e.V. DMXControl 3 | no-send | 0 / 5 | MIT |
-| dolby-cinemaprocessor | Dolby Cinema Processor | partial | 7 / 11 | MIT |
+| dolby-cinemaprocessor | Dolby Cinema Processor | partial | 6 / 11 | MIT |
 | dtvideolabs-playbackproplus | DT Videolabs PlaybackPro Plus | full | 45 / 45 | MIT |
 | easyrecord-cgcontrol | Easyrecord CG control | partial | 1 / 2 | MIT |
 | eaton-epdu | Eaton ePDU | no-send | 0 / 5 | MIT |
@@ -356,7 +355,7 @@
 | highpass-upc | HighPass UPC -Ultimate Presentation Control | no-send | 0 / 15 | MIT |
 | hive-beebox | Hive Beeblade / Beebox | no-send | 0 / 7 | MIT |
 | hollyland-solidcom | Hollyland Solidcom | no-send | 0 / 4 | MIT |
-| hologfx-holographics | hologfx.io Holographics | no-send | 0 / 6 | MIT |
+| hologfx-holographics | hologfx.io Holographics | list-only | 0 / 6 | MIT |
 | homeassistant-server | Home Assistant Server | no-send | 0 / 15 | MIT |
 | ibm-watson | IBM Watson | partial | 5 / 6 | MIT |
 | iccms-sib | IC Control Media & Sport AB Sport In The Box | partial | 2 / 3 | MIT |
@@ -379,7 +378,7 @@
 | irisdown-countdowntimer | Irisdown Countdown Timer | full | 9 / 9 | MIT |
 | irisdown-remoteshowcontrol | Irisdown Remote Show Control | partial | 9 / 10 | MIT |
 | josephadams-gamepadio | Joseph Adams gamepad-io | list-only | 0 / 22 | MIT |
-| josephadams-scriptlauncher | Joseph Adams Script Launcher | partial | 1 / 77 | MIT |
+| josephadams-scriptlauncher | Joseph Adams Script Launcher | partial | 2 / 77 | MIT |
 | joy-playdeck | JOY event & media Playdeck | full | 57 / 57 | MIT |
 | jozeemedia-jcounter | Jozee Media Solutions J-Counter | no-send | 0 / 4 | MIT |
 | julusian-test | Julusian Test | no-send | 0 / 1 | MIT |
@@ -509,7 +508,7 @@
 | powersoft-amplifiers | Powersoft Amplifier | partial | 13 / 19 | MIT |
 | presentationtools-aps | PresentationTools Auto Presentation Switcher | partial | 25 / 46 | MIT |
 | presentationtools-cuetimer | PresentationTools CueTimer | partial | 33 / 34 | MIT |
-| ptzoptics-superjoy | PTZ Optics SuperJoy | partial | 4 / 5 | MIT |
+| ptzoptics-superjoy | PTZ Optics SuperJoy | partial | 3 / 5 | MIT |
 | ptzoptics-visca | PTZoptics VISCA | partial | 35 / 43 | MIT |
 | purelink-pt-ma-hd44m | purelink PT-MA-HD44M | partial | 5 / 6 | MIT |
 | pushover-api | Pushover | no-send | 0 / 2 | MIT |
@@ -535,10 +534,10 @@
 | rogueamoeba-farrago | Rogue Amoeba Farrago | no-send | 0 / 23 | MIT |
 | roku-tv | Roku TV | partial | 5 / 8 | MIT |
 | roland-p20hd | Roland P-20HD | no-send | 0 / 24 | MIT |
-| roland-v160hd | Roland V-160HD | builtin | 0 / 76 | MIT |
+| roland-v160hd | Roland V-160HD | builtin | 49 / 76 | MIT |
 | roland-v600uhd | Roland V-600UHD | partial | 16 / 17 | MIT |
 | roland-v60hd | Roland V-60HD | no-send | 0 / 30 | MIT |
-| roland-vr120hd | Roland VR-120HD | builtin | 0 / 31 | MIT |
+| roland-vr120hd | Roland VR-120HD | builtin | 25 / 31 | MIT |
 | roland-vr400uhd | Roland VR-400UHD | list-only | 0 / 11 | MIT |
 | roland-xs84h | Roland XS-82H / XS-83H / XS-84H | full | 27 / 27 | MIT |
 | rossvideo-nkrouter | Ross Video NK Router | no-send | 0 / 1 | MIT |

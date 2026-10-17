@@ -1,0 +1,3297 @@
+{
+ "format": 1,
+ "id": "m-roland-vr120hd",
+ "name": "Roland VR-120HD",
+ "category": "Roland",
+ "version": "1.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8023,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "0000"
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "run_macro",
+   "name": "Run Macro",
+   "options": [
+    {
+     "id": "macro",
+     "label": "Macro",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100,
+     "help": "(1-100)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:500504,{{option.macro|lin:1:-1|hexu|pad2}};\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "input_assign",
+   "name": "Assign Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input 1"
+      },
+      {
+       "id": "1",
+       "label": "Input 2"
+      },
+      {
+       "id": "2",
+       "label": "Input 3"
+      },
+      {
+       "id": "3",
+       "label": "Input 4"
+      },
+      {
+       "id": "4",
+       "label": "Input 5"
+      },
+      {
+       "id": "5",
+       "label": "Input 6"
+      },
+      {
+       "id": "6",
+       "label": "Input 7"
+      },
+      {
+       "id": "7",
+       "label": "Input 8"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "SDI 1"
+      },
+      {
+       "id": "7",
+       "label": "SDI 2"
+      },
+      {
+       "id": "8",
+       "label": "SDI 3"
+      },
+      {
+       "id": "9",
+       "label": "SDI 4"
+      },
+      {
+       "id": "10",
+       "label": "SDI 5"
+      },
+      {
+       "id": "11",
+       "label": "SDI 6"
+      },
+      {
+       "id": "12",
+       "label": "Still 1"
+      },
+      {
+       "id": "13",
+       "label": "Still 2"
+      },
+      {
+       "id": "14",
+       "label": "Still 3"
+      },
+      {
+       "id": "15",
+       "label": "Still 4"
+      },
+      {
+       "id": "16",
+       "label": "Still 5"
+      },
+      {
+       "id": "17",
+       "label": "Still 6"
+      },
+      {
+       "id": "18",
+       "label": "Still 7"
+      },
+      {
+       "id": "19",
+       "label": "Still 8"
+      },
+      {
+       "id": "20",
+       "label": "Still 9"
+      },
+      {
+       "id": "21",
+       "label": "Still 10"
+      },
+      {
+       "id": "22",
+       "label": "Still 11"
+      },
+      {
+       "id": "23",
+       "label": "Still 12"
+      },
+      {
+       "id": "24",
+       "label": "Still 13"
+      },
+      {
+       "id": "25",
+       "label": "Still 14"
+      },
+      {
+       "id": "26",
+       "label": "Still 15"
+      },
+      {
+       "id": "27",
+       "label": "Still 16"
+      },
+      {
+       "id": "28",
+       "label": "Video Player / SRT In"
+      },
+      {
+       "id": "29",
+       "label": "Stream/Record Status 1"
+      },
+      {
+       "id": "30",
+       "label": "Stream/Record Status 2"
+      },
+      {
+       "id": "31",
+       "label": "Date & Time"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00000{{option.input|map}},{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    },
+    "assign": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "output_assign",
+   "name": "Assign Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "8",
+     "choices": [
+      {
+       "id": "8",
+       "label": "HDMI Output 1"
+      },
+      {
+       "id": "9",
+       "label": "HDMI Output 2"
+      },
+      {
+       "id": "10",
+       "label": "HDMI Output 3"
+      },
+      {
+       "id": "11",
+       "label": "SDI Output 1"
+      },
+      {
+       "id": "12",
+       "label": "SDI Output 2"
+      },
+      {
+       "id": "13",
+       "label": "SDI Output 3"
+      },
+      {
+       "id": "14",
+       "label": "USB Output"
+      },
+      {
+       "id": "15",
+       "label": "Stream/Record"
+      },
+      {
+       "id": "16",
+       "label": "LCD Monitor"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Program"
+      },
+      {
+       "id": "1",
+       "label": "Sub Program"
+      },
+      {
+       "id": "2",
+       "label": "Preview"
+      },
+      {
+       "id": "3",
+       "label": "Aux 1"
+      },
+      {
+       "id": "4",
+       "label": "Aux 2"
+      },
+      {
+       "id": "5",
+       "label": "Aux 3"
+      },
+      {
+       "id": "6",
+       "label": "DSK 1"
+      },
+      {
+       "id": "7",
+       "label": "DSK 2"
+      },
+      {
+       "id": "8",
+       "label": "Multi-View"
+      },
+      {
+       "id": "9",
+       "label": "Input-View"
+      },
+      {
+       "id": "10",
+       "label": "Still-View"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0000{{option.output|map}},0{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10"
+    },
+    "assign": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "A"
+    }
+   }
+  },
+  {
+   "id": "aux_assign",
+   "name": "Assign Aux",
+   "options": [
+    {
+     "id": "aux",
+     "label": "Aux",
+     "type": "select",
+     "default": "000011",
+     "choices": [
+      {
+       "id": "000011",
+       "label": "Aux 1"
+      },
+      {
+       "id": "000024",
+       "label": "Aux 2"
+      },
+      {
+       "id": "000025",
+       "label": "Aux 3"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "SDI 1"
+      },
+      {
+       "id": "7",
+       "label": "SDI 2"
+      },
+      {
+       "id": "8",
+       "label": "SDI 3"
+      },
+      {
+       "id": "9",
+       "label": "SDI 4"
+      },
+      {
+       "id": "10",
+       "label": "SDI 5"
+      },
+      {
+       "id": "11",
+       "label": "SDI 6"
+      },
+      {
+       "id": "12",
+       "label": "Still 1"
+      },
+      {
+       "id": "13",
+       "label": "Still 2"
+      },
+      {
+       "id": "14",
+       "label": "Still 3"
+      },
+      {
+       "id": "15",
+       "label": "Still 4"
+      },
+      {
+       "id": "16",
+       "label": "Still 5"
+      },
+      {
+       "id": "17",
+       "label": "Still 6"
+      },
+      {
+       "id": "18",
+       "label": "Still 7"
+      },
+      {
+       "id": "19",
+       "label": "Still 8"
+      },
+      {
+       "id": "20",
+       "label": "Still 9"
+      },
+      {
+       "id": "21",
+       "label": "Still 10"
+      },
+      {
+       "id": "22",
+       "label": "Still 11"
+      },
+      {
+       "id": "23",
+       "label": "Still 12"
+      },
+      {
+       "id": "24",
+       "label": "Still 13"
+      },
+      {
+       "id": "25",
+       "label": "Still 14"
+      },
+      {
+       "id": "26",
+       "label": "Still 15"
+      },
+      {
+       "id": "27",
+       "label": "Still 16"
+      },
+      {
+       "id": "28",
+       "label": "Video Player / SRT In"
+      },
+      {
+       "id": "29",
+       "label": "Input 1"
+      },
+      {
+       "id": "30",
+       "label": "Input 2"
+      },
+      {
+       "id": "31",
+       "label": "Input 3"
+      },
+      {
+       "id": "32",
+       "label": "Input 4"
+      },
+      {
+       "id": "33",
+       "label": "Input 5"
+      },
+      {
+       "id": "34",
+       "label": "Input 6"
+      },
+      {
+       "id": "35",
+       "label": "Input 7"
+      },
+      {
+       "id": "36",
+       "label": "Input 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0000{{option.aux|map}},{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "aux": {
+     "000011": "11",
+     "000024": "24",
+     "000025": "25"
+    },
+    "assign": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F",
+     "32": "20",
+     "33": "21",
+     "34": "22",
+     "35": "23",
+     "36": "24"
+    }
+   }
+  },
+  {
+   "id": "aux_link",
+   "name": "Aux Link to PGM",
+   "options": [
+    {
+     "id": "aux",
+     "label": "Aux",
+     "type": "select",
+     "default": "02015D",
+     "choices": [
+      {
+       "id": "02015D",
+       "label": "Aux 1"
+      },
+      {
+       "id": "02015E",
+       "label": "Aux 2"
+      },
+      {
+       "id": "02015F",
+       "label": "Aux 3"
+      }
+     ]
+    },
+    {
+     "id": "link",
+     "label": "Link",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:02015{{option.aux|map}},0{{option.link|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "aux": {
+     "02015D": "D",
+     "02015E": "E",
+     "02015F": "F"
+    },
+    "link": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_enable",
+   "name": "PnP & Key Enable/Disable",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "18",
+     "choices": [
+      {
+       "id": "18",
+       "label": "Program Layer PinP & Key 1"
+      },
+      {
+       "id": "19",
+       "label": "Program Layer PinP & Key 2"
+      },
+      {
+       "id": "20",
+       "label": "Program Layer PinP & Key 3"
+      },
+      {
+       "id": "21",
+       "label": "Program Layer PinP & Key 4"
+      },
+      {
+       "id": "22",
+       "label": "Program Layer DSK 1"
+      },
+      {
+       "id": "23",
+       "label": "Program Layer DSK 2"
+      },
+      {
+       "id": "24",
+       "label": "Sub Program Layer PinP & Key 1"
+      },
+      {
+       "id": "25",
+       "label": "Sub Program Layer PinP & Key 2"
+      },
+      {
+       "id": "26",
+       "label": "Sub Program Layer PinP & Key 3"
+      },
+      {
+       "id": "27",
+       "label": "Sub Program Layer PinP & Key 4"
+      },
+      {
+       "id": "28",
+       "label": "Sub Program Layer DSK 1"
+      },
+      {
+       "id": "29",
+       "label": "Sub Program Layer DSK 2"
+      }
+     ]
+    },
+    {
+     "id": "enable",
+     "label": "Enable/Disable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00001{{option.pinp|map}},0{{option.enable|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "18": "2",
+     "19": "3",
+     "20": "4",
+     "21": "5",
+     "22": "6",
+     "23": "7",
+     "24": "8",
+     "25": "9",
+     "26": "A",
+     "27": "B",
+     "28": "C",
+     "29": "D"
+    },
+    "enable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "aux_pnpkey_enable",
+   "name": "Aux PnP & Key Enable/Disable",
+   "options": [
+    {
+     "id": "aux",
+     "label": "Aux",
+     "type": "select",
+     "default": "00001E",
+     "choices": [
+      {
+       "id": "00001E",
+       "label": "Aux 1 PinP & Key 1"
+      },
+      {
+       "id": "00001F",
+       "label": "Aux 1 PinP & Key 2"
+      },
+      {
+       "id": "000020",
+       "label": "Aux 1 PinP & Key 3"
+      },
+      {
+       "id": "000021",
+       "label": "Aux 1 PinP & Key 4"
+      },
+      {
+       "id": "000022",
+       "label": "Aux 1 DSK 1"
+      },
+      {
+       "id": "000023",
+       "label": "Aux 1 DSK 2"
+      },
+      {
+       "id": "000026",
+       "label": "Aux 2 PinP & Key 1"
+      },
+      {
+       "id": "000027",
+       "label": "Aux 2 PinP & Key 2"
+      },
+      {
+       "id": "000028",
+       "label": "Aux 2 PinP & Key 3"
+      },
+      {
+       "id": "000029",
+       "label": "Aux 2 PinP & Key 4"
+      },
+      {
+       "id": "00002A",
+       "label": "Aux 2 DSK 1"
+      },
+      {
+       "id": "00002B",
+       "label": "Aux 2 DSK 2"
+      },
+      {
+       "id": "00002C",
+       "label": "Aux 3 PinP & Key 1"
+      },
+      {
+       "id": "00002D",
+       "label": "Aux 3 PinP & Key 2"
+      },
+      {
+       "id": "00002E",
+       "label": "Aux 3 PinP & Key 3"
+      },
+      {
+       "id": "00002F",
+       "label": "Aux 3 PinP & Key 4"
+      },
+      {
+       "id": "000030",
+       "label": "Aux 3 DSK 1"
+      },
+      {
+       "id": "000031",
+       "label": "Aux 3 DSK 2"
+      }
+     ]
+    },
+    {
+     "id": "enable",
+     "label": "Enable/Disable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "2",
+       "label": "Always On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0000{{option.aux|map}},0{{option.enable|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "aux": {
+     "00001E": "1E",
+     "00001F": "1F",
+     "000020": "20",
+     "000021": "21",
+     "000022": "22",
+     "000023": "23",
+     "000026": "26",
+     "000027": "27",
+     "000028": "28",
+     "000029": "29",
+     "00002A": "2A",
+     "00002B": "2B",
+     "00002C": "2C",
+     "00002D": "2D",
+     "00002E": "2E",
+     "00002F": "2F",
+     "000030": "30",
+     "000031": "31"
+    },
+    "enable": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set_transition_type",
+   "name": "Set Transition Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Transition Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mix"
+      },
+      {
+       "id": "1",
+       "label": "Wipe"
+      },
+      {
+       "id": "2",
+       "label": "Split 1"
+      },
+      {
+       "id": "3",
+       "label": "Split 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001400,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_mix_type",
+   "name": "Set Mix Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Mix Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mix"
+      },
+      {
+       "id": "1",
+       "label": "Fam"
+      },
+      {
+       "id": "2",
+       "label": "Nam"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001401,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set_wipe_type",
+   "name": "Set Wipe Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Wipe Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Horizontal"
+      },
+      {
+       "id": "1",
+       "label": "Vertical"
+      },
+      {
+       "id": "2",
+       "label": "Upper Left"
+      },
+      {
+       "id": "3",
+       "label": "Upper Right"
+      },
+      {
+       "id": "4",
+       "label": "Lower Left"
+      },
+      {
+       "id": "5",
+       "label": "Lower Right"
+      },
+      {
+       "id": "6",
+       "label": "H-Center"
+      },
+      {
+       "id": "7",
+       "label": "V-Center"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001403,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "set_wipe_direction",
+   "name": "Set Wipe Direction",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Wipe Direction",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Normal"
+      },
+      {
+       "id": "1",
+       "label": "Reverse"
+      },
+      {
+       "id": "2",
+       "label": "Round Trip"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001405,0{{option.direction|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set_pinp_source",
+   "name": "Set PnP & Key Source",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "21",
+     "choices": [
+      {
+       "id": "21",
+       "label": "PinP & Key 1"
+      },
+      {
+       "id": "22",
+       "label": "PinP & Key 2"
+      },
+      {
+       "id": "23",
+       "label": "PinP & Key 3"
+      },
+      {
+       "id": "24",
+       "label": "PinP & Key 4"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "SDI 1"
+      },
+      {
+       "id": "7",
+       "label": "SDI 2"
+      },
+      {
+       "id": "8",
+       "label": "SDI 3"
+      },
+      {
+       "id": "9",
+       "label": "SDI 4"
+      },
+      {
+       "id": "10",
+       "label": "SDI 5"
+      },
+      {
+       "id": "11",
+       "label": "SDI 6"
+      },
+      {
+       "id": "12",
+       "label": "Still 1"
+      },
+      {
+       "id": "13",
+       "label": "Still 2"
+      },
+      {
+       "id": "14",
+       "label": "Still 3"
+      },
+      {
+       "id": "15",
+       "label": "Still 4"
+      },
+      {
+       "id": "16",
+       "label": "Still 5"
+      },
+      {
+       "id": "17",
+       "label": "Still 6"
+      },
+      {
+       "id": "18",
+       "label": "Still 7"
+      },
+      {
+       "id": "19",
+       "label": "Still 8"
+      },
+      {
+       "id": "20",
+       "label": "Still 9"
+      },
+      {
+       "id": "21",
+       "label": "Still 10"
+      },
+      {
+       "id": "22",
+       "label": "Still 11"
+      },
+      {
+       "id": "23",
+       "label": "Still 12"
+      },
+      {
+       "id": "24",
+       "label": "Still 13"
+      },
+      {
+       "id": "25",
+       "label": "Still 14"
+      },
+      {
+       "id": "26",
+       "label": "Still 15"
+      },
+      {
+       "id": "27",
+       "label": "Still 16"
+      },
+      {
+       "id": "28",
+       "label": "Video Player / SRT In"
+      },
+      {
+       "id": "29",
+       "label": "Input 1"
+      },
+      {
+       "id": "30",
+       "label": "Input 2"
+      },
+      {
+       "id": "31",
+       "label": "Input 3"
+      },
+      {
+       "id": "32",
+       "label": "Input 4"
+      },
+      {
+       "id": "33",
+       "label": "Input 5"
+      },
+      {
+       "id": "34",
+       "label": "Input 6"
+      },
+      {
+       "id": "35",
+       "label": "Input 7"
+      },
+      {
+       "id": "36",
+       "label": "Input 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}03,{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "21": "5",
+     "22": "6",
+     "23": "7",
+     "24": "8"
+    },
+    "assign": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F",
+     "32": "20",
+     "33": "21",
+     "34": "22",
+     "35": "23",
+     "36": "24"
+    }
+   }
+  },
+  {
+   "id": "set_pinp_type",
+   "name": "Set PnP & Key Type",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "21",
+     "choices": [
+      {
+       "id": "21",
+       "label": "PinP & Key 1"
+      },
+      {
+       "id": "22",
+       "label": "PinP & Key 2"
+      },
+      {
+       "id": "23",
+       "label": "PinP & Key 3"
+      },
+      {
+       "id": "24",
+       "label": "PinP & Key 4"
+      }
+     ]
+    },
+    {
+     "id": "key",
+     "label": "Key Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "PinP"
+      },
+      {
+       "id": "1",
+       "label": "Luminance-White Key"
+      },
+      {
+       "id": "2",
+       "label": "Luminance-Black Key"
+      },
+      {
+       "id": "3",
+       "label": "Chroma Key"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}04,0{{option.key|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "21": "5",
+     "22": "6",
+     "23": "7",
+     "24": "8"
+    },
+    "key": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "select_pgm",
+   "name": "Select PGM Source",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "SDI 1"
+      },
+      {
+       "id": "7",
+       "label": "SDI 2"
+      },
+      {
+       "id": "8",
+       "label": "SDI 3"
+      },
+      {
+       "id": "9",
+       "label": "SDI 4"
+      },
+      {
+       "id": "10",
+       "label": "SDI 5"
+      },
+      {
+       "id": "11",
+       "label": "SDI 6"
+      },
+      {
+       "id": "12",
+       "label": "Still 1"
+      },
+      {
+       "id": "13",
+       "label": "Still 2"
+      },
+      {
+       "id": "14",
+       "label": "Still 3"
+      },
+      {
+       "id": "15",
+       "label": "Still 4"
+      },
+      {
+       "id": "16",
+       "label": "Still 5"
+      },
+      {
+       "id": "17",
+       "label": "Still 6"
+      },
+      {
+       "id": "18",
+       "label": "Still 7"
+      },
+      {
+       "id": "19",
+       "label": "Still 8"
+      },
+      {
+       "id": "20",
+       "label": "Still 9"
+      },
+      {
+       "id": "21",
+       "label": "Still 10"
+      },
+      {
+       "id": "22",
+       "label": "Still 11"
+      },
+      {
+       "id": "23",
+       "label": "Still 12"
+      },
+      {
+       "id": "24",
+       "label": "Still 13"
+      },
+      {
+       "id": "25",
+       "label": "Still 14"
+      },
+      {
+       "id": "26",
+       "label": "Still 15"
+      },
+      {
+       "id": "27",
+       "label": "Still 16"
+      },
+      {
+       "id": "28",
+       "label": "Video Player / SRT In"
+      },
+      {
+       "id": "29",
+       "label": "Input 1"
+      },
+      {
+       "id": "30",
+       "label": "Input 2"
+      },
+      {
+       "id": "31",
+       "label": "Input 3"
+      },
+      {
+       "id": "32",
+       "label": "Input 4"
+      },
+      {
+       "id": "33",
+       "label": "Input 5"
+      },
+      {
+       "id": "34",
+       "label": "Input 6"
+      },
+      {
+       "id": "35",
+       "label": "Input 7"
+      },
+      {
+       "id": "36",
+       "label": "Input 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001B00,{{option.input|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F",
+     "32": "20",
+     "33": "21",
+     "34": "22",
+     "35": "23",
+     "36": "24"
+    }
+   }
+  },
+  {
+   "id": "select_pvw",
+   "name": "Select PVW Source",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "SDI 1"
+      },
+      {
+       "id": "7",
+       "label": "SDI 2"
+      },
+      {
+       "id": "8",
+       "label": "SDI 3"
+      },
+      {
+       "id": "9",
+       "label": "SDI 4"
+      },
+      {
+       "id": "10",
+       "label": "SDI 5"
+      },
+      {
+       "id": "11",
+       "label": "SDI 6"
+      },
+      {
+       "id": "12",
+       "label": "Still 1"
+      },
+      {
+       "id": "13",
+       "label": "Still 2"
+      },
+      {
+       "id": "14",
+       "label": "Still 3"
+      },
+      {
+       "id": "15",
+       "label": "Still 4"
+      },
+      {
+       "id": "16",
+       "label": "Still 5"
+      },
+      {
+       "id": "17",
+       "label": "Still 6"
+      },
+      {
+       "id": "18",
+       "label": "Still 7"
+      },
+      {
+       "id": "19",
+       "label": "Still 8"
+      },
+      {
+       "id": "20",
+       "label": "Still 9"
+      },
+      {
+       "id": "21",
+       "label": "Still 10"
+      },
+      {
+       "id": "22",
+       "label": "Still 11"
+      },
+      {
+       "id": "23",
+       "label": "Still 12"
+      },
+      {
+       "id": "24",
+       "label": "Still 13"
+      },
+      {
+       "id": "25",
+       "label": "Still 14"
+      },
+      {
+       "id": "26",
+       "label": "Still 15"
+      },
+      {
+       "id": "27",
+       "label": "Still 16"
+      },
+      {
+       "id": "28",
+       "label": "Video Player / SRT In"
+      },
+      {
+       "id": "29",
+       "label": "Input 1"
+      },
+      {
+       "id": "30",
+       "label": "Input 2"
+      },
+      {
+       "id": "31",
+       "label": "Input 3"
+      },
+      {
+       "id": "32",
+       "label": "Input 4"
+      },
+      {
+       "id": "33",
+       "label": "Input 5"
+      },
+      {
+       "id": "34",
+       "label": "Input 6"
+      },
+      {
+       "id": "35",
+       "label": "Input 7"
+      },
+      {
+       "id": "36",
+       "label": "Input 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001B01,{{option.input|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F",
+     "32": "20",
+     "33": "21",
+     "34": "22",
+     "35": "23",
+     "36": "24"
+    }
+   }
+  },
+  {
+   "id": "load_memory_trigger",
+   "name": "Load Memory Trigger",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Memory",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Memory 1"
+      },
+      {
+       "id": "1",
+       "label": "Memory 2"
+      },
+      {
+       "id": "2",
+       "label": "Memory 3"
+      },
+      {
+       "id": "3",
+       "label": "Memory 4"
+      },
+      {
+       "id": "4",
+       "label": "Memory 5"
+      },
+      {
+       "id": "5",
+       "label": "Memory 6"
+      },
+      {
+       "id": "6",
+       "label": "Memory 7"
+      },
+      {
+       "id": "7",
+       "label": "Memory 8"
+      },
+      {
+       "id": "8",
+       "label": "Memory 9"
+      },
+      {
+       "id": "9",
+       "label": "Memory 10"
+      },
+      {
+       "id": "10",
+       "label": "Memory 11"
+      },
+      {
+       "id": "11",
+       "label": "Memory 12"
+      },
+      {
+       "id": "12",
+       "label": "Memory 13"
+      },
+      {
+       "id": "13",
+       "label": "Memory 14"
+      },
+      {
+       "id": "14",
+       "label": "Memory 15"
+      },
+      {
+       "id": "15",
+       "label": "Memory 16"
+      },
+      {
+       "id": "16",
+       "label": "Memory 17"
+      },
+      {
+       "id": "17",
+       "label": "Memory 18"
+      },
+      {
+       "id": "18",
+       "label": "Memory 19"
+      },
+      {
+       "id": "19",
+       "label": "Memory 20"
+      },
+      {
+       "id": "20",
+       "label": "Memory 21"
+      },
+      {
+       "id": "21",
+       "label": "Memory 22"
+      },
+      {
+       "id": "22",
+       "label": "Memory 23"
+      },
+      {
+       "id": "23",
+       "label": "Memory 24"
+      },
+      {
+       "id": "24",
+       "label": "Memory 25"
+      },
+      {
+       "id": "25",
+       "label": "Memory 26"
+      },
+      {
+       "id": "26",
+       "label": "Memory 27"
+      },
+      {
+       "id": "27",
+       "label": "Memory 28"
+      },
+      {
+       "id": "28",
+       "label": "Memory 29"
+      },
+      {
+       "id": "29",
+       "label": "Memory 30"
+      },
+      {
+       "id": "30",
+       "label": "Memory 31"
+      },
+      {
+       "id": "31",
+       "label": "Memory 32"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0A0000,{{option.memory|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "memory": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "save_memory_trigger",
+   "name": "Save Memory Trigger",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Memory",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Memory 1"
+      },
+      {
+       "id": "1",
+       "label": "Memory 2"
+      },
+      {
+       "id": "2",
+       "label": "Memory 3"
+      },
+      {
+       "id": "3",
+       "label": "Memory 4"
+      },
+      {
+       "id": "4",
+       "label": "Memory 5"
+      },
+      {
+       "id": "5",
+       "label": "Memory 6"
+      },
+      {
+       "id": "6",
+       "label": "Memory 7"
+      },
+      {
+       "id": "7",
+       "label": "Memory 8"
+      },
+      {
+       "id": "8",
+       "label": "Memory 9"
+      },
+      {
+       "id": "9",
+       "label": "Memory 10"
+      },
+      {
+       "id": "10",
+       "label": "Memory 11"
+      },
+      {
+       "id": "11",
+       "label": "Memory 12"
+      },
+      {
+       "id": "12",
+       "label": "Memory 13"
+      },
+      {
+       "id": "13",
+       "label": "Memory 14"
+      },
+      {
+       "id": "14",
+       "label": "Memory 15"
+      },
+      {
+       "id": "15",
+       "label": "Memory 16"
+      },
+      {
+       "id": "16",
+       "label": "Memory 17"
+      },
+      {
+       "id": "17",
+       "label": "Memory 18"
+      },
+      {
+       "id": "18",
+       "label": "Memory 19"
+      },
+      {
+       "id": "19",
+       "label": "Memory 20"
+      },
+      {
+       "id": "20",
+       "label": "Memory 21"
+      },
+      {
+       "id": "21",
+       "label": "Memory 22"
+      },
+      {
+       "id": "22",
+       "label": "Memory 23"
+      },
+      {
+       "id": "23",
+       "label": "Memory 24"
+      },
+      {
+       "id": "24",
+       "label": "Memory 25"
+      },
+      {
+       "id": "25",
+       "label": "Memory 26"
+      },
+      {
+       "id": "26",
+       "label": "Memory 27"
+      },
+      {
+       "id": "27",
+       "label": "Memory 28"
+      },
+      {
+       "id": "28",
+       "label": "Memory 29"
+      },
+      {
+       "id": "29",
+       "label": "Memory 30"
+      },
+      {
+       "id": "30",
+       "label": "Memory 31"
+      },
+      {
+       "id": "31",
+       "label": "Memory 32"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0A0001,{{option.memory|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "memory": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "initialize_memory_trigger",
+   "name": "Initialize Memory Trigger",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Memory",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Memory 1"
+      },
+      {
+       "id": "1",
+       "label": "Memory 2"
+      },
+      {
+       "id": "2",
+       "label": "Memory 3"
+      },
+      {
+       "id": "3",
+       "label": "Memory 4"
+      },
+      {
+       "id": "4",
+       "label": "Memory 5"
+      },
+      {
+       "id": "5",
+       "label": "Memory 6"
+      },
+      {
+       "id": "6",
+       "label": "Memory 7"
+      },
+      {
+       "id": "7",
+       "label": "Memory 8"
+      },
+      {
+       "id": "8",
+       "label": "Memory 9"
+      },
+      {
+       "id": "9",
+       "label": "Memory 10"
+      },
+      {
+       "id": "10",
+       "label": "Memory 11"
+      },
+      {
+       "id": "11",
+       "label": "Memory 12"
+      },
+      {
+       "id": "12",
+       "label": "Memory 13"
+      },
+      {
+       "id": "13",
+       "label": "Memory 14"
+      },
+      {
+       "id": "14",
+       "label": "Memory 15"
+      },
+      {
+       "id": "15",
+       "label": "Memory 16"
+      },
+      {
+       "id": "16",
+       "label": "Memory 17"
+      },
+      {
+       "id": "17",
+       "label": "Memory 18"
+      },
+      {
+       "id": "18",
+       "label": "Memory 19"
+      },
+      {
+       "id": "19",
+       "label": "Memory 20"
+      },
+      {
+       "id": "20",
+       "label": "Memory 21"
+      },
+      {
+       "id": "21",
+       "label": "Memory 22"
+      },
+      {
+       "id": "22",
+       "label": "Memory 23"
+      },
+      {
+       "id": "23",
+       "label": "Memory 24"
+      },
+      {
+       "id": "24",
+       "label": "Memory 25"
+      },
+      {
+       "id": "25",
+       "label": "Memory 26"
+      },
+      {
+       "id": "26",
+       "label": "Memory 27"
+      },
+      {
+       "id": "27",
+       "label": "Memory 28"
+      },
+      {
+       "id": "28",
+       "label": "Memory 29"
+      },
+      {
+       "id": "29",
+       "label": "Memory 30"
+      },
+      {
+       "id": "30",
+       "label": "Memory 31"
+      },
+      {
+       "id": "31",
+       "label": "Memory 32"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0A0002,{{option.memory|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "memory": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "camera_control_pan",
+   "name": "Camera Control - Pan",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "51",
+     "choices": [
+      {
+       "id": "51",
+       "label": "Camera 1"
+      },
+      {
+       "id": "52",
+       "label": "Camera 2"
+      },
+      {
+       "id": "53",
+       "label": "Camera 3"
+      },
+      {
+       "id": "54",
+       "label": "Camera 4"
+      },
+      {
+       "id": "55",
+       "label": "Camera 5"
+      },
+      {
+       "id": "56",
+       "label": "Camera 6"
+      },
+      {
+       "id": "57",
+       "label": "Camera 7"
+      },
+      {
+       "id": "58",
+       "label": "Camera 8"
+      },
+      {
+       "id": "59",
+       "label": "Camera 9"
+      },
+      {
+       "id": "5A",
+       "label": "Camera 10"
+      },
+      {
+       "id": "5B",
+       "label": "Camera 11"
+      },
+      {
+       "id": "5C",
+       "label": "Camera 12"
+      }
+     ]
+    },
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "7F",
+     "choices": [
+      {
+       "id": "7F",
+       "label": "Left"
+      },
+      {
+       "id": "00",
+       "label": "Stop"
+      },
+      {
+       "id": "01",
+       "label": "Right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:005{{option.camera|map}}22,{{option.direction|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "51": "1",
+     "52": "2",
+     "53": "3",
+     "54": "4",
+     "55": "5",
+     "56": "6",
+     "57": "7",
+     "58": "8",
+     "59": "9",
+     "5A": "A",
+     "5B": "B",
+     "5C": "C"
+    },
+    "direction": {
+     "7F": "7F",
+     "00": "00",
+     "01": "01"
+    }
+   }
+  },
+  {
+   "id": "camera_control_tilt",
+   "name": "Camera Control - Tilt",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "51",
+     "choices": [
+      {
+       "id": "51",
+       "label": "Camera 1"
+      },
+      {
+       "id": "52",
+       "label": "Camera 2"
+      },
+      {
+       "id": "53",
+       "label": "Camera 3"
+      },
+      {
+       "id": "54",
+       "label": "Camera 4"
+      },
+      {
+       "id": "55",
+       "label": "Camera 5"
+      },
+      {
+       "id": "56",
+       "label": "Camera 6"
+      },
+      {
+       "id": "57",
+       "label": "Camera 7"
+      },
+      {
+       "id": "58",
+       "label": "Camera 8"
+      },
+      {
+       "id": "59",
+       "label": "Camera 9"
+      },
+      {
+       "id": "5A",
+       "label": "Camera 10"
+      },
+      {
+       "id": "5B",
+       "label": "Camera 11"
+      },
+      {
+       "id": "5C",
+       "label": "Camera 12"
+      }
+     ]
+    },
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "7F",
+     "choices": [
+      {
+       "id": "7F",
+       "label": "Down"
+      },
+      {
+       "id": "00",
+       "label": "Stop"
+      },
+      {
+       "id": "01",
+       "label": "Up"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:005{{option.camera|map}}23,{{option.direction|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "51": "1",
+     "52": "2",
+     "53": "3",
+     "54": "4",
+     "55": "5",
+     "56": "6",
+     "57": "7",
+     "58": "8",
+     "59": "9",
+     "5A": "A",
+     "5B": "B",
+     "5C": "C"
+    },
+    "direction": {
+     "7F": "7F",
+     "00": "00",
+     "01": "01"
+    }
+   }
+  },
+  {
+   "id": "camera_control_pt_speed",
+   "name": "Camera Control - Pan/Tilt Speed",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "51",
+     "choices": [
+      {
+       "id": "51",
+       "label": "Camera 1"
+      },
+      {
+       "id": "52",
+       "label": "Camera 2"
+      },
+      {
+       "id": "53",
+       "label": "Camera 3"
+      },
+      {
+       "id": "54",
+       "label": "Camera 4"
+      },
+      {
+       "id": "55",
+       "label": "Camera 5"
+      },
+      {
+       "id": "56",
+       "label": "Camera 6"
+      },
+      {
+       "id": "57",
+       "label": "Camera 7"
+      },
+      {
+       "id": "58",
+       "label": "Camera 8"
+      },
+      {
+       "id": "59",
+       "label": "Camera 9"
+      },
+      {
+       "id": "5A",
+       "label": "Camera 10"
+      },
+      {
+       "id": "5B",
+       "label": "Camera 11"
+      },
+      {
+       "id": "5C",
+       "label": "Camera 12"
+      }
+     ]
+    },
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "1"
+      },
+      {
+       "id": "02",
+       "label": "2"
+      },
+      {
+       "id": "03",
+       "label": "3"
+      },
+      {
+       "id": "04",
+       "label": "4"
+      },
+      {
+       "id": "05",
+       "label": "5"
+      },
+      {
+       "id": "06",
+       "label": "6"
+      },
+      {
+       "id": "07",
+       "label": "7"
+      },
+      {
+       "id": "08",
+       "label": "8"
+      },
+      {
+       "id": "09",
+       "label": "9"
+      },
+      {
+       "id": "0A",
+       "label": "10"
+      },
+      {
+       "id": "0B",
+       "label": "11"
+      },
+      {
+       "id": "0C",
+       "label": "12"
+      },
+      {
+       "id": "0D",
+       "label": "13"
+      },
+      {
+       "id": "0E",
+       "label": "14"
+      },
+      {
+       "id": "0F",
+       "label": "15"
+      },
+      {
+       "id": "10",
+       "label": "16"
+      },
+      {
+       "id": "11",
+       "label": "17"
+      },
+      {
+       "id": "12",
+       "label": "18"
+      },
+      {
+       "id": "13",
+       "label": "19"
+      },
+      {
+       "id": "14",
+       "label": "20"
+      },
+      {
+       "id": "15",
+       "label": "21"
+      },
+      {
+       "id": "16",
+       "label": "22"
+      },
+      {
+       "id": "17",
+       "label": "23"
+      },
+      {
+       "id": "18",
+       "label": "24"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:005{{option.camera|map}}24,{{option.speed|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "51": "1",
+     "52": "2",
+     "53": "3",
+     "54": "4",
+     "55": "5",
+     "56": "6",
+     "57": "7",
+     "58": "8",
+     "59": "9",
+     "5A": "A",
+     "5B": "B",
+     "5C": "C"
+    },
+    "speed": {
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09",
+     "0A": "0A",
+     "0B": "0B",
+     "0C": "0C",
+     "0D": "0D",
+     "0E": "0E",
+     "0F": "0F"
+    }
+   }
+  },
+  {
+   "id": "camera_control_zoom",
+   "name": "Camera Control - Zoom",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "51",
+     "choices": [
+      {
+       "id": "51",
+       "label": "Camera 1"
+      },
+      {
+       "id": "52",
+       "label": "Camera 2"
+      },
+      {
+       "id": "53",
+       "label": "Camera 3"
+      },
+      {
+       "id": "54",
+       "label": "Camera 4"
+      },
+      {
+       "id": "55",
+       "label": "Camera 5"
+      },
+      {
+       "id": "56",
+       "label": "Camera 6"
+      },
+      {
+       "id": "57",
+       "label": "Camera 7"
+      },
+      {
+       "id": "58",
+       "label": "Camera 8"
+      },
+      {
+       "id": "59",
+       "label": "Camera 9"
+      },
+      {
+       "id": "5A",
+       "label": "Camera 10"
+      },
+      {
+       "id": "5B",
+       "label": "Camera 11"
+      },
+      {
+       "id": "5C",
+       "label": "Camera 12"
+      }
+     ]
+    },
+    {
+     "id": "zoom",
+     "label": "Zoom",
+     "type": "select",
+     "default": "7E",
+     "choices": [
+      {
+       "id": "7E",
+       "label": "Wide (Fast)"
+      },
+      {
+       "id": "00",
+       "label": "Wide (Slow)"
+      },
+      {
+       "id": "01",
+       "label": "Stop"
+      },
+      {
+       "id": "02",
+       "label": "Tele (Slow)"
+      },
+      {
+       "id": "03",
+       "label": "Tele (Fast)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:005{{option.camera|map}}25,{{option.zoom|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "51": "1",
+     "52": "2",
+     "53": "3",
+     "54": "4",
+     "55": "5",
+     "56": "6",
+     "57": "7",
+     "58": "8",
+     "59": "9",
+     "5A": "A",
+     "5B": "B",
+     "5C": "C"
+    },
+    "zoom": {
+     "7E": "7E",
+     "00": "00",
+     "01": "01",
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "camera_control_focus",
+   "name": "Camera Control - Focus",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "51",
+     "choices": [
+      {
+       "id": "51",
+       "label": "Camera 1"
+      },
+      {
+       "id": "52",
+       "label": "Camera 2"
+      },
+      {
+       "id": "53",
+       "label": "Camera 3"
+      },
+      {
+       "id": "54",
+       "label": "Camera 4"
+      },
+      {
+       "id": "55",
+       "label": "Camera 5"
+      },
+      {
+       "id": "56",
+       "label": "Camera 6"
+      },
+      {
+       "id": "57",
+       "label": "Camera 7"
+      },
+      {
+       "id": "58",
+       "label": "Camera 8"
+      },
+      {
+       "id": "59",
+       "label": "Camera 9"
+      },
+      {
+       "id": "5A",
+       "label": "Camera 10"
+      },
+      {
+       "id": "5B",
+       "label": "Camera 11"
+      },
+      {
+       "id": "5C",
+       "label": "Camera 12"
+      }
+     ]
+    },
+    {
+     "id": "focus",
+     "label": "Focus",
+     "type": "select",
+     "default": "7F",
+     "choices": [
+      {
+       "id": "7F",
+       "label": "Near"
+      },
+      {
+       "id": "00",
+       "label": "Stop"
+      },
+      {
+       "id": "01",
+       "label": "Far"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:005{{option.camera|map}}26,{{option.focus|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "51": "1",
+     "52": "2",
+     "53": "3",
+     "54": "4",
+     "55": "5",
+     "56": "6",
+     "57": "7",
+     "58": "8",
+     "59": "9",
+     "5A": "A",
+     "5B": "B",
+     "5C": "C"
+    },
+    "focus": {
+     "7F": "7F",
+     "00": "00",
+     "01": "01"
+    }
+   }
+  },
+  {
+   "id": "camera_control_autofocus",
+   "name": "Camera Control - Auto Focus",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "51",
+     "choices": [
+      {
+       "id": "51",
+       "label": "Camera 1"
+      },
+      {
+       "id": "52",
+       "label": "Camera 2"
+      },
+      {
+       "id": "53",
+       "label": "Camera 3"
+      },
+      {
+       "id": "54",
+       "label": "Camera 4"
+      },
+      {
+       "id": "55",
+       "label": "Camera 5"
+      },
+      {
+       "id": "56",
+       "label": "Camera 6"
+      },
+      {
+       "id": "57",
+       "label": "Camera 7"
+      },
+      {
+       "id": "58",
+       "label": "Camera 8"
+      },
+      {
+       "id": "59",
+       "label": "Camera 9"
+      },
+      {
+       "id": "5A",
+       "label": "Camera 10"
+      },
+      {
+       "id": "5B",
+       "label": "Camera 11"
+      },
+      {
+       "id": "5C",
+       "label": "Camera 12"
+      }
+     ]
+    },
+    {
+     "id": "autofocus",
+     "label": "Auto Focus",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Off"
+      },
+      {
+       "id": "01",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:005{{option.camera|map}}27,0{{option.autofocus|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "51": "1",
+     "52": "2",
+     "53": "3",
+     "54": "4",
+     "55": "5",
+     "56": "6",
+     "57": "7",
+     "58": "8",
+     "59": "9",
+     "5A": "A",
+     "5B": "B",
+     "5C": "C"
+    },
+    "autofocus": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "camera_control_exposure",
+   "name": "Camera Control - Exposure",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "51",
+     "choices": [
+      {
+       "id": "51",
+       "label": "Camera 1"
+      },
+      {
+       "id": "52",
+       "label": "Camera 2"
+      },
+      {
+       "id": "53",
+       "label": "Camera 3"
+      },
+      {
+       "id": "54",
+       "label": "Camera 4"
+      },
+      {
+       "id": "55",
+       "label": "Camera 5"
+      },
+      {
+       "id": "56",
+       "label": "Camera 6"
+      },
+      {
+       "id": "57",
+       "label": "Camera 7"
+      },
+      {
+       "id": "58",
+       "label": "Camera 8"
+      },
+      {
+       "id": "59",
+       "label": "Camera 9"
+      },
+      {
+       "id": "5A",
+       "label": "Camera 10"
+      },
+      {
+       "id": "5B",
+       "label": "Camera 11"
+      },
+      {
+       "id": "5C",
+       "label": "Camera 12"
+      }
+     ]
+    },
+    {
+     "id": "exposure",
+     "label": "Exposure",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Manual"
+      },
+      {
+       "id": "01",
+       "label": "Auto"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:005{{option.camera|map}}28,0{{option.exposure|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "51": "1",
+     "52": "2",
+     "53": "3",
+     "54": "4",
+     "55": "5",
+     "56": "6",
+     "57": "7",
+     "58": "8",
+     "59": "9",
+     "5A": "A",
+     "5B": "B",
+     "5C": "C"
+    },
+    "exposure": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-roland-vr120hd",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "roland-vr120hd",
+  "version": "1.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-roland-vr120hd.git"
+ }
+}

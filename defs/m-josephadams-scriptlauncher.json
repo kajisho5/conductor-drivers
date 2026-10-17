@@ -30,13 +30,23 @@
  ],
  "actions": [
   {
-   "id": "getFonts",
-   "name": "Get Installed Fonts",
+   "id": "shutdown_cancel",
+   "name": "Cancel Shutdown",
    "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=thzo5i78"
+    "path": "/socket.io/?EIO=4&transport=polling&t=x2itn3oj"
+   }
+  },
+  {
+   "id": "openGoogleMeet",
+   "name": "Start Google Meet",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/socket.io/?EIO=4&transport=polling&t=x2pbek8t"
    }
   }
  ],

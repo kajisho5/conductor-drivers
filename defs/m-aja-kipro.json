@@ -227,13 +227,13 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/json?action=connect&configid=0"
+    "path": "/config?action=set&paramid=eParamID_ClipToDelete&value=&configid=0"
    },
    "more": [
     {
      "kind": "http",
      "method": "GET",
-     "path": "/config?action=set&paramid=eParamID_ClipToDelete&value=&configid=0"
+     "path": "/json?action=connect&configid=0"
     }
    ]
   },

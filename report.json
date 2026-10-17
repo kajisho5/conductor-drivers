@@ -121,10 +121,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 58,
-  "converted": 50,
+  "converted": 51,
   "reasons": {
    "no-send": 3,
-   "text-slot": 2,
+   "text-slot": 1,
    "verify-mismatch": 3
   },
   "errors": [],
@@ -582,11 +582,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 0,
-  "reasons": {},
+  "converted": 1,
+  "reasons": {
+   "no-send": 9
+  },
   "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "audac-mtx",
@@ -1385,7 +1387,7 @@
   "reasons": {},
   "errors": [],
   "truncated": false,
-  "result": "builtin"
+  "result": "no-send"
  },
  {
   "id": "bmd-gpi-and-tally-interface",
@@ -1665,7 +1667,8 @@
   "actions": 11,
   "converted": 9,
   "reasons": {
-   "verify-multi-request": 2
+   "part1-path-number-slot": 1,
+   "verify-multi-request": 1
   },
   "errors": [],
   "truncated": false,
@@ -1745,8 +1748,7 @@
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part0-path-text-slot": 1,
-   "part1-path-text-slot": 1
+   "part1-path-text-slot": 2
   },
   "errors": [],
   "truncated": false,
@@ -2209,10 +2211,10 @@
   "actions": 50,
   "converted": 6,
   "reasons": {
-   "overlap": 22,
-   "option-breaks-send": 9,
+   "overlap": 23,
+   "option-breaks-send": 11,
    "text-slot": 2,
-   "number-slot": 6,
+   "number-slot": 3,
    "no-send": 5
   },
   "errors": [],
@@ -2533,10 +2535,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 7,
+  "converted": 6,
   "reasons": {
    "number-slot": 2,
-   "no-send": 1,
+   "no-send": 2,
    "text-slot": 1
   },
   "errors": [],
@@ -2803,9 +2805,8 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 4,
-   "text-slot": 1,
-   "no-send": 2
+   "option-breaks-send": 5,
+   "text-slot": 2
   },
   "errors": [],
   "truncated": false,
@@ -3061,7 +3062,7 @@
   "reasons": {
    "no-send": 3,
    "number-slot": 1,
-   "text-slot": 1
+   "option-breaks-send": 1
   },
   "errors": [],
   "truncated": false,
@@ -3316,8 +3317,7 @@
   "actions": 2,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 1,
-   "number-slot": 1
+   "number-slot": 2
   },
   "errors": [],
   "truncated": false,
@@ -3900,10 +3900,13 @@
   "status": "ok",
   "actions": 6,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 5,
+   "verify-no-send": 1
+  },
   "errors": [],
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "homeassistant-server",
@@ -4220,8 +4223,7 @@
   "converted": 0,
   "reasons": {
    "error": 9,
-   "no-send": 12,
-   "verify-no-send": 1
+   "no-send": 13
   },
   "errors": [],
   "truncated": false,
@@ -4234,9 +4236,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 77,
-  "converted": 1,
+  "converted": 2,
   "reasons": {
-   "no-send": 75,
+   "no-send": 74,
    "verify-no-send": 1
   },
   "errors": [],
@@ -4317,10 +4319,9 @@
   "actions": 13,
   "converted": 8,
   "reasons": {
-   "part0-body-text-slot": 1,
+   "part0-body-text-slot": 2,
    "part0-body-number-slot": 1,
-   "body-text-slot": 2,
-   "multi-request": 1
+   "body-text-slot": 2
   },
   "errors": [],
   "truncated": false,
@@ -6017,7 +6018,8 @@
   "converted": 15,
   "reasons": {
    "no-send": 3,
-   "parts-map-differs": 2,
+   "parts-map-differs": 1,
+   "verify-multi-request": 1,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -6082,8 +6084,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 5,
-  "converted": 4,
+  "converted": 3,
   "reasons": {
+   "no-send": 1,
    "verify-no-send": 1
   },
   "errors": [],
@@ -6471,8 +6474,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 76,
-  "converted": 0,
-  "reasons": {},
+  "converted": 49,
+  "reasons": {
+   "number-slot": 7,
+   "error": 1,
+   "no-send": 1,
+   "verify-mismatch": 18
+  },
   "errors": [],
   "truncated": false,
   "result": "builtin"
@@ -6512,8 +6520,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 31,
-  "converted": 0,
-  "reasons": {},
+  "converted": 25,
+  "reasons": {
+   "overlap": 5,
+   "number-slot": 1
+  },
   "errors": [],
   "truncated": false,
   "result": "builtin"
@@ -6671,10 +6682,11 @@
   "actions": 25,
   "converted": 18,
   "reasons": {
-   "part0-option-breaks-send": 2,
+   "part0-option-breaks-send": 1,
    "option-breaks-send": 3,
    "text-slot": 1,
-   "number-slot": 1
+   "number-slot": 1,
+   "part0-overlap": 1
   },
   "errors": [],
   "truncated": false,
@@ -7448,9 +7460,7 @@
   "actions": 32,
   "converted": 27,
   "reasons": {
-   "parts-map-differs": 1,
-   "verify-multi-request": 2,
-   "path-number-slot": 1,
+   "verify-multi-request": 4,
    "path-overlap": 1
   },
   "errors": [],

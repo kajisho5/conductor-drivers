@@ -132,14 +132,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R11&res=1"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23APC&res=1"
-    }
-   ]
+   }
   },
   {
    "id": "dualLeg",
@@ -149,7 +142,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R12&res=1"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23APC&res=1"
+    }
+   ]
   },
   {
    "id": "dualLegPancake",
@@ -189,14 +189,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R18&res=1"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23RER&res=1"
-    }
-   ]
+   }
   },
   {
    "id": "reboot",
@@ -206,7 +199,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R19&res=1"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23RER&res=1"
+    }
+   ]
   }
  ],
  "feedbacks": [],

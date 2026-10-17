@@ -1,0 +1,6020 @@
+{
+ "format": 1,
+ "id": "m-roland-v160hd",
+ "name": "Roland V-160HD",
+ "category": "Roland",
+ "version": "2.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8023,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "0000"
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling (necessary for feedbacks and variables)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollingrate",
+   "label": "Polling Rate (in ms)",
+   "type": "text",
+   "default": "1000"
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "run_macro",
+   "name": "Run Macro",
+   "options": [
+    {
+     "id": "macro",
+     "label": "Macro",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100,
+     "help": "(1-100)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:500504,{{option.macro|lin:1:-1|hexu|pad2}};\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "input_assign",
+   "name": "Assign Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input 1"
+      },
+      {
+       "id": "1",
+       "label": "Input 2"
+      },
+      {
+       "id": "2",
+       "label": "Input 3"
+      },
+      {
+       "id": "3",
+       "label": "Input 4"
+      },
+      {
+       "id": "4",
+       "label": "Input 5"
+      },
+      {
+       "id": "5",
+       "label": "Input 6"
+      },
+      {
+       "id": "6",
+       "label": "Input 7"
+      },
+      {
+       "id": "7",
+       "label": "Input 8"
+      },
+      {
+       "id": "8",
+       "label": "Input 9"
+      },
+      {
+       "id": "9",
+       "label": "Input 10"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "7",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "8",
+       "label": "SDI 1"
+      },
+      {
+       "id": "9",
+       "label": "SDI 2"
+      },
+      {
+       "id": "10",
+       "label": "SDI 3"
+      },
+      {
+       "id": "11",
+       "label": "SDI 4"
+      },
+      {
+       "id": "12",
+       "label": "SDI 5"
+      },
+      {
+       "id": "13",
+       "label": "SDI 6"
+      },
+      {
+       "id": "14",
+       "label": "SDI 7"
+      },
+      {
+       "id": "15",
+       "label": "SDI 8"
+      },
+      {
+       "id": "16",
+       "label": "Still 1"
+      },
+      {
+       "id": "17",
+       "label": "Still 2"
+      },
+      {
+       "id": "18",
+       "label": "Still 3"
+      },
+      {
+       "id": "19",
+       "label": "Still 4"
+      },
+      {
+       "id": "20",
+       "label": "Still 5"
+      },
+      {
+       "id": "21",
+       "label": "Still 6"
+      },
+      {
+       "id": "22",
+       "label": "Still 7"
+      },
+      {
+       "id": "23",
+       "label": "Still 8"
+      },
+      {
+       "id": "24",
+       "label": "Still 9"
+      },
+      {
+       "id": "25",
+       "label": "Still 10"
+      },
+      {
+       "id": "26",
+       "label": "Still 11"
+      },
+      {
+       "id": "27",
+       "label": "Still 12"
+      },
+      {
+       "id": "28",
+       "label": "Still 13"
+      },
+      {
+       "id": "29",
+       "label": "Still 14"
+      },
+      {
+       "id": "30",
+       "label": "Still 15"
+      },
+      {
+       "id": "31",
+       "label": "Still 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00000{{option.input|map}},{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    },
+    "assign": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "output_assign",
+   "name": "Assign Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "00000A",
+     "choices": [
+      {
+       "id": "00000A",
+       "label": "HDMI Output 1"
+      },
+      {
+       "id": "00000B",
+       "label": "HDMI Output 2"
+      },
+      {
+       "id": "00000C",
+       "label": "HDMI Output 3"
+      },
+      {
+       "id": "00000D",
+       "label": "SDI Output 1"
+      },
+      {
+       "id": "00000E",
+       "label": "SDI Output 2"
+      },
+      {
+       "id": "00000F",
+       "label": "SDI Output 3"
+      },
+      {
+       "id": "000110",
+       "label": "USB Output"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Type",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Program"
+      },
+      {
+       "id": "01",
+       "label": "Sub Program"
+      },
+      {
+       "id": "02",
+       "label": "Preview"
+      },
+      {
+       "id": "03",
+       "label": "Aux 1"
+      },
+      {
+       "id": "04",
+       "label": "Aux 2"
+      },
+      {
+       "id": "05",
+       "label": "Aux 3"
+      },
+      {
+       "id": "06",
+       "label": "DSK 1 Source"
+      },
+      {
+       "id": "07",
+       "label": "DSK 2 Source"
+      },
+      {
+       "id": "08",
+       "label": "Multi-View"
+      },
+      {
+       "id": "09",
+       "label": "16 Input-View"
+      },
+      {
+       "id": "0A",
+       "label": "16 Still-View"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:000{{option.output|map}},0{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "00000A": "00A",
+     "00000B": "00B",
+     "00000C": "00C",
+     "00000D": "00D",
+     "00000E": "00E",
+     "00000F": "00F",
+     "000110": "110"
+    },
+    "assign": {
+     "00": "0",
+     "01": "1",
+     "02": "2",
+     "03": "3",
+     "04": "4",
+     "05": "5",
+     "06": "6",
+     "07": "7",
+     "08": "8",
+     "09": "9",
+     "0A": "A"
+    }
+   }
+  },
+  {
+   "id": "aux_linked_pgm_mode",
+   "name": "Aux Linked PGM Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Off"
+      },
+      {
+       "id": "01",
+       "label": "Auto Link"
+      },
+      {
+       "id": "02",
+       "label": "Manual Link"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:02010D,0{{option.mode|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "00": "0",
+     "01": "1",
+     "02": "2"
+    }
+   }
+  },
+  {
+   "id": "aux_linked",
+   "name": "Aux Linked",
+   "options": [
+    {
+     "id": "aux",
+     "label": "Aux",
+     "type": "select",
+     "default": "020154",
+     "choices": [
+      {
+       "id": "020154",
+       "label": "Aux 1"
+      },
+      {
+       "id": "020155",
+       "label": "Aux 2"
+      },
+      {
+       "id": "020156",
+       "label": "Aux 3"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "On/Off",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Off"
+      },
+      {
+       "id": "01",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:02015{{option.aux|map}},0{{option.value|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "aux": {
+     "020154": "4",
+     "020155": "5",
+     "020156": "6"
+    },
+    "value": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "aux_assign",
+   "name": "Assign Aux",
+   "options": [
+    {
+     "id": "aux",
+     "label": "Aux",
+     "type": "select",
+     "default": "000011",
+     "choices": [
+      {
+       "id": "000011",
+       "label": "Aux 1"
+      },
+      {
+       "id": "00002E",
+       "label": "Aux 2"
+      },
+      {
+       "id": "00002F",
+       "label": "Aux 3"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "20",
+     "choices": [
+      {
+       "id": "20",
+       "label": "INPUT 1"
+      },
+      {
+       "id": "21",
+       "label": "INPUT 2"
+      },
+      {
+       "id": "22",
+       "label": "INPUT 3"
+      },
+      {
+       "id": "23",
+       "label": "INPUT 4"
+      },
+      {
+       "id": "24",
+       "label": "INPUT 5"
+      },
+      {
+       "id": "25",
+       "label": "INPUT 6"
+      },
+      {
+       "id": "26",
+       "label": "INPUT 7"
+      },
+      {
+       "id": "27",
+       "label": "INPUT 8"
+      },
+      {
+       "id": "28",
+       "label": "INPUT 9"
+      },
+      {
+       "id": "29",
+       "label": "INPUT 10"
+      },
+      {
+       "id": "2A",
+       "label": "INPUT 11"
+      },
+      {
+       "id": "2B",
+       "label": "INPUT 12"
+      },
+      {
+       "id": "2C",
+       "label": "INPUT 13"
+      },
+      {
+       "id": "2D",
+       "label": "INPUT 14"
+      },
+      {
+       "id": "2E",
+       "label": "INPUT 15"
+      },
+      {
+       "id": "2F",
+       "label": "INPUT 16"
+      },
+      {
+       "id": "30",
+       "label": "INPUT 17"
+      },
+      {
+       "id": "31",
+       "label": "INPUT 18"
+      },
+      {
+       "id": "32",
+       "label": "INPUT 19"
+      },
+      {
+       "id": "33",
+       "label": "INPUT 20"
+      },
+      {
+       "id": "00",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "01",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "02",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "03",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "04",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "05",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "06",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "07",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "08",
+       "label": "SDI 1"
+      },
+      {
+       "id": "09",
+       "label": "SDI 2"
+      },
+      {
+       "id": "0A",
+       "label": "SDI 3"
+      },
+      {
+       "id": "0B",
+       "label": "SDI 4"
+      },
+      {
+       "id": "0C",
+       "label": "SDI 5"
+      },
+      {
+       "id": "0D",
+       "label": "SDI 6"
+      },
+      {
+       "id": "0E",
+       "label": "SDI 7"
+      },
+      {
+       "id": "0F",
+       "label": "SDI 8"
+      },
+      {
+       "id": "10",
+       "label": "Still 1"
+      },
+      {
+       "id": "11",
+       "label": "Still 2"
+      },
+      {
+       "id": "12",
+       "label": "Still 3"
+      },
+      {
+       "id": "13",
+       "label": "Still 4"
+      },
+      {
+       "id": "14",
+       "label": "Still 5"
+      },
+      {
+       "id": "15",
+       "label": "Still 6"
+      },
+      {
+       "id": "16",
+       "label": "Still 7"
+      },
+      {
+       "id": "17",
+       "label": "Still 8"
+      },
+      {
+       "id": "18",
+       "label": "Still 9"
+      },
+      {
+       "id": "19",
+       "label": "Still 10"
+      },
+      {
+       "id": "1A",
+       "label": "Still 11"
+      },
+      {
+       "id": "1B",
+       "label": "Still 12"
+      },
+      {
+       "id": "1C",
+       "label": "Still 13"
+      },
+      {
+       "id": "1D",
+       "label": "Still 14"
+      },
+      {
+       "id": "1E",
+       "label": "Still 15"
+      },
+      {
+       "id": "1F",
+       "label": "Still 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0000{{option.aux|map}},{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "aux": {
+     "000011": "11",
+     "00002E": "2E",
+     "00002F": "2F"
+    },
+    "assign": {
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "24": "24",
+     "25": "25",
+     "26": "26",
+     "27": "27",
+     "28": "28",
+     "29": "29",
+     "30": "30",
+     "31": "31",
+     "32": "32",
+     "33": "33",
+     "2A": "2A",
+     "2B": "2B",
+     "2C": "2C",
+     "2D": "2D",
+     "2E": "2E",
+     "2F": "2F",
+     "00": "00",
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09",
+     "0A": "0A",
+     "0B": "0B",
+     "0C": "0C",
+     "0D": "0D",
+     "0E": "0E",
+     "0F": "0F",
+     "1A": "1A",
+     "1B": "1B",
+     "1C": "1C",
+     "1D": "1D",
+     "1E": "1E",
+     "1F": "1F"
+    }
+   }
+  },
+  {
+   "id": "aux_mute",
+   "name": "Mute Aux",
+   "options": [
+    {
+     "id": "aux",
+     "label": "Aux",
+     "type": "select",
+     "default": "000011",
+     "choices": [
+      {
+       "id": "012203",
+       "label": "Aux 1"
+      },
+      {
+       "id": "012503",
+       "label": "Aux 2"
+      },
+      {
+       "id": "012603",
+       "label": "Aux 3"
+      }
+     ]
+    },
+    {
+     "id": "mute",
+     "label": "Mute/Unmute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Unmute"
+      },
+      {
+       "id": "01",
+       "label": "Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0{{option.aux|map}},{{option.mute|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "aux": {
+     "000011": "00011",
+     "012203": "12203",
+     "012503": "12503",
+     "012603": "12603"
+    },
+    "mute": {
+     "1": "1",
+     "00": "00",
+     "01": "01"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_enable",
+   "name": "PnP & Key Enable/Disable",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "18",
+     "choices": [
+      {
+       "id": "18",
+       "label": "Program Layer PinP & Key 1"
+      },
+      {
+       "id": "19",
+       "label": "Program Layer PinP & Key 2"
+      },
+      {
+       "id": "20",
+       "label": "Program Layer PinP & Key 3"
+      },
+      {
+       "id": "21",
+       "label": "Program Layer PinP & Key 4"
+      },
+      {
+       "id": "22",
+       "label": "Program Layer DSK 1"
+      },
+      {
+       "id": "23",
+       "label": "Program Layer DSK 2"
+      },
+      {
+       "id": "24",
+       "label": "Sub Program Layer PinP & Key 1"
+      },
+      {
+       "id": "25",
+       "label": "Sub Program Layer PinP & Key 2"
+      },
+      {
+       "id": "26",
+       "label": "Sub Program Layer PinP & Key 3"
+      },
+      {
+       "id": "27",
+       "label": "Sub Program Layer PinP & Key 4"
+      },
+      {
+       "id": "28",
+       "label": "Sub Program Layer DSK 1"
+      },
+      {
+       "id": "29",
+       "label": "Sub Program Layer DSK 2"
+      }
+     ]
+    },
+    {
+     "id": "enable",
+     "label": "Enable/Disable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00001{{option.pinp|map}},0{{option.enable|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "18": "2",
+     "19": "3",
+     "20": "4",
+     "21": "5",
+     "22": "6",
+     "23": "7",
+     "24": "8",
+     "25": "9",
+     "26": "A",
+     "27": "B",
+     "28": "C",
+     "29": "D"
+    },
+    "enable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_fade",
+   "name": "PnP & Key Fade Enable/Disable",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "05",
+     "choices": [
+      {
+       "id": "05",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "06",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "07",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "08",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "enable",
+     "label": "Enable/Disable",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Disable"
+      },
+      {
+       "id": "01",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:02030{{option.pinp|map}},0{{option.enable|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "05": "5",
+     "06": "6",
+     "07": "7",
+     "08": "8"
+    },
+    "enable": {
+     "01": "1",
+     "00": "0"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_busselect",
+   "name": "PnP & Key Bus Select",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Program (PGM)"
+      },
+      {
+       "id": "01",
+       "label": "Preview (PVW)"
+      }
+     ]
+    },
+    {
+     "id": "onoff",
+     "label": "On/Off",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Off"
+      },
+      {
+       "id": "01",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}0{{option.bus|map}},0{{option.onoff|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    },
+    "bus": {
+     "00": "0",
+     "01": "1"
+    },
+    "onoff": {
+     "01": "1",
+     "00": "0"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_setsource",
+   "name": "PnP & Key Set Source",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "01",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "02",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "03",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "04",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "05",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "06",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "07",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "08",
+       "label": "SDI 1"
+      },
+      {
+       "id": "09",
+       "label": "SDI 2"
+      },
+      {
+       "id": "0A",
+       "label": "SDI 3"
+      },
+      {
+       "id": "0B",
+       "label": "SDI 4"
+      },
+      {
+       "id": "0C",
+       "label": "SDI 5"
+      },
+      {
+       "id": "0D",
+       "label": "SDI 6"
+      },
+      {
+       "id": "0E",
+       "label": "SDI 7"
+      },
+      {
+       "id": "0F",
+       "label": "SDI 8"
+      },
+      {
+       "id": "10",
+       "label": "Still 1"
+      },
+      {
+       "id": "11",
+       "label": "Still 2"
+      },
+      {
+       "id": "12",
+       "label": "Still 3"
+      },
+      {
+       "id": "13",
+       "label": "Still 4"
+      },
+      {
+       "id": "14",
+       "label": "Still 5"
+      },
+      {
+       "id": "15",
+       "label": "Still 6"
+      },
+      {
+       "id": "16",
+       "label": "Still 7"
+      },
+      {
+       "id": "17",
+       "label": "Still 8"
+      },
+      {
+       "id": "18",
+       "label": "Still 9"
+      },
+      {
+       "id": "19",
+       "label": "Still 10"
+      },
+      {
+       "id": "1A",
+       "label": "Still 11"
+      },
+      {
+       "id": "1B",
+       "label": "Still 12"
+      },
+      {
+       "id": "1C",
+       "label": "Still 13"
+      },
+      {
+       "id": "1D",
+       "label": "Still 14"
+      },
+      {
+       "id": "1E",
+       "label": "Still 15"
+      },
+      {
+       "id": "1F",
+       "label": "Still 16"
+      },
+      {
+       "id": "20",
+       "label": "Input 1"
+      },
+      {
+       "id": "21",
+       "label": "Input 2"
+      },
+      {
+       "id": "22",
+       "label": "Input 3"
+      },
+      {
+       "id": "23",
+       "label": "Input 4"
+      },
+      {
+       "id": "24",
+       "label": "Input 5"
+      },
+      {
+       "id": "25",
+       "label": "Input 6"
+      },
+      {
+       "id": "26",
+       "label": "Input 7"
+      },
+      {
+       "id": "27",
+       "label": "Input 8"
+      },
+      {
+       "id": "28",
+       "label": "Input 9"
+      },
+      {
+       "id": "29",
+       "label": "Input 10"
+      },
+      {
+       "id": "2A",
+       "label": "Input 11"
+      },
+      {
+       "id": "2B",
+       "label": "Input 12"
+      },
+      {
+       "id": "2C",
+       "label": "Input 13"
+      },
+      {
+       "id": "2D",
+       "label": "Input 14"
+      },
+      {
+       "id": "2E",
+       "label": "Input 15"
+      },
+      {
+       "id": "2F",
+       "label": "Input 16"
+      },
+      {
+       "id": "30",
+       "label": "Input 17"
+      },
+      {
+       "id": "31",
+       "label": "Input 18"
+      },
+      {
+       "id": "32",
+       "label": "Input 19"
+      },
+      {
+       "id": "33",
+       "label": "Input 20"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}02,{{option.source|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    },
+    "source": {
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "24": "24",
+     "25": "25",
+     "26": "26",
+     "27": "27",
+     "28": "28",
+     "29": "29",
+     "30": "30",
+     "31": "31",
+     "32": "32",
+     "33": "33",
+     "00": "00",
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09",
+     "0A": "0A",
+     "0B": "0B",
+     "0C": "0C",
+     "0D": "0D",
+     "0E": "0E",
+     "0F": "0F",
+     "1A": "1A",
+     "1B": "1B",
+     "1C": "1C",
+     "1D": "1D",
+     "1E": "1E",
+     "1F": "1F",
+     "2A": "2A",
+     "2B": "2B",
+     "2C": "2C",
+     "2D": "2D",
+     "2E": "2E",
+     "2F": "2F"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_settype",
+   "name": "PnP & Key Set Type",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "PinP"
+      },
+      {
+       "id": "01",
+       "label": "Luminance-White Key"
+      },
+      {
+       "id": "02",
+       "label": "Luminance-Black Key"
+      },
+      {
+       "id": "03",
+       "label": "Chroma Key"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}03,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    },
+    "type": {
+     "00": "0",
+     "01": "1",
+     "02": "2",
+     "03": "3"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_shape",
+   "name": "PnP & Key Shape",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "shape",
+     "label": "Shape",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Rectangle"
+      },
+      {
+       "id": "01",
+       "label": "Circle"
+      },
+      {
+       "id": "02",
+       "label": "Diamond"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}0E,0{{option.shape|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    },
+    "shape": {
+     "00": "0",
+     "01": "1",
+     "02": "2"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_borderColor",
+   "name": "PnP & Key Border Color",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "color",
+     "label": "Border Color",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "White"
+      },
+      {
+       "id": "01",
+       "label": "Yellow"
+      },
+      {
+       "id": "02",
+       "label": "Cyan"
+      },
+      {
+       "id": "03",
+       "label": "Green"
+      },
+      {
+       "id": "04",
+       "label": "Magenta"
+      },
+      {
+       "id": "05",
+       "label": "Red"
+      },
+      {
+       "id": "06",
+       "label": "Blue"
+      },
+      {
+       "id": "07",
+       "label": "Black"
+      },
+      {
+       "id": "08",
+       "label": "Custom"
+      },
+      {
+       "id": "09",
+       "label": "Soft Edge"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}0F,0{{option.color|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    },
+    "color": {
+     "00": "0",
+     "01": "1",
+     "02": "2",
+     "03": "3",
+     "04": "4",
+     "05": "5",
+     "06": "6",
+     "07": "7",
+     "08": "8",
+     "09": "9"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_borderWidth",
+   "name": "PnP & Key Border Width",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "width",
+     "label": "Border Width",
+     "type": "number",
+     "default": 5,
+     "min": 0,
+     "max": 14,
+     "help": "0-14"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}10,{{option.width|hexu|pad2}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_viewZoom",
+   "name": "PnP & Key View Zoom",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "zoom",
+     "label": "Zoom",
+     "type": "number",
+     "default": 100,
+     "min": 100,
+     "max": 400,
+     "help": "(100%- 400%)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}16,{{option.zoom}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B15,0;\\n\\nDTH:001B",
+     "1C": "C15,0;\\n\\nDTH:001C",
+     "1D": "D15,0;\\n\\nDTH:001D",
+     "1E": "E15,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_keyLevel",
+   "name": "PnP & Key Key Level",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "level",
+     "label": "Level",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 255,
+     "help": "(0-255)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}18,{{option.level}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B17,0;\\n\\nDTH:001B",
+     "1C": "C17,0;\\n\\nDTH:001C",
+     "1D": "D17,0;\\n\\nDTH:001D",
+     "1E": "E17,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_keyGain",
+   "name": "PnP & Key Key Gain",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 255,
+     "help": "(0-255)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}1A,{{option.gain}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B19,0;\\n\\nDTH:001B",
+     "1C": "C19,0;\\n\\nDTH:001C",
+     "1D": "D19,0;\\n\\nDTH:001D",
+     "1E": "E19,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_mixLevel",
+   "name": "PnP & Key Mix Level",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "level",
+     "label": "Level",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 255,
+     "help": "(0-255)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}1C,{{option.level}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B1B,0;\\n\\nDTH:001B",
+     "1C": "C1B,0;\\n\\nDTH:001C",
+     "1D": "D1B,0;\\n\\nDTH:001D",
+     "1E": "E1B,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_chromaColor",
+   "name": "PnP & Key Chroma Color",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "color",
+     "label": "Color",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Green"
+      },
+      {
+       "id": "01",
+       "label": "Blue"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}1D,0{{option.color|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    },
+    "color": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_hueWidth",
+   "name": "PnP & Key Hue Width",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "width",
+     "label": "Width",
+     "type": "number",
+     "default": 0,
+     "min": -30,
+     "max": 30,
+     "help": "(-30 - 0 - +30)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}1E,{{option.width}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B",
+     "1C": "C",
+     "1D": "D",
+     "1E": "E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_hueFine",
+   "name": "PnP & Key Hue Fine",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "fine",
+     "label": "Fine",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 360,
+     "help": "(0 - 360)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}20,{{option.fine}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B1F,0;\\n\\nDTH:001B",
+     "1C": "C1F,0;\\n\\nDTH:001C",
+     "1D": "D1F,0;\\n\\nDTH:001D",
+     "1E": "E1F,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_saturationWidth",
+   "name": "PnP & Key Saturation Width",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "width",
+     "label": "Width",
+     "type": "number",
+     "default": 0,
+     "min": -127,
+     "max": 127,
+     "help": "(-127 - 0 - +127)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}22,{{option.width}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B21,0;\\n\\nDTH:001B",
+     "1C": "C21,0;\\n\\nDTH:001C",
+     "1D": "D21,0;\\n\\nDTH:001D",
+     "1E": "E21,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_saturationFine",
+   "name": "PnP & Key Saturation Fine",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "fine",
+     "label": "Fine",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255,
+     "help": "(0 - 255)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}24,{{option.fine}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B23,0;\\n\\nDTH:001B",
+     "1C": "C23,0;\\n\\nDTH:001C",
+     "1D": "D23,0;\\n\\nDTH:001D",
+     "1E": "E23,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_borderColorRed",
+   "name": "PnP & Key Border Color Red",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "red",
+     "label": "Red",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255,
+     "help": "(0 - 255)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}26,{{option.red}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B25,0;\\n\\nDTH:001B",
+     "1C": "C25,0;\\n\\nDTH:001C",
+     "1D": "D25,0;\\n\\nDTH:001D",
+     "1E": "E25,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_borderColorGreen",
+   "name": "PnP & Key Border Color Green",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "green",
+     "label": "Green",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255,
+     "help": "(0 - 255)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}28,{{option.green}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B27,0;\\n\\nDTH:001B",
+     "1C": "C27,0;\\n\\nDTH:001C",
+     "1D": "D27,0;\\n\\nDTH:001D",
+     "1E": "E27,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "pnpkey_borderColorBlue",
+   "name": "PnP & Key Border Color Blue",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "1B",
+     "choices": [
+      {
+       "id": "1B",
+       "label": "PnP/Key 1"
+      },
+      {
+       "id": "1C",
+       "label": "PnP/Key 2"
+      },
+      {
+       "id": "1D",
+       "label": "PnP/Key 3"
+      },
+      {
+       "id": "1E",
+       "label": "PnP/Key 4"
+      }
+     ]
+    },
+    {
+     "id": "blue",
+     "label": "Blue",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255,
+     "help": "(0 - 255)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}2A,{{option.blue}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "1B": "B29,0;\\n\\nDTH:001B",
+     "1C": "C29,0;\\n\\nDTH:001C",
+     "1D": "D29,0;\\n\\nDTH:001D",
+     "1E": "E29,0;\\n\\nDTH:001E"
+    }
+   }
+  },
+  {
+   "id": "dsk_busselect",
+   "name": "DSK Bus Select",
+   "options": [
+    {
+     "id": "dsk",
+     "label": "DSK",
+     "type": "select",
+     "default": "1F",
+     "choices": [
+      {
+       "id": "1F",
+       "label": "DSK 1"
+      },
+      {
+       "id": "20",
+       "label": "DSK 2"
+      }
+     ]
+    },
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Program (PGM)"
+      },
+      {
+       "id": "01",
+       "label": "Preview (PVW)"
+      }
+     ]
+    },
+    {
+     "id": "onoff",
+     "label": "On/Off",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Off"
+      },
+      {
+       "id": "01",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00{{option.dsk|map}}0{{option.bus|map}},0{{option.onoff|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dsk": {
+     "20": "20",
+     "1F": "1F"
+    },
+    "bus": {
+     "00": "0",
+     "01": "1"
+    },
+    "onoff": {
+     "01": "1",
+     "00": "0"
+    }
+   }
+  },
+  {
+   "id": "set_transition_time",
+   "name": "Set Transition Time",
+   "options": [
+    {
+     "id": "type",
+     "label": "Transition Type",
+     "type": "select",
+     "default": "001700",
+     "choices": [
+      {
+       "id": "001700",
+       "label": "Mix/Wipe Time"
+      },
+      {
+       "id": "001701",
+       "label": "PinP 1 Time"
+      },
+      {
+       "id": "001702",
+       "label": "PinP 2 Time"
+      },
+      {
+       "id": "001703",
+       "label": "PinP 3 Time"
+      },
+      {
+       "id": "001704",
+       "label": "PinP 4 Time"
+      },
+      {
+       "id": "001705",
+       "label": "DSK 1 Time"
+      },
+      {
+       "id": "001706",
+       "label": "DSK 2 Time"
+      },
+      {
+       "id": "001707",
+       "label": "Output Fade Time"
+      }
+     ]
+    },
+    {
+     "id": "time",
+     "label": "Transition Time",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 4,
+     "help": "(0.0-4.0)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00170{{option.type|map}},{{option.time|lin:10:0|hexu|pad2}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "001700": "0",
+     "001701": "1",
+     "001702": "2",
+     "001703": "3",
+     "001704": "4",
+     "001705": "5",
+     "001706": "6",
+     "001707": "7"
+    }
+   }
+  },
+  {
+   "id": "set_transition_type",
+   "name": "Set Transition Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Transition Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mix"
+      },
+      {
+       "id": "1",
+       "label": "Wipe"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001800,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "set_mix_type",
+   "name": "Set Mix Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Mix Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mix"
+      },
+      {
+       "id": "1",
+       "label": "Fam"
+      },
+      {
+       "id": "2",
+       "label": "Nam"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001801,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set_wipe_type",
+   "name": "Set Wipe Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Wipe Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Horizontal"
+      },
+      {
+       "id": "1",
+       "label": "Vertical"
+      },
+      {
+       "id": "2",
+       "label": "Upper Left"
+      },
+      {
+       "id": "3",
+       "label": "Upper Right"
+      },
+      {
+       "id": "4",
+       "label": "Lower Left"
+      },
+      {
+       "id": "5",
+       "label": "Lower Right"
+      },
+      {
+       "id": "6",
+       "label": "H-Center"
+      },
+      {
+       "id": "7",
+       "label": "V-Center"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001802,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "press_and_release_switch",
+   "name": "Press and Release Panel Switch",
+   "options": [
+    {
+     "id": "switch",
+     "label": "Switch",
+     "type": "select",
+     "default": "0B0000",
+     "choices": [
+      {
+       "id": "0B0000",
+       "label": "PGM/A 1 SW"
+      },
+      {
+       "id": "0B0001",
+       "label": "PGM/A 2 SW"
+      },
+      {
+       "id": "0B0002",
+       "label": "PGM/A 3 SW"
+      },
+      {
+       "id": "0B0003",
+       "label": "PGM/A 4 SW"
+      },
+      {
+       "id": "0B0004",
+       "label": "PGM/A 5 SW"
+      },
+      {
+       "id": "0B0005",
+       "label": "PGM/A 6 SW"
+      },
+      {
+       "id": "0B0006",
+       "label": "PGM/A 7 SW"
+      },
+      {
+       "id": "0B0007",
+       "label": "PGM/A 8 SW"
+      },
+      {
+       "id": "0B0008",
+       "label": "PGM/A 9 SW"
+      },
+      {
+       "id": "0B0009",
+       "label": "PGM/A 10 SW"
+      },
+      {
+       "id": "0B000A",
+       "label": "PST/B 1 SW"
+      },
+      {
+       "id": "0B000B",
+       "label": "PST/B 2 SW"
+      },
+      {
+       "id": "0B000C",
+       "label": "PST/B 3 SW"
+      },
+      {
+       "id": "0B000D",
+       "label": "PST/B 4 SW"
+      },
+      {
+       "id": "0B000E",
+       "label": "PST/B 5 SW"
+      },
+      {
+       "id": "0B000F",
+       "label": "PST/B 6 SW"
+      },
+      {
+       "id": "0B0010",
+       "label": "PST/B 7 SW"
+      },
+      {
+       "id": "0B0011",
+       "label": "PST/B 8 SW"
+      },
+      {
+       "id": "0B0012",
+       "label": "PST/B 9 SW"
+      },
+      {
+       "id": "0B0013",
+       "label": "PST/B 10 SW"
+      },
+      {
+       "id": "0B0014",
+       "label": "AUX 1 SW"
+      },
+      {
+       "id": "0B0015",
+       "label": "AUX 2 SW"
+      },
+      {
+       "id": "0B0016",
+       "label": "AUX 3 SW"
+      },
+      {
+       "id": "0B0017",
+       "label": "AUX 4 SW"
+      },
+      {
+       "id": "0B0018",
+       "label": "AUX 5 SW"
+      },
+      {
+       "id": "0B0019",
+       "label": "AUX 6 SW"
+      },
+      {
+       "id": "0B001A",
+       "label": "AUX 7 SW"
+      },
+      {
+       "id": "0B001B",
+       "label": "AUX 8 SW"
+      },
+      {
+       "id": "0B001C",
+       "label": "AUX 9 SW"
+      },
+      {
+       "id": "0B001D",
+       "label": "AUX 10 SW"
+      },
+      {
+       "id": "0B001E",
+       "label": "CUT SW"
+      },
+      {
+       "id": "0B001F",
+       "label": "AUTO SW"
+      },
+      {
+       "id": "0B0020",
+       "label": "TRANSITION SW"
+      },
+      {
+       "id": "0B0021",
+       "label": "MODE SW"
+      },
+      {
+       "id": "0B0022",
+       "label": "INPUT ASSIGN SW"
+      },
+      {
+       "id": "0B0023",
+       "label": "PGM-CENTER ENCODER"
+      },
+      {
+       "id": "0B0024",
+       "label": "PST-CENTER ENCODER"
+      },
+      {
+       "id": "0B0025",
+       "label": "SPLIT A SW"
+      },
+      {
+       "id": "0B0026",
+       "label": "SPLIT B SW"
+      },
+      {
+       "id": "0B0027",
+       "label": "AUTO MIXING"
+      },
+      {
+       "id": "0B0028",
+       "label": "CAPTURE SW"
+      },
+      {
+       "id": "0B0029",
+       "label": "USER 1 SW"
+      },
+      {
+       "id": "0B002A",
+       "label": "USER 2 SW"
+      },
+      {
+       "id": "0B002B",
+       "label": "USER 3 SW"
+      },
+      {
+       "id": "0B002C",
+       "label": "USER 4 SW"
+      },
+      {
+       "id": "0B002D",
+       "label": "PinP 1 POSITION H"
+      },
+      {
+       "id": "0B002E",
+       "label": "PinP 1 POSITION V"
+      },
+      {
+       "id": "0B002F",
+       "label": "PinP 1 SOURCE SW"
+      },
+      {
+       "id": "0B0030",
+       "label": "PinP 1 PVW SW"
+      },
+      {
+       "id": "0B0031",
+       "label": "PinP 1 PGM SW"
+      },
+      {
+       "id": "0B0032",
+       "label": "PinP 2 POSITION H"
+      },
+      {
+       "id": "0B0033",
+       "label": "PinP 2 POSITION V"
+      },
+      {
+       "id": "0B0034",
+       "label": "PinP 2 SOURCE SW"
+      },
+      {
+       "id": "0B0035",
+       "label": "PinP 2 PVW SW"
+      },
+      {
+       "id": "0B0036",
+       "label": "PinP 2 PGM SW"
+      },
+      {
+       "id": "0B0037",
+       "label": "PinP 3 POSITION H"
+      },
+      {
+       "id": "0B0038",
+       "label": "PinP 3 POSITION V"
+      },
+      {
+       "id": "0B0039",
+       "label": "PinP 3 SOURCE SW"
+      },
+      {
+       "id": "0B003A",
+       "label": "PinP 3 PVW SW"
+      },
+      {
+       "id": "0B003B",
+       "label": "PinP 3 PGM SW"
+      },
+      {
+       "id": "0B003C",
+       "label": "PinP 4 POSITION H"
+      },
+      {
+       "id": "0B003D",
+       "label": "PinP 4 POSITION V"
+      },
+      {
+       "id": "0B003E",
+       "label": "PinP 4 SOURCE SW"
+      },
+      {
+       "id": "0B003F",
+       "label": "PinP 4 PVW SW"
+      },
+      {
+       "id": "0B0040",
+       "label": "PinP 4 PGM SW"
+      },
+      {
+       "id": "0B0041",
+       "label": "DSK 1 SOURCE SW"
+      },
+      {
+       "id": "0B0042",
+       "label": "DSK 1 PVW SW"
+      },
+      {
+       "id": "0B0043",
+       "label": "DSK 1 PGM SW"
+      },
+      {
+       "id": "0B0044",
+       "label": "DSK 2 SOURCE SW"
+      },
+      {
+       "id": "0B0045",
+       "label": "DSK 2 PVW SW"
+      },
+      {
+       "id": "0B0046",
+       "label": "DSK 2 PGM SW"
+      },
+      {
+       "id": "0B0047",
+       "label": "MONITOR 1 SW"
+      },
+      {
+       "id": "0B0048",
+       "label": "MONITOR 2 SW"
+      },
+      {
+       "id": "0B0049",
+       "label": "MONITOR 3 SW"
+      },
+      {
+       "id": "0B004A",
+       "label": "MONITOR 4 SW"
+      },
+      {
+       "id": "0B004B",
+       "label": "MENU SW"
+      },
+      {
+       "id": "0B004C",
+       "label": "EXIT SW"
+      },
+      {
+       "id": "0B004D",
+       "label": "ENTER SW"
+      },
+      {
+       "id": "0B004E",
+       "label": "OUTPUT FADE SW"
+      },
+      {
+       "id": "0B004F",
+       "label": "SEQUENCER ON SW"
+      },
+      {
+       "id": "0B0050",
+       "label": "SEQUENCER AUTO SW"
+      },
+      {
+       "id": "0B0051",
+       "label": "SEQUENCER PREV SW"
+      },
+      {
+       "id": "0B0052",
+       "label": "SEQUENCER NEXT SW"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0B00{{option.switch|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "switch": {
+     "0B0000": "00,01",
+     "0B0001": "01,01;\\n\\nDTH:0B0000,00;\\n\\nDTH:0B0001,00",
+     "0B0002": "02,01",
+     "0B0003": "03,01;\\n\\nDTH:0B0002,00;\\n\\nDTH:0B0003,00",
+     "0B0004": "04,01",
+     "0B0005": "05,01;\\n\\nDTH:0B0004,00;\\n\\nDTH:0B0005,00",
+     "0B0006": "06,01",
+     "0B0007": "07,01;\\n\\nDTH:0B0006,00;\\n\\nDTH:0B0007,00",
+     "0B0008": "08,01",
+     "0B0009": "09,01;\\n\\nDTH:0B0008,00;\\n\\nDTH:0B0009,00",
+     "0B000A": "0A,01",
+     "0B000B": "0B,01;\\n\\nDTH:0B000A,00;\\n\\nDTH:0B000B,00",
+     "0B000C": "0C,01",
+     "0B000D": "0D,01;\\n\\nDTH:0B000C,00;\\n\\nDTH:0B000D,00",
+     "0B000E": "0E,01",
+     "0B000F": "0F,01;\\n\\nDTH:0B000E,00;\\n\\nDTH:0B000F,00",
+     "0B0010": "10,01",
+     "0B0011": "11,01;\\n\\nDTH:0B0010,00;\\n\\nDTH:0B0011,00",
+     "0B0012": "12,01",
+     "0B0013": "13,01;\\n\\nDTH:0B0012,00;\\n\\nDTH:0B0013,00",
+     "0B0014": "14,01",
+     "0B0015": "15,01;\\n\\nDTH:0B0014,00;\\n\\nDTH:0B0015,00",
+     "0B0016": "16,01",
+     "0B0017": "17,01;\\n\\nDTH:0B0016,00;\\n\\nDTH:0B0017,00",
+     "0B0018": "18,01",
+     "0B0019": "19,01;\\n\\nDTH:0B0018,00;\\n\\nDTH:0B0019,00",
+     "0B001A": "1A,01",
+     "0B001B": "1B,01;\\n\\nDTH:0B001A,00;\\n\\nDTH:0B001B,00",
+     "0B001C": "1C,01",
+     "0B001D": "1D,01;\\n\\nDTH:0B001C,00;\\n\\nDTH:0B001D,00",
+     "0B001E": "1E,01",
+     "0B001F": "1F,01;\\n\\nDTH:0B001E,00;\\n\\nDTH:0B001F,00",
+     "0B0020": "20,01",
+     "0B0021": "21,01;\\n\\nDTH:0B0020,00;\\n\\nDTH:0B0021,00",
+     "0B0022": "22,01",
+     "0B0023": "23,01;\\n\\nDTH:0B0022,00;\\n\\nDTH:0B0023,00",
+     "0B0024": "24,01",
+     "0B0025": "25,01;\\n\\nDTH:0B0024,00;\\n\\nDTH:0B0025,00",
+     "0B0026": "26,01",
+     "0B0027": "27,01;\\n\\nDTH:0B0026,00;\\n\\nDTH:0B0027,00",
+     "0B0028": "28,01",
+     "0B0029": "29,01;\\n\\nDTH:0B0028,00;\\n\\nDTH:0B0029,00",
+     "0B002A": "2A,01",
+     "0B002B": "2B,01;\\n\\nDTH:0B002A,00;\\n\\nDTH:0B002B,00",
+     "0B002C": "2C,01",
+     "0B002D": "2D,01;\\n\\nDTH:0B002C,00;\\n\\nDTH:0B002D,00",
+     "0B002E": "2E,01",
+     "0B002F": "2F,01;\\n\\nDTH:0B002E,00;\\n\\nDTH:0B002F,00",
+     "0B0030": "30,01",
+     "0B0031": "31,01;\\n\\nDTH:0B0030,00;\\n\\nDTH:0B0031,00",
+     "0B0032": "32,01",
+     "0B0033": "33,01;\\n\\nDTH:0B0032,00;\\n\\nDTH:0B0033,00",
+     "0B0034": "34,01",
+     "0B0035": "35,01;\\n\\nDTH:0B0034,00;\\n\\nDTH:0B0035,00",
+     "0B0036": "36,01",
+     "0B0037": "37,01;\\n\\nDTH:0B0036,00;\\n\\nDTH:0B0037,00",
+     "0B0038": "38,01",
+     "0B0039": "39,01;\\n\\nDTH:0B0038,00;\\n\\nDTH:0B0039,00",
+     "0B003A": "3A,01",
+     "0B003B": "3B,01;\\n\\nDTH:0B003A,00;\\n\\nDTH:0B003B,00",
+     "0B003C": "3C,01",
+     "0B003D": "3D,01;\\n\\nDTH:0B003C,00;\\n\\nDTH:0B003D,00",
+     "0B003E": "3E,01",
+     "0B003F": "3F,01;\\n\\nDTH:0B003E,00;\\n\\nDTH:0B003F,00",
+     "0B0040": "40,01",
+     "0B0041": "41,01;\\n\\nDTH:0B0040,00;\\n\\nDTH:0B0041,00",
+     "0B0042": "42,01",
+     "0B0043": "43,01;\\n\\nDTH:0B0042,00;\\n\\nDTH:0B0043,00",
+     "0B0044": "44,01",
+     "0B0045": "45,01;\\n\\nDTH:0B0044,00;\\n\\nDTH:0B0045,00",
+     "0B0046": "46,01",
+     "0B0047": "47,01;\\n\\nDTH:0B0046,00;\\n\\nDTH:0B0047,00",
+     "0B0048": "48,01",
+     "0B0049": "49,01;\\n\\nDTH:0B0048,00;\\n\\nDTH:0B0049,00",
+     "0B004A": "4A,01",
+     "0B004B": "4B,01;\\n\\nDTH:0B004A,00;\\n\\nDTH:0B004B,00",
+     "0B004C": "4C,01",
+     "0B004D": "4D,01;\\n\\nDTH:0B004C,00;\\n\\nDTH:0B004D,00",
+     "0B004E": "4E,01",
+     "0B004F": "4F,01;\\n\\nDTH:0B004E,00;\\n\\nDTH:0B004F,00",
+     "0B0050": "50,01",
+     "0B0051": "51,01;\\n\\nDTH:0B0050,00;\\n\\nDTH:0B0051,00",
+     "0B0052": "52,01"
+    }
+   }
+  },
+  {
+   "id": "press_switch",
+   "name": "Press Panel Switch (Don't Release)",
+   "options": [
+    {
+     "id": "switch",
+     "label": "Switch",
+     "type": "select",
+     "default": "0B0000",
+     "choices": [
+      {
+       "id": "0B0000",
+       "label": "PGM/A 1 SW"
+      },
+      {
+       "id": "0B0001",
+       "label": "PGM/A 2 SW"
+      },
+      {
+       "id": "0B0002",
+       "label": "PGM/A 3 SW"
+      },
+      {
+       "id": "0B0003",
+       "label": "PGM/A 4 SW"
+      },
+      {
+       "id": "0B0004",
+       "label": "PGM/A 5 SW"
+      },
+      {
+       "id": "0B0005",
+       "label": "PGM/A 6 SW"
+      },
+      {
+       "id": "0B0006",
+       "label": "PGM/A 7 SW"
+      },
+      {
+       "id": "0B0007",
+       "label": "PGM/A 8 SW"
+      },
+      {
+       "id": "0B0008",
+       "label": "PGM/A 9 SW"
+      },
+      {
+       "id": "0B0009",
+       "label": "PGM/A 10 SW"
+      },
+      {
+       "id": "0B000A",
+       "label": "PST/B 1 SW"
+      },
+      {
+       "id": "0B000B",
+       "label": "PST/B 2 SW"
+      },
+      {
+       "id": "0B000C",
+       "label": "PST/B 3 SW"
+      },
+      {
+       "id": "0B000D",
+       "label": "PST/B 4 SW"
+      },
+      {
+       "id": "0B000E",
+       "label": "PST/B 5 SW"
+      },
+      {
+       "id": "0B000F",
+       "label": "PST/B 6 SW"
+      },
+      {
+       "id": "0B0010",
+       "label": "PST/B 7 SW"
+      },
+      {
+       "id": "0B0011",
+       "label": "PST/B 8 SW"
+      },
+      {
+       "id": "0B0012",
+       "label": "PST/B 9 SW"
+      },
+      {
+       "id": "0B0013",
+       "label": "PST/B 10 SW"
+      },
+      {
+       "id": "0B0014",
+       "label": "AUX 1 SW"
+      },
+      {
+       "id": "0B0015",
+       "label": "AUX 2 SW"
+      },
+      {
+       "id": "0B0016",
+       "label": "AUX 3 SW"
+      },
+      {
+       "id": "0B0017",
+       "label": "AUX 4 SW"
+      },
+      {
+       "id": "0B0018",
+       "label": "AUX 5 SW"
+      },
+      {
+       "id": "0B0019",
+       "label": "AUX 6 SW"
+      },
+      {
+       "id": "0B001A",
+       "label": "AUX 7 SW"
+      },
+      {
+       "id": "0B001B",
+       "label": "AUX 8 SW"
+      },
+      {
+       "id": "0B001C",
+       "label": "AUX 9 SW"
+      },
+      {
+       "id": "0B001D",
+       "label": "AUX 10 SW"
+      },
+      {
+       "id": "0B001E",
+       "label": "CUT SW"
+      },
+      {
+       "id": "0B001F",
+       "label": "AUTO SW"
+      },
+      {
+       "id": "0B0020",
+       "label": "TRANSITION SW"
+      },
+      {
+       "id": "0B0021",
+       "label": "MODE SW"
+      },
+      {
+       "id": "0B0022",
+       "label": "INPUT ASSIGN SW"
+      },
+      {
+       "id": "0B0023",
+       "label": "PGM-CENTER ENCODER"
+      },
+      {
+       "id": "0B0024",
+       "label": "PST-CENTER ENCODER"
+      },
+      {
+       "id": "0B0025",
+       "label": "SPLIT A SW"
+      },
+      {
+       "id": "0B0026",
+       "label": "SPLIT B SW"
+      },
+      {
+       "id": "0B0027",
+       "label": "AUTO MIXING"
+      },
+      {
+       "id": "0B0028",
+       "label": "CAPTURE SW"
+      },
+      {
+       "id": "0B0029",
+       "label": "USER 1 SW"
+      },
+      {
+       "id": "0B002A",
+       "label": "USER 2 SW"
+      },
+      {
+       "id": "0B002B",
+       "label": "USER 3 SW"
+      },
+      {
+       "id": "0B002C",
+       "label": "USER 4 SW"
+      },
+      {
+       "id": "0B002D",
+       "label": "PinP 1 POSITION H"
+      },
+      {
+       "id": "0B002E",
+       "label": "PinP 1 POSITION V"
+      },
+      {
+       "id": "0B002F",
+       "label": "PinP 1 SOURCE SW"
+      },
+      {
+       "id": "0B0030",
+       "label": "PinP 1 PVW SW"
+      },
+      {
+       "id": "0B0031",
+       "label": "PinP 1 PGM SW"
+      },
+      {
+       "id": "0B0032",
+       "label": "PinP 2 POSITION H"
+      },
+      {
+       "id": "0B0033",
+       "label": "PinP 2 POSITION V"
+      },
+      {
+       "id": "0B0034",
+       "label": "PinP 2 SOURCE SW"
+      },
+      {
+       "id": "0B0035",
+       "label": "PinP 2 PVW SW"
+      },
+      {
+       "id": "0B0036",
+       "label": "PinP 2 PGM SW"
+      },
+      {
+       "id": "0B0037",
+       "label": "PinP 3 POSITION H"
+      },
+      {
+       "id": "0B0038",
+       "label": "PinP 3 POSITION V"
+      },
+      {
+       "id": "0B0039",
+       "label": "PinP 3 SOURCE SW"
+      },
+      {
+       "id": "0B003A",
+       "label": "PinP 3 PVW SW"
+      },
+      {
+       "id": "0B003B",
+       "label": "PinP 3 PGM SW"
+      },
+      {
+       "id": "0B003C",
+       "label": "PinP 4 POSITION H"
+      },
+      {
+       "id": "0B003D",
+       "label": "PinP 4 POSITION V"
+      },
+      {
+       "id": "0B003E",
+       "label": "PinP 4 SOURCE SW"
+      },
+      {
+       "id": "0B003F",
+       "label": "PinP 4 PVW SW"
+      },
+      {
+       "id": "0B0040",
+       "label": "PinP 4 PGM SW"
+      },
+      {
+       "id": "0B0041",
+       "label": "DSK 1 SOURCE SW"
+      },
+      {
+       "id": "0B0042",
+       "label": "DSK 1 PVW SW"
+      },
+      {
+       "id": "0B0043",
+       "label": "DSK 1 PGM SW"
+      },
+      {
+       "id": "0B0044",
+       "label": "DSK 2 SOURCE SW"
+      },
+      {
+       "id": "0B0045",
+       "label": "DSK 2 PVW SW"
+      },
+      {
+       "id": "0B0046",
+       "label": "DSK 2 PGM SW"
+      },
+      {
+       "id": "0B0047",
+       "label": "MONITOR 1 SW"
+      },
+      {
+       "id": "0B0048",
+       "label": "MONITOR 2 SW"
+      },
+      {
+       "id": "0B0049",
+       "label": "MONITOR 3 SW"
+      },
+      {
+       "id": "0B004A",
+       "label": "MONITOR 4 SW"
+      },
+      {
+       "id": "0B004B",
+       "label": "MENU SW"
+      },
+      {
+       "id": "0B004C",
+       "label": "EXIT SW"
+      },
+      {
+       "id": "0B004D",
+       "label": "ENTER SW"
+      },
+      {
+       "id": "0B004E",
+       "label": "OUTPUT FADE SW"
+      },
+      {
+       "id": "0B004F",
+       "label": "SEQUENCER ON SW"
+      },
+      {
+       "id": "0B0050",
+       "label": "SEQUENCER AUTO SW"
+      },
+      {
+       "id": "0B0051",
+       "label": "SEQUENCER PREV SW"
+      },
+      {
+       "id": "0B0052",
+       "label": "SEQUENCER NEXT SW"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0B00{{option.switch|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "switch": {
+     "0B0000": "00,01;\\n\\nDTH:0B0052,00",
+     "0B0001": "01,01",
+     "0B0002": "02,01",
+     "0B0003": "03,01",
+     "0B0004": "04,01",
+     "0B0005": "05,01",
+     "0B0006": "06,01",
+     "0B0007": "07,01",
+     "0B0008": "08,01",
+     "0B0009": "09,01",
+     "0B000A": "0A,01",
+     "0B000B": "0B,01",
+     "0B000C": "0C,01",
+     "0B000D": "0D,01",
+     "0B000E": "0E,01",
+     "0B000F": "0F,01",
+     "0B0010": "10,01",
+     "0B0011": "11,01",
+     "0B0012": "12,01",
+     "0B0013": "13,01",
+     "0B0014": "14,01",
+     "0B0015": "15,01",
+     "0B0016": "16,01",
+     "0B0017": "17,01",
+     "0B0018": "18,01",
+     "0B0019": "19,01",
+     "0B001A": "1A,01",
+     "0B001B": "1B,01",
+     "0B001C": "1C,01",
+     "0B001D": "1D,01",
+     "0B001E": "1E,01",
+     "0B001F": "1F,01",
+     "0B0020": "20,01",
+     "0B0021": "21,01",
+     "0B0022": "22,01",
+     "0B0023": "23,01",
+     "0B0024": "24,01",
+     "0B0025": "25,01",
+     "0B0026": "26,01",
+     "0B0027": "27,01",
+     "0B0028": "28,01",
+     "0B0029": "29,01",
+     "0B002A": "2A,01",
+     "0B002B": "2B,01",
+     "0B002C": "2C,01",
+     "0B002D": "2D,01",
+     "0B002E": "2E,01",
+     "0B002F": "2F,01",
+     "0B0030": "30,01",
+     "0B0031": "31,01",
+     "0B0032": "32,01",
+     "0B0033": "33,01",
+     "0B0034": "34,01",
+     "0B0035": "35,01",
+     "0B0036": "36,01",
+     "0B0037": "37,01",
+     "0B0038": "38,01",
+     "0B0039": "39,01",
+     "0B003A": "3A,01",
+     "0B003B": "3B,01",
+     "0B003C": "3C,01",
+     "0B003D": "3D,01",
+     "0B003E": "3E,01",
+     "0B003F": "3F,01",
+     "0B0040": "40,01",
+     "0B0041": "41,01",
+     "0B0042": "42,01",
+     "0B0043": "43,01",
+     "0B0044": "44,01",
+     "0B0045": "45,01",
+     "0B0046": "46,01",
+     "0B0047": "47,01",
+     "0B0048": "48,01",
+     "0B0049": "49,01",
+     "0B004A": "4A,01",
+     "0B004B": "4B,01",
+     "0B004C": "4C,01",
+     "0B004D": "4D,01",
+     "0B004E": "4E,01",
+     "0B004F": "4F,01",
+     "0B0050": "50,01",
+     "0B0051": "51,01",
+     "0B0052": "52,01"
+    }
+   }
+  },
+  {
+   "id": "release_switch",
+   "name": "Release Panel Switch",
+   "options": [
+    {
+     "id": "switch",
+     "label": "Switch",
+     "type": "select",
+     "default": "0B0000",
+     "choices": [
+      {
+       "id": "0B0000",
+       "label": "PGM/A 1 SW"
+      },
+      {
+       "id": "0B0001",
+       "label": "PGM/A 2 SW"
+      },
+      {
+       "id": "0B0002",
+       "label": "PGM/A 3 SW"
+      },
+      {
+       "id": "0B0003",
+       "label": "PGM/A 4 SW"
+      },
+      {
+       "id": "0B0004",
+       "label": "PGM/A 5 SW"
+      },
+      {
+       "id": "0B0005",
+       "label": "PGM/A 6 SW"
+      },
+      {
+       "id": "0B0006",
+       "label": "PGM/A 7 SW"
+      },
+      {
+       "id": "0B0007",
+       "label": "PGM/A 8 SW"
+      },
+      {
+       "id": "0B0008",
+       "label": "PGM/A 9 SW"
+      },
+      {
+       "id": "0B0009",
+       "label": "PGM/A 10 SW"
+      },
+      {
+       "id": "0B000A",
+       "label": "PST/B 1 SW"
+      },
+      {
+       "id": "0B000B",
+       "label": "PST/B 2 SW"
+      },
+      {
+       "id": "0B000C",
+       "label": "PST/B 3 SW"
+      },
+      {
+       "id": "0B000D",
+       "label": "PST/B 4 SW"
+      },
+      {
+       "id": "0B000E",
+       "label": "PST/B 5 SW"
+      },
+      {
+       "id": "0B000F",
+       "label": "PST/B 6 SW"
+      },
+      {
+       "id": "0B0010",
+       "label": "PST/B 7 SW"
+      },
+      {
+       "id": "0B0011",
+       "label": "PST/B 8 SW"
+      },
+      {
+       "id": "0B0012",
+       "label": "PST/B 9 SW"
+      },
+      {
+       "id": "0B0013",
+       "label": "PST/B 10 SW"
+      },
+      {
+       "id": "0B0014",
+       "label": "AUX 1 SW"
+      },
+      {
+       "id": "0B0015",
+       "label": "AUX 2 SW"
+      },
+      {
+       "id": "0B0016",
+       "label": "AUX 3 SW"
+      },
+      {
+       "id": "0B0017",
+       "label": "AUX 4 SW"
+      },
+      {
+       "id": "0B0018",
+       "label": "AUX 5 SW"
+      },
+      {
+       "id": "0B0019",
+       "label": "AUX 6 SW"
+      },
+      {
+       "id": "0B001A",
+       "label": "AUX 7 SW"
+      },
+      {
+       "id": "0B001B",
+       "label": "AUX 8 SW"
+      },
+      {
+       "id": "0B001C",
+       "label": "AUX 9 SW"
+      },
+      {
+       "id": "0B001D",
+       "label": "AUX 10 SW"
+      },
+      {
+       "id": "0B001E",
+       "label": "CUT SW"
+      },
+      {
+       "id": "0B001F",
+       "label": "AUTO SW"
+      },
+      {
+       "id": "0B0020",
+       "label": "TRANSITION SW"
+      },
+      {
+       "id": "0B0021",
+       "label": "MODE SW"
+      },
+      {
+       "id": "0B0022",
+       "label": "INPUT ASSIGN SW"
+      },
+      {
+       "id": "0B0023",
+       "label": "PGM-CENTER ENCODER"
+      },
+      {
+       "id": "0B0024",
+       "label": "PST-CENTER ENCODER"
+      },
+      {
+       "id": "0B0025",
+       "label": "SPLIT A SW"
+      },
+      {
+       "id": "0B0026",
+       "label": "SPLIT B SW"
+      },
+      {
+       "id": "0B0027",
+       "label": "AUTO MIXING"
+      },
+      {
+       "id": "0B0028",
+       "label": "CAPTURE SW"
+      },
+      {
+       "id": "0B0029",
+       "label": "USER 1 SW"
+      },
+      {
+       "id": "0B002A",
+       "label": "USER 2 SW"
+      },
+      {
+       "id": "0B002B",
+       "label": "USER 3 SW"
+      },
+      {
+       "id": "0B002C",
+       "label": "USER 4 SW"
+      },
+      {
+       "id": "0B002D",
+       "label": "PinP 1 POSITION H"
+      },
+      {
+       "id": "0B002E",
+       "label": "PinP 1 POSITION V"
+      },
+      {
+       "id": "0B002F",
+       "label": "PinP 1 SOURCE SW"
+      },
+      {
+       "id": "0B0030",
+       "label": "PinP 1 PVW SW"
+      },
+      {
+       "id": "0B0031",
+       "label": "PinP 1 PGM SW"
+      },
+      {
+       "id": "0B0032",
+       "label": "PinP 2 POSITION H"
+      },
+      {
+       "id": "0B0033",
+       "label": "PinP 2 POSITION V"
+      },
+      {
+       "id": "0B0034",
+       "label": "PinP 2 SOURCE SW"
+      },
+      {
+       "id": "0B0035",
+       "label": "PinP 2 PVW SW"
+      },
+      {
+       "id": "0B0036",
+       "label": "PinP 2 PGM SW"
+      },
+      {
+       "id": "0B0037",
+       "label": "PinP 3 POSITION H"
+      },
+      {
+       "id": "0B0038",
+       "label": "PinP 3 POSITION V"
+      },
+      {
+       "id": "0B0039",
+       "label": "PinP 3 SOURCE SW"
+      },
+      {
+       "id": "0B003A",
+       "label": "PinP 3 PVW SW"
+      },
+      {
+       "id": "0B003B",
+       "label": "PinP 3 PGM SW"
+      },
+      {
+       "id": "0B003C",
+       "label": "PinP 4 POSITION H"
+      },
+      {
+       "id": "0B003D",
+       "label": "PinP 4 POSITION V"
+      },
+      {
+       "id": "0B003E",
+       "label": "PinP 4 SOURCE SW"
+      },
+      {
+       "id": "0B003F",
+       "label": "PinP 4 PVW SW"
+      },
+      {
+       "id": "0B0040",
+       "label": "PinP 4 PGM SW"
+      },
+      {
+       "id": "0B0041",
+       "label": "DSK 1 SOURCE SW"
+      },
+      {
+       "id": "0B0042",
+       "label": "DSK 1 PVW SW"
+      },
+      {
+       "id": "0B0043",
+       "label": "DSK 1 PGM SW"
+      },
+      {
+       "id": "0B0044",
+       "label": "DSK 2 SOURCE SW"
+      },
+      {
+       "id": "0B0045",
+       "label": "DSK 2 PVW SW"
+      },
+      {
+       "id": "0B0046",
+       "label": "DSK 2 PGM SW"
+      },
+      {
+       "id": "0B0047",
+       "label": "MONITOR 1 SW"
+      },
+      {
+       "id": "0B0048",
+       "label": "MONITOR 2 SW"
+      },
+      {
+       "id": "0B0049",
+       "label": "MONITOR 3 SW"
+      },
+      {
+       "id": "0B004A",
+       "label": "MONITOR 4 SW"
+      },
+      {
+       "id": "0B004B",
+       "label": "MENU SW"
+      },
+      {
+       "id": "0B004C",
+       "label": "EXIT SW"
+      },
+      {
+       "id": "0B004D",
+       "label": "ENTER SW"
+      },
+      {
+       "id": "0B004E",
+       "label": "OUTPUT FADE SW"
+      },
+      {
+       "id": "0B004F",
+       "label": "SEQUENCER ON SW"
+      },
+      {
+       "id": "0B0050",
+       "label": "SEQUENCER AUTO SW"
+      },
+      {
+       "id": "0B0051",
+       "label": "SEQUENCER PREV SW"
+      },
+      {
+       "id": "0B0052",
+       "label": "SEQUENCER NEXT SW"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0B00{{option.switch|map}},00;\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "switch": {
+     "0B0000": "00",
+     "0B0001": "01",
+     "0B0002": "02",
+     "0B0003": "03",
+     "0B0004": "04",
+     "0B0005": "05",
+     "0B0006": "06",
+     "0B0007": "07",
+     "0B0008": "08",
+     "0B0009": "09",
+     "0B000A": "0A",
+     "0B000B": "0B",
+     "0B000C": "0C",
+     "0B000D": "0D",
+     "0B000E": "0E",
+     "0B000F": "0F",
+     "0B0010": "10",
+     "0B0011": "11",
+     "0B0012": "12",
+     "0B0013": "13",
+     "0B0014": "14",
+     "0B0015": "15",
+     "0B0016": "16",
+     "0B0017": "17",
+     "0B0018": "18",
+     "0B0019": "19",
+     "0B001A": "1A",
+     "0B001B": "1B",
+     "0B001C": "1C",
+     "0B001D": "1D",
+     "0B001E": "1E",
+     "0B001F": "1F",
+     "0B0020": "20",
+     "0B0021": "21",
+     "0B0022": "22",
+     "0B0023": "23",
+     "0B0024": "24",
+     "0B0025": "25",
+     "0B0026": "26",
+     "0B0027": "27",
+     "0B0028": "28",
+     "0B0029": "29",
+     "0B002A": "2A",
+     "0B002B": "2B",
+     "0B002C": "2C",
+     "0B002D": "2D",
+     "0B002E": "2E",
+     "0B002F": "2F",
+     "0B0030": "30",
+     "0B0031": "31",
+     "0B0032": "32",
+     "0B0033": "33",
+     "0B0034": "34",
+     "0B0035": "35",
+     "0B0036": "36",
+     "0B0037": "37",
+     "0B0038": "38",
+     "0B0039": "39",
+     "0B003A": "3A",
+     "0B003B": "3B",
+     "0B003C": "3C",
+     "0B003D": "3D",
+     "0B003E": "3E",
+     "0B003F": "3F",
+     "0B0040": "40",
+     "0B0041": "41",
+     "0B0042": "42",
+     "0B0043": "43",
+     "0B0044": "44",
+     "0B0045": "45",
+     "0B0046": "46",
+     "0B0047": "47",
+     "0B0048": "48",
+     "0B0049": "49",
+     "0B004A": "4A",
+     "0B004B": "4B",
+     "0B004C": "4C",
+     "0B004D": "4D",
+     "0B004E": "4E",
+     "0B004F": "4F",
+     "0B0050": "50",
+     "0B0051": "51",
+     "0B0052": "52"
+    }
+   }
+  },
+  {
+   "id": "set_pinp_source",
+   "name": "Set PnP & Key Source",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "27",
+     "choices": [
+      {
+       "id": "27",
+       "label": "PinP & Key 1"
+      },
+      {
+       "id": "28",
+       "label": "PinP & Key 2"
+      },
+      {
+       "id": "29",
+       "label": "PinP & Key 3"
+      },
+      {
+       "id": "30",
+       "label": "PinP & Key 4"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "7",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "8",
+       "label": "SDI 1"
+      },
+      {
+       "id": "9",
+       "label": "SDI 2"
+      },
+      {
+       "id": "10",
+       "label": "SDI 3"
+      },
+      {
+       "id": "11",
+       "label": "SDI 4"
+      },
+      {
+       "id": "12",
+       "label": "SDI 5"
+      },
+      {
+       "id": "13",
+       "label": "SDI 6"
+      },
+      {
+       "id": "14",
+       "label": "SDI 7"
+      },
+      {
+       "id": "15",
+       "label": "SDI 8"
+      },
+      {
+       "id": "16",
+       "label": "Still 1"
+      },
+      {
+       "id": "17",
+       "label": "Still 2"
+      },
+      {
+       "id": "18",
+       "label": "Still 3"
+      },
+      {
+       "id": "19",
+       "label": "Still 4"
+      },
+      {
+       "id": "20",
+       "label": "Still 5"
+      },
+      {
+       "id": "21",
+       "label": "Still 6"
+      },
+      {
+       "id": "22",
+       "label": "Still 7"
+      },
+      {
+       "id": "23",
+       "label": "Still 8"
+      },
+      {
+       "id": "24",
+       "label": "Still 9"
+      },
+      {
+       "id": "25",
+       "label": "Still 10"
+      },
+      {
+       "id": "26",
+       "label": "Still 11"
+      },
+      {
+       "id": "27",
+       "label": "Still 12"
+      },
+      {
+       "id": "28",
+       "label": "Still 13"
+      },
+      {
+       "id": "29",
+       "label": "Still 14"
+      },
+      {
+       "id": "30",
+       "label": "Still 15"
+      },
+      {
+       "id": "31",
+       "label": "Still 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}02,{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "27": "B",
+     "28": "C",
+     "29": "D",
+     "30": "E"
+    },
+    "assign": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "set_pinp_type",
+   "name": "Set PnP & Key Type",
+   "options": [
+    {
+     "id": "pinp",
+     "label": "PnP/Key",
+     "type": "select",
+     "default": "27",
+     "choices": [
+      {
+       "id": "27",
+       "label": "PinP & Key 1"
+      },
+      {
+       "id": "28",
+       "label": "PinP & Key 2"
+      },
+      {
+       "id": "29",
+       "label": "PinP & Key 3"
+      },
+      {
+       "id": "30",
+       "label": "PinP & Key 4"
+      }
+     ]
+    },
+    {
+     "id": "key",
+     "label": "Key Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "PinP"
+      },
+      {
+       "id": "1",
+       "label": "Luminance-White Key"
+      },
+      {
+       "id": "2",
+       "label": "Luminance-Black Key"
+      },
+      {
+       "id": "3",
+       "label": "Chroma Key"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:001{{option.pinp|map}}03,0{{option.key|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pinp": {
+     "27": "B",
+     "28": "C",
+     "29": "D",
+     "30": "E"
+    },
+    "key": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_dsk_key_source",
+   "name": "Set DSK Key Source",
+   "options": [
+    {
+     "id": "dsk",
+     "label": "DSK",
+     "type": "select",
+     "default": "31",
+     "choices": [
+      {
+       "id": "31",
+       "label": "DSK 1"
+      },
+      {
+       "id": "32",
+       "label": "DSK 2"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "7",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "8",
+       "label": "SDI 1"
+      },
+      {
+       "id": "9",
+       "label": "SDI 2"
+      },
+      {
+       "id": "10",
+       "label": "SDI 3"
+      },
+      {
+       "id": "11",
+       "label": "SDI 4"
+      },
+      {
+       "id": "12",
+       "label": "SDI 5"
+      },
+      {
+       "id": "13",
+       "label": "SDI 6"
+      },
+      {
+       "id": "14",
+       "label": "SDI 7"
+      },
+      {
+       "id": "15",
+       "label": "SDI 8"
+      },
+      {
+       "id": "16",
+       "label": "Still 1"
+      },
+      {
+       "id": "17",
+       "label": "Still 2"
+      },
+      {
+       "id": "18",
+       "label": "Still 3"
+      },
+      {
+       "id": "19",
+       "label": "Still 4"
+      },
+      {
+       "id": "20",
+       "label": "Still 5"
+      },
+      {
+       "id": "21",
+       "label": "Still 6"
+      },
+      {
+       "id": "22",
+       "label": "Still 7"
+      },
+      {
+       "id": "23",
+       "label": "Still 8"
+      },
+      {
+       "id": "24",
+       "label": "Still 9"
+      },
+      {
+       "id": "25",
+       "label": "Still 10"
+      },
+      {
+       "id": "26",
+       "label": "Still 11"
+      },
+      {
+       "id": "27",
+       "label": "Still 12"
+      },
+      {
+       "id": "28",
+       "label": "Still 13"
+      },
+      {
+       "id": "29",
+       "label": "Still 14"
+      },
+      {
+       "id": "30",
+       "label": "Still 15"
+      },
+      {
+       "id": "31",
+       "label": "Still 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00{{option.dsk|map}}03,{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dsk": {
+     "31": "1F",
+     "32": "20"
+    },
+    "assign": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "set_dsk_fill_source",
+   "name": "Set DSK Fill Source",
+   "options": [
+    {
+     "id": "dsk",
+     "label": "DSK",
+     "type": "select",
+     "default": "31",
+     "choices": [
+      {
+       "id": "31",
+       "label": "DSK 1"
+      },
+      {
+       "id": "32",
+       "label": "DSK 2"
+      }
+     ]
+    },
+    {
+     "id": "assign",
+     "label": "Input Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "1",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "5",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "6",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "7",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "8",
+       "label": "SDI 1"
+      },
+      {
+       "id": "9",
+       "label": "SDI 2"
+      },
+      {
+       "id": "10",
+       "label": "SDI 3"
+      },
+      {
+       "id": "11",
+       "label": "SDI 4"
+      },
+      {
+       "id": "12",
+       "label": "SDI 5"
+      },
+      {
+       "id": "13",
+       "label": "SDI 6"
+      },
+      {
+       "id": "14",
+       "label": "SDI 7"
+      },
+      {
+       "id": "15",
+       "label": "SDI 8"
+      },
+      {
+       "id": "16",
+       "label": "Still 1"
+      },
+      {
+       "id": "17",
+       "label": "Still 2"
+      },
+      {
+       "id": "18",
+       "label": "Still 3"
+      },
+      {
+       "id": "19",
+       "label": "Still 4"
+      },
+      {
+       "id": "20",
+       "label": "Still 5"
+      },
+      {
+       "id": "21",
+       "label": "Still 6"
+      },
+      {
+       "id": "22",
+       "label": "Still 7"
+      },
+      {
+       "id": "23",
+       "label": "Still 8"
+      },
+      {
+       "id": "24",
+       "label": "Still 9"
+      },
+      {
+       "id": "25",
+       "label": "Still 10"
+      },
+      {
+       "id": "26",
+       "label": "Still 11"
+      },
+      {
+       "id": "27",
+       "label": "Still 12"
+      },
+      {
+       "id": "28",
+       "label": "Still 13"
+      },
+      {
+       "id": "29",
+       "label": "Still 14"
+      },
+      {
+       "id": "30",
+       "label": "Still 15"
+      },
+      {
+       "id": "31",
+       "label": "Still 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00{{option.dsk|map}}04,{{option.assign|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dsk": {
+     "31": "1F",
+     "32": "20"
+    },
+    "assign": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D",
+     "30": "1E",
+     "31": "1F"
+    }
+   }
+  },
+  {
+   "id": "set_dsk_type",
+   "name": "Set DSK Key Type",
+   "options": [
+    {
+     "id": "dsk",
+     "label": "DSK",
+     "type": "select",
+     "default": "31",
+     "choices": [
+      {
+       "id": "31",
+       "label": "DSK 1"
+      },
+      {
+       "id": "32",
+       "label": "DSK 2"
+      }
+     ]
+    },
+    {
+     "id": "key",
+     "label": "Key Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Luminance-White Key"
+      },
+      {
+       "id": "1",
+       "label": "Luminance-Black Key"
+      },
+      {
+       "id": "2",
+       "label": "Chroma Key"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:00{{option.dsk|map}}05,0{{option.key|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dsk": {
+     "31": "1F",
+     "32": "20"
+    },
+    "key": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "select_pgm",
+   "name": "Select PGM Source",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "20",
+     "choices": [
+      {
+       "id": "20",
+       "label": "INPUT 1"
+      },
+      {
+       "id": "21",
+       "label": "INPUT 2"
+      },
+      {
+       "id": "22",
+       "label": "INPUT 3"
+      },
+      {
+       "id": "23",
+       "label": "INPUT 4"
+      },
+      {
+       "id": "24",
+       "label": "INPUT 5"
+      },
+      {
+       "id": "25",
+       "label": "INPUT 6"
+      },
+      {
+       "id": "26",
+       "label": "INPUT 7"
+      },
+      {
+       "id": "27",
+       "label": "INPUT 8"
+      },
+      {
+       "id": "28",
+       "label": "INPUT 9"
+      },
+      {
+       "id": "29",
+       "label": "INPUT 10"
+      },
+      {
+       "id": "2A",
+       "label": "INPUT 11"
+      },
+      {
+       "id": "2B",
+       "label": "INPUT 12"
+      },
+      {
+       "id": "2C",
+       "label": "INPUT 13"
+      },
+      {
+       "id": "2D",
+       "label": "INPUT 14"
+      },
+      {
+       "id": "2E",
+       "label": "INPUT 15"
+      },
+      {
+       "id": "2F",
+       "label": "INPUT 16"
+      },
+      {
+       "id": "30",
+       "label": "INPUT 17"
+      },
+      {
+       "id": "31",
+       "label": "INPUT 18"
+      },
+      {
+       "id": "32",
+       "label": "INPUT 19"
+      },
+      {
+       "id": "33",
+       "label": "INPUT 20"
+      },
+      {
+       "id": "00",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "01",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "02",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "03",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "04",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "05",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "06",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "07",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "08",
+       "label": "SDI 1"
+      },
+      {
+       "id": "09",
+       "label": "SDI 2"
+      },
+      {
+       "id": "0A",
+       "label": "SDI 3"
+      },
+      {
+       "id": "0B",
+       "label": "SDI 4"
+      },
+      {
+       "id": "0C",
+       "label": "SDI 5"
+      },
+      {
+       "id": "0D",
+       "label": "SDI 6"
+      },
+      {
+       "id": "0E",
+       "label": "SDI 7"
+      },
+      {
+       "id": "0F",
+       "label": "SDI 8"
+      },
+      {
+       "id": "10",
+       "label": "Still 1"
+      },
+      {
+       "id": "11",
+       "label": "Still 2"
+      },
+      {
+       "id": "12",
+       "label": "Still 3"
+      },
+      {
+       "id": "13",
+       "label": "Still 4"
+      },
+      {
+       "id": "14",
+       "label": "Still 5"
+      },
+      {
+       "id": "15",
+       "label": "Still 6"
+      },
+      {
+       "id": "16",
+       "label": "Still 7"
+      },
+      {
+       "id": "17",
+       "label": "Still 8"
+      },
+      {
+       "id": "18",
+       "label": "Still 9"
+      },
+      {
+       "id": "19",
+       "label": "Still 10"
+      },
+      {
+       "id": "1A",
+       "label": "Still 11"
+      },
+      {
+       "id": "1B",
+       "label": "Still 12"
+      },
+      {
+       "id": "1C",
+       "label": "Still 13"
+      },
+      {
+       "id": "1D",
+       "label": "Still 14"
+      },
+      {
+       "id": "1E",
+       "label": "Still 15"
+      },
+      {
+       "id": "1F",
+       "label": "Still 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:002100,{{option.input|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "24": "24",
+     "25": "25",
+     "26": "26",
+     "27": "27",
+     "28": "28",
+     "29": "29",
+     "30": "30",
+     "31": "31",
+     "32": "32",
+     "33": "33",
+     "2A": "2A",
+     "2B": "2B",
+     "2C": "2C",
+     "2D": "2D",
+     "2E": "2E",
+     "2F": "2F",
+     "00": "00",
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09",
+     "0A": "0A",
+     "0B": "0B",
+     "0C": "0C",
+     "0D": "0D",
+     "0E": "0E",
+     "0F": "0F",
+     "1A": "1A",
+     "1B": "1B",
+     "1C": "1C",
+     "1D": "1D",
+     "1E": "1E",
+     "1F": "1F"
+    }
+   }
+  },
+  {
+   "id": "select_pvw",
+   "name": "Select PVW Source",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "20",
+     "choices": [
+      {
+       "id": "20",
+       "label": "INPUT 1"
+      },
+      {
+       "id": "21",
+       "label": "INPUT 2"
+      },
+      {
+       "id": "22",
+       "label": "INPUT 3"
+      },
+      {
+       "id": "23",
+       "label": "INPUT 4"
+      },
+      {
+       "id": "24",
+       "label": "INPUT 5"
+      },
+      {
+       "id": "25",
+       "label": "INPUT 6"
+      },
+      {
+       "id": "26",
+       "label": "INPUT 7"
+      },
+      {
+       "id": "27",
+       "label": "INPUT 8"
+      },
+      {
+       "id": "28",
+       "label": "INPUT 9"
+      },
+      {
+       "id": "29",
+       "label": "INPUT 10"
+      },
+      {
+       "id": "2A",
+       "label": "INPUT 11"
+      },
+      {
+       "id": "2B",
+       "label": "INPUT 12"
+      },
+      {
+       "id": "2C",
+       "label": "INPUT 13"
+      },
+      {
+       "id": "2D",
+       "label": "INPUT 14"
+      },
+      {
+       "id": "2E",
+       "label": "INPUT 15"
+      },
+      {
+       "id": "2F",
+       "label": "INPUT 16"
+      },
+      {
+       "id": "30",
+       "label": "INPUT 17"
+      },
+      {
+       "id": "31",
+       "label": "INPUT 18"
+      },
+      {
+       "id": "32",
+       "label": "INPUT 19"
+      },
+      {
+       "id": "33",
+       "label": "INPUT 20"
+      },
+      {
+       "id": "00",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "01",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "02",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "03",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "04",
+       "label": "HDMI 5"
+      },
+      {
+       "id": "05",
+       "label": "HDMI 6"
+      },
+      {
+       "id": "06",
+       "label": "HDMI 7"
+      },
+      {
+       "id": "07",
+       "label": "HDMI 8"
+      },
+      {
+       "id": "08",
+       "label": "SDI 1"
+      },
+      {
+       "id": "09",
+       "label": "SDI 2"
+      },
+      {
+       "id": "0A",
+       "label": "SDI 3"
+      },
+      {
+       "id": "0B",
+       "label": "SDI 4"
+      },
+      {
+       "id": "0C",
+       "label": "SDI 5"
+      },
+      {
+       "id": "0D",
+       "label": "SDI 6"
+      },
+      {
+       "id": "0E",
+       "label": "SDI 7"
+      },
+      {
+       "id": "0F",
+       "label": "SDI 8"
+      },
+      {
+       "id": "10",
+       "label": "Still 1"
+      },
+      {
+       "id": "11",
+       "label": "Still 2"
+      },
+      {
+       "id": "12",
+       "label": "Still 3"
+      },
+      {
+       "id": "13",
+       "label": "Still 4"
+      },
+      {
+       "id": "14",
+       "label": "Still 5"
+      },
+      {
+       "id": "15",
+       "label": "Still 6"
+      },
+      {
+       "id": "16",
+       "label": "Still 7"
+      },
+      {
+       "id": "17",
+       "label": "Still 8"
+      },
+      {
+       "id": "18",
+       "label": "Still 9"
+      },
+      {
+       "id": "19",
+       "label": "Still 10"
+      },
+      {
+       "id": "1A",
+       "label": "Still 11"
+      },
+      {
+       "id": "1B",
+       "label": "Still 12"
+      },
+      {
+       "id": "1C",
+       "label": "Still 13"
+      },
+      {
+       "id": "1D",
+       "label": "Still 14"
+      },
+      {
+       "id": "1E",
+       "label": "Still 15"
+      },
+      {
+       "id": "1F",
+       "label": "Still 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:002101,{{option.input|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "24": "24",
+     "25": "25",
+     "26": "26",
+     "27": "27",
+     "28": "28",
+     "29": "29",
+     "30": "30",
+     "31": "31",
+     "32": "32",
+     "33": "33",
+     "2A": "2A",
+     "2B": "2B",
+     "2C": "2C",
+     "2D": "2D",
+     "2E": "2E",
+     "2F": "2F",
+     "00": "00",
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09",
+     "0A": "0A",
+     "0B": "0B",
+     "0C": "0C",
+     "0D": "0D",
+     "0E": "0E",
+     "0F": "0F",
+     "1A": "1A",
+     "1B": "1B",
+     "1C": "1C",
+     "1D": "1D",
+     "1E": "1E",
+     "1F": "1F"
+    }
+   }
+  },
+  {
+   "id": "load_memory_trigger",
+   "name": "Load Memory Trigger",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Memory",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Memory 1"
+      },
+      {
+       "id": "1",
+       "label": "Memory 2"
+      },
+      {
+       "id": "2",
+       "label": "Memory 3"
+      },
+      {
+       "id": "3",
+       "label": "Memory 4"
+      },
+      {
+       "id": "4",
+       "label": "Memory 5"
+      },
+      {
+       "id": "5",
+       "label": "Memory 6"
+      },
+      {
+       "id": "6",
+       "label": "Memory 7"
+      },
+      {
+       "id": "7",
+       "label": "Memory 8"
+      },
+      {
+       "id": "8",
+       "label": "Memory 9"
+      },
+      {
+       "id": "9",
+       "label": "Memory 10"
+      },
+      {
+       "id": "10",
+       "label": "Memory 11"
+      },
+      {
+       "id": "11",
+       "label": "Memory 12"
+      },
+      {
+       "id": "12",
+       "label": "Memory 13"
+      },
+      {
+       "id": "13",
+       "label": "Memory 14"
+      },
+      {
+       "id": "14",
+       "label": "Memory 15"
+      },
+      {
+       "id": "15",
+       "label": "Memory 16"
+      },
+      {
+       "id": "16",
+       "label": "Memory 17"
+      },
+      {
+       "id": "17",
+       "label": "Memory 18"
+      },
+      {
+       "id": "18",
+       "label": "Memory 19"
+      },
+      {
+       "id": "19",
+       "label": "Memory 20"
+      },
+      {
+       "id": "20",
+       "label": "Memory 21"
+      },
+      {
+       "id": "21",
+       "label": "Memory 22"
+      },
+      {
+       "id": "22",
+       "label": "Memory 23"
+      },
+      {
+       "id": "23",
+       "label": "Memory 24"
+      },
+      {
+       "id": "24",
+       "label": "Memory 25"
+      },
+      {
+       "id": "25",
+       "label": "Memory 26"
+      },
+      {
+       "id": "26",
+       "label": "Memory 27"
+      },
+      {
+       "id": "27",
+       "label": "Memory 28"
+      },
+      {
+       "id": "28",
+       "label": "Memory 29"
+      },
+      {
+       "id": "29",
+       "label": "Memory 30"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0A0000,{{option.memory|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "memory": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D"
+    }
+   }
+  },
+  {
+   "id": "save_memory_trigger",
+   "name": "Save Memory Trigger",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Memory",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Memory 1"
+      },
+      {
+       "id": "1",
+       "label": "Memory 2"
+      },
+      {
+       "id": "2",
+       "label": "Memory 3"
+      },
+      {
+       "id": "3",
+       "label": "Memory 4"
+      },
+      {
+       "id": "4",
+       "label": "Memory 5"
+      },
+      {
+       "id": "5",
+       "label": "Memory 6"
+      },
+      {
+       "id": "6",
+       "label": "Memory 7"
+      },
+      {
+       "id": "7",
+       "label": "Memory 8"
+      },
+      {
+       "id": "8",
+       "label": "Memory 9"
+      },
+      {
+       "id": "9",
+       "label": "Memory 10"
+      },
+      {
+       "id": "10",
+       "label": "Memory 11"
+      },
+      {
+       "id": "11",
+       "label": "Memory 12"
+      },
+      {
+       "id": "12",
+       "label": "Memory 13"
+      },
+      {
+       "id": "13",
+       "label": "Memory 14"
+      },
+      {
+       "id": "14",
+       "label": "Memory 15"
+      },
+      {
+       "id": "15",
+       "label": "Memory 16"
+      },
+      {
+       "id": "16",
+       "label": "Memory 17"
+      },
+      {
+       "id": "17",
+       "label": "Memory 18"
+      },
+      {
+       "id": "18",
+       "label": "Memory 19"
+      },
+      {
+       "id": "19",
+       "label": "Memory 20"
+      },
+      {
+       "id": "20",
+       "label": "Memory 21"
+      },
+      {
+       "id": "21",
+       "label": "Memory 22"
+      },
+      {
+       "id": "22",
+       "label": "Memory 23"
+      },
+      {
+       "id": "23",
+       "label": "Memory 24"
+      },
+      {
+       "id": "24",
+       "label": "Memory 25"
+      },
+      {
+       "id": "25",
+       "label": "Memory 26"
+      },
+      {
+       "id": "26",
+       "label": "Memory 27"
+      },
+      {
+       "id": "27",
+       "label": "Memory 28"
+      },
+      {
+       "id": "28",
+       "label": "Memory 29"
+      },
+      {
+       "id": "29",
+       "label": "Memory 30"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0A0001,{{option.memory|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "memory": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D"
+    }
+   }
+  },
+  {
+   "id": "initialize_memory_trigger",
+   "name": "Initialize Memory Trigger",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Memory",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Memory 1"
+      },
+      {
+       "id": "1",
+       "label": "Memory 2"
+      },
+      {
+       "id": "2",
+       "label": "Memory 3"
+      },
+      {
+       "id": "3",
+       "label": "Memory 4"
+      },
+      {
+       "id": "4",
+       "label": "Memory 5"
+      },
+      {
+       "id": "5",
+       "label": "Memory 6"
+      },
+      {
+       "id": "6",
+       "label": "Memory 7"
+      },
+      {
+       "id": "7",
+       "label": "Memory 8"
+      },
+      {
+       "id": "8",
+       "label": "Memory 9"
+      },
+      {
+       "id": "9",
+       "label": "Memory 10"
+      },
+      {
+       "id": "10",
+       "label": "Memory 11"
+      },
+      {
+       "id": "11",
+       "label": "Memory 12"
+      },
+      {
+       "id": "12",
+       "label": "Memory 13"
+      },
+      {
+       "id": "13",
+       "label": "Memory 14"
+      },
+      {
+       "id": "14",
+       "label": "Memory 15"
+      },
+      {
+       "id": "15",
+       "label": "Memory 16"
+      },
+      {
+       "id": "16",
+       "label": "Memory 17"
+      },
+      {
+       "id": "17",
+       "label": "Memory 18"
+      },
+      {
+       "id": "18",
+       "label": "Memory 19"
+      },
+      {
+       "id": "19",
+       "label": "Memory 20"
+      },
+      {
+       "id": "20",
+       "label": "Memory 21"
+      },
+      {
+       "id": "21",
+       "label": "Memory 22"
+      },
+      {
+       "id": "22",
+       "label": "Memory 23"
+      },
+      {
+       "id": "23",
+       "label": "Memory 24"
+      },
+      {
+       "id": "24",
+       "label": "Memory 25"
+      },
+      {
+       "id": "25",
+       "label": "Memory 26"
+      },
+      {
+       "id": "26",
+       "label": "Memory 27"
+      },
+      {
+       "id": "27",
+       "label": "Memory 28"
+      },
+      {
+       "id": "28",
+       "label": "Memory 29"
+      },
+      {
+       "id": "29",
+       "label": "Memory 30"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0A0002,{{option.memory|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "memory": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0A",
+     "11": "0B",
+     "12": "0C",
+     "13": "0D",
+     "14": "0E",
+     "15": "0F",
+     "16": "10",
+     "17": "11",
+     "18": "12",
+     "19": "13",
+     "20": "14",
+     "21": "15",
+     "22": "16",
+     "23": "17",
+     "24": "18",
+     "25": "19",
+     "26": "1A",
+     "27": "1B",
+     "28": "1C",
+     "29": "1D"
+    }
+   }
+  },
+  {
+   "id": "freezeSwitchOn",
+   "name": "Freeze Switch On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:020500,01;\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "freezeSwitchOff",
+   "name": "Freeze Switch Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:020500,00;\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "freezeSwitchType",
+   "name": "Freeze Switch Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "All"
+      },
+      {
+       "id": "01",
+       "label": "Select"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:020501,0{{option.type|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "freezeSwitchSelectEnableDisable",
+   "name": "Freeze Switch Select Enable/Disable",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "HDMI IN 1"
+      },
+      {
+       "id": "03",
+       "label": "HDMI IN 2"
+      },
+      {
+       "id": "04",
+       "label": "HDMI IN 3"
+      },
+      {
+       "id": "05",
+       "label": "HDMI IN 4"
+      },
+      {
+       "id": "06",
+       "label": "HDMI IN 5"
+      },
+      {
+       "id": "07",
+       "label": "HDMI IN 6"
+      },
+      {
+       "id": "08",
+       "label": "HDMI IN 7"
+      },
+      {
+       "id": "09",
+       "label": "HDMI IN 8"
+      },
+      {
+       "id": "0A",
+       "label": "SDI IN 1"
+      },
+      {
+       "id": "0B",
+       "label": "SDI IN 2"
+      },
+      {
+       "id": "0C",
+       "label": "SDI IN 3"
+      },
+      {
+       "id": "0D",
+       "label": "SDI IN 4"
+      },
+      {
+       "id": "0E",
+       "label": "SDI IN 5"
+      },
+      {
+       "id": "0F",
+       "label": "SDI IN 6"
+      },
+      {
+       "id": "10",
+       "label": "SDI IN 7"
+      },
+      {
+       "id": "11",
+       "label": "SDI IN 8"
+      }
+     ]
+    },
+    {
+     "id": "enable",
+     "label": "Enable/Disable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Disable"
+      },
+      {
+       "id": "01",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTH:0205{{option.input|map}},{{option.enable|map}};\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "10": "10",
+     "11": "11",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09",
+     "0A": "0A",
+     "0B": "0B",
+     "0C": "0C",
+     "0D": "0D",
+     "0E": "0E",
+     "0F": "0F"
+    },
+    "enable": {
+     "1": "1",
+     "00": "00",
+     "01": "01"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-roland-v160hd",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "roland-v160hd",
+  "version": "2.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-roland-v160hd.git"
+ }
+}

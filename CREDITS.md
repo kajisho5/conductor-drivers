@@ -1,6 +1,6 @@
 # 参考にした公開 OSS
 
-defs/ の定義は、次の公開モジュールの動作を自動で記録して作ったものです。各モジュールの著作権は作者にあり、それぞれのライセンスに従います。
+defs/・builtin/ の定義は、次の公開モジュールの動作を自動で記録して作ったものです。各モジュールの著作権は作者にあり、それぞれのライセンスに従います。
 
 | モジュール | 版 | ライセンス | 作者 | リポジトリ |
 |---|---|---|---|---|
@@ -28,6 +28,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | arri-tally | 2.0.2 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-arri-tally.git |
 | aten-matrix | 2.0.2 | MIT | Noah Callaway | https://github.com/bitfocus/companion-module-aten-matrix.git |
 | atlasied-atmosphere | 1.2.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-atlasied-atmosphere.git |
+| attend2it-speakertimer | 1.0.0-beta3 | MIT | Gareth Risdale | https://github.com/bitfocus/companion-module-attend2it-speakertimer.git |
 | audac-mtx | 2.0.0 | MIT | Jelle van Abbema | https://github.com/bitfocus/companion-module-audac-mtx.get |
 | aver-ptz | 1.2.0 | MIT | Colbix | https://github.com/bitfocus/companion-module-aver-ptz.git |
 | avmediatools-protimer | 2.0.1 | MIT | Sander Kamp, Jeffrey Davidsz | https://github.com/bitfocus/companion-module-avmediatools-protimer.git |
@@ -225,7 +226,9 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | rgblink-vsp628pro | 1.0.1 | MIT | Marcin Gumułka | https://github.com/bitfocus/companion-module-rgblink-vsp628pro.git |
 | riedel-smartpanel | 1.0.1 | MIT | Riedel Communications | https://github.com/bitfocus/companion-module-riedel-smartpanel |
 | roku-tv | 2.0.5 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roku-tv.git |
+| roland-v160hd | 2.2.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roland-v160hd.git |
 | roland-v600uhd | 2.1.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roland-v600uhd.git |
+| roland-vr120hd | 1.2.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roland-vr120hd.git |
 | roland-xs84h | 3.0.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roland-xs84h.git |
 | rossvideo-rosstalk | 2.1.0 | MIT | William Viker | https://github.com/bitfocus/companion-module-rossvideo-rosstalk.git |
 | rossvideo-xpression | 2.1.0 | MIT | Keith Rocheck | https://github.com/bitfocus/companion-module-rossvideo-xpression.git |

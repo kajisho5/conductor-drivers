@@ -562,6 +562,24 @@
    }
   },
   {
+   "id": "setDNSAddress",
+   "name": "Set DNS Address",
+   "options": [
+    {
+     "id": "dns",
+     "label": "DNS Address",
+     "type": "text",
+     "default": "",
+     "help": "Enter DNS address (e.g., 8.8.8.8)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#DNS={{option.dns}}",
+    "encoding": "text"
+   }
+  },
+  {
    "id": "setSubnetMask",
    "name": "Set Subnet Mask",
    "options": [
@@ -1175,7 +1193,7 @@
      "0": "0",
      "1": "1",
      "2": "2",
-     "3": "3AT&VAT#SUPAT&V"
+     "3": "3"
     }
    }
   },
@@ -1207,7 +1225,7 @@
    },
    "maps": {
     "clk": {
-     "0": "0AT#SUP",
+     "0": "0AT&VAT#SUPAT&VAT#SUP",
      "1": "1"
     }
    }

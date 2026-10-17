@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-10-17T03:21:53.801Z",
+ "generatedAt": "2026-10-17T05:01:52.094Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -53,9 +53,9 @@
    "transport": "tcp",
    "version": "1.1.1-beta",
    "minAppVersion": "0.6.0",
-   "actions": 50,
+   "actions": 51,
    "allActions": 58,
-   "bytes": 31137
+   "bytes": 31472
   },
   {
    "id": "m-agf-characterworks",
@@ -265,6 +265,17 @@
    "actions": 15,
    "allActions": 24,
    "bytes": 10067
+  },
+  {
+   "id": "m-attend2it-speakertimer",
+   "name": "Attend2IT Speakertimer.co.uk",
+   "category": "Attend2IT",
+   "transport": "http",
+   "version": "1.0.0-beta3",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 10,
+   "bytes": 1383
   },
   {
    "id": "m-audac-mtx",
@@ -572,7 +583,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 12,
-   "bytes": 5546
+   "bytes": 5550
   },
   {
    "id": "m-boxcast-api",
@@ -605,7 +616,7 @@
    "minAppVersion": "0.6.0",
    "actions": 9,
    "allActions": 11,
-   "bytes": 4149
+   "bytes": 16292
   },
   {
    "id": "m-cablematters-matrix",
@@ -869,7 +880,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 50,
-   "bytes": 9971
+   "bytes": 9446
   },
   {
    "id": "m-dashare-multiplay",
@@ -988,9 +999,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 7,
+   "actions": 6,
    "allActions": 11,
-   "bytes": 3611
+   "bytes": 3412
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -1067,7 +1078,7 @@
    "minAppVersion": "0.6.0",
    "actions": 10,
    "allActions": 10,
-   "bytes": 36830
+   "bytes": 36836
   },
   {
    "id": "m-etc-eos",
@@ -1560,9 +1571,9 @@
    "transport": "http",
    "version": "1.9.0",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 2,
    "allActions": 77,
-   "bytes": 1413
+   "bytes": 1622
   },
   {
    "id": "m-joy-playdeck",
@@ -2286,9 +2297,9 @@
    "transport": "http",
    "version": "2.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 4,
+   "actions": 3,
    "allActions": 5,
-   "bytes": 58778
+   "bytes": 68571
   },
   {
    "id": "m-ptzoptics-visca",
@@ -2882,7 +2893,7 @@
    "minAppVersion": "0.6.0",
    "actions": 27,
    "allActions": 32,
-   "bytes": 16200
+   "bytes": 16175
   },
   {
    "id": "m-studiocoast-vmix",
@@ -2948,7 +2959,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 19,
-   "bytes": 1546
+   "bytes": 1756
   },
   {
    "id": "m-telestream-prism",

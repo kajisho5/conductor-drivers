@@ -380,6 +380,16 @@
  ],
  "actions": [
   {
+   "id": "sc_active",
+   "name": "Scene - Active",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GS\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
    "id": "sc_recall",
    "name": "Scene - Recall",
    "options": [
@@ -393,7 +403,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "SNR,Factory Defaults\\r\\nGS\\r\\n",
+    "data": "SNR,Factory Defaults\\r\\n",
     "encoding": "text"
    }
   },
@@ -454,43 +464,7 @@
    "maps": {
     "mode": {
      "FP": "FP",
-     "RM": "RM"
-    }
-   }
-  },
-  {
-   "id": "system_channeloffset",
-   "name": "System - Automix Channel Offset",
-   "options": [
-    {
-     "id": "offset",
-     "label": "Input Offset",
-     "type": "select",
-     "choices": [
-      {
-       "id": "1",
-       "label": "Madi Input 1"
-      }
-     ],
-     "help": "Input channel mapped to Automix Channel 1"
-    },
-    {
-     "id": "query",
-     "label": "Query",
-     "type": "boolean",
-     "default": false,
-     "help": "Query will poll current configured channel offset"
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "{{option.query|map}}\\r\\n",
-    "encoding": "text"
-   },
-   "maps": {
-    "query": {
-     "false": "CFS,1",
-     "true": "GS"
+     "RM": "RM\\r\\nGS"
     }
    }
   },
@@ -547,13 +521,13 @@
    "maps": {
     "mode": {
      "GS": "",
-     "GSA": "A",
+     "GSA": "A\\r\\nGS",
      "GSS": "S",
      "GSI": "I",
-     "GSO": "O\\r\\nGS",
+     "GSO": "O",
      "GSM": "M",
      "GSN": "N",
-     "GSX": "X"
+     "GSX": "X\\r\\nGS"
     }
    }
   }

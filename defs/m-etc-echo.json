@@ -27,11 +27,11 @@
    "id": "selfIP",
    "label": "Network Interface",
    "type": "select",
-   "default": "10.1.0.4",
+   "default": "10.1.0.139",
    "choices": [
     {
-     "id": "10.1.0.4",
-     "label": "eth0 - 10.1.0.4"
+     "id": "10.1.0.139",
+     "label": "eth0 - 10.1.0.139"
     }
    ],
    "help": "Select the network interface used for connecting to Echo. This will be used to collect feedbacks."
