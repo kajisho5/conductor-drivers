@@ -14,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 import EJSON from './ejson.mjs';
 import { planRuns } from './plan.mjs';
 import { responderFor } from './responders.mjs';
+import { parseUpgrade, readFrames, upgradeResponse } from './ws.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const MARKER_HOST = '10.11.12.13';
@@ -31,6 +32,13 @@ const LIMITS = {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/** 初期化中に送っていたもの（定期的な問い合わせ）と同じかを見る鍵 */
+function sendKey(e) {
+  if (e.t === 'http') return `http|${e.method} ${e.url} ${e.body}`;
+  if (e.t === 'ws') return `ws|${e.url}|${e.text ?? e.hex}`;
+  return `${e.t}|${e.hex}`;
+}
+
 function listen(server) {
   return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve(server.address().port)));
 }
@@ -45,7 +53,17 @@ async function startSinks(onCapture, responder) {
       const hello = responder.onConnect();
       if (hello) setTimeout(() => s.write(hello), 20);
     }
+    let wsChecked = false;
     s.on('data', (d) => {
+      if (!wsChecked) {
+        wsChecked = true;
+        const up = parseUpgrade(d.toString('latin1'));
+        if (up) {
+          // WebSocket の握手に応じる（中身の記録は capture.cjs の書き込み記録から読む）
+          s.write(upgradeResponse(up.key));
+          return;
+        }
+      }
       if (!responder?.onLine) return;
       buf += d.toString('latin1');
       const parts = buf.split(responder.split ?? /\r?\n/);
@@ -79,6 +97,26 @@ async function startSinks(onCapture, responder) {
       res.writeHead(200, { 'content-type': 'application/json' });
       res.end('{}');
     });
+  });
+  // http.request 経由の WebSocket：握手に応じて、届いたフレームを記録する
+  httpServer.on('upgrade', (req, socket, head) => {
+    sockets.add(socket);
+    const url = String(req.headers['x-capture-url'] ?? req.url);
+    socket.write(upgradeResponse(String(req.headers['sec-websocket-key'] ?? '')));
+    let buf = Buffer.from(head ?? []);
+    const state = { parts: [], opcode: 0 };
+    const take = () => {
+      const r = readFrames(buf, state);
+      buf = Buffer.from(r.rest);
+      for (const m of r.messages) onCapture({ t: 'ws', url, ...m, at: Date.now() });
+    };
+    take();
+    socket.on('data', (d) => {
+      buf = Buffer.concat([buf, d]);
+      take();
+    });
+    socket.on('error', () => undefined);
+    socket.on('close', () => sockets.delete(socket));
   });
   const tcpPort = await listen(tcp);
   const httpPort = await listen(httpServer);
@@ -155,7 +193,30 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
   };
 
   let bucket = [];
-  const capture = (ev) => bucket.push(ev);
+  /** TCP で直接 WebSocket を話すモジュール：握手を見つけたら、その接続の書き込みをフレームとして読む */
+  const wsSockets = new Map();
+  const capture = (ev) => {
+    if (ev.t === 'tcp' && ev.sock !== undefined) {
+      const known = wsSockets.get(ev.sock);
+      const bytes = Buffer.from(ev.hex, 'hex');
+      if (!known) {
+        const up = parseUpgrade(bytes.toString('latin1'));
+        if (up) {
+          const st = { url: `ws://${ev.host}:${ev.port}${up.path}`, buf: bytes.subarray(up.headerLength), state: { parts: [], opcode: 0 } };
+          wsSockets.set(ev.sock, st);
+          bucket.push({ t: 'ws-open', url: st.url, at: ev.at });
+          return;
+        }
+      } else {
+        known.buf = Buffer.concat([known.buf, bytes]);
+        const r = readFrames(known.buf, known.state);
+        known.buf = Buffer.from(r.rest);
+        for (const m of r.messages) bucket.push({ t: 'ws', url: known.url, ...m, at: ev.at });
+        return;
+      }
+    }
+    bucket.push(ev);
+  };
   const sinks = await startSinks(capture, responderFor(manifest.id));
 
   const child = spawn(process.execPath, ['--require', path.join(HERE, 'capture.cjs'), entry], {
@@ -301,9 +362,9 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
     bucket = [];
     await call('init', { label: 'conn1', isFirstInit: false, config: out.config, secrets: {}, lastUpgradeIndex: 9999, actions: {}, feedbacks: {} }, 20000);
     await sleep(LIMITS.idleMs);
-    out.initSends = bucket.filter((e) => e.t !== 'tcp-connect');
-    out.connects = bucket.filter((e) => e.t === 'tcp-connect');
-    const background = new Set(out.initSends.map((e) => `${e.t}|${e.hex ?? `${e.method} ${e.url} ${e.body}`}`));
+    out.initSends = bucket.filter((e) => e.t !== 'tcp-connect' && e.t !== 'ws-open');
+    out.connects = bucket.filter((e) => e.t === 'tcp-connect' || e.t === 'ws-open');
+    const background = new Set(out.initSends.map(sendKey));
 
     const plan = planRuns(out.actionDefs, { maxRuns: LIMITS.maxRuns });
     out.truncated = plan.truncated;
@@ -332,8 +393,8 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
         error = e instanceof Error ? e.message : String(e);
       }
       await settle();
-      const sends = bucket.filter((e) => e.t !== 'tcp-connect' && !background.has(`${e.t}|${e.hex ?? `${e.method} ${e.url} ${e.body}`}`));
-      const connects = bucket.filter((e) => e.t === 'tcp-connect');
+      const sends = bucket.filter((e) => e.t !== 'tcp-connect' && e.t !== 'ws-open' && !background.has(sendKey(e)));
+      const connects = bucket.filter((e) => e.t === 'tcp-connect' || e.t === 'ws-open');
       out.runs.push({ actionId: item.actionId, role: item.role, optionId: item.optionId, options: item.options, sends, connects, error });
       if (item.role === 'base' && (error || sends.length === 0)) skipAction = item.actionId;
       if (exited) throw new Error(`module exited (${exited.code ?? exited.signal})`);

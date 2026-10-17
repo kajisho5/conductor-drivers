@@ -34,6 +34,8 @@ function toBuffer(data, enc) {
 
 /* ---------- TCP ---------- */
 
+let socketSeq = 0;
+
 const origConnect = net.Socket.prototype.connect;
 net.Socket.prototype.connect = function (...args) {
   let options;
@@ -56,8 +58,9 @@ net.Socket.prototype.connect = function (...args) {
   }
   const host = String(options.host ?? 'localhost');
   const port = Number(options.port);
-  this.__cap = { host, port };
-  report({ t: 'tcp-connect', host, port });
+  socketSeq += 1;
+  this.__cap = { host, port, id: socketSeq };
+  report({ t: 'tcp-connect', host, port, sock: socketSeq });
   const redirected = { ...options, host: '127.0.0.1', port: SINK_TCP };
   delete redirected.lookup;
   delete redirected.localAddress;
@@ -69,7 +72,7 @@ const origWrite = net.Socket.prototype.write;
 net.Socket.prototype.write = function (data, enc, cb) {
   if (this.__cap) {
     const buf = toBuffer(data, enc);
-    if (buf.length > 0) report({ t: 'tcp', host: this.__cap.host, port: this.__cap.port, hex: buf.toString('hex') });
+    if (buf.length > 0) report({ t: 'tcp', host: this.__cap.host, port: this.__cap.port, sock: this.__cap.id, hex: buf.toString('hex') });
   }
   return origWrite.call(this, data, enc, cb);
 };

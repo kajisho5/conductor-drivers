@@ -158,3 +158,18 @@ test('選択肢が多くても数として入っていれば使う', () => {
   assert.equal(r.ok, true, r.reason);
   assert.equal(r.send.data, 'KEY({{option.k}})\\r\\n');
 });
+
+test('WebSocket のフレームを読む・JSON の通し番号をそろえる', async () => {
+  const { readFrames, parseUpgrade, acceptKey } = await import('../tools/ws.mjs');
+  const { normalizeCounters } = await import('../tools/derive.mjs');
+  assert.equal(acceptKey('dGhlIHNhbXBsZSBub25jZQ=='), 's3pPLMBiTxaQ9kYGzzhZRbK+xOo=');
+  const up = parseUpgrade('GET /api/ws HTTP/1.1\r\nHost: x\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Key: abc\r\n\r\n');
+  assert.equal(up.path, '/api/ws');
+  const payload = Buffer.from('{"op":6,"d":{"requestId":"7","requestType":"SetScene"}}');
+  const mask = Buffer.from([1, 2, 3, 4]);
+  const masked = Buffer.from(payload.map((b, i) => b ^ mask[i % 4]));
+  const frame = Buffer.concat([Buffer.from([0x81, 0x80 | payload.length]), mask, masked]);
+  const r = readFrames(frame);
+  assert.equal(r.messages[0].text, payload.toString());
+  assert.equal(normalizeCounters(r.messages[0].text), '{"op":6,"d":{"requestId":"1","requestType":"SetScene"}}');
+});

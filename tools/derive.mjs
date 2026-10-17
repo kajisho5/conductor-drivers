@@ -347,14 +347,59 @@ function buildTemplate(def, runs, getBytes, { allowBinary, forceText }) {
 
 /* ---------- TCP / UDP のバイト列 ---------- */
 
-/** 1 回の実行の送信を 1 つのバイト列にまとめる（TCP はつなげる、UDP は 1 通だけ） */
+const COUNTER_KEYS = /^(id|requestid|request-id|request_id|seq|sequence|msgid|messageid|message-id|message_id|transactionid|transaction_id|reqid|cmdid|nonce|correlationid|jsonrpc-id|tag)$/i;
+
+/**
+ * JSON の中の「通し番号」（id・requestId・seq など）は実行ごとに変わるので 1 にそろえる。
+ * 機器は番号の値を問わないことが多い（返事との対応に使うだけ）。整形が JSON.stringify と同じ時だけ書き換える。
+ */
+export function normalizeCounters(text) {
+  const m = /^(\s*)([\[{][\s\S]*[\]}])(\s*)$/.exec(text);
+  if (!m) return text;
+  let v;
+  try {
+    v = JSON.parse(m[2]);
+  } catch {
+    return text;
+  }
+  if (JSON.stringify(v) !== m[2]) return text;
+  const walk = (x) => {
+    if (Array.isArray(x)) return x.map(walk);
+    if (x && typeof x === 'object') {
+      const o = {};
+      for (const [k, val] of Object.entries(x)) {
+        if (COUNTER_KEYS.test(k) && (typeof val === 'number' || (typeof val === 'string' && /^[0-9a-f-]{1,40}$/i.test(val)))) o[k] = typeof val === 'number' ? 1 : '1';
+        else o[k] = walk(val);
+      }
+      return o;
+    }
+    return x;
+  };
+  return m[1] + JSON.stringify(walk(v)) + m[3];
+}
+
+function sendBytes(s) {
+  if (s.t === 'ws' && s.text !== undefined) return Buffer.from(normalizeCounters(s.text), 'utf8');
+  const b = Buffer.from(s.hex, 'hex');
+  if (s.t === 'tcp') {
+    const t = b.toString('utf8');
+    if (Buffer.from(t, 'utf8').equals(b)) {
+      const n = normalizeCounters(t);
+      if (n !== t) return Buffer.from(n, 'utf8');
+    }
+  }
+  return b;
+}
+
+/** 1 回の実行の送信を 1 つのバイト列にまとめる（TCP はつなげる、UDP と WebSocket は 1 通だけ） */
 export function runBytes(run, proto) {
   const sends = run.sends.filter((s) => s.t === proto);
   if (sends.length !== run.sends.length) return { error: 'mixed' };
   if (sends.length === 0) return { error: 'no-send' };
-  if (proto === 'udp' && sends.length > 1) return { error: 'multi-datagram' };
-  const bytes = Buffer.concat(sends.map((s) => Buffer.from(s.hex, 'hex')));
-  return { bytes: Uint8Array.from(bytes), port: sends[0].port, host: sends[0].host };
+  if ((proto === 'udp' || proto === 'ws') && sends.length > 1) return { error: 'multi-datagram' };
+  if (proto === 'ws' && sends[0].text === undefined) return { error: 'ws-binary' };
+  const bytes = Buffer.concat(sends.map(sendBytes));
+  return { bytes: Uint8Array.from(bytes), port: proto === 'ws' ? sends[0].url : sends[0].port, host: sends[0].host };
 }
 
 export function renderSend(send, opts, maps) {
@@ -583,7 +628,7 @@ function httpParts(run) {
   } catch {
     return { error: 'bad-url' };
   }
-  return { method: s.method, origin: u.origin, path: u.pathname + u.search, body: s.body ?? '', contentType: s.headers?.['content-type'] };
+  return { method: s.method, origin: u.origin, path: u.pathname + u.search, body: normalizeCounters(s.body ?? ''), contentType: s.headers?.['content-type'] };
 }
 
 export function deriveHttpAction(def, runs) {

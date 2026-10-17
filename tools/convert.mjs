@@ -137,7 +137,7 @@ export function convertModule(raw) {
   }
 
   // どの通信で送っているか（基準の実行で一番多いもの）
-  const counts = { tcp: 0, udp: 0, http: 0 };
+  const counts = { tcp: 0, udp: 0, http: 0, ws: 0 };
   for (const r of raw.runs) if (r.role === 'base') for (const s of r.sends) if (counts[s.t] !== undefined) counts[s.t]++;
   const proto = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
   if (!proto || proto[1] === 0) {
@@ -192,6 +192,20 @@ export function convertModule(raw) {
   }
 
   // 接続の設定：目印の IP が入った欄を host、送り先のポートと同じ値の欄を port にする
+  // WebSocket：送り先の URL（ws://host:port/path）をホスト・ポート・パスに分ける
+  let wsPath;
+  let wsDefaultHost;
+  if (transport === 'ws') {
+    try {
+      const u = new URL(String(port));
+      wsPath = u.pathname + u.search;
+      port = Number(u.port) || 80;
+      if (u.hostname !== MARKER_HOST) wsDefaultHost = u.hostname;
+    } catch {
+      report.result = 'list-only';
+      return { def: null, report };
+    }
+  }
   const configFields = [];
   let hostId = null;
   let portId = null;
@@ -210,7 +224,15 @@ export function convertModule(raw) {
       mono: true,
     });
   } else {
-    configFields.push({ id: 'host', label: 'IP アドレス', type: 'text', placeholder: '192.168.0.10', pattern: '^[A-Za-z0-9.:\\-]+$', mono: true });
+    configFields.push({
+      id: 'host',
+      label: 'IP アドレス',
+      type: 'text',
+      placeholder: '192.168.0.10',
+      pattern: '^[A-Za-z0-9.:\\-]+$',
+      mono: true,
+      ...(wsDefaultHost ? { default: wsDefaultHost } : {}),
+    });
     // 元の設定でポートが空欄だった時は、記録用に入れた仮の番号なので既定値にしない
     const portField = raw.configFields.find((f) => f.id === portId);
     const portBlank = portField && (portField.default === undefined || portField.default === '' || portField.default === null);
@@ -260,6 +282,7 @@ export function convertModule(raw) {
     version: String(m.version ?? '0.0.0'),
     minAppVersion: APP_MIN_VERSION,
     transport,
+    ...(wsPath !== undefined ? { wsPath } : {}),
     configFields: finalConfig,
     actions,
     feedbacks: [],
