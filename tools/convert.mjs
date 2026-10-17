@@ -123,6 +123,11 @@ export function convertModule(raw) {
     errors: raw.errors,
     truncated: raw.truncated,
   };
+  // 表示名に出せない名前（元のソフトの名前）のモジュールは入れない
+  if (/bitfocus|companion|elgato/i.test(`${m.id} ${m.manufacturer ?? ''} ${(m.products ?? []).join(' ')}`)) {
+    report.result = 'excluded-name';
+    return { def: null, report };
+  }
   if (!ALLOWED_LICENSES.has(m.license)) {
     report.result = 'license';
     return { def: null, report };

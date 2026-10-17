@@ -37,6 +37,14 @@ export function applyFilter(value, filter, mapping) {
   const s = value === undefined || value === null ? '' : String(value);
   const lin = /^lin:(-?[0-9.e+-]+):(-?[0-9.e+-]+)$/.exec(filter);
   if (lin) return formatNumber(Number(s) * Number(lin[1]) + Number(lin[2]));
+  // Roland の 2 バイト値：round(値 × 倍率) を 14 ビットの 2 の補数にして上位・下位 7 ビット（10 進の数を返す。|hexu|pad2 で 16 進 2 桁に）
+  const r14 = /^r14([hl]):(-?[0-9.e+-]+)$/.exec(filter);
+  if (r14) {
+    const n = Math.round(Number(s) * Number(r14[2])) & 0x3fff;
+    return String(r14[1] === 'h' ? (n >> 7) & 0x7f : n & 0x7f);
+  }
+  // Roland の 1 バイトの符号付き値（7 ビットの 2 の補数）
+  if (filter === 's7') return String(Math.round(Number(s)) & 0x7f);
   if (filter === 'hexu' || filter === 'hexl') {
     const n = Math.trunc(Number(s));
     const h = (n < 0 ? 0 : n).toString(16);

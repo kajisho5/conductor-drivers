@@ -72,6 +72,7 @@ const lines = [
   `| list-only | ${count('list-only')} | 動作の一覧は取れたが、送る内容を作れなかった |`,
   `| no-send | ${count('no-send')} | 動作を実行しても何も送らなかった（返事待ち・独自の接続手順など） |`,
   `| failed / crashed | ${count('failed') + count('crashed') + count('unreadable')} | モジュールが起動しなかった |`,
+  `| excluded-name | ${count('excluded-name')} | 元のソフトの名前の機器（表示名に出せないので除外） |`,
   `| license | ${count('license')} | ライセンスが再利用を許していないので除外 |`,
   `| builtin | ${count('builtin')} | アプリに組み込みの定義がある（送れる動作は builtin/ に出し、組み込みの定義へ足す） |`,
   `| 合計 | ${reports.length} | |`,
