@@ -1,0 +1,267 @@
+{
+ "format": 1,
+ "id": "m-imagine-lrc",
+ "name": "Imagine Communications Logical Router Control",
+ "category": "Imagine Communications",
+ "version": "3.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 52116,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "user_id",
+   "label": "User ID",
+   "type": "number",
+   "default": 0,
+   "min": 0,
+   "max": 65535,
+   "help": "Numeric identifier for any commands requiring this parameter (e.g. LOCK, PROTECT, XBUFFER, XSALVO)"
+  },
+  {
+   "id": "salvo_count",
+   "label": "Salvo Count",
+   "type": "number",
+   "default": 24,
+   "min": 1,
+   "max": 65535,
+   "help": "Number of salvos to query from the router (range from 0 to n)"
+  },
+  {
+   "id": "allow_empty_xpoint_dest",
+   "label": "Allow Empty Crosspoint Destination",
+   "type": "boolean",
+   "default": false,
+   "help": "Safeguard to prevent routing a single source to every destination in a single crosspoint command"
+  },
+  {
+   "id": "crosspoint_format",
+   "label": "Crosspoint Format",
+   "type": "select",
+   "default": "Names",
+   "choices": [
+    {
+     "id": "Numbers",
+     "label": "Numbers"
+    },
+    {
+     "id": "Names",
+     "label": "Names"
+    }
+   ],
+   "help": "Sets sources/destinations used in crosspoint commands to be sent as either numbers (default) or names. If you use a variable in the respective fields, you should set this to the same format as your va"
+  },
+  {
+   "id": "send_user_id_with_xsalvo",
+   "label": "Send User ID with XSALVO Commands",
+   "type": "boolean",
+   "default": false,
+   "help": "Some implementations of LRC require including a user ID with XSALVO commands. Other implementations break entirely if the value is included. If you find that your XSALVO commands are not working, you "
+  }
+ ],
+ "actions": [
+  {
+   "id": "xbuffer",
+   "name": "Crosspoint Buffer Control (XBUFFER)",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "EXECUTE",
+     "choices": [
+      {
+       "id": "EXECUTE",
+       "label": "Execute stored crosspoint commands"
+      },
+      {
+       "id": "CLEAR",
+       "label": "Clear command crosspoint buffer"
+      }
+     ],
+     "help": "Select an action"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "~XBUFFER:F${{{option.action|map}}};U#{0}\\\\",
+    "encoding": "text"
+   },
+   "maps": {
+    "action": {
+     "EXECUTE": "EXECUTE",
+     "CLEAR": "CLEAR"
+    }
+   }
+  },
+  {
+   "id": "send_message",
+   "name": "Send a manually-constructed LRC message",
+   "options": [
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "XPOINT",
+     "choices": [
+      {
+       "id": "XPOINT",
+       "label": "Crosspoint Control"
+      },
+      {
+       "id": "LOCK",
+       "label": "Destination Lock"
+      },
+      {
+       "id": "PROTECT",
+       "label": "Destination Protect"
+      },
+      {
+       "id": "CHANNELS",
+       "label": "Logical Channel (Level)"
+      },
+      {
+       "id": "DEST",
+       "label": "Logical Destination"
+      },
+      {
+       "id": "SRC",
+       "label": "Logical Source"
+      },
+      {
+       "id": "DBCHANGE",
+       "label": "Database Change Notification"
+      },
+      {
+       "id": "CONNECTION",
+       "label": "Connection (Session) Control"
+      },
+      {
+       "id": "PROTOCOL",
+       "label": "Protocol Information"
+      },
+      {
+       "id": "XBUFFER",
+       "label": "Crosspoint Buffer Control"
+      },
+      {
+       "id": "XDISCONNECT",
+       "label": "Disconnect Logical Crosspoint"
+      },
+      {
+       "id": "XPRESET",
+       "label": "Crosspoint Preset"
+      },
+      {
+       "id": "XSALVO",
+       "label": "Crosspoint Salvo"
+      }
+     ]
+    },
+    {
+     "id": "op",
+     "label": "Operation",
+     "type": "select",
+     "default": ":",
+     "choices": [
+      {
+       "id": "?",
+       "label": "Query"
+      },
+      {
+       "id": "%",
+       "label": "Query Response"
+      },
+      {
+       "id": ":",
+       "label": "Change Request"
+      },
+      {
+       "id": "!",
+       "label": "Change Notification"
+      }
+     ]
+    },
+    {
+     "id": "args",
+     "label": "Arguments",
+     "type": "text",
+     "help": "There is NO validation for this field."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "~{{option.type|map}}{{option.args}}\\\\",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "XPOINT": "XPOINT",
+     "LOCK": "LOCK",
+     "PROTECT": "PROTECT",
+     "CHANNELS": "CHANNELS",
+     "DEST": "DEST",
+     "SRC": "SRC",
+     "DBCHANGE": "DBCHANGE",
+     "CONNECTION": "CONNECTION",
+     "PROTOCOL": "PROTOCOL",
+     "XBUFFER": "XBUFFER",
+     "XDISCONNECT": "XDISCONNECT",
+     "XPRESET": "XPRESET",
+     "XSALVO": "XSALVO"
+    }
+   }
+  },
+  {
+   "id": "send_raw",
+   "name": "Send a raw message over the socket",
+   "options": [
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "help": "Only use this if you are absolutely sure of what you are doing. There is NO validation here."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.message}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-imagine-lrc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Ross Lindsay, Asher Robinson"
+  }
+ ],
+ "source": {
+  "module": "imagine-lrc",
+  "version": "3.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Ross Lindsay",
+   "Asher Robinson"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-imagine-lrc.git"
+ }
+}

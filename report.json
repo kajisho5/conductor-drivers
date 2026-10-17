@@ -1,0 +1,8967 @@
+[
+ {
+  "id": "PosiStageNet-protocol",
+  "name": "PosiStageNet Protocol",
+  "manufacturer": "PosiStageNet",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ableton-osc",
+  "name": "Ableton Live",
+  "manufacturer": "Ableton",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "adder-avm",
+  "name": "Adder AVM",
+  "manufacturer": "Adder",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "adder-infinity-aim",
+  "name": "Adder AIM",
+  "manufacturer": "Adder",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "adder-infinity-alif",
+  "name": "Adder ALIF",
+  "manufacturer": "Adder",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "adder-infinity100xseries",
+  "name": "Adder Infinity 1000R Series / Infinity 2020R Series",
+  "manufacturer": "Adder",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "adder-xdip",
+  "name": "Adder XDIP",
+  "manufacturer": "Adder",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "adlerluiz-ytmdesktop",
+  "name": "adlerluiz YouTube Music Desktop",
+  "manufacturer": "adlerluiz",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aetaaudio-codecs",
+  "name": "AETA HIFISCOOP 3 / SCOOP 3 / SCOOP 4+ / SCOOPY+ / Scoop5 S / Scoop5 S-IP / Sc…",
+  "manufacturer": "AETA",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "agf-characterworks",
+  "name": "AGF Characterworks",
+  "manufacturer": "AGF",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aimedia-encoder-captions",
+  "name": "AI Media AV 610 / HD 1492 / HD 492",
+  "manufacturer": "AI Media",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aimedia-icap",
+  "name": "AI Media iCap Portal",
+  "manufacturer": "AI Media",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 1,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "aimedia-lexilive",
+  "name": "AI Media Lexi Live",
+  "manufacturer": "AI Media",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 4,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "aja-dante-12gam",
+  "name": "AJA DANTE 12GAM",
+  "manufacturer": "AJA",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aja-fs",
+  "name": "AJA FS2 / FS4 / FS-HDR",
+  "manufacturer": "AJA",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aja-helo",
+  "name": "AJA HELO",
+  "manufacturer": "AJA",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aja-kipro",
+  "name": "AJA Ki Pro / Ki Pro Ultra",
+  "manufacturer": "AJA",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 21,
+  "converted": 16,
+  "reasons": {
+   "text-slot": 3,
+   "number-slot": 2
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "aja-kumo",
+  "name": "AJA Kumo",
+  "manufacturer": "AJA",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "allenheath-ahm",
+  "name": "Allen & Heath AHM",
+  "manufacturer": "Allen & Heath",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "allenheath-avantis",
+  "name": "Allen & Heath Avantis",
+  "manufacturer": "Allen & Heath",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "allenheath-cq",
+  "name": "Allen Heath CQ-12T / CQ-18T / CQ-20B",
+  "manufacturer": "Allen Heath",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "allenheath-dlive-ilive",
+  "name": "Allen & Heath dLive / ilive",
+  "manufacturer": "Allen & Heath",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "allenheath-dlive",
+  "name": "Allen & Heath dLive",
+  "manufacturer": "Allen & Heath",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 21,
+  "converted": 0,
+  "reasons": {
+   "overlap": 11,
+   "number-slot": 1,
+   "too-many-choices": 1,
+   "not-run": 8
+  },
+  "errors": [],
+  "truncated": true,
+  "result": "list-only"
+ },
+ {
+  "id": "allenheath-sq",
+  "name": "Allen & Heath SQ5 / SQ6 / SQ7",
+  "manufacturer": "Allen & Heath",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "analogway-awj",
+  "name": "Analog Way AWJ Protocol Device / LivePremier / Alta 4K / Midra 4K",
+  "manufacturer": "Analog Way",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "analogway-coreplay",
+  "name": "Analog Way CorePlay Solo",
+  "manufacturer": "Analog Way",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "analogway-livecore",
+  "name": "Analog Way LiveCore series",
+  "manufacturer": "Analog Way",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "analogway-livepremier",
+  "name": "Analog Way Aquilon",
+  "manufacturer": "Analog Way",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "analogway-midra",
+  "name": "Analog Way Midra / Eikos2 / Saphyr / Pulse2 / SmartMatriX2 / QuickMatriX / Qu…",
+  "manufacturer": "Analog Way",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "analogway-picturall",
+  "name": "Analog Way Picturall Media Server",
+  "manufacturer": "Analog Way",
+  "license": "ISC",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "analogway-pls300",
+  "name": "Analog Way PLS 300",
+  "manufacturer": "Analog Way",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "android-tv",
+  "name": "Google androidtv",
+  "manufacturer": "Google",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "anomes-millumin",
+  "name": "Anomes Millumin 2 / Millumin 3 / Millumin 4",
+  "manufacturer": "Anomes",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "apc-rackpdu",
+  "name": "APC Rack PDU",
+  "manufacturer": "APC",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "apc-ups",
+  "name": "APC UPS",
+  "manufacturer": "APC",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "arkaos-mediamaster",
+  "name": "ArKaos MediaMaster Remote Player",
+  "manufacturer": "ArKaos",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "arri-tally",
+  "name": "Arri Alexa / Amira",
+  "manufacturer": "Arri",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aten-matrix",
+  "name": "ATEN Matrix",
+  "manufacturer": "ATEN",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "atlasied-atmosphere",
+  "name": "AtlasIED Atmosphere",
+  "manufacturer": "AtlasIED",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "attend2it-speakertimer",
+  "name": "Attend2IT Speakertimer.co.uk",
+  "manufacturer": "Attend2IT",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audac-mtx",
+  "name": "Audac MTX48/88",
+  "manufacturer": "Audac",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audinate-dante-ddm",
+  "name": "Audinate Dante",
+  "manufacturer": "Audinate",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audinate-dantecontroller",
+  "name": "Audinate Dante Controller",
+  "manufacturer": "Audinate",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audiostrom-liveprofessor",
+  "name": "Audioström LiveProfessor",
+  "manufacturer": "Audioström",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audiotechnica-ceilingarray",
+  "name": "Audio Technica ATND-1061",
+  "manufacturer": "Audio Technica",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audiotechnica-digitalmixer",
+  "name": "Audio Technica ATDM-0604 / ATDM-0604a / ATDM-1012",
+  "manufacturer": "Audio Technica",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audiotechnica-discussionsystem",
+  "name": "Audio Technica AT-UC50 / AT-UCIR",
+  "manufacturer": "Audio Technica",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audiotechnica-esw",
+  "name": "Audio Technica Engineered Sound Wireless / ESW",
+  "manufacturer": "Audio Technica",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audiotechnica-system20",
+  "name": "Audio Technica System 20 PRO",
+  "manufacturer": "Audio Technica",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "audivero-unityintercom-client",
+  "name": "Audivero Unity Intercom Client",
+  "manufacturer": "Audivero",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "auri-tx2n",
+  "name": "Auri TX2N / TX2N-D / D4 / D16",
+  "manufacturer": "Auri",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 7,
+  "converted": 0,
+  "reasons": {
+   "error": 7
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "autodirector-mirusuite",
+  "name": "AutoDirector MiruSuite",
+  "manufacturer": "AutoDirector",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aver-ptz",
+  "name": "Aver PTZ",
+  "manufacturer": "Aver",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "avgear-ip410",
+  "name": "AVGear IP410",
+  "manufacturer": "AVGear",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "avmediatools-protimer",
+  "name": "AVMediatools ProTimer",
+  "manufacturer": "AVMediatools",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "avocet-landscape",
+  "name": "Avocet RT Ltd StreamDeck Interface",
+  "manufacturer": "Avocet RT Ltd",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "avolites-titan",
+  "name": "Avolites Titan",
+  "manufacturer": "Avolites",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "avstumpfl-pixera",
+  "name": "AVStumpfl Pixera",
+  "manufacturer": "AVStumpfl",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aws-ec2",
+  "name": "AWS EC2",
+  "manufacturer": "AWS",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aws-elementallive",
+  "name": "AWS Elemental Live",
+  "manufacturer": "AWS",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aws-medialive",
+  "name": "AWS Elemental MediaLive",
+  "manufacturer": "AWS",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "axeltechnology-cgplus",
+  "name": "AxelTech CG Plus",
+  "manufacturer": "AxelTech",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "axeltechnology-vjpro",
+  "name": "AxelTech VJ Pro",
+  "manufacturer": "AxelTech",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "axeltechnology-xplayout",
+  "name": "AxelTech XPlayout",
+  "manufacturer": "AxelTech",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "axeltechnology-xradio",
+  "name": "AxelTech XRadio",
+  "manufacturer": "AxelTech",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "axeltechnology-youplay",
+  "name": "AxelTech YouPlay",
+  "manufacturer": "AxelTech",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "aximmetry-composer",
+  "name": "Aximmetry Composer",
+  "manufacturer": "Aximmetry",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "axis-ptz",
+  "name": "axis PTZ Camera",
+  "manufacturer": "axis",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ballscore-broadcast",
+  "name": "Ball Score Broadcast",
+  "manufacturer": "Ball Score",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "barco-clickshare",
+  "name": "Barco Clickshare",
+  "manufacturer": "Barco",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "barco-dp",
+  "name": "Barco DP Projector",
+  "manufacturer": "Barco",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "barco-eventmaster-xml",
+  "name": "Barco Event Master xml",
+  "manufacturer": "Barco",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "barco-eventmaster",
+  "name": "Barco Event Master",
+  "manufacturer": "Barco",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "barco-pds",
+  "name": "Barco PDS",
+  "manufacturer": "Barco",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "barco-pulse",
+  "name": "Barco UDX Pulse Projector",
+  "manufacturer": "Barco",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "baserow-baserow",
+  "name": "Baserow",
+  "manufacturer": "Baserow",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bbc-raven",
+  "name": "BBC Raven",
+  "manufacturer": "BBC",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "beaware-conferencecaptioning",
+  "name": "BeAware ConferenceCaptioning",
+  "manufacturer": "BeAware",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "behringer-wing",
+  "name": "Behringer WING",
+  "manufacturer": "Behringer",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 98,
+  "converted": 0,
+  "reasons": {
+   "multi-datagram": 6,
+   "option-breaks-send": 3,
+   "no-send": 13,
+   "not-run": 76
+  },
+  "errors": [],
+  "truncated": true,
+  "result": "list-only"
+ },
+ {
+  "id": "behringer-x32",
+  "name": "Behringer/Midas X32/M32",
+  "manufacturer": "Behringer/Midas",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "module did not register"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "behringer-xair",
+  "name": "Behringer/Midas XR/MR / XAir / XR12 / XR16 / X18 / XR18",
+  "manufacturer": "Behringer/Midas",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 84,
+  "converted": 35,
+  "reasons": {
+   "overlap": 15,
+   "no-send": 15,
+   "verify-multi-datagram": 2,
+   "number-slot": 7,
+   "error": 3,
+   "verify-mismatch": 3,
+   "text-slot": 4
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "betr-support",
+  "name": "Betr Production Betr Support",
+  "manufacturer": "Betr Production",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "biamp-audia",
+  "name": "Biamp Audia / Nexia",
+  "manufacturer": "Biamp",
+  "license": "MIT",
+  "status": "error",
+  "actions": 6,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "biamp-tesira",
+  "name": "Biamp TesiraFORTE",
+  "manufacturer": "Biamp",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "binary-moipcontroller",
+  "name": "Binary B-900-MOIP-4K-CTRL",
+  "manufacturer": "Binary",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "binwiederhier-ntfy",
+  "name": "Philipp C. Heckel Ntfy",
+  "manufacturer": "Philipp C. Heckel",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "birddog-central",
+  "name": "BirdDog Central",
+  "manufacturer": "BirdDog",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "birddog-cloud",
+  "name": "BirdDog Cloud",
+  "manufacturer": "BirdDog",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "birddog-connect",
+  "name": "BirdDog Connect",
+  "manufacturer": "BirdDog",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "birddog-converters",
+  "name": "BirdDog Converters",
+  "manufacturer": "BirdDog",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "birddog-ptz",
+  "name": "BirdDog PTZ",
+  "manufacturer": "BirdDog",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bitfocus-cloud",
+  "name": "Bitfocus Companion Cloud",
+  "manufacturer": "Bitfocus",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bitfocusas-listener",
+  "name": "Bitfocus Listener",
+  "manufacturer": "Bitfocus",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "blackbox-boxilla",
+  "name": "Blackbox Boxilla",
+  "manufacturer": "Blackbox",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bmd-atem",
+  "name": "Blackmagic Design ATEM",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 47,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": true,
+  "result": "builtin"
+ },
+ {
+  "id": "bmd-gpi-and-tally-interface",
+  "name": "Blackmagic Design GPI and Tally Interface",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bmd-hyperdeck",
+  "name": "Blackmagic Design Hyperdeck",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bmd-multiview4",
+  "name": "Blackmagic Design Multiview 4",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 10,
+  "converted": 10,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "full"
+ },
+ {
+  "id": "bmd-smartview",
+  "name": "Blackmagic Design SmartView / SmartScope",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 11,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "bmd-teranex",
+  "name": "Blackmagic Design Teranex",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bmd-ultimatte",
+  "name": "Blackmagic Design Ultimatte",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bmd-videohub",
+  "name": "Blackmagic Design Videohub",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bmd-webpresenter",
+  "name": "Blackmagic Design WebPresenter HD / WebPresenter 4K",
+  "manufacturer": "Blackmagic Design",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "boinx-mimolive",
+  "name": "Boinx mimoLive",
+  "manufacturer": "Boinx",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bolin-ptz",
+  "name": "Bolin Technology PTZ",
+  "manufacturer": "Bolin Technology",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 8,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "bom-api",
+  "name": "Bureau of Meteorology API",
+  "manufacturer": "Bureau of Meteorology",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "borealis-vor",
+  "name": "Borealis Solutions Vor",
+  "manufacturer": "Borealis Solutions",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bosch-dicentis",
+  "name": "Bosch Dicentis Conference System",
+  "manufacturer": "Bosch",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bosch-hd-cameracontrol",
+  "name": "Bosch HD Camera Control",
+  "manufacturer": "Bosch",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "boxcast-api",
+  "name": "Boxcast API",
+  "manufacturer": "Boxcast",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "brainstorm-suite",
+  "name": "Brainstorm Multimedia Brainstorm Suite",
+  "manufacturer": "Brainstorm Multimedia",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "broadlink-remote",
+  "name": "BroadLink RM4 Pro",
+  "manufacturer": "BroadLink",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "brompton-tessera",
+  "name": "Brompton Technology Tessera LED Processor Control",
+  "manufacturer": "Brompton Technology",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bss-soundweb",
+  "name": "BSS Soundweb London",
+  "manufacturer": "BSS",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "bytehive-playoutbee",
+  "name": "ByteHive PlayoutBee",
+  "manufacturer": "ByteHive",
+  "license": "ISC",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "cablematters-matrix",
+  "name": "Cable Matters Matrix",
+  "manufacturer": "Cable Matters",
+  "license": "MIT",
+  "status": "error",
+  "actions": 3,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "cablematters-matrix",
+  "name": "Cable Matters Matrix",
+  "manufacturer": "Cable Matters",
+  "license": "MIT",
+  "status": "error",
+  "actions": 3,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "calrec-cscp",
+  "name": "Calrec CSCP",
+  "manufacturer": "Calrec",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "camstreamer-camstreamer",
+  "name": "camstreamer Camera",
+  "manufacturer": "camstreamer",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "canon-ptz",
+  "name": "Canon CR-N300 / CR-N500 / CR-N700 / CR-X300 / CR-X500 / XF605 / C300 MkIII / …",
+  "manufacturer": "Canon",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "canon-xf",
+  "name": "Canon XF405 / XF705 / C100 / C200 / Browser Remote",
+  "manufacturer": "Canon",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "captionkit-api",
+  "name": "CaptionKit API",
+  "manufacturer": "CaptionKit",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "casparcg-server",
+  "name": "CasparCG Server",
+  "manufacturer": "CasparCG",
+  "license": "ISC",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "castr-api",
+  "name": "castr.io API v2",
+  "manufacturer": "castr.io",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "cedar-dns8d",
+  "name": "Cedar DNS 8D",
+  "manufacturer": "Cedar",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 10,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "chamsys-magicq-osc",
+  "name": "ChamSys MagicQ",
+  "manufacturer": "ChamSys",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 13,
+  "converted": 2,
+  "reasons": {
+   "option-breaks-send": 3,
+   "text-slot": 8
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "chamsys-magicq-udp",
+  "name": "ChamSys MagicQ (UDP)",
+  "manufacturer": "ChamSys",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "chamsys-quickq",
+  "name": "Chamsys QuickQ",
+  "manufacturer": "Chamsys",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "chilibytes-pdfosc",
+  "name": "ChiliBytes PDFOSC",
+  "manufacturer": "ChiliBytes",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 7,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "christie-projector",
+  "name": "Christie Projector",
+  "manufacturer": "Christie",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "christie-spyder",
+  "name": "Christie Spyder X20/X80",
+  "manufacturer": "Christie",
+  "license": "ISC",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "churchapps-freeshow",
+  "name": "ChurchApps FreeShow",
+  "manufacturer": "ChurchApps",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "chyronhego-lyric",
+  "name": "ChyronHego Lyric",
+  "manufacturer": "ChyronHego",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "cinegy-capture",
+  "name": "Cinegy Capture",
+  "manufacturer": "Cinegy",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "cisco-roomos",
+  "name": "Cisco RoomOS",
+  "manufacturer": "Cisco",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "classx-mixboard",
+  "name": "ClassX MixBoard",
+  "manufacturer": "ClassX",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "clearcom-station-ic",
+  "name": "Clear-Com Station-IC",
+  "manufacturer": "Clear-Com",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 6,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "cockos-reaper",
+  "name": "Cockos REAPER",
+  "manufacturer": "Cockos",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "coda-linus",
+  "name": "CODA Audio LINUS6.4",
+  "manufacturer": "CODA Audio",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "colorlight-grandshow",
+  "name": "Colorlight GrandShow",
+  "manufacturer": "Colorlight",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "colorlight-processor",
+  "name": "Colorlight U-Series / Z-Series / X-Series / V-Series / VX-Series / D-Series /…",
+  "manufacturer": "Colorlight",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "combitech-vidblasterx",
+  "name": "CombiTech VidBlasterX",
+  "manufacturer": "CombiTech",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "companion-satellite",
+  "name": "Bitfocus Companion Satellite API",
+  "manufacturer": "Bitfocus Companion",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "creativeland-capacitimer",
+  "name": "Creativeland Capacitimer",
+  "manufacturer": "Creativeland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "creativeland-mediacontrolbridge",
+  "name": "Creativeland Media Control Bridge",
+  "manufacturer": "Creativeland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "crestron-digitalmatrix",
+  "name": "Crestron DigitalMedia Switcher",
+  "manufacturer": "Crestron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "crestron-hd-mdnxm-4kz-e",
+  "name": "Crestron HD-MD4X1-4KZ-E / HD-MD4X2-4KZ-E / HD-MD8X8-4KZ-E",
+  "manufacturer": "Crestron",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "cuemanager-cuesheetconnector",
+  "name": "Cue Manager Cue Sheet Connector",
+  "manufacturer": "Cue Manager",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "cvmeventi-countdown",
+  "name": "CVM Eventi Countdown",
+  "manufacturer": "CVM Eventi",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "cyberpower-pdu",
+  "name": "CyberPower PDU",
+  "manufacturer": "CyberPower",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dahuasecurity-ptz",
+  "name": "dahua PTZ Camera",
+  "manufacturer": "dahua",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dan-dugan-automixer",
+  "name": "Dan Dugan Sound Design Model M / Model N",
+  "manufacturer": "Dan Dugan Sound Design",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dashare-multiplay",
+  "name": "da-share MultiPlay",
+  "manufacturer": "da-share",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dashare-multiplay3",
+  "name": "da-Share MultiPlay 3",
+  "manufacturer": "da-Share",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dataton-watchout-json",
+  "name": "Dataton Watchout 7",
+  "manufacturer": "Dataton",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dataton-watchout",
+  "name": "Dataton Watchout",
+  "manufacturer": "Dataton",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dbaudiotechnik-amps",
+  "name": "d&b audiotechnik 5D / 10D / 30D / 40D / D20 / D40 / D80",
+  "manufacturer": "d&b audiotechnik",
+  "license": "MIT",
+  "status": "error",
+  "actions": 16,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "module exited (1)"
+  ],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "dbaudiotechnik-dsp",
+  "name": "D&B Audiotechnik DS100",
+  "manufacturer": "D&B Audiotechnik",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dcc-ex-commandstation",
+  "name": "DCC-EX",
+  "manufacturer": "DCC-EX",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "denon-receiver",
+  "name": "Denon AVR",
+  "manufacturer": "Denon",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "denon-recorder",
+  "name": "Denon DN-900R / DN-700R / DN-500R / DN-F650R / DN-F450R",
+  "manufacturer": "Denon",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 7,
+  "converted": 6,
+  "reasons": {
+   "verify-mismatch": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "depili-clock-8001",
+  "name": "Depili Clock-8001",
+  "manufacturer": "Depili",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "devantech-ds",
+  "name": "Devantech DSXXX",
+  "manufacturer": "Devantech",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "devcore-mixingstation",
+  "name": "Mixing Station GmbH Mixing Station",
+  "manufacturer": "Mixing Station GmbH",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dhdaudio-control-api",
+  "name": "DHD Control API",
+  "manufacturer": "DHD",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dhdaudio-ecp",
+  "name": "DHD Audio Series 52 / RM4200D / XD2 / XC2 / SX2",
+  "manufacturer": "DHD Audio",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "digitalprojection-projectors",
+  "name": "DigitalProjection Models supported by Projector Controller II",
+  "manufacturer": "DigitalProjection",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "directout-audioprocessors",
+  "name": "DirectOut technologies PRODIGY.MC / PRODIGY.MP / PRODIGY.MX / MAVEN.A",
+  "manufacturer": "DirectOut technologies",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "discord-api",
+  "name": "Discord API",
+  "manufacturer": "Discord",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "disguise-liveupdate",
+  "name": "Disguise LiveUpdate",
+  "manufacturer": "Disguise",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 4,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "disguise-mtc",
+  "name": "Disguise - Multi Transport Control",
+  "manufacturer": "Disguise",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "disguise-osc",
+  "name": "Disguise OSC",
+  "manufacturer": "Disguise",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "disguise-smc",
+  "name": "Disguise - SMC",
+  "manufacturer": "Disguise",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dmxcontrolprojects-dmxcontrol3",
+  "name": "DMXControl Projects e.V. DMXControl 3",
+  "manufacturer": "DMXControl Projects e.V.",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dolby-cinemaprocessor",
+  "name": "Dolby Cinema Processor",
+  "manufacturer": "Dolby",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "dtvideolabs-playbackproplus",
+  "name": "DT Videolabs PlaybackPro Plus",
+  "manufacturer": "DT Videolabs",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "easyrecord-cgcontrol",
+  "name": "Easyrecord CG control",
+  "manufacturer": "Easyrecord",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "eaton-epdu",
+  "name": "Eaton ePDU",
+  "manufacturer": "Eaton",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 5,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "ecamm-live",
+  "name": "ecamm Live",
+  "manufacturer": "ecamm",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "elgato-keylight",
+  "name": "Elgato Key Light / Ring Light",
+  "manufacturer": "Elgato",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 6,
+  "converted": 0,
+  "reasons": {
+   "error": 5,
+   "no-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "emotimo-st4",
+  "name": "eMotimo ST4 / ST4.3 / SA2.6",
+  "manufacturer": "eMotimo",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "epiphan-pearl",
+  "name": "Epiphan Pearl",
+  "manufacturer": "Epiphan",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "epson-businesspj",
+  "name": "Epson Business Projectors",
+  "manufacturer": "Epson",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "equipson-lightshark",
+  "name": "LightShark LS1 / LS-Core",
+  "manufacturer": "LightShark",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ereca-stageracer",
+  "name": "Ereca Stage Racer II",
+  "manufacturer": "Ereca",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "esphome-api",
+  "name": "ESPHome API",
+  "manufacturer": "ESPHome",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "etc-echo",
+  "name": "ETC Echo Integration Interface",
+  "manufacturer": "ETC",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "etc-eos",
+  "name": "ETC EOS",
+  "manufacturer": "ETC",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "etc-paradigm",
+  "name": "ETC Paradigm",
+  "manufacturer": "ETC",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "etcaudiovisuel-onlyview",
+  "name": "ETC Audiovisuel Onlyview",
+  "manufacturer": "ETC Audiovisuel",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "etl-rfmatrix",
+  "name": "ETL Systems ETL RF Matrix",
+  "manufacturer": "ETL Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "evertz-quartz",
+  "name": "Evertz EQX Router / EQT Router",
+  "manufacturer": "Evertz",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "evertz-symphony",
+  "name": "Evertz MVP / VIP / NGI / Exhibit",
+  "manufacturer": "Evertz",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "evertz-vipx",
+  "name": "Evertz Vipx",
+  "manufacturer": "Evertz",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 7,
+  "converted": 0,
+  "reasons": {
+   "error": 7
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "evision-hd102",
+  "name": "Evision HD102",
+  "manufacturer": "Evision",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "extron-mmx-tcp",
+  "name": "Extron MMX 42/62 Series",
+  "manufacturer": "Extron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "extron-smp351",
+  "name": "Extron SMP 351",
+  "manufacturer": "Extron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "eyevinn-intercom",
+  "name": "Eyevinn Open Intercom",
+  "manufacturer": "Eyevinn",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ezcoo-matrix",
+  "name": "EZCOO MX44-HAS2 4x4 HDMI Matrix / MX42HS 4x2 HDMI Matrix",
+  "manufacturer": "EZCOO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "figure53-go-button",
+  "name": "Figure 53 GoButton with feedback",
+  "manufacturer": "Figure 53",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "figure53-qlab-advance",
+  "name": "Figure 53 QLab with feedback",
+  "manufacturer": "Figure 53",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "figure53-qview",
+  "name": "Figure 53 QView",
+  "manufacturer": "Figure 53",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "fivem-console",
+  "name": "FiveM Console",
+  "manufacturer": "FiveM",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "focusrite-mp8r",
+  "name": "Focusrite MP8R",
+  "manufacturer": "Focusrite",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "foobar2000-foobar2000",
+  "name": "foobar2000",
+  "manufacturer": "foobar2000",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "fora-mfr",
+  "name": "For.A MFR",
+  "manufacturer": "For.A",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "foscam-ptz",
+  "name": "foscam PTZ Camera",
+  "manufacturer": "foscam",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "fulldomepro-server",
+  "name": "Fulldome.pro Projection Server",
+  "manufacturer": "Fulldome.pro",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "gdsys-muxkvmswitch",
+  "name": "Guntermann&Drunck DL-DVI-MUX4",
+  "manufacturer": "Guntermann&Drunck",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-artnet",
+  "name": "Art-Net",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-blink",
+  "name": "Button Blinker",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-bridge",
+  "name": "Bridge",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-dataentry",
+  "name": "Data Entry",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-emberplus",
+  "name": "Ember+",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-filereader",
+  "name": "File Reader",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-http",
+  "name": "HTTP Requests",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-ical",
+  "name": "iCal Scheduler",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 2,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "generic-midi",
+  "name": "MIDI",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Failed to initialise RtMidi"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-modbus",
+  "name": "Modbus",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-mqtt",
+  "name": "MQTT",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-mysql",
+  "name": "MySQL / MariaDB",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-onvif",
+  "name": "ONVIF",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-osc",
+  "name": "OSC",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 8,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "module exited (1)"
+  ],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "generic-ping",
+  "name": "Ping",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-pingandwake",
+  "name": "Ping and Wake",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-pjlink",
+  "name": "JBMIA Projector / PJLink",
+  "manufacturer": "JBMIA",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-ptpv2-client",
+  "name": "PTP v2",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-rss-client",
+  "name": "RSS",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-sacn",
+  "name": "Streaming ACN",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-smtp",
+  "name": "SMTP",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 1,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "generic-snmp",
+  "name": "SNMP Requests",
+  "manufacturer": "Generic",
+  "license": "ISC",
+  "status": "ok",
+  "actions": 6,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "generic-speedtest",
+  "name": "Speedtest",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-ssh",
+  "name": "SSH",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-stopwatch",
+  "name": "Stopwatch",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-swp02",
+  "name": "SW-P-02 / Probel Router SW P 02 / Snell Router SW P 02",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-swp08",
+  "name": "SW-P-08 / Ross Router / Snell ProBel Router / Grass Valley Router / Lawo VSM …",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 14,
+  "converted": 2,
+  "reasons": {
+   "no-send": 5,
+   "number-slot": 3,
+   "error": 4
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "generic-syslog-client",
+  "name": "Syslog Client",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 1,
+  "converted": 0,
+  "reasons": {
+   "text-slot": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "generic-tcp-serial",
+  "name": "TCP Serial Port",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-tcp-udp",
+  "name": "TCP and UDP Requests",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 2,
+  "converted": 1,
+  "reasons": {
+   "no-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "generic-timezone",
+  "name": "Timezone",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-wakeonlan",
+  "name": "Wake-on-LAN",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-websocket",
+  "name": "WebSocket",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "generic-webtable",
+  "name": "Web-Table",
+  "manufacturer": "Generic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "getontime-ontime",
+  "name": "GetOntime Ontime",
+  "manufacturer": "GetOntime",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "glensound-divine",
+  "name": "Glensound Divine",
+  "manufacturer": "Glensound",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "glensound-minferno",
+  "name": "Glensound Minferno",
+  "manufacturer": "Glensound",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "globalcache-itac-cc",
+  "name": "Global Cache iTach IP2CC",
+  "manufacturer": "Global Cache",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "globalcache-itac-ir",
+  "name": "Global Cache iTach IP2IR",
+  "manufacturer": "Global Cache",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "globalcache-itac-sl",
+  "name": "Global Cache iTach IP2SL",
+  "manufacturer": "Global Cache",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "gnuralnet-livetoair",
+  "name": "Gnural Net Live To Air",
+  "manufacturer": "Gnural Net",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "google-sheets",
+  "name": "Google Sheets",
+  "manufacturer": "Google",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "govee-lights",
+  "name": "Govee Lights",
+  "manufacturer": "Govee",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "grassvalley-amp",
+  "name": "Grass Valley AMP",
+  "manufacturer": "Grass Valley",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 9,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "grassvalley-kframe",
+  "name": "GrassValley K-Frame",
+  "manufacturer": "GrassValley",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "greengo-intercom",
+  "name": "Green-GO Intercom Remote (OSC)",
+  "manufacturer": "Green-GO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "greenhippo-hippotizer-rest",
+  "name": "Green Hippo Hippotizer",
+  "manufacturer": "Green Hippo",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "gudesystems-smartpdu",
+  "name": "Gude Systems Smart PDU",
+  "manufacturer": "Gude Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "h2r-graphics",
+  "name": "Here to Record H2R Graphics",
+  "manufacturer": "Here to Record",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 46,
+  "converted": 11,
+  "reasons": {
+   "text-slot": 6,
+   "error": 22,
+   "verify-mismatch": 1,
+   "number-slot": 4,
+   "no-send": 2
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "h2r-layouts",
+  "name": "Here to Record H2R Layouts",
+  "manufacturer": "Here to Record",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "haivision-connectdvr",
+  "name": "Haivision Connect DVR",
+  "manufacturer": "Haivision",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "haivision-kbencoder",
+  "name": "Haivision KB Encoder",
+  "manufacturer": "Haivision",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "hdkatov-visca",
+  "name": "HDkatov VISCA",
+  "manufacturer": "HDkatov",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "hdtv-wolfpackgreen",
+  "name": "HDTV WolfPackGreen HDMI Matrix",
+  "manufacturer": "HDTV",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "highend-hog4",
+  "name": "High End Systems Hog 4",
+  "manufacturer": "High End Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "highpass-accompaniment",
+  "name": "HighPass AcCompaniment",
+  "manufacturer": "HighPass",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 7,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "highpass-countdown",
+  "name": "Highpass Countdown",
+  "manufacturer": "Highpass",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "highpass-upc",
+  "name": "HighPass UPC -Ultimate Presentation Control",
+  "manufacturer": "HighPass",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "hive-beebox",
+  "name": "Hive Beeblade / Beebox",
+  "manufacturer": "Hive",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "hollyland-solidcom",
+  "name": "Hollyland Solidcom",
+  "manufacturer": "Hollyland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "hologfx-holographics",
+  "name": "hologfx.io Holographics",
+  "manufacturer": "hologfx.io",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "homeassistant-server",
+  "name": "Home Assistant Server",
+  "manufacturer": "Home Assistant",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ibm-watson",
+  "name": "IBM Watson",
+  "manufacturer": "IBM",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "iccms-sib",
+  "name": "IC Control Media & Sport AB Sport In The Box",
+  "manufacturer": "IC Control Media & Sport AB",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ictag-easyvideo",
+  "name": "ICT AG easyVideo",
+  "manufacturer": "ICT AG",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 8,
+  "converted": 5,
+  "reasons": {
+   "text-slot": 3
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "idk-fdx",
+  "name": "IDK FDX-S",
+  "manufacturer": "IDK",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "idk-msd",
+  "name": "IDK MSD-V4 / MSD-V6",
+  "manufacturer": "IDK",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "idk-ninjar",
+  "name": "IDK NINJAR",
+  "manufacturer": "IDK",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "iiyama-prolite",
+  "name": "Iiyama Prolite",
+  "manufacturer": "Iiyama",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "imagine-lrc",
+  "name": "Imagine Communications Logical Router Control",
+  "manufacturer": "Imagine Communications",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 12,
+  "converted": 3,
+  "reasons": {
+   "no-send": 6,
+   "error": 3
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "imimot-mitti",
+  "name": "Imimot Mitti",
+  "manufacturer": "Imimot",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "influxdb-apiv2",
+  "name": "InfluxDB v2",
+  "manufacturer": "InfluxDB",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "innosonix-maxx",
+  "name": "Innosonix Maxx",
+  "manufacturer": "Innosonix",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "intelix-matrix",
+  "name": "Intelix INT-44HDX / INT-66HDX / INT-88HDX",
+  "manufacturer": "Intelix",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "interactivetechnologies-cueserver",
+  "name": "Interactive Technologies CueServer",
+  "manufacturer": "Interactive Technologies",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "interspace-cueether",
+  "name": "Interspace Industries CueEther",
+  "manufacturer": "Interspace Industries",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "interspace-mastercuev7",
+  "name": "Interspace Industries MasterCue V7",
+  "manufacturer": "Interspace Industries",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 10,
+  "converted": 0,
+  "reasons": {
+   "no-send": 4,
+   "error": 6
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "iobroker-ws",
+  "name": "ioBroker WebSockets",
+  "manufacturer": "ioBroker",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 5,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "ioversal-vertex",
+  "name": "ioversal Vertex",
+  "manufacturer": "ioversal",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ipl-ocp",
+  "name": "Inkling Performance Labs Overlay Control Panel",
+  "manufacturer": "Inkling Performance Labs",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "irisdown-countdowntimer",
+  "name": "Irisdown Countdown Timer",
+  "manufacturer": "Irisdown",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "irisdown-remoteshowcontrol",
+  "name": "Irisdown Remote Show Control",
+  "manufacturer": "Irisdown",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "josephadams-gamepadio",
+  "name": "Joseph Adams gamepad-io",
+  "manufacturer": "Joseph Adams",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "josephadams-scriptlauncher",
+  "name": "Joseph Adams Script Launcher",
+  "manufacturer": "Joseph Adams",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "joy-playdeck",
+  "name": "JOY event & media Playdeck",
+  "manufacturer": "JOY event & media",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "jozeemedia-jcounter",
+  "name": "Jozee Media Solutions J-Counter",
+  "manufacturer": "Jozee Media Solutions",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "julusian-test",
+  "name": "Julusian Test",
+  "manufacturer": "Julusian",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "justmacros-lua",
+  "name": "JustMacros LUA",
+  "manufacturer": "JustMacros",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "jvc-ptz",
+  "name": "JVC Camera / KZ100 / PZ510",
+  "manufacturer": "JVC",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "kenku-fm",
+  "name": "KenkuFM API Controller",
+  "manufacturer": "KenkuFM",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "kiloview-encoder",
+  "name": "Kiloview E1 / E2 / E3 / G1 / G2",
+  "manufacturer": "Kiloview",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "kiloview-ndi",
+  "name": "Kiloview N40 / N50 / N60 / N5 / N6",
+  "manufacturer": "Kiloview",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 11,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "kissbox-gpio",
+  "name": "KISSBOX IO3CC / IO8CC",
+  "manufacturer": "KISSBOX",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "klang-app",
+  "name": "Klang App",
+  "manufacturer": "Klang",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "klang-immersive",
+  "name": "Klang Immersive / Konductor / Vokal / DMI-Klang",
+  "manufacturer": "Klang",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "klvr-chargerpro",
+  "name": "KLVR Charger Pro",
+  "manufacturer": "KLVR",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "kommander-t3",
+  "name": "BowTek Kommander T0/T1/T3 / F1/F1Pro/F2/F9 / PS-Series",
+  "manufacturer": "BowTek",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "kramer-matrix",
+  "name": "Kramer Matrix (Generic)",
+  "manufacturer": "Kramer",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "kxwell-ptz",
+  "name": "KXWell PTZ Camera",
+  "manufacturer": "KXWell",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 19,
+  "converted": 11,
+  "reasons": {
+   "number-slot": 8
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "lea-amplifier",
+  "name": "LEA Amplifier",
+  "manufacturer": "LEA",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "leolabs-ableset",
+  "name": "Leolabs AbleSet",
+  "manufacturer": "Leolabs",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "leonreucher-vstopowerpoint",
+  "name": "Leon Reucher PowerPoint Remote VSTO WebSocket",
+  "manufacturer": "Leon Reucher",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "lgtv-display",
+  "name": "LG Electronics LG Display",
+  "manufacturer": "LG Electronics",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "lgtv-prodisplay",
+  "name": "LG Pro Display",
+  "manufacturer": "LG",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "libreoffice-impress",
+  "name": "LibreOffice Impress",
+  "manufacturer": "LibreOffice",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "lightware-lw2",
+  "name": "Lightware LW2",
+  "manufacturer": "Lightware",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "lightware-lw3",
+  "name": "Lightware LW3",
+  "manufacturer": "Lightware",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "lilliput-monitor",
+  "name": "Lilliput Monitor / Q18",
+  "manufacturer": "Lilliput",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 5,
+  "converted": 0,
+  "reasons": {
+   "overlap": 1,
+   "number-slot": 2,
+   "text-slot": 1,
+   "error": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "limagiran-holyrics",
+  "name": "Lima Giran Ltda. Holyrics",
+  "manufacturer": "Lima Giran Ltda.",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "lofas-ndistudioclock",
+  "name": "Lofas AB NDI Studio Clock",
+  "manufacturer": "Lofas AB",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "logos-proclaim",
+  "name": "Logos Proclaim",
+  "manufacturer": "Logos",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "lost-cause-photographic-controlroom",
+  "name": "Lost Cause Photographic ControlRoom",
+  "manufacturer": "Lost Cause Photographic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ltn-schedule",
+  "name": "LTN Schedule",
+  "manufacturer": "LTN",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "luminex-gigacore",
+  "name": "Luminex GigaCore",
+  "manufacturer": "Luminex",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 12,
+  "converted": 1,
+  "reasons": {
+   "number-slot": 6,
+   "no-send": 4,
+   "option-breaks-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "luminex-luminode",
+  "name": "Luminex LumiNode / LumiCore",
+  "manufacturer": "Luminex",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 12,
+  "converted": 6,
+  "reasons": {
+   "overlap": 1,
+   "number-slot": 4,
+   "text-slot": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "lutron-caseta",
+  "name": "Lutron Caseta",
+  "manufacturer": "Lutron",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "lyntec-rpc-breaker",
+  "name": "LynTec RPC",
+  "manufacturer": "LynTec",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "madrix-aura",
+  "name": "Madrix Aura 2/8/12/32",
+  "manufacturer": "Madrix",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 8,
+  "converted": 0,
+  "reasons": {
+   "error": 8
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "magewell-director",
+  "name": "Magewell Director Mini",
+  "manufacturer": "Magewell",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "magewell-proconvert-decoder",
+  "name": "Magewell Pro Convert Decoder",
+  "manufacturer": "Magewell",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "magewell-ultrastream",
+  "name": "Magewell Ultra Stream HDMI / Ultra Stream SDI / Ultra Encode HDMI / Ultra Enc…",
+  "manufacturer": "Magewell",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "magnimage-mig-ec",
+  "name": "Magnimage MIG-EC90 / MIG-EC80",
+  "manufacturer": "Magnimage",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "malighting-grandma2",
+  "name": "MA Lighting GrandMA2",
+  "manufacturer": "MA Lighting",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 5,
+  "converted": 1,
+  "reasons": {
+   "too-many-choices": 1,
+   "text-slot": 1,
+   "overlap": 2
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "malighting-grandma3",
+  "name": "MA Lighting GrandMA3",
+  "manufacturer": "MA Lighting",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 15,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "malighting-msc",
+  "name": "MA Lighting dot2 MSC / grandMA2 MSC",
+  "manufacturer": "MA Lighting",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "marshall-ipcamera",
+  "name": "Marshall CV355 / CV420 / CV420e / CV620 / CV630 / CV730",
+  "manufacturer": "Marshall",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "massimo-callegari-qlcplus",
+  "name": "massimo-callegari qlcplus / qlc+",
+  "manufacturer": "massimo-callegari",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "matrox-conductip",
+  "name": "Matrox ConductIP",
+  "manufacturer": "Matrox",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 1,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "matrox-monarch",
+  "name": "Matrox Monarch HD/HDX/LCS",
+  "manufacturer": "Matrox",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "meld-studio",
+  "name": "Meld Studio",
+  "manufacturer": "Meld Studio",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "metus-player",
+  "name": "Metus Technology Player Controller",
+  "manufacturer": "Metus Technology",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "microsoft-teams",
+  "name": "Microsoft Teams",
+  "manufacturer": "Microsoft",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "microsoft-vscode",
+  "name": "Microsoft VSCode",
+  "manufacturer": "Microsoft",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "middleman-adit",
+  "name": "Middleman Software AdIT",
+  "manufacturer": "Middleman Software",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "middleman-breaktime",
+  "name": "Middleman Software BreakTime",
+  "manufacturer": "Middleman Software",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "middleman-scte104proxy",
+  "name": "Middleman Software SCTE 104 Proxy",
+  "manufacturer": "Middleman Software",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "middlethings-middlecontrol",
+  "name": "Middle Things Middle Control",
+  "manufacturer": "Middle Things",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "mixtech-theatremix",
+  "name": "Mixing Technology TheatreMix",
+  "manufacturer": "Mixing Technology",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "modulopi-moduloplayer",
+  "name": "Modulo Pi Modulo Player",
+  "manufacturer": "Modulo Pi",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "monnit-sensors",
+  "name": "Monnit Sensors",
+  "manufacturer": "Monnit",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "monospace-lightkey",
+  "name": "Monospace Lightkey",
+  "manufacturer": "Monospace",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "monteiro-cronosdown",
+  "name": "Monteiro CronosDown",
+  "manufacturer": "Monteiro",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "monteiro-pptvideo",
+  "name": "Monteiro PPT-VIDEO",
+  "manufacturer": "Monteiro",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "moxa-e2200series",
+  "name": "Moxa e2210 / e2212 / e2214 / e2242 / e2260 / e2262",
+  "manufacturer": "Moxa",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "mrmoco-mhc",
+  "name": "Mark Roberts Motion Control MHC",
+  "manufacturer": "Mark Roberts Motion Control",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "mt-viki-matrix",
+  "name": "MT VIKI MT-HD0808 8x8 HDMI Matrix",
+  "manufacturer": "MT VIKI",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "multicam-systems-rcp",
+  "name": "Multicam Systems RCP",
+  "manufacturer": "Multicam Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "mvr-helios",
+  "name": "Megapixel Helios",
+  "manufacturer": "Megapixel",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nanoleaf-shapes",
+  "name": "Nanoleaf Shapes / Aurora / Canvas / Elements",
+  "manufacturer": "Nanoleaf",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nec-display",
+  "name": "NEC Display",
+  "manufacturer": "NEC",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "neodarque-stagetimer2",
+  "name": "Neodarque StageTimer2",
+  "manufacturer": "Neodarque",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "netgear-avline",
+  "name": "Netgear AV Line",
+  "manufacturer": "Netgear",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "netio-powerbox",
+  "name": "NETIO PowerBOX",
+  "manufacturer": "NETIO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "netron-en",
+  "name": "Netron EN / EN-12",
+  "manufacturer": "Netron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "neumannmueller-stageflow",
+  "name": "Neumann&Müller GmbH & Co. KG Stageflow",
+  "manufacturer": "Neumann&Müller GmbH & Co. KG",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "neutrik-dpro",
+  "name": "Neutrik NA-2-IO-DPRO",
+  "manufacturer": "Neutrik",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nevion-mrp",
+  "name": "Nevion MRP / Multicon",
+  "manufacturer": "Nevion",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nevion-videoipath",
+  "name": "Nevion VideoIPath",
+  "manufacturer": "Nevion",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "newblue-captivate",
+  "name": "NewBlue Captivate",
+  "manufacturer": "NewBlue",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "newtek-tricaster",
+  "name": "Newtek Tricaster",
+  "manufacturer": "Newtek",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nexo-nxamp",
+  "name": "NEXO NXAMP",
+  "manufacturer": "NEXO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nohassleav-matrix",
+  "name": "NoHassleAV Matrix",
+  "manufacturer": "NoHassleAV",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nohassleav-videowallprocessor",
+  "name": "NoHassleAV HDP MXB44VW / Video Wall Processor 4x4",
+  "manufacturer": "NoHassleAV",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "noiseproductions-vvd",
+  "name": "Noise Productions Virtual Video Director",
+  "manufacturer": "Noise Productions",
+  "license": "MIT",
+  "status": "error",
+  "actions": 6,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "init timed out"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "noismada-octopusshowcontrol",
+  "name": "Octopus Listener",
+  "manufacturer": "Octopus",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nortek-bluebolt",
+  "name": "Nortek Bluebolt",
+  "manufacturer": "Nortek",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 6,
+  "converted": 2,
+  "reasons": {
+   "text-slot": 4
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "notion-timestamp",
+  "name": "Notion Timestamp",
+  "manufacturer": "Notion",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "novastar-coex",
+  "name": "NovaStar Coex MX40 Pro / CX80 Pro / KU20",
+  "manufacturer": "NovaStar Coex",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "novastar-controller",
+  "name": "Novastar MCTRL4K / VX4S / VX6S / NovaPro HD / NovaPro UHD Jr / VX1000 / VX600…",
+  "manufacturer": "Novastar",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "novastar-mediaserver",
+  "name": "Novastar RX6 / FX3 Pro",
+  "manufacturer": "Novastar",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "novastar-mxreal3",
+  "name": "NovaStar MxReal 3",
+  "manufacturer": "NovaStar",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "novastar-splicer",
+  "name": "Novastar Splicer",
+  "manufacturer": "Novastar",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "novastar-switcher",
+  "name": "NovaStar N10 / N20 / D12 / D32",
+  "manufacturer": "NovaStar",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nrk-sofie-chef",
+  "name": "NRK Sofie Chef",
+  "manufacturer": "NRK",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ntp-technology-dot",
+  "name": "NTP Technology 635-800A / 600 Series / Penta Series",
+  "manufacturer": "NTP Technology",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "nws-api",
+  "name": "National Weather Service Weather Alerts",
+  "manufacturer": "National Weather Service",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "init timed out"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "obs-studio",
+  "name": "OBS Studio",
+  "manufacturer": "OBS",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "obsbot-osc",
+  "name": "OBSBOT Center App / Tail 2 / Tail Air / Tiny / Tiny 4K / Tiny 2 / Tiny 2 Lite…",
+  "manufacturer": "OBSBOT",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 31,
+  "converted": 28,
+  "reasons": {
+   "multi-datagram": 1,
+   "verify-mismatch": 1,
+   "number-slot": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "obsidiancontrol-onyx-osc",
+  "name": "Obsidian Control Systems ONYX",
+  "manufacturer": "Obsidian Control Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "odyssey-insight",
+  "name": "Odyssey Development Insight",
+  "manufacturer": "Odyssey Development",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 7,
+  "converted": 6,
+  "reasons": {
+   "no-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "openrgb-sdk",
+  "name": "OpenRGB",
+  "manufacturer": "OpenRGB",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "openweather-rest",
+  "name": "OpenWeather Current Weather API",
+  "manufacturer": "OpenWeather",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "optimalaudio-zone",
+  "name": "Optimal Audio Zone",
+  "manufacturer": "Optimal Audio",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "osctimer-osctimer",
+  "name": "O:S:C Timer",
+  "manufacturer": "O:S:C Timer",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "osee-gostream-series",
+  "name": "OSEE GoStream_Series",
+  "manufacturer": "OSEE",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "osee-gostream",
+  "name": "OSEE GoStream",
+  "manufacturer": "OSEE",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-av-hs6000",
+  "name": "panasonic AV-HS6000",
+  "manufacturer": "panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-av-hsw10",
+  "name": "Panasonic AV-HSW10",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-avhs",
+  "name": "Panasonic AV-HS50 / AV-HS410 / AV-UHS500",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-camera-controller",
+  "name": "Panasonic Remote Camera Controller",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-cameras",
+  "name": "Panasonic Camera",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-kairos",
+  "name": "Panasonic Kairos",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-p2",
+  "name": "Panasonic P2 / CX350 / HC-X2 / HC-X20",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-projector",
+  "name": "Panasonic Projector",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-ptz",
+  "name": "Panasonic PTZ Camera",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "panasonic-tv-th",
+  "name": "Panasonic TH-84EF1U / TH-75EF1U / TH-85EF1W / TH-75EF1W / TH-98SQ2HW / TH-86E…",
+  "manufacturer": "Panasonic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pastebin-api",
+  "name": "Pastebin API",
+  "manufacturer": "Pastebin",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 4,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "peavy-ratc",
+  "name": "Peavy NION n3 / NION n6 / NION nE / NION nX",
+  "manufacturer": "Peavy",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "phabrix-qx",
+  "name": "Phabrix QX12G",
+  "manufacturer": "Phabrix",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pharos-designer",
+  "name": "Pharos Designer Controller",
+  "manufacturer": "Pharos",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "philips-hue",
+  "name": "Philips Hue",
+  "manufacturer": "Philips",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "philips-sicp",
+  "name": "Philips SICProtocol",
+  "manufacturer": "Philips",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "philips-wiz-bulbs",
+  "name": "Philips Wiz Bulbs",
+  "manufacturer": "Philips",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pixap-pixtimerpro",
+  "name": "piXap piXtimer Pro",
+  "manufacturer": "piXap",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pixelhue-mediaserver",
+  "name": "Pixelhue MS3 / MS3 Pro",
+  "manufacturer": "Pixelhue",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pixelhue-switcher",
+  "name": "Pixelhue P10 / P20 / Q8 / P80",
+  "manufacturer": "Pixelhue",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "planningcenter-serviceslive",
+  "name": "Planning Center Online Services Live",
+  "manufacturer": "Planning Center Online",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pnh-opencountdown",
+  "name": "[Project-Name-Here] opencountdown",
+  "manufacturer": "[Project-Name-Here]",
+  "license": "LGPL-3.0",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "license"
+ },
+ {
+  "id": "pnh-soundr",
+  "name": "[Project-Name-Here] Soundr",
+  "manufacturer": "[Project-Name-Here]",
+  "license": "LGPL-3.0",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "license"
+ },
+ {
+  "id": "polecam-autopod",
+  "name": "Polecam Autopod+ / Panapod",
+  "manufacturer": "Polecam",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "powersoft-amplifiers",
+  "name": "Powersoft Amplifier",
+  "manufacturer": "Powersoft",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "presentationtools-aps",
+  "name": "PresentationTools Auto Presentation Switcher",
+  "manufacturer": "PresentationTools",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "presentationtools-cuetimer",
+  "name": "PresentationTools CueTimer",
+  "manufacturer": "PresentationTools",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ptzoptics-superjoy",
+  "name": "PTZ Optics SuperJoy",
+  "manufacturer": "PTZ Optics",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ptzoptics-visca",
+  "name": "PTZoptics VISCA",
+  "manufacturer": "PTZoptics",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "purelink-pt-ma-hd44m",
+  "name": "purelink PT-MA-HD44M",
+  "manufacturer": "purelink",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pushover-api",
+  "name": "Pushover",
+  "manufacturer": "Pushover",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "pynch-nexa",
+  "name": "Pynch Nexa / EVS / XT / XS / LSM / Hyperdeck",
+  "manufacturer": "Pynch",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "qsys-remote-control",
+  "name": "Q-Sys",
+  "manufacturer": "Q-SYS",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 25,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "radiodj-rest",
+  "name": "RadioDJ REST API",
+  "manufacturer": "RadioDJ",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "raspberry-gpio",
+  "name": "Raspberry Pi foundation RPi GPIO",
+  "manufacturer": "Raspberry Pi foundation",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rationalacoustics-smaart3",
+  "name": "Rational Acoustics Smaart V8.3 - V8.5 / Smaart Di 2.1 and newer",
+  "manufacturer": "Rational Acoustics",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 32,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "red-rcp2",
+  "name": "RED RCP2 Camera Control",
+  "manufacturer": "RED",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "renewedvision-propresenter-api",
+  "name": "Renewed Vision ProPresenter API",
+  "manufacturer": "Renewed Vision",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "renewedvision-propresenter",
+  "name": "Renewed Vision ProPresenter",
+  "manufacturer": "Renewed Vision",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "renewedvision-pvp",
+  "name": "Renewed Vision PVP 3",
+  "manufacturer": "Renewed Vision",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "resi-decoders",
+  "name": "Resi Decoder",
+  "manufacturer": "Resi",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "resi-studio",
+  "name": "Resi Studio",
+  "manufacturer": "Resi",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "resolume-arena",
+  "name": "Resolume Arena",
+  "manufacturer": "Resolume",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "restream-api",
+  "name": "Restream API",
+  "manufacturer": "Restream",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rgblink-mini",
+  "name": "RGBlink mini/mini+",
+  "manufacturer": "RGBlink",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rgblink-vsp628pro",
+  "name": "RGBlink VSP 628pro",
+  "manufacturer": "RGBlink",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "riedel-mediornet",
+  "name": "Riedel Mediornet",
+  "manufacturer": "Riedel",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "riedel-rrcs",
+  "name": "Riedel RRCS",
+  "manufacturer": "Riedel",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "riedel-smartpanel",
+  "name": "Riedel Communications Smart Panel",
+  "manufacturer": "Riedel Communications",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 20,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "rode-rcv",
+  "name": "RØDECaster Video (RCV)",
+  "manufacturer": "RØDE",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rogueamoeba-farrago",
+  "name": "Rogue Amoeba Farrago",
+  "manufacturer": "Rogue Amoeba",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "roku-tv",
+  "name": "Roku TV",
+  "manufacturer": "Roku",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "roland-p20hd",
+  "name": "Roland P-20HD",
+  "manufacturer": "Roland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "roland-v160hd",
+  "name": "Roland V-160HD",
+  "manufacturer": "Roland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "builtin"
+ },
+ {
+  "id": "roland-v600uhd",
+  "name": "Roland V-600UHD",
+  "manufacturer": "Roland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "roland-v60hd",
+  "name": "Roland V-60HD",
+  "manufacturer": "Roland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "roland-vr120hd",
+  "name": "Roland VR-120HD",
+  "manufacturer": "Roland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "builtin"
+ },
+ {
+  "id": "roland-vr400uhd",
+  "name": "Roland VR-400UHD",
+  "manufacturer": "Roland",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 11,
+  "converted": 0,
+  "reasons": {
+   "option-breaks-send": 1,
+   "no-send": 10
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "roland-xs84h",
+  "name": "Roland XS-82H / XS-83H / XS-84H",
+  "manufacturer": "Roland",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rossvideo-nkrouter",
+  "name": "Ross Video NK Router",
+  "manufacturer": "Ross Video",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rossvideo-rosstalk",
+  "name": "Ross Video Rosstalk",
+  "manufacturer": "Ross Video",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rossvideo-xpression",
+  "name": "Ross Video Xpression",
+  "manufacturer": "Ross Video",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "rundown-studio",
+  "name": "Rundown Studio",
+  "manufacturer": "Rundown Studio",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "samsung-display",
+  "name": "Samsung MD Display",
+  "manufacturer": "Samsung",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "samsung-smarttv",
+  "name": "Samsung Smart TV",
+  "manufacturer": "Samsung",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "samsung-tizenos",
+  "name": "Samsung TizenOS",
+  "manufacturer": "Samsung",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 3,
+  "converted": 0,
+  "reasons": {
+   "error": 3
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "sennheiser-digital6000",
+  "name": "Sennheiser EM 6000 / EM 6000 Dante / L 6000",
+  "manufacturer": "Sennheiser",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sennheiser-ewdx",
+  "name": "Sennheiser EM2 / EM2 Dante / EM4 / CHG70N / CHG70N-C",
+  "manufacturer": "Sennheiser",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sevenpointtechnologies-7pointaudio",
+  "name": "Seven Point Technologies, LLC 7 Point Audio",
+  "manufacturer": "Seven Point Technologies, LLC",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 17,
+  "converted": 17,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "full"
+ },
+ {
+  "id": "sgl-dct",
+  "name": "SGL DCT",
+  "manufacturer": "SGL",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shelly-http",
+  "name": "Shelly 1 / Shelly 2.5 / Shelly Dimmer1/2 / Shelly RGBW2",
+  "manufacturer": "Shelly",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shelly-ws",
+  "name": "Shelly Plus 1 / Shelly Plus 1PM / Shelly Plus 2PM / Shelly Pro 1 / Shelly Pro…",
+  "manufacturer": "Shelly",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "showcuesystems-scs",
+  "name": "Show Cue Systems SCS",
+  "manufacturer": "Show Cue Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-chargers",
+  "name": "Shure SBRC / SB-220 / SB-240",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-dca901",
+  "name": "Shure DCA901",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-mxa910",
+  "name": "Shure MXA910 / MXA920",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-mxcw",
+  "name": "Shure Microflex Complete Wireless (MXCW)",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-mxn5",
+  "name": "Shure MXN-5",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-mxw",
+  "name": "Shure Microflex (MXW)",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-p300",
+  "name": "Shure P300",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-psm1000",
+  "name": "Shure PSM1000",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-scm820",
+  "name": "Shure SCM820",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "shure-wireless",
+  "name": "Shure ULX-D / QLX-D / SLX-D / Axient Digital (AD)",
+  "manufacturer": "Shure",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sikn-kerkomroep",
+  "name": "sikn kerkomroep",
+  "manufacturer": "sikn",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "simedia-yesapi",
+  "name": "Si Media Yes Api Gateway",
+  "manufacturer": "Si Media",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "simonhyde-piclock",
+  "name": "Simon Hyde PiClock",
+  "manufacturer": "Simon Hyde",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "singularlive-studio",
+  "name": "Singular.Live Studio",
+  "manufacturer": "Singular.Live",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "skaarhoj-rawpanel",
+  "name": "SKAARHOJ Raw Panel",
+  "manufacturer": "SKAARHOJ",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 9,
+  "converted": 1,
+  "reasons": {
+   "no-send": 7,
+   "text-slot": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "slack-webhooks",
+  "name": "Slack Webhooks",
+  "manufacturer": "Slack",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "smartavi-ipmatrix",
+  "name": "Smart-AVI MU-88 / MXU-88 / MXCORE",
+  "manufacturer": "Smart-AVI",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "smodetech-smodelive",
+  "name": "Smode Live",
+  "manufacturer": "Smode",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "smokotnin-opensoundmeter",
+  "name": "Pavel Smokotnin Open Sound Meter",
+  "manufacturer": "Pavel Smokotnin",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "snapav-wattbox",
+  "name": "Snapav Wattbox",
+  "manufacturer": "Snapav",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "socialstream-ninja",
+  "name": "Social Stream Ninja",
+  "manufacturer": "Social Stream",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "softouch-easyworship",
+  "name": "Softouch Development Inc EasyWorship",
+  "manufacturer": "Softouch Development Inc",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "softron-movierecorder",
+  "name": "Softron MovieRecorder",
+  "manufacturer": "Softron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "softron-mreplay",
+  "name": "Softron M|Replay",
+  "manufacturer": "Softron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "softron-multicamlogger",
+  "name": "Softron Multicam Logger",
+  "manufacturer": "Softron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "softron-ontheairvideo",
+  "name": "Softron OnTheAir Video",
+  "manufacturer": "Softron",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "softvelum-nimble-streamer",
+  "name": "Softvelum Nimble Streamer",
+  "manufacturer": "Softvelum",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "softvelum-wmspanel",
+  "name": "Softvelum WMSPanel",
+  "manufacturer": "Softvelum",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "songbeamer-osc",
+  "name": "Songbeamer OSC",
+  "manufacturer": "Songbeamer",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sonos-speakers",
+  "name": "Sonos Speakers",
+  "manufacturer": "Sonos",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sony-bravia-simpleip",
+  "name": "Sony Bravia Simple IP",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 7,
+  "converted": 3,
+  "reasons": {
+   "error": 3,
+   "too-many-choices": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "sony-bravia",
+  "name": "Sony Bravia",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sony-cled",
+  "name": "Sony ZRCT-300",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 16,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "sony-ptz",
+  "name": "Sony BRC-AM7 / SRG-A40 / SRG-A12 / ILME-FR7",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sony-serialtally",
+  "name": "Sony XVS 9000/8000/7000/6000 / XVS-G1 / MLS-X1",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sony-srg-a12",
+  "name": "Sony SRG-A12",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "sony-visca",
+  "name": "Sony VISCA",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "soundcraft-ui",
+  "name": "Soundcraft Ui12 / Ui16 / Ui24R",
+  "manufacturer": "Soundcraft",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "sounddevices-pixnet",
+  "name": "Sound Devices PIXNET",
+  "manufacturer": "Sound Devices",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "soundtrack-remote",
+  "name": "Soundtrack Your Brand Remote",
+  "manufacturer": "Soundtrack Your Brand",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "spacecommz-intercom",
+  "name": "Spacecommz.io SpaceCommz",
+  "manufacturer": "Spacecommz.io",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "spotify-remote",
+  "name": "Spotify Web API and Controller",
+  "manufacturer": "Spotify",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "spx-graphics-controller",
+  "name": "spx gc",
+  "manufacturer": "spx",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "squared-powerlink",
+  "name": "Square D NF3500G4 / NF3000G3 / NF2000G3",
+  "manufacturer": "Square D",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "stagetec-emberplus-avatus",
+  "name": "STAGETEC Official Ember+ Avatus",
+  "manufacturer": "STAGETEC Official",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "stagetec-emberplus-nxct",
+  "name": "STAGETEC Official Ember+ NEXUS compact",
+  "manufacturer": "STAGETEC Official",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "stagetec-rcp",
+  "name": "StageTec XDIP / NXC-T",
+  "manufacturer": "StageTec",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "stagetec-xci",
+  "name": "Stagetec XCI03",
+  "manufacturer": "Stagetec",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 2,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "stagetimerio-api",
+  "name": "stagetimer.io Stagetimer API",
+  "manufacturer": "stagetimer.io",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 32,
+  "converted": 0,
+  "reasons": {
+   "error": 25,
+   "not-run": 7
+  },
+  "errors": [],
+  "truncated": true,
+  "result": "list-only"
+ },
+ {
+  "id": "studiocoast-vmix",
+  "name": "StudioCoast vMix",
+  "manufacturer": "StudioCoast",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "symetrix-dsp",
+  "name": "Symetrix DSP",
+  "manufacturer": "Symetrix",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "syncer-live",
+  "name": "Zusor Syncer.live",
+  "manufacturer": "Zusor",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tagvs-mcs",
+  "name": "TAG Video Systems MCS",
+  "manufacturer": "TAG Video Systems",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 11,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "tascam-bdmp1",
+  "name": "Tascam BD-MP1",
+  "manufacturer": "Tascam",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tascam-cd",
+  "name": "Tascam SS-CDR250N / SS-R250N",
+  "manufacturer": "Tascam",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tascam-cd400u",
+  "name": "Tascam CD-400U / CD-400U DAB",
+  "manufacturer": "Tascam",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tascam-da-6400",
+  "name": "Tascam DA-6400 / DA-6400dp",
+  "manufacturer": "Tascam",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tasmota-http",
+  "name": "Tasmota HTTP",
+  "manufacturer": "Tasmota",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "techministry-beacon",
+  "name": "Tech Ministry Beacon",
+  "manufacturer": "Tech Ministry",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "techministry-midirelay",
+  "name": "Tech Ministry MIDI Relay",
+  "manufacturer": "Tech Ministry",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "techministry-spotifycontroller",
+  "name": "Tech Ministry Spotify Controller",
+  "manufacturer": "Tech Ministry",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "techministry-tallyarbiter",
+  "name": "Tech Ministry Tally Arbiter",
+  "manufacturer": "Tech Ministry",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 3,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "techministry-timekeeper",
+  "name": "Tech Ministry TimeKeeper",
+  "manufacturer": "Tech Ministry",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "telegram-bot",
+  "name": "Telegram Bot",
+  "manufacturer": "Telegram",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "telestream-prism",
+  "name": "Telestream Prism / MPI2 / MPX2 / MPD / MPP / MPS",
+  "manufacturer": "Telestream",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 171,
+  "converted": 0,
+  "reasons": {
+   "error": 26,
+   "not-run": 145
+  },
+  "errors": [],
+  "truncated": true,
+  "result": "list-only"
+ },
+ {
+  "id": "televic-confero",
+  "name": "Televic Plixus MME / Plixus AE-R / Plixus WAP / D-Cerno AE",
+  "manufacturer": "Televic",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tellyo-streamstudio",
+  "name": "Tellyo Stream Studio",
+  "manufacturer": "Tellyo",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "telos-25-seven-program-delay-manager",
+  "name": "Telos 25-Seven PDM/PDM II Broadcast Delay",
+  "manufacturer": "Telos",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 5,
+  "converted": 2,
+  "reasons": {
+   "verify-mismatch": 2,
+   "no-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "teradek-prism",
+  "name": "Teradek Prism / Prism Flex",
+  "manufacturer": "Teradek",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "teradek-vidiux",
+  "name": "Teradek VidiU X",
+  "manufacturer": "Teradek",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tesla-smart",
+  "name": "Tesla smart 8>1",
+  "manufacturer": "Tesla",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tesmart-hdmimatrix",
+  "name": "TESMART HDMI Matrix (multiple variants)",
+  "manufacturer": "TESMART",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "textmebot-whatsappapi",
+  "name": "TextMeBot WhatsAppApi",
+  "manufacturer": "TextMeBot",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "theatrixx-xpresscue",
+  "name": "Theatrixx xPressCue",
+  "manufacturer": "Theatrixx",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "thingm-blink1",
+  "name": "ThingM Blink(1)",
+  "manufacturer": "ThingM",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tieline-gateway",
+  "name": "Tieline Gateway / Via",
+  "manufacturer": "Tieline",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "timemachines-clock",
+  "name": "TimeMachines Clock",
+  "manufacturer": "TimeMachines",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tinkerlist-cuez-automator",
+  "name": "TinkerList Cuez - Automator",
+  "manufacturer": "TinkerList",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "toggl-track",
+  "name": "Toggl Track",
+  "manufacturer": "Toggl",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 5,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "toolsonair-justincapture",
+  "name": "ToolsOnAir just:in Capture Solutions",
+  "manufacturer": "ToolsOnAir",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tow-mixeffect",
+  "name": "Adam Tow MixEffect",
+  "manufacturer": "Adam Tow",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tplink-kasasmartbulb",
+  "name": "TP-Link Kasa Smart Bulb",
+  "manufacturer": "TP-Link",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tplink-kasasmartdimmer",
+  "name": "TP-Link Kasa Smart Dimmer",
+  "manufacturer": "TP-Link",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tplink-kasasmartplug",
+  "name": "TP-Link Kasa Smart Plug",
+  "manufacturer": "TP-Link",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tplink-taposmartplug",
+  "name": "TP-Link Tapo Smart Plug",
+  "manufacturer": "TP-Link",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tractus-ndirouter",
+  "name": "Tractus Events Tractus Router for NDI",
+  "manufacturer": "Tractus Events",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "trms-cablecast",
+  "name": "Tightrope Media Systems Cablecast",
+  "manufacturer": "Tightrope Media Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "trms-mediascribe",
+  "name": "Tightrope Media Systems MediaScribe",
+  "manufacturer": "Tightrope Media Systems",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tslproducts-umd",
+  "name": "TSL Products UMD protocol",
+  "manufacturer": "TSL Products",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tslproducts-umdlistener",
+  "name": "TSL Products UMD Listener",
+  "manufacturer": "TSL Products",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "tslproducts-usp3",
+  "name": "TSL Products Universal Switch Panel",
+  "manufacturer": "TSL Products",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 2,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "turtleav-mineola",
+  "name": "Turtle AV Mineola 2x2 / Mineola 4x4 / Mineola 8x8 / Mineola 16x16 / Phoenix 8x8",
+  "manufacturer": "Turtle AV",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "no-send"
+ },
+ {
+  "id": "twitch-api",
+  "name": "Twitch Chat & API",
+  "manufacturer": "Twitch",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "twoloox-pandorasbox",
+  "name": "twoloox Pandoras Box",
+  "manufacturer": "twoloox",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ubiquiti-unifi",
+  "name": "Ubiquiti Unifi / USW",
+  "manufacturer": "Ubiquiti",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "uniliga-cg",
+  "name": "Uniliga CG",
+  "manufacturer": "Uniliga",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "utahscientific-bpspanel",
+  "name": "Utah Scientific BPS",
+  "manufacturer": "Utah Scientific",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "uts-remotevolume",
+  "name": "UTS Remote Volume",
+  "manufacturer": "UTS",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vaddio-ptz",
+  "name": "Vaddio PTZ Camera",
+  "manufacturer": "Vaddio",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vbaudio-voicemeeter",
+  "name": "VBAudio Voicemeeter",
+  "manufacturer": "VBAudio",
+  "license": "MIT",
+  "status": "error",
+  "actions": 29,
+  "converted": 5,
+  "reasons": {
+   "no-send": 19,
+   "option-breaks-send": 2,
+   "error": 1,
+   "not-run": 2
+  },
+  "errors": [
+   "module exited (1)"
+  ],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "vdo-ninja",
+  "name": "VDO Ninja",
+  "manufacturer": "VDO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "ventuz-director",
+  "name": "Ventuz Technology Director",
+  "manufacturer": "Ventuz Technology",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vicreo-broadcast-titles",
+  "name": "VICREO Broadcast Titles",
+  "manufacturer": "VICREO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vicreo-display",
+  "name": "VICREO Display",
+  "manufacturer": "VICREO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vicreo-hotkey",
+  "name": "VICREO Listener",
+  "manufacturer": "VICREO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "videolan-vlc",
+  "name": "VideoLAN VLC",
+  "manufacturer": "VideoLAN",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 18,
+  "converted": 0,
+  "reasons": {
+   "error": 18
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "vioso-exaplay",
+  "name": "vioso exaplay",
+  "manufacturer": "vioso",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vistream-online",
+  "name": "ViStream online",
+  "manufacturer": "ViStream",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "visualproductions-iocore",
+  "name": "Visual Productions IoCore2",
+  "manufacturer": "Visual Productions",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 10,
+  "converted": 10,
+  "reasons": {},
+  "errors": [],
+  "truncated": false,
+  "result": "full"
+ },
+ {
+  "id": "visualproductions-timecore",
+  "name": "Visual Productions Timecore",
+  "manufacturer": "Visual Productions",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vitec-avediaplayer9300-series",
+  "name": "Vitec AvediaPlayer r9300 / AvediaPlayer r9310 / AvediaPlayer m9305 / AvediaPl…",
+  "manufacturer": "Vitec",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vivitek-projector",
+  "name": "Vivitek Projector",
+  "manufacturer": "Vivitek",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vizio-smartcast",
+  "name": "VIZIO SmartCast",
+  "manufacturer": "VIZIO",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vizrt-mosart",
+  "name": "Vizrt Mosart",
+  "manufacturer": "Vizrt",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vizrt-tcp-engine-trio",
+  "name": "vizRT Send Command Line",
+  "manufacturer": "vizRT",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "voicemod-api",
+  "name": "Voicemod",
+  "manufacturer": "Voicemod",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vrowllabs-vrsync",
+  "name": "VR Owl Labs VR Sync",
+  "manufacturer": "VR Owl Labs",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "vyv-photon",
+  "name": "VYV Photon",
+  "manufacturer": "VYV",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "webcomms-panel",
+  "name": "Web Comms Panel",
+  "manufacturer": "Web Comms",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "wheatstone-wheatnet",
+  "name": "Wheatstone WheatNet IP",
+  "manufacturer": "Wheatstone",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 16,
+  "converted": 13,
+  "reasons": {
+   "option-breaks-send": 2,
+   "no-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "wled-websocket",
+  "name": "WLED",
+  "manufacturer": "WLED",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "wordnik-api",
+  "name": "Wordnik API",
+  "manufacturer": "Wordnik",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 3,
+  "converted": 2,
+  "reasons": {
+   "no-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "partial"
+ },
+ {
+  "id": "wyrestorm-matrix",
+  "name": "Wyrestorm Matrix Switcher",
+  "manufacturer": "Wyrestorm",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 3,
+  "converted": 0,
+  "reasons": {
+   "no-send": 2,
+   "option-breaks-send": 1
+  },
+  "errors": [],
+  "truncated": false,
+  "result": "list-only"
+ },
+ {
+  "id": "yamaha-rcp",
+  "name": "Yamaha RCP",
+  "manufacturer": "Yamaha",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "youtube-live",
+  "name": "Google YouTube",
+  "manufacturer": "Google",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "zenvideo-ndirouter",
+  "name": "ZEN NDIRouter",
+  "manufacturer": "ZEN",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "zerodensity-realityhub",
+  "name": "Zerodensity RealityHub 1.3",
+  "manufacturer": "Zerodensity",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "zinc-oscpoint",
+  "name": "Zinc OSCPoint",
+  "manufacturer": "Zinc",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "zipsolutions-zipcaptions",
+  "name": "Zip Solutions Zip Captions",
+  "manufacturer": "Zip Solutions",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "zoom-osc-iso",
+  "name": "Zoom OSC/ISO",
+  "manufacturer": "Zoom",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "zoom-tiles",
+  "name": "Zoom Tiles",
+  "manufacturer": "Zoom",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ },
+ {
+  "id": "zowietek-api",
+  "name": "Zowietek ZowieBox / ZowiePTZ / ZowieCam",
+  "manufacturer": "Zowietek",
+  "license": "MIT",
+  "status": "error",
+  "actions": 0,
+  "converted": 0,
+  "reasons": {},
+  "errors": [
+   "Cannot convert undefined or null to object"
+  ],
+  "truncated": false,
+  "result": "failed"
+ }
+]

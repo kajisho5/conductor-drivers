@@ -1,0 +1,194 @@
+{
+ "format": 1,
+ "id": "m-telos-25-seven-program-delay-manager",
+ "name": "Telos 25-Seven PDM/PDM II Broadcast Delay",
+ "category": "Telos",
+ "version": "1.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5443,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "poll_interval",
+   "label": "Delay Poll Interval (ms)",
+   "type": "text",
+   "default": 1000
+  },
+  {
+   "id": "debug_logging",
+   "label": "Enable Debug Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "trigger",
+   "name": "Trigger (momentary)",
+   "options": [
+    {
+     "id": "argument",
+     "label": "Argument",
+     "type": "select",
+     "default": "Build",
+     "choices": [
+      {
+       "id": "Build",
+       "label": "Build"
+      },
+      {
+       "id": "Exit",
+       "label": "Exit"
+      },
+      {
+       "id": "Cough",
+       "label": "Cough"
+      },
+      {
+       "id": "Dump",
+       "label": "Dump"
+      },
+      {
+       "id": "Bypass",
+       "label": "Bypass"
+      },
+      {
+       "id": "Custom",
+       "label": "Custom..."
+      }
+     ]
+    },
+    {
+     "id": "argument_custom",
+     "label": "Custom Argument",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "trigger {{option.argument|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "argument": {
+     "Build": "Build",
+     "Exit": "Exit",
+     "Cough": "Cough",
+     "Dump": "Dump",
+     "Bypass": "Bypass",
+     "Custom": "QB1x"
+    }
+   }
+  },
+  {
+   "id": "send_raw",
+   "name": "Send Raw Command",
+   "options": [
+    {
+     "id": "raw_command",
+     "label": "Command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.raw_command}}\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Controls",
+   "name": "DUMP",
+   "text": "DUMP",
+   "backgroundColor": "#100000",
+   "action": {
+    "definitionId": "trigger",
+    "options": {
+     "argument": "Dump",
+     "argument_custom": ""
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Controls",
+   "name": "BUILD",
+   "text": "BUILD",
+   "backgroundColor": "#001000",
+   "action": {
+    "definitionId": "trigger",
+    "options": {
+     "argument": "Build",
+     "argument_custom": ""
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Controls",
+   "name": "EXIT",
+   "text": "EXIT",
+   "backgroundColor": "#101000",
+   "action": {
+    "definitionId": "trigger",
+    "options": {
+     "argument": "Exit",
+     "argument_custom": ""
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Controls",
+   "name": "BYPASS",
+   "text": "BYPASS",
+   "backgroundColor": "#101010",
+   "action": {
+    "definitionId": "trigger",
+    "options": {
+     "argument": "Bypass",
+     "argument_custom": ""
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-telos-25-seven-program-delay-manager",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Chris Lane"
+  }
+ ],
+ "source": {
+  "module": "telos-25-seven-program-delay-manager",
+  "version": "1.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Chris Lane"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-telos-25-seven-program-delay-manager"
+ }
+}

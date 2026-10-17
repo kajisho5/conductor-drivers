@@ -1,0 +1,79 @@
+{
+ "format": 1,
+ "id": "m-wordnik-api",
+ "name": "Wordnik API",
+ "category": "Wordnik",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 38981,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "apiKey",
+   "label": "API Key",
+   "type": "text"
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logs",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "get_wotd",
+   "name": "Word of the day",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /v4/words.json/wordOfTheDay?api_key= HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/json\\r\\nUser-Agent: axios/1.13.2\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=\\r\\nHost: 127.0.0.1:38981\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "random_words",
+   "name": "Random Words",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /v4/words.json/randomWords?api_key= HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/json\\r\\nUser-Agent: axios/1.13.2\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: https://api.wordnik.com/v4/words.json/randomWords?api_key=\\r\\nHost: 127.0.0.1:38981\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-wordnik-api",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "wordnik-api",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-wordnik-api.git"
+ }
+}

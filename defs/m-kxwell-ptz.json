@@ -1,0 +1,246 @@
+{
+ "format": 1,
+ "id": "m-kxwell-ptz",
+ "name": "KXWell PTZ Camera",
+ "category": "KXWell",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 6000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "address",
+   "label": "Camera Address",
+   "type": "number",
+   "default": 1,
+   "min": 0,
+   "max": 255
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "panLeft",
+   "name": "Pan Left",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed (1-49)",
+     "type": "number",
+     "default": 30,
+     "min": 1,
+     "max": 49
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#01P{{option.speed}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "panStop",
+   "name": "Pan Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#01P50\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "tiltDown",
+   "name": "Tilt Down",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed (1-49)",
+     "type": "number",
+     "default": 30,
+     "min": 1,
+     "max": 49
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#01T{{option.speed}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "tiltStop",
+   "name": "Tilt Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#01T50\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zoomOut",
+   "name": "Zoom Out",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed (1-49)",
+     "type": "number",
+     "default": 20,
+     "min": 1,
+     "max": 49
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#01Z{{option.speed}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zoomStop",
+   "name": "Zoom Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#01Z50\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "focusNear",
+   "name": "Focus Near",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed (1-49)",
+     "type": "number",
+     "default": 25,
+     "min": 1,
+     "max": 49
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#01F{{option.speed}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "focusStop",
+   "name": "Focus Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#01F50\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "irisModeAuto",
+   "name": "Set Iris Mode: Auto",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#01D31\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "irisModeManual",
+   "name": "Set Iris Mode: Manual",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#01D30\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "power",
+   "name": "Power On/Off",
+   "options": [
+    {
+     "id": "state",
+     "label": "Power",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#01O{{option.state|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "power-toggle",
+   "category": "System",
+   "name": "Toggle Power",
+   "text": "Power",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "state": "1"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/josephdadams/companion-module-kxwell-ptz",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "kxwell-ptz",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/josephdadams/companion-module-kxwell-ptz.git"
+ }
+}

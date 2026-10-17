@@ -1,0 +1,147 @@
+{
+ "format": 1,
+ "id": "m-chamsys-magicq-osc",
+ "name": "ChamSys MagicQ",
+ "category": "ChamSys",
+ "version": "3.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "enableFeedback",
+   "label": "Enable Feedback",
+   "type": "boolean",
+   "default": true,
+   "help": "Requires feedback to be enabled on the Chamsys console OSC settings"
+  },
+  {
+   "id": "rxPort",
+   "label": "Feedback Port",
+   "type": "text",
+   "default": "9000",
+   "help": "The OSC TX port of the Chamsys console"
+  },
+  {
+   "id": "forwardOSC",
+   "label": "Forward OSC messages to Companion",
+   "type": "boolean",
+   "default": false,
+   "help": "If checked, all OSC messages received from the Chamsys console will be forwarded to Companion at the port below, allowing MagicQ to control Companion with OSC Commands."
+  },
+  {
+   "id": "forwardPort",
+   "label": "Companion OSC Listen Port",
+   "type": "text",
+   "default": "12321",
+   "help": "The port to forward OSC messages to Companion (you con enable this and find the port in the Companion Settings)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "dbo",
+   "name": "Desk Black Out DBO",
+   "options": [
+    {
+     "id": "dboId",
+     "label": "Action",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Black Out On"
+      },
+      {
+       "id": "0",
+       "label": "Black Out Off"
+      },
+      {
+       "id": "2",
+       "label": "Black Out Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f64626f000000002c690000000000{{option.dboId|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "dboId": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "swap",
+   "name": "Set swap mode",
+   "options": [
+    {
+     "id": "swapId",
+     "label": "Swap Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Add"
+      },
+      {
+       "id": "1",
+       "label": "Swap"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f737761700000002c690000000000{{option.swapId|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "swapId": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-chamsys-magicq-osc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Røine"
+  }
+ ],
+ "source": {
+  "module": "chamsys-magicq-osc",
+  "version": "3.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Per Røine"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-chamsys-magicq-osc.git"
+ }
+}

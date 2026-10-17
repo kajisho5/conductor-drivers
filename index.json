@@ -1,0 +1,281 @@
+{
+ "format": 1,
+ "generatedAt": "2026-10-17T00:50:07.971Z",
+ "drivers": [
+  {
+   "id": "m-aja-kipro",
+   "name": "AJA Ki Pro / Ki Pro Ultra",
+   "category": "AJA",
+   "transport": "tcp",
+   "version": "3.4.0",
+   "minAppVersion": "0.6.0",
+   "actions": 16,
+   "allActions": 21,
+   "bytes": 17484
+  },
+  {
+   "id": "m-behringer-xair",
+   "name": "Behringer/Midas XR/MR / XAir / XR12 / XR16 / X18 / XR18",
+   "category": "Behringer/Midas",
+   "transport": "udp",
+   "version": "2.8.0",
+   "minAppVersion": "0.6.0",
+   "actions": 35,
+   "allActions": 84,
+   "bytes": 29149
+  },
+  {
+   "id": "m-bmd-multiview4",
+   "name": "Blackmagic Design Multiview 4",
+   "category": "Blackmagic Design",
+   "transport": "tcp",
+   "version": "2.0.0",
+   "minAppVersion": "0.6.0",
+   "actions": 10,
+   "allActions": 10,
+   "bytes": 13534
+  },
+  {
+   "id": "m-chamsys-magicq-osc",
+   "name": "ChamSys MagicQ",
+   "category": "ChamSys",
+   "transport": "udp",
+   "version": "3.1.1",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 13,
+   "bytes": 3063
+  },
+  {
+   "id": "m-denon-recorder",
+   "name": "Denon DN-900R / DN-700R / DN-500R / DN-F650R / DN-F450R",
+   "category": "Denon",
+   "transport": "tcp",
+   "version": "3.0.0-alpha1",
+   "minAppVersion": "0.6.0",
+   "actions": 6,
+   "allActions": 7,
+   "bytes": 7663
+  },
+  {
+   "id": "m-generic-swp08",
+   "name": "SW-P-08 / Ross Router / Snell ProBel Router / Grass Valley Router / Lawo VSM …",
+   "category": "Generic",
+   "transport": "tcp",
+   "version": "2.0.9",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 14,
+   "bytes": 3478
+  },
+  {
+   "id": "m-generic-tcp-udp",
+   "name": "TCP and UDP Requests",
+   "category": "Generic",
+   "transport": "tcp",
+   "version": "2.2.1",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 2,
+   "bytes": 2978
+  },
+  {
+   "id": "m-h2r-graphics",
+   "name": "Here to Record H2R Graphics",
+   "category": "Here to Record",
+   "transport": "tcp",
+   "version": "3.9.0",
+   "minAppVersion": "0.6.0",
+   "actions": 11,
+   "allActions": 46,
+   "bytes": 13324
+  },
+  {
+   "id": "m-ictag-easyvideo",
+   "name": "ICT AG easyVideo",
+   "category": "ICT AG",
+   "transport": "udp",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 5,
+   "allActions": 8,
+   "bytes": 4088
+  },
+  {
+   "id": "m-imagine-lrc",
+   "name": "Imagine Communications Logical Router Control",
+   "category": "Imagine Communications",
+   "transport": "tcp",
+   "version": "3.0.0",
+   "minAppVersion": "0.6.0",
+   "actions": 3,
+   "allActions": 12,
+   "bytes": 5957
+  },
+  {
+   "id": "m-kxwell-ptz",
+   "name": "KXWell PTZ Camera",
+   "category": "KXWell",
+   "transport": "tcp",
+   "version": "1.0.0",
+   "minAppVersion": "0.6.0",
+   "actions": 11,
+   "allActions": 19,
+   "bytes": 4215
+  },
+  {
+   "id": "m-luminex-gigacore",
+   "name": "Luminex GigaCore",
+   "category": "Luminex",
+   "transport": "tcp",
+   "version": "1.0.1",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 12,
+   "bytes": 2061
+  },
+  {
+   "id": "m-luminex-luminode",
+   "name": "Luminex LumiNode / LumiCore",
+   "category": "Luminex",
+   "transport": "tcp",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 6,
+   "allActions": 12,
+   "bytes": 6530
+  },
+  {
+   "id": "m-malighting-grandma2",
+   "name": "MA Lighting GrandMA2",
+   "category": "MA Lighting",
+   "transport": "tcp",
+   "version": "2.3.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 5,
+   "bytes": 1551
+  },
+  {
+   "id": "m-nortek-bluebolt",
+   "name": "Nortek Bluebolt",
+   "category": "Nortek",
+   "transport": "udp",
+   "version": "2.3.0",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 6,
+   "bytes": 2936
+  },
+  {
+   "id": "m-obsbot-osc",
+   "name": "OBSBOT Center App / Tail 2 / Tail Air / Tiny / Tiny 4K / Tiny 2 / Tiny 2 Lite…",
+   "category": "OBSBOT",
+   "transport": "udp",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 28,
+   "allActions": 31,
+   "bytes": 25749
+  },
+  {
+   "id": "m-odyssey-insight",
+   "name": "Odyssey Development Insight",
+   "category": "Odyssey Development",
+   "transport": "tcp",
+   "version": "1.0.1",
+   "minAppVersion": "0.6.0",
+   "actions": 6,
+   "allActions": 7,
+   "bytes": 10069
+  },
+  {
+   "id": "m-sevenpointtechnologies-7pointaudio",
+   "name": "Seven Point Technologies, LLC 7 Point Audio",
+   "category": "Seven Point Technologies, LLC",
+   "transport": "udp",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 17,
+   "allActions": 17,
+   "bytes": 7623
+  },
+  {
+   "id": "m-skaarhoj-rawpanel",
+   "name": "SKAARHOJ Raw Panel",
+   "category": "SKAARHOJ",
+   "transport": "tcp",
+   "version": "2.2.1",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 9,
+   "bytes": 4651
+  },
+  {
+   "id": "m-sony-bravia-simpleip",
+   "name": "Sony Bravia Simple IP",
+   "category": "Sony",
+   "transport": "tcp",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 3,
+   "allActions": 7,
+   "bytes": 2854
+  },
+  {
+   "id": "m-telos-25-seven-program-delay-manager",
+   "name": "Telos 25-Seven PDM/PDM II Broadcast Delay",
+   "category": "Telos",
+   "transport": "tcp",
+   "version": "1.1.1",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 5,
+   "bytes": 3663
+  },
+  {
+   "id": "m-vbaudio-voicemeeter",
+   "name": "VBAudio Voicemeeter",
+   "category": "VBAudio",
+   "transport": "udp",
+   "version": "2.2.1",
+   "minAppVersion": "0.6.0",
+   "actions": 5,
+   "allActions": 29,
+   "bytes": 5612
+  },
+  {
+   "id": "m-visualproductions-iocore",
+   "name": "Visual Productions IoCore2",
+   "category": "Visual Productions",
+   "transport": "tcp",
+   "version": "1.0.0",
+   "minAppVersion": "0.6.0",
+   "actions": 10,
+   "allActions": 10,
+   "bytes": 17571
+  },
+  {
+   "id": "m-wheatstone-wheatnet",
+   "name": "Wheatstone WheatNet IP",
+   "category": "Wheatstone",
+   "transport": "tcp",
+   "version": "1.0.1",
+   "minAppVersion": "0.6.0",
+   "actions": 13,
+   "allActions": 16,
+   "bytes": 15812
+  },
+  {
+   "id": "m-wordnik-api",
+   "name": "Wordnik API",
+   "category": "Wordnik",
+   "transport": "tcp",
+   "version": "1.0.1",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 3,
+   "bytes": 2231
+  }
+ ]
+}

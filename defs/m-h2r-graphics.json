@@ -1,0 +1,459 @@
+{
+ "format": 1,
+ "id": "m-h2r-graphics",
+ "name": "Here to Record H2R Graphics",
+ "category": "Here to Record",
+ "version": "3.9.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 36961,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "portV2",
+   "label": "Target Port",
+   "type": "text",
+   "default": "4001"
+  },
+  {
+   "id": "projectId",
+   "label": "Project ID",
+   "type": "text",
+   "default": "ABCD"
+  },
+  {
+   "id": "usePngForPresets",
+   "label": "Show PNG heading on Presets",
+   "type": "select",
+   "default": "true",
+   "choices": [
+    {
+     "id": "true",
+     "label": "Yes"
+    },
+    {
+     "id": "false",
+     "label": "No"
+    }
+   ]
+  },
+  {
+   "id": "useLabelForPresets",
+   "label": "Use graphic label on Presets",
+   "type": "select",
+   "default": "false",
+   "choices": [
+    {
+     "id": "true",
+     "label": "Yes"
+    },
+    {
+     "id": "false",
+     "label": "No"
+    }
+   ]
+  },
+  {
+   "id": "presetButtonTextSize",
+   "label": "Preset Button Text Size",
+   "type": "select",
+   "default": "18",
+   "choices": [
+    {
+     "id": "auto",
+     "label": "Auto"
+    },
+    {
+     "id": "7",
+     "label": "7pt"
+    },
+    {
+     "id": "14",
+     "label": "14pt"
+    },
+    {
+     "id": "18",
+     "label": "18pt"
+    },
+    {
+     "id": "24",
+     "label": "24pt"
+    },
+    {
+     "id": "30",
+     "label": "30pt"
+    },
+    {
+     "id": "33",
+     "label": "44pt"
+    }
+   ]
+  },
+  {
+   "id": "lowerThirdPresetLabelSource",
+   "label": "Text Format for Lower Third Preset Buttons",
+   "type": "select",
+   "default": "contents",
+   "choices": [
+    {
+     "id": "contents",
+     "label": "Line 1, Line 2"
+    },
+    {
+     "id": "first_line",
+     "label": "Line 1"
+    },
+    {
+     "id": "label",
+     "label": "Label (shows ID if label is empty)"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "run",
+   "name": "Run",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/run HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/run\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clear",
+   "name": "Hide all",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/clear HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/clear\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "draw_on",
+   "name": "Draw on screen - On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/draw/on HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/on\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "draw_off",
+   "name": "Draw on screen - Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/draw/off HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/off\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "draw_size",
+   "name": "Draw on screen - Set brush size",
+   "options": [
+    {
+     "id": "size",
+     "label": "Brush size",
+     "type": "select",
+     "default": "8",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Extra small"
+      },
+      {
+       "id": "3",
+       "label": "Small"
+      },
+      {
+       "id": "6",
+       "label": "Medium"
+      },
+      {
+       "id": "8",
+       "label": "Large"
+      },
+      {
+       "id": "10",
+       "label": "Extra large"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/draw/size/{{option.size|map}}\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
+    "encoding": "text"
+   },
+   "maps": {
+    "size": {
+     "1": "1 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/1",
+     "3": "3 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/3",
+     "6": "6 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/6",
+     "8": "8 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/8",
+     "10": "10 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/10"
+    }
+   }
+  },
+  {
+   "id": "draw_color",
+   "name": "Draw on screen - Set color",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/draw/color/ff0000 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/color/ff0000\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "showHide",
+   "name": "Show/Hide graphic",
+   "options": [
+    {
+     "id": "status",
+     "label": "Show/Hide",
+     "type": "select",
+     "default": "coming",
+     "choices": [
+      {
+       "id": "coming",
+       "label": "Show"
+      },
+      {
+       "id": "going",
+       "label": "Hide"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle on/off air"
+      },
+      {
+       "id": "cued",
+       "label": "Cue on"
+      },
+      {
+       "id": "cuedoff",
+       "label": "Cue off"
+      },
+      {
+       "id": "toggle-cued",
+       "label": "Toggle Cued on/off"
+      }
+     ]
+    },
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: {{option.status|map}}\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "status": {
+     "coming": "19\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"coming",
+     "going": "18\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"going",
+     "toggle": "19\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"toggle",
+     "cued": "17\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"cued",
+     "cuedoff": "20\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"cuedoff",
+     "toggle-cued": "24\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"toggle-cued"
+    }
+   }
+  },
+  {
+   "id": "updateContentImage",
+   "name": "Update content - Image",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "imageName",
+     "label": "Name",
+     "type": "text"
+    },
+    {
+     "id": "imageFilename",
+     "label": "Image",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/graphic/undefined/update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 24\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic/undefined/update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"filename\":\"undefined\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "updateGraphicPosition",
+   "name": "Update graphic position",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "position",
+     "label": "Position",
+     "type": "select",
+     "default": "mc",
+     "choices": [
+      {
+       "id": "tl",
+       "label": "Top Left"
+      },
+      {
+       "id": "tc",
+       "label": "Top Middle"
+      },
+      {
+       "id": "tr",
+       "label": "Top Right"
+      },
+      {
+       "id": "ml",
+       "label": "Middle Left"
+      },
+      {
+       "id": "mc",
+       "label": "Middle"
+      },
+      {
+       "id": "mr",
+       "label": "Middle Right"
+      },
+      {
+       "id": "bl",
+       "label": "Bottom Left"
+      },
+      {
+       "id": "bc",
+       "label": "Bottom Middle"
+      },
+      {
+       "id": "br",
+       "label": "Bottom Right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 17\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"position\":\"{{option.position|map}}\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "position": {
+     "mc": "mc",
+     "tl": "tl",
+     "tc": "tc",
+     "tr": "tr",
+     "ml": "ml",
+     "mr": "mr",
+     "bl": "bl",
+     "bc": "bc",
+     "br": "br"
+    }
+   }
+  },
+  {
+   "id": "updateGraphicScale",
+   "name": "Update graphic scale",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "scale",
+     "label": "Scale (1 to 500)",
+     "type": "number",
+     "default": 100,
+     "min": 1,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 13\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"scale\":{{option.scale}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "updateGraphicTheme",
+   "name": "Update graphic theme",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "theme",
+     "label": "Theme",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-h2r-graphics",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John Barker"
+  }
+ ],
+ "source": {
+  "module": "h2r-graphics",
+  "version": "3.9.0",
+  "license": "MIT",
+  "maintainers": [
+   "John Barker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-h2r-graphics.git"
+ }
+}

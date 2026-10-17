@@ -1,0 +1,175 @@
+{
+ "format": 1,
+ "id": "m-generic-swp08",
+ "name": "SW-P-08 / Ross Router / Snell ProBel Router / Grass Valley Router / Lawo VSM …",
+ "category": "Generic",
+ "version": "2.0.9",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8910,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "matrix",
+   "label": "Matrix Number (Default 1) (normal mode)",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 16
+  },
+  {
+   "id": "matrix_ext",
+   "label": "Matrix Number (Default 1) (extended mode)",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 256
+  },
+  {
+   "id": "max_levels",
+   "label": "Number of levels defined in route (normal mode)",
+   "type": "number",
+   "default": 3,
+   "min": 1,
+   "max": 16
+  },
+  {
+   "id": "max_levels_ext",
+   "label": "Number of levels defined in router (extended mode)",
+   "type": "number",
+   "default": 3,
+   "min": 1,
+   "max": 256
+  },
+  {
+   "id": "tally_dump_and_update",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "tally_dump_variables",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "supported_commands_on_connect",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "read_names_on_connect",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "extended_support",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "name_chars",
+   "label": "Request name length (ignored by some routers)",
+   "type": "select",
+   "default": "01",
+   "choices": [
+    {
+     "id": "00",
+     "label": "4 characters"
+    },
+    {
+     "id": "01",
+     "label": "8 characters"
+    },
+    {
+     "id": "02",
+     "label": "12 characters"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "take",
+   "name": "Take",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "1002020000141405d110031002020100141405d010031002020200141405cf1003",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "get_names",
+   "name": "Refresh Source and Destination names",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "100264000103981003100266000103961003",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "take",
+   "category": "Actions",
+   "name": "Take",
+   "text": "Take",
+   "backgroundColor": "#f00000",
+   "action": {
+    "definitionId": "take",
+    "options": {}
+   }
+  },
+  {
+   "id": "refresh",
+   "category": "Actions",
+   "name": "Refresh Names",
+   "text": "Refresh Names",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "get_names",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-generic-swp08",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel, Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "generic-swp08",
+  "version": "2.0.9",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel",
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-generic-swp08.git"
+ }
+}

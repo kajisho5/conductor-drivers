@@ -1,0 +1,1301 @@
+{
+ "format": 1,
+ "id": "m-obsbot-osc",
+ "name": "OBSBOT Center App / Tail 2 / Tail Air / Tiny / Tiny 4K / Tiny 2 / Tiny 2 Lite…",
+ "category": "OBSBOT",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 57110,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "transport",
+   "label": "Transport Protocol",
+   "type": "select",
+   "default": "udp",
+   "choices": [
+    {
+     "id": "udp",
+     "label": "UDP"
+    },
+    {
+     "id": "tcp",
+     "label": "TCP"
+    }
+   ]
+  },
+  {
+   "id": "listenport",
+   "label": "Listen Port",
+   "type": "number",
+   "default": 57120,
+   "min": 1,
+   "max": 65535,
+   "help": "Port for receiving OSC messages over UDP. 57120 is the default for OBSBOT devices and Center App"
+  },
+  {
+   "id": "model",
+   "label": "Device Model",
+   "type": "select",
+   "default": "OBSBOT_TAIL_2",
+   "choices": [
+    {
+     "id": "OBSBOT_TAIL_2",
+     "label": "OBSBOT Tail 2"
+    },
+    {
+     "id": "OBSBOT_TAIL_AIR",
+     "label": "OBSBOT Tail Air"
+    },
+    {
+     "id": "OBSBOT_CENTER",
+     "label": "OBSBOT Center App"
+    },
+    {
+     "id": "OBSBOT_CENTER_TINY",
+     "label": "OBSBOT Center App (Tiny Series)"
+    },
+    {
+     "id": "OBSBOT_CENTER_TAIL_AIR",
+     "label": "OBSBOT Center App (Tail Series - Tail Air)"
+    },
+    {
+     "id": "OBSBOT_CENTER_TAIL_2",
+     "label": "OBSBOT Center App (Tail Series - Tail 2)"
+    },
+    {
+     "id": "OBSBOT_CENTER_MEET",
+     "label": "OBSBOT Center App (Meet Series)"
+    }
+   ],
+   "help": "Select the model of your OBSBOT device"
+  },
+  {
+   "id": "device",
+   "label": "Device ID",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 255,
+   "help": "Device ID for the OBSBOT Center App. This is not used for hardware devices."
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "setZoom",
+   "name": "Zoom | Set Zoom Level",
+   "options": [
+    {
+     "id": "zoom",
+     "label": "Zoom Level",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d00002c690000000000{{option.zoom|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "setZoomSpeed",
+   "name": "Zoom | Set Zoom Speed",
+   "options": [
+    {
+     "id": "zoomValue",
+     "label": "Target Zoom Value",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "zoomSpeed",
+     "label": "Target Zoom Speed",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d5370656564002c696900000000{{option.zoomValue|u8}}000000{{option.zoomSpeed|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "setZoomMax",
+   "name": "Zoom | Set Zoom Max",
+   "options": [
+    {
+     "id": "zoomLevel",
+     "label": "Zoom Level",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d4d61780000002c690000000000{{option.zoomLevel|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "setZoomMin",
+   "name": "Zoom | Set Zoom Min",
+   "options": [
+    {
+     "id": "zoomLevel",
+     "label": "Zoom Level",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d4d696e0000002c690000000000{{option.zoomLevel|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "resetGimbal",
+   "name": "Gimbal | Reset Position",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f526573657447696d62616c00002c69000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "moveGimbalUp",
+   "name": "Gimbal | Move Up",
+   "options": [
+    {
+     "id": "moveSpeed",
+     "label": "Move Speed",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c557000002c690000000000{{option.moveSpeed|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stopGimbalUp",
+   "name": "Gimbal | Stop Moving Up",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c557000002c69000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "moveGimbalDown",
+   "name": "Gimbal | Move Down",
+   "options": [
+    {
+     "id": "moveSpeed",
+     "label": "Move Speed",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c446f776e000000002c690000000000{{option.moveSpeed|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stopGimbalDown",
+   "name": "Gimbal | Stop Moving Down",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c446f776e000000002c69000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "moveGimbalLeft",
+   "name": "Gimbal | Move Left",
+   "options": [
+    {
+     "id": "moveSpeed",
+     "label": "Move Speed",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c4c656674000000002c690000000000{{option.moveSpeed|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stopGimbalLeft",
+   "name": "Gimbal | Stop Moving Left",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c4c656674000000002c69000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "moveGimbalRight",
+   "name": "Gimbal | Move Right",
+   "options": [
+    {
+     "id": "moveSpeed",
+     "label": "Move Speed",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c52696768740000002c690000000000{{option.moveSpeed|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stopGimbalRight",
+   "name": "Gimbal | Stop Moving Right",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c52696768740000002c69000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "setGimMotorDegree",
+   "name": "Gimbal | Set Motor Degree",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 90
+    },
+    {
+     "id": "pan",
+     "label": "Pan",
+     "type": "number",
+     "default": 0,
+     "min": -159,
+     "max": 159
+    },
+    {
+     "id": "pitch",
+     "label": "Pitch",
+     "type": "number",
+     "default": 0,
+     "min": -62,
+     "max": 62
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d4d6f746f72446567726565000000002c69696900000000000000{{option.speed|u8}}000000{{option.pan|u8}}000000{{option.pitch|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "setMirror",
+   "name": "Other | Set Mirror Mode",
+   "options": [
+    {
+     "id": "mirrorMode",
+     "label": "Mirror Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Normal"
+      },
+      {
+       "id": "1",
+       "label": "Mirror"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744d6972726f72000000002c690000000000{{option.mirrorMode|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mirrorMode": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "setAutoFocus",
+   "name": "Image | Set Auto Focus On/Off",
+   "options": [
+    {
+     "id": "autoFocus",
+     "label": "Auto Focus",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744175746f466f637573002c690000000000{{option.autoFocus|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "autoFocus": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "setManualFocus",
+   "name": "Image | Set Manual Focus Value",
+   "options": [
+    {
+     "id": "focusValue",
+     "label": "Focus Value",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744d616e75616c466f6375730000002c690000000000{{option.focusValue|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "setAutoExposure",
+   "name": "Image | Set Auto Exposure On/Off",
+   "options": [
+    {
+     "id": "autoExposure",
+     "label": "Auto Exposure",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744175746f4578706f7375726500002c690000000000{{option.autoExposure|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "autoExposure": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "setExposureCompensate",
+   "name": "Image | Set Exposure Compensate Value",
+   "options": [
+    {
+     "id": "exposureCompensateValue",
+     "label": "Exposure Compensate Value",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "-30",
+       "label": "-3.0"
+      },
+      {
+       "id": "-27",
+       "label": "-2.7"
+      },
+      {
+       "id": "-23",
+       "label": "-2.3"
+      },
+      {
+       "id": "-20",
+       "label": "-2.0"
+      },
+      {
+       "id": "-17",
+       "label": "-1.7"
+      },
+      {
+       "id": "-13",
+       "label": "-1.3"
+      },
+      {
+       "id": "-10",
+       "label": "-1.0"
+      },
+      {
+       "id": "-7",
+       "label": "-0.7"
+      },
+      {
+       "id": "-3",
+       "label": "-0.3"
+      },
+      {
+       "id": "0",
+       "label": "0.0"
+      },
+      {
+       "id": "3",
+       "label": "0.3"
+      },
+      {
+       "id": "7",
+       "label": "0.7"
+      },
+      {
+       "id": "10",
+       "label": "1.0"
+      },
+      {
+       "id": "13",
+       "label": "1.3"
+      },
+      {
+       "id": "17",
+       "label": "1.7"
+      },
+      {
+       "id": "20",
+       "label": "2.0"
+      },
+      {
+       "id": "23",
+       "label": "2.3"
+      },
+      {
+       "id": "27",
+       "label": "2.7"
+      },
+      {
+       "id": "30",
+       "label": "3.0"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744578706f73757265436f6d70656e73617465000000002c690000{{option.exposureCompensateValue|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "exposureCompensateValue": {
+     "0": "00000000",
+     "3": "00000003",
+     "7": "00000007",
+     "10": "0000000a",
+     "13": "0000000d",
+     "17": "00000011",
+     "20": "00000014",
+     "23": "00000017",
+     "27": "0000001b",
+     "30": "0000001e",
+     "-30": "ffffffe2",
+     "-27": "ffffffe5",
+     "-23": "ffffffe9",
+     "-20": "ffffffec",
+     "-17": "ffffffef",
+     "-13": "fffffff3",
+     "-10": "fffffff6",
+     "-7": "fffffff9",
+     "-3": "fffffffd"
+    }
+   }
+  },
+  {
+   "id": "setShutterSpeed",
+   "name": "Image | Set Shutter Speed",
+   "options": [
+    {
+     "id": "shutterSpeedValue",
+     "label": "Shutter Speed Value",
+     "type": "select",
+     "default": "100",
+     "choices": [
+      {
+       "id": "6400",
+       "label": "1/6400"
+      },
+      {
+       "id": "5000",
+       "label": "1/5000"
+      },
+      {
+       "id": "3200",
+       "label": "1/3200"
+      },
+      {
+       "id": "2500",
+       "label": "1/2500"
+      },
+      {
+       "id": "2000",
+       "label": "1/2000"
+      },
+      {
+       "id": "1600",
+       "label": "1/1600"
+      },
+      {
+       "id": "1250",
+       "label": "1/1250"
+      },
+      {
+       "id": "1000",
+       "label": "1/1000"
+      },
+      {
+       "id": "800",
+       "label": "1/800"
+      },
+      {
+       "id": "640",
+       "label": "1/640"
+      },
+      {
+       "id": "500",
+       "label": "1/500"
+      },
+      {
+       "id": "400",
+       "label": "1/400"
+      },
+      {
+       "id": "320",
+       "label": "1/320"
+      },
+      {
+       "id": "240",
+       "label": "1/240"
+      },
+      {
+       "id": "200",
+       "label": "1/200"
+      },
+      {
+       "id": "160",
+       "label": "1/160"
+      },
+      {
+       "id": "120",
+       "label": "1/120"
+      },
+      {
+       "id": "100",
+       "label": "1/100"
+      },
+      {
+       "id": "80",
+       "label": "1/80"
+      },
+      {
+       "id": "60",
+       "label": "1/60"
+      },
+      {
+       "id": "50",
+       "label": "1/50"
+      },
+      {
+       "id": "40",
+       "label": "1/40"
+      },
+      {
+       "id": "30",
+       "label": "1/30"
+      },
+      {
+       "id": "25",
+       "label": "1/25"
+      },
+      {
+       "id": "20",
+       "label": "1/20"
+      },
+      {
+       "id": "15",
+       "label": "1/15"
+      },
+      {
+       "id": "12.5",
+       "label": "1/12.5"
+      },
+      {
+       "id": "10",
+       "label": "1/10"
+      },
+      {
+       "id": "8",
+       "label": "1/8"
+      },
+      {
+       "id": "6.25",
+       "label": "1/6.25"
+      },
+      {
+       "id": "5",
+       "label": "1/5"
+      },
+      {
+       "id": "4",
+       "label": "1/4"
+      },
+      {
+       "id": "3",
+       "label": "1/3"
+      },
+      {
+       "id": "2.5",
+       "label": "1/2.5"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657453687574746572537065656400002c6900000000{{option.shutterSpeedValue|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "shutterSpeedValue": {
+     "3": "0003",
+     "4": "0004",
+     "5": "0005",
+     "8": "0008",
+     "10": "000a",
+     "15": "000f",
+     "20": "0014",
+     "25": "0019",
+     "30": "001e",
+     "40": "0028",
+     "50": "0032",
+     "60": "003c",
+     "80": "0050",
+     "100": "0064",
+     "120": "0078",
+     "160": "00a0",
+     "200": "00c8",
+     "240": "00f0",
+     "320": "0140",
+     "400": "0190",
+     "500": "01f4",
+     "640": "0280",
+     "800": "0320",
+     "1000": "03e8",
+     "1250": "04e2",
+     "1600": "0640",
+     "2000": "07d0",
+     "2500": "09c4",
+     "3200": "0c80",
+     "5000": "1388",
+     "6400": "1900",
+     "12.5": "000c",
+     "6.25": "0006",
+     "2.5": "0002"
+    }
+   }
+  },
+  {
+   "id": "setISO",
+   "name": "Image | Set ISO",
+   "options": [
+    {
+     "id": "isoValue",
+     "label": "ISO Value",
+     "type": "select",
+     "default": "100",
+     "choices": [
+      {
+       "id": "100",
+       "label": "100"
+      },
+      {
+       "id": "200",
+       "label": "200"
+      },
+      {
+       "id": "400",
+       "label": "400"
+      },
+      {
+       "id": "800",
+       "label": "800"
+      },
+      {
+       "id": "1600",
+       "label": "1600"
+      },
+      {
+       "id": "3200",
+       "label": "3200"
+      },
+      {
+       "id": "6400",
+       "label": "6400"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657449534f0000002c6900000000{{option.isoValue|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "isoValue": {
+     "100": "0064",
+     "200": "00c8",
+     "400": "0190",
+     "800": "0320",
+     "1600": "0640",
+     "3200": "0c80",
+     "6400": "1900"
+    }
+   }
+  },
+  {
+   "id": "setAutoWhiteBalance",
+   "name": "Image | Set Auto White Balance On/Off",
+   "options": [
+    {
+     "id": "autoWhiteBalance",
+     "label": "Auto White Balance",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744175746f576869746542616c616e636500002c690000000000{{option.autoWhiteBalance|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "autoWhiteBalance": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "setColorTemperature",
+   "name": "Image | Set Color Temperature",
+   "options": [
+    {
+     "id": "colorTemperature",
+     "label": "Color Temperature",
+     "type": "number",
+     "default": 0,
+     "min": 2000,
+     "max": 10000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f536574436f6c6f7254656d706572617475726500002c6900000000{{option.colorTemperature|u16be}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "OBSBOT_TAIL_2_aiModeEnable",
+   "name": "Tail 2 | AI Mode On/Off",
+   "options": [
+    {
+     "id": "aiMode",
+     "label": "AI Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365744169456e61626c65000000002c690000000000{{option.aiMode|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "aiMode": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "OBSBOT_TAIL_2_setOnlyMe",
+   "name": "Tail 2 | Set Only Me On/Off",
+   "options": [
+    {
+     "id": "onlyMe",
+     "label": "Only Me",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365744f6e6c794d6500002c690000000000{{option.onlyMe|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "onlyMe": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "OBSBOT_TAIL_2_startRecording",
+   "name": "Tail 2 | Start Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365745265636f7264696e670000002c69000000000001",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "OBSBOT_TAIL_2_stopRecording",
+   "name": "Tail 2 | Stop Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365745265636f7264696e670000002c69000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "OBSBOT_TAIL_2_takeSnapshot",
+   "name": "Tail 2 | Take Snapshot",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f4f4253424f542f43616d6572612f5461696c322f536e617073686f740000002c69000000000001",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "zoom_0",
+   "category": "Zoom",
+   "name": "Zoom 0%",
+   "text": "Zoom 0%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setZoom",
+    "options": {
+     "zoom": 0
+    }
+   }
+  },
+  {
+   "id": "zoom_50",
+   "category": "Zoom",
+   "name": "Zoom 50%",
+   "text": "Zoom 50%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setZoom",
+    "options": {
+     "zoom": 50
+    }
+   }
+  },
+  {
+   "id": "zoom_100",
+   "category": "Zoom",
+   "name": "Zoom 100%",
+   "text": "Zoom 100%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setZoom",
+    "options": {
+     "zoom": 100
+    }
+   }
+  },
+  {
+   "id": "zoom_speed",
+   "category": "Zoom",
+   "name": "Zoom Speed",
+   "text": "Zoom Speed",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setZoomSpeed",
+    "options": {
+     "zoomValue": 50,
+     "zoomSpeed": 5
+    }
+   }
+  },
+  {
+   "id": "zoom_max",
+   "category": "Zoom",
+   "name": "Zoom Max",
+   "text": "Zoom Max",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setZoomMax",
+    "options": {
+     "zoomLevel": 100
+    }
+   }
+  },
+  {
+   "id": "zoom_min",
+   "category": "Zoom",
+   "name": "Zoom Min",
+   "text": "Zoom Min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setZoomMin",
+    "options": {
+     "zoomLevel": 0
+    }
+   }
+  },
+  {
+   "id": "gimbal_motor_degree",
+   "category": "Gimbal",
+   "name": "Set Gimbal Position",
+   "text": "Set Gimbal Position",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGimMotorDegree",
+    "options": {
+     "speed": 30,
+     "pan": 0,
+     "pitch": 0
+    }
+   }
+  },
+  {
+   "id": "gimbal_reset",
+   "category": "Gimbal",
+   "name": "Reset Gimbal",
+   "text": "Reset Gimbal",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetGimbal",
+    "options": {}
+   }
+  },
+  {
+   "id": "mirror_mode_on",
+   "category": "Other",
+   "name": "Mirror Mode On",
+   "text": "Mirror Mode On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setMirror",
+    "options": {
+     "mirrorMode": "1"
+    }
+   }
+  },
+  {
+   "id": "mirror_mode_off",
+   "category": "Other",
+   "name": "Mirror Mode Off",
+   "text": "Mirror Mode Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setMirror",
+    "options": {
+     "mirrorMode": "0"
+    }
+   }
+  },
+  {
+   "id": "autofocus_on",
+   "category": "Image",
+   "name": "Auto Focus On",
+   "text": "Auto Focus On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setAutoFocus",
+    "options": {
+     "autoFocus": "1"
+    }
+   }
+  },
+  {
+   "id": "autofocus_off",
+   "category": "Image",
+   "name": "Auto Focus Off",
+   "text": "Auto Focus Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setAutoFocus",
+    "options": {
+     "autoFocus": "0"
+    }
+   }
+  },
+  {
+   "id": "autoexposure_on",
+   "category": "Image",
+   "name": "Auto Exposure On",
+   "text": "Auto Exposure On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setAutoExposure",
+    "options": {
+     "autoExposure": "1"
+    }
+   }
+  },
+  {
+   "id": "autoexposure_off",
+   "category": "Image",
+   "name": "Auto Exposure Off",
+   "text": "Auto Exposure Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setAutoExposure",
+    "options": {
+     "autoExposure": "0"
+    }
+   }
+  },
+  {
+   "id": "auto_wb_on",
+   "category": "Image",
+   "name": "Auto White Balance On",
+   "text": "Auto White Balance On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setAutoWhiteBalance",
+    "options": {
+     "autoWhiteBalance": "1"
+    }
+   }
+  },
+  {
+   "id": "auto_wb_off",
+   "category": "Image",
+   "name": "Auto White Balance Off",
+   "text": "Auto White Balance Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setAutoWhiteBalance",
+    "options": {
+     "autoWhiteBalance": "0"
+    }
+   }
+  },
+  {
+   "id": "manual_focus_50",
+   "category": "Image",
+   "name": "Manual Focus 50",
+   "text": "Manual Focus 50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setManualFocus",
+    "options": {
+     "focusValue": 50
+    }
+   }
+  },
+  {
+   "id": "color_temp_5000",
+   "category": "Image",
+   "name": "Color Temp 5000K",
+   "text": "Color Temp 5000K",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setColorTemperature",
+    "options": {
+     "colorTemperature": 5000
+    }
+   }
+  },
+  {
+   "id": "tail2_only_me_on",
+   "category": "Tail 2",
+   "name": "Only Me On",
+   "text": "Only Me On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_setOnlyMe",
+    "options": {
+     "onlyMe": "1"
+    }
+   }
+  },
+  {
+   "id": "tail2_only_me_off",
+   "category": "Tail 2",
+   "name": "Only Me Off",
+   "text": "Only Me Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_setOnlyMe",
+    "options": {
+     "onlyMe": "0"
+    }
+   }
+  },
+  {
+   "id": "tail2_start_recording",
+   "category": "Tail 2",
+   "name": "Start Recording",
+   "text": "Start Recording",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_startRecording",
+    "options": {}
+   }
+  },
+  {
+   "id": "tail2_stop_recording",
+   "category": "Tail 2",
+   "name": "Stop Recording",
+   "text": "Stop Recording",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_stopRecording",
+    "options": {}
+   }
+  },
+  {
+   "id": "tail2_snapshot",
+   "category": "Tail 2",
+   "name": "Take Snapshot",
+   "text": "Take Snapshot",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_takeSnapshot",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-obsbot-osc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "obsbot-osc",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-obsbot-osc.git"
+ }
+}

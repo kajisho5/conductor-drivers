@@ -1,0 +1,1696 @@
+{
+ "format": 1,
+ "id": "m-behringer-xair",
+ "name": "Behringer/Midas XR/MR / XAir / XR12 / XR16 / X18 / XR18",
+ "category": "Behringer/Midas",
+ "version": "2.8.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 10024,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "scan",
+   "label": "Scan network for XAir mixers?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "model",
+   "label": "Select Model",
+   "type": "select",
+   "default": "X18",
+   "choices": [
+    {
+     "id": "XR12",
+     "label": "XAir 12 Rack"
+    },
+    {
+     "id": "XR16",
+     "label": "XAir 16 Rack"
+    },
+    {
+     "id": "XR18",
+     "label": "XAir 18 Rack"
+    },
+    {
+     "id": "X18",
+     "label": "XAir 18 Desk"
+    }
+   ],
+   "help": "This model is assumed when mixer is offline"
+  },
+  {
+   "id": "mixer",
+   "label": "Select Mixer by Name",
+   "type": "select",
+   "default": "none",
+   "choices": [
+    {
+     "id": "none",
+     "label": "No XAir units located"
+    }
+   ],
+   "help": "Name and IP of mixers on the network"
+  }
+ ],
+ "actions": [
+  {
+   "id": "mFad_a",
+   "name": "Main LR Level Adjust",
+   "options": [
+    {
+     "id": "ticks",
+     "label": "Adjust By",
+     "type": "text",
+     "default": "1",
+     "help": "Move fader +/- percent."
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    },
+    {
+     "id": "faderLim",
+     "label": "Limit fader to 0.0dB",
+     "type": "boolean",
+     "default": 0,
+     "help": "This prevents the fader level from going above 0db (75%)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f6d69782f66616465720000002c6600007fc00000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "mFad_r",
+   "name": "Main LR Level Recall",
+   "options": [
+    {
+     "id": "store",
+     "label": "From",
+     "type": "select",
+     "default": "me",
+     "choices": [
+      {
+       "id": "me",
+       "label": "Channel"
+      },
+      {
+       "id": "gs_01",
+       "label": "Global 1"
+      },
+      {
+       "id": "gs_02",
+       "label": "Global 2"
+      },
+      {
+       "id": "gs_03",
+       "label": "Global 3"
+      },
+      {
+       "id": "gs_04",
+       "label": "Global 4"
+      },
+      {
+       "id": "gs_05",
+       "label": "Global 5"
+      },
+      {
+       "id": "gs_06",
+       "label": "Global 6"
+      },
+      {
+       "id": "gs_07",
+       "label": "Global 7"
+      },
+      {
+       "id": "gs_08",
+       "label": "Global 8"
+      },
+      {
+       "id": "gs_09",
+       "label": "Global 9"
+      },
+      {
+       "id": "gs_10",
+       "label": "Global 10"
+      }
+     ],
+     "help": "Recall stored fader value"
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    },
+    {
+     "id": "faderLim",
+     "label": "Limit fader to 0.0dB",
+     "type": "boolean",
+     "default": 0,
+     "help": "This prevents the fader level from going above 0db (75%)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f6d69782f66616465720000002c660000bf800000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "usbFad_a",
+   "name": "USB(x12/x16) or Aux In(x18) Level Adjust",
+   "options": [
+    {
+     "id": "ticks",
+     "label": "Adjust By",
+     "type": "text",
+     "default": "1",
+     "help": "Move fader +/- percent."
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    },
+    {
+     "id": "faderLim",
+     "label": "Limit fader to 0.0dB",
+     "type": "boolean",
+     "default": 0,
+     "help": "This prevents the fader level from going above 0db (75%)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f6d69782f666164657200002c6600007fc00000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "usbFad_r",
+   "name": "USB(x12/x16) or Aux In(x18) Level Recall",
+   "options": [
+    {
+     "id": "store",
+     "label": "From",
+     "type": "select",
+     "default": "me",
+     "choices": [
+      {
+       "id": "me",
+       "label": "Channel"
+      },
+      {
+       "id": "gs_01",
+       "label": "Global 1"
+      },
+      {
+       "id": "gs_02",
+       "label": "Global 2"
+      },
+      {
+       "id": "gs_03",
+       "label": "Global 3"
+      },
+      {
+       "id": "gs_04",
+       "label": "Global 4"
+      },
+      {
+       "id": "gs_05",
+       "label": "Global 5"
+      },
+      {
+       "id": "gs_06",
+       "label": "Global 6"
+      },
+      {
+       "id": "gs_07",
+       "label": "Global 7"
+      },
+      {
+       "id": "gs_08",
+       "label": "Global 8"
+      },
+      {
+       "id": "gs_09",
+       "label": "Global 9"
+      },
+      {
+       "id": "gs_10",
+       "label": "Global 10"
+      }
+     ],
+     "help": "Recall stored fader value"
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    },
+    {
+     "id": "faderLim",
+     "label": "Limit fader to 0.0dB",
+     "type": "boolean",
+     "default": 0,
+     "help": "This prevents the fader level from going above 0db (75%)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f6d69782f666164657200002c660000bf800000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "mMute",
+   "name": "Mute Main LR",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute / Unmute",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mute"
+      },
+      {
+       "id": "1",
+       "label": "Unmute"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f6d69782f6f6e00002c690000000000{{option.mute|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mute": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "usbMute",
+   "name": "Mute USB(x12/x16) or Aux In(x18)",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute / Unmute",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mute"
+      },
+      {
+       "id": "1",
+       "label": "Unmute"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f6d69782f6f6e002c690000000000{{option.mute|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mute": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "mute_grp",
+   "name": "Mute Group",
+   "options": [
+    {
+     "id": "mute_grp",
+     "label": "Mute Group 1-4",
+     "type": "number",
+     "default": "1",
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "mute",
+     "label": "Mute / Unmute",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f6d7574652f{{option.mute_grp|hexstr}}00002c690000000000{{option.mute|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mute": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "mPan_a",
+   "name": "Main LR Pan Adjust",
+   "options": [
+    {
+     "id": "ticks",
+     "label": "Adjust By",
+     "type": "text",
+     "default": "1",
+     "help": "Move +/-"
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f6d69782f70616e002c6600007fc00000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "mPan_r",
+   "name": "Main LR Pan Recall",
+   "options": [
+    {
+     "id": "store",
+     "label": "From",
+     "type": "select",
+     "default": "me",
+     "choices": [
+      {
+       "id": "me",
+       "label": "Channel"
+      },
+      {
+       "id": "gs_01",
+       "label": "Global 1"
+      },
+      {
+       "id": "gs_02",
+       "label": "Global 2"
+      },
+      {
+       "id": "gs_03",
+       "label": "Global 3"
+      },
+      {
+       "id": "gs_04",
+       "label": "Global 4"
+      },
+      {
+       "id": "gs_05",
+       "label": "Global 5"
+      },
+      {
+       "id": "gs_06",
+       "label": "Global 6"
+      },
+      {
+       "id": "gs_07",
+       "label": "Global 7"
+      },
+      {
+       "id": "gs_08",
+       "label": "Global 8"
+      },
+      {
+       "id": "gs_09",
+       "label": "Global 9"
+      },
+      {
+       "id": "gs_10",
+       "label": "Global 10"
+      }
+     ],
+     "help": "Recall stored pan value"
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f6d69782f70616e002c660000bf800000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "usbPan_a",
+   "name": "USB(x12/x16) or Aux In(x18) Pan Adjust",
+   "options": [
+    {
+     "id": "ticks",
+     "label": "Adjust By",
+     "type": "text",
+     "default": "1",
+     "help": "Move +/-"
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f6d69782f70616e000000002c6600007fc00000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "usbPan_r",
+   "name": "USB(x12/x16) or Aux In(x18) Pan Recall",
+   "options": [
+    {
+     "id": "store",
+     "label": "From",
+     "type": "select",
+     "default": "me",
+     "choices": [
+      {
+       "id": "me",
+       "label": "Channel"
+      },
+      {
+       "id": "gs_01",
+       "label": "Global 1"
+      },
+      {
+       "id": "gs_02",
+       "label": "Global 2"
+      },
+      {
+       "id": "gs_03",
+       "label": "Global 3"
+      },
+      {
+       "id": "gs_04",
+       "label": "Global 4"
+      },
+      {
+       "id": "gs_05",
+       "label": "Global 5"
+      },
+      {
+       "id": "gs_06",
+       "label": "Global 6"
+      },
+      {
+       "id": "gs_07",
+       "label": "Global 7"
+      },
+      {
+       "id": "gs_08",
+       "label": "Global 8"
+      },
+      {
+       "id": "gs_09",
+       "label": "Global 9"
+      },
+      {
+       "id": "gs_10",
+       "label": "Global 10"
+      }
+     ],
+     "help": "Recall stored pan value"
+    },
+    {
+     "id": "duration",
+     "label": "Fade Duration (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 60000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f6d69782f70616e000000002c660000bf800000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "gate",
+   "name": "Noise Gate State",
+   "options": [
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "/ch/",
+     "choices": [
+      {
+       "id": "/ch/",
+       "label": "Channel 1-16"
+      }
+     ]
+    },
+    {
+     "id": "num",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    },
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f63682f{{option.num|pad2|hexstr}}2f676174652f6f6e00002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "m_insert",
+   "name": "Main LR Insert FX State",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f696e736572742f6f6e0000002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "m_eq",
+   "name": "Main LR EQ State",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f65712f6f6e0000002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "m_dyn",
+   "name": "Main LR Compressor State",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f64796e2f6f6e00002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "u_eq",
+   "name": "USB(x12/x16) or Aux In(x18) EQ State",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f65712f6f6e00002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "u_lr",
+   "name": "USB(x12/x16) or Aux In(x18) Main Out State",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f6d69782f6c72002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solosw_ch",
+   "name": "Solo Channel (1-16)",
+   "options": [
+    {
+     "id": "num",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    },
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d737461742f736f6c6f73772f{{option.num|pad2|hexstr}}000000002c690000000000{{option.solo|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "solo": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solosw_aux",
+   "name": "Solo Aux/USB",
+   "options": [
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d737461742f736f6c6f73772f3137000000002c690000000000{{option.solo|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "solo": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solosw_lr",
+   "name": "Solo Master LR",
+   "options": [
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d737461742f736f6c6f73772f3530000000002c690000000000{{option.solo|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "solo": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solosw_dca",
+   "name": "Solo DCA (1-4)",
+   "options": [
+    {
+     "id": "num",
+     "label": "DCA",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d737461742f736f6c6f73772f35{{option.num|hexstr}}000000002c690000000000{{option.solo|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "solo": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solo_source",
+   "name": "Monitor Source",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "LR"
+      },
+      {
+       "id": "2",
+       "label": "LR (PFL)"
+      },
+      {
+       "id": "3",
+       "label": "LR (AFL)"
+      },
+      {
+       "id": "4",
+       "label": "AUX"
+      },
+      {
+       "id": "5",
+       "label": "USB 17/18"
+      },
+      {
+       "id": "6",
+       "label": "Bus 1"
+      },
+      {
+       "id": "7",
+       "label": "Bus 2"
+      },
+      {
+       "id": "8",
+       "label": "Bus 3"
+      },
+      {
+       "id": "9",
+       "label": "Bus 4"
+      },
+      {
+       "id": "10",
+       "label": "Bus 5"
+      },
+      {
+       "id": "11",
+       "label": "Bus 6"
+      },
+      {
+       "id": "12",
+       "label": "Bus 1/2"
+      },
+      {
+       "id": "13",
+       "label": "Bus 3/4"
+      },
+      {
+       "id": "14",
+       "label": "Bus 5/6"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f736f6c6f2f736f75726365002c690000000000{{option.source|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "source": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0a",
+     "11": "0b",
+     "12": "0c",
+     "13": "0d",
+     "14": "0e"
+    }
+   }
+  },
+  {
+   "id": "solo_chmode",
+   "name": "Channel Solo",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "AFL"
+      },
+      {
+       "id": "0",
+       "label": "PFL"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f736f6c6f2f63686d6f6465002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "solo_busmode",
+   "name": "Bus Solo",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "AFL"
+      },
+      {
+       "id": "0",
+       "label": "PFL"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f736f6c6f2f6275736d6f6465000000002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "solo_dimpfl",
+   "name": "Solo PFL Attenuation",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f736f6c6f2f64696d70666c002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solo_mute",
+   "name": "Solo Mute",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f736f6c6f2f6d7574650000002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solo_mono",
+   "name": "Solo Mono",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f736f6c6f2f6d6f6e6f0000002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "solo_dim",
+   "name": "Solo Dim",
+   "options": [
+    {
+     "id": "set",
+     "label": "Value",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f636f6e6669672f736f6c6f2f64696d000000002c690000000000{{option.set|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "set": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "clearsolo",
+   "name": "Solo Clear",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d616374696f6e2f636c656172736f6c6f00002c69000000000001",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "mColor",
+   "name": "Set Main color",
+   "options": [
+    {
+     "id": "col",
+     "label": "color",
+     "type": "select",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Red: "
+      },
+      {
+       "id": "2",
+       "label": "Green"
+      },
+      {
+       "id": "3",
+       "label": "Yellow"
+      },
+      {
+       "id": "4",
+       "label": "Blue"
+      },
+      {
+       "id": "5",
+       "label": "Magenta"
+      },
+      {
+       "id": "6",
+       "label": "Cyan"
+      },
+      {
+       "id": "7",
+       "label": "White"
+      },
+      {
+       "id": "8",
+       "label": "Off Inverted"
+      },
+      {
+       "id": "9",
+       "label": "Red Inverted"
+      },
+      {
+       "id": "10",
+       "label": "Green Inverted"
+      },
+      {
+       "id": "11",
+       "label": "Yellow Inverted"
+      },
+      {
+       "id": "12",
+       "label": "Blue Inverted"
+      },
+      {
+       "id": "13",
+       "label": "Magenta Inverted"
+      },
+      {
+       "id": "14",
+       "label": "Cyan Inverted"
+      },
+      {
+       "id": "15",
+       "label": "White Inverted"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6c722f636f6e6669672f636f6c6f72000000002c690000000000{{option.col|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "col": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0a",
+     "11": "0b",
+     "12": "0c",
+     "13": "0d",
+     "14": "0e",
+     "15": "0f"
+    }
+   }
+  },
+  {
+   "id": "usbColor",
+   "name": "Set USB color",
+   "options": [
+    {
+     "id": "col",
+     "label": "color",
+     "type": "select",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Red: "
+      },
+      {
+       "id": "2",
+       "label": "Green"
+      },
+      {
+       "id": "3",
+       "label": "Yellow"
+      },
+      {
+       "id": "4",
+       "label": "Blue"
+      },
+      {
+       "id": "5",
+       "label": "Magenta"
+      },
+      {
+       "id": "6",
+       "label": "Cyan"
+      },
+      {
+       "id": "7",
+       "label": "White"
+      },
+      {
+       "id": "8",
+       "label": "Off Inverted"
+      },
+      {
+       "id": "9",
+       "label": "Red Inverted"
+      },
+      {
+       "id": "10",
+       "label": "Green Inverted"
+      },
+      {
+       "id": "11",
+       "label": "Yellow Inverted"
+      },
+      {
+       "id": "12",
+       "label": "Blue Inverted"
+      },
+      {
+       "id": "13",
+       "label": "Magenta Inverted"
+      },
+      {
+       "id": "14",
+       "label": "Cyan Inverted"
+      },
+      {
+       "id": "15",
+       "label": "White Inverted"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f72746e2f6175782f636f6e6669672f636f6c6f720000002c690000000000{{option.col|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "col": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08",
+     "9": "09",
+     "10": "0a",
+     "11": "0b",
+     "12": "0c",
+     "13": "0d",
+     "14": "0e",
+     "15": "0f"
+    }
+   }
+  },
+  {
+   "id": "next_snap",
+   "name": "Snapshot: Load Next",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d736e61702f6c6f6164002c69000000000001",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "prev_snap",
+   "name": "Snapshot: Load Prior",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d736e61702f6c6f6164002c69000000000001",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "save_snap",
+   "name": "Snapshot: Save Current",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d736e61702f73617665002c69000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "tape",
+   "name": "Tape Operation",
+   "options": [
+    {
+     "id": "tFunc",
+     "label": "Function",
+     "type": "select",
+     "choices": [
+      {
+       "id": "0",
+       "label": "STOP"
+      },
+      {
+       "id": "1",
+       "label": "PLAY PAUSE"
+      },
+      {
+       "id": "2",
+       "label": "PLAY"
+      },
+      {
+       "id": "3",
+       "label": "RECORD PAUSE"
+      },
+      {
+       "id": "4",
+       "label": "RECORD"
+      },
+      {
+       "id": "5",
+       "label": "FAST FORWARD"
+      },
+      {
+       "id": "6",
+       "label": "REWIND"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f2d737461742f746170652f73746174650000002c690000000000{{option.tFunc|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "tFunc": {
+     "0": "00",
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "chan_lvl",
+   "category": "Channel",
+   "name": "Channel 1 Level\nIncludes Fader dB, Color, Solo toggle, Solo feedback",
+   "text": "Channel 1 Level\nIncludes Fader dB, Color",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "solosw_ch",
+    "options": {
+     "num": 1,
+     "solo": 2
+    }
+   }
+  },
+  {
+   "id": "rude",
+   "category": "Status",
+   "name": "Rude Solo Button\nBlinks if any solo is on\nPush to clear all solos",
+   "text": "All Solo Clear",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clearsolo",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-behringer-xair",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John Knight, Jr, Per Roine, Janos Münker"
+  }
+ ],
+ "source": {
+  "module": "behringer-xair",
+  "version": "2.8.0",
+  "license": "MIT",
+  "maintainers": [
+   "John Knight, Jr",
+   "Per Roine",
+   "Janos Münker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-behringer-xair.git"
+ }
+}

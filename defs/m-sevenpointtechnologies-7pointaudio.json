@@ -1,0 +1,431 @@
+{
+ "format": 1,
+ "id": "m-sevenpointtechnologies-7pointaudio",
+ "name": "Seven Point Technologies, LLC 7 Point Audio",
+ "category": "Seven Point Technologies, LLC",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7788,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "announcement",
+   "name": "Announcement",
+   "options": [
+    {
+     "id": "announcementState",
+     "label": "Announcement Control",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle Announcement"
+      },
+      {
+       "id": "on",
+       "label": "Announcement On"
+      },
+      {
+       "id": "off",
+       "label": "Announcement Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "announcement{{option.announcementState|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "announcementState": {
+     "toggle": "",
+     "on": " 1",
+     "off": " 0"
+    }
+   }
+  },
+  {
+   "id": "compressor",
+   "name": "Compressor",
+   "options": [
+    {
+     "id": "compressorState",
+     "label": "Compressor Control",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle Compressor"
+      },
+      {
+       "id": "on",
+       "label": "Compressor On"
+      },
+      {
+       "id": "off",
+       "label": "Compressor Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "compressor{{option.compressorState|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "compressorState": {
+     "toggle": "",
+     "on": " 1",
+     "off": " 0"
+    }
+   }
+  },
+  {
+   "id": "crossfade",
+   "name": "Crossfade",
+   "options": [
+    {
+     "id": "crossfadeState",
+     "label": "Crossfade Control",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle Crossfade"
+      },
+      {
+       "id": "on",
+       "label": "Crossfade On"
+      },
+      {
+       "id": "off",
+       "label": "Crossfade Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "crossfade{{option.crossfadeState|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "crossfadeState": {
+     "toggle": "",
+     "on": " 1",
+     "off": " 0"
+    }
+   }
+  },
+  {
+   "id": "defaultfade",
+   "name": "Default Fade",
+   "options": [
+    {
+     "id": "defaultfadeState",
+     "label": "Default Fade Control",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle Default Fade"
+      },
+      {
+       "id": "on",
+       "label": "Default Fade On"
+      },
+      {
+       "id": "off",
+       "label": "Default Fade Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "defaultfade{{option.defaultfadeState|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "defaultfadeState": {
+     "toggle": "",
+     "on": " 1",
+     "off": " 0"
+    }
+   }
+  },
+  {
+   "id": "equalizer",
+   "name": "Equalizer",
+   "options": [
+    {
+     "id": "equalizerState",
+     "label": "Equalizer Control",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle Equalizer"
+      },
+      {
+       "id": "on",
+       "label": "Equalizer On"
+      },
+      {
+       "id": "off",
+       "label": "Equalizer Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "equalizer{{option.equalizerState|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "equalizerState": {
+     "toggle": "",
+     "on": " 1",
+     "off": " 0"
+    }
+   }
+  },
+  {
+   "id": "loop",
+   "name": "Loop",
+   "options": [
+    {
+     "id": "loopState",
+     "label": "Loop Control",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle Loop"
+      },
+      {
+       "id": "on",
+       "label": "Loop On"
+      },
+      {
+       "id": "off",
+       "label": "Loop Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "loop{{option.loopState|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "loopState": {
+     "toggle": "",
+     "on": " 1",
+     "off": " 0"
+    }
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "pause",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "play",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "playbutton",
+   "name": "Play Button",
+   "options": [
+    {
+     "id": "buttonid",
+     "label": "Button ID",
+     "type": "text"
+    },
+    {
+     "id": "sos",
+     "label": "Sound Over Sound",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "playbutton {{option.buttonid}} {{option.sos|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "sos": {
+     "false": "0",
+     "true": "1"
+    }
+   }
+  },
+  {
+   "id": "rewind",
+   "name": "Rewind",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "rewind",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startPlaylist",
+   "name": "Start Playlist",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "startplaylist",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stop",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopall",
+   "name": "Stop All",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stopall",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopplaylist",
+   "name": "Stop Playlist",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stopplaylist",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volume",
+   "name": "Volume",
+   "options": [
+    {
+     "id": "volumelvl",
+     "label": "Volume (0-100)",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "volume {{option.volumelvl}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volumedown",
+   "name": "Volume Down",
+   "options": [
+    {
+     "id": "volumelvl",
+     "label": "Volume (0-10)",
+     "type": "number",
+     "default": 5,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "volumedown {{option.volumelvl}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volumeup",
+   "name": "Volume Up",
+   "options": [
+    {
+     "id": "volumelvl",
+     "label": "Volume (0-10)",
+     "type": "number",
+     "default": 5,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "volumeup {{option.volumelvl}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-sevenpointtechnologies-7pointaudio",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeff Ball"
+  }
+ ],
+ "source": {
+  "module": "sevenpointtechnologies-7pointaudio",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeff Ball"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-sevenpointtechnologies-7pointaudio.git"
+ }
+}

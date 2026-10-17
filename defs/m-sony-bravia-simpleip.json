@@ -1,0 +1,152 @@
+{
+ "format": 1,
+ "id": "m-sony-bravia-simpleip",
+ "name": "Sony Bravia Simple IP",
+ "category": "Sony",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 20060,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_power_status",
+   "name": "Set Power Status",
+   "options": [
+    {
+     "id": "power_status",
+     "label": "Power Status",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "*SC{{option.power_status|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "power_status": {
+     "on": "POWR0000000000000001",
+     "off": "POWR0000000000000000",
+     "toggle": "TPOW################"
+    }
+   }
+  },
+  {
+   "id": "set_mute",
+   "name": "Set Mute State",
+   "options": [
+    {
+     "id": "mute_state",
+     "label": "Mute State",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "*SCAMUT000000000000000{{option.mute_state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute_state": {
+     "off": "0",
+     "on": "1"
+    }
+   }
+  },
+  {
+   "id": "set_picture_mute",
+   "name": "Set Picture Mute State",
+   "options": [
+    {
+     "id": "picture_mute_state",
+     "label": "Picture Mute State",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "*SCPMUT000000000000000{{option.picture_mute_state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "picture_mute_state": {
+     "off": "0",
+     "on": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-sony-bravia-simpleip",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Elliot Matson"
+  }
+ ],
+ "source": {
+  "module": "sony-bravia-simpleip",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Elliot Matson"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-sony-bravia-simpleip.git"
+ }
+}

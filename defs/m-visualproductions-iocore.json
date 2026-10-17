@@ -1,0 +1,988 @@
+{
+ "format": 1,
+ "id": "m-visualproductions-iocore",
+ "name": "Visual Productions IoCore2",
+ "category": "Visual Productions",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "gpoControl",
+   "name": "GPO Control",
+   "options": [
+    {
+     "id": "port",
+     "label": "GPO Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Port 1"
+      },
+      {
+       "id": "2",
+       "label": "Port 2"
+      },
+      {
+       "id": "3",
+       "label": "Port 3"
+      },
+      {
+       "id": "4",
+       "label": "Port 4"
+      },
+      {
+       "id": "5",
+       "label": "Port 5"
+      },
+      {
+       "id": "6",
+       "label": "Port 6"
+      }
+     ]
+    },
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-gpo-{{option.port|map}}={{option.state|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "port": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    },
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "actionListExecute",
+   "name": "Execute action",
+   "options": [
+    {
+     "id": "selectedActionList",
+     "label": "Action List",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Action List 1"
+      },
+      {
+       "id": "2",
+       "label": "Action List 2"
+      },
+      {
+       "id": "3",
+       "label": "Action List 3"
+      },
+      {
+       "id": "4",
+       "label": "Action List 4"
+      },
+      {
+       "id": "5",
+       "label": "Action List 5"
+      },
+      {
+       "id": "6",
+       "label": "Action List 6"
+      },
+      {
+       "id": "7",
+       "label": "Action List 7"
+      },
+      {
+       "id": "8",
+       "label": "Action List 8"
+      }
+     ]
+    },
+    {
+     "id": "selectedAction",
+     "label": "Action",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 48
+    },
+    {
+     "id": "targetArgument",
+     "label": "Argument",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-al-{{option.selectedActionList|map}}-{{option.selectedAction}}-execute={{option.targetArgument}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedActionList": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "actionListEnable",
+   "name": "Set action list state",
+   "options": [
+    {
+     "id": "selectedActionList",
+     "label": "Action List",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Action List 1"
+      },
+      {
+       "id": "2",
+       "label": "Action List 2"
+      },
+      {
+       "id": "3",
+       "label": "Action List 3"
+      },
+      {
+       "id": "4",
+       "label": "Action List 4"
+      },
+      {
+       "id": "5",
+       "label": "Action List 5"
+      },
+      {
+       "id": "6",
+       "label": "Action List 6"
+      },
+      {
+       "id": "7",
+       "label": "Action List 7"
+      },
+      {
+       "id": "8",
+       "label": "Action List 8"
+      }
+     ]
+    },
+    {
+     "id": "selectedState",
+     "label": "State",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-al-{{option.selectedActionList|map}}-enable={{option.selectedState|map}}e",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedActionList": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "selectedState": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "dmxControl",
+   "name": "DMX Control",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 512
+    },
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-dmx-{{option.channel}}={{option.value}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timerState",
+   "name": "Set timer state",
+   "options": [
+    {
+     "id": "selectedTimer",
+     "label": "Timer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Timer 1"
+      },
+      {
+       "id": "2",
+       "label": "Timer 2"
+      },
+      {
+       "id": "3",
+       "label": "Timer 3"
+      },
+      {
+       "id": "4",
+       "label": "Timer 4"
+      }
+     ]
+    },
+    {
+     "id": "selectedAction",
+     "label": "Action",
+     "type": "select",
+     "default": "start",
+     "choices": [
+      {
+       "id": "start",
+       "label": "Start"
+      },
+      {
+       "id": "stop",
+       "label": "Stop"
+      },
+      {
+       "id": "restart",
+       "label": "Restart"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-tm-{{option.selectedTimer|map}}-{{option.selectedAction|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedTimer": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "selectedAction": {
+     "start": "start",
+     "stop": "stop",
+     "restart": "restart",
+     "pause": "pause"
+    }
+   }
+  },
+  {
+   "id": "setTimerValue",
+   "name": "Set timer value",
+   "options": [
+    {
+     "id": "selectedTimer",
+     "label": "Timer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Timer 1"
+      },
+      {
+       "id": "2",
+       "label": "Timer 2"
+      },
+      {
+       "id": "3",
+       "label": "Timer 3"
+      },
+      {
+       "id": "4",
+       "label": "Timer 4"
+      }
+     ]
+    },
+    {
+     "id": "targetTime",
+     "label": "Time",
+     "type": "text",
+     "default": "12:00:00:00"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-tm-{{option.selectedTimer|map}}-set={{option.targetTime}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedTimer": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "setVariable",
+   "name": "Set variable value",
+   "options": [
+    {
+     "id": "selectedVariable",
+     "label": "Variable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Variable 1"
+      },
+      {
+       "id": "2",
+       "label": "Variable 2"
+      },
+      {
+       "id": "3",
+       "label": "Variable 3"
+      },
+      {
+       "id": "4",
+       "label": "Variable 4"
+      },
+      {
+       "id": "5",
+       "label": "Variable 5"
+      },
+      {
+       "id": "6",
+       "label": "Variable 6"
+      },
+      {
+       "id": "7",
+       "label": "Variable 7"
+      },
+      {
+       "id": "8",
+       "label": "Variable 8"
+      }
+     ]
+    },
+    {
+     "id": "targetValue",
+     "label": "Value",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 10000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-va-{{option.selectedVariable|map}}-set={{option.targetValue}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedVariable": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "refreshVariable",
+   "name": "Refresh variable",
+   "options": [
+    {
+     "id": "selectedVariable",
+     "label": "Variable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Variable 1"
+      },
+      {
+       "id": "2",
+       "label": "Variable 2"
+      },
+      {
+       "id": "3",
+       "label": "Variable 3"
+      },
+      {
+       "id": "4",
+       "label": "Variable 4"
+      },
+      {
+       "id": "5",
+       "label": "Variable 5"
+      },
+      {
+       "id": "6",
+       "label": "Variable 6"
+      },
+      {
+       "id": "7",
+       "label": "Variable 7"
+      },
+      {
+       "id": "8",
+       "label": "Variable 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-va-{{option.selectedVariable|map}}-refresh",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedVariable": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "refreshAllVariables",
+   "name": "Refresh all variables",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "core-va-refresh",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "coreBlink",
+   "name": "Core blink",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "core-blink",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "timer_1_start",
+   "category": "Timers",
+   "name": "Start",
+   "text": "Start Timer 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 1,
+     "selectedAction": "start"
+    }
+   }
+  },
+  {
+   "id": "timer_1_stop",
+   "category": "Timers",
+   "name": "Stop",
+   "text": "Stop Timer 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 1,
+     "selectedAction": "stop"
+    }
+   }
+  },
+  {
+   "id": "timer_1_restart",
+   "category": "Timers",
+   "name": "Restart",
+   "text": "Restart Timer 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 1,
+     "selectedAction": "restart"
+    }
+   }
+  },
+  {
+   "id": "timer_1_pause",
+   "category": "Timers",
+   "name": "Pause",
+   "text": "Pause Timer 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 1,
+     "selectedAction": "pause"
+    }
+   }
+  },
+  {
+   "id": "timer_2_start",
+   "category": "Timers",
+   "name": "Start",
+   "text": "Start Timer 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 2,
+     "selectedAction": "start"
+    }
+   }
+  },
+  {
+   "id": "timer_2_stop",
+   "category": "Timers",
+   "name": "Stop",
+   "text": "Stop Timer 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 2,
+     "selectedAction": "stop"
+    }
+   }
+  },
+  {
+   "id": "timer_2_restart",
+   "category": "Timers",
+   "name": "Restart",
+   "text": "Restart Timer 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 2,
+     "selectedAction": "restart"
+    }
+   }
+  },
+  {
+   "id": "timer_2_pause",
+   "category": "Timers",
+   "name": "Pause",
+   "text": "Pause Timer 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 2,
+     "selectedAction": "pause"
+    }
+   }
+  },
+  {
+   "id": "timer_3_start",
+   "category": "Timers",
+   "name": "Start",
+   "text": "Start Timer 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 3,
+     "selectedAction": "start"
+    }
+   }
+  },
+  {
+   "id": "timer_3_stop",
+   "category": "Timers",
+   "name": "Stop",
+   "text": "Stop Timer 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 3,
+     "selectedAction": "stop"
+    }
+   }
+  },
+  {
+   "id": "timer_3_restart",
+   "category": "Timers",
+   "name": "Restart",
+   "text": "Restart Timer 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 3,
+     "selectedAction": "restart"
+    }
+   }
+  },
+  {
+   "id": "timer_3_pause",
+   "category": "Timers",
+   "name": "Pause",
+   "text": "Pause Timer 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 3,
+     "selectedAction": "pause"
+    }
+   }
+  },
+  {
+   "id": "timer_4_start",
+   "category": "Timers",
+   "name": "Start",
+   "text": "Start Timer 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 4,
+     "selectedAction": "start"
+    }
+   }
+  },
+  {
+   "id": "timer_4_stop",
+   "category": "Timers",
+   "name": "Stop",
+   "text": "Stop Timer 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 4,
+     "selectedAction": "stop"
+    }
+   }
+  },
+  {
+   "id": "timer_4_restart",
+   "category": "Timers",
+   "name": "Restart",
+   "text": "Restart Timer 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 4,
+     "selectedAction": "restart"
+    }
+   }
+  },
+  {
+   "id": "timer_4_pause",
+   "category": "Timers",
+   "name": "Pause",
+   "text": "Pause Timer 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "timerState",
+    "options": {
+     "selectedTimer": 4,
+     "selectedAction": "pause"
+    }
+   }
+  },
+  {
+   "id": "blink",
+   "category": "Utility",
+   "name": "Blink",
+   "text": "Blink",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "coreBlink",
+    "options": {}
+   }
+  },
+  {
+   "id": "gpo_1_on",
+   "category": "GPO",
+   "name": "GPO 1 On",
+   "text": "GPO 1 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 1,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "gpo_1_off",
+   "category": "GPO",
+   "name": "GPO 1 Off",
+   "text": "GPO 1 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 1,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "gpo_2_on",
+   "category": "GPO",
+   "name": "GPO 2 On",
+   "text": "GPO 2 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 2,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "gpo_2_off",
+   "category": "GPO",
+   "name": "GPO 2 Off",
+   "text": "GPO 2 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 2,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "gpo_3_on",
+   "category": "GPO",
+   "name": "GPO 3 On",
+   "text": "GPO 3 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 3,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "gpo_3_off",
+   "category": "GPO",
+   "name": "GPO 3 Off",
+   "text": "GPO 3 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 3,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "gpo_4_on",
+   "category": "GPO",
+   "name": "GPO 4 On",
+   "text": "GPO 4 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 4,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "gpo_4_off",
+   "category": "GPO",
+   "name": "GPO 4 Off",
+   "text": "GPO 4 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 4,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "gpo_5_on",
+   "category": "GPO",
+   "name": "GPO 5 On",
+   "text": "GPO 5 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 5,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "gpo_5_off",
+   "category": "GPO",
+   "name": "GPO 5 Off",
+   "text": "GPO 5 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 5,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "gpo_6_on",
+   "category": "GPO",
+   "name": "GPO 6 On",
+   "text": "GPO 6 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 6,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "gpo_6_off",
+   "category": "GPO",
+   "name": "GPO 6 Off",
+   "text": "GPO 6 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gpoControl",
+    "options": {
+     "port": 6,
+     "state": 0
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-visualproductions-iocore",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Bryce Seifert"
+  }
+ ],
+ "source": {
+  "module": "visualproductions-iocore",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Bryce Seifert"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-visualproductions-iocore.git"
+ }
+}

@@ -1,0 +1,740 @@
+{
+ "format": 1,
+ "id": "m-bmd-multiview4",
+ "name": "Blackmagic Design Multiview 4",
+ "category": "Blackmagic Design",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9990,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "mode",
+   "name": "Display Mode",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Display Mode",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "SOLO"
+      },
+      {
+       "id": "false",
+       "label": "2x2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONFIGURATION:\\nSolo enabled: {{option.setting|map}}e\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "audio",
+   "name": "Audio from Input",
+   "options": [
+    {
+     "id": "inp",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input 1"
+      },
+      {
+       "id": "1",
+       "label": "Input 2"
+      },
+      {
+       "id": "2",
+       "label": "Input 3"
+      },
+      {
+       "id": "3",
+       "label": "Input 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO OUTPUT ROUTING:\\n5 {{option.inp|map}}\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "inp": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "solo",
+   "name": "Solo from Input",
+   "options": [
+    {
+     "id": "inp",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input 1"
+      },
+      {
+       "id": "1",
+       "label": "Input 2"
+      },
+      {
+       "id": "2",
+       "label": "Input 3"
+      },
+      {
+       "id": "3",
+       "label": "Input 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO OUTPUT ROUTING:\\n4 {{option.inp|map}}\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "inp": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "label",
+   "name": "Input Label",
+   "options": [
+    {
+     "id": "label",
+     "label": "Label",
+     "type": "text"
+    },
+    {
+     "id": "inp",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input 1"
+      },
+      {
+       "id": "1",
+       "label": "Input 2"
+      },
+      {
+       "id": "2",
+       "label": "Input 3"
+      },
+      {
+       "id": "3",
+       "label": "Input 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "INPUT LABELS:\\n{{option.inp|map}} {{option.label}}\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "inp": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_format",
+   "name": "Set output format",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Format",
+     "type": "select",
+     "default": "60p",
+     "choices": [
+      {
+       "id": "1080i50",
+       "label": "1080i50"
+      },
+      {
+       "id": "1080i5994",
+       "label": "1080i59.94"
+      },
+      {
+       "id": "2160p25",
+       "label": "2160p25"
+      },
+      {
+       "id": "2160p2997",
+       "label": "2160p29.97"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONFIGURATION:\\nOutput format: {{option.setting|map}}\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "60p": "60p",
+     "1080i50": "1080i50",
+     "1080i5994": "1080i5994",
+     "2160p25": "2160p25",
+     "2160p2997": "2160p2997"
+    }
+   }
+  },
+  {
+   "id": "set_border",
+   "name": "Display border",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Value",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "True"
+      },
+      {
+       "id": "false",
+       "label": "False"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONFIGURATION:\\nDisplay border: {{option.setting|map}}e\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "set_labels",
+   "name": "Display labels",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Value",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "True"
+      },
+      {
+       "id": "false",
+       "label": "False"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONFIGURATION:\\nDisplay labels: {{option.setting|map}}e\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "set_meters",
+   "name": "Display audio meters",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Value",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "True"
+      },
+      {
+       "id": "false",
+       "label": "False"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONFIGURATION:\\nDisplay audio meters: {{option.setting|map}}e\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "set_tally",
+   "name": "Display SDI tally",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Value",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "True"
+      },
+      {
+       "id": "false",
+       "label": "False"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONFIGURATION:\\nDisplay SDI tally: {{option.setting|map}}e\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "set_widescreen_sd",
+   "name": "Widescreen SD enable",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Value",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "True"
+      },
+      {
+       "id": "false",
+       "label": "False"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONFIGURATION:\\nWidescreen SD enable: {{option.setting|map}}e\\n\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "true": "true\\nWidescreen SD enabled: tru",
+     "false": "false\\nWidescreen SD enabled: fals"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "input_0_solo",
+   "category": "Multiview",
+   "name": "Solo: Input 1",
+   "text": "Solo:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "solo",
+    "options": {
+     "inp": 0
+    }
+   }
+  },
+  {
+   "id": "input_0_audio",
+   "category": "Multiview",
+   "name": "Audio: Input 1",
+   "text": "Audio:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio",
+    "options": {
+     "inp": 0
+    }
+   }
+  },
+  {
+   "id": "input_1_solo",
+   "category": "Multiview",
+   "name": "Solo: Input 2",
+   "text": "Solo:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "solo",
+    "options": {
+     "inp": 1
+    }
+   }
+  },
+  {
+   "id": "input_1_audio",
+   "category": "Multiview",
+   "name": "Audio: Input 2",
+   "text": "Audio:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio",
+    "options": {
+     "inp": 1
+    }
+   }
+  },
+  {
+   "id": "input_2_solo",
+   "category": "Multiview",
+   "name": "Solo: Input 3",
+   "text": "Solo:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "solo",
+    "options": {
+     "inp": 2
+    }
+   }
+  },
+  {
+   "id": "input_2_audio",
+   "category": "Multiview",
+   "name": "Audio: Input 3",
+   "text": "Audio:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio",
+    "options": {
+     "inp": 2
+    }
+   }
+  },
+  {
+   "id": "input_3_solo",
+   "category": "Multiview",
+   "name": "Solo: Input 4",
+   "text": "Solo:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "solo",
+    "options": {
+     "inp": 3
+    }
+   }
+  },
+  {
+   "id": "input_3_audio",
+   "category": "Multiview",
+   "name": "Audio: Input 4",
+   "text": "Audio:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio",
+    "options": {
+     "inp": 3
+    }
+   }
+  },
+  {
+   "id": "mode_true",
+   "category": "Settings",
+   "name": "Display Mode SOLO",
+   "text": "Display Mode SOLO",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mode",
+    "options": {
+     "setting": "true"
+    }
+   }
+  },
+  {
+   "id": "mode_false",
+   "category": "Settings",
+   "name": "Display Mode 2x2",
+   "text": "Display Mode 2x2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mode",
+    "options": {
+     "setting": "false"
+    }
+   }
+  },
+  {
+   "id": "set_format_1080i50",
+   "category": "Settings",
+   "name": "Output Format: 1080i50",
+   "text": "Output Format: 1080i50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_format",
+    "options": {
+     "setting": "1080i50"
+    }
+   }
+  },
+  {
+   "id": "set_format_1080i5994",
+   "category": "Settings",
+   "name": "Output Format: 1080i59.94",
+   "text": "Output Format: 1080i59.94",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_format",
+    "options": {
+     "setting": "1080i5994"
+    }
+   }
+  },
+  {
+   "id": "set_format_2160p25",
+   "category": "Settings",
+   "name": "Output Format: 2160p25",
+   "text": "Output Format: 2160p25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_format",
+    "options": {
+     "setting": "2160p25"
+    }
+   }
+  },
+  {
+   "id": "set_format_2160p2997",
+   "category": "Settings",
+   "name": "Output Format: 2160p29.97",
+   "text": "Output Format: 2160p29.97",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_format",
+    "options": {
+     "setting": "2160p2997"
+    }
+   }
+  },
+  {
+   "id": "set_border_true",
+   "category": "Settings",
+   "name": "Borders On",
+   "text": "Borders On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_border",
+    "options": {
+     "setting": "true"
+    }
+   }
+  },
+  {
+   "id": "set_border_false",
+   "category": "Settings",
+   "name": "Borders Off",
+   "text": "Borders Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_border",
+    "options": {
+     "setting": "false"
+    }
+   }
+  },
+  {
+   "id": "set_labels_true",
+   "category": "Settings",
+   "name": "Labels On",
+   "text": "Labels On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_labels",
+    "options": {
+     "setting": "true"
+    }
+   }
+  },
+  {
+   "id": "set_labels_false",
+   "category": "Settings",
+   "name": "Labels Off",
+   "text": "Labels Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_labels",
+    "options": {
+     "setting": "false"
+    }
+   }
+  },
+  {
+   "id": "set_meters_true",
+   "category": "Settings",
+   "name": "Audio Meters On",
+   "text": "Audio Meters On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_meters",
+    "options": {
+     "setting": "true"
+    }
+   }
+  },
+  {
+   "id": "set_meters_false",
+   "category": "Settings",
+   "name": "Audio Meters Off",
+   "text": "Audio Meters Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_meters",
+    "options": {
+     "setting": "false"
+    }
+   }
+  },
+  {
+   "id": "set_tally_true",
+   "category": "Settings",
+   "name": "Tally On",
+   "text": "Tally On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_tally",
+    "options": {
+     "setting": "true"
+    }
+   }
+  },
+  {
+   "id": "set_tally_false",
+   "category": "Settings",
+   "name": "Tally Off",
+   "text": "Tally Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_tally",
+    "options": {
+     "setting": "false"
+    }
+   }
+  },
+  {
+   "id": "set_widescreen_sd_true",
+   "category": "Settings",
+   "name": "Widescreen SD On",
+   "text": "Widescreen SD On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_widescreen_sd",
+    "options": {
+     "setting": "true"
+    }
+   }
+  },
+  {
+   "id": "set_widescreen_sd_false",
+   "category": "Settings",
+   "name": "Widescreen SD Off",
+   "text": "Widescreen SD Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_widescreen_sd",
+    "options": {
+     "setting": "false"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bmd-multiview4",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Røine, Keith Rocheck, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "bmd-multiview4",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Per Røine",
+   "Keith Rocheck",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bmd-multiview4.git"
+ }
+}

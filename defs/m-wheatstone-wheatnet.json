@@ -1,0 +1,965 @@
+{
+ "format": 1,
+ "id": "m-wheatstone-wheatnet",
+ "name": "Wheatstone WheatNet IP",
+ "category": "Wheatstone",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 55776,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "heartbeatInterval",
+   "label": "Heartbeat interval (in seconds, 120 = maximum)",
+   "type": "number",
+   "default": 30,
+   "min": 0,
+   "max": 120
+  },
+  {
+   "id": "debugLogging",
+   "label": "Log extra info during connection operations, for debugging purposes",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "sys_set_ifid",
+   "name": "System: Set IFID",
+   "options": [
+    {
+     "id": "ifid",
+     "label": "IFID String",
+     "type": "text",
+     "default": "Companion"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<SYS|IFID:{{option.ifid}}>\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "sys_set_subrate",
+   "name": "System: Set Subscription Rate",
+   "options": [
+    {
+     "id": "capacity",
+     "label": "Capacity",
+     "type": "number",
+     "default": 10,
+     "min": 1,
+     "max": 500
+    },
+    {
+     "id": "rate",
+     "label": "Rate (msg/s)",
+     "type": "number",
+     "default": 100,
+     "min": 1,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<SYS|SUBRATE:{{option.capacity}}.{{option.rate}}>\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "umix_input_fader",
+   "name": "UMIX Input: Set Fader Output",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "FDRA",
+     "choices": [
+      {
+       "id": "FDRA",
+       "label": "A"
+      },
+      {
+       "id": "FDRB",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "db",
+     "label": "dB",
+     "type": "number",
+     "default": 0,
+     "min": -80,
+     "max": 12
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.{{option.channel|map}}|FDR{{option.output|map}}:{{option.db}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    },
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "output": {
+     "FDRA": "A",
+     "FDRB": "B"
+    }
+   }
+  },
+  {
+   "id": "umix_input_fader_mov",
+   "name": "UMIX Input: Move Fader Output",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    },
+    {
+     "id": "delta",
+     "label": "Δ dB",
+     "type": "number",
+     "default": 1,
+     "min": -80,
+     "max": 80
+    },
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "INCA",
+     "choices": [
+      {
+       "id": "INCA",
+       "label": "A"
+      },
+      {
+       "id": "INCB",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.{{option.channel|map}}|INC{{option.output|map}}:{{option.delta}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    },
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "output": {
+     "INCA": "A",
+     "INCB": "B"
+    }
+   }
+  },
+  {
+   "id": "umix_input_ramp",
+   "name": "UMIX Input: Ramp",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    },
+    {
+     "id": "type",
+     "label": "Ramp Type",
+     "type": "select",
+     "default": "URAMPA",
+     "choices": [
+      {
+       "id": "URAMPA",
+       "label": "Up A"
+      },
+      {
+       "id": "DRAMPA",
+       "label": "Down A"
+      },
+      {
+       "id": "URAMPB",
+       "label": "Up B"
+      },
+      {
+       "id": "DRAMPB",
+       "label": "Down B"
+      }
+     ]
+    },
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Fast"
+      },
+      {
+       "id": "2",
+       "label": "Medium"
+      },
+      {
+       "id": "3",
+       "label": "Slow"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.{{option.channel|map}}|{{option.type|map}}:{{option.speed|map}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    },
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "type": {
+     "URAMPA": "URAMPA",
+     "DRAMPA": "DRAMPA",
+     "URAMPB": "URAMPB",
+     "DRAMPB": "DRAMPB"
+    },
+    "speed": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "umix_input_balance",
+   "name": "UMIX Input: Balance",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "BALA",
+     "choices": [
+      {
+       "id": "BALA",
+       "label": "A"
+      },
+      {
+       "id": "BALB",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "percent",
+     "label": "Percent",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.{{option.channel|map}}|BAL{{option.output|map}}:{{option.percent}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    },
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "output": {
+     "BALA": "A",
+     "BALB": "B"
+    }
+   }
+  },
+  {
+   "id": "umix_input_duck",
+   "name": "UMIX Input: Duck",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "DUCKA",
+     "choices": [
+      {
+       "id": "DUCKA",
+       "label": "A"
+      },
+      {
+       "id": "DUCKB",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.{{option.channel|map}}|DUCK{{option.output|map}}:{{option.state|map}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    },
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "output": {
+     "DUCKA": "A",
+     "DUCKB": "B"
+    },
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "umix_output_fader",
+   "name": "UMIX Output: Set Master Fader",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "A",
+     "choices": [
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "db",
+     "label": "dB",
+     "type": "number",
+     "default": 0,
+     "min": -80,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.{{option.bus|map}}|MFDR:{{option.db}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    },
+    "bus": {
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "umix_output_fader_mov",
+   "name": "UMIX Output: Move Master Fader",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "A",
+     "choices": [
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "delta",
+     "label": "Δ dB",
+     "type": "number",
+     "default": 0,
+     "min": -80,
+     "max": 80
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.{{option.bus|map}}|MINC:{{option.delta}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    },
+    "bus": {
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "umix_mixer_duck_level",
+   "name": "UMIX Mixer: Ducking Level",
+   "options": [
+    {
+     "id": "mixer",
+     "label": "Mixer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mixer 1"
+      },
+      {
+       "id": "2",
+       "label": "Mixer 2"
+      }
+     ]
+    },
+    {
+     "id": "delta",
+     "label": "Delta (dB)",
+     "type": "number",
+     "default": -12,
+     "min": -80,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<UMIX:{{option.mixer|map}}.0|DUCKLVL:{{option.delta}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mixer": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "salvo_fire",
+   "name": "SALVO: Fire",
+   "options": [
+    {
+     "id": "salvo",
+     "label": "Salvo Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 256
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<SALVO:{{option.salvo}}|FIRE:1>\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "slio_set",
+   "name": "SLIO: Set Level",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "text",
+     "help": "Software LIO Index / LIO Index on card 0 or CARD.CIRCUIT ie. 49.0 for card 49 circuit 0"
+    },
+    {
+     "id": "level",
+     "label": "Level",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "High"
+      },
+      {
+       "id": "0",
+       "label": "Low"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<SLIO:{{option.index}}|LVL:{{option.level|map}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "level": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "lio_set",
+   "name": "LIO: Set Level",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "text",
+     "help": "Software LIO Index / LIO Index on card 0 or CARD.CIRCUIT ie. 49.0 for card 49 circuit 0"
+    },
+    {
+     "id": "level",
+     "label": "Level",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "High"
+      },
+      {
+       "id": "0",
+       "label": "Low"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<LIO:{{option.index}}|LVL:{{option.level|map}}>\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "level": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-wheatstone-wheatnet",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Eugen"
+  }
+ ],
+ "source": {
+  "module": "wheatstone-wheatnet",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Eugen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-wheatstone-wheatnet.git"
+ }
+}

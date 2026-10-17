@@ -1,0 +1,153 @@
+{
+ "format": 1,
+ "id": "m-generic-tcp-udp",
+ "name": "TCP and UDP Requests",
+ "category": "Generic",
+ "version": "2.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "prot",
+   "label": "Connect with TCP / UDP",
+   "type": "select",
+   "default": "tcp",
+   "choices": [
+    {
+     "id": "tcp",
+     "label": "TCP"
+    },
+    {
+     "id": "udp",
+     "label": "UDP"
+    }
+   ]
+  },
+  {
+   "id": "saveresponse",
+   "label": "Save TCP Response",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "convertresponse",
+   "label": "Convert TCP Response Format",
+   "type": "select",
+   "default": "none",
+   "choices": [
+    {
+     "id": "none",
+     "label": "No conversion"
+    },
+    {
+     "id": "hex",
+     "label": "To Hex"
+    },
+    {
+     "id": "string",
+     "label": "To String"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "send",
+   "name": "Send Command",
+   "options": [
+    {
+     "id": "id_send",
+     "label": "Command:",
+     "type": "text",
+     "default": "",
+     "help": "Use %hh to insert Hex codes\nOBSOLETE! Use the 'Send HEX command' instead"
+    },
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\n",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (1970's RS232 terminal)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_send|hexstr}}{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\n": "0a",
+     "": "",
+     "\r\n": "0d0a",
+     "\r": "0d",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-generic-tcp-udp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Andreas H. Thomsen, Andrew Broughton, John A Knight Jr, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "generic-tcp-udp",
+  "version": "2.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Andreas H. Thomsen",
+   "Andrew Broughton",
+   "John A Knight Jr",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-generic-tcp-udp.git"
+ }
+}

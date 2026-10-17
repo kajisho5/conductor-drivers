@@ -1,0 +1,396 @@
+{
+ "format": 1,
+ "id": "m-odyssey-insight",
+ "name": "Odyssey Development Insight",
+ "category": "Odyssey Development",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 36279,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "authToken",
+   "label": "Authorization Key",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "channelID",
+   "label": "Channel",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 12
+  },
+  {
+   "id": "refreshPeriod",
+   "label": "Status refresh period",
+   "type": "number",
+   "default": 500,
+   "min": 100,
+   "max": 2000
+  }
+ ],
+ "actions": [
+  {
+   "id": "play_action",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /Insight/Api/Channels/Play?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Play?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop_action",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /Insight/Api/Channels/Stop?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Stop?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "previous_action",
+   "name": "Previous",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /Insight/Api/Channels/Previous?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Previous?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "next_action",
+   "name": "Next",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /Insight/Api/Channels/Next?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Next?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause_action",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /Insight/Api/Channels/Pause?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Pause?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cue_action",
+   "name": "Cue",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST /Insight/Api/Channels/Cue?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Cue?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "playPreset",
+   "category": "Commands w/name",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopPreset",
+   "category": "Commands w/name",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "previousPreset",
+   "category": "Commands w/name",
+   "name": "Previous",
+   "text": "Previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "nextPreset",
+   "category": "Commands w/name",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "pausePreset",
+   "category": "Commands w/name",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuePreset",
+   "category": "Commands w/name",
+   "name": "Cue",
+   "text": "Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "playPresetCln",
+   "category": "Commands",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopPresetCln",
+   "category": "Commands",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "previousPresetCln",
+   "category": "Commands",
+   "name": "Previous",
+   "text": "Previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "nextPresetCln",
+   "category": "Commands",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "pausePresetCln",
+   "category": "Commands",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuePresetCln",
+   "category": "Commands",
+   "name": "Cue",
+   "text": "Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "playPresetBlk",
+   "category": "Commands black",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopPresetBlk",
+   "category": "Commands black",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "previousPresetBlk",
+   "category": "Commands black",
+   "name": "Previous",
+   "text": "Previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "nextPresetBlk",
+   "category": "Commands black",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "pausePresetBlk",
+   "category": "Commands black",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuePresetBlk",
+   "category": "Commands black",
+   "name": "Cue",
+   "text": "Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "playPresetBlkCln",
+   "category": "Commands black clean",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopPresetBlkCln",
+   "category": "Commands black clean",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "previousPresetBlkCln",
+   "category": "Commands black clean",
+   "name": "Previous",
+   "text": "Previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "nextPresetBlkCln",
+   "category": "Commands black clean",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "pausePresetBlkCln",
+   "category": "Commands black clean",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuePresetBlkCln",
+   "category": "Commands black clean",
+   "name": "Cue",
+   "text": "Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue_action",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-odyssey-insight",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Odyssey Development"
+  }
+ ],
+ "source": {
+  "module": "odyssey-insight",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Odyssey Development"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-odyssey-insight.git"
+ }
+}

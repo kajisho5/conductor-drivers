@@ -1,0 +1,288 @@
+{
+ "format": 1,
+ "id": "m-skaarhoj-rawpanel",
+ "name": "SKAARHOJ Raw Panel",
+ "category": "SKAARHOJ",
+ "version": "2.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9923,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "tcpPort",
+   "label": "TCP Port (Default: 9923)",
+   "type": "text",
+   "default": 9923
+  },
+  {
+   "id": "satEnable",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "btn_1",
+   "label": "Bank 1",
+   "type": "text"
+  },
+  {
+   "id": "btn_2",
+   "label": "Bank 2",
+   "type": "text"
+  },
+  {
+   "id": "btn_3",
+   "label": "Bank 3",
+   "type": "text"
+  },
+  {
+   "id": "btn_4",
+   "label": "Bank 4",
+   "type": "text"
+  },
+  {
+   "id": "btn_5",
+   "label": "Bank 5",
+   "type": "text"
+  },
+  {
+   "id": "btn_6",
+   "label": "Bank 6",
+   "type": "text"
+  },
+  {
+   "id": "btn_7",
+   "label": "Bank 7",
+   "type": "text"
+  },
+  {
+   "id": "btn_8",
+   "label": "Bank 8",
+   "type": "text"
+  },
+  {
+   "id": "btn_9",
+   "label": "Bank 9",
+   "type": "text"
+  },
+  {
+   "id": "btn_10",
+   "label": "Bank 10",
+   "type": "text"
+  },
+  {
+   "id": "btn_11",
+   "label": "Bank 11",
+   "type": "text"
+  },
+  {
+   "id": "btn_12",
+   "label": "Bank 12",
+   "type": "text"
+  },
+  {
+   "id": "btn_13",
+   "label": "Bank 13",
+   "type": "text"
+  },
+  {
+   "id": "btn_14",
+   "label": "Bank 14",
+   "type": "text"
+  },
+  {
+   "id": "btn_15",
+   "label": "Bank 15",
+   "type": "text"
+  },
+  {
+   "id": "btn_16",
+   "label": "Bank 16",
+   "type": "text"
+  },
+  {
+   "id": "btn_17",
+   "label": "Bank 17",
+   "type": "text"
+  },
+  {
+   "id": "btn_18",
+   "label": "Bank 18",
+   "type": "text"
+  },
+  {
+   "id": "btn_19",
+   "label": "Bank 19",
+   "type": "text"
+  },
+  {
+   "id": "btn_20",
+   "label": "Bank 20",
+   "type": "text"
+  },
+  {
+   "id": "btn_21",
+   "label": "Bank 21",
+   "type": "text"
+  },
+  {
+   "id": "btn_22",
+   "label": "Bank 22",
+   "type": "text"
+  },
+  {
+   "id": "btn_23",
+   "label": "Bank 23",
+   "type": "text"
+  },
+  {
+   "id": "btn_24",
+   "label": "Bank 24",
+   "type": "text"
+  },
+  {
+   "id": "btn_25",
+   "label": "Bank 25",
+   "type": "text"
+  },
+  {
+   "id": "btn_26",
+   "label": "Bank 26",
+   "type": "text"
+  },
+  {
+   "id": "btn_27",
+   "label": "Bank 27",
+   "type": "text"
+  },
+  {
+   "id": "btn_28",
+   "label": "Bank 28",
+   "type": "text"
+  },
+  {
+   "id": "btn_29",
+   "label": "Bank 29",
+   "type": "text"
+  },
+  {
+   "id": "btn_30",
+   "label": "Bank 30",
+   "type": "text"
+  },
+  {
+   "id": "btn_31",
+   "label": "Bank 31",
+   "type": "text"
+  },
+  {
+   "id": "btn_32",
+   "label": "Bank 32",
+   "type": "text"
+  },
+  {
+   "id": "titlePrefix",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "autoDim",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "timeout",
+   "label": "TCP Timeout (1 sec -> 5 min, default 5 sec = 5000)",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "max": 300000
+  },
+  {
+   "id": "refresh",
+   "label": "Backup LCD Refresh (5 sec -> 10 min, default 30 sec = 30000)",
+   "type": "number",
+   "default": 30000,
+   "min": 5000,
+   "max": 600000
+  },
+  {
+   "id": "debug",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "Webserver",
+   "name": "Webserver ON/OFF",
+   "options": [
+    {
+     "id": "cmd",
+     "label": "Command",
+     "type": "select",
+     "default": "Webserver=1",
+     "choices": [
+      {
+       "id": "Webserver=1",
+       "label": "ON"
+      },
+      {
+       "id": "Webserver=0",
+       "label": "OFF"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Webserver={{option.cmd|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "cmd": {
+     "Webserver=1": "1",
+     "Webserver=0": "0"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-skaarhoj-rawpanel",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：SKAARHOJ ApS, Andreas H. Thomsen"
+  }
+ ],
+ "source": {
+  "module": "skaarhoj-rawpanel",
+  "version": "2.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "SKAARHOJ ApS",
+   "Andreas H. Thomsen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-skaarhoj-rawpanel.git"
+ }
+}

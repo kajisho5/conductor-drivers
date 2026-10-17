@@ -1,0 +1,222 @@
+{
+ "format": 1,
+ "id": "m-ictag-easyvideo",
+ "name": "ICT AG easyVideo",
+ "category": "ICT AG",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 0,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "feedbackEnabled",
+   "label": "Enable Feedback",
+   "type": "boolean"
+  },
+  {
+   "id": "infoPort",
+   "label": "Info Port",
+   "type": "text",
+   "help": "Default Port is 4334"
+  }
+ ],
+ "actions": [
+  {
+   "id": "pause",
+   "name": "Pause/Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6963745f65762f70617573650000002c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6963745f65762f73746f70000000002c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "next",
+   "name": "Next Clip",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6963745f65762f6e657874000000002c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "prev",
+   "name": "Previous Clip",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6963745f65762f70726576000000002c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "overlay",
+   "name": "Overlay",
+   "options": [
+    {
+     "id": "overlay",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "On"
+      },
+      {
+       "id": "3",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2f6963745f65762f6f7665726c6179002c690000000000{{option.overlay|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "overlay": {
+     "1": "00",
+     "2": "01",
+     "3": "02"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Pause",
+   "category": "Controls and Feedbacks",
+   "name": "Pause",
+   "text": "⏯",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "Stop",
+   "category": "Controls and Feedbacks",
+   "name": "Stop",
+   "text": "⏹",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "Prev",
+   "category": "Controls and Feedbacks",
+   "name": "Prev",
+   "text": "⏮",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "prev",
+    "options": {}
+   }
+  },
+  {
+   "id": "Next",
+   "category": "Controls and Feedbacks",
+   "name": "Next",
+   "text": "⏭",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {}
+   }
+  },
+  {
+   "id": "Overlay_on",
+   "category": "Overlay",
+   "name": "On",
+   "text": "PiP\nOn",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "overlay",
+    "options": {
+     "overlay": "2"
+    }
+   }
+  },
+  {
+   "id": "Overlay_off",
+   "category": "Overlay",
+   "name": "Off",
+   "text": "PiP\nOff",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "overlay",
+    "options": {
+     "overlay": "1"
+    }
+   }
+  },
+  {
+   "id": "Overlay_toggle",
+   "category": "Overlay",
+   "name": "Toggle",
+   "text": "PiP\nToggle",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "overlay",
+    "options": {
+     "overlay": "3"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-ictag-easyvideo",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：digitalMIDIA"
+  }
+ ],
+ "source": {
+  "module": "ictag-easyvideo",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "digitalMIDIA"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-ictag-easyvideo.git"
+ }
+}

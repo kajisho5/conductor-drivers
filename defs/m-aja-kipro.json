@@ -1,0 +1,573 @@
+{
+ "format": 1,
+ "id": "m-aja-kipro",
+ "name": "AJA Ki Pro / Ki Pro Ultra",
+ "category": "AJA",
+ "version": "3.4.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 37827,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingRate",
+   "label": "Polling Rate (ms)",
+   "type": "number",
+   "default": 100,
+   "min": 10,
+   "max": 5000
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=1\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=4 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=4\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "rec",
+   "name": "Record",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=3 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=3\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "next",
+   "name": "Next Clip",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=9 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=9\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "prv",
+   "name": "Previous Clip",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=10 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=10\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ff",
+   "name": "Fast Forward",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=5 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=5\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "rev",
+   "name": "Fast Reverse",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=6 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=6\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stepF",
+   "name": "Step Forward",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=7 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=7\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stepB",
+   "name": "Step Back",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TransportCommand&value=8 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TransportCommand&value=8\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "format",
+   "name": "Format Drive",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_StorageCommand&value=4&configid=0 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_StorageCommand&value=4&configid=0\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "formatUSB",
+   "name": "Format USB Drive (Ki Pro Go)",
+   "options": [
+    {
+     "id": "value",
+     "label": "Drive",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "5",
+       "label": "USB 1"
+      },
+      {
+       "id": "6",
+       "label": "USB 2"
+      },
+      {
+       "id": "7",
+       "label": "USB 3"
+      },
+      {
+       "id": "8",
+       "label": "USB 4"
+      },
+      {
+       "id": "9",
+       "label": "USB 5"
+      },
+      {
+       "id": "10",
+       "label": "All "
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_StorageCommand&value={{option.value|map}}&configid=1\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "value": {
+     "5": "5&configid=1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_StorageCommand&value=5",
+     "6": "6&configid=1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_StorageCommand&value=6",
+     "7": "7&configid=1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_StorageCommand&value=7",
+     "8": "8&configid=1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_StorageCommand&value=8",
+     "9": "9&configid=1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_StorageCommand&value=9",
+     "10": "10&configid=1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_StorageCommand&value=10"
+    }
+   }
+  },
+  {
+   "id": "eraseClipByDrop",
+   "name": "Erase Clip By List",
+   "options": [
+    {
+     "id": "idx",
+     "label": "Clip Name",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_ClipToDelete&value=&configid=0 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_ClipToDelete&value=&configid=0\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadByDrop",
+   "name": "Load Clip By List",
+   "options": [
+    {
+     "id": "idx",
+     "label": "Clip Name",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_GoToClip&value= HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_GoToClip&value=\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loop",
+   "name": "Loop Clip",
+   "options": [
+    {
+     "id": "idx",
+     "label": "On / Off",
+     "type": "select",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Loop Off"
+      },
+      {
+       "id": "1",
+       "label": "Loop On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_LoopPlay&value={{option.idx|map}}\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "idx": {
+     "0": "0 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_LoopPlay&value=0",
+     "1": "1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_LoopPlay&value=1"
+    }
+   }
+  },
+  {
+   "id": "setTimecode",
+   "name": "Set Timecode Value",
+   "options": [
+    {
+     "id": "idx",
+     "label": "Timecode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "00:00:00:00"
+      },
+      {
+       "id": "1",
+       "label": "01:00:00:00"
+      },
+      {
+       "id": "2",
+       "label": "02:00:00:00"
+      },
+      {
+       "id": "3",
+       "label": "03:00:00:00"
+      },
+      {
+       "id": "4",
+       "label": "04:00:00:00"
+      },
+      {
+       "id": "5",
+       "label": "05:00:00:00"
+      },
+      {
+       "id": "6",
+       "label": "06:00:00:00"
+      },
+      {
+       "id": "7",
+       "label": "07:00:00:00"
+      },
+      {
+       "id": "8",
+       "label": "08:00:00:00"
+      },
+      {
+       "id": "9",
+       "label": "09:00:00:00"
+      },
+      {
+       "id": "10",
+       "label": "10:00:00:00"
+      },
+      {
+       "id": "11",
+       "label": "11:00:00:00"
+      },
+      {
+       "id": "12",
+       "label": "12:00:00:00"
+      },
+      {
+       "id": "13",
+       "label": "13:00:00:00"
+      },
+      {
+       "id": "14",
+       "label": "14:00:00:00"
+      },
+      {
+       "id": "15",
+       "label": "15:00:00:00"
+      },
+      {
+       "id": "16",
+       "label": "16:00:00:00"
+      },
+      {
+       "id": "17",
+       "label": "17:00:00:00"
+      },
+      {
+       "id": "18",
+       "label": "18:00:00:00"
+      },
+      {
+       "id": "19",
+       "label": "19:00:00:00"
+      },
+      {
+       "id": "20",
+       "label": "20:00:00:00"
+      },
+      {
+       "id": "21",
+       "label": "21:00:00:00"
+      },
+      {
+       "id": "22",
+       "label": "22:00:00:00"
+      },
+      {
+       "id": "23",
+       "label": "23:00:00:00"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_TimecodeValue&value={{option.idx|map}}\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "idx": {
+     "0": "0 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=0",
+     "1": "1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=1",
+     "2": "2 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=2",
+     "3": "3 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=3",
+     "4": "4 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=4",
+     "5": "5 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=5",
+     "6": "6 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=6",
+     "7": "7 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=7",
+     "8": "8 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=8",
+     "9": "9 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=9",
+     "10": "10 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=10",
+     "11": "11 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=11",
+     "12": "12 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=12",
+     "13": "13 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=13",
+     "14": "14 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=14",
+     "15": "15 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=15",
+     "16": "16 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=16",
+     "17": "17 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=17",
+     "18": "18 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=18",
+     "19": "19 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=19",
+     "20": "20 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=20",
+     "21": "21 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=21",
+     "22": "22 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=22",
+     "23": "23 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_TimecodeValue&value=23"
+    }
+   }
+  },
+  {
+   "id": "setMediaState",
+   "name": "Set Media State",
+   "options": [
+    {
+     "id": "idx",
+     "label": "State",
+     "type": "select",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Play/Record"
+      },
+      {
+       "id": "1",
+       "label": "LAN"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /config?action=set&paramid=eParamID_MediaState&value={{option.idx|map}}\\r\\nHost: 127.0.0.1:37827\\r\\nConnection: keep-alive\\r\\n\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "idx": {
+     "0": "0 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_MediaState&value=0",
+     "1": "1 HTTP/1.1\\r\\nContent-Length: 0\\r\\nx-capture-url: http://10.11.12.13/config?action=set&paramid=eParamID_MediaState&value=1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Transport Control",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {}
+   }
+  },
+  {
+   "id": "1",
+   "category": "Transport Control",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "2",
+   "category": "Transport Control",
+   "name": "Rec",
+   "text": "Rec",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rec",
+    "options": {}
+   }
+  },
+  {
+   "id": "3",
+   "category": "Transport Control",
+   "name": "Next Clip",
+   "text": "Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {}
+   }
+  },
+  {
+   "id": "4",
+   "category": "Transport Control",
+   "name": "Prev Clip",
+   "text": "Prev Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "prv",
+    "options": {}
+   }
+  },
+  {
+   "id": "5",
+   "category": "Transport Control",
+   "name": "FF",
+   "text": "FF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ff",
+    "options": {}
+   }
+  },
+  {
+   "id": "6",
+   "category": "Transport Control",
+   "name": "Rev",
+   "text": "Rev",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rev",
+    "options": {}
+   }
+  },
+  {
+   "id": "7",
+   "category": "Transport Control",
+   "name": "Step Forward",
+   "text": "Step Forward",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stepF",
+    "options": {}
+   }
+  },
+  {
+   "id": "8",
+   "category": "Transport Control",
+   "name": "Step Back",
+   "text": "Step Back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stepB",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aja-kipro",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Todd Murphy, Per Røine, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "aja-kipro",
+  "version": "3.4.0",
+  "license": "MIT",
+  "maintainers": [
+   "Todd Murphy",
+   "Per Røine",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aja-kipro.git"
+ }
+}

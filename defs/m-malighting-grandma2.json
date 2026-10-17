@@ -1,0 +1,77 @@
+{
+ "format": 1,
+ "id": "m-malighting-grandma2",
+ "name": "MA Lighting GrandMA2",
+ "category": "MA Lighting",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 30000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "user",
+   "label": "Username",
+   "type": "text",
+   "default": "administrator"
+  },
+  {
+   "id": "pass",
+   "label": "Password",
+   "type": "text",
+   "default": "admin"
+  }
+ ],
+ "actions": [
+  {
+   "id": "command",
+   "name": "Run Custom Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.command}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-malighting-grandma2",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John Knight, Jr, William Viker"
+  }
+ ],
+ "source": {
+  "module": "malighting-grandma2",
+  "version": "2.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "John Knight, Jr",
+   "William Viker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-malighting-grandma2.git"
+ }
+}

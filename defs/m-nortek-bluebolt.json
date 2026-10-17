@@ -1,0 +1,153 @@
+{
+ "format": 1,
+ "id": "m-nortek-bluebolt",
+ "name": "Nortek Bluebolt",
+ "category": "Nortek",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 57010,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Device Model",
+   "type": "select",
+   "choices": [
+    {
+     "id": "m4000",
+     "label": "Panamax M4000 Pro"
+    },
+    {
+     "id": "sm3",
+     "label": "Panamax SM-3 Pro"
+    },
+    {
+     "id": "m4315",
+     "label": "Panamax M4315 Pro"
+    },
+    {
+     "id": "bb232",
+     "label": "Furman BB-RS232"
+    },
+    {
+     "id": "cn1800",
+     "label": "Furman CN-1800 S"
+    },
+    {
+     "id": "cn2400",
+     "label": "Furman CN-2400 S"
+    },
+    {
+     "id": "cn3600",
+     "label": "Furman CN-3600 SE"
+    },
+    {
+     "id": "cnmp15",
+     "label": "Furman CN-15MP"
+    },
+    {
+     "id": "cnmp20",
+     "label": "Furman CN-20MP"
+    }
+   ]
+  },
+  {
+   "id": "id",
+   "label": "Device ID",
+   "type": "text"
+  },
+  {
+   "id": "pollingEnable",
+   "label": "Polling (UDP Only)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Polling Interval (in ms)",
+   "type": "number",
+   "default": 500,
+   "min": 100,
+   "max": 10000
+  }
+ ],
+ "actions": [
+  {
+   "id": "udp_cmd_sequence",
+   "name": "Sequence On/Off",
+   "options": [
+    {
+     "id": "id_sequencedir",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<?xml version=\"1.0\" ?><device class=\"m4000\" id=\"\"><command><sequence>{{option.id_sequencedir|map}}</sequence></command></device>\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_sequencedir": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "udp_cmd_reboot",
+   "name": "Reboot Device",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "<?xml version=\"1.0\" ?><device class=\"m4000\" id=\"\"><command><reboot/></command></device>\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-nortek-bluebolt",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Elliot Matson"
+  }
+ ],
+ "source": {
+  "module": "nortek-bluebolt",
+  "version": "2.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Elliot Matson"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-nortek-bluebolt.git"
+ }
+}

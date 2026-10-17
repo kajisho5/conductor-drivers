@@ -1,0 +1,236 @@
+{
+ "format": 1,
+ "id": "m-luminex-luminode",
+ "name": "Luminex LumiNode / LumiCore",
+ "category": "Luminex",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 44293,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "help": "Only provide a password when authentication is enabled on the device"
+  }
+ ],
+ "actions": [
+  {
+   "id": "identify",
+   "name": "Identify",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/identify\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/reboot\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "display_on",
+   "name": "Turn on or off the display",
+   "options": [
+    {
+     "id": "display_on",
+     "label": "Display On",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/display\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: {{option.display_on|map}}e}",
+    "encoding": "text"
+   },
+   "maps": {
+    "display_on": {
+     "true": "19\\r\\n\\r\\n{\"display_on\":tru",
+     "false": "20\\r\\n\\r\\n{\"display_on\":fals"
+    }
+   }
+  },
+  {
+   "id": "dmx_acknowledge",
+   "name": "Acknowledge all stream loss indications",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/dmx/acknowledge\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "force_rdm_discovery",
+   "name": "Force RDM discovery for all DMX ports",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/dmx/force_discovery\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: 0\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "play_control",
+   "name": "Control all players",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "go",
+     "choices": [
+      {
+       "id": "go",
+       "label": "Go"
+      },
+      {
+       "id": "forward",
+       "label": "Forward"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "reset",
+       "label": "Reset"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/play/control\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: {{option.action|map}}\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "action": {
+     "go": "15\\r\\n\\r\\n{\"action\":\"go",
+     "forward": "20\\r\\n\\r\\n{\"action\":\"forward",
+     "back": "17\\r\\n\\r\\n{\"action\":\"back",
+     "reset": "18\\r\\n\\r\\n{\"action\":\"reset"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "active_profile",
+   "category": "Profiles",
+   "name": "Active Profile Name\nEmpty if no profile active",
+   "text": "Active Profile Name\nEmpty if no profile ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "identify",
+    "options": {}
+   }
+  },
+  {
+   "id": "reboot",
+   "category": "Device",
+   "name": "Reboot device",
+   "text": "Reboot",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "reboot",
+    "options": {}
+   }
+  },
+  {
+   "id": "play_reset",
+   "category": "Play",
+   "name": "Play Reset\nReset player to first cue",
+   "text": "Reset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_control",
+    "options": {
+     "action": "reset"
+    }
+   }
+  },
+  {
+   "id": "play_back",
+   "category": "Play",
+   "name": "Play Back\nMove next Cue back",
+   "text": "Back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_control",
+    "options": {
+     "action": "back"
+    }
+   }
+  },
+  {
+   "id": "play_forward",
+   "category": "Play",
+   "name": "Play Forward\nMove next Cue forward",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_control",
+    "options": {
+     "action": "forward"
+    }
+   }
+  },
+  {
+   "id": "play_go",
+   "category": "Play",
+   "name": "Play Go\nPlay next cue",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_control",
+    "options": {
+     "action": "go"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-luminex-luminode",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Stijn Geysen"
+  }
+ ],
+ "source": {
+  "module": "luminex-luminode",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Stijn Geysen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-luminex-luminode.git"
+ }
+}

@@ -1,0 +1,424 @@
+{
+ "format": 1,
+ "id": "m-denon-recorder",
+ "name": "Denon DN-900R / DN-700R / DN-500R / DN-F650R / DN-F450R",
+ "category": "Denon",
+ "version": "3.0.0-alpha1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "power",
+   "name": "Power",
+   "options": [
+    {
+     "id": "sel_cmd",
+     "label": "Option",
+     "type": "select",
+     "default": "23PW",
+     "choices": [
+      {
+       "id": "23PW",
+       "label": "Power On"
+      },
+      {
+       "id": "2312",
+       "label": "Power Standby"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@023{{option.sel_cmd|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "sel_cmd": {
+     "2312": "12",
+     "23PW": "PW"
+    }
+   }
+  },
+  {
+   "id": "record",
+   "name": "Record Functions",
+   "options": [
+    {
+     "id": "sel_cmd",
+     "label": "Command",
+     "type": "select",
+     "default": "2353",
+     "choices": [
+      {
+       "id": "2355",
+       "label": "Initiate Recording"
+      },
+      {
+       "id": "23Rp",
+       "label": "Pause Recording"
+      },
+      {
+       "id": "23MT",
+       "label": "Split Recording"
+      },
+      {
+       "id": "OR00",
+       "label": "One Touch Rec On"
+      },
+      {
+       "id": "OR01",
+       "label": "One Touch Rec Off"
+      },
+      {
+       "id": "23121",
+       "label": "Add Mark"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@0{{option.sel_cmd|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "sel_cmd": {
+     "2353": "2353",
+     "2355": "2355",
+     "23121": "23121",
+     "23Rp": "23Rp",
+     "23MT": "23MT",
+     "OR00": "OR00",
+     "OR01": "OR01"
+    }
+   }
+  },
+  {
+   "id": "track_playback",
+   "name": "Track Playback",
+   "options": [
+    {
+     "id": "sel_cmd",
+     "label": "Option",
+     "type": "select",
+     "default": "2353",
+     "choices": [
+      {
+       "id": "2353",
+       "label": "Play"
+      },
+      {
+       "id": "2348",
+       "label": "Pause"
+      },
+      {
+       "id": "2354",
+       "label": "Stop"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@023{{option.sel_cmd|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "sel_cmd": {
+     "2348": "48",
+     "2353": "53",
+     "2354": "54"
+    }
+   }
+  },
+  {
+   "id": "panel_lock",
+   "name": "Panel Lock/Unlock",
+   "options": [
+    {
+     "id": "sel_cmd",
+     "label": "Option",
+     "type": "select",
+     "default": "23KL",
+     "choices": [
+      {
+       "id": "23KL",
+       "label": "Panel Lock"
+      },
+      {
+       "id": "23KU",
+       "label": "Panel Unlock"
+      },
+      {
+       "id": "23KS",
+       "label": "Transport Lock"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@023K{{option.sel_cmd|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "sel_cmd": {
+     "23KL": "L",
+     "23KU": "U",
+     "23KS": "S"
+    }
+   }
+  },
+  {
+   "id": "format",
+   "name": "Format Current Media Source",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "@023FOMAT\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Custom command",
+   "options": [
+    {
+     "id": "cmd",
+     "label": "Command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@0{{option.cmd}}\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "power_0",
+   "category": "System",
+   "name": "Power On",
+   "text": "Power On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "sel_cmd": "23PW"
+    }
+   }
+  },
+  {
+   "id": "power_1",
+   "category": "System",
+   "name": "Power Standby",
+   "text": "Power Standby",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "sel_cmd": "2312"
+    }
+   }
+  },
+  {
+   "id": "rec_0",
+   "category": "Recording",
+   "name": "Initiate Recording",
+   "text": "Initiate Recording",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "record",
+    "options": {
+     "sel_cmd": "2355"
+    }
+   }
+  },
+  {
+   "id": "rec_1",
+   "category": "Recording",
+   "name": "Pause Recording",
+   "text": "Pause Recording",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "record",
+    "options": {
+     "sel_cmd": "23Rp"
+    }
+   }
+  },
+  {
+   "id": "rec_2",
+   "category": "Recording",
+   "name": "Split Recording",
+   "text": "Split Recording",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "record",
+    "options": {
+     "sel_cmd": "23MT"
+    }
+   }
+  },
+  {
+   "id": "rec_3",
+   "category": "Recording",
+   "name": "One Touch Rec On",
+   "text": "One Touch Rec On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "record",
+    "options": {
+     "sel_cmd": "OR00"
+    }
+   }
+  },
+  {
+   "id": "rec_4",
+   "category": "Recording",
+   "name": "One Touch Rec Off",
+   "text": "One Touch Rec Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "record",
+    "options": {
+     "sel_cmd": "OR01"
+    }
+   }
+  },
+  {
+   "id": "rec_5",
+   "category": "Recording",
+   "name": "Add Mark",
+   "text": "Add Mark",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "record",
+    "options": {
+     "sel_cmd": "23121"
+    }
+   }
+  },
+  {
+   "id": "pb_0",
+   "category": "Track/Title",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "track_playback",
+    "options": {
+     "sel_cmd": "2353"
+    }
+   }
+  },
+  {
+   "id": "pb_1",
+   "category": "Track/Title",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "track_playback",
+    "options": {
+     "sel_cmd": "2348"
+    }
+   }
+  },
+  {
+   "id": "pb_2",
+   "category": "Track/Title",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "track_playback",
+    "options": {
+     "sel_cmd": "2354"
+    }
+   }
+  },
+  {
+   "id": "panel_0",
+   "category": "System",
+   "name": "Panel Lock",
+   "text": "Panel Lock",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "panel_lock",
+    "options": {
+     "sel_cmd": "23KL"
+    }
+   }
+  },
+  {
+   "id": "panel_1",
+   "category": "System",
+   "name": "Panel Unlock",
+   "text": "Panel Unlock",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "panel_lock",
+    "options": {
+     "sel_cmd": "23KU"
+    }
+   }
+  },
+  {
+   "id": "panel_2",
+   "category": "System",
+   "name": "Transport Lock",
+   "text": "Transport Lock",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "panel_lock",
+    "options": {
+     "sel_cmd": "23KS"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-denon-recorder",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John A Knight Jr, Andreas H. Thomsen, Kevin Haddock"
+  }
+ ],
+ "source": {
+  "module": "denon-recorder",
+  "version": "3.0.0-alpha1",
+  "license": "MIT",
+  "maintainers": [
+   "John A Knight Jr",
+   "Andreas H. Thomsen",
+   "Kevin Haddock"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-denon-recorder.git"
+ }
+}
