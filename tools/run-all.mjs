@@ -9,7 +9,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const HARD_LIMIT_MS = 18 * 60 * 1000;
+const HARD_LIMIT_MS = 35 * 60 * 1000;
 
 function arg(name, fallback) {
   const i = process.argv.indexOf(name);

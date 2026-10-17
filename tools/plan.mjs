@@ -4,8 +4,8 @@
  * 文字の欄は目印の文字（QB…／QV…）、数の欄は基準と違う 2 つの値、選択肢は全部（多すぎる時は先頭から）。
  */
 
-export const MAX_CHOICES = 48;
-export const MAX_RUNS_PER_ACTION = 120;
+export const MAX_CHOICES = 200;
+export const MAX_RUNS_PER_ACTION = 260;
 
 export function baseValue(opt, index) {
   switch (opt.type) {

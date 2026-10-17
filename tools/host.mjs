@@ -25,8 +25,8 @@ const LIMITS = {
   settleQuietMs: 120,
   settleMinMs: 60,
   settleMaxMs: 1500,
-  moduleMs: Number(process.env.MODULE_TIME_LIMIT_MS || 15 * 60 * 1000),
-  maxRuns: 4000,
+  moduleMs: Number(process.env.MODULE_TIME_LIMIT_MS || 30 * 60 * 1000),
+  maxRuns: 8000,
   actionMs: 2500,
 };
 
