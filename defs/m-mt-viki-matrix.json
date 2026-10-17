@@ -1,0 +1,1123 @@
+{
+ "format": 1,
+ "id": "m-mt-viki-matrix",
+ "name": "MT VIKI MT-HD0808 8x8 HDMI Matrix",
+ "category": "MT VIKI",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8080,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "matrix_size",
+   "label": "Matrix Size",
+   "type": "select",
+   "default": "8x8",
+   "choices": [
+    {
+     "id": "2x2",
+     "label": "2x2"
+    },
+    {
+     "id": "4x2",
+     "label": "4x2"
+    },
+    {
+     "id": "4x4",
+     "label": "4x4"
+    },
+    {
+     "id": "8x8",
+     "label": "8x8"
+    },
+    {
+     "id": "16x16",
+     "label": "16x16"
+    }
+   ]
+  },
+  {
+   "id": "poll_interval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 60000,
+   "min": 300,
+   "max": 300000
+  },
+  {
+   "id": "polled_data",
+   "label": "Use polled data from unit:",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "log_responses",
+   "label": "Debug returned data    :",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "log_tokens",
+   "label": "Debug token data    :",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "switch_output",
+   "name": "Switch Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "OUT1"
+      },
+      {
+       "id": "2",
+       "label": "OUT2"
+      },
+      {
+       "id": "3",
+       "label": "OUT3"
+      },
+      {
+       "id": "4",
+       "label": "OUT4"
+      },
+      {
+       "id": "5",
+       "label": "OUT5"
+      },
+      {
+       "id": "6",
+       "label": "OUT6"
+      },
+      {
+       "id": "7",
+       "label": "OUT7"
+      },
+      {
+       "id": "8",
+       "label": "OUT8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SW 1 {{option.output|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "input_output",
+   "name": "Input to Output",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "IN1"
+      },
+      {
+       "id": "2",
+       "label": "IN2"
+      },
+      {
+       "id": "3",
+       "label": "IN3"
+      },
+      {
+       "id": "4",
+       "label": "IN4"
+      },
+      {
+       "id": "5",
+       "label": "IN5"
+      },
+      {
+       "id": "6",
+       "label": "IN6"
+      },
+      {
+       "id": "7",
+       "label": "IN7"
+      },
+      {
+       "id": "8",
+       "label": "IN8"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "OUT1"
+      },
+      {
+       "id": "2",
+       "label": "OUT2"
+      },
+      {
+       "id": "3",
+       "label": "OUT3"
+      },
+      {
+       "id": "4",
+       "label": "OUT4"
+      },
+      {
+       "id": "5",
+       "label": "OUT5"
+      },
+      {
+       "id": "6",
+       "label": "OUT6"
+      },
+      {
+       "id": "7",
+       "label": "OUT7"
+      },
+      {
+       "id": "8",
+       "label": "OUT8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SW {{option.input|map}} {{option.output|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "save_scene",
+   "name": "Save Scene",
+   "options": [
+    {
+     "id": "scene",
+     "label": "Scene",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Scene 1"
+      },
+      {
+       "id": "2",
+       "label": "Scene 2"
+      },
+      {
+       "id": "3",
+       "label": "Scene 3"
+      },
+      {
+       "id": "4",
+       "label": "Scene 4"
+      },
+      {
+       "id": "5",
+       "label": "Scene 5"
+      },
+      {
+       "id": "6",
+       "label": "Scene 6"
+      },
+      {
+       "id": "7",
+       "label": "Scene 7"
+      },
+      {
+       "id": "8",
+       "label": "Scene 8"
+      },
+      {
+       "id": "9",
+       "label": "Scene 9"
+      },
+      {
+       "id": "10",
+       "label": "Scene 10"
+      },
+      {
+       "id": "11",
+       "label": "Scene 11"
+      },
+      {
+       "id": "12",
+       "label": "Scene 12"
+      },
+      {
+       "id": "13",
+       "label": "Scene 13"
+      },
+      {
+       "id": "14",
+       "label": "Scene 14"
+      },
+      {
+       "id": "15",
+       "label": "Scene 15"
+      },
+      {
+       "id": "16",
+       "label": "Scene 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SceneSave {{option.scene|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "scene": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "recall_scene",
+   "name": "Recall Scene",
+   "options": [
+    {
+     "id": "scene",
+     "label": "Scene",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Scene 1"
+      },
+      {
+       "id": "2",
+       "label": "Scene 2"
+      },
+      {
+       "id": "3",
+       "label": "Scene 3"
+      },
+      {
+       "id": "4",
+       "label": "Scene 4"
+      },
+      {
+       "id": "5",
+       "label": "Scene 5"
+      },
+      {
+       "id": "6",
+       "label": "Scene 6"
+      },
+      {
+       "id": "7",
+       "label": "Scene 7"
+      },
+      {
+       "id": "8",
+       "label": "Scene 8"
+      },
+      {
+       "id": "9",
+       "label": "Scene 9"
+      },
+      {
+       "id": "10",
+       "label": "Scene 10"
+      },
+      {
+       "id": "11",
+       "label": "Scene 11"
+      },
+      {
+       "id": "12",
+       "label": "Scene 12"
+      },
+      {
+       "id": "13",
+       "label": "Scene 13"
+      },
+      {
+       "id": "14",
+       "label": "Scene 14"
+      },
+      {
+       "id": "15",
+       "label": "Scene 15"
+      },
+      {
+       "id": "16",
+       "label": "Scene 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SceneCall {{option.scene|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "scene": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "lock_keys",
+   "name": "Lock keys",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SetKeyLock 1\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unlock_keys",
+   "name": "Unlock keys",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SetKeyLock 0\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggle_keylock",
+   "name": "Toggle keylock",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SetKeyLock 1\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "enable_beep",
+   "name": "Enable key beep",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SetBeepEn 1\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disable_beep",
+   "name": "Disable key beep",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SetBeepEn 0\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggle_beep",
+   "name": "Toggle key beep",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SetBeepEn 1\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "beep",
+   "name": "Beep",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "BeepONOnce\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "switch_output_1",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT1\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "switch_output_2",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT2\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "switch_output_3",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT3\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "switch_output_4",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT4\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "switch_output_5",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT5\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "5"
+    }
+   }
+  },
+  {
+   "id": "switch_output_6",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT6\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "6"
+    }
+   }
+  },
+  {
+   "id": "switch_output_7",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT7\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "7"
+    }
+   }
+  },
+  {
+   "id": "switch_output_8",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT8\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "8"
+    }
+   }
+  },
+  {
+   "id": "save_scene_1",
+   "category": "Scenes",
+   "name": "save_scene_1",
+   "text": "Save Scene 1",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 1
+    }
+   }
+  },
+  {
+   "id": "recall_scene_1",
+   "category": "Scenes",
+   "name": "recall_scene_1",
+   "text": "Recall Scene 1",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 1
+    }
+   }
+  },
+  {
+   "id": "save_scene_2",
+   "category": "Scenes",
+   "name": "save_scene_2",
+   "text": "Save Scene 2",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 2
+    }
+   }
+  },
+  {
+   "id": "recall_scene_2",
+   "category": "Scenes",
+   "name": "recall_scene_2",
+   "text": "Recall Scene 2",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 2
+    }
+   }
+  },
+  {
+   "id": "save_scene_3",
+   "category": "Scenes",
+   "name": "save_scene_3",
+   "text": "Save Scene 3",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 3
+    }
+   }
+  },
+  {
+   "id": "recall_scene_3",
+   "category": "Scenes",
+   "name": "recall_scene_3",
+   "text": "Recall Scene 3",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 3
+    }
+   }
+  },
+  {
+   "id": "save_scene_4",
+   "category": "Scenes",
+   "name": "save_scene_4",
+   "text": "Save Scene 4",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 4
+    }
+   }
+  },
+  {
+   "id": "recall_scene_4",
+   "category": "Scenes",
+   "name": "recall_scene_4",
+   "text": "Recall Scene 4",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 4
+    }
+   }
+  },
+  {
+   "id": "save_scene_5",
+   "category": "Scenes",
+   "name": "save_scene_5",
+   "text": "Save Scene 5",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 5
+    }
+   }
+  },
+  {
+   "id": "recall_scene_5",
+   "category": "Scenes",
+   "name": "recall_scene_5",
+   "text": "Recall Scene 5",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 5
+    }
+   }
+  },
+  {
+   "id": "save_scene_6",
+   "category": "Scenes",
+   "name": "save_scene_6",
+   "text": "Save Scene 6",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 6
+    }
+   }
+  },
+  {
+   "id": "recall_scene_6",
+   "category": "Scenes",
+   "name": "recall_scene_6",
+   "text": "Recall Scene 6",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 6
+    }
+   }
+  },
+  {
+   "id": "save_scene_7",
+   "category": "Scenes",
+   "name": "save_scene_7",
+   "text": "Save Scene 7",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 7
+    }
+   }
+  },
+  {
+   "id": "recall_scene_7",
+   "category": "Scenes",
+   "name": "recall_scene_7",
+   "text": "Recall Scene 7",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 7
+    }
+   }
+  },
+  {
+   "id": "save_scene_8",
+   "category": "Scenes",
+   "name": "save_scene_8",
+   "text": "Save Scene 8",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 8
+    }
+   }
+  },
+  {
+   "id": "recall_scene_8",
+   "category": "Scenes",
+   "name": "recall_scene_8",
+   "text": "Recall Scene 8",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 8
+    }
+   }
+  },
+  {
+   "id": "save_scene_9",
+   "category": "Scenes",
+   "name": "save_scene_9",
+   "text": "Save Scene 9",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 9
+    }
+   }
+  },
+  {
+   "id": "recall_scene_9",
+   "category": "Scenes",
+   "name": "recall_scene_9",
+   "text": "Recall Scene 9",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 9
+    }
+   }
+  },
+  {
+   "id": "save_scene_10",
+   "category": "Scenes",
+   "name": "save_scene_10",
+   "text": "Save Scene 10",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 10
+    }
+   }
+  },
+  {
+   "id": "recall_scene_10",
+   "category": "Scenes",
+   "name": "recall_scene_10",
+   "text": "Recall Scene 10",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 10
+    }
+   }
+  },
+  {
+   "id": "save_scene_11",
+   "category": "Scenes",
+   "name": "save_scene_11",
+   "text": "Save Scene 11",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 11
+    }
+   }
+  },
+  {
+   "id": "recall_scene_11",
+   "category": "Scenes",
+   "name": "recall_scene_11",
+   "text": "Recall Scene 11",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 11
+    }
+   }
+  },
+  {
+   "id": "save_scene_12",
+   "category": "Scenes",
+   "name": "save_scene_12",
+   "text": "Save Scene 12",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 12
+    }
+   }
+  },
+  {
+   "id": "recall_scene_12",
+   "category": "Scenes",
+   "name": "recall_scene_12",
+   "text": "Recall Scene 12",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 12
+    }
+   }
+  },
+  {
+   "id": "save_scene_13",
+   "category": "Scenes",
+   "name": "save_scene_13",
+   "text": "Save Scene 13",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 13
+    }
+   }
+  },
+  {
+   "id": "recall_scene_13",
+   "category": "Scenes",
+   "name": "recall_scene_13",
+   "text": "Recall Scene 13",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 13
+    }
+   }
+  },
+  {
+   "id": "save_scene_14",
+   "category": "Scenes",
+   "name": "save_scene_14",
+   "text": "Save Scene 14",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 14
+    }
+   }
+  },
+  {
+   "id": "recall_scene_14",
+   "category": "Scenes",
+   "name": "recall_scene_14",
+   "text": "Recall Scene 14",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 14
+    }
+   }
+  },
+  {
+   "id": "save_scene_15",
+   "category": "Scenes",
+   "name": "save_scene_15",
+   "text": "Save Scene 15",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 15
+    }
+   }
+  },
+  {
+   "id": "recall_scene_15",
+   "category": "Scenes",
+   "name": "recall_scene_15",
+   "text": "Recall Scene 15",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 15
+    }
+   }
+  },
+  {
+   "id": "save_scene_16",
+   "category": "Scenes",
+   "name": "save_scene_16",
+   "text": "Save Scene 16",
+   "backgroundColor": "#400000",
+   "action": {
+    "definitionId": "save_scene",
+    "options": {
+     "scene": 16
+    }
+   }
+  },
+  {
+   "id": "recall_scene_16",
+   "category": "Scenes",
+   "name": "recall_scene_16",
+   "text": "Recall Scene 16",
+   "backgroundColor": "#004000",
+   "action": {
+    "definitionId": "recall_scene",
+    "options": {
+     "scene": 16
+    }
+   }
+  },
+  {
+   "id": "toggle-keylock",
+   "category": "Switch keys",
+   "name": "Toggle Keylock",
+   "text": "Toggle Keylock",
+   "backgroundColor": "#008000",
+   "action": {
+    "definitionId": "toggle_keylock",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle-beepEn",
+   "category": "Switch keys",
+   "name": "Toggle Key Beep",
+   "text": "Toggle Key Beep",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "toggle_beep",
+    "options": {}
+   }
+  },
+  {
+   "id": "beep",
+   "category": "Switch keys",
+   "name": "Beep",
+   "text": "Beep",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "beep",
+    "options": {}
+   }
+  },
+  {
+   "id": "in-to-out",
+   "category": "In to Out",
+   "name": "In to Out",
+   "text": "IN1 to OUT4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "input_output",
+    "options": {
+     "input": "1",
+     "output": "4"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-mt-viki-matrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jens Frank"
+  }
+ ],
+ "source": {
+  "module": "mt-viki-matrix",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jens Frank"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-mt-viki-matrix.git"
+ }
+}

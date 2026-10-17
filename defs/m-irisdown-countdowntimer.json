@@ -1,0 +1,343 @@
+{
+ "format": 1,
+ "id": "m-irisdown-countdowntimer",
+ "name": "Irisdown Countdown Timer",
+ "category": "Irisdown",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 61002,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "go",
+   "name": "Start timer with current duration or resume",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GO",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause timer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "PAUSE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "togglePause",
+   "name": "Toggle Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "TOGGLEPAUSE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reset",
+   "name": "Reset timer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "RESET",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "message",
+   "name": "Message text",
+   "options": [
+    {
+     "id": "message",
+     "label": "Your message",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MESSAGE \"{{option.message}}\"",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "messageClear",
+   "name": "Message clear",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MESSAGE CLEAR",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "jog",
+   "name": "Jog timer up/down",
+   "options": [
+    {
+     "id": "minutes",
+     "label": "Time in minutes",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "JOG {{option.minutes}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "resetT",
+   "name": "Reset timer with new duration <time>",
+   "options": [
+    {
+     "id": "time",
+     "label": "<time> mm or hh:mm:ss (use leading zero)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "RESET {{option.time}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "displayM",
+   "name": "Change display mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Display mode",
+     "type": "select",
+     "default": "TIMER",
+     "choices": [
+      {
+       "id": "TIMER",
+       "label": "Timer"
+      },
+      {
+       "id": "CLOCK",
+       "label": "Clock"
+      },
+      {
+       "id": "BLACK",
+       "label": "Black"
+      },
+      {
+       "id": "TEST",
+       "label": "Test"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DISPLAY {{option.mode|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "TIMER": "TIMER",
+     "CLOCK": "CLOCK",
+     "BLACK": "BLACK",
+     "TEST": "TEST"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "timer-go",
+   "category": "Timer control",
+   "name": "GO",
+   "text": "GO",
+   "backgroundColor": "#00ff00",
+   "action": {
+    "definitionId": "go",
+    "options": {}
+   }
+  },
+  {
+   "id": "timer-pause",
+   "category": "Timer control",
+   "name": "Pause",
+   "text": "PAUSE",
+   "backgroundColor": "#ffff00",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "timer-minute-add",
+   "category": "Timer control",
+   "name": "+1 minute",
+   "text": "+1 min",
+   "backgroundColor": "#ffff00",
+   "action": {
+    "definitionId": "jog",
+    "options": {
+     "minutes": "1"
+    }
+   }
+  },
+  {
+   "id": "timer-minute-sub",
+   "category": "Timer control",
+   "name": "-1 minute",
+   "text": "-1 min",
+   "backgroundColor": "#ffff00",
+   "action": {
+    "definitionId": "jog",
+    "options": {
+     "minutes": "-1"
+    }
+   }
+  },
+  {
+   "id": "timer-reset",
+   "category": "Timer control",
+   "name": "Reset",
+   "text": "RESET",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "reset",
+    "options": {}
+   }
+  },
+  {
+   "id": "timer-minutes-5",
+   "category": "Timer control",
+   "name": "Set 5 min",
+   "text": "SET\n5 MIN",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "resetT",
+    "options": {
+     "time": "5"
+    }
+   }
+  },
+  {
+   "id": "timer-minutes-10",
+   "category": "Timer control",
+   "name": "Set 10 min",
+   "text": "SET\n10 MIN",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "resetT",
+    "options": {
+     "time": "10"
+    }
+   }
+  },
+  {
+   "id": "timer-minutes-15",
+   "category": "Timer control",
+   "name": "Set 15 min",
+   "text": "SET\n15 MIN",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "resetT",
+    "options": {
+     "time": "15"
+    }
+   }
+  },
+  {
+   "id": "mode-black",
+   "category": "Mode",
+   "name": "Black",
+   "text": "BLACK",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayM",
+    "options": {
+     "mode": "BLACK"
+    }
+   }
+  },
+  {
+   "id": "mode-timer",
+   "category": "Mode",
+   "name": "Timer",
+   "text": "TIMER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayM",
+    "options": {
+     "mode": "TIMER"
+    }
+   }
+  },
+  {
+   "id": "mode-clock",
+   "category": "Mode",
+   "name": "Clock",
+   "text": "CLOCK",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayM",
+    "options": {
+     "mode": "CLOCK"
+    }
+   }
+  },
+  {
+   "id": "mode-test",
+   "category": "Mode",
+   "name": "Test",
+   "text": "TEST",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayM",
+    "options": {
+     "mode": "TEST"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-irisdown-countdowntimer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "irisdown-countdowntimer",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-irisdown-countdowntimer.git"
+ }
+}

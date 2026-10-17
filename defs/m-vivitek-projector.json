@@ -1,0 +1,108 @@
+{
+ "format": 1,
+ "id": "m-vivitek-projector",
+ "name": "Vivitek Projector",
+ "category": "Vivitek",
+ "version": "2.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "powerOn",
+   "name": "Power On Projector",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "op power.on\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "powerOff",
+   "name": "Power Off Projector",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "op power.off\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "shutterOpen",
+   "name": "Open Shutter",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "op shutter -\\rop blank 0\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "shutterClose",
+   "name": "Close Shutter",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "op shutter +\\rop blank 1\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "blankOn",
+   "name": "Blank On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "op blank 1\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "blankOff",
+   "name": "Blank Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "op blank 0\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-vivitek-projector",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Todd Murphy"
+  }
+ ],
+ "source": {
+  "module": "vivitek-projector",
+  "version": "2.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Todd Murphy"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-vivitek-projector.git"
+ }
+}

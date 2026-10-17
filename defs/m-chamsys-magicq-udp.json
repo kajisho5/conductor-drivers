@@ -1,0 +1,242 @@
+{
+ "format": 1,
+ "id": "m-chamsys-magicq-udp",
+ "name": "ChamSys MagicQ (UDP)",
+ "category": "ChamSys",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 6553,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "pb",
+   "name": "Set the playback fader level",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback fader (1-202)",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "pbVal",
+     "label": "Fader value (0-100 %)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}},{{option.pbVal}}L",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "intensityCh",
+   "name": "Set the Intensity channel level",
+   "options": [
+    {
+     "id": "intensityChId",
+     "label": "Intensity Channel (1-32769)",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "intensityChVal",
+     "label": "Fader value (0-100 %)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.intensityChId}},{{option.intensityChVal}}I",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbGo",
+   "name": "Go on Playback",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback (1-202)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}}G",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbActivate",
+   "name": "Activate Playback",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback (1-202)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}}A",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbPage",
+   "name": "Playback Page",
+   "options": [
+    {
+     "id": "pageId",
+     "label": "Page Number",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pageId}}P",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbStop",
+   "name": "Stop Playback",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback (1-202)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}}S",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbFf",
+   "name": "Fast Forward Playback",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback (1-202)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}}F",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbFb",
+   "name": "Fast Back Playback",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback (1-202)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}}B",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbRelease",
+   "name": "Release Playback",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback (1-202)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}}R",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pbJump",
+   "name": "Playback Jump to Cue",
+   "options": [
+    {
+     "id": "pbId",
+     "label": "Playback (1-202)",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "cue",
+     "label": "Cue Number",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "cueDec",
+     "label": "Cue Nr Decimal",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.pbId}},{{option.cue}},{{option.cueDec}}J",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-chamsys-magicq-udp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Røine"
+  }
+ ],
+ "source": {
+  "module": "chamsys-magicq-udp",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Per Røine"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-chamsys-magicq-udp.git"
+ }
+}

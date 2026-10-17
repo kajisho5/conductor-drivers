@@ -5,23 +5,15 @@
  "category": "Odyssey Development",
  "version": "1.0.1",
  "minAppVersion": "0.6.0",
- "transport": "tcp",
+ "transport": "http",
  "configFields": [
   {
-   "id": "host",
-   "label": "IP アドレス",
+   "id": "baseUrl",
+   "label": "URL の先頭",
    "type": "text",
-   "placeholder": "192.168.0.10",
-   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
    "mono": true
-  },
-  {
-   "id": "port",
-   "label": "ポート",
-   "type": "number",
-   "default": 36279,
-   "min": 1,
-   "max": 65535
   },
   {
    "id": "authToken",
@@ -52,9 +44,11 @@
    "name": "Play",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /Insight/Api/Channels/Play?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Play?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/Insight/Api/Channels/Play?channelID=1",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
    }
   },
   {
@@ -62,9 +56,11 @@
    "name": "Stop",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /Insight/Api/Channels/Stop?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Stop?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/Insight/Api/Channels/Stop?channelID=1",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
    }
   },
   {
@@ -72,9 +68,11 @@
    "name": "Previous",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /Insight/Api/Channels/Previous?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Previous?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/Insight/Api/Channels/Previous?channelID=1",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
    }
   },
   {
@@ -82,9 +80,11 @@
    "name": "Next",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /Insight/Api/Channels/Next?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Next?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/Insight/Api/Channels/Next?channelID=1",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
    }
   },
   {
@@ -92,9 +92,11 @@
    "name": "Pause",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /Insight/Api/Channels/Pause?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Pause?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/Insight/Api/Channels/Pause?channelID=1",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
    }
   },
   {
@@ -102,9 +104,11 @@
    "name": "Cue",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /Insight/Api/Channels/Cue?channelID=1 HTTP/1.1\\r\\nAccept: application/json, text/plain, */*\\r\\nContent-Type: application/x-www-form-urlencoded\\r\\nAuthorization: Bearer \\r\\nUser-Agent: axios/1.13.5\\r\\nAccept-Encoding: gzip, compress, deflate, br\\r\\nx-capture-url: http://10.11.12.13/Insight/Api/Channels/Cue?channelID=1\\r\\nHost: 127.0.0.1:36279\\r\\nConnection: keep-alive\\r\\nContent-Length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/Insight/Api/Channels/Cue?channelID=1",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
    }
   }
  ],

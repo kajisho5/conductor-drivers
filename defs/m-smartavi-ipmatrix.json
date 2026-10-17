@@ -1,0 +1,104 @@
+{
+ "format": 1,
+ "id": "m-smartavi-ipmatrix",
+ "name": "Smart-AVI MU-88 / MXU-88 / MXCORE",
+ "category": "Smart-AVI",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "type",
+   "label": "Matrix Type",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "1",
+     "label": "MU-88"
+    },
+    {
+     "id": "2",
+     "label": "MXU-88"
+    },
+    {
+     "id": "3",
+     "label": "DVR 16x16"
+    },
+    {
+     "id": "4",
+     "label": "MXCORE 32x32"
+    }
+   ]
+  },
+  {
+   "id": "frame",
+   "label": "Frame Number",
+   "type": "text",
+   "default": "00"
+  }
+ ],
+ "actions": [
+  {
+   "id": "takeSalvo",
+   "name": "Route selected ports",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "//F00U01I01Z\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "take",
+   "category": "Misc",
+   "name": "Take Selected",
+   "text": "Take selected",
+   "action": {
+    "definitionId": "takeSalvo",
+    "options": {
+     "levels": [
+      "U"
+     ]
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-smartavi-ipmatrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dorian Meid"
+  }
+ ],
+ "source": {
+  "module": "smartavi-ipmatrix",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Dorian Meid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-smartavi-ipmatrix.git"
+ }
+}

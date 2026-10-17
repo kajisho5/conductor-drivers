@@ -1,0 +1,609 @@
+{
+ "format": 1,
+ "id": "m-barco-pulse",
+ "name": "Barco UDX Pulse Projector",
+ "category": "Barco",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9090,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "interval",
+   "label": "Update Interval",
+   "type": "text",
+   "default": 2000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "illumination",
+   "name": "Illumination",
+   "options": [
+    {
+     "id": "p1",
+     "label": "illumination",
+     "type": "select",
+     "default": "illumination.ignite",
+     "choices": [
+      {
+       "id": "illumination.extinguish",
+       "label": "Extinguish"
+      },
+      {
+       "id": "illumination.ignite",
+       "label": "Illuminate"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"illumination.{{option.p1|map}}\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "illumination.ignite": "ignite\",\"id\":\"10",
+     "illumination.extinguish": "extinguish\",\"id\":\"11"
+    }
+   }
+  },
+  {
+   "id": "osd",
+   "name": "OSD on",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Show OSD?",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "On"
+      },
+      {
+       "id": "false",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "true": "2\",\"params\":{\"property\":\"ui.osd\",\"value\":\"tru",
+     "false": "3\",\"params\":{\"property\":\"ui.osd\",\"value\":\"fals"
+    }
+   }
+  },
+  {
+   "id": "input",
+   "name": "Select input",
+   "options": [
+    {
+     "id": "p1",
+     "label": "input",
+     "type": "select",
+     "default": "L1 HDMI",
+     "choices": [
+      {
+       "id": "L1 HDMI",
+       "label": "HDMI"
+      },
+      {
+       "id": "L1 Displayport",
+       "label": "Displayport"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1{{option.p1|map}}\"},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "L1 HDMI": "4\",\"params\":{\"property\":\"image.window.main.source\",\"value\":\"L1 HDMI",
+     "L1 Displayport": "5\",\"params\":{\"property\":\"image.window.main.source\",\"value\":\"L1 Displayport"
+    }
+   }
+  },
+  {
+   "id": "shutter",
+   "name": "Shutter projector",
+   "options": [
+    {
+     "id": "p1",
+     "label": "shutter open/close",
+     "type": "select",
+     "default": "Open",
+     "choices": [
+      {
+       "id": "Open",
+       "label": "Shutter open"
+      },
+      {
+       "id": "Closed",
+       "label": "Shutter close"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1{{option.p1|map}}\"},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "Open": "6\",\"params\":{\"property\":\"optics.shutter.target\",\"value\":\"Open",
+     "Closed": "7\",\"params\":{\"property\":\"optics.shutter.target\",\"value\":\"Closed"
+    }
+   }
+  },
+  {
+   "id": "shutter_toggle",
+   "name": "Shutter projector (Toggle)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"optics.shutter.toggle\",\"id\":\"18\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "testpattern",
+   "name": "Test Pattern on/off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "on/off",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "On"
+      },
+      {
+       "id": "false",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "true": "19\",\"params\":{\"property\":\"image.testpattern.show\",\"value\":\"tru",
+     "false": "20\",\"params\":{\"property\":\"image.testpattern.show\",\"value\":\"fals"
+    }
+   }
+  },
+  {
+   "id": "stealth",
+   "name": "Stealth Mode (LEDs)",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Controllable LEDs on/off",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "On"
+      },
+      {
+       "id": "false",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"2{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "true": "1\",\"params\":{\"property\":\"ui.stealthmode\",\"value\":\"tru",
+     "false": "2\",\"params\":{\"property\":\"ui.stealthmode\",\"value\":\"fals"
+    }
+   }
+  },
+  {
+   "id": "stealth_toggle",
+   "name": "Stealth Mode (Toggle)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"ui.togglestealthmode\",\"id\":\"23\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lens_calibrate",
+   "name": "Calibrate lens",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Type",
+     "type": "select",
+     "default": "optics.zoom.calibrate",
+     "choices": [
+      {
+       "id": "optics.zoom.calibrate",
+       "label": "Calibrate Zoom"
+      },
+      {
+       "id": "optics.focus.calibrate",
+       "label": "Calibrate Focus"
+      },
+      {
+       "id": "optics.lensshift.vertical.calibrate",
+       "label": "Calibrate Vertical"
+      },
+      {
+       "id": "optics.lensshift.horizontal.calibrate",
+       "label": "Calibrate Horizontal"
+      },
+      {
+       "id": "optics.shifttocenter",
+       "label": "Go To Center"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"optics.{{option.p1|map}}\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "optics.zoom.calibrate": "zoom.calibrate\",\"id\":\"47",
+     "optics.focus.calibrate": "focus.calibrate\",\"id\":\"48",
+     "optics.lensshift.vertical.calibrate": "lensshift.vertical.calibrate\",\"id\":\"49",
+     "optics.lensshift.horizontal.calibrate": "lensshift.horizontal.calibrate\",\"id\":\"50",
+     "optics.shifttocenter": "shifttocenter\",\"id\":\"51"
+    }
+   }
+  },
+  {
+   "id": "factory",
+   "name": "Reset to factory defaults",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"system.resetall\",\"id\":\"120\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Lens Control",
+   "name": "Shutter open",
+   "text": "Shutter open",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "shutter",
+    "options": {
+     "p1": "Open"
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Lens Control",
+   "name": "Shutter close",
+   "text": "Shutter close",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "shutter",
+    "options": {
+     "p1": "Closed"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Lens Control",
+   "name": "Shutter Toggle",
+   "text": "Shutter Toggle",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "shutter_toggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "11",
+   "category": "Lens Control",
+   "name": "Calibrate Zoom",
+   "text": "Calibrate Zoom",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_calibrate",
+    "options": {
+     "p1": "optics.zoom.calibrate"
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Lens Control",
+   "name": "Calibrate Focus",
+   "text": "Calibrate Focus",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_calibrate",
+    "options": {
+     "p1": "optics.focus.calibrate"
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Lens Control",
+   "name": "Calibrate Vertical",
+   "text": "Calibrate Vertical",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_calibrate",
+    "options": {
+     "p1": "optics.lensshift.vertical.calibrate"
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Lens Control",
+   "name": "Calibrate Horizontal",
+   "text": "Calibrate Horizontal",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_calibrate",
+    "options": {
+     "p1": "optics.lensshift.horizontal.calibrate"
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Lens Control",
+   "name": "Go To Center",
+   "text": "Go To Center",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_calibrate",
+    "options": {
+     "p1": "optics.shifttocenter"
+    }
+   }
+  },
+  {
+   "id": "75",
+   "category": "System",
+   "name": "Shutter open",
+   "text": "Shutter open",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "shutter",
+    "options": {
+     "p1": "Open"
+    }
+   }
+  },
+  {
+   "id": "76",
+   "category": "System",
+   "name": "Shutter close",
+   "text": "Shutter close",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "shutter",
+    "options": {
+     "p1": "Closed"
+    }
+   }
+  },
+  {
+   "id": "77",
+   "category": "System",
+   "name": "Shutter Toggle",
+   "text": "Shutter Toggle",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "shutter_toggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "78",
+   "category": "System",
+   "name": "Extinguish",
+   "text": "Extinguish",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "illumination",
+    "options": {
+     "p1": "illumination.extinguish"
+    }
+   }
+  },
+  {
+   "id": "79",
+   "category": "System",
+   "name": "Illuminate",
+   "text": "Illuminate",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "illumination",
+    "options": {
+     "p1": "illumination.ignite"
+    }
+   }
+  },
+  {
+   "id": "80",
+   "category": "System",
+   "name": "OSD On",
+   "text": "OSD On",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "osd",
+    "options": {
+     "p1": "true"
+    }
+   }
+  },
+  {
+   "id": "81",
+   "category": "System",
+   "name": "OSD Off",
+   "text": "OSD Off",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "osd",
+    "options": {
+     "p1": "false"
+    }
+   }
+  },
+  {
+   "id": "82",
+   "category": "System",
+   "name": "Testpattern On",
+   "text": "TP On",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "testpattern",
+    "options": {
+     "p1": "true"
+    }
+   }
+  },
+  {
+   "id": "83",
+   "category": "System",
+   "name": "Testpattern Off",
+   "text": "TP Off",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "testpattern",
+    "options": {
+     "p1": "false"
+    }
+   }
+  },
+  {
+   "id": "84",
+   "category": "System",
+   "name": "Stealth On",
+   "text": "Stealth On",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "stealth",
+    "options": {
+     "p1": "true"
+    }
+   }
+  },
+  {
+   "id": "85",
+   "category": "System",
+   "name": "Stealth Off",
+   "text": "Stealth Off",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "stealth",
+    "options": {
+     "p1": "false"
+    }
+   }
+  },
+  {
+   "id": "86",
+   "category": "System",
+   "name": "Stealth Mode Toggle",
+   "text": "Stealth Toggle",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "stealth_toggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "87",
+   "category": "System",
+   "name": "Factory Reset",
+   "text": "Factory Reset",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "factory",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-barco-pulse",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "barco-pulse",
+  "version": "2.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-barco-pulse.git"
+ }
+}

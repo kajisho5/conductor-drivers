@@ -1,0 +1,867 @@
+{
+ "format": 1,
+ "id": "m-bbc-raven",
+ "name": "BBC Raven",
+ "category": "BBC",
+ "version": "2.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "beep_startup",
+   "name": "Play the startup tune",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/beep/startup"
+   }
+  },
+  {
+   "id": "config_set",
+   "name": "Set configuration properties",
+   "options": [
+    {
+     "id": "configname",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "configvalue",
+     "label": "Value",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/config/set?properties=%7B%22{{option.configname}}%22:%22{{option.configvalue}}%22%7D"
+   }
+  },
+  {
+   "id": "notification_message",
+   "name": "Send a message to all users",
+   "options": [
+    {
+     "id": "message",
+     "label": "Message to send",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/notifications/message?text={{option.message}}"
+   }
+  },
+  {
+   "id": "record_monitor",
+   "name": "Monitor Port (E-E)",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/record/monitor?port=undefined"
+   }
+  },
+  {
+   "id": "record_stop",
+   "name": "Stop Recording",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/record/stop?port=undefined"
+   }
+  },
+  {
+   "id": "record_start",
+   "name": "Start Recording",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/record/start?port=undefined"
+   }
+  },
+  {
+   "id": "record_chunknow",
+   "name": "Chunk recording now",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/record/chunknow?port=undefined"
+   }
+  },
+  {
+   "id": "record_keyframe",
+   "name": "Add keyframe while recording",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/record/keyframe?port=undefined"
+   }
+  },
+  {
+   "id": "record_grabstill",
+   "name": "Grab still while recording",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/record/grabstill?port=undefined"
+   }
+  },
+  {
+   "id": "nuget_restart",
+   "name": "Restart Nuget",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/os/nugetcontrol?action=restart"
+   }
+  },
+  {
+   "id": "port_togglelock",
+   "name": "Toggle the port lock",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/port/toggleportlockstate?port=undefined"
+   }
+  },
+  {
+   "id": "port_setlock",
+   "name": "Set the port lock",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "lockstate",
+     "label": "Locked",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/port/setlockstate?port=undefined&state={{option.lockstate|map}}"
+   },
+   "maps": {
+    "lockstate": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "portsettings_togglemodetype",
+   "name": "Toggle the port mode (HD/SD)",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/portsettings/togglemodetype?port=undefined"
+   }
+  },
+  {
+   "id": "playout_eject",
+   "name": "Eject the currently playing clip and clear the playlist",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/eject?port=undefined"
+   }
+  },
+  {
+   "id": "playout_repeatframes",
+   "name": "Repeat the specified number of frames during playout",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "framecount",
+     "label": "Number of frames",
+     "type": "number",
+     "default": 25,
+     "min": 1,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/repeatframes?port=undefined&framecount={{option.framecount}}"
+   }
+  },
+  {
+   "id": "playout_dropframes",
+   "name": "Drop the specified number of frames during playout",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "framecount",
+     "label": "Number of frames",
+     "type": "number",
+     "default": 25,
+     "min": 1,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/dropframes?port=undefined&framecount={{option.framecount}}"
+   }
+  },
+  {
+   "id": "playout_removeall",
+   "name": "Remove all items from the playlist",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/removeall?port=undefined"
+   }
+  },
+  {
+   "id": "playout_keyframe",
+   "name": "Create a user keyframe from the currently playing clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/keyframe?port=undefined"
+   }
+  },
+  {
+   "id": "playout_play",
+   "name": "Start playout. If clip is not loaded, load and play it.",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/play?port=undefined"
+   }
+  },
+  {
+   "id": "playout_pause",
+   "name": "Pause playout. If clip is not loaded, load and pause it on the first frame",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/pause?port=undefined"
+   }
+  },
+  {
+   "id": "playout_prime",
+   "name": "Prime playout. Prepares and loads the next clip in a gallery playout playlist",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/prime?port=undefined"
+   }
+  },
+  {
+   "id": "playout_previous",
+   "name": "Load the previous clip in the playlist. If playing, go back to start of current ",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/previous?port=undefined"
+   }
+  },
+  {
+   "id": "playout_previousstep",
+   "name": "Skip back 10 frames in the currently loaded clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/previousstep?port=undefined"
+   }
+  },
+  {
+   "id": "playout_previousframe",
+   "name": "Skip back 1 frame in the currently loaded clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/previousframe?port=undefined"
+   }
+  },
+  {
+   "id": "playout_next",
+   "name": "Load the next clip in the playlist",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/next?port=undefined"
+   }
+  },
+  {
+   "id": "playout_nextstep",
+   "name": "Skip forward 10 frames in the currently loaded clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/nextstep?port=undefined"
+   }
+  },
+  {
+   "id": "playout_nextframe",
+   "name": "Skip forward 1 frame in the currently loaded clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/nextframe?port=undefined"
+   }
+  },
+  {
+   "id": "playout_add",
+   "name": "Add the specified clips to the playlist",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "clipids",
+     "label": "Clip IDs (comma separated)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/add?port=undefined&clipids={{option.clipids}}"
+   }
+  },
+  {
+   "id": "playout_loadnow",
+   "name": "Replace playlist with specified clips and hold on the first frame of first clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "clipids",
+     "label": "clipids",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/loadnow?port=undefined&clipids={{option.clipids}}"
+   }
+  },
+  {
+   "id": "playout_playnow",
+   "name": "Replace playlist with specified clips and play first clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "clipids",
+     "label": "Clip IDs (comma separated)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/playnow?port=undefined&clipids={{option.clipids}}"
+   }
+  },
+  {
+   "id": "playout_load",
+   "name": "Load the specified clip index ready for playout",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "index",
+     "label": "Playlist Index to load",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/load?port=undefined&index={{option.index}}"
+   }
+  },
+  {
+   "id": "playout_seek",
+   "name": "Seek to the specified frame in the current clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "frame",
+     "label": "Frame",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/seek?port=undefined&frame={{option.frame}}"
+   }
+  },
+  {
+   "id": "playout_stop",
+   "name": "Stop playout",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/stop?port=undefined"
+   }
+  },
+  {
+   "id": "playout_togglefield",
+   "name": "Toggle field dominance for currently playling clip",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/togglefield?port=undefined"
+   }
+  },
+  {
+   "id": "playout_pauseafter",
+   "name": "Toggle 'pauseafter' mode for the port",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/pauseafter?port=undefined"
+   }
+  },
+  {
+   "id": "playout_loop",
+   "name": "Set 'loop' mode for the port",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port ID",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "loopflag",
+     "label": "Loop enabled",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/playout/loop?port=undefined&loopflag={{option.loopflag|map}}"
+   },
+   "maps": {
+    "loopflag": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "syncplay_trigger",
+   "name": "Triggers a syncplay scene",
+   "options": [
+    {
+     "id": "triggerid",
+     "label": "Trigger ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/syncplay/trigger?trigger={{option.triggerid}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "record_monitor",
+   "category": "Record Controls",
+   "name": "Monitor",
+   "text": "Monitor",
+   "action": {
+    "definitionId": "record_monitor",
+    "options": {}
+   }
+  },
+  {
+   "id": "record_start",
+   "category": "Record Controls",
+   "name": "Start",
+   "text": "Start",
+   "action": {
+    "definitionId": "record_start",
+    "options": {}
+   }
+  },
+  {
+   "id": "record_chunk",
+   "category": "Record Controls",
+   "name": "Chunk",
+   "text": "Chunk",
+   "action": {
+    "definitionId": "record_chunknow",
+    "options": {}
+   }
+  },
+  {
+   "id": "record_stop",
+   "category": "Record Controls",
+   "name": "Stop",
+   "text": "Stop",
+   "action": {
+    "definitionId": "record_stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_stop",
+   "category": "Playout Controls",
+   "name": "Stop",
+   "text": "Stop",
+   "action": {
+    "definitionId": "playout_stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_play",
+   "category": "Playout Controls",
+   "name": "Play",
+   "text": "Play",
+   "action": {
+    "definitionId": "playout_play",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_pause",
+   "category": "Playout Controls",
+   "name": "Pause",
+   "text": "Pause",
+   "action": {
+    "definitionId": "playout_pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_previous",
+   "category": "Playout Controls",
+   "name": "Previous",
+   "text": "Previous",
+   "action": {
+    "definitionId": "playout_previous",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_previous_step",
+   "category": "Playout Controls",
+   "name": "Previous Step",
+   "text": "Previous Step",
+   "action": {
+    "definitionId": "playout_previousstep",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_previous_frame",
+   "category": "Playout Controls",
+   "name": "Previous Frame",
+   "text": "Previous Frame",
+   "action": {
+    "definitionId": "playout_previousframe",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_next_step",
+   "category": "Playout Controls",
+   "name": "Next Step",
+   "text": "Next Step",
+   "action": {
+    "definitionId": "playout_nextstep",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_next_frame",
+   "category": "Playout Controls",
+   "name": "Next Frame",
+   "text": "Next Frame",
+   "action": {
+    "definitionId": "playout_nextframe",
+    "options": {}
+   }
+  },
+  {
+   "id": "playout_next",
+   "category": "Playout Controls",
+   "name": "Next",
+   "text": "Next",
+   "action": {
+    "definitionId": "playout_next",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bbc-raven",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Geoff House"
+  }
+ ],
+ "source": {
+  "module": "bbc-raven",
+  "version": "2.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Geoff House"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bbc-raven.git"
+ }
+}

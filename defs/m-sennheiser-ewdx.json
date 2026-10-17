@@ -1,0 +1,906 @@
+{
+ "format": 1,
+ "id": "m-sennheiser-ewdx",
+ "name": "Sennheiser EM2 / EM2 Dante / EM4 / CHG70N / CHG70N-C",
+ "category": "Sennheiser",
+ "version": "1.0.5",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 45,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Select Device Model",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "1",
+     "label": "EM2"
+    },
+    {
+     "id": "2",
+     "label": "EM2 Dante"
+    },
+    {
+     "id": "0",
+     "label": "EM4"
+    },
+    {
+     "id": "3",
+     "label": "CHG70N-C"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "restart",
+   "name": "Device: Restart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"restart\":true}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "name",
+   "name": "Device: Set Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name (max. 18 Chars - no special characters or blanks)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"name\":\"{{option.name}}\"}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "location",
+   "name": "Device: Set Location",
+   "options": [
+    {
+     "id": "location",
+     "label": "Location (max. 400 Chars)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"location\":\"{{option.location}}\"}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "brightness",
+   "name": "Device: Set Brightness",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Brightness",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 5
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"brightness\":{{option.brightness}}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "identification",
+   "name": "Device: Enable/Disable Identification",
+   "options": [
+    {
+     "id": "ident",
+     "label": "Visual Identification",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"identification\":{\"visual\":{{option.ident|map}}e}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "ident": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "autolock",
+   "name": "Device: Set Auto Lock",
+   "options": [
+    {
+     "id": "lock",
+     "label": "Auto Lock",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"lock\":{{option.lock|map}}e}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "lock": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "encryption",
+   "name": "Device: Set Encryption",
+   "options": [
+    {
+     "id": "encryption",
+     "label": "Encryption",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"encryption\":{{option.encryption|map}}e}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "encryption": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "link_density",
+   "name": "Device: Set Link Density Mode",
+   "options": [
+    {
+     "id": "linkdensity",
+     "label": "Link Density Mode",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"link_density_mode\":{{option.linkdensity|map}}e}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "linkdensity": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "rx_mute",
+   "name": "RX: Set Mute",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "mute",
+     "choices": [
+      {
+       "id": "mute",
+       "label": "Mute"
+      },
+      {
+       "id": "unmute",
+       "label": "Unmute"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"mute\":{{option.mute|map}}e}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    },
+    "mute": {
+     "mute": "tru",
+     "unmute": "fals",
+     "toggle": "tru"
+    }
+   }
+  },
+  {
+   "id": "rx_ss_mute_config_sk",
+   "name": "RX: Sync Settings: Mute Config [SK(M)]",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "setting",
+     "label": "Mute Setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "RF Mute"
+      },
+      {
+       "id": "2",
+       "label": "AF Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"sync_settings\":{\"mute_config\":\"{{option.setting|map}}\"}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    },
+    "setting": {
+     "0": "off",
+     "1": "rf_mute",
+     "2": "af_mute"
+    }
+   }
+  },
+  {
+   "id": "rx_ss_mute_config_table",
+   "name": "RX: Sync Settings: Mute Config [Table Stand]",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "setting",
+     "label": "Mute Setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "AF Mute"
+      },
+      {
+       "id": "2",
+       "label": "Push To Talk"
+      },
+      {
+       "id": "3",
+       "label": "Push To Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"sync_settings\":{\"mute_config_ts\":\"{{option.setting|map}}\"}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    },
+    "setting": {
+     "0": "off",
+     "1": "af_mute",
+     "2": "push_to_talk",
+     "3": "push_to_mute"
+    }
+   }
+  },
+  {
+   "id": "rx_ss_lowcut",
+   "name": "RX: Sync Settings: Set Lowcut",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "lowcut",
+     "label": "Lowcut",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "off"
+      },
+      {
+       "id": "1",
+       "label": "30 Hz"
+      },
+      {
+       "id": "2",
+       "label": "60 Hz"
+      },
+      {
+       "id": "3",
+       "label": "80 Hz"
+      },
+      {
+       "id": "4",
+       "label": "100 Hz"
+      },
+      {
+       "id": "5",
+       "label": "120 Hz"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"sync_settings\":{\"lowcut\":\"{{option.lowcut|map}}\"}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    },
+    "lowcut": {
+     "0": "off",
+     "1": "30 Hz",
+     "2": "60 Hz",
+     "3": "80 Hz",
+     "4": "100 Hz",
+     "5": "120 Hz"
+    }
+   }
+  },
+  {
+   "id": "rx_ss_lock",
+   "name": "RX: Sync Settings: Set Auto Lock",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "lock",
+     "label": "Enable Auto Lock",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"sync_settings\":{\"lock\":{{option.lock|map}}e}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    },
+    "lock": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "rx_ss_trim",
+   "name": "RX: Sync Settings: Set Trim",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "trim",
+     "label": "Trim",
+     "type": "number",
+     "default": 0,
+     "min": -12,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"sync_settings\":{\"trim\":{{option.trim}}}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    }
+   }
+  },
+  {
+   "id": "rx_ss_cable_emulation",
+   "name": "RX: Sync Settings: Set Cable Emulation",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "setting",
+     "label": "Setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Type 1"
+      },
+      {
+       "id": "2",
+       "label": "Type 2"
+      },
+      {
+       "id": "3",
+       "label": "Type 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"sync_settings\":{\"cable_emulation\":\"{{option.setting|map}}\"}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    },
+    "setting": {
+     "0": "off",
+     "1": "type1",
+     "2": "type2",
+     "3": "type3"
+    }
+   }
+  },
+  {
+   "id": "rx_freq",
+   "name": "RX: Set Frequency",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "frequency",
+     "label": "Frequency",
+     "type": "number",
+     "default": 470200,
+     "min": 470200,
+     "max": 1999000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"frequency\":{{option.frequency}}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    }
+   }
+  },
+  {
+   "id": "rx_identification",
+   "name": "RX: Enable/Disable Identification",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Channel 1"
+      },
+      {
+       "id": "1",
+       "label": "Channel 2"
+      },
+      {
+       "id": "2",
+       "label": "Channel 3"
+      },
+      {
+       "id": "3",
+       "label": "Channel 4"
+      }
+     ]
+    },
+    {
+     "id": "ident",
+     "label": "Visual Identification",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.receiver|map}}\":{\"identification\":{\"visual\":{{option.ident|map}}e}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "receiver": {
+     "0": "1",
+     "1": "2",
+     "2": "3",
+     "3": "4"
+    },
+    "ident": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "dante_port_mapping",
+   "name": "Dante: Set Interface Port Mapping",
+   "options": [
+    {
+     "id": "config",
+     "label": "Configuration",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "SINGLE_CABLE"
+      },
+      {
+       "id": "1",
+       "label": "SPLIT1"
+      },
+      {
+       "id": "2",
+       "label": "SPLIT2"
+      },
+      {
+       "id": "3",
+       "label": "SPLIT"
+      },
+      {
+       "id": "4",
+       "label": "AUDIO_REDUNDANCY"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"device\":{\"network\":{\"dante\":{\"interface_mapping\":\"{{option.config|map}}\"}}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "config": {
+     "0": "SINGLE_CABLE",
+     "1": "SPLIT1",
+     "2": "SPLIT2",
+     "3": "SPLIT",
+     "4": "AUDIO_REDUNDANCY"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "receiver_channel_status_0",
+   "category": "Channel Status",
+   "name": "Channel Status RX1",
+   "text": "Channel Status RX1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rx_identification",
+    "options": {
+     "receiver": 0,
+     "ident": true
+    }
+   }
+  },
+  {
+   "id": "receiver_channel_status_1",
+   "category": "Channel Status",
+   "name": "Channel Status RX2",
+   "text": "Channel Status RX2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rx_identification",
+    "options": {
+     "receiver": 1,
+     "ident": true
+    }
+   }
+  },
+  {
+   "id": "receiver_channel_status_2",
+   "category": "Channel Status",
+   "name": "Channel Status RX3",
+   "text": "Channel Status RX3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rx_identification",
+    "options": {
+     "receiver": 2,
+     "ident": true
+    }
+   }
+  },
+  {
+   "id": "receiver_channel_status_3",
+   "category": "Channel Status",
+   "name": "Channel Status RX4",
+   "text": "Channel Status RX4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rx_identification",
+    "options": {
+     "receiver": 3,
+     "ident": true
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-sennheiser-ewdx",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "sennheiser-ewdx",
+  "version": "1.0.5",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-sennheiser-ewdx.git"
+ }
+}

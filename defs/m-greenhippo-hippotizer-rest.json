@@ -1,0 +1,309 @@
+{
+ "format": 1,
+ "id": "m-greenhippo-hippotizer-rest",
+ "name": "Green Hippo Hippotizer",
+ "category": "Green Hippo",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:40512",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "layer_level_fade",
+   "name": "Layer: Fade Level",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "value",
+     "label": "Level",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "fade_time",
+     "label": "Fade Time(ms)",
+     "type": "number",
+     "default": 1000,
+     "min": 0,
+     "max": 20000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/pin/fadevalue/Engine_Mix{{option.mix}}_Layer{{option.layer}}_Mixer_Level/{{option.value}}/{{option.fade_time}}"
+   }
+  },
+  {
+   "id": "layer_play_modes",
+   "name": "Layer: Play Modes",
+   "options": [
+    {
+     "id": "playmode",
+     "label": "Select Action",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Forward"
+      },
+      {
+       "id": "1",
+       "label": "Forward Looping"
+      },
+      {
+       "id": "2",
+       "label": "Backward"
+      },
+      {
+       "id": "3",
+       "label": "Backward Loop"
+      },
+      {
+       "id": "4",
+       "label": "Ping Pong"
+      },
+      {
+       "id": "5",
+       "label": "Random"
+      },
+      {
+       "id": "6",
+       "label": "In"
+      },
+      {
+       "id": "7",
+       "label": "Out"
+      },
+      {
+       "id": "8",
+       "label": "Inner Loop"
+      },
+      {
+       "id": "9",
+       "label": "Loop Start"
+      },
+      {
+       "id": "10",
+       "label": "Loop End"
+      }
+     ]
+    },
+    {
+     "id": "mix",
+     "label": "Mix",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/pin/setvalue/Engine_Mix{{option.mix}}_Layer{{option.layer}}_Source_MediaPlayer_PlayMode/{{option.playmode|map}}"
+   },
+   "maps": {
+    "playmode": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10"
+    }
+   }
+  },
+  {
+   "id": "mix_level_fade",
+   "name": "Mix: Fade Level",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "value",
+     "label": "Level",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "fade_time",
+     "label": "Fade Time(ms)",
+     "type": "number",
+     "default": 1000,
+     "min": 0,
+     "max": 20000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/pin/fadevalue/Engine_Mix{{option.mix}}_MixControls_Level/{{option.value}}/{{option.fade_time}}"
+   }
+  },
+  {
+   "id": "pin_set_value",
+   "name": "Pin: Set Value",
+   "options": [
+    {
+     "id": "path",
+     "label": "Path",
+     "type": "text",
+     "default": "Seperate_Pin_Path_With_Underscores",
+     "help": "Path should be seperated with underscores. Ex. Engine_Mix1_Layer1"
+    },
+    {
+     "id": "value",
+     "label": "Pin Value",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/pin/setvalue/{{option.path}}/{{option.value}}"
+   }
+  },
+  {
+   "id": "pin_fade_to_value",
+   "name": "Pin: Fade To Value",
+   "options": [
+    {
+     "id": "path",
+     "label": "Path",
+     "type": "text",
+     "default": "Seperate_Pin_Path_With_Underscores",
+     "help": "Path should be seperated with underscores. Ex. Engine_Mix1_Layer1"
+    },
+    {
+     "id": "value",
+     "label": "Pin Value",
+     "type": "text",
+     "default": "0"
+    },
+    {
+     "id": "fade_time",
+     "label": "Fade Time(ms)",
+     "type": "number",
+     "default": 1000,
+     "min": 0,
+     "max": 20000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/pin/fadevalue/{{option.path}}/{{option.value}}/{{option.fade_time}}"
+   }
+  },
+  {
+   "id": "pin_reset_value",
+   "name": "Pin: Reset Value",
+   "options": [
+    {
+     "id": "path",
+     "label": "Path",
+     "type": "text",
+     "default": "Seperate_Pin_Path_With_Underscores",
+     "help": "Path should be seperated with underscores. Ex. Engine_Mix1_Layer1"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/pin/reset/{{option.path}}"
+   }
+  },
+  {
+   "id": "timeline_timecode",
+   "name": "Timeline: Global Timecode",
+   "options": [
+    {
+     "id": "timeline_tc",
+     "label": "Enable",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/pin/setvalue/TimeLinePlus_TimelinePlus_EnableTimecode/{{option.timeline_tc|map}}"
+   },
+   "maps": {
+    "timeline_tc": {
+     "false": "0",
+     "true": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-greenhippo-hippotizer-rest",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Dickens"
+  }
+ ],
+ "source": {
+  "module": "greenhippo-hippotizer-rest",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Dickens"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-greenhippo-hippotizer-rest.git"
+ }
+}

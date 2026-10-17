@@ -1,0 +1,287 @@
+{
+ "format": 1,
+ "id": "m-borealis-vor",
+ "name": "Borealis Solutions Vor",
+ "category": "Borealis Solutions",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3049,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "osc_id",
+   "label": "OSC Instance ID",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 999
+  },
+  {
+   "id": "use_rec_sACN",
+   "label": "Enable Recording Status sACN?",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "sacn_universe",
+   "label": "Recording Status sACN Universe",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "sacn_local_ip",
+   "label": "Local Interface to listen for sACN",
+   "type": "select",
+   "default": "Pick an interface IP...",
+   "choices": [
+    {
+     "id": "10.1.0.116",
+     "label": "10.1.0.116"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "rec_start",
+   "name": "Start Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f7265636f72642f73746172740000002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "rec_stop",
+   "name": "Stop Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f7265636f72642f73746f70000000002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "rec_toggle",
+   "name": "Toggle Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f7265636f72642f746f67676c6500002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "snapshot",
+   "name": "Take Snapshot",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f7265636f72642f736e617073686f74000000002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "show_name",
+   "name": "Set Show Name",
+   "options": [
+    {
+     "id": "show_name",
+     "label": "New Show Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/vor/showname/set",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.show_name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "show_num",
+   "name": "Set Show Number",
+   "options": [
+    {
+     "id": "show_num",
+     "label": "New Show Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/vor/shownumber/set",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.show_num}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "show_num_plus",
+   "name": "Increment the Show Number by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f73686f776e756d6265722f706c7573000000002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "show_num_minus",
+   "name": "Decrement the Show Number by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f73686f776e756d6265722f6d696e75730000002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "show_num_reset",
+   "name": "Reset the Show Number to 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f73686f776e756d6265722f72657365740000002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "composition",
+   "name": "Recall a Composition",
+   "options": [
+    {
+     "id": "comp_num",
+     "label": "Composition Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/vor/composition/set",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.comp_num}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "sys_quit",
+   "name": "Quit Vor Software",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f73797374656d2f71756974000000002c4e0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "sys_shut",
+   "name": "Shutdown Vor Server",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "2f766f722f73797374656d2f73687574646f776e000000002c4e0000",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "rec_start",
+   "category": "Actions",
+   "name": "Start",
+   "text": "Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rec_start",
+    "options": {}
+   }
+  },
+  {
+   "id": "rec_stop",
+   "category": "Actions",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rec_stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "rec_toggle",
+   "category": "Actions",
+   "name": "Record Toggle",
+   "text": "Record Toggle",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rec_toggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "snapshot",
+   "category": "Actions",
+   "name": "Snapshot",
+   "text": "Snapshot",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "snapshot",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-borealis-vor",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Asher Robinson"
+  }
+ ],
+ "source": {
+  "module": "borealis-vor",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Asher Robinson"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-borealis-vor"
+ }
+}

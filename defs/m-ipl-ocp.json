@@ -1,0 +1,51 @@
+{
+ "format": 1,
+ "id": "m-ipl-ocp",
+ "name": "Inkling Performance Labs Overlay Control Panel",
+ "category": "Inkling Performance Labs",
+ "version": "4.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:9090",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "reconnect",
+   "name": "Reconnect to NodeCG",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q57PdtP&b64=1"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-ipl-ocp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Vincent Lee, Inkfarer"
+  }
+ ],
+ "source": {
+  "module": "ipl-ocp",
+  "version": "4.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Vincent Lee",
+   "Inkfarer"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-ipl-ocp.git"
+ }
+}

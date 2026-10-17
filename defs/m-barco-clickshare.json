@@ -1,0 +1,70 @@
+{
+ "format": 1,
+ "id": "m-barco-clickshare",
+ "name": "Barco Clickshare",
+ "category": "Barco",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://192.168.0.10:4003",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "user",
+   "label": "Clickshare API Username",
+   "type": "text"
+  },
+  {
+   "id": "password",
+   "label": "Clickshare API Password",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "selectWallpaper",
+   "name": "Select Wallpaper",
+   "options": [
+    {
+     "id": "wallpaperId",
+     "label": "ID of wallpaper",
+     "type": "text",
+     "default": "1001",
+     "help": "default wallpapers have ID 1 and 2, user wallpapers start at 1001"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/v2/configuration/wallpapers/selected",
+    "body": "{\"id\":{{option.wallpaperId}}}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-barco-clickshare",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Bryan Crotaz"
+  }
+ ],
+ "source": {
+  "module": "barco-clickshare",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Bryan Crotaz"
+  ],
+  "repository": "https://github.com/bitfocus/companion-module-barco-clickshare.git"
+ }
+}

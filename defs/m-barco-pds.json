@@ -1,0 +1,667 @@
+{
+ "format": 1,
+ "id": "m-barco-pds",
+ "name": "Barco PDS",
+ "category": "Barco",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "variant",
+   "label": "Variant",
+   "type": "select",
+   "default": "1",
+   "choices": []
+  }
+ ],
+ "actions": [
+  {
+   "id": "TAKE",
+   "name": "Take",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "TAKE\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FREEZE",
+   "name": "Freeze",
+   "options": [
+    {
+     "id": "m",
+     "label": "Freeze",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "unfrozen"
+      },
+      {
+       "id": "1",
+       "label": "frozen"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FREEZE -m {{option.m|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "m": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "BLACK",
+   "name": "Set Black Output",
+   "options": [
+    {
+     "id": "m",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "normal"
+      },
+      {
+       "id": "1",
+       "label": "black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "BLACK -m {{option.m|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "m": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "OTPM",
+   "name": "Set Testpattern on/off",
+   "options": [
+    {
+     "id": "o",
+     "label": "Output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Program"
+      },
+      {
+       "id": "3",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "m",
+     "label": "Testpattern",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "off"
+      },
+      {
+       "id": "1",
+       "label": "on"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "OTPM -o {{option.o|map}} -m {{option.m|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "o": {
+     "1": "1",
+     "3": "3"
+    },
+    "m": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "OTPT",
+   "name": "Set Testpattern Type",
+   "options": [
+    {
+     "id": "o",
+     "label": "Output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Program"
+      },
+      {
+       "id": "3",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "t",
+     "label": "Type",
+     "type": "select",
+     "default": "4",
+     "choices": [
+      {
+       "id": "4",
+       "label": "16x16 Grid"
+      },
+      {
+       "id": "5",
+       "label": "32x32 Grid"
+      },
+      {
+       "id": "1",
+       "label": "H Ramp"
+      },
+      {
+       "id": "2",
+       "label": "V Ramp"
+      },
+      {
+       "id": "6",
+       "label": "Burst"
+      },
+      {
+       "id": "7",
+       "label": "75% Color Bars"
+      },
+      {
+       "id": "3",
+       "label": "100% Color Bars"
+      },
+      {
+       "id": "9",
+       "label": "Vertical Gray Steps"
+      },
+      {
+       "id": "10",
+       "label": "Horizontal Gray Steps"
+      },
+      {
+       "id": "8",
+       "label": "50% Gray"
+      },
+      {
+       "id": "11",
+       "label": "White"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      },
+      {
+       "id": "13",
+       "label": "Red"
+      },
+      {
+       "id": "14",
+       "label": "Green"
+      },
+      {
+       "id": "15",
+       "label": "Blue"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "OTPT -o {{option.o|map}} -t {{option.t|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "o": {
+     "1": "1",
+     "3": "3"
+    },
+    "t": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14\\rPREVIEW -?\\rPROGRAM -?\\rLOGOSEL -?",
+     "15": "15"
+    }
+   }
+  },
+  {
+   "id": "ORBM",
+   "name": "Set Rasterbox on/off",
+   "options": [
+    {
+     "id": "o",
+     "label": "Output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Program"
+      },
+      {
+       "id": "3",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "m",
+     "label": "Rasterbox",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "off"
+      },
+      {
+       "id": "1",
+       "label": "on"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "ORBM -o {{option.o|map}} -m {{option.m|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "o": {
+     "1": "1",
+     "3": "3"
+    },
+    "m": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "TRNTIME",
+   "name": "Set Transition Time",
+   "options": [
+    {
+     "id": "s",
+     "label": "Seconds",
+     "type": "text",
+     "default": "1.0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "TRNTIME -s {{option.s}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "LOGOSEL",
+   "name": "Select Black/Logo",
+   "options": [
+    {
+     "id": "l",
+     "label": "Framestore",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Black"
+      },
+      {
+       "id": "1",
+       "label": "Logo 1"
+      },
+      {
+       "id": "2",
+       "label": "Logo 2"
+      },
+      {
+       "id": "3",
+       "label": "Logo 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "LOGOSEL -l {{option.l|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "l": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "LOGOSAVE",
+   "name": "Save Logo",
+   "options": [
+    {
+     "id": "l",
+     "label": "Framestore",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Logo 1"
+      },
+      {
+       "id": "2",
+       "label": "Logo 2"
+      },
+      {
+       "id": "3",
+       "label": "Logo 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "LOGOSAVE -l {{option.l|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "l": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "AUTOTAKE",
+   "name": "Set Autotake Mode on/off",
+   "options": [
+    {
+     "id": "m",
+     "label": "Autotake",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "off"
+      },
+      {
+       "id": "1",
+       "label": "on"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AUTOTAKE -m {{option.m|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "m": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "PIPISEL",
+   "name": "Pend PiP Input",
+   "options": [
+    {
+     "id": "p",
+     "label": "PiP",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All PiPs"
+      },
+      {
+       "id": "1",
+       "label": "PiP 1"
+      },
+      {
+       "id": "2",
+       "label": "PiP 2"
+      }
+     ]
+    },
+    {
+     "id": "i",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1 VGA"
+      },
+      {
+       "id": "2",
+       "label": "2 VGA"
+      },
+      {
+       "id": "3",
+       "label": "3 VGA"
+      },
+      {
+       "id": "4",
+       "label": "4 VGA"
+      },
+      {
+       "id": "5",
+       "label": "5 DVI"
+      },
+      {
+       "id": "6",
+       "label": "6 DVI"
+      },
+      {
+       "id": "9",
+       "label": "9 SDI"
+      },
+      {
+       "id": "10",
+       "label": "Black/Logo"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "PIPISEL -p {{option.p|map}} -i {{option.i|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "p": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    },
+    "i": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "9": "9",
+     "10": "10"
+    }
+   }
+  },
+  {
+   "id": "PIPREC",
+   "name": "PiP Recall",
+   "options": [
+    {
+     "id": "p",
+     "label": "PiP",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "PiP 1"
+      },
+      {
+       "id": "2",
+       "label": "PiP 2"
+      }
+     ]
+    },
+    {
+     "id": "f",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      },
+      {
+       "id": "9",
+       "label": "9"
+      },
+      {
+       "id": "10",
+       "label": "10"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "PIPREC -p {{option.p|map}} -f {{option.f|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "p": {
+     "1": "1",
+     "2": "2"
+    },
+    "f": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-barco-pds",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dorian Meid"
+  }
+ ],
+ "source": {
+  "module": "barco-pds",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Dorian Meid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-barco-pds.git"
+ }
+}

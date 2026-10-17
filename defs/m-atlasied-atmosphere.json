@@ -1,0 +1,430 @@
+{
+ "format": 1,
+ "id": "m-atlasied-atmosphere",
+ "name": "AtlasIED Atmosphere",
+ "category": "AtlasIED",
+ "version": "1.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5321,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "controllerId",
+   "label": "Controller ID",
+   "type": "number",
+   "default": 10
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "source_gain_set_percent",
+   "name": "Set Source Gain By Percent",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is SourceGain_0, enter 0 here."
+    },
+    {
+     "id": "percent",
+     "label": "Gain Percent",
+     "type": "text",
+     "default": "50"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"SourceGain_{{option.number}}\",\"pct\":{{option.percent}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "source_mute",
+   "name": "Set Source Mute",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is SourceMute_0, enter 0 here."
+    },
+    {
+     "id": "mute",
+     "label": "Mute On/Off",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"SourceMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "mix_gain_set_percent",
+   "name": "Set Mix Gain By Percent",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is MixGain_0, enter 0 here."
+    },
+    {
+     "id": "percent",
+     "label": "Gain Percent",
+     "type": "text",
+     "default": "50"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"MixGain_{{option.number}}\",\"pct\":{{option.percent}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mix_mute",
+   "name": "Set Mix Mute",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is MixMute_0, enter 0 here."
+    },
+    {
+     "id": "mute",
+     "label": "Mute On/Off",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"MixMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "zone_gain_bump_increase",
+   "name": "Bump/Increase Zone Gain",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is ZoneGain_0, enter 0 here."
+    },
+    {
+     "id": "value",
+     "label": "Gain Increase",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"ZoneGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zone_gain_bump_decrease",
+   "name": "Bump/Decrease Zone Gain",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "1",
+     "help": "i.e. If third party parameter is ZoneGain_0, enter 0 here."
+    },
+    {
+     "id": "value",
+     "label": "Gain Decrease",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"ZoneGain_{{option.number}}\",\"val\":{{option.value|lin:-1:0}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zone_mute",
+   "name": "Set Zone Mute",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is ZoneMute_0, enter 0 here."
+    },
+    {
+     "id": "mute",
+     "label": "Mute On/Off",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"ZoneMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "group_gain_set_value",
+   "name": "Set Group Gain By Value",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is GroupGain_0, enter 0 here."
+    },
+    {
+     "id": "value",
+     "label": "Gain Value",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "group_gain_bump_increase",
+   "name": "Bump/Increase Group Gain",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is GroupGain_0, enter 0 here."
+    },
+    {
+     "id": "value",
+     "label": "Gain Increase",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "group_gain_bump_decrease",
+   "name": "Bump/Decrease Group Gain",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is GroupGain_0, enter 0 here."
+    },
+    {
+     "id": "value",
+     "label": "Gain Decrease",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value|lin:-1:0}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "group_mute",
+   "name": "Set Group Mute",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is GroupMute_0, enter 0 here."
+    },
+    {
+     "id": "mute",
+     "label": "Mute On/Off",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "zone_set_source",
+   "name": "Set Zone Source",
+   "options": [
+    {
+     "id": "zone_number",
+     "label": "Zone Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is ZoneSource_0, enter 0 here."
+    },
+    {
+     "id": "source_number",
+     "label": "Source Number",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"ZoneSource_{{option.zone_number}}\",\"val\":{{option.source_number}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "group_set_source",
+   "name": "Set Group Source",
+   "options": [
+    {
+     "id": "group_number",
+     "label": "Group Number",
+     "type": "text",
+     "default": "0",
+     "help": "i.e. If third party parameter is GroupSource_0, enter 0 here."
+    },
+    {
+     "id": "source_number",
+     "label": "Source Number",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupSource_{{option.group_number}}\",\"val\":{{option.source_number}}}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recall_routine",
+   "name": "Recall Routine",
+   "options": [
+    {
+     "id": "number",
+     "label": "Routine Number",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"RecallRoutine_{{option.number}}\",\"val\":1}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recall_scene",
+   "name": "Recall Scene",
+   "options": [
+    {
+     "id": "number",
+     "label": "Scene Number",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"RecallScene_{{option.number}}\",\"val\":1}],\"id\":10}\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-atlasied-atmosphere",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "atlasied-atmosphere",
+  "version": "1.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-atlasied-atmosphere.git"
+ }
+}

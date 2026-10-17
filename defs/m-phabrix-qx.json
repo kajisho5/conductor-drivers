@@ -1,0 +1,3805 @@
+{
+ "format": 1,
+ "id": "m-phabrix-qx",
+ "name": "Phabrix QX12G",
+ "category": "Phabrix",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "configure_aes_io",
+   "name": "Configure AES IO Ports",
+   "options": [
+    {
+     "id": "aes1_group",
+     "label": "AES1 Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "aes1_pair",
+     "label": "AES1 Pair",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "aes1_mode",
+     "label": "AES1 Mode",
+     "type": "select",
+     "default": "receive",
+     "choices": [
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "receive",
+       "label": "Receive"
+      },
+      {
+       "id": "transmit",
+       "label": "Transmit"
+      }
+     ]
+    },
+    {
+     "id": "aes1_transmitSource",
+     "label": "AES1 Transmit Source",
+     "type": "select",
+     "default": "generator",
+     "choices": [
+      {
+       "id": "analyser",
+       "label": "Analyser"
+      },
+      {
+       "id": "passthrough",
+       "label": "Passthrough"
+      },
+      {
+       "id": "dolbyDecoder1",
+       "label": "DolbyDecoder1"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      }
+     ]
+    },
+    {
+     "id": "aes2_group",
+     "label": "AES2 Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "aes2_pair",
+     "label": "AES2 Pair",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "aes2_mode",
+     "label": "AES2 Mode",
+     "type": "select",
+     "default": "receive",
+     "choices": [
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "receive",
+       "label": "Receive"
+      },
+      {
+       "id": "transmit",
+       "label": "Transmit"
+      }
+     ]
+    },
+    {
+     "id": "aes2_transmitSource",
+     "label": "AES2 Transmit Source",
+     "type": "select",
+     "default": "generator",
+     "choices": [
+      {
+       "id": "analyser",
+       "label": "Analyser"
+      },
+      {
+       "id": "passthrough",
+       "label": "Passthrough"
+      },
+      {
+       "id": "dolbyDecoder1",
+       "label": "DolbyDecoder1"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      }
+     ]
+    },
+    {
+     "id": "aes3_group",
+     "label": "AES3 Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "aes3_pair",
+     "label": "AES3 Pair",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "aes3_mode",
+     "label": "AES3 Mode",
+     "type": "select",
+     "default": "receive",
+     "choices": [
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "receive",
+       "label": "Receive"
+      },
+      {
+       "id": "transmit",
+       "label": "Transmit"
+      }
+     ]
+    },
+    {
+     "id": "aes3_transmitSource",
+     "label": "AES3 Transmit Source",
+     "type": "select",
+     "default": "generator",
+     "choices": [
+      {
+       "id": "analyser",
+       "label": "Analyser"
+      },
+      {
+       "id": "passthrough",
+       "label": "Passthrough"
+      },
+      {
+       "id": "dolbyDecoder1",
+       "label": "DolbyDecoder1"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      }
+     ]
+    },
+    {
+     "id": "aes4_group",
+     "label": "AES4 Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "aes4_pair",
+     "label": "AES4 Pair",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "aes4_mode",
+     "label": "AES4 Mode",
+     "type": "select",
+     "default": "receive",
+     "choices": [
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "receive",
+       "label": "Receive"
+      },
+      {
+       "id": "transmit",
+       "label": "Transmit"
+      }
+     ]
+    },
+    {
+     "id": "aes4_transmitSource",
+     "label": "AES4 Transmit Source",
+     "type": "select",
+     "default": "generator",
+     "choices": [
+      {
+       "id": "analyser",
+       "label": "Analyser"
+      },
+      {
+       "id": "passthrough",
+       "label": "Passthrough"
+      },
+      {
+       "id": "dolbyDecoder1",
+       "label": "DolbyDecoder1"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      }
+     ]
+    },
+    {
+     "id": "passthroughSource",
+     "label": "Passthrough Source",
+     "type": "select",
+     "default": "aes1",
+     "choices": [
+      {
+       "id": "aes1",
+       "label": "AES 1"
+      },
+      {
+       "id": "aes2",
+       "label": "AES 2"
+      },
+      {
+       "id": "aes3",
+       "label": "AES 3"
+      },
+      {
+       "id": "aes4",
+       "label": "AES 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/aesIO/config",
+    "body": "{\"aes1\":{\"group\":{{option.aes1_group}},\"pair\":{{option.aes1_pair}},\"mode\":\"{{option.aes1_mode|map}}\",\"transmitSource\":\"{{option.aes1_transmitSource|map}}\"},\"aes2\":{\"group\":{{option.aes2_group}},\"pair\":{{option.aes2_pair}},\"mode\":\"{{option.aes2_mode|map}}\",\"transmitSource\":\"{{option.aes2_transmitSource|map}}\"},\"aes3\":{\"group\":{{option.aes3_group}},\"pair\":{{option.aes3_pair}},\"mode\":\"{{option.aes3_mode|map}}\",\"transmitSource\":\"{{option.aes3_transmitSource|map}}\"},\"aes4\":{\"group\":{{option.aes4_group}},\"pair\":{{option.aes4_pair}},\"mode\":\"{{option.aes4_mode|map}}\",\"transmitSource\":\"{{option.aes4_transmitSource|map}}\"},\"passthroughSource\":\"aes{{option.passthroughSource|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "aes1_mode": {
+     "receive": "receive",
+     "off": "off",
+     "transmit": "transmit"
+    },
+    "aes1_transmitSource": {
+     "generator": "generator",
+     "analyser": "analyser",
+     "passthrough": "passthrough",
+     "dolbyDecoder1": "dolbyDecoder1"
+    },
+    "aes2_mode": {
+     "receive": "receive",
+     "off": "off",
+     "transmit": "transmit"
+    },
+    "aes2_transmitSource": {
+     "generator": "generator",
+     "analyser": "analyser",
+     "passthrough": "passthrough",
+     "dolbyDecoder1": "dolbyDecoder1"
+    },
+    "aes3_mode": {
+     "receive": "receive",
+     "off": "off",
+     "transmit": "transmit"
+    },
+    "aes3_transmitSource": {
+     "generator": "generator",
+     "analyser": "analyser",
+     "passthrough": "passthrough",
+     "dolbyDecoder1": "dolbyDecoder1"
+    },
+    "aes4_mode": {
+     "receive": "receive",
+     "off": "off",
+     "transmit": "transmit"
+    },
+    "aes4_transmitSource": {
+     "generator": "generator",
+     "analyser": "analyser",
+     "passthrough": "passthrough",
+     "dolbyDecoder1": "dolbyDecoder1"
+    },
+    "passthroughSource": {
+     "aes1": "1",
+     "aes2": "2",
+     "aes3": "3",
+     "aes4": "4"
+    }
+   }
+  },
+  {
+   "id": "analyser_ancillaryInspector",
+   "name": "Set Ancillary Inspector Config",
+   "options": [
+    {
+     "id": "did",
+     "label": "DID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999
+    },
+    {
+     "id": "firstLine",
+     "label": "First Line",
+     "type": "number",
+     "default": 0,
+     "min": -999999,
+     "max": 9999999
+    },
+    {
+     "id": "hancVancSelect",
+     "label": "HANC/VANC Select",
+     "type": "select",
+     "default": "both",
+     "choices": [
+      {
+       "id": "both",
+       "label": "both"
+      },
+      {
+       "id": "hanc",
+       "label": "hanc"
+      },
+      {
+       "id": "vanc",
+       "label": "vanc"
+      }
+     ]
+    },
+    {
+     "id": "identifierSelect",
+     "label": "Identifier Select",
+     "type": "select",
+     "default": "any",
+     "choices": [
+      {
+       "id": "any",
+       "label": "any"
+      },
+      {
+       "id": "custom",
+       "label": "custom"
+      }
+     ]
+    },
+    {
+     "id": "lastLine",
+     "label": "Last Line",
+     "type": "number",
+     "default": 0,
+     "min": -999999,
+     "max": 9999999
+    },
+    {
+     "id": "rangeSelect",
+     "label": "Range Select",
+     "type": "select",
+     "default": "any",
+     "choices": [
+      {
+       "id": "any",
+       "label": "any"
+      },
+      {
+       "id": "inside",
+       "label": "inside"
+      },
+      {
+       "id": "outside",
+       "label": "outside"
+      }
+     ]
+    },
+    {
+     "id": "sdid",
+     "label": "SDID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999
+    },
+    {
+     "id": "searchAncGapErrors",
+     "label": "Search Ancillary Gap Errors",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "searchChecksumErrors",
+     "label": "Search Checksum Errors",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "searchDBNErrors",
+     "label": "Search DBN Errors",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "searchParityErrors",
+     "label": "Search Parity Errors",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "subImageSearch",
+     "label": "SubImage Search",
+     "type": "select",
+     "default": "any",
+     "choices": [
+      {
+       "id": "any",
+       "label": "any"
+      },
+      {
+       "id": "subImage1",
+       "label": "subImage1"
+      },
+      {
+       "id": "subImage2",
+       "label": "subImage2"
+      },
+      {
+       "id": "subImage3",
+       "label": "subImage3"
+      },
+      {
+       "id": "subImage4",
+       "label": "subImage4"
+      },
+      {
+       "id": "linkBSubImage1",
+       "label": "linkBSubImage1"
+      },
+      {
+       "id": "linkBSubImage2",
+       "label": "linkBSubImage2"
+      },
+      {
+       "id": "linkBSubImage3",
+       "label": "linkBSubImage3"
+      },
+      {
+       "id": "linkBSubImage4",
+       "label": "linkBSubImage4"
+      }
+     ]
+    },
+    {
+     "id": "yPosCPosSelect",
+     "label": "YPos/CPos Select",
+     "type": "select",
+     "default": "both",
+     "choices": [
+      {
+       "id": "both",
+       "label": "both"
+      },
+      {
+       "id": "yPos",
+       "label": "yPos"
+      },
+      {
+       "id": "cPos",
+       "label": "cPos"
+      }
+     ]
+    },
+    {
+     "id": "triggerOnlyOnErrors",
+     "label": "Trigger Only On Errors",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/ancillaryInspector",
+    "body": "{\"identifierSelect\":\"{{option.identifierSelect|map}}\",\"did\":{{option.did}},\"sdid\":{{option.sdid}},\"subImageSearch\":\"{{option.subImageSearch|map}}\",\"rangeSelect\":\"{{option.rangeSelect|map}}\",\"firstLine\":{{option.firstLine}},\"lastLine\":{{option.lastLine}},\"hancVancSelect\":\"{{option.hancVancSelect|map}}\",\"yPosCPosSelect\":\"{{option.yPosCPosSelect|map}}\",\"triggerOnlyOnErrors\":{{option.triggerOnlyOnErrors|map}}e,\"searchChecksumErrors\":{{option.searchChecksumErrors|map}}e,\"searchDBNErrors\":{{option.searchDBNErrors|map}}e,\"searchParityErrors\":{{option.searchParityErrors|map}}e,\"searchAncGapErrors\":{{option.searchAncGapErrors|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "identifierSelect": {
+     "any": "any",
+     "custom": "custom"
+    },
+    "subImageSearch": {
+     "any": "any",
+     "subImage1": "subImage1",
+     "subImage2": "subImage2",
+     "subImage3": "subImage3",
+     "subImage4": "subImage4",
+     "linkBSubImage1": "linkBSubImage1",
+     "linkBSubImage2": "linkBSubImage2",
+     "linkBSubImage3": "linkBSubImage3",
+     "linkBSubImage4": "linkBSubImage4"
+    },
+    "rangeSelect": {
+     "any": "any",
+     "inside": "inside",
+     "outside": "outside"
+    },
+    "hancVancSelect": {
+     "both": "both",
+     "hanc": "hanc",
+     "vanc": "vanc"
+    },
+    "yPosCPosSelect": {
+     "both": "both",
+     "yPos": "yPos",
+     "cPos": "cPos"
+    },
+    "triggerOnlyOnErrors": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "searchChecksumErrors": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "searchDBNErrors": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "searchParityErrors": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "searchAncGapErrors": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "analyser_ancillaryStatus_reset",
+   "name": "Reset Ancillary Status",
+   "options": [
+    {
+     "id": "reset",
+     "label": "Reset",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/ancillaryStatus",
+    "body": "{\"reset\":{{option.reset|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "reset": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "analyser_audioMeter_ballistics",
+   "name": "Set Audio Meter Ballistics",
+   "options": [
+    {
+     "id": "ballistics",
+     "label": "Ballistics",
+     "type": "select",
+     "default": "PPM Type I",
+     "choices": [
+      {
+       "id": "PPM Type I",
+       "label": "PPM Type I"
+      },
+      {
+       "id": "PPM Type II",
+       "label": "PPM Type II"
+      },
+      {
+       "id": "Vu",
+       "label": "Vu"
+      },
+      {
+       "id": "VuFr",
+       "label": "VuFr"
+      },
+      {
+       "id": "Fast",
+       "label": "Fast"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/audioMeter",
+    "body": "{\"ballistics\":\"{{option.ballistics|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "ballistics": {
+     "PPM Type I": "PPM Type I",
+     "PPM Type II": "PPM Type II",
+     "Vu": "Vu",
+     "VuFr": "VuFr",
+     "Fast": "Fast"
+    }
+   }
+  },
+  {
+   "id": "analyser_cableLength_set",
+   "name": "Set Cable Type",
+   "options": [
+    {
+     "id": "cableType",
+     "label": "Cable Type",
+     "type": "select",
+     "default": "belden_1694a",
+     "choices": [
+      {
+       "id": "belden_8281",
+       "label": "belden_8281"
+      },
+      {
+       "id": "belden_1505",
+       "label": "belden_1505"
+      },
+      {
+       "id": "belden_1694a",
+       "label": "belden_1694a"
+      },
+      {
+       "id": "belden_1855a",
+       "label": "belden_1855a"
+      },
+      {
+       "id": "canare_l5cfb",
+       "label": "canare_l5cfb"
+      },
+      {
+       "id": "image_1000",
+       "label": "image_1000"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/cableLength",
+    "body": "{\"cableType\":\"{{option.cableType|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "cableType": {
+     "belden_1694a": "belden_1694a",
+     "belden_8281": "belden_8281",
+     "belden_1505": "belden_1505",
+     "belden_1855a": "belden_1855a",
+     "canare_l5cfb": "canare_l5cfb",
+     "image_1000": "image_1000"
+    }
+   }
+  },
+  {
+   "id": "analyser_crcSummary_set",
+   "name": "Ignore CRC Summary on Switch Lines",
+   "options": [
+    {
+     "id": "ignoreCrcOnSwitchLines",
+     "label": "Ignore CRC On Switch Lines",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "enable"
+      },
+      {
+       "id": "disable",
+       "label": "disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/crcSummary",
+    "body": "{\"ignoreCrcOnSwitchLines\":\"{{option.ignoreCrcOnSwitchLines|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "ignoreCrcOnSwitchLines": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "analyser_crcSummary_Reset",
+   "name": "CRC Summary Reset",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/crcSummary",
+    "body": "{\"action\":\"reset\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "analyser_cursor_position",
+   "name": "Set Active Picture Cursor",
+   "options": [
+    {
+     "id": "activePictureLine",
+     "label": "Line",
+     "type": "number",
+     "default": 0,
+     "min": -39,
+     "max": 1084
+    },
+    {
+     "id": "activePicturePixel",
+     "label": "Pixel",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 2147483647
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/cursors/activePictureCursor",
+    "body": "{\"activePictureLine\":{{option.activePictureLine}},\"activePicturePixel\":{{option.activePicturePixel}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "analyser_loudness_config",
+   "name": "Loudness Config",
+   "options": [
+    {
+     "id": "audioMode",
+     "label": "Audio Mode",
+     "type": "select",
+     "default": "stereo",
+     "choices": [
+      {
+       "id": "stereo",
+       "label": "Stereo"
+      },
+      {
+       "id": "5.1",
+       "label": "5.1"
+      },
+      {
+       "id": "aesStereo",
+       "label": "AES Stereo"
+      },
+      {
+       "id": "aes5.1",
+       "label": "AES 5.1"
+      },
+      {
+       "id": "dolbyDecoder1",
+       "label": "Dolby Decoder 1"
+      }
+     ]
+    },
+    {
+     "id": "standard",
+     "label": "Standard",
+     "type": "select",
+     "default": "ebuLufs",
+     "choices": [
+      {
+       "id": "ebuLufs",
+       "label": "EBU LUFS"
+      },
+      {
+       "id": "ebuLu",
+       "label": "EBU LU"
+      },
+      {
+       "id": "ituLkfs",
+       "label": "ITU LKFS"
+      },
+      {
+       "id": "ituLu",
+       "label": "ITU LU"
+      }
+     ]
+    },
+    {
+     "id": "truePeakAlarm",
+     "label": "True Peak Alarm (dB)",
+     "type": "number",
+     "default": -1,
+     "min": -99,
+     "max": 0
+    },
+    {
+     "id": "logDuration_mins",
+     "label": "Log Duration (min)",
+     "type": "select",
+     "default": "60",
+     "choices": [
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "15",
+       "label": "15"
+      },
+      {
+       "id": "30",
+       "label": "30"
+      },
+      {
+       "id": "60",
+       "label": "60"
+      },
+      {
+       "id": "120",
+       "label": "120"
+      },
+      {
+       "id": "180",
+       "label": "180"
+      },
+      {
+       "id": "360",
+       "label": "360"
+      },
+      {
+       "id": "720",
+       "label": "720"
+      },
+      {
+       "id": "1440",
+       "label": "1440"
+      }
+     ]
+    },
+    {
+     "id": "logLifetime_days",
+     "label": "Log Lifetime (days)",
+     "type": "select",
+     "default": "7",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "14",
+       "label": "14"
+      },
+      {
+       "id": "30",
+       "label": "30"
+      }
+     ]
+    },
+    {
+     "id": "logFilename",
+     "label": "Log Filename",
+     "type": "text",
+     "default": "string-value"
+    },
+    {
+     "id": "meterTarget_integrated",
+     "label": "Target Integrated",
+     "type": "number",
+     "default": -23,
+     "min": -59,
+     "max": -5
+    },
+    {
+     "id": "meterTarget_momentary",
+     "label": "Target Momentary",
+     "type": "number",
+     "default": -20,
+     "min": -59,
+     "max": -5
+    },
+    {
+     "id": "meterTarget_shortTerm",
+     "label": "Target Short Term",
+     "type": "number",
+     "default": -20,
+     "min": -59,
+     "max": -5
+    },
+    {
+     "id": "meterTolerance_integrated",
+     "label": "Tolerance Integrated",
+     "type": "number",
+     "default": 5,
+     "min": 0,
+     "max": 10
+    },
+    {
+     "id": "meterTolerance_momentary",
+     "label": "Tolerance Momentary",
+     "type": "number",
+     "default": 5,
+     "min": 0,
+     "max": 10
+    },
+    {
+     "id": "meterTolerance_shortTerm",
+     "label": "Tolerance Short Term",
+     "type": "number",
+     "default": 5,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/loudness/config",
+    "body": "{\"audioAssignment\":{\"audioMode\":\"{{option.audioMode|map}}\"},\"standard\":\"{{option.standard|map}}\",\"truePeakAlarm\":{{option.truePeakAlarm}},\"logDuration_mins\":{{option.logDuration_mins|map}},\"logLifetime_days\":{{option.logLifetime_days|map}},\"logFilename\":\"{{option.logFilename}}\",\"meterTarget\":{\"integrated\":{{option.meterTarget_integrated}},\"momentary\":{{option.meterTarget_momentary}},\"shortTerm\":{{option.meterTarget_shortTerm}}},\"meterTolerance\":{\"integrated\":{{option.meterTolerance_integrated}},\"shortTerm\":{{option.meterTolerance_shortTerm}},\"momentary\":{{option.meterTolerance_momentary}}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "audioMode": {
+     "stereo": "stereo",
+     "5.1": "5.1",
+     "aesStereo": "aesStereo",
+     "aes5.1": "aes5.1",
+     "dolbyDecoder1": "dolbyDecoder1"
+    },
+    "standard": {
+     "ebuLufs": "ebuLufs",
+     "ebuLu": "ebuLu",
+     "ituLkfs": "ituLkfs",
+     "ituLu": "ituLu"
+    },
+    "logDuration_mins": {
+     "5": "5",
+     "15": "15",
+     "30": "30",
+     "60": "60",
+     "120": "120",
+     "180": "180",
+     "360": "360",
+     "720": "720",
+     "1440": "1440"
+    },
+    "logLifetime_days": {
+     "1": "1",
+     "7": "7",
+     "14": "14",
+     "30": "30"
+    }
+   }
+  },
+  {
+   "id": "analyser_loudness_config_action",
+   "name": "Loudness Config Action",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "loudnessMonitoringReset",
+     "choices": [
+      {
+       "id": "loudnessMonitoringReset",
+       "label": "Loudness Monitoring Reset"
+      },
+      {
+       "id": "truePeakValueReset",
+       "label": "True Peak Value Reset"
+      },
+      {
+       "id": "errorCountsReset",
+       "label": "Error Counts Reset"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/loudness/config",
+    "body": "{\"action\":\"{{option.action|map}}Reset\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "loudnessMonitoringReset": "loudnessMonitoring",
+     "truePeakValueReset": "truePeakValue",
+     "errorCountsReset": "errorCounts"
+    }
+   }
+  },
+  {
+   "id": "analyser_loudness_config_control",
+   "name": "Loudness Control",
+   "options": [
+    {
+     "id": "control",
+     "label": "Control",
+     "type": "select",
+     "default": "start",
+     "choices": [
+      {
+       "id": "start",
+       "label": "start"
+      },
+      {
+       "id": "stop",
+       "label": "stop"
+      },
+      {
+       "id": "pause",
+       "label": "pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/loudness/config",
+    "body": "{\"control\":\"{{option.control|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "control": {
+     "start": "start",
+     "stop": "stop",
+     "pause": "pause"
+    }
+   }
+  },
+  {
+   "id": "override_video_standard_config",
+   "name": "Override Video Standard Config",
+   "options": [
+    {
+     "id": "manualOverrideEnabled",
+     "label": "Manual Override Enabled",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "format",
+     "label": "Format",
+     "type": "select",
+     "default": "YCbCr:422:10",
+     "choices": [
+      {
+       "id": "YCbCr:422:10",
+       "label": "YCbCr:422:10"
+      },
+      {
+       "id": "YCbCr:422:12",
+       "label": "YCbCr:422:12"
+      },
+      {
+       "id": "YCbCrA:4224:12",
+       "label": "YCbCrA:4224:12"
+      },
+      {
+       "id": "YCbCr:444:10",
+       "label": "YCbCr:444:10"
+      },
+      {
+       "id": "YCbCr:444:12",
+       "label": "YCbCr:444:12"
+      },
+      {
+       "id": "YCbCrA:4444:10",
+       "label": "YCbCrA:4444:10"
+      },
+      {
+       "id": "RGB:444:10",
+       "label": "RGB:444:10"
+      },
+      {
+       "id": "RGB:444:12",
+       "label": "RGB:444:12"
+      },
+      {
+       "id": "RGBA:4444:10",
+       "label": "RGBA:4444:10"
+      }
+     ]
+    },
+    {
+     "id": "frame",
+     "label": "Frame Rate",
+     "type": "select",
+     "default": "50i",
+     "choices": [
+      {
+       "id": "23.98p",
+       "label": "23.98p"
+      },
+      {
+       "id": "23.98psf",
+       "label": "23.98psf"
+      },
+      {
+       "id": "24p",
+       "label": "24p"
+      },
+      {
+       "id": "24psf",
+       "label": "24psf"
+      },
+      {
+       "id": "25p",
+       "label": "25p"
+      },
+      {
+       "id": "25psf",
+       "label": "25psf"
+      },
+      {
+       "id": "29.97p",
+       "label": "29.97p"
+      },
+      {
+       "id": "29.97psf",
+       "label": "29.97psf"
+      },
+      {
+       "id": "30p",
+       "label": "30p"
+      },
+      {
+       "id": "30psf",
+       "label": "30psf"
+      },
+      {
+       "id": "47.95p",
+       "label": "47.95p"
+      },
+      {
+       "id": "48p",
+       "label": "48p"
+      },
+      {
+       "id": "50i",
+       "label": "50i"
+      },
+      {
+       "id": "50p",
+       "label": "50p"
+      },
+      {
+       "id": "59.94i",
+       "label": "59.94i"
+      },
+      {
+       "id": "59.94p",
+       "label": "59.94p"
+      },
+      {
+       "id": "60i",
+       "label": "60i"
+      },
+      {
+       "id": "60p",
+       "label": "60p"
+      }
+     ]
+    },
+    {
+     "id": "gamut",
+     "label": "Gamut",
+     "type": "select",
+     "default": "709",
+     "choices": [
+      {
+       "id": "709",
+       "label": "709"
+      },
+      {
+       "id": "2020",
+       "label": "2020"
+      },
+      {
+       "id": "HLG 2020",
+       "label": "HLG 2020"
+      },
+      {
+       "id": "PQ 2020",
+       "label": "PQ 2020"
+      },
+      {
+       "id": "S-Log3 2020",
+       "label": "S-Log3 2020"
+      }
+     ]
+    },
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "3G A",
+     "choices": [
+      {
+       "id": "12G 2-SI",
+       "label": "12G 2-SI"
+      },
+      {
+       "id": "QL 3G A 2-SI",
+       "label": "QL 3G A 2-SI"
+      },
+      {
+       "id": "QL 3G A SqDv",
+       "label": "QL 3G A SqDv"
+      },
+      {
+       "id": "QL 3G B 2-SI",
+       "label": "QL 3G B 2-SI"
+      },
+      {
+       "id": "QL 3G B SqDv",
+       "label": "QL 3G B SqDv"
+      },
+      {
+       "id": "DL 6G 2-SI",
+       "label": "DL 6G 2-SI"
+      },
+      {
+       "id": "6G 2-SI",
+       "label": "6G 2-SI"
+      },
+      {
+       "id": "QL 1.5G SqDv",
+       "label": "QL 1.5G SqDv"
+      },
+      {
+       "id": "3G A",
+       "label": "3G A"
+      },
+      {
+       "id": "3G B",
+       "label": "3G B"
+      },
+      {
+       "id": "1.5G",
+       "label": "1.5G"
+      }
+     ]
+    },
+    {
+     "id": "width",
+     "label": "Width",
+     "type": "select",
+     "default": "1920",
+     "choices": [
+      {
+       "id": "1280",
+       "label": "1280"
+      },
+      {
+       "id": "1920",
+       "label": "1920"
+      },
+      {
+       "id": "2048",
+       "label": "2048"
+      },
+      {
+       "id": "3840",
+       "label": "3840"
+      },
+      {
+       "id": "4096",
+       "label": "4096"
+      }
+     ]
+    },
+    {
+     "id": "height",
+     "label": "Height",
+     "type": "select",
+     "default": "1080",
+     "choices": [
+      {
+       "id": "720",
+       "label": "720"
+      },
+      {
+       "id": "1080",
+       "label": "1080"
+      },
+      {
+       "id": "2160",
+       "label": "2160"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/overrideVideoStandard/config",
+    "body": "{\"manualOverrideEnabled\":{{option.manualOverrideEnabled|map}}e,\"overrideStandard\":{\"format\":\"{{option.format|map}}\",\"frame\":\"{{option.frame|map}}\",\"gamut\":\"{{option.gamut|map}}\",\"height\":{{option.height|map}}0,\"type\":\"{{option.type|map}}\",\"width\":{{option.width|map}}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "manualOverrideEnabled": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "format": {
+     "YCbCr:422:10": "YCbCr:422:10",
+     "YCbCr:422:12": "YCbCr:422:12",
+     "YCbCrA:4224:12": "YCbCrA:4224:12",
+     "YCbCr:444:10": "YCbCr:444:10",
+     "YCbCr:444:12": "YCbCr:444:12",
+     "YCbCrA:4444:10": "YCbCrA:4444:10",
+     "RGB:444:10": "RGB:444:10",
+     "RGB:444:12": "RGB:444:12",
+     "RGBA:4444:10": "RGBA:4444:10"
+    },
+    "frame": {
+     "50i": "50i",
+     "23.98p": "23.98p",
+     "23.98psf": "23.98psf",
+     "24p": "24p",
+     "24psf": "24psf",
+     "25p": "25p",
+     "25psf": "25psf",
+     "29.97p": "29.97p",
+     "29.97psf": "29.97psf",
+     "30p": "30p",
+     "30psf": "30psf",
+     "47.95p": "47.95p",
+     "48p": "48p",
+     "50p": "50p",
+     "59.94i": "59.94i",
+     "59.94p": "59.94p",
+     "60i": "60i",
+     "60p": "60p"
+    },
+    "gamut": {
+     "709": "709",
+     "2020": "2020",
+     "HLG 2020": "HLG 2020",
+     "PQ 2020": "PQ 2020",
+     "S-Log3 2020": "S-Log3 2020"
+    },
+    "height": {
+     "720": "72",
+     "1080": "108",
+     "2160": "216"
+    },
+    "type": {
+     "3G A": "3G A",
+     "12G 2-SI": "12G 2-SI",
+     "QL 3G A 2-SI": "QL 3G A 2-SI",
+     "QL 3G A SqDv": "QL 3G A SqDv",
+     "QL 3G B 2-SI": "QL 3G B 2-SI",
+     "QL 3G B SqDv": "QL 3G B SqDv",
+     "DL 6G 2-SI": "DL 6G 2-SI",
+     "6G 2-SI": "6G 2-SI",
+     "QL 1.5G SqDv": "QL 1.5G SqDv",
+     "3G B": "3G B",
+     "1.5G": "1.5G"
+    },
+    "width": {
+     "1280": "1280",
+     "1920": "1920",
+     "2048": "2048",
+     "3840": "3840",
+     "4096": "4096"
+    }
+   }
+  },
+  {
+   "id": "analyser_prbs",
+   "name": "Analyser PRBS Config",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "reset",
+     "choices": [
+      {
+       "id": "reset",
+       "label": "Reset"
+      }
+     ]
+    },
+    {
+     "id": "receiveMode",
+     "label": "Receive Mode",
+     "type": "select",
+     "default": "Disabled",
+     "choices": [
+      {
+       "id": "Disabled",
+       "label": "Disabled"
+      },
+      {
+       "id": "PRBS-7",
+       "label": "PRBS-7"
+      },
+      {
+       "id": "PRBS-9",
+       "label": "PRBS-9"
+      },
+      {
+       "id": "PRBS-15",
+       "label": "PRBS-15"
+      },
+      {
+       "id": "PRBS-23",
+       "label": "PRBS-23"
+      },
+      {
+       "id": "PRBS-31",
+       "label": "PRBS-31"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/analyser/prbs",
+    "body": "{\"action\":\"reset\",\"receiveMode\":\"{{option.receiveMode|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "receiveMode": {
+     "Disabled": "Disabled",
+     "PRBS-7": "PRBS-7",
+     "PRBS-9": "PRBS-9",
+     "PRBS-15": "PRBS-15",
+     "PRBS-23": "PRBS-23",
+     "PRBS-31": "PRBS-31"
+    }
+   }
+  },
+  {
+   "id": "dolby_decoder1_config",
+   "name": "Dolby Decoder 1 Config",
+   "options": [
+    {
+     "id": "group",
+     "label": "SDI Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "pair",
+     "label": "SDI Pair",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2
+    },
+    {
+     "id": "startingChannel",
+     "label": "startingChannel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 63
+    },
+    {
+     "id": "location",
+     "label": "Location",
+     "type": "select",
+     "default": "subImage1",
+     "choices": [
+      {
+       "id": "subImage1",
+       "label": "subImage1"
+      },
+      {
+       "id": "subImage2",
+       "label": "subImage2"
+      },
+      {
+       "id": "subImage3",
+       "label": "subImage3"
+      },
+      {
+       "id": "subImage4",
+       "label": "subImage4"
+      },
+      {
+       "id": "aes",
+       "label": "AES"
+      }
+     ]
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "errorsReset",
+     "choices": [
+      {
+       "id": "errorsReset",
+       "label": "Reset Errors"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/dolbyDecoder1/config",
+    "body": "{\"source\":{\"group\":{{option.group}},\"pair\":{{option.pair}},\"startingChannel\":{{option.startingChannel}},\"location\":\"{{option.location|map}}\"},\"action\":\"errorsReset\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "location": {
+     "subImage1": "subImage1",
+     "subImage2": "subImage2",
+     "subImage3": "subImage3",
+     "subImage4": "subImage4",
+     "aes": "aes"
+    }
+   }
+  },
+  {
+   "id": "eventlogRestApiConfig",
+   "name": "Configure Event Log REST API",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/restApi",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "audioInputPresenceConfig",
+   "name": "Configure Audio Input Presence Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/audioInputPresence",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "jitterAlignmentConfig",
+   "name": "Configure Jitter Alignment Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/jitterAlignment",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "jitterTimingConfig",
+   "name": "Configure Jitter Timing Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/jitterTiming",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "referenceLockingConfig",
+   "name": "Configure Reference Locking Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/referenceLocking",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "scte104Config",
+   "name": "Configure SCTE-104 Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/scte104",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "sdiInputRateConfig",
+   "name": "Configure SDI Input Rate Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/sdiInputRate",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "sdiInputStandardConfig",
+   "name": "Configure SDI Input Standard Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/sdiInputStandard",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "sfpConfig",
+   "name": "Configure SFP Event Logging",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "enable",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "Enable"
+      },
+      {
+       "id": "disable",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/config/sfp",
+    "body": "{\"action\":\"{{option.action|map}}able\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "enable": "en",
+     "disable": "dis"
+    }
+   }
+  },
+  {
+   "id": "eventlogLogsConfig",
+   "name": "Manage Event Logs",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "clear",
+     "choices": [
+      {
+       "id": "clear",
+       "label": "Clear Logs"
+      },
+      {
+       "id": "export",
+       "label": "Export Logs"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eventlog/logs",
+    "body": "{\"action\":\"{{option.action|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "clear": "clear",
+     "export": "export"
+    }
+   }
+  },
+  {
+   "id": "eyeAnalysisParametersConfig",
+   "name": "Configure Eye Analysis Parameters",
+   "options": [
+    {
+     "id": "amplitudeMeasurementWindowOffset_percent",
+     "label": "Amplitude Window Offset (%)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "amplitudeMeasurementWindowSize_percent",
+     "label": "Amplitude Window Size (%)",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "analysisMethod",
+     "label": "Analysis Method",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/eye/analysisParameters",
+    "body": "{\"amplitudeMeasurementWindowOffset_percent\":{{option.amplitudeMeasurementWindowOffset_percent}},\"amplitudeMeasurementWindowSize_percent\":{{option.amplitudeMeasurementWindowSize_percent}},\"analysisMethod\":\"{{option.analysisMethod}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "generatorAudioConfig",
+   "name": "Configure Testgenerator Audio Parameters",
+   "options": [
+    {
+     "id": "audioGroup1enabled",
+     "label": "AudioGroup 1 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "audioGroup2enabled",
+     "label": "AudioGroup 2 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "audioGroup3enabled",
+     "label": "AudioGroup 3 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "audioGroup4enabled",
+     "label": "AudioGroup 4 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "audioGroup5enabled",
+     "label": "AudioGroup 5 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "audioGroup6enabled",
+     "label": "AudioGroup 6 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "audioGroup7enabled",
+     "label": "AudioGroup 7 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "audioGroup8enabled",
+     "label": "AudioGroup 8 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "customConfigChannelsChannel",
+     "label": "Channel",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 31
+    },
+    {
+     "id": "customConfigChannelsFrequency",
+     "label": "Custom Channel Frequency",
+     "type": "number",
+     "default": 1000,
+     "min": 1,
+     "max": 10000
+    },
+    {
+     "id": "customConfigChannelsGain",
+     "label": "Gain",
+     "type": "number",
+     "default": -23,
+     "min": -144,
+     "max": 0
+    },
+    {
+     "id": "customConfigFrequency",
+     "label": "Frequency",
+     "type": "number",
+     "default": 1000,
+     "min": 1,
+     "max": 10000
+    },
+    {
+     "id": "numGroups",
+     "label": "Num Groups",
+     "type": "select",
+     "default": "8",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    },
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "Fixed Tone",
+     "choices": [
+      {
+       "id": "Off",
+       "label": "Off"
+      },
+      {
+       "id": "Fixed Tone",
+       "label": "Fixed Tone"
+      },
+      {
+       "id": "Chromatic Scale",
+       "label": "Chromatic Scale"
+      },
+      {
+       "id": "Custom",
+       "label": "Custom"
+      }
+     ]
+    },
+    {
+     "id": "quickConfigGain",
+     "label": "QuickConfig Gain",
+     "type": "number",
+     "default": -23,
+     "min": -144,
+     "max": 0
+    },
+    {
+     "id": "quickConfigPitch",
+     "label": "SPitch",
+     "type": "select",
+     "default": "C 3",
+     "choices": [
+      {
+       "id": "C 3",
+       "label": "C 3"
+      },
+      {
+       "id": "C♯/D♭ 3",
+       "label": "C♯/D♭ 3"
+      },
+      {
+       "id": "D 3",
+       "label": "D 3"
+      },
+      {
+       "id": "D♯/E♭ 3",
+       "label": "D♯/E♭ 3"
+      },
+      {
+       "id": "E 3",
+       "label": "E 3"
+      },
+      {
+       "id": "F 3",
+       "label": "F 3"
+      },
+      {
+       "id": "F♯/G♭ 3",
+       "label": "F♯/G♭ 3"
+      },
+      {
+       "id": "G 3",
+       "label": "G 3"
+      },
+      {
+       "id": "G♯/A♭ 3",
+       "label": "G♯/A♭ 3"
+      },
+      {
+       "id": "A 3",
+       "label": "A 3"
+      },
+      {
+       "id": "A♯/B♭ 3",
+       "label": "A♯/B♭ 3"
+      },
+      {
+       "id": "B 3",
+       "label": "B 3"
+      },
+      {
+       "id": "C 4",
+       "label": "C 4"
+      },
+      {
+       "id": "C♯/D♭ 4",
+       "label": "C♯/D♭ 4"
+      },
+      {
+       "id": "D 4",
+       "label": "D 4"
+      },
+      {
+       "id": "D♯/E♭ 4",
+       "label": "D♯/E♭ 4"
+      },
+      {
+       "id": "E 4",
+       "label": "E 4"
+      },
+      {
+       "id": "F 4",
+       "label": "F 4"
+      },
+      {
+       "id": "F♯/G♭ 4",
+       "label": "F♯/G♭ 4"
+      },
+      {
+       "id": "G 4",
+       "label": "G 4"
+      },
+      {
+       "id": "G♯/A♭ 4",
+       "label": "G♯/A♭ 4"
+      },
+      {
+       "id": "A 4",
+       "label": "A 4"
+      },
+      {
+       "id": "A♯/B♭ 4",
+       "label": "A♯/B♭ 4"
+      },
+      {
+       "id": "B 4",
+       "label": "B 4"
+      },
+      {
+       "id": "C 5",
+       "label": "C 5"
+      },
+      {
+       "id": "C♯/D♭ 5",
+       "label": "C♯/D♭ 5"
+      },
+      {
+       "id": "D 5",
+       "label": "D 5"
+      },
+      {
+       "id": "D♯/E♭ 5",
+       "label": "D♯/E♭ 5"
+      },
+      {
+       "id": "E 5",
+       "label": "E 5"
+      },
+      {
+       "id": "F 5",
+       "label": "F 5"
+      },
+      {
+       "id": "F♯/G♭ 5",
+       "label": "F♯/G♭ 5"
+      },
+      {
+       "id": "G 5",
+       "label": "G 5"
+      },
+      {
+       "id": "G♯/A♭ 5",
+       "label": "G♯/A♭ 5"
+      },
+      {
+       "id": "A 5",
+       "label": "A 5"
+      },
+      {
+       "id": "A♯/B♭ 5",
+       "label": "A♯/B♭ 5"
+      },
+      {
+       "id": "B 5",
+       "label": "B 5"
+      },
+      {
+       "id": "C 6",
+       "label": "C 6"
+      },
+      {
+       "id": "C♯/D♭ 6",
+       "label": "C♯/D♭ 6"
+      },
+      {
+       "id": "D 6",
+       "label": "D 6"
+      },
+      {
+       "id": "D♯/E♭ 6",
+       "label": "D♯/E♭ 6"
+      },
+      {
+       "id": "E 6",
+       "label": "E 6"
+      },
+      {
+       "id": "F 6",
+       "label": "F 6"
+      },
+      {
+       "id": "F♯/G♭ 6",
+       "label": "F♯/G♭ 6"
+      },
+      {
+       "id": "G 6",
+       "label": "G 6"
+      },
+      {
+       "id": "G♯/A♭ 6",
+       "label": "G♯/A♭ 6"
+      },
+      {
+       "id": "A 6",
+       "label": "A 6"
+      },
+      {
+       "id": "A♯/B♭ 6",
+       "label": "A♯/B♭ 6"
+      },
+      {
+       "id": "B 6",
+       "label": "B 6"
+      },
+      {
+       "id": "C 7",
+       "label": "C 7"
+      }
+     ]
+    },
+    {
+     "id": "subImage1Enabled",
+     "label": "SubImage 1 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "subImage2Enabled",
+     "label": "SubImage 2 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "subImage3Enabled",
+     "label": "SubImage 3 enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "subImage4Enabled",
+     "label": "SubImage 4 enabled",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/audio",
+    "body": "{\"audioGroup\":{\"audioGroup1\":{{option.audioGroup1enabled|map}}e,\"audioGroup2\":{{option.audioGroup2enabled|map}}e,\"audioGroup3\":{{option.audioGroup3enabled|map}}e,\"audioGroup4\":{{option.audioGroup4enabled|map}}e,\"audioGroup5\":{{option.audioGroup5enabled|map}}e,\"audioGroup6\":{{option.audioGroup6enabled|map}}e,\"audioGroup7\":{{option.audioGroup7enabled|map}}e,\"audioGroup8\":{{option.audioGroup8enabled|map}}e},\"customConfig\":{\"channels\":[{\"channel\":{{option.customConfigChannelsChannel}},\"frequency\":{{option.customConfigChannelsFrequency}},\"gain\":{{option.customConfigChannelsGain}}}],\"frequency\":{{option.customConfigFrequency}},\"numGroups\":{{option.numGroups|map}}},\"mode\":\"{{option.mode|map}}\",\"quickConfig\":{\"gain\":{{option.quickConfigGain}},\"gainType\":\"Fixed Levels\",\"pitch\":\"{{option.quickConfigPitch|map}}\"},\"subImage\":{\"subImage1\":{{option.subImage1Enabled|map}}e,\"subImage2\":{{option.subImage2Enabled|map}}e,\"subImage3\":{{option.subImage3Enabled|map}}e,\"subImage4\":{{option.subImage4Enabled|map}}e}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "audioGroup1enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "audioGroup2enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "audioGroup3enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "audioGroup4enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "audioGroup5enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "audioGroup6enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "audioGroup7enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "audioGroup8enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "numGroups": {
+     "1": "1",
+     "2": "2",
+     "4": "4",
+     "6": "6",
+     "8": "8"
+    },
+    "mode": {
+     "Fixed Tone": "Fixed Tone",
+     "Off": "Off",
+     "Chromatic Scale": "Chromatic Scale",
+     "Custom": "Custom"
+    },
+    "quickConfigPitch": {
+     "C 3": "C 3",
+     "C♯/D♭ 3": "C♯/D♭ 3",
+     "D 3": "D 3",
+     "D♯/E♭ 3": "D♯/E♭ 3",
+     "E 3": "E 3",
+     "F 3": "F 3",
+     "F♯/G♭ 3": "F♯/G♭ 3",
+     "G 3": "G 3",
+     "G♯/A♭ 3": "G♯/A♭ 3",
+     "A 3": "A 3",
+     "A♯/B♭ 3": "A♯/B♭ 3",
+     "B 3": "B 3",
+     "C 4": "C 4",
+     "C♯/D♭ 4": "C♯/D♭ 4",
+     "D 4": "D 4",
+     "D♯/E♭ 4": "D♯/E♭ 4",
+     "E 4": "E 4",
+     "F 4": "F 4",
+     "F♯/G♭ 4": "F♯/G♭ 4",
+     "G 4": "G 4",
+     "G♯/A♭ 4": "G♯/A♭ 4",
+     "A 4": "A 4",
+     "A♯/B♭ 4": "A♯/B♭ 4",
+     "B 4": "B 4",
+     "C 5": "C 5",
+     "C♯/D♭ 5": "C♯/D♭ 5",
+     "D 5": "D 5",
+     "D♯/E♭ 5": "D♯/E♭ 5",
+     "E 5": "E 5",
+     "F 5": "F 5",
+     "F♯/G♭ 5": "F♯/G♭ 5",
+     "G 5": "G 5",
+     "G♯/A♭ 5": "G♯/A♭ 5",
+     "A 5": "A 5",
+     "A♯/B♭ 5": "A♯/B♭ 5",
+     "B 5": "B 5",
+     "C 6": "C 6",
+     "C♯/D♭ 6": "C♯/D♭ 6",
+     "D 6": "D 6",
+     "D♯/E♭ 6": "D♯/E♭ 6",
+     "E 6": "E 6",
+     "F 6": "F 6",
+     "F♯/G♭ 6": "F♯/G♭ 6",
+     "G 6": "G 6",
+     "G♯/A♭ 6": "G♯/A♭ 6",
+     "A 6": "A 6",
+     "A♯/B♭ 6": "A♯/B♭ 6",
+     "B 6": "B 6",
+     "C 7": "C 7"
+    },
+    "subImage1Enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "subImage2Enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "subImage3Enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "subImage4Enabled": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "GeneratorBouncingBoxEnabled",
+   "name": "Enable Generator Bouncing Box",
+   "options": [
+    {
+     "id": "action",
+     "label": "Enabled",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/bouncingBox",
+    "body": "{\"enabled\":{{option.action|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "generatorIdentPut",
+   "name": "Configure Ident Generator Parameters",
+   "options": [
+    {
+     "id": "enabled",
+     "label": "Ident Enabled",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "text",
+     "label": "Ident Text",
+     "type": "text",
+     "default": "My Ident Text"
+    },
+    {
+     "id": "justify",
+     "label": "Justify",
+     "type": "select",
+     "default": "centre",
+     "choices": [
+      {
+       "id": "left",
+       "label": "Left"
+      },
+      {
+       "id": "centre",
+       "label": "Centre"
+      },
+      {
+       "id": "right",
+       "label": "Right"
+      }
+     ]
+    },
+    {
+     "id": "location",
+     "label": "Location",
+     "type": "select",
+     "default": "bottom",
+     "choices": [
+      {
+       "id": "topLeft",
+       "label": "Top Left"
+      },
+      {
+       "id": "top",
+       "label": "Top"
+      },
+      {
+       "id": "topRight",
+       "label": "Top Right"
+      },
+      {
+       "id": "left",
+       "label": "Left"
+      },
+      {
+       "id": "centre",
+       "label": "Centre"
+      },
+      {
+       "id": "right",
+       "label": "Right"
+      },
+      {
+       "id": "bottomLeft",
+       "label": "Bottom Left"
+      },
+      {
+       "id": "bottom",
+       "label": "Bottom"
+      },
+      {
+       "id": "bottomRight",
+       "label": "Bottom Right"
+      }
+     ]
+    },
+    {
+     "id": "size",
+     "label": "Size",
+     "type": "select",
+     "default": "medium",
+     "choices": [
+      {
+       "id": "small",
+       "label": "Small"
+      },
+      {
+       "id": "medium",
+       "label": "Medium"
+      },
+      {
+       "id": "large",
+       "label": "Large"
+      }
+     ]
+    },
+    {
+     "id": "textColour",
+     "label": "Text Colour (hex)",
+     "type": "text",
+     "default": "#FFFFFF"
+    },
+    {
+     "id": "textOpacity_percent",
+     "label": "Text Opacity (%)",
+     "type": "select",
+     "default": "100",
+     "choices": [
+      {
+       "id": "25",
+       "label": "25%"
+      },
+      {
+       "id": "50",
+       "label": "50%"
+      },
+      {
+       "id": "75",
+       "label": "75%"
+      },
+      {
+       "id": "100",
+       "label": "100%"
+      }
+     ]
+    },
+    {
+     "id": "backgroundEnabled",
+     "label": "Enable Background",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "backgroundColour",
+     "label": "Background Colour (hex)",
+     "type": "text",
+     "default": "#000000"
+    },
+    {
+     "id": "backgroundOpacity_percent",
+     "label": "Background Opacity (%)",
+     "type": "select",
+     "default": "50",
+     "choices": [
+      {
+       "id": "25",
+       "label": "25%"
+      },
+      {
+       "id": "50",
+       "label": "50%"
+      },
+      {
+       "id": "75",
+       "label": "75%"
+      },
+      {
+       "id": "100",
+       "label": "100%"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/ident",
+    "body": "{\"enabled\":{{option.enabled|map}}e,\"text\":\"{{option.text}}\",\"justify\":\"{{option.justify|map}}\",\"location\":\"{{option.location|map}}\",\"size\":\"{{option.size|map}}\",\"textColour\":\"{{option.textColour}}\",\"textOpacity_percent\":{{option.textOpacity_percent|map}},\"backgroundEnabled\":{{option.backgroundEnabled|map}}e,\"backgroundColour\":\"{{option.backgroundColour}}\",\"backgroundOpacity_percent\":{{option.backgroundOpacity_percent|map}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "enabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "justify": {
+     "centre": "centre",
+     "left": "left",
+     "right": "right"
+    },
+    "location": {
+     "bottom": "bottom",
+     "topLeft": "topLeft",
+     "top": "top",
+     "topRight": "topRight",
+     "left": "left",
+     "centre": "centre",
+     "right": "right",
+     "bottomLeft": "bottomLeft",
+     "bottomRight": "bottomRight"
+    },
+    "size": {
+     "medium": "medium",
+     "small": "small",
+     "large": "large"
+    },
+    "textOpacity_percent": {
+     "25": "25",
+     "50": "50",
+     "75": "75",
+     "100": "100"
+    },
+    "backgroundEnabled": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "backgroundOpacity_percent": {
+     "25": "25",
+     "50": "50",
+     "75": "75",
+     "100": "100"
+    }
+   }
+  },
+  {
+   "id": "GeneratorOutputCopyEnabled",
+   "name": "Enable Generator Output Copy",
+   "options": [
+    {
+     "id": "action",
+     "label": "Enabled",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/outputCopy",
+    "body": "{\"enabled\":{{option.action|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "GeneratorOutputOffsetClear",
+   "name": "Clear Generator Output Offset",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/outputOffset",
+    "body": "{\"action\":\"clearOffsets\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "GeneratorOutputOffsetTime",
+   "name": "Configure Generator Output Offset by Time",
+   "options": [
+    {
+     "id": "outputTimeOffsetus",
+     "label": "Output Time Offset (us)",
+     "type": "number",
+     "default": 0,
+     "min": -999999,
+     "max": 999999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/outputOffset",
+    "body": "{\"offsetType\":\"time\",\"ooutputTimeOffset_us\":{{option.outputTimeOffsetus}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "GeneratorOutputOffsetLinesAndPixels",
+   "name": "Configure Generator Output Offset by Lines and Pixels",
+   "options": [
+    {
+     "id": "outputLineOffset",
+     "label": "Output Line Offset",
+     "type": "number",
+     "default": 0,
+     "min": -999999,
+     "max": 999999
+    },
+    {
+     "id": "outputPixelOffset",
+     "label": "Output Pixel Offset",
+     "type": "number",
+     "default": 0,
+     "min": -999999,
+     "max": 999999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/outputOffset",
+    "body": "{\"offsetType\":\"linesAndPixels\",\"outputLineOffset\":{{option.outputLineOffset}},\"outputPixelOffset\":{{option.outputPixelOffset}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "GeneratorPrbs",
+   "name": "Configure Generator PRBS",
+   "options": [
+    {
+     "id": "invert",
+     "label": "Invert",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "Disabled",
+     "choices": [
+      {
+       "id": "Disabled",
+       "label": "Disabled"
+      },
+      {
+       "id": "PRBS-7",
+       "label": "PRBS-7"
+      },
+      {
+       "id": "PRBS-9",
+       "label": "PRBS-9"
+      },
+      {
+       "id": "PRBS-15",
+       "label": "PRBS-15"
+      },
+      {
+       "id": "PRBS-23",
+       "label": "PRBS-23"
+      },
+      {
+       "id": "PRBS-31",
+       "label": "PRBS-31"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/prbs",
+    "body": "{\"invert\":{{option.invert|map}}e,\"mode\":\"{{option.mode|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "invert": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "mode": {
+     "Disabled": "Disabled",
+     "PRBS-7": "PRBS-7",
+     "PRBS-9": "PRBS-9",
+     "PRBS-15": "PRBS-15",
+     "PRBS-23": "PRBS-23",
+     "PRBS-31": "PRBS-31"
+    }
+   }
+  },
+  {
+   "id": "GeneratorSdiDriverGain",
+   "name": "Configure Generator SDI Driver Gain",
+   "options": [
+    {
+     "id": "driverGainPercent",
+     "label": "Driver Gain (%)",
+     "type": "number",
+     "default": 100,
+     "min": 90,
+     "max": 110
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/sdiDriverGain",
+    "body": "{\"driverGain_percent\":{{option.driverGainPercent}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "GeneratorSdiDriverPreEmphasis",
+   "name": "Configure Generator SDI Driver Pre Emphasis",
+   "options": [
+    {
+     "id": "driverPreEmphasis",
+     "label": "Pre Emphasis",
+     "type": "select",
+     "default": "Disabled",
+     "choices": [
+      {
+       "id": "Disabled",
+       "label": "Disabled"
+      },
+      {
+       "id": "0.5 dB",
+       "label": "0.5 dB"
+      },
+      {
+       "id": "1.0 dB",
+       "label": "1.0 dB"
+      },
+      {
+       "id": "1.5 dB",
+       "label": "1.5 dB"
+      }
+     ]
+    },
+    {
+     "id": "driverPreEmphasisTimeConstant",
+     "label": "Pre Emphasis Time Constant",
+     "type": "select",
+     "default": "Default",
+     "choices": [
+      {
+       "id": "Default",
+       "label": "Default"
+      },
+      {
+       "id": "Div 2",
+       "label": "Div 2"
+      },
+      {
+       "id": "Div 4",
+       "label": "Div 4"
+      },
+      {
+       "id": "Div 8",
+       "label": "Div 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/sdiDriverPreEmphasis",
+    "body": "{\"driverPreEmphasis\":\"{{option.driverPreEmphasis|map}}\",\"driverPreEmphasisTimeConstant\":\"D{{option.driverPreEmphasisTimeConstant|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "driverPreEmphasis": {
+     "Disabled": "Disabled",
+     "0.5 dB": "0.5 dB",
+     "1.0 dB": "1.0 dB",
+     "1.5 dB": "1.5 dB"
+    },
+    "driverPreEmphasisTimeConstant": {
+     "Default": "efault",
+     "Div 2": "iv 2",
+     "Div 4": "iv 4",
+     "Div 8": "iv 8"
+    }
+   }
+  },
+  {
+   "id": "GeneratorSdiOutputMute",
+   "name": "Mute Generator SDI Out",
+   "options": [
+    {
+     "id": "sdiOutputMuteA",
+     "label": "SDI Output Mute A",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "sdiOutputMuteB",
+     "label": "SDI Output Mute B",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "sdiOutputMuteC",
+     "label": "SDI Output Mute C",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "sdiOutputMuteD",
+     "label": "SDI Output Mute D",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/sdiOutputMute",
+    "body": "{\"sdiOutputMuteA\":{{option.sdiOutputMuteA|map}}e,\"sdiOutputMuteB\":{{option.sdiOutputMuteB|map}}e,\"sdiOutputMuteC\":{{option.sdiOutputMuteC|map}}e,\"sdiOutputMuteD\":{{option.sdiOutputMuteD|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "sdiOutputMuteA": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "sdiOutputMuteB": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "sdiOutputMuteC": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "sdiOutputMuteD": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "GeneratorSdiScrambler",
+   "name": "Enable Generator SDI Scrambler",
+   "options": [
+    {
+     "id": "enabled",
+     "label": "SDI Scrambler enabled",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/sdiScrambler",
+    "body": "{\"enabled\":{{option.enabled|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "enabled": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "generatorStandards",
+   "name": "SetUp and Enable the Generator",
+   "options": [
+    {
+     "id": "manualOverrideEnabled",
+     "label": "Manual Override Enabled",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "format",
+     "label": "Format",
+     "type": "select",
+     "default": "YCbCr%3A422%3A10",
+     "choices": [
+      {
+       "id": "YCbCr%3A422%3A10",
+       "label": "YCbCr:422:10"
+      },
+      {
+       "id": "YCbCr%3A422%3A12",
+       "label": "YCbCr:422:12"
+      },
+      {
+       "id": "YCbCrA%3A4224%3A12",
+       "label": "YCbCrA:4224:12"
+      },
+      {
+       "id": "YCbCr%3A444%3A10",
+       "label": "YCbCr:444:10"
+      },
+      {
+       "id": "YCbCr%3A444%3A12",
+       "label": "YCbCr:444:12"
+      },
+      {
+       "id": "YCbCrA%3A4444%3A10",
+       "label": "YCbCrA:4444:10"
+      },
+      {
+       "id": "RGB%3A444%3A10",
+       "label": "RGB:444:10"
+      },
+      {
+       "id": "RGB%3A444%3A12",
+       "label": "RGB:444:12"
+      },
+      {
+       "id": "RGBA%3A4444%3A10",
+       "label": "RGBA:4444:10"
+      }
+     ]
+    },
+    {
+     "id": "frame",
+     "label": "Frame Rate",
+     "type": "select",
+     "default": "i50",
+     "choices": [
+      {
+       "id": "p2398",
+       "label": "23.98p"
+      },
+      {
+       "id": "psf2398",
+       "label": "23.98psf"
+      },
+      {
+       "id": "p24",
+       "label": "24p"
+      },
+      {
+       "id": "psf24",
+       "label": "24psf"
+      },
+      {
+       "id": "p25",
+       "label": "25p"
+      },
+      {
+       "id": "psf25",
+       "label": "25psf"
+      },
+      {
+       "id": "p2997",
+       "label": "29.97p"
+      },
+      {
+       "id": "psf2997",
+       "label": "29.97psf"
+      },
+      {
+       "id": "p30",
+       "label": "30p"
+      },
+      {
+       "id": "psf30",
+       "label": "30psf"
+      },
+      {
+       "id": "p4795",
+       "label": "47.95p"
+      },
+      {
+       "id": "p48",
+       "label": "48p"
+      },
+      {
+       "id": "i50",
+       "label": "50i"
+      },
+      {
+       "id": "p50",
+       "label": "50p"
+      },
+      {
+       "id": "i5994",
+       "label": "59.94i"
+      },
+      {
+       "id": "p5994",
+       "label": "59.94p"
+      },
+      {
+       "id": "i60",
+       "label": "60i"
+      },
+      {
+       "id": "p60",
+       "label": "60p"
+      }
+     ]
+    },
+    {
+     "id": "gamut",
+     "label": "Gamut",
+     "type": "select",
+     "default": "Rec.709",
+     "choices": [
+      {
+       "id": "Rec.709",
+       "label": "709"
+      },
+      {
+       "id": "Rec.2020",
+       "label": "2020"
+      },
+      {
+       "id": "HLG_Rec.2020",
+       "label": "HLG 2020"
+      },
+      {
+       "id": "PQ.2020",
+       "label": "PQ 2020"
+      },
+      {
+       "id": "S-Log3.2020",
+       "label": "S-Log3 2020"
+      }
+     ]
+    },
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "3G%20A",
+     "choices": [
+      {
+       "id": "12G%202-SI",
+       "label": "12G 2-SI"
+      },
+      {
+       "id": "QL3G A 2-SI",
+       "label": "QL 3G A 2-SI"
+      },
+      {
+       "id": "QL 3G A SqDv",
+       "label": "QL 3G A SqDv"
+      },
+      {
+       "id": "QL 3G B 2-SI",
+       "label": "QL 3G B 2-SI"
+      },
+      {
+       "id": "QL 3G B SqDv",
+       "label": "QL 3G B SqDv"
+      },
+      {
+       "id": "DL 6G 2-SI",
+       "label": "DL 6G 2-SI"
+      },
+      {
+       "id": "6G 2-SI",
+       "label": "6G 2-SI"
+      },
+      {
+       "id": "QL 1.5G SqDv",
+       "label": "QL 1.5G SqDv"
+      },
+      {
+       "id": "3G A",
+       "label": "3G A"
+      },
+      {
+       "id": "3G B",
+       "label": "3G B"
+      },
+      {
+       "id": "1.5G",
+       "label": "1.5G"
+      }
+     ]
+    },
+    {
+     "id": "width",
+     "label": "Width",
+     "type": "select",
+     "default": "1920",
+     "choices": [
+      {
+       "id": "1280",
+       "label": "1280"
+      },
+      {
+       "id": "1920",
+       "label": "1920"
+      },
+      {
+       "id": "2048",
+       "label": "2048"
+      },
+      {
+       "id": "3840",
+       "label": "3840"
+      },
+      {
+       "id": "4096",
+       "label": "4096"
+      }
+     ]
+    },
+    {
+     "id": "height",
+     "label": "Height",
+     "type": "select",
+     "default": "1080",
+     "choices": [
+      {
+       "id": "720",
+       "label": "720"
+      },
+      {
+       "id": "1080",
+       "label": "1080"
+      },
+      {
+       "id": "2160",
+       "label": "2160"
+      }
+     ]
+    },
+    {
+     "id": "bartype",
+     "label": "BarType",
+     "type": "select",
+     "default": "100%25%20Bars",
+     "choices": [
+      {
+       "id": "100%25%20Bars",
+       "label": "100/25/20 Bars"
+      }
+     ]
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "start",
+     "choices": [
+      {
+       "id": "start",
+       "label": "Start"
+      },
+      {
+       "id": "",
+       "label": "Nothing"
+      }
+     ]
+    },
+    {
+     "id": "pathologicalType",
+     "label": "PathologicalType",
+     "type": "select",
+     "default": "CheckField",
+     "choices": [
+      {
+       "id": "Eq",
+       "label": "Eq"
+      },
+      {
+       "id": "PLL",
+       "label": "PLL"
+      },
+      {
+       "id": "CLK",
+       "label": "CLK"
+      },
+      {
+       "id": "CheckField + CLK",
+       "label": "CheckField + CLK"
+      },
+      {
+       "id": "CheckField",
+       "label": "CheckField"
+      }
+     ]
+    },
+    {
+     "id": "pathologicalPairs",
+     "label": "Pathological Pairs",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 16384
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/standards/{{option.width|map}}x{{option.height|map}}0{{option.frame|map}}/{{option.format|map}}/{{option.type|map}}_{{option.gamut|map}}/100%25%20Bars",
+    "body": "{\"action\":\"{{option.action|map}}\",\"pathological\":{\"pairs\":{{option.pathologicalPairs}},\"type\":\"{{option.pathologicalType|map}}\"}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "width": {
+     "1280": "1280",
+     "1920": "1920",
+     "2048": "2048",
+     "3840": "3840",
+     "4096": "4096"
+    },
+    "height": {
+     "720": "72",
+     "1080": "108",
+     "2160": "216"
+    },
+    "frame": {
+     "i50": "i50",
+     "p2398": "p2398",
+     "psf2398": "psf2398",
+     "p24": "p24",
+     "psf24": "psf24",
+     "p25": "p25",
+     "psf25": "psf25",
+     "p2997": "p2997",
+     "psf2997": "psf2997",
+     "p30": "p30",
+     "psf30": "psf30",
+     "p4795": "p4795",
+     "p48": "p48",
+     "p50": "p50",
+     "i5994": "i5994",
+     "p5994": "p5994",
+     "i60": "i60",
+     "p60": "p60"
+    },
+    "format": {
+     "YCbCr%3A422%3A10": "YCbCr%3A422%3A10",
+     "YCbCr%3A422%3A12": "YCbCr%3A422%3A12",
+     "YCbCrA%3A4224%3A12": "YCbCrA%3A4224%3A12",
+     "YCbCr%3A444%3A10": "YCbCr%3A444%3A10",
+     "YCbCr%3A444%3A12": "YCbCr%3A444%3A12",
+     "YCbCrA%3A4444%3A10": "YCbCrA%3A4444%3A10",
+     "RGB%3A444%3A10": "RGB%3A444%3A10",
+     "RGB%3A444%3A12": "RGB%3A444%3A12",
+     "RGBA%3A4444%3A10": "RGBA%3A4444%3A10"
+    },
+    "type": {
+     "3G%20A": "3G%20A",
+     "12G%202-SI": "12G%202-SI",
+     "QL3G A 2-SI": "QL3G%20A%202-SI",
+     "QL 3G A SqDv": "QL%203G%20A%20SqDv",
+     "QL 3G B 2-SI": "QL%203G%20B%202-SI",
+     "QL 3G B SqDv": "QL%203G%20B%20SqDv",
+     "DL 6G 2-SI": "DL%206G%202-SI",
+     "6G 2-SI": "6G%202-SI",
+     "QL 1.5G SqDv": "QL%201.5G%20SqDv",
+     "3G A": "3G%20A",
+     "3G B": "3G%20B",
+     "1.5G": "1.5G"
+    },
+    "gamut": {
+     "Rec.709": "Rec.709",
+     "Rec.2020": "Rec.2020",
+     "HLG_Rec.2020": "HLG_Rec.2020",
+     "PQ.2020": "PQ.2020",
+     "S-Log3.2020": "S-Log3.2020"
+    },
+    "action": {
+     "start": "start",
+     "": ""
+    },
+    "pathologicalType": {
+     "CheckField": "CheckField",
+     "Eq": "Eq",
+     "PLL": "PLL",
+     "CLK": "CLK",
+     "CheckField + CLK": "CheckField + CLK"
+    }
+   }
+  },
+  {
+   "id": "GeneratorSyncBitInserter",
+   "name": "Enable Generator Sync Bit Inserter",
+   "options": [
+    {
+     "id": "enabled",
+     "label": "Enabled",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/generator/syncBitInserter",
+    "body": "{\"enabled\":{{option.enabled|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "enabled": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "inputOutputSdiInInputType",
+   "name": "Configure SDI Input Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "SDI Input Type",
+     "type": "select",
+     "default": "bnc",
+     "choices": [
+      {
+       "id": "bnc",
+       "label": "BNC"
+      },
+      {
+       "id": "sfp",
+       "label": "SFP"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/inputOutput/sdiIn/inputType",
+    "body": "{\"type\":\"{{option.type|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "type": {
+     "bnc": "bnc",
+     "sfp": "sfp"
+    }
+   }
+  },
+  {
+   "id": "inputOutputSdiOutBncGeneratorOutputCopy",
+   "name": "Configure SDI Out BNC Generator Output Copy",
+   "options": [
+    {
+     "id": "enabled",
+     "label": "SDI Output Generator Copy",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/inputOutput/sdiOut/bnc/generatorOutputCopy",
+    "body": "{\"enabled\":{{option.enabled|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "enabled": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "inputOutputSdiOutBncLoopSdiBncIn",
+   "name": "Enable Loop SDI BNC in",
+   "options": [
+    {
+     "id": "enabled",
+     "label": "Loop SDI to BNC in",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/inputOutput/sdiOut/bnc/loopSdiBncIn",
+    "body": "{\"enabled\":{{option.enabled|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "enabled": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "inputOutputSdiOutBncSdiOutputSetting",
+   "name": "Change SDI Output Settings",
+   "options": [
+    {
+     "id": "sdiOutputA",
+     "label": "SDI Output A",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "off",
+       "label": "off"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      },
+      {
+       "id": "loopSdiIn",
+       "label": "Loop SDI In"
+      }
+     ]
+    },
+    {
+     "id": "sdiOutputB",
+     "label": "SDI Output B",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "off",
+       "label": "off"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      },
+      {
+       "id": "loopSdiIn",
+       "label": "Loop SDI In"
+      }
+     ]
+    },
+    {
+     "id": "sdiOutputC",
+     "label": "SDI Output C",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "off",
+       "label": "off"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      },
+      {
+       "id": "loopSdiIn",
+       "label": "Loop SDI In"
+      }
+     ]
+    },
+    {
+     "id": "sdiOutputD",
+     "label": "SDI Output D",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "off",
+       "label": "off"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      },
+      {
+       "id": "loopSdiIn",
+       "label": "Loop SDI In"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/inputOutput/sdiOut/bnc/sdiOutputSetting",
+    "body": "{\"sdiOutputA\":\"{{option.sdiOutputA|map}}\",\"sdiOutputB\":\"{{option.sdiOutputB|map}}\",\"sdiOutputC\":\"{{option.sdiOutputC|map}}\",\"sdiOutputD\":\"{{option.sdiOutputD|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "sdiOutputA": {
+     "off": "off",
+     "generator": "generator",
+     "loopSdiIn": "loopSdiIn"
+    },
+    "sdiOutputB": {
+     "off": "off",
+     "generator": "generator",
+     "loopSdiIn": "loopSdiIn"
+    },
+    "sdiOutputC": {
+     "off": "off",
+     "generator": "generator",
+     "loopSdiIn": "loopSdiIn"
+    },
+    "sdiOutputD": {
+     "off": "off",
+     "generator": "generator",
+     "loopSdiIn": "loopSdiIn"
+    }
+   }
+  },
+  {
+   "id": "inputOutputSdiOutOutputType",
+   "name": "Configure SDI Output Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "SDI Output Type",
+     "type": "select",
+     "default": "bnc",
+     "choices": [
+      {
+       "id": "bnc",
+       "label": "BNC"
+      },
+      {
+       "id": "sfp",
+       "label": "SFP"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/inputOutput/sdiOut/outputType",
+    "body": "{\"type\":\"{{option.type|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "type": {
+     "bnc": "bnc",
+     "sfp": "sfp"
+    }
+   }
+  },
+  {
+   "id": "inputOutputSdiOutSFPGeneratorOutputCopy",
+   "name": "Configure SDI Out SFP Generator Output Copy",
+   "options": [
+    {
+     "id": "enabled",
+     "label": "SFP Output Generator Copy",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/inputOutput/sdiOut/sfp/generatorOutputCopy",
+    "body": "{\"enabled\":{{option.enabled|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "enabled": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "inputOutputSdiOutSfpSdiOutputSetting",
+   "name": "Configure SDI Out SFP Setting",
+   "options": [
+    {
+     "id": "sdiOutputA",
+     "label": "SFP SDI Output A",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "generator",
+       "label": "Generator"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/inputOutput/sdiOut/sfp/sdiOutputSetting",
+    "body": "{\"sdiOutputA\":\"{{option.sdiOutputA|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "sdiOutputA": {
+     "off": "off",
+     "generator": "generator"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-phabrix-qx",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leopold Strobl"
+  }
+ ],
+ "source": {
+  "module": "phabrix-qx",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leopold Strobl"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-phabrix-qx.git"
+ }
+}

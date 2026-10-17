@@ -1,0 +1,72 @@
+{
+ "format": 1,
+ "id": "m-klvr-chargerpro",
+ "name": "KLVR Charger Pro",
+ "category": "KLVR",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8000",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "enablePolling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Polling Interval (milliseconds)",
+   "type": "number",
+   "default": 1000,
+   "min": 100,
+   "max": 10000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "deviceIdentify",
+   "name": "Identify Device",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v2/device/identify",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-klvr-chargerpro",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "klvr-chargerpro",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-klvr-chargerpro.git"
+ }
+}

@@ -1,0 +1,173 @@
+{
+ "format": 1,
+ "id": "m-agf-characterworks",
+ "name": "AGF Characterworks",
+ "category": "AGF",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:5201",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "trigger_cw",
+   "name": "Trigger CharacterWorks",
+   "options": [
+    {
+     "id": "action_dropdown",
+     "label": "Action",
+     "type": "select",
+     "default": "play_motions",
+     "choices": [
+      {
+       "id": "play_motions",
+       "label": "play_motions"
+      },
+      {
+       "id": "stop_motions",
+       "label": "stop_motions"
+      },
+      {
+       "id": "finish_motions",
+       "label": "finish_motions"
+      },
+      {
+       "id": "pause_motions",
+       "label": "pause_motions"
+      }
+     ]
+    },
+    {
+     "id": "motion_name",
+     "label": "Motion Name",
+     "type": "text",
+     "help": "Separate multiple motions with comma (e.g., motion_1, motion_2)"
+    },
+    {
+     "id": "channel_dropdown",
+     "label": "Channel",
+     "type": "select",
+     "default": "preview",
+     "choices": [
+      {
+       "id": "live1",
+       "label": "live1"
+      },
+      {
+       "id": "live2",
+       "label": "live2"
+      },
+      {
+       "id": "preview",
+       "label": "preview"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "{\"action\":\"{{option.action_dropdown|map}}_motions\",\"motions\":[\"{{option.motion_name}}\"],\"channel\":\"{{option.channel_dropdown|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action_dropdown": {
+     "play_motions": "play",
+     "stop_motions": "stop",
+     "finish_motions": "finish",
+     "pause_motions": "pause"
+    },
+    "channel_dropdown": {
+     "preview": "preview",
+     "live1": "live1",
+     "live2": "live2"
+    }
+   }
+  },
+  {
+   "id": "set_text",
+   "name": "Set Text",
+   "options": [
+    {
+     "id": "motion_name",
+     "label": "Motion Name",
+     "type": "text"
+    },
+    {
+     "id": "text_layer",
+     "label": "Text Layer",
+     "type": "text",
+     "default": "CW text layer variable to replace"
+    },
+    {
+     "id": "text_value",
+     "label": "Text Value",
+     "type": "text",
+     "default": "Sample Text"
+    },
+    {
+     "id": "channel_dropdown",
+     "label": "Channel",
+     "type": "select",
+     "default": "preview",
+     "choices": [
+      {
+       "id": "live1",
+       "label": "live1"
+      },
+      {
+       "id": "live2",
+       "label": "live2"
+      },
+      {
+       "id": "preview",
+       "label": "preview"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "{\"action\":\"set_text\",\"layer\":\"{{option.motion_name}}\\\\{{option.text_layer}}\",\"value\":\"{{option.text_value}}\",\"channel\":\"{{option.channel_dropdown|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "channel_dropdown": {
+     "preview": "preview",
+     "live1": "live1",
+     "live2": "live2"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-agf-characterworks",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Eddie Wettach"
+  }
+ ],
+ "source": {
+  "module": "agf-characterworks",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Eddie Wettach"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-agf-characterworks.git"
+ }
+}

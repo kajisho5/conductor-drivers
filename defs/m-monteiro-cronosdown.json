@@ -1,0 +1,898 @@
+{
+ "format": 1,
+ "id": "m-monteiro-cronosdown",
+ "name": "Monteiro CronosDown",
+ "category": "Monteiro",
+ "version": "1.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7600,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "ESC",
+   "name": "ESC",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "esc",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "NEXT",
+   "name": "NEXT",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "next",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PREVIOUS",
+   "name": "PREVIOUS",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "previous",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FECHAR_PPT",
+   "name": "FECHAR_PPT",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "pptexit",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FECHAR_VIDEO",
+   "name": "FECHAR_VIDEO",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "videoexit",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "START",
+   "name": "START",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "start",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "STOP",
+   "name": "STOP",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stop",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "DEFINE",
+   "name": "DEFINE",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "define",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "RESET",
+   "name": "RESET",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "reset",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SET1",
+   "name": "SET1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "set01",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SET5",
+   "name": "SET5",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "set05",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SET15",
+   "name": "SET15",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "set15",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SET30",
+   "name": "SET30",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "set30",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SET45",
+   "name": "SET45",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "set45",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SET60",
+   "name": "SET60",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "set60",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "addMinute",
+   "name": "addMinute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "addMinute",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "addFiveMinutes",
+   "name": "addFiveMinutes",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "addFiveMinutes",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "subtractMinute",
+   "name": "subtractMinute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "subtractMinute",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "subtractFiveMinutes",
+   "name": "subtractFiveMinutes",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "subtractFiveMinutes",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "AA",
+   "name": "AA",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "AA",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "aa",
+   "name": "aa",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "aa",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "BB",
+   "name": "BB",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "BB",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "bb",
+   "name": "bb",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "bb",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET01",
+   "name": "PRESET01",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset01",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET02",
+   "name": "PRESET02",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset02",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET03",
+   "name": "PRESET03",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset03",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET04",
+   "name": "PRESET04",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset04",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET05",
+   "name": "PRESET05",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset05",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET06",
+   "name": "PRESET06",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset06",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET07",
+   "name": "PRESET07",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset07",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET08",
+   "name": "PRESET08",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset08",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET09",
+   "name": "PRESET09",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset09",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET10",
+   "name": "PRESET10",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset10",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET11",
+   "name": "PRESET11",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset11",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET12",
+   "name": "PRESET12",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset12",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET13",
+   "name": "PRESET13",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset13",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET14",
+   "name": "PRESET14",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset14",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET15",
+   "name": "PRESET15",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset15",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET16",
+   "name": "PRESET16",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset16",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET17",
+   "name": "PRESET17",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset17",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET18",
+   "name": "PRESET18",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset18",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET19",
+   "name": "PRESET19",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset19",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PRESET20",
+   "name": "PRESET20",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "preset20",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "preset_start",
+   "category": "Control",
+   "name": "Start Timer",
+   "text": "START",
+   "backgroundColor": "#00aa00",
+   "action": {
+    "definitionId": "START",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_stop",
+   "category": "Control",
+   "name": "Stop Timer",
+   "text": "STOP",
+   "backgroundColor": "#aa0000",
+   "action": {
+    "definitionId": "STOP",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_reset",
+   "category": "Control",
+   "name": "Reset Timer",
+   "text": "RESET",
+   "backgroundColor": "#555555",
+   "action": {
+    "definitionId": "RESET",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_define",
+   "category": "Control",
+   "name": "Set Timer",
+   "text": "DEFINE",
+   "backgroundColor": "#004400",
+   "action": {
+    "definitionId": "DEFINE",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_set1",
+   "category": "SET",
+   "name": "Set 1 Minutes",
+   "text": "SET\n1 MIN",
+   "backgroundColor": "#00b4ff",
+   "action": {
+    "definitionId": "SET1",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_set5",
+   "category": "SET",
+   "name": "Set 5 Minutes",
+   "text": "SET\n5 MIN",
+   "backgroundColor": "#00b4ff",
+   "action": {
+    "definitionId": "SET5",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_set15",
+   "category": "SET",
+   "name": "Set 15 Minutes",
+   "text": "SET\n15 MIN",
+   "backgroundColor": "#00b4ff",
+   "action": {
+    "definitionId": "SET15",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_set30",
+   "category": "SET",
+   "name": "Set 30 Minutes",
+   "text": "SET\n30 MIN",
+   "backgroundColor": "#00b4ff",
+   "action": {
+    "definitionId": "SET30",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_set45",
+   "category": "SET",
+   "name": "Set 45 Minutes",
+   "text": "SET\n45 MIN",
+   "backgroundColor": "#00b4ff",
+   "action": {
+    "definitionId": "SET45",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_set60",
+   "category": "SET",
+   "name": "Set 60 Minutes",
+   "text": "SET\n60 MIN",
+   "backgroundColor": "#00b4ff",
+   "action": {
+    "definitionId": "SET60",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_addMinute",
+   "category": "Function",
+   "name": "Add 1 Minute",
+   "text": "ADD\n1 MIN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "addMinute",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_addFiveMinutes",
+   "category": "Function",
+   "name": "Add 5 Minutes",
+   "text": "ADD\n5 MIN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "addFiveMinutes",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_subtractMinute",
+   "category": "Function",
+   "name": "Subtract 1 Minute",
+   "text": "SUB\n1 MIN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "subtractMinute",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_subtractFiveMinutes",
+   "category": "Function",
+   "name": "Subtract 5 Minutes",
+   "text": "SUB\n5 MIN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "subtractFiveMinutes",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_AA",
+   "category": "Function",
+   "name": "AA",
+   "text": "AA\nTimer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AA",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_aa",
+   "category": "Function",
+   "name": "aa",
+   "text": "aa\nTimer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "aa",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_BB",
+   "category": "Function",
+   "name": "BB",
+   "text": "AA\nMsg",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "BB",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_bb",
+   "category": "Function",
+   "name": "bb",
+   "text": "aa\nMsg",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "bb",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset01",
+   "category": "Preset",
+   "name": "Send PRESET01 Command",
+   "text": "Send PRESET01 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET01",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset02",
+   "category": "Preset",
+   "name": "Send PRESET02 Command",
+   "text": "Send PRESET02 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET02",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset03",
+   "category": "Preset",
+   "name": "Send PRESET03 Command",
+   "text": "Send PRESET03 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET03",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset04",
+   "category": "Preset",
+   "name": "Send PRESET04 Command",
+   "text": "Send PRESET04 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET04",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset05",
+   "category": "Preset",
+   "name": "Send PRESET05 Command",
+   "text": "Send PRESET05 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET05",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset06",
+   "category": "Preset",
+   "name": "Send PRESET06 Command",
+   "text": "Send PRESET06 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET06",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset07",
+   "category": "Preset",
+   "name": "Send PRESET07 Command",
+   "text": "Send PRESET07 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET07",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset08",
+   "category": "Preset",
+   "name": "Send PRESET08 Command",
+   "text": "Send PRESET08 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET08",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset09",
+   "category": "Preset",
+   "name": "Send PRESET09 Command",
+   "text": "Send PRESET09 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET09",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset10",
+   "category": "Preset",
+   "name": "Send PRESET10 Command",
+   "text": "Send PRESET10 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET10",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset11",
+   "category": "Preset",
+   "name": "Send PRESET11 Command",
+   "text": "Send PRESET11 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET11",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset12",
+   "category": "Preset",
+   "name": "Send PRESET12 Command",
+   "text": "Send PRESET12 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET12",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset13",
+   "category": "Preset",
+   "name": "Send PRESET13 Command",
+   "text": "Send PRESET13 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET13",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset14",
+   "category": "Preset",
+   "name": "Send PRESET14 Command",
+   "text": "Send PRESET14 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET14",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset15",
+   "category": "Preset",
+   "name": "Send PRESET15 Command",
+   "text": "Send PRESET15 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET15",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset16",
+   "category": "Preset",
+   "name": "Send PRESET16 Command",
+   "text": "Send PRESET16 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET16",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset17",
+   "category": "Preset",
+   "name": "Send PRESET17 Command",
+   "text": "Send PRESET17 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET17",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset18",
+   "category": "Preset",
+   "name": "Send PRESET18 Command",
+   "text": "Send PRESET18 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET18",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset19",
+   "category": "Preset",
+   "name": "Send PRESET19 Command",
+   "text": "Send PRESET19 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET19",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_preset20",
+   "category": "Preset",
+   "name": "Send PRESET20 Command",
+   "text": "Send PRESET20 Command",
+   "backgroundColor": "#006600",
+   "action": {
+    "definitionId": "PRESET20",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-monteiro-cronosdown",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Bruno Monteiro"
+  }
+ ],
+ "source": {
+  "module": "monteiro-cronosdown",
+  "version": "1.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Bruno Monteiro"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-monteiro-cronosdown.git"
+ }
+}

@@ -1,0 +1,361 @@
+{
+ "format": 1,
+ "id": "m-panasonic-tv-th",
+ "name": "Panasonic TH-84EF1U / TH-75EF1U / TH-85EF1W / TH-75EF1W / TH-98SQ2HW / TH-86E…",
+ "category": "Panasonic",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 10101,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Display Model",
+   "type": "select",
+   "default": "TH-84EF1U",
+   "choices": [
+    {
+     "id": "TH-84EF1U",
+     "label": "TH-84EF1U"
+    },
+    {
+     "id": "TH-75EF1U",
+     "label": "TH-75EF1U"
+    },
+    {
+     "id": "TH-85EF1W",
+     "label": "TH-85EF1W"
+    },
+    {
+     "id": "TH-75EF1W",
+     "label": "TH-75EF1W"
+    },
+    {
+     "id": "TH-98SQ2HW",
+     "label": "TH-98SQ2HW"
+    },
+    {
+     "id": "TH-86EQ2W",
+     "label": "TH-86EQ2W"
+    },
+    {
+     "id": "TH-86SQ2HW",
+     "label": "TH-86SQ2HW"
+    },
+    {
+     "id": "TH-75EQ2W",
+     "label": "TH-75EQ2W"
+    },
+    {
+     "id": "TH-75SQ2HW",
+     "label": "TH-75SQ2HW"
+    },
+    {
+     "id": "TH-65EQ2W",
+     "label": "TH-65EQ2W"
+    },
+    {
+     "id": "TH-65SQ2HW",
+     "label": "TH-65SQ2HW"
+    },
+    {
+     "id": "TH-55EQ2W",
+     "label": "TH-55EQ2W"
+    },
+    {
+     "id": "TH-55SQ2HW",
+     "label": "TH-55SQ2HW"
+    },
+    {
+     "id": "TH-50EQ2W",
+     "label": "TH-50EQ2W"
+    },
+    {
+     "id": "TH-50SQ2HW",
+     "label": "TH-50SQ2HW"
+    },
+    {
+     "id": "TH-43EQ2W",
+     "label": "TH-43EQ2W"
+    },
+    {
+     "id": "TH-43SQ2HW",
+     "label": "TH-43SQ2HW"
+    },
+    {
+     "id": "TH-86CQ1W",
+     "label": "TH-86CQ1W"
+    },
+    {
+     "id": "TH-75CQ1W",
+     "label": "TH-75CQ1W"
+    },
+    {
+     "id": "TH-65CQ1W",
+     "label": "TH-65CQ1W"
+    },
+    {
+     "id": "TH-55CQ1W",
+     "label": "TH-55CQ1W"
+    },
+    {
+     "id": "TH-43CQ1W",
+     "label": "TH-43CQ1W"
+    },
+    {
+     "id": "TH-49CQE1W",
+     "label": "TH-49CQE1W"
+    },
+    {
+     "id": "other",
+     "label": "Other"
+    }
+   ]
+  },
+  {
+   "id": "protocolVersion",
+   "label": "Protocol Version",
+   "type": "select",
+   "default": "old",
+   "choices": [
+    {
+     "id": "old",
+     "label": "Old"
+    },
+    {
+     "id": "new",
+     "label": "New"
+    }
+   ]
+  },
+  {
+   "id": "useAuthentication",
+   "label": "Use Authentication",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "user",
+   "label": "Username",
+   "type": "text",
+   "default": "dispadmin"
+  },
+  {
+   "id": "pass",
+   "label": "Password",
+   "type": "text",
+   "default": "@Panasonic"
+  },
+  {
+   "id": "enablePolling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollTime",
+   "label": "Polling Interval (milliseconds)",
+   "type": "text",
+   "default": 1000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "PON",
+   "name": "System - Power ON",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "02504f4e030d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "POF",
+   "name": "System - Power OFF",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "02504f46030d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "AVL",
+   "name": "Audio - Set Volume",
+   "options": [
+    {
+     "id": "action",
+     "label": "Volume 0-100%",
+     "type": "text",
+     "default": 50
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0241564c3a{{option.action|pad3|hexstr}}030d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "AMT",
+   "name": "Audio - Mute",
+   "options": [
+    {
+     "id": "action",
+     "label": "Mute State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mute off"
+      },
+      {
+       "id": "1",
+       "label": "Mute on"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02414d543a{{option.action|map}}030d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "action": {
+     "0": "30",
+     "1": "31"
+    }
+   }
+  },
+  {
+   "id": "IMS",
+   "name": "Video - Input Select",
+   "options": [
+    {
+     "id": "action",
+     "label": "Input",
+     "type": "select",
+     "default": "HM1",
+     "choices": [
+      {
+       "id": "HM1",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "HM2",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "PC1",
+       "label": "PC"
+      },
+      {
+       "id": "UD1",
+       "label": "USB"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02494d533a{{option.action|map}}030d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "action": {
+     "HM1": "484d31",
+     "HM2": "484d32",
+     "PC1": "504331",
+     "UD1": "554431"
+    }
+   }
+  },
+  {
+   "id": "DAM",
+   "name": "Video - View Mode",
+   "options": [
+    {
+     "id": "action",
+     "label": "Mode:",
+     "type": "select",
+     "default": "FULL",
+     "choices": [
+      {
+       "id": "FULL",
+       "label": "Full"
+      },
+      {
+       "id": "NORM",
+       "label": "Normal"
+      },
+      {
+       "id": "NATV",
+       "label": "Native"
+      },
+      {
+       "id": "ZOOM",
+       "label": "Zoom"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0244414d3a{{option.action|map}}030d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "action": {
+     "FULL": "46554c4c",
+     "NORM": "4e4f524d",
+     "NATV": "4e415456",
+     "ZOOM": "5a4f4f4d"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-panasonic-tv-th",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, William Viker"
+  }
+ ],
+ "source": {
+  "module": "panasonic-tv-th",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "William Viker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-panasonic-tv-th.git"
+ }
+}

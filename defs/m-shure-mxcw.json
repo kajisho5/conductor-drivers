@@ -1,0 +1,2100 @@
+{
+ "format": 1,
+ "id": "m-shure-mxcw",
+ "name": "Shure Microflex Complete Wireless (MXCW)",
+ "category": "Shure",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "meteringOn",
+   "label": "Enable Metering?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "range",
+   "label": "Seat Numbers to Control",
+   "type": "text",
+   "default": "1-50",
+   "help": "Enter a range and/or comma separated numbers, e.g.: 1-30, 40, 50-59.  Valid seats are 1-65535"
+  },
+  {
+   "id": "meteringInterval",
+   "label": "Metering Interval (in ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 500,
+   "max": 99999
+  },
+  {
+   "id": "variableFormat",
+   "label": "Variable Format",
+   "type": "select",
+   "default": "units",
+   "choices": [
+    {
+     "id": "units",
+     "label": "Include Units"
+    },
+    {
+     "id": "numeric",
+     "label": "Numeric Only"
+    }
+   ],
+   "help": "Changing this setting will apply to new values received.  To refresh all variables with the new setting, disable and re-enable the connection after saving these settings."
+  }
+ ],
+ "actions": [
+  {
+   "id": "all",
+   "name": "Retrieve all supported commands",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< GET ALL >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "all_delegate_mic_off",
+   "name": "Turn all delegate microphones off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET ALL_DELEGATE_MIC_OFF TRUE >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "audio_input_speaklist",
+   "name": "Show audio input speaklist",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET AUDIO_INPUT_SPEAKLIST O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "aux_input_agc",
+   "name": "Set aux input AGC",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUX_INPUT_AGC O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "aux_input_gain",
+   "name": "Set aux input gain",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -30,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUX_INPUT_GAIN {{option.gain|lin:1:30}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "aux_input_mute",
+   "name": "Set aux input mute",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUX_INPUT_MUTE O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "aux_input_pad",
+   "name": "Set aux input pad",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUX_INPUT_PAD O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "aux_output_gain",
+   "name": "Set aux output gain",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -30,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUX_OUTPUT_GAIN {{option.gain|lin:1:30}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "aux_output_mute",
+   "name": "Set aux output mute",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUX_OUTPUT_MUTE O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "clear_request_list",
+   "name": "Clear seats from request list",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET CLEAR_REQUEST_LIST TRUE >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dante_input_agc",
+   "name": "Set Dante input AGC",
+   "options": [
+    {
+     "id": "ch",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.ch}} DANTE_INPUT_AGC O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "dante_input_gain",
+   "name": "Set Dante input gain",
+   "options": [
+    {
+     "id": "ch",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -30,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.ch}} DANTE_INPUT_GAIN {{option.gain|lin:1:30}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dante_input_mute",
+   "name": "Set Dante input mute",
+   "options": [
+    {
+     "id": "ch",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.ch}} DANTE_INPUT_MUTE O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "dante_output_gain",
+   "name": "Set Dante output gain",
+   "options": [
+    {
+     "id": "ch",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -30,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.ch}} DANTE_OUTPUT_GAIN {{option.gain|lin:1:30}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dante_output_mute",
+   "name": "Set Dante output mute",
+   "options": [
+    {
+     "id": "ch",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.ch}} DANTE_OUTPUT_MUTE O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "device_id",
+   "name": "Set device ID",
+   "options": [
+    {
+     "id": "id",
+     "label": "ID",
+     "type": "text",
+     "default": "",
+     "help": "31 characters max"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DEVICE_ID {{{option.id}}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "flash_apt",
+   "name": "Turn on flash to identify APT",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "flash_seat",
+   "name": "Turn on flash to identify a seat",
+   "options": [
+    {
+     "id": "seat",
+     "label": "Seat",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Seats"
+      },
+      {
+       "id": "1",
+       "label": "Seat 1"
+      },
+      {
+       "id": "2",
+       "label": "Seat 2"
+      },
+      {
+       "id": "3",
+       "label": "Seat 3"
+      },
+      {
+       "id": "4",
+       "label": "Seat 4"
+      },
+      {
+       "id": "5",
+       "label": "Seat 5"
+      },
+      {
+       "id": "6",
+       "label": "Seat 6"
+      },
+      {
+       "id": "7",
+       "label": "Seat 7"
+      },
+      {
+       "id": "8",
+       "label": "Seat 8"
+      },
+      {
+       "id": "9",
+       "label": "Seat 9"
+      },
+      {
+       "id": "10",
+       "label": "Seat 10"
+      },
+      {
+       "id": "11",
+       "label": "Seat 11"
+      },
+      {
+       "id": "12",
+       "label": "Seat 12"
+      },
+      {
+       "id": "13",
+       "label": "Seat 13"
+      },
+      {
+       "id": "14",
+       "label": "Seat 14"
+      },
+      {
+       "id": "15",
+       "label": "Seat 15"
+      },
+      {
+       "id": "16",
+       "label": "Seat 16"
+      },
+      {
+       "id": "17",
+       "label": "Seat 17"
+      },
+      {
+       "id": "18",
+       "label": "Seat 18"
+      },
+      {
+       "id": "19",
+       "label": "Seat 19"
+      },
+      {
+       "id": "20",
+       "label": "Seat 20"
+      },
+      {
+       "id": "21",
+       "label": "Seat 21"
+      },
+      {
+       "id": "22",
+       "label": "Seat 22"
+      },
+      {
+       "id": "23",
+       "label": "Seat 23"
+      },
+      {
+       "id": "24",
+       "label": "Seat 24"
+      },
+      {
+       "id": "25",
+       "label": "Seat 25"
+      },
+      {
+       "id": "26",
+       "label": "Seat 26"
+      },
+      {
+       "id": "27",
+       "label": "Seat 27"
+      },
+      {
+       "id": "28",
+       "label": "Seat 28"
+      },
+      {
+       "id": "29",
+       "label": "Seat 29"
+      },
+      {
+       "id": "30",
+       "label": "Seat 30"
+      },
+      {
+       "id": "31",
+       "label": "Seat 31"
+      },
+      {
+       "id": "32",
+       "label": "Seat 32"
+      },
+      {
+       "id": "33",
+       "label": "Seat 33"
+      },
+      {
+       "id": "34",
+       "label": "Seat 34"
+      },
+      {
+       "id": "35",
+       "label": "Seat 35"
+      },
+      {
+       "id": "36",
+       "label": "Seat 36"
+      },
+      {
+       "id": "37",
+       "label": "Seat 37"
+      },
+      {
+       "id": "38",
+       "label": "Seat 38"
+      },
+      {
+       "id": "39",
+       "label": "Seat 39"
+      },
+      {
+       "id": "40",
+       "label": "Seat 40"
+      },
+      {
+       "id": "41",
+       "label": "Seat 41"
+      },
+      {
+       "id": "42",
+       "label": "Seat 42"
+      },
+      {
+       "id": "43",
+       "label": "Seat 43"
+      },
+      {
+       "id": "44",
+       "label": "Seat 44"
+      },
+      {
+       "id": "45",
+       "label": "Seat 45"
+      },
+      {
+       "id": "46",
+       "label": "Seat 46"
+      },
+      {
+       "id": "47",
+       "label": "Seat 47"
+      },
+      {
+       "id": "48",
+       "label": "Seat 48"
+      },
+      {
+       "id": "49",
+       "label": "Seat 49"
+      },
+      {
+       "id": "50",
+       "label": "Seat 50"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.seat}} FLASH O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "global_mute",
+   "name": "Set global mute",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET GLOBAL_MUTE O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "interrupt_mode",
+   "name": "Set interruption mode",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "NOT_ALLOWED",
+     "choices": [
+      {
+       "id": "NOT_ALLOWED",
+       "label": "Not Allowed"
+      },
+      {
+       "id": "HIGHER_PRIORITY",
+       "label": "Higher Priority"
+      },
+      {
+       "id": "EQUAL_AND_HIGHER_PRIORITY",
+       "label": "Equal and Higher Priority"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET INTERRUPT_MODE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "NOT_ALLOWED": "NOT_ALLOWED",
+     "HIGHER_PRIORITY": "HIGHER_PRIORITY",
+     "EQUAL_AND_HIGHER_PRIORITY": "EQUAL_AND_HIGHER_PRIORITY"
+    }
+   }
+  },
+  {
+   "id": "loudspeaker_volume",
+   "name": "Set the volume of loudspeakers for conference units",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -30,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET LOUDSPEAKER_VOLUME {{option.gain|lin:1:30}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "max_delegate_speakers",
+   "name": "Set maximum number of delegate speakers",
+   "options": [
+    {
+     "id": "val",
+     "label": "Max",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET MAX_DELEGATE_SPEAKERS {{option.val}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "max_num_requests",
+   "name": "Set maximum number of delegates allowed in request list",
+   "options": [
+    {
+     "id": "val",
+     "label": "Max",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 50
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET MAX_NUM_REQUESTS {{option.val}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "max_total_speakers",
+   "name": "Set maximum number of speakers allowed",
+   "options": [
+    {
+     "id": "val",
+     "label": "Max",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET MAX_TOTAL_SPEAKERS {{option.val}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mic_gain",
+   "name": "Set the microphone gain of conference unit",
+   "options": [
+    {
+     "id": "seat",
+     "label": "Seat",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Seats"
+      },
+      {
+       "id": "1",
+       "label": "Seat 1"
+      },
+      {
+       "id": "2",
+       "label": "Seat 2"
+      },
+      {
+       "id": "3",
+       "label": "Seat 3"
+      },
+      {
+       "id": "4",
+       "label": "Seat 4"
+      },
+      {
+       "id": "5",
+       "label": "Seat 5"
+      },
+      {
+       "id": "6",
+       "label": "Seat 6"
+      },
+      {
+       "id": "7",
+       "label": "Seat 7"
+      },
+      {
+       "id": "8",
+       "label": "Seat 8"
+      },
+      {
+       "id": "9",
+       "label": "Seat 9"
+      },
+      {
+       "id": "10",
+       "label": "Seat 10"
+      },
+      {
+       "id": "11",
+       "label": "Seat 11"
+      },
+      {
+       "id": "12",
+       "label": "Seat 12"
+      },
+      {
+       "id": "13",
+       "label": "Seat 13"
+      },
+      {
+       "id": "14",
+       "label": "Seat 14"
+      },
+      {
+       "id": "15",
+       "label": "Seat 15"
+      },
+      {
+       "id": "16",
+       "label": "Seat 16"
+      },
+      {
+       "id": "17",
+       "label": "Seat 17"
+      },
+      {
+       "id": "18",
+       "label": "Seat 18"
+      },
+      {
+       "id": "19",
+       "label": "Seat 19"
+      },
+      {
+       "id": "20",
+       "label": "Seat 20"
+      },
+      {
+       "id": "21",
+       "label": "Seat 21"
+      },
+      {
+       "id": "22",
+       "label": "Seat 22"
+      },
+      {
+       "id": "23",
+       "label": "Seat 23"
+      },
+      {
+       "id": "24",
+       "label": "Seat 24"
+      },
+      {
+       "id": "25",
+       "label": "Seat 25"
+      },
+      {
+       "id": "26",
+       "label": "Seat 26"
+      },
+      {
+       "id": "27",
+       "label": "Seat 27"
+      },
+      {
+       "id": "28",
+       "label": "Seat 28"
+      },
+      {
+       "id": "29",
+       "label": "Seat 29"
+      },
+      {
+       "id": "30",
+       "label": "Seat 30"
+      },
+      {
+       "id": "31",
+       "label": "Seat 31"
+      },
+      {
+       "id": "32",
+       "label": "Seat 32"
+      },
+      {
+       "id": "33",
+       "label": "Seat 33"
+      },
+      {
+       "id": "34",
+       "label": "Seat 34"
+      },
+      {
+       "id": "35",
+       "label": "Seat 35"
+      },
+      {
+       "id": "36",
+       "label": "Seat 36"
+      },
+      {
+       "id": "37",
+       "label": "Seat 37"
+      },
+      {
+       "id": "38",
+       "label": "Seat 38"
+      },
+      {
+       "id": "39",
+       "label": "Seat 39"
+      },
+      {
+       "id": "40",
+       "label": "Seat 40"
+      },
+      {
+       "id": "41",
+       "label": "Seat 41"
+      },
+      {
+       "id": "42",
+       "label": "Seat 42"
+      },
+      {
+       "id": "43",
+       "label": "Seat 43"
+      },
+      {
+       "id": "44",
+       "label": "Seat 44"
+      },
+      {
+       "id": "45",
+       "label": "Seat 45"
+      },
+      {
+       "id": "46",
+       "label": "Seat 46"
+      },
+      {
+       "id": "47",
+       "label": "Seat 47"
+      },
+      {
+       "id": "48",
+       "label": "Seat 48"
+      },
+      {
+       "id": "49",
+       "label": "Seat 49"
+      },
+      {
+       "id": "50",
+       "label": "Seat 50"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -30,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.seat}} MIC_GAIN {{option.gain|lin:1:30}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mic_priority",
+   "name": "Set microphone priority",
+   "options": [
+    {
+     "id": "seat",
+     "label": "Seat",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Seats"
+      },
+      {
+       "id": "1",
+       "label": "Seat 1"
+      },
+      {
+       "id": "2",
+       "label": "Seat 2"
+      },
+      {
+       "id": "3",
+       "label": "Seat 3"
+      },
+      {
+       "id": "4",
+       "label": "Seat 4"
+      },
+      {
+       "id": "5",
+       "label": "Seat 5"
+      },
+      {
+       "id": "6",
+       "label": "Seat 6"
+      },
+      {
+       "id": "7",
+       "label": "Seat 7"
+      },
+      {
+       "id": "8",
+       "label": "Seat 8"
+      },
+      {
+       "id": "9",
+       "label": "Seat 9"
+      },
+      {
+       "id": "10",
+       "label": "Seat 10"
+      },
+      {
+       "id": "11",
+       "label": "Seat 11"
+      },
+      {
+       "id": "12",
+       "label": "Seat 12"
+      },
+      {
+       "id": "13",
+       "label": "Seat 13"
+      },
+      {
+       "id": "14",
+       "label": "Seat 14"
+      },
+      {
+       "id": "15",
+       "label": "Seat 15"
+      },
+      {
+       "id": "16",
+       "label": "Seat 16"
+      },
+      {
+       "id": "17",
+       "label": "Seat 17"
+      },
+      {
+       "id": "18",
+       "label": "Seat 18"
+      },
+      {
+       "id": "19",
+       "label": "Seat 19"
+      },
+      {
+       "id": "20",
+       "label": "Seat 20"
+      },
+      {
+       "id": "21",
+       "label": "Seat 21"
+      },
+      {
+       "id": "22",
+       "label": "Seat 22"
+      },
+      {
+       "id": "23",
+       "label": "Seat 23"
+      },
+      {
+       "id": "24",
+       "label": "Seat 24"
+      },
+      {
+       "id": "25",
+       "label": "Seat 25"
+      },
+      {
+       "id": "26",
+       "label": "Seat 26"
+      },
+      {
+       "id": "27",
+       "label": "Seat 27"
+      },
+      {
+       "id": "28",
+       "label": "Seat 28"
+      },
+      {
+       "id": "29",
+       "label": "Seat 29"
+      },
+      {
+       "id": "30",
+       "label": "Seat 30"
+      },
+      {
+       "id": "31",
+       "label": "Seat 31"
+      },
+      {
+       "id": "32",
+       "label": "Seat 32"
+      },
+      {
+       "id": "33",
+       "label": "Seat 33"
+      },
+      {
+       "id": "34",
+       "label": "Seat 34"
+      },
+      {
+       "id": "35",
+       "label": "Seat 35"
+      },
+      {
+       "id": "36",
+       "label": "Seat 36"
+      },
+      {
+       "id": "37",
+       "label": "Seat 37"
+      },
+      {
+       "id": "38",
+       "label": "Seat 38"
+      },
+      {
+       "id": "39",
+       "label": "Seat 39"
+      },
+      {
+       "id": "40",
+       "label": "Seat 40"
+      },
+      {
+       "id": "41",
+       "label": "Seat 41"
+      },
+      {
+       "id": "42",
+       "label": "Seat 42"
+      },
+      {
+       "id": "43",
+       "label": "Seat 43"
+      },
+      {
+       "id": "44",
+       "label": "Seat 44"
+      },
+      {
+       "id": "45",
+       "label": "Seat 45"
+      },
+      {
+       "id": "46",
+       "label": "Seat 46"
+      },
+      {
+       "id": "47",
+       "label": "Seat 47"
+      },
+      {
+       "id": "48",
+       "label": "Seat 48"
+      },
+      {
+       "id": "49",
+       "label": "Seat 49"
+      },
+      {
+       "id": "50",
+       "label": "Seat 50"
+      }
+     ]
+    },
+    {
+     "id": "val",
+     "label": "Priority",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 5
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.seat}} MIC_PRIORITY {{option.val}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mic_status",
+   "name": "Set microphone status",
+   "options": [
+    {
+     "id": "seat",
+     "label": "Seat",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Seats"
+      },
+      {
+       "id": "1",
+       "label": "Seat 1"
+      },
+      {
+       "id": "2",
+       "label": "Seat 2"
+      },
+      {
+       "id": "3",
+       "label": "Seat 3"
+      },
+      {
+       "id": "4",
+       "label": "Seat 4"
+      },
+      {
+       "id": "5",
+       "label": "Seat 5"
+      },
+      {
+       "id": "6",
+       "label": "Seat 6"
+      },
+      {
+       "id": "7",
+       "label": "Seat 7"
+      },
+      {
+       "id": "8",
+       "label": "Seat 8"
+      },
+      {
+       "id": "9",
+       "label": "Seat 9"
+      },
+      {
+       "id": "10",
+       "label": "Seat 10"
+      },
+      {
+       "id": "11",
+       "label": "Seat 11"
+      },
+      {
+       "id": "12",
+       "label": "Seat 12"
+      },
+      {
+       "id": "13",
+       "label": "Seat 13"
+      },
+      {
+       "id": "14",
+       "label": "Seat 14"
+      },
+      {
+       "id": "15",
+       "label": "Seat 15"
+      },
+      {
+       "id": "16",
+       "label": "Seat 16"
+      },
+      {
+       "id": "17",
+       "label": "Seat 17"
+      },
+      {
+       "id": "18",
+       "label": "Seat 18"
+      },
+      {
+       "id": "19",
+       "label": "Seat 19"
+      },
+      {
+       "id": "20",
+       "label": "Seat 20"
+      },
+      {
+       "id": "21",
+       "label": "Seat 21"
+      },
+      {
+       "id": "22",
+       "label": "Seat 22"
+      },
+      {
+       "id": "23",
+       "label": "Seat 23"
+      },
+      {
+       "id": "24",
+       "label": "Seat 24"
+      },
+      {
+       "id": "25",
+       "label": "Seat 25"
+      },
+      {
+       "id": "26",
+       "label": "Seat 26"
+      },
+      {
+       "id": "27",
+       "label": "Seat 27"
+      },
+      {
+       "id": "28",
+       "label": "Seat 28"
+      },
+      {
+       "id": "29",
+       "label": "Seat 29"
+      },
+      {
+       "id": "30",
+       "label": "Seat 30"
+      },
+      {
+       "id": "31",
+       "label": "Seat 31"
+      },
+      {
+       "id": "32",
+       "label": "Seat 32"
+      },
+      {
+       "id": "33",
+       "label": "Seat 33"
+      },
+      {
+       "id": "34",
+       "label": "Seat 34"
+      },
+      {
+       "id": "35",
+       "label": "Seat 35"
+      },
+      {
+       "id": "36",
+       "label": "Seat 36"
+      },
+      {
+       "id": "37",
+       "label": "Seat 37"
+      },
+      {
+       "id": "38",
+       "label": "Seat 38"
+      },
+      {
+       "id": "39",
+       "label": "Seat 39"
+      },
+      {
+       "id": "40",
+       "label": "Seat 40"
+      },
+      {
+       "id": "41",
+       "label": "Seat 41"
+      },
+      {
+       "id": "42",
+       "label": "Seat 42"
+      },
+      {
+       "id": "43",
+       "label": "Seat 43"
+      },
+      {
+       "id": "44",
+       "label": "Seat 44"
+      },
+      {
+       "id": "45",
+       "label": "Seat 45"
+      },
+      {
+       "id": "46",
+       "label": "Seat 46"
+      },
+      {
+       "id": "47",
+       "label": "Seat 47"
+      },
+      {
+       "id": "48",
+       "label": "Seat 48"
+      },
+      {
+       "id": "49",
+       "label": "Seat 49"
+      },
+      {
+       "id": "50",
+       "label": "Seat 50"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.seat}} MIC_STATUS O{{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "next_mic_on",
+   "name": "Turn next microphone in request list on",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET NEXT_MIC_ON TRUE >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "operation_mode",
+   "name": "Set operation mode",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "AUTO",
+     "choices": [
+      {
+       "id": "AUTO",
+       "label": "Automatic"
+      },
+      {
+       "id": "MANUAL",
+       "label": "Manual"
+      },
+      {
+       "id": "FIFO",
+       "label": "First In-First Out"
+      },
+      {
+       "id": "HANDSFREE",
+       "label": "Hands Free"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET OPERATION_MODE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "AUTO": "AUTO",
+     "MANUAL": "MANUAL",
+     "FIFO": "FIFO",
+     "HANDSFREE": "HANDSFREE"
+    }
+   }
+  },
+  {
+   "id": "retain_seat_persistence",
+   "name": "Set retain seat information on reboot",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ENABLED",
+     "choices": [
+      {
+       "id": "ENABLED",
+       "label": "Enabled"
+      },
+      {
+       "id": "DISABLED",
+       "label": "Disabled"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET RETAIN_SEAT_PERSISTENCE {{option.choice|map}}ABLED >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ENABLED": "EN",
+     "DISABLED": "DIS"
+    }
+   }
+  },
+  {
+   "id": "rf_power",
+   "name": "Set RF power",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "OFF",
+       "label": "Off"
+      },
+      {
+       "id": "LOW",
+       "label": "Low"
+      },
+      {
+       "id": "MEDIUM",
+       "label": "Medium"
+      },
+      {
+       "id": "HIGH",
+       "label": "High"
+      },
+      {
+       "id": "MAXIMUM",
+       "label": "Maximum"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET RF_POWER {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "LOW": "LOW",
+     "MEDIUM": "MEDIUM",
+     "HIGH": "HIGH",
+     "MAXIMUM": "MAXIMUM"
+    }
+   }
+  },
+  {
+   "id": "role",
+   "name": "Set role for device",
+   "options": [
+    {
+     "id": "seat",
+     "label": "Seat",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Seats"
+      },
+      {
+       "id": "1",
+       "label": "Seat 1"
+      },
+      {
+       "id": "2",
+       "label": "Seat 2"
+      },
+      {
+       "id": "3",
+       "label": "Seat 3"
+      },
+      {
+       "id": "4",
+       "label": "Seat 4"
+      },
+      {
+       "id": "5",
+       "label": "Seat 5"
+      },
+      {
+       "id": "6",
+       "label": "Seat 6"
+      },
+      {
+       "id": "7",
+       "label": "Seat 7"
+      },
+      {
+       "id": "8",
+       "label": "Seat 8"
+      },
+      {
+       "id": "9",
+       "label": "Seat 9"
+      },
+      {
+       "id": "10",
+       "label": "Seat 10"
+      },
+      {
+       "id": "11",
+       "label": "Seat 11"
+      },
+      {
+       "id": "12",
+       "label": "Seat 12"
+      },
+      {
+       "id": "13",
+       "label": "Seat 13"
+      },
+      {
+       "id": "14",
+       "label": "Seat 14"
+      },
+      {
+       "id": "15",
+       "label": "Seat 15"
+      },
+      {
+       "id": "16",
+       "label": "Seat 16"
+      },
+      {
+       "id": "17",
+       "label": "Seat 17"
+      },
+      {
+       "id": "18",
+       "label": "Seat 18"
+      },
+      {
+       "id": "19",
+       "label": "Seat 19"
+      },
+      {
+       "id": "20",
+       "label": "Seat 20"
+      },
+      {
+       "id": "21",
+       "label": "Seat 21"
+      },
+      {
+       "id": "22",
+       "label": "Seat 22"
+      },
+      {
+       "id": "23",
+       "label": "Seat 23"
+      },
+      {
+       "id": "24",
+       "label": "Seat 24"
+      },
+      {
+       "id": "25",
+       "label": "Seat 25"
+      },
+      {
+       "id": "26",
+       "label": "Seat 26"
+      },
+      {
+       "id": "27",
+       "label": "Seat 27"
+      },
+      {
+       "id": "28",
+       "label": "Seat 28"
+      },
+      {
+       "id": "29",
+       "label": "Seat 29"
+      },
+      {
+       "id": "30",
+       "label": "Seat 30"
+      },
+      {
+       "id": "31",
+       "label": "Seat 31"
+      },
+      {
+       "id": "32",
+       "label": "Seat 32"
+      },
+      {
+       "id": "33",
+       "label": "Seat 33"
+      },
+      {
+       "id": "34",
+       "label": "Seat 34"
+      },
+      {
+       "id": "35",
+       "label": "Seat 35"
+      },
+      {
+       "id": "36",
+       "label": "Seat 36"
+      },
+      {
+       "id": "37",
+       "label": "Seat 37"
+      },
+      {
+       "id": "38",
+       "label": "Seat 38"
+      },
+      {
+       "id": "39",
+       "label": "Seat 39"
+      },
+      {
+       "id": "40",
+       "label": "Seat 40"
+      },
+      {
+       "id": "41",
+       "label": "Seat 41"
+      },
+      {
+       "id": "42",
+       "label": "Seat 42"
+      },
+      {
+       "id": "43",
+       "label": "Seat 43"
+      },
+      {
+       "id": "44",
+       "label": "Seat 44"
+      },
+      {
+       "id": "45",
+       "label": "Seat 45"
+      },
+      {
+       "id": "46",
+       "label": "Seat 46"
+      },
+      {
+       "id": "47",
+       "label": "Seat 47"
+      },
+      {
+       "id": "48",
+       "label": "Seat 48"
+      },
+      {
+       "id": "49",
+       "label": "Seat 49"
+      },
+      {
+       "id": "50",
+       "label": "Seat 50"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "DELEGATE",
+       "label": "Delegate"
+      },
+      {
+       "id": "CHAIRMAN",
+       "label": "Chairman"
+      },
+      {
+       "id": "LISTENER",
+       "label": "Listener"
+      },
+      {
+       "id": "AMBIENT",
+       "label": "Ambient"
+      },
+      {
+       "id": "REMOTE_CALLER",
+       "label": "Remote Caller"
+      },
+      {
+       "id": "DUAL_DELEGATE",
+       "label": "Dual Delegate"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.seat}} ROLE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "ON",
+     "DELEGATE": "DELEGATE",
+     "CHAIRMAN": "CHAIRMAN",
+     "LISTENER": "LISTENER",
+     "AMBIENT": "AMBIENT",
+     "REMOTE_CALLER": "REMOTE_CALLER",
+     "DUAL_DELEGATE": "DUAL_DELEGATE"
+    }
+   }
+  },
+  {
+   "id": "wdu_lock_welcome",
+   "name": "Set welcome screen lock status",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Value",
+     "type": "select",
+     "default": "ENABLED",
+     "choices": [
+      {
+       "id": "ENABLED",
+       "label": "Enabled"
+      },
+      {
+       "id": "DISABLED",
+       "label": "Disabled"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET WDU_LOCK_WELCOME {{option.choice|map}}ABLED >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ENABLED": "EN",
+     "DISABLED": "DIS"
+    }
+   }
+  },
+  {
+   "id": "wdu_off",
+   "name": "Turn conference unit off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET WDU_OFF TRUE >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "welcome_lock_reset",
+   "name": "Reset welcome screen lock to default",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET WELCOME_LOCK_RESET TRUE >",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-mxcw",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "shure-mxcw",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-mxcw.git"
+ }
+}

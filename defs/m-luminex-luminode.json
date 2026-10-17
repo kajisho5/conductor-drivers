@@ -5,23 +5,15 @@
  "category": "Luminex",
  "version": "1.1.0",
  "minAppVersion": "0.6.0",
- "transport": "tcp",
+ "transport": "http",
  "configFields": [
   {
-   "id": "host",
-   "label": "IP アドレス",
+   "id": "baseUrl",
+   "label": "URL の先頭",
    "type": "text",
-   "placeholder": "192.168.0.10",
-   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
    "mono": true
-  },
-  {
-   "id": "port",
-   "label": "ポート",
-   "type": "number",
-   "default": 44293,
-   "min": 1,
-   "max": 65535
   },
   {
    "id": "password",
@@ -36,9 +28,9 @@
    "name": "Identify",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "GET / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/identify\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/identify"
    }
   },
   {
@@ -46,9 +38,46 @@
    "name": "Reboot",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/reboot\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/reboot",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "reset",
+   "name": "Reset",
+   "options": [
+    {
+     "id": "keep_ip_settings",
+     "label": "Keep IP Settings",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "keep_user_profiles",
+     "label": "Keep User Profiles",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/reset",
+    "body": "{\"keep_ip_settings\":{{option.keep_ip_settings|map}}e,\"keep_user_profiles\":{{option.keep_user_profiles|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "keep_ip_settings": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "keep_user_profiles": {
+     "true": "tru",
+     "false": "fals"
+    }
    }
   },
   {
@@ -63,15 +92,80 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/display\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: {{option.display_on|map}}e}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/display",
+    "body": "{\"display_on\":{{option.display_on|map}}e}",
+    "contentType": "application/json"
    },
    "maps": {
     "display_on": {
-     "true": "19\\r\\n\\r\\n{\"display_on\":tru",
-     "false": "20\\r\\n\\r\\n{\"display_on\":fals"
+     "true": "tru",
+     "false": "fals"
     }
+   }
+  },
+  {
+   "id": "recall_profile",
+   "name": "Recall configuration from profile",
+   "options": [
+    {
+     "id": "profile",
+     "label": "Profile",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 40,
+     "help": "1-based profile number"
+    },
+    {
+     "id": "keep_ip_settings",
+     "label": "Keep Ip Settings",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/profile/{{option.profile|lin:1:-1}}/recall",
+    "body": "{\"keep_ip_settings\":{{option.keep_ip_settings|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "keep_ip_settings": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "save_profile",
+   "name": "Save current configuration to profile",
+   "options": [
+    {
+     "id": "profile",
+     "label": "Profile number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 40,
+     "help": "1-based profile number"
+    },
+    {
+     "id": "name",
+     "label": "Profile name",
+     "type": "text",
+     "default": "Profile",
+     "help": "The name that the new profile should get"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/profile/{{option.profile|lin:1:-1}}/save",
+    "body": "{\"name\":\"{{option.name}}\"}",
+    "contentType": "application/json"
    }
   },
   {
@@ -79,9 +173,33 @@
    "name": "Acknowledge all stream loss indications",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/dmx/acknowledge\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/dmx/acknowledge",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "dmx_acknowledge_port",
+   "name": "Acknowledge stream loss indications for the given port",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 12,
+     "help": "1-based DMX port number"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/dmx/{{option.port|lin:1:-1}}/acknowledge",
+    "body": "",
+    "contentType": "application/json"
    }
   },
   {
@@ -89,9 +207,33 @@
    "name": "Force RDM discovery for all DMX ports",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/dmx/force_discovery\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: 0\\r\\n\\r\\n",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/dmx/force_discovery",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "force_rdm_discovery_port",
+   "name": "Force RDM discovery for the given port",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 12,
+     "help": "1-based DMX port number"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/dmx/{{option.port|lin:1:-1}}/force_discovery",
+    "body": "",
+    "contentType": "application/json"
    }
   },
   {
@@ -124,17 +266,38 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST / HTTP/1.1\\r\\nhost: 127.0.0.1:44293\\r\\nconnection: keep-alive\\r\\ncontent-type: application/json\\r\\nx-capture-url: http://10.11.12.13/api/play/control\\r\\naccept: */*\\r\\naccept-language: *\\r\\nsec-fetch-mode: cors\\r\\nuser-agent: node\\r\\naccept-encoding: gzip, deflate\\r\\ncontent-length: {{option.action|map}}\"}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/play/control",
+    "body": "{\"action\":\"{{option.action|map}}\"}",
+    "contentType": "application/json"
    },
    "maps": {
     "action": {
-     "go": "15\\r\\n\\r\\n{\"action\":\"go",
-     "forward": "20\\r\\n\\r\\n{\"action\":\"forward",
-     "back": "17\\r\\n\\r\\n{\"action\":\"back",
-     "reset": "18\\r\\n\\r\\n{\"action\":\"reset"
+     "go": "go",
+     "forward": "forward",
+     "back": "back",
+     "reset": "reset"
     }
+   }
+  },
+  {
+   "id": "play_snapshot",
+   "name": "Play a specific snapshot",
+   "options": [
+    {
+     "id": "snapshot_id",
+     "label": "Snapshot ID",
+     "type": "text",
+     "default": "1.00"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/play/play_snapshot",
+    "body": "{\"snapshot_id\":\"{{option.snapshot_id}}\"}",
+    "contentType": "application/json"
    }
   }
  ],
@@ -161,6 +324,20 @@
    "action": {
     "definitionId": "reboot",
     "options": {}
+   }
+  },
+  {
+   "id": "reset",
+   "category": "Device",
+   "name": "Reset device",
+   "text": "Reset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "reset",
+    "options": {
+     "keep_ip_settings": true,
+     "keep_user_profiles": true
+    }
    }
   },
   {
@@ -212,6 +389,1139 @@
     "definitionId": "play_control",
     "options": {
      "action": "go"
+    }
+   }
+  },
+  {
+   "id": "play_snapshot",
+   "category": "Play",
+   "name": "Play Snapshot\nPlay a specific snapshot. Button will become RED if snapshot is pl",
+   "text": "Play 1.00",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_snapshot",
+    "options": {
+     "snapshot_id": "1.00"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_1",
+   "category": "Profiles",
+   "name": "Profile 1 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 1,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_1",
+   "category": "Profiles",
+   "name": "Save to profile 1",
+   "text": "Save to profile 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 1,
+     "name": "Profile 1"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_2",
+   "category": "Profiles",
+   "name": "Profile 2 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 2,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_2",
+   "category": "Profiles",
+   "name": "Save to profile 2",
+   "text": "Save to profile 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 2,
+     "name": "Profile 2"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_3",
+   "category": "Profiles",
+   "name": "Profile 3 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 3,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_3",
+   "category": "Profiles",
+   "name": "Save to profile 3",
+   "text": "Save to profile 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 3,
+     "name": "Profile 3"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_4",
+   "category": "Profiles",
+   "name": "Profile 4 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 4,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_4",
+   "category": "Profiles",
+   "name": "Save to profile 4",
+   "text": "Save to profile 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 4,
+     "name": "Profile 4"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_5",
+   "category": "Profiles",
+   "name": "Profile 5 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 5,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_5",
+   "category": "Profiles",
+   "name": "Save to profile 5",
+   "text": "Save to profile 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 5,
+     "name": "Profile 5"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_6",
+   "category": "Profiles",
+   "name": "Profile 6 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 6,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_6",
+   "category": "Profiles",
+   "name": "Save to profile 6",
+   "text": "Save to profile 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 6,
+     "name": "Profile 6"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_7",
+   "category": "Profiles",
+   "name": "Profile 7 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 7,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_7",
+   "category": "Profiles",
+   "name": "Save to profile 7",
+   "text": "Save to profile 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 7,
+     "name": "Profile 7"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_8",
+   "category": "Profiles",
+   "name": "Profile 8 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 8,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_8",
+   "category": "Profiles",
+   "name": "Save to profile 8",
+   "text": "Save to profile 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 8,
+     "name": "Profile 8"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_9",
+   "category": "Profiles",
+   "name": "Profile 9 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 9,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_9",
+   "category": "Profiles",
+   "name": "Save to profile 9",
+   "text": "Save to profile 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 9,
+     "name": "Profile 9"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_10",
+   "category": "Profiles",
+   "name": "Profile 10 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 10,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_10",
+   "category": "Profiles",
+   "name": "Save to profile 10",
+   "text": "Save to profile 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 10,
+     "name": "Profile 10"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_11",
+   "category": "Profiles",
+   "name": "Profile 11 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 11,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_11",
+   "category": "Profiles",
+   "name": "Save to profile 11",
+   "text": "Save to profile 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 11,
+     "name": "Profile 11"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_12",
+   "category": "Profiles",
+   "name": "Profile 12 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 12,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_12",
+   "category": "Profiles",
+   "name": "Save to profile 12",
+   "text": "Save to profile 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 12,
+     "name": "Profile 12"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_13",
+   "category": "Profiles",
+   "name": "Profile 13 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 13,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_13",
+   "category": "Profiles",
+   "name": "Save to profile 13",
+   "text": "Save to profile 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 13,
+     "name": "Profile 13"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_14",
+   "category": "Profiles",
+   "name": "Profile 14 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 14,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_14",
+   "category": "Profiles",
+   "name": "Save to profile 14",
+   "text": "Save to profile 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 14,
+     "name": "Profile 14"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_15",
+   "category": "Profiles",
+   "name": "Profile 15 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 15,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_15",
+   "category": "Profiles",
+   "name": "Save to profile 15",
+   "text": "Save to profile 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 15,
+     "name": "Profile 15"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_16",
+   "category": "Profiles",
+   "name": "Profile 16 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 16,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_16",
+   "category": "Profiles",
+   "name": "Save to profile 16",
+   "text": "Save to profile 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 16,
+     "name": "Profile 16"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_17",
+   "category": "Profiles",
+   "name": "Profile 17 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 17,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_17",
+   "category": "Profiles",
+   "name": "Save to profile 17",
+   "text": "Save to profile 17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 17,
+     "name": "Profile 17"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_18",
+   "category": "Profiles",
+   "name": "Profile 18 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 18,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_18",
+   "category": "Profiles",
+   "name": "Save to profile 18",
+   "text": "Save to profile 18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 18,
+     "name": "Profile 18"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_19",
+   "category": "Profiles",
+   "name": "Profile 19 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 19,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_19",
+   "category": "Profiles",
+   "name": "Save to profile 19",
+   "text": "Save to profile 19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 19,
+     "name": "Profile 19"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_20",
+   "category": "Profiles",
+   "name": "Profile 20 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 20,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_20",
+   "category": "Profiles",
+   "name": "Save to profile 20",
+   "text": "Save to profile 20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 20,
+     "name": "Profile 20"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_21",
+   "category": "Profiles",
+   "name": "Profile 21 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 21,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_21",
+   "category": "Profiles",
+   "name": "Save to profile 21",
+   "text": "Save to profile 21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 21,
+     "name": "Profile 21"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_22",
+   "category": "Profiles",
+   "name": "Profile 22 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 22,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_22",
+   "category": "Profiles",
+   "name": "Save to profile 22",
+   "text": "Save to profile 22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 22,
+     "name": "Profile 22"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_23",
+   "category": "Profiles",
+   "name": "Profile 23 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 23,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_23",
+   "category": "Profiles",
+   "name": "Save to profile 23",
+   "text": "Save to profile 23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 23,
+     "name": "Profile 23"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_24",
+   "category": "Profiles",
+   "name": "Profile 24 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 24,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_24",
+   "category": "Profiles",
+   "name": "Save to profile 24",
+   "text": "Save to profile 24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 24,
+     "name": "Profile 24"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_25",
+   "category": "Profiles",
+   "name": "Profile 25 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 25,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_25",
+   "category": "Profiles",
+   "name": "Save to profile 25",
+   "text": "Save to profile 25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 25,
+     "name": "Profile 25"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_26",
+   "category": "Profiles",
+   "name": "Profile 26 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 26,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_26",
+   "category": "Profiles",
+   "name": "Save to profile 26",
+   "text": "Save to profile 26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 26,
+     "name": "Profile 26"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_27",
+   "category": "Profiles",
+   "name": "Profile 27 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 27,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_27",
+   "category": "Profiles",
+   "name": "Save to profile 27",
+   "text": "Save to profile 27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 27,
+     "name": "Profile 27"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_28",
+   "category": "Profiles",
+   "name": "Profile 28 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 28,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_28",
+   "category": "Profiles",
+   "name": "Save to profile 28",
+   "text": "Save to profile 28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 28,
+     "name": "Profile 28"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_29",
+   "category": "Profiles",
+   "name": "Profile 29 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 29,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_29",
+   "category": "Profiles",
+   "name": "Save to profile 29",
+   "text": "Save to profile 29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 29,
+     "name": "Profile 29"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_30",
+   "category": "Profiles",
+   "name": "Profile 30 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 30,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_30",
+   "category": "Profiles",
+   "name": "Save to profile 30",
+   "text": "Save to profile 30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 30,
+     "name": "Profile 30"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_31",
+   "category": "Profiles",
+   "name": "Profile 31 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 31,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_31",
+   "category": "Profiles",
+   "name": "Save to profile 31",
+   "text": "Save to profile 31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 31,
+     "name": "Profile 31"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_32",
+   "category": "Profiles",
+   "name": "Profile 32 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 32,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_32",
+   "category": "Profiles",
+   "name": "Save to profile 32",
+   "text": "Save to profile 32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 32,
+     "name": "Profile 32"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_33",
+   "category": "Profiles",
+   "name": "Profile 33 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 33,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_33",
+   "category": "Profiles",
+   "name": "Save to profile 33",
+   "text": "Save to profile 33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 33,
+     "name": "Profile 33"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_34",
+   "category": "Profiles",
+   "name": "Profile 34 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 34,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_34",
+   "category": "Profiles",
+   "name": "Save to profile 34",
+   "text": "Save to profile 34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 34,
+     "name": "Profile 34"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_35",
+   "category": "Profiles",
+   "name": "Profile 35 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 35,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_35",
+   "category": "Profiles",
+   "name": "Save to profile 35",
+   "text": "Save to profile 35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 35,
+     "name": "Profile 35"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_36",
+   "category": "Profiles",
+   "name": "Profile 36 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 36,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_36",
+   "category": "Profiles",
+   "name": "Save to profile 36",
+   "text": "Save to profile 36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 36,
+     "name": "Profile 36"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_37",
+   "category": "Profiles",
+   "name": "Profile 37 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 37,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_37",
+   "category": "Profiles",
+   "name": "Save to profile 37",
+   "text": "Save to profile 37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 37,
+     "name": "Profile 37"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_38",
+   "category": "Profiles",
+   "name": "Profile 38 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 38,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_38",
+   "category": "Profiles",
+   "name": "Save to profile 38",
+   "text": "Save to profile 38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 38,
+     "name": "Profile 38"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_39",
+   "category": "Profiles",
+   "name": "Profile 39 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 39,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_39",
+   "category": "Profiles",
+   "name": "Save to profile 39",
+   "text": "Save to profile 39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 39,
+     "name": "Profile 39"
+    }
+   }
+  },
+  {
+   "id": "recall_profile_40",
+   "category": "Profiles",
+   "name": "Profile 40 name\nIncludes Name",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall_profile",
+    "options": {
+     "profile": 40,
+     "keep_ip_settings": true
+    }
+   }
+  },
+  {
+   "id": "save_profile_40",
+   "category": "Profiles",
+   "name": "Save to profile 40",
+   "text": "Save to profile 40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save_profile",
+    "options": {
+     "profile": 40,
+     "name": "Profile 40"
     }
    }
   }

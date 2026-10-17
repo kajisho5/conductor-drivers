@@ -1,0 +1,118 @@
+{
+ "format": 1,
+ "id": "m-vyv-photon",
+ "name": "VYV Photon",
+ "category": "VYV",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 55503,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "verbose",
+   "label": "Enable verbose logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "cue_exec",
+   "name": "Recall (cue)",
+   "options": [
+    {
+     "id": "cue",
+     "label": "Cue ID",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<photon> CUE_EXEC_ID {{option.cue}} </photon>\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "spec_code",
+   "name": "Special Code",
+   "options": [
+    {
+     "id": "s_code",
+     "label": "Special Code",
+     "type": "select",
+     "choices": [
+      {
+       "id": "4",
+       "label": "Restart Photon"
+      },
+      {
+       "id": "5",
+       "label": "Reboot Server"
+      },
+      {
+       "id": "6",
+       "label": "Quit Photon"
+      },
+      {
+       "id": "7",
+       "label": "Shutdown Server"
+      },
+      {
+       "id": "10",
+       "label": "Toggle UI Visibility"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<photon> 90BC9E48_6D84_4F8C_AA23_72E3379AC71C {{option.s_code|map}} </photon>\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "s_code": {
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "10": "10"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-vyv-photon",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Roine, David Fox"
+  }
+ ],
+ "source": {
+  "module": "vyv-photon",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Per Roine",
+   "David Fox"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-vyv-photon.git"
+ }
+}

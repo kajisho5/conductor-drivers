@@ -1,0 +1,215 @@
+{
+ "format": 1,
+ "id": "m-foobar2000-foobar2000",
+ "name": "foobar2000",
+ "category": "foobar2000",
+ "version": "1.0.4",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8880",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "updateFrequency",
+   "label": "Update Frequency",
+   "type": "number",
+   "default": 1000,
+   "min": 1,
+   "max": 10000
+  },
+  {
+   "id": "decimalPlaces",
+   "label": "Decimal Places",
+   "type": "number",
+   "default": 3,
+   "min": 0,
+   "max": 3
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/player/play",
+    "body": ""
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/player/pause",
+    "body": ""
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/player/stop",
+    "body": ""
+   }
+  },
+  {
+   "id": "togglePlayPause",
+   "name": "Toggle Play Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/player/play-pause",
+    "body": ""
+   }
+  },
+  {
+   "id": "next",
+   "name": "Play Next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/player/next",
+    "body": ""
+   }
+  },
+  {
+   "id": "previous",
+   "name": "Play Previous",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/player/previous",
+    "body": ""
+   }
+  },
+  {
+   "id": "playSpecific",
+   "name": "Play Specific",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "text"
+    },
+    {
+     "id": "index",
+     "label": "Song Index",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/player/play/{{option.playlist}}/{{option.index}}",
+    "body": ""
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "play",
+   "category": "Playback Control",
+   "name": "Play",
+   "text": "PLAY",
+   "backgroundColor": "#008000",
+   "action": {
+    "definitionId": "play",
+    "options": {}
+   }
+  },
+  {
+   "id": "pause",
+   "category": "Playback Control",
+   "name": "Pause",
+   "text": "PAUSE",
+   "backgroundColor": "#ffa500",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "stop",
+   "category": "Playback Control",
+   "name": "Stop",
+   "text": "STOP",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "togglePlayPause",
+   "category": "Playback Control",
+   "name": "Play/Pause Toggle",
+   "text": "PLAY\n/PAUSE",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "togglePlayPause",
+    "options": {}
+   }
+  },
+  {
+   "id": "next",
+   "category": "Track Navigation",
+   "name": "Next Track",
+   "text": "NEXT\nTRACK",
+   "backgroundColor": "#404040",
+   "action": {
+    "definitionId": "next",
+    "options": {}
+   }
+  },
+  {
+   "id": "previous",
+   "category": "Track Navigation",
+   "name": "Previous Track",
+   "text": "PREV\nTRACK",
+   "backgroundColor": "#404040",
+   "action": {
+    "definitionId": "previous",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-foobar2000-foobar2000",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：jateute"
+  }
+ ],
+ "source": {
+  "module": "foobar2000-foobar2000",
+  "version": "1.0.4",
+  "license": "MIT",
+  "maintainers": [
+   "jateute"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-foobar2000-foobar2000.git"
+ }
+}

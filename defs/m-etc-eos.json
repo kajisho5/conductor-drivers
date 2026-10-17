@@ -1,0 +1,158 @@
+{
+ "format": 1,
+ "id": "m-etc-eos",
+ "name": "ETC EOS",
+ "category": "ETC",
+ "version": "2.2.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3032,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "user_id",
+   "label": "User ID",
+   "type": "text",
+   "default": 1
+  },
+  {
+   "id": "use_slip",
+   "label": "Use TCP SLIP",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "num_labels",
+   "label": "Labels to poll",
+   "type": "number",
+   "default": 30,
+   "min": 1,
+   "max": 9999
+  }
+ ],
+ "actions": [
+  {
+   "id": "custom_osc",
+   "name": "Custom Command (OSC)",
+   "options": [
+    {
+     "id": "osc_path",
+     "label": "OSC path",
+     "type": "text",
+     "default": "/eos/path"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000102f656f732f706174680000002c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "blackout",
+   "name": "Key: Blackout",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000182f656f732f6b65792f626c61636b6f75740000002c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "next_cue",
+   "name": "Key: Go",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000182f656f732f6b65792f676f5f300000002c6600003f800000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stop_back",
+   "name": "Key: Stop/Back",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000182f656f732f6b65792f73746f700000002c6600003f800000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "run_macro",
+   "name": "Key: Run Macro",
+   "options": [
+    {
+     "id": "macro",
+     "label": "Macro",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000182f656f732f6d6163726f2f66697265002c690000000000{{option.macro|u8}}",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "cue_stop",
+   "category": "Cues",
+   "name": "The Stop/Back cue button",
+   "text": "Stop/Back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_back",
+    "options": {}
+   }
+  },
+  {
+   "id": "cue_go",
+   "category": "Cues",
+   "name": "The Go cue button. Also shows the cue's intensity.",
+   "text": "Go",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next_cue",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-etc-eos",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Steve Therrien, Steve Palm, Nic Rossmann"
+  }
+ ],
+ "source": {
+  "module": "etc-eos",
+  "version": "2.2.3",
+  "license": "MIT",
+  "maintainers": [
+   "Steve Therrien",
+   "Steve Palm",
+   "Nic Rossmann"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-etc-eos.git"
+ }
+}

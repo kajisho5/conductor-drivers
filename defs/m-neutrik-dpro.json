@@ -1,0 +1,94 @@
+{
+ "format": 1,
+ "id": "m-neutrik-dpro",
+ "name": "Neutrik NA-2-IO-DPRO",
+ "category": "Neutrik",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 49280,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Device Type",
+   "type": "select",
+   "default": "NA2-IO-DPRO",
+   "choices": [
+    {
+     "id": "NA2-IO-DPRO",
+     "label": "NA2-IO-DPRO"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "io_event/dev/identify",
+   "name": "dev/identify",
+   "options": [
+    {
+     "id": "Val",
+     "label": "State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "set io:event/dev/identify 0 0 {{option.Val|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "Val": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-neutrik-dpro",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Andrew Broughton, Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "neutrik-dpro",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Andrew Broughton",
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-neutrik-dpro.git"
+ }
+}

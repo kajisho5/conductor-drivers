@@ -1,0 +1,766 @@
+{
+ "format": 1,
+ "id": "m-simedia-yesapi",
+ "name": "Si Media Yes Api Gateway",
+ "category": "Si Media",
+ "version": "1.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:5030",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "user",
+   "label": "Username",
+   "type": "text"
+  },
+  {
+   "id": "pass",
+   "label": "Password",
+   "type": "text"
+  },
+  {
+   "id": "studioId",
+   "label": "Current Studio ID",
+   "type": "text"
+  },
+  {
+   "id": "requestStatus",
+   "label": "Request Status Time (Min 500 Max 2000)",
+   "type": "number",
+   "default": 750,
+   "min": 500,
+   "max": 2000
+  },
+  {
+   "id": "encoderId",
+   "label": "Current Encoder ID",
+   "type": "text"
+  },
+  {
+   "id": "channelId",
+   "label": "Current Channel ID",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "cue",
+   "name": "cue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/cue?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "recue",
+   "name": "recue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/recue?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "play",
+   "name": "play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/play?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "playGraphics",
+   "name": "playGraphics",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/playfirstgraphics?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/pause?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/stop?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "stopAll",
+   "name": "stopAll",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/stopall",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "nextClip",
+   "name": "nextClip",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/next",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decACue",
+   "name": "cue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/decodercue?decoderIndex=0&clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decARecue",
+   "name": "recue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/recue?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decAPlay",
+   "name": "play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/play?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decAPause",
+   "name": "pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/pause?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decANext",
+   "name": "next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/decodernext?decoderIndex=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decAStop",
+   "name": "stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/stop?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decBCue",
+   "name": "cue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/decodercue?decoderIndex=1&clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decBRecue",
+   "name": "recue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/recue?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decBPlay",
+   "name": "play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/play?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decBPause",
+   "name": "pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/pause?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decBNext",
+   "name": "next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/decodernext?decoderIndex=1",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "decBStop",
+   "name": "stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/studios//player/stop?clipId=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "recorderRec",
+   "name": "rec",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/recorders/rec?encoderId=",
+    "body": "{\"recordingID\":\"\",\"fileName\":\"\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "recorderStop",
+   "name": "stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/recorders/stop?encoderId=",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelPlay",
+   "name": "play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/play",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelEmergency",
+   "name": "emergency",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/emergency",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelNext",
+   "name": "next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/next",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelLoop",
+   "name": "loop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/loop?loop=1",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelUnloop",
+   "name": "unloop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/loop?loop=0",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelPause",
+   "name": "pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/pause",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelStop",
+   "name": "stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/stop",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "channelRefresh",
+   "name": "refresh",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/channels//player/refresh",
+    "body": "",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "CUE_PRESET",
+   "category": "Media Control",
+   "name": "Cue",
+   "text": "Cue",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "cue",
+    "options": {}
+   }
+  },
+  {
+   "id": "RECUE_PRESET",
+   "category": "Media Control",
+   "name": "Recue",
+   "text": "Recue",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "recue",
+    "options": {}
+   }
+  },
+  {
+   "id": "PLAY_PRESET",
+   "category": "Media Control",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "play",
+    "options": {}
+   }
+  },
+  {
+   "id": "PLAY_GRAPHICS_PRESET",
+   "category": "Media Control",
+   "name": "PlayGraphics",
+   "text": "PlayGraphics",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "playGraphics",
+    "options": {}
+   }
+  },
+  {
+   "id": "PAUSE_PRESET",
+   "category": "Media Control",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "STOP_PRESET",
+   "category": "Media Control",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "STOP_ALL",
+   "category": "Media Control",
+   "name": "StopAll",
+   "text": "StopAll",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "stopAll",
+    "options": {}
+   }
+  },
+  {
+   "id": "NEXT_CLIP",
+   "category": "Media Control",
+   "name": "NextClip",
+   "text": "NextClip",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "nextClip",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_A_CUE",
+   "category": "Decoder A Control",
+   "name": "Cue",
+   "text": "Cue",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decACue",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_A_RECUE",
+   "category": "Decoder A Control",
+   "name": "Recue",
+   "text": "Recue",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decARecue",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_A_PLAY",
+   "category": "Decoder A Control",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decAPlay",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_A_PAUSE",
+   "category": "Decoder A Control",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decAPause",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_A_STOP",
+   "category": "Decoder A Control",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decAStop",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_A_NEXT",
+   "category": "Decoder A Control",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decANext",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_B_CUE",
+   "category": "Decoder B Control",
+   "name": "Cue",
+   "text": "Cue",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decBCue",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_B_RECUE",
+   "category": "Decoder B Control",
+   "name": "Recue",
+   "text": "Recue",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decBRecue",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_B_PLAY",
+   "category": "Decoder B Control",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decBPlay",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_B_PAUSE",
+   "category": "Decoder B Control",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decBPause",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_B_STOP",
+   "category": "Decoder B Control",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decBStop",
+    "options": {}
+   }
+  },
+  {
+   "id": "DECODER_B_NEXT",
+   "category": "Decoder B Control",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "decBNext",
+    "options": {}
+   }
+  },
+  {
+   "id": "RECORDER_REC",
+   "category": "Recorder Control",
+   "name": "Rec",
+   "text": "Rec",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "recorderRec",
+    "options": {}
+   }
+  },
+  {
+   "id": "RECORDER_STOP",
+   "category": "Recorder Control",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "recorderStop",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_PLAY",
+   "category": "Channel Control",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelPlay",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_EMERGENCY",
+   "category": "Channel Control",
+   "name": "Emergency",
+   "text": "Emergency",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelEmergency",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_NEXT",
+   "category": "Channel Control",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelNext",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_LOOP",
+   "category": "Channel Control",
+   "name": "Loop",
+   "text": "Loop",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelLoop",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_UNLOOP",
+   "category": "Channel Control",
+   "name": "Unloop",
+   "text": "Unloop",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelUnloop",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_PAUSE",
+   "category": "Channel Control",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelPause",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_STOP",
+   "category": "Channel Control",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelStop",
+    "options": {}
+   }
+  },
+  {
+   "id": "CHANNEL_REFRESH",
+   "category": "Channel Control",
+   "name": "Refresh",
+   "text": "Refresh",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "channelRefresh",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-simedia-yesapi",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Piovesan Nicola, Albanese Alessandro"
+  }
+ ],
+ "source": {
+  "module": "simedia-yesapi",
+  "version": "1.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Piovesan Nicola",
+   "Albanese Alessandro"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-simedia-yesapi.git"
+ }
+}

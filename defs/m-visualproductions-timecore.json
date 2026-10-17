@@ -1,0 +1,540 @@
+{
+ "format": 1,
+ "id": "m-visualproductions-timecore",
+ "name": "Visual Productions Timecore",
+ "category": "Visual Productions",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "executeAction",
+   "name": "Execute action",
+   "options": [
+    {
+     "id": "selectedActionList",
+     "label": "Action List",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Action List 1"
+      },
+      {
+       "id": "2",
+       "label": "Action List 2"
+      },
+      {
+       "id": "3",
+       "label": "Action List 3"
+      },
+      {
+       "id": "4",
+       "label": "Action List 4"
+      },
+      {
+       "id": "5",
+       "label": "Action List 5"
+      },
+      {
+       "id": "6",
+       "label": "Action List 6"
+      },
+      {
+       "id": "7",
+       "label": "Action List 7"
+      },
+      {
+       "id": "8",
+       "label": "Action List 8"
+      }
+     ]
+    },
+    {
+     "id": "selectedAction",
+     "label": "Action",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 48
+    },
+    {
+     "id": "targetArgument",
+     "label": "Argument",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-al-{{option.selectedActionList|map}}{{option.selectedAction|lin:-1:0}}-execute={{option.targetArgument}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedActionList": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "setActionListState",
+   "name": "Set action list state",
+   "options": [
+    {
+     "id": "selectedActionList",
+     "label": "Action List",
+     "type": "select",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Action List 1"
+      },
+      {
+       "id": "2",
+       "label": "Action List 2"
+      },
+      {
+       "id": "3",
+       "label": "Action List 3"
+      },
+      {
+       "id": "4",
+       "label": "Action List 4"
+      },
+      {
+       "id": "5",
+       "label": "Action List 5"
+      },
+      {
+       "id": "6",
+       "label": "Action List 6"
+      },
+      {
+       "id": "7",
+       "label": "Action List 7"
+      },
+      {
+       "id": "8",
+       "label": "Action List 8"
+      }
+     ]
+    },
+    {
+     "id": "selectedState",
+     "label": "State",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-al-{{option.selectedActionList|map}}-enable={{option.selectedState|map}}e",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedActionList": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "selectedState": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "internalTimecodeState",
+   "name": "Set timecode state",
+   "options": [
+    {
+     "id": "selectedAction",
+     "label": "Action",
+     "type": "select",
+     "default": "start",
+     "choices": [
+      {
+       "id": "start",
+       "label": "Start"
+      },
+      {
+       "id": "stop",
+       "label": "Stop"
+      },
+      {
+       "id": "restart",
+       "label": "Restart"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-tc-{{option.selectedAction|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedAction": {
+     "start": "start",
+     "stop": "stop",
+     "restart": "restart",
+     "pause": "pause"
+    }
+   }
+  },
+  {
+   "id": "setInternalTimecode",
+   "name": "Set timecode frame",
+   "options": [
+    {
+     "id": "targetTimecode",
+     "label": "Timecode",
+     "type": "text",
+     "default": "12:00:00:00"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-tc-set={{option.targetTimecode}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timerState",
+   "name": "Set timer state",
+   "options": [
+    {
+     "id": "selectedTimer",
+     "label": "Timer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Timer 1"
+      },
+      {
+       "id": "2",
+       "label": "Timer 2"
+      },
+      {
+       "id": "3",
+       "label": "Timer 3"
+      },
+      {
+       "id": "4",
+       "label": "Timer 4"
+      }
+     ]
+    },
+    {
+     "id": "selectedAction",
+     "label": "Action",
+     "type": "select",
+     "default": "start",
+     "choices": [
+      {
+       "id": "start",
+       "label": "Start"
+      },
+      {
+       "id": "stop",
+       "label": "Stop"
+      },
+      {
+       "id": "restart",
+       "label": "Restart"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-tm-{{option.selectedTimer|map}}-{{option.selectedAction|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedTimer": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "selectedAction": {
+     "start": "start",
+     "stop": "stop",
+     "restart": "restart",
+     "pause": "pause"
+    }
+   }
+  },
+  {
+   "id": "setTimerValue",
+   "name": "Set timer value",
+   "options": [
+    {
+     "id": "selectedTimer",
+     "label": "Timer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Timer 1"
+      },
+      {
+       "id": "2",
+       "label": "Timer 2"
+      },
+      {
+       "id": "3",
+       "label": "Timer 3"
+      },
+      {
+       "id": "4",
+       "label": "Timer 4"
+      }
+     ]
+    },
+    {
+     "id": "targetTime",
+     "label": "Time",
+     "type": "text",
+     "default": "12:00:00:00"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-tm-{{option.selectedTimer|map}}-set={{option.targetTime}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedTimer": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "setVariable",
+   "name": "Set variable value",
+   "options": [
+    {
+     "id": "selectedVariable",
+     "label": "Variable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Variable 1"
+      },
+      {
+       "id": "2",
+       "label": "Variable 2"
+      },
+      {
+       "id": "3",
+       "label": "Variable 3"
+      },
+      {
+       "id": "4",
+       "label": "Variable 4"
+      },
+      {
+       "id": "5",
+       "label": "Variable 5"
+      },
+      {
+       "id": "6",
+       "label": "Variable 6"
+      },
+      {
+       "id": "7",
+       "label": "Variable 7"
+      },
+      {
+       "id": "8",
+       "label": "Variable 8"
+      }
+     ]
+    },
+    {
+     "id": "targetValue",
+     "label": "Value",
+     "type": "number",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-va-{{option.selectedVariable|map}}-set={{option.targetValue}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedVariable": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "refreshVariable",
+   "name": "Refresh variable",
+   "options": [
+    {
+     "id": "selectedVariable",
+     "label": "Variable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Variable 1"
+      },
+      {
+       "id": "2",
+       "label": "Variable 2"
+      },
+      {
+       "id": "3",
+       "label": "Variable 3"
+      },
+      {
+       "id": "4",
+       "label": "Variable 4"
+      },
+      {
+       "id": "5",
+       "label": "Variable 5"
+      },
+      {
+       "id": "6",
+       "label": "Variable 6"
+      },
+      {
+       "id": "7",
+       "label": "Variable 7"
+      },
+      {
+       "id": "8",
+       "label": "Variable 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "core-va-{{option.selectedVariable|map}}-refresh",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedVariable": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "refreshAllVariables",
+   "name": "Refresh all variables",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "core-va-refresh",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "coreBlink",
+   "name": "Core blink",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "core-blink",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-visualproductions-timecore",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "visualproductions-timecore",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-visualproductions-timecore.git"
+ }
+}

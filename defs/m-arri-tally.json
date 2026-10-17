@@ -1,0 +1,127 @@
+{
+ "format": 1,
+ "id": "m-arri-tally",
+ "name": "Arri Alexa / Amira",
+ "category": "Arri",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 40000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "tally",
+   "name": "Set Tally",
+   "options": [
+    {
+     "id": "tallyState",
+     "label": "Action",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Red"
+      },
+      {
+       "id": "2",
+       "label": "Green"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "tallyengage {{option.tallyState|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "tallyState": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Off",
+   "category": "Tally",
+   "name": "Off",
+   "text": "Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tally",
+    "options": {
+     "tallyState": "0"
+    }
+   }
+  },
+  {
+   "id": "Red",
+   "category": "Tally",
+   "name": "Red",
+   "text": "Red",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tally",
+    "options": {
+     "tallyState": "1"
+    }
+   }
+  },
+  {
+   "id": "Green",
+   "category": "Tally",
+   "name": "Green",
+   "text": "Green",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tally",
+    "options": {
+     "tallyState": "2"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-arri-tally",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel"
+  }
+ ],
+ "source": {
+  "module": "arri-tally",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-arri-tally.git"
+ }
+}

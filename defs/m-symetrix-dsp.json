@@ -1,0 +1,398 @@
+{
+ "format": 1,
+ "id": "m-symetrix-dsp",
+ "name": "Symetrix DSP",
+ "category": "Symetrix",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 48631,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "flash_dsp",
+   "name": "Flash DSP",
+   "options": [
+    {
+     "id": "amout_flashes",
+     "label": "Flashes",
+     "type": "number",
+     "default": 4,
+     "min": 1,
+     "max": 20,
+     "help": "Amount the unit will flash"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FU {{option.amout_flashes}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reboot_dsp",
+   "name": "Reboot DSP",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "R!\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "load_global_preset",
+   "name": "Load Global Preset",
+   "options": [
+    {
+     "id": "preset_number",
+     "label": "Preset number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000,
+     "help": "Number of preset"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "$e LPG {{option.preset_number}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "load_preset",
+   "name": "Load Preset",
+   "options": [
+    {
+     "id": "preset_number",
+     "label": "Preset number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000,
+     "help": "Number of preset"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "$e LP {{option.preset_number}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_value",
+   "name": "Set Value",
+   "options": [
+    {
+     "id": "control_number",
+     "label": "Control number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000,
+     "help": "Number of control"
+    },
+    {
+     "id": "control_value",
+     "label": "Control value (min: 0 / max: 65535)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 65535,
+     "help": "Value of control (min: 0 / max: 65535)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "$e CS {{option.control_number}} {{option.control_value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "change_value",
+   "name": "Change Value",
+   "options": [
+    {
+     "id": "control_number",
+     "label": "Control number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000,
+     "help": "Number of control"
+    },
+    {
+     "id": "change_type",
+     "label": "Inc / Dec",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Increase"
+      },
+      {
+       "id": "0",
+       "label": "Decrease"
+      }
+     ],
+     "help": "Increase or Decrease"
+    },
+    {
+     "id": "control_value",
+     "label": "Control value (min: 0 / max: 65535)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 65535,
+     "help": "Value of control (min: 0 / max: 65535)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "$e CC {{option.control_number}} {{option.change_type|map}} {{option.control_value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "change_type": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "toggle_on_off",
+   "name": "On / Off",
+   "options": [
+    {
+     "id": "control_number",
+     "label": "Control number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000,
+     "help": "Number of control"
+    },
+    {
+     "id": "on_value",
+     "label": "On value (min: 1 / max: 65535)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 65535,
+     "help": "value to set when 'on' state is triggered"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CS {{option.control_number}} 0\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "flash_dsp",
+   "category": "General",
+   "name": "Flash DSP",
+   "text": "Flash\nDSP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "flash_dsp",
+    "options": {
+     "amout_flashes": 4
+    }
+   }
+  },
+  {
+   "id": "load_preset",
+   "category": "Setup",
+   "name": "Load Preset",
+   "text": "Load\nPreset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 1
+    }
+   }
+  },
+  {
+   "id": "load_global_preset",
+   "category": "Setup",
+   "name": "Load Global Preset",
+   "text": "Load\nGlobal\nPreset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_global_preset",
+    "options": {
+     "preset_number": 1
+    }
+   }
+  },
+  {
+   "id": "reboot_dsp",
+   "category": "General",
+   "name": "Reboot DSP",
+   "text": "Reboot\nDSP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "reboot_dsp",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle_on_off",
+   "category": "Change Values",
+   "name": "Toggle",
+   "text": "Toggle",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggle_on_off",
+    "options": {
+     "control_number": 1,
+     "on_value": 65535
+    }
+   }
+  },
+  {
+   "id": "set_0db",
+   "category": "Change Values",
+   "name": "0 dB",
+   "text": "0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_value",
+    "options": {
+     "control_number": 1,
+     "control_value": 56175
+    }
+   }
+  },
+  {
+   "id": "add_1db",
+   "category": "Change Values",
+   "name": "+1 dB",
+   "text": "+1 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "change_value",
+    "options": {
+     "control_number": 1,
+     "change_type": 1,
+     "control_value": 780
+    }
+   }
+  },
+  {
+   "id": "add_2db",
+   "category": "Change Values",
+   "name": "+2 dB",
+   "text": "+2 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "change_value",
+    "options": {
+     "control_number": 1,
+     "change_type": 1,
+     "control_value": 1560
+    }
+   }
+  },
+  {
+   "id": "add_3db",
+   "category": "Change Values",
+   "name": "+3 dB",
+   "text": "+3 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "change_value",
+    "options": {
+     "control_number": 1,
+     "change_type": 1,
+     "control_value": 2340
+    }
+   }
+  },
+  {
+   "id": "sub_1db",
+   "category": "Change Values",
+   "name": "-1 dB",
+   "text": "-1 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "change_value",
+    "options": {
+     "control_number": 1,
+     "change_type": 0,
+     "control_value": 780
+    }
+   }
+  },
+  {
+   "id": "sub_2db",
+   "category": "Change Values",
+   "name": "-2 dB",
+   "text": "-2 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "change_value",
+    "options": {
+     "control_number": 1,
+     "change_type": 0,
+     "control_value": 1560
+    }
+   }
+  },
+  {
+   "id": "sub_3db",
+   "category": "Change Values",
+   "name": "-3 dB",
+   "text": "-3 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "change_value",
+    "options": {
+     "control_number": 1,
+     "change_type": 0,
+     "control_value": 2340
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-symetrix-dsp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Sydney Smit"
+  }
+ ],
+ "source": {
+  "module": "symetrix-dsp",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Sydney Smit"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-symetrix-dsp.git"
+ }
+}

@@ -1,0 +1,337 @@
+{
+ "format": 1,
+ "id": "m-videolan-vlc",
+ "name": "VideoLAN VLC",
+ "category": "VideoLAN",
+ "version": "2.7.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "password",
+   "label": "HTTP Password (required)",
+   "type": "text"
+  },
+  {
+   "id": "hires",
+   "label": "Increase timer resolution?",
+   "type": "boolean",
+   "default": false,
+   "help": "Poll playback counter more frequently\nfor better response and resolution"
+  },
+  {
+   "id": "pre_clear",
+   "label": "Number of clip names to reserve",
+   "type": "number",
+   "default": 0,
+   "min": 0,
+   "max": 50,
+   "help": "Always create this many clip names.\nPrevents $NA when clip name is empty."
+  },
+  {
+   "id": "use_bullet",
+   "label": "Use · for empty?",
+   "type": "boolean",
+   "default": false,
+   "help": "Display · for empty clip names\notherwise display blank."
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=pl_play&"
+   }
+  },
+  {
+   "id": "playID",
+   "name": "Play ID",
+   "options": [
+    {
+     "id": "clip",
+     "label": "Clip Number",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=pl_play&id=undefined"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=pl_stop&"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause / Resume",
+   "options": [
+    {
+     "id": "opt",
+     "label": "Which action?",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Pause"
+      },
+      {
+       "id": "1",
+       "label": "Resume"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=pl_pause&"
+   }
+  },
+  {
+   "id": "seek",
+   "name": "Seek To",
+   "options": [
+    {
+     "id": "where",
+     "label": "Where",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=seek&val={{option.where}}"
+   }
+  },
+  {
+   "id": "next",
+   "name": "Next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=pl_next&"
+   }
+  },
+  {
+   "id": "prev",
+   "name": "Previous",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=pl_previous&"
+   }
+  },
+  {
+   "id": "clear",
+   "name": "Clear Playlist",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=pl_empty&"
+   }
+  },
+  {
+   "id": "add",
+   "name": "Add Item",
+   "options": [
+    {
+     "id": "mrl",
+     "label": "Clip path/MRL",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=in_enqueue&input={{option.mrl}}"
+   }
+  },
+  {
+   "id": "add_go",
+   "name": "Add and Play",
+   "options": [
+    {
+     "id": "mrl",
+     "label": "Clip path/MRL",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=in_play&input={{option.mrl}}"
+   }
+  },
+  {
+   "id": "volume",
+   "name": "Set Volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Value",
+     "type": "text",
+     "default": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/requests/status.json?command=volume&val={{option.volume}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "player:play",
+   "category": "Player",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {}
+   }
+  },
+  {
+   "id": "player:pause",
+   "category": "Player",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "opt": 2
+    }
+   }
+  },
+  {
+   "id": "player:stop",
+   "category": "Player",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "playlist:play:1",
+   "category": "Play List",
+   "name": "Play #1",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playID",
+    "options": {
+     "clip": 1
+    }
+   }
+  },
+  {
+   "id": "playlist:play:2",
+   "category": "Play List",
+   "name": "Play #2",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playID",
+    "options": {
+     "clip": 2
+    }
+   }
+  },
+  {
+   "id": "playlist:play:3",
+   "category": "Play List",
+   "name": "Play #3",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playID",
+    "options": {
+     "clip": 3
+    }
+   }
+  },
+  {
+   "id": "playlist:play:4",
+   "category": "Play List",
+   "name": "Play #4",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playID",
+    "options": {
+     "clip": 4
+    }
+   }
+  },
+  {
+   "id": "playlist:play:5",
+   "category": "Play List",
+   "name": "Play #5",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playID",
+    "options": {
+     "clip": 5
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-videolan-vlc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Håkon Nessjøen, John A Knight Jr"
+  }
+ ],
+ "source": {
+  "module": "videolan-vlc",
+  "version": "2.7.0",
+  "license": "MIT",
+  "maintainers": [
+   "Håkon Nessjøen",
+   "John A Knight Jr"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-videolan-vlc.git"
+ }
+}

@@ -1,0 +1,649 @@
+{
+ "format": 1,
+ "id": "m-novastar-mxreal3",
+ "name": "NovaStar MxReal 3",
+ "category": "NovaStar",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23334,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelId",
+   "label": "Model",
+   "type": "select",
+   "default": "xr",
+   "choices": [
+    {
+     "id": "xr",
+     "label": "NovaStar MxReal 3"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play & Pause: Play or pause the timeline.",
+   "options": [
+    {
+     "id": "play",
+     "label": "play",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Pause"
+      },
+      {
+       "id": "1",
+       "label": "Play"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc550100300202000400{{option.play|map}}000000",
+    "encoding": "hex"
+   },
+   "maps": {
+    "play": {
+     "0": "65",
+     "1": "64"
+    }
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop: Stop the timeline.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004007e000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "play_previous",
+   "name": "Previous Clip: Move the cursor on the timeline to the previous clip.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040066000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "play_next",
+   "name": "Next Clip: Move the cursor on the timeline to the next clip.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040067000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "previous_cue",
+   "name": "Previous Cue: Move the cursor on the timeline to the previous Cue.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040068000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "next_cue",
+   "name": "Next Cue: Move the cursor on the timeline to the next Cue.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040069000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "cam1",
+   "name": "Workflow 1: Switch the preview screen to the Workflow 1 screen.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004006a000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "cam2",
+   "name": "Workflow 2: Switch the preview screen to the Workflow 2 screen.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004006b000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "cam_previous",
+   "name": "Previous Workflow: Switch the preview screen to the previous workflow screen.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004006c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "cam_next",
+   "name": "Next Workflow: Switch the preview screen to the next workflow screen.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004006d000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "volume",
+   "name": "Audio On/Off: Turn on or turn off the global audio.",
+   "options": [
+    {
+     "id": "volume",
+     "label": "volume",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Close Volume"
+      },
+      {
+       "id": "1",
+       "label": "Open Volume"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc550100300202000400{{option.volume|map}}000000",
+    "encoding": "hex"
+   },
+   "maps": {
+    "volume": {
+     "0": "6f",
+     "1": "6e"
+    }
+   }
+  },
+  {
+   "id": "volume_up",
+   "name": "Volume +: Increase the global audio volume.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040070000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "volume_down",
+   "name": "Volume -: Decrease the global audio volume.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040071000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "ftb",
+   "name": "FTB On/Off: Control the output FTB state.",
+   "options": [
+    {
+     "id": "ftb",
+     "label": "ftb",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No fade to black"
+      },
+      {
+       "id": "1",
+       "label": "Fade to black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc550100300202000400{{option.ftb|map}}000000",
+    "encoding": "hex"
+   },
+   "maps": {
+    "ftb": {
+     "0": "73",
+     "1": "72"
+    }
+   }
+  },
+  {
+   "id": "freeze",
+   "name": "Freeze On/Off: Control the output freeze state.",
+   "options": [
+    {
+     "id": "freeze",
+     "label": "freeze",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unfreeze"
+      },
+      {
+       "id": "1",
+       "label": "Freeze"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc550100300202000400{{option.freeze|map}}000000",
+    "encoding": "hex"
+   },
+   "maps": {
+    "freeze": {
+     "0": "75",
+     "1": "74"
+    }
+   }
+  },
+  {
+   "id": "light_up",
+   "name": "Brightness +: Increase the output brightness.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040076000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "light_down",
+   "name": "Brightness -: Decrease the output brightness. ",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc55010030020200040077000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "output",
+   "name": "All Outputs On/Off: Connect or disconnect all outputs.",
+   "options": [
+    {
+     "id": "output",
+     "label": "output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Close"
+      },
+      {
+       "id": "1",
+       "label": "Open"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc550100300202000400{{option.output|map}}000000",
+    "encoding": "hex"
+   },
+   "maps": {
+    "output": {
+     "0": "79",
+     "1": "78"
+    }
+   }
+  },
+  {
+   "id": "xr_up",
+   "name": "Extension +: Expand the range of extension effect.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004007a000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "xr_down",
+   "name": "Extension -: Narrow the range of extension effect.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004007b000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "emergence_up",
+   "name": "Feathering +: Expand the range of feathering effect.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004007c000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "emergence_down",
+   "name": "Feathering -: Narrow the range of feathering effect.",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "cc55cc5501003002020004007d000000",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "play",
+   "category": "Timeline",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "play": "1"
+    }
+   }
+  },
+  {
+   "id": "stop",
+   "category": "Timeline",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "play_previous",
+   "category": "Timeline",
+   "name": "Play Previous",
+   "text": "Previous Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_previous",
+    "options": {}
+   }
+  },
+  {
+   "id": "play_next",
+   "category": "Timeline",
+   "name": "Play Next",
+   "text": "Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play_next",
+    "options": {}
+   }
+  },
+  {
+   "id": "previous_cue",
+   "category": "Timeline",
+   "name": "Previous Cue",
+   "text": "Previous Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous_cue",
+    "options": {}
+   }
+  },
+  {
+   "id": "next_cue",
+   "category": "Timeline",
+   "name": "Next Cue",
+   "text": "Next Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next_cue",
+    "options": {}
+   }
+  },
+  {
+   "id": "cam1",
+   "category": "Preview",
+   "name": "CAM 1",
+   "text": "Workflow 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cam1",
+    "options": {}
+   }
+  },
+  {
+   "id": "cam2",
+   "category": "Preview",
+   "name": "CAM 2",
+   "text": "Workflow 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cam2",
+    "options": {}
+   }
+  },
+  {
+   "id": "cam_previous",
+   "category": "Preview",
+   "name": "CAM Previous",
+   "text": "Previous Workflow",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cam_previous",
+    "options": {}
+   }
+  },
+  {
+   "id": "cam_next",
+   "category": "Preview",
+   "name": "CAM Next",
+   "text": "Next Workflow",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cam_next",
+    "options": {}
+   }
+  },
+  {
+   "id": "volume",
+   "category": "Output",
+   "name": "Volume",
+   "text": "Audio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "volume": "1"
+    }
+   }
+  },
+  {
+   "id": "volume_up",
+   "category": "Output",
+   "name": "Volume +",
+   "text": "Volume +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume_up",
+    "options": {}
+   }
+  },
+  {
+   "id": "volume_down",
+   "category": "Output",
+   "name": "Volume -",
+   "text": "Volume -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume_down",
+    "options": {}
+   }
+  },
+  {
+   "id": "ftb",
+   "category": "Output",
+   "name": "FTB",
+   "text": "FTB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ftb",
+    "options": {
+     "ftb": "1"
+    }
+   }
+  },
+  {
+   "id": "freeze",
+   "category": "Output",
+   "name": "Freeze",
+   "text": "Freeze",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze",
+    "options": {
+     "freeze": "1"
+    }
+   }
+  },
+  {
+   "id": "light_up",
+   "category": "Output",
+   "name": "Light +",
+   "text": "Brightness +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "light_up",
+    "options": {}
+   }
+  },
+  {
+   "id": "light_down",
+   "category": "Output",
+   "name": "Light -",
+   "text": "Brightness -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "light_down",
+    "options": {}
+   }
+  },
+  {
+   "id": "output",
+   "category": "Output",
+   "name": "Output",
+   "text": "Outputs",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "output",
+    "options": {
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "xr_up",
+   "category": "Output",
+   "name": "XR +",
+   "text": "Extension +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "xr_up",
+    "options": {}
+   }
+  },
+  {
+   "id": "xr_down",
+   "category": "Output",
+   "name": "XR -",
+   "text": "Extension -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "xr_down",
+    "options": {}
+   }
+  },
+  {
+   "id": "emergence_up",
+   "category": "Output",
+   "name": "Emergence +",
+   "text": "Feathering +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "emergence_up",
+    "options": {}
+   }
+  },
+  {
+   "id": "emergence_down",
+   "category": "Output",
+   "name": "Emergence -",
+   "text": "Feathering -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "emergence_down",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-novastar-mxreal3",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：NovaStar"
+  }
+ ],
+ "source": {
+  "module": "novastar-mxreal3",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "NovaStar"
+  ],
+  "repository": "https://github.com/bitfocus/companion-module-novastar-mxreal3"
+ }
+}

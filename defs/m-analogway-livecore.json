@@ -1,0 +1,294 @@
+{
+ "format": 1,
+ "id": "m-analogway-livecore",
+ "name": "Analog Way LiveCore series",
+ "category": "Analog Way",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 10600,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "variant",
+   "label": "Variant",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "1",
+     "label": "ASC4806"
+    },
+    {
+     "id": "2",
+     "label": "ASC3204"
+    },
+    {
+     "id": "3",
+     "label": "ASC1602"
+    },
+    {
+     "id": "4",
+     "label": "NXT1604"
+    },
+    {
+     "id": "5",
+     "label": "NXT0802"
+    },
+    {
+     "id": "6",
+     "label": "SMX12x4"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "1SPtsl",
+   "name": "Take selected screens (Global take)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "1SPtsl\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "takescreen",
+   "name": "Take single screen",
+   "options": [
+    {
+     "id": "screen",
+     "label": "Screen",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      },
+      {
+       "id": "4",
+       "label": "5"
+      },
+      {
+       "id": "5",
+       "label": "6"
+      },
+      {
+       "id": "6",
+       "label": "7"
+      },
+      {
+       "id": "7",
+       "label": "8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.screen|map}},1SPCtk\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "screen": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "inputfreeze",
+   "name": "Freeze Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Enter the number of the input you want to adjust (1 to 12 for inputs of master device and 13 to 24 for inputs of slave device)."
+    },
+    {
+     "id": "freeze",
+     "label": "Freeze Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unfrozen"
+      },
+      {
+       "id": "1",
+       "label": "Frozen"
+      }
+     ],
+     "help": "Select wether the input should be frozen or live."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.input|lin:1:-1}},{{option.freeze|map}}INfrz\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "freeze": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "loadmonitoring",
+   "name": "Recall Monitoring Memory",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Monitoring Memory to load",
+     "type": "text",
+     "default": "1",
+     "help": "Enter the number of the memory you want to load from 1 to 8"
+    },
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Master"
+      },
+      {
+       "id": "1",
+       "label": "Slave"
+      }
+     ],
+     "help": "Select wether the monitoring memory schould be recalled on master or slave device in a stacked configuration. Leave at master for single configuration."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.memory|lin:1:-1}},{{option.device|map}},1MMloa\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "device": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "activateconfidence",
+   "name": "Switch confidence mode",
+   "options": [
+    {
+     "id": "destscreen",
+     "label": "Screen",
+     "type": "text",
+     "default": "1",
+     "help": "Enter the number of the screen where confidence mode should be switched (1 to 8)"
+    },
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ],
+     "help": "Select wether confidence mode should be switched on or off at selected screen"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "NaN,{{option.mode|map}}SCico\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "sendcustomcommand",
+   "name": "Send custom command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text",
+     "default": "",
+     "help": "Enter any command you like in plain ASCII. Beware of correct syntax, you mustn't enter the linebreak at the end of the command. You can use variables here."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.command}}\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-analogway-livecore",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dorian Meid"
+  }
+ ],
+ "source": {
+  "module": "analogway-livecore",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Dorian Meid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-analogway-livecore.git"
+ }
+}

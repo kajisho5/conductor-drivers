@@ -1,0 +1,976 @@
+{
+ "format": 1,
+ "id": "m-zoom-osc-iso",
+ "name": "Zoom OSC/ISO",
+ "category": "Zoom",
+ "version": "4.9.1",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9090,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "rx_port",
+   "label": "ZoomISO/ZoomOSC Transmission Port",
+   "type": "number",
+   "default": 1234,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "selectionMethod",
+   "label": "Default selection method",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "1",
+     "label": "Single Selection"
+    },
+    {
+     "id": "0",
+     "label": "Multi Selection"
+    }
+   ]
+  },
+  {
+   "id": "numberOfGroups",
+   "label": "Number of selectable groups",
+   "type": "number",
+   "default": 3,
+   "min": 0,
+   "max": 100
+  },
+  {
+   "id": "pulling",
+   "label": "Sync iso configuration time in seconds (only for ZoomISO)",
+   "type": "select",
+   "default": "1000",
+   "choices": [
+    {
+     "id": "1000",
+     "label": "Fast (1 second) - Recommended"
+    },
+    {
+     "id": "2500",
+     "label": "Medium (2.5 seconds)"
+    },
+    {
+     "id": "5000",
+     "label": "Slow (5 seconds)"
+    },
+    {
+     "id": "10000",
+     "label": "Extra Slow (10 seconds)"
+    }
+   ],
+   "help": "How often to update the ZoomISO audioLevels, outputRouting, audioRouting, and engineState"
+  },
+  {
+   "id": "feedbackImagesWithIcons",
+   "label": "Participant Multi-State Feedback",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Bottom (On and Off For Mic/Camera, Only on for Hand Raise) - Recommended"
+    },
+    {
+     "id": "2",
+     "label": "Bottom (Only Active States)"
+    },
+    {
+     "id": "3",
+     "label": "Bottom (On and Off States)"
+    },
+    {
+     "id": "4",
+     "label": "Disable - Only If You Do Not Need To See Camera, Mic, and Hand Raised State"
+    }
+   ],
+   "help": "If enabled, adds icons to bottom of button for camera, mic, and hand raised state"
+  },
+  {
+   "id": "enableSocialStream",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "socialStreamId",
+   "label": "Session Id for Social Stream",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "socialStreamQuestionPrefix",
+   "label": "Prefix for Zoom Q&A Questions",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "enableVariablesForEachUser",
+   "label": "Enable Variable For Each User",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "enableVariablesForParticipants",
+   "label": "Enable Variable For Participants",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "enableActionPresetAndFeedbackSync",
+   "label": "Enable Sync Action/Presets/Feedbacks",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "turnVideoOn",
+   "name": "Video On",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/videoOn",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "turnVideoOff",
+   "name": "Video Off",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/videoOff",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "toggleVideoState",
+   "name": "Toggle Video State",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/toggleVideo",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mute",
+   "name": "Mute",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/mute",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unmute",
+   "name": "Unmute",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/unMute",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "toggleMuteState",
+   "name": "Toggle Mute State",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/toggleMute",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "spotLight",
+   "name": "Single Spotlight",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/spot",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "addSpotlight",
+   "name": "Add Spotlight (PRO)",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/addSpot",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unSpotLight",
+   "name": "Un Spotlight",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/unSpot",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "toggleSpotlight",
+   "name": "Toggle Spotlight (PRO)",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/toggleSpot",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "raiseHand",
+   "name": "Raise Hand",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/raiseHand",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "lowerHand",
+   "name": "Lower Hand",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/lowerHand",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "toggleHand",
+   "name": "Toggle Hand (Windows Only)",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/toggleHand",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "pin",
+   "name": "Pin",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/pin",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "addPin",
+   "name": "Add Pin (PRO)",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/addPin",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unPin",
+   "name": "Unpin",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/unPin",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "pin2",
+   "name": "Pin Screen2",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/pin2",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unPin2",
+   "name": "Unpin Screen2",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/unPin2",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "togglePin",
+   "name": "Toggle Pin (PRO)",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/togglePin",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "togglePin2",
+   "name": "Toggle PinScreen2 (PRO)",
+   "options": [
+    {
+     "id": "userName",
+     "label": "single username (keep blank when you pre-select)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/userName/togglePin2",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "clearPin",
+   "name": "Clear Pins (PRO)",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/me/clearPin",
+    "args": []
+   }
+  },
+  {
+   "id": "setSpeakerView",
+   "name": "Set Speaker View",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/me/setSpeakerView",
+    "args": []
+   }
+  },
+  {
+   "id": "setGalleryView",
+   "name": "Set Gallery View",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/me/setGalleryView",
+    "args": []
+   }
+  },
+  {
+   "id": "requestOrderOfGalleryView",
+   "name": "Request Order Of GalleryView",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/getGalleryOrder",
+    "args": []
+   }
+  },
+  {
+   "id": "requestGalleryCount",
+   "name": "Request GalleryCount",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/galCount",
+    "args": []
+   }
+  },
+  {
+   "id": "requestOrderOfSpotlights",
+   "name": "Request Order Of Spotlights",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/getSpotOrder",
+    "args": []
+   }
+  },
+  {
+   "id": "rename",
+   "name": "Rename (PRO)",
+   "options": [
+    {
+     "id": "user",
+     "label": "User",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/zoom/zoomID/rename",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     },
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Pin",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Pin",
+   "text": "Pin",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "pin",
+    "options": {}
+   }
+  },
+  {
+   "id": "add_Pin",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "add_Pin",
+   "text": "Add Pin",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "addPin",
+    "options": {}
+   }
+  },
+  {
+   "id": "un_Pin",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "un_Pin",
+   "text": "Un Pin",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "unPin",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle_Pin",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Toggle_Pin",
+   "text": "Toggle Pin",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "togglePin",
+    "options": {}
+   }
+  },
+  {
+   "id": "Pin_Screen_2",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Pin_Screen_2",
+   "text": "Pin Screen 2",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "pin2",
+    "options": {}
+   }
+  },
+  {
+   "id": "UnPin_Screen_2",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "UnPin_Screen_2",
+   "text": "Un Pin Screen 2",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "unPin2",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle_Screen_2",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Toggle_Screen_2",
+   "text": "Toggle Pin Screen 2",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "togglePin2",
+    "options": {}
+   }
+  },
+  {
+   "id": "Clear_Pins",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Clear_Pins",
+   "text": "Clear Pins",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "clearPin",
+    "options": {}
+   }
+  },
+  {
+   "id": "Spotlight",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Spotlight",
+   "text": "Single Spotlight",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "spotLight",
+    "options": {}
+   }
+  },
+  {
+   "id": "Add_Spotlight",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Add_Spotlight",
+   "text": "Add to Spotlight",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "addSpotlight",
+    "options": {}
+   }
+  },
+  {
+   "id": "Un_Spotlight",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Un_Spotlight",
+   "text": "Un Spotlight",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "unSpotLight",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle_Spotlight",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Toggle_Spotlight",
+   "text": "Toggle Spotlight",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "toggleSpotlight",
+    "options": {}
+   }
+  },
+  {
+   "id": "Set_Gallery_View",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Set_Gallery_View",
+   "text": "Set Gallery View",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "setGalleryView",
+    "options": {}
+   }
+  },
+  {
+   "id": "Set_Speaker_View",
+   "category": "Pin/Spotlight & View Actions",
+   "name": "Set_Speaker_View",
+   "text": "Set Speaker View",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "setSpeakerView",
+    "options": {}
+   }
+  },
+  {
+   "id": "Video_On",
+   "category": "Video/Audio Actions",
+   "name": "Video_On",
+   "text": "Turn Video On",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "turnVideoOn",
+    "options": {}
+   }
+  },
+  {
+   "id": "Video_Off",
+   "category": "Video/Audio Actions",
+   "name": "Video_Off",
+   "text": "Turn Video Off",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "turnVideoOff",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle_Video",
+   "category": "Video/Audio Actions",
+   "name": "Toggle_Video",
+   "text": "Toggle Video State",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "toggleVideoState",
+    "options": {}
+   }
+  },
+  {
+   "id": "Mute",
+   "category": "Video/Audio Actions",
+   "name": "Mute",
+   "text": "Mute",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "mute",
+    "options": {}
+   }
+  },
+  {
+   "id": "Unmute",
+   "category": "Video/Audio Actions",
+   "name": "Mute_All",
+   "text": "Unmute",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "unmute",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle_mute",
+   "category": "Video/Audio Actions",
+   "name": "Toggle_mute",
+   "text": "Toggle mute",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "toggleMuteState",
+    "options": {}
+   }
+  },
+  {
+   "id": "Raise_Hand",
+   "category": "Reaction & Name Actions",
+   "name": "Raise_Hand",
+   "text": "Raise Hand",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "raiseHand",
+    "options": {}
+   }
+  },
+  {
+   "id": "Lower_Hand",
+   "category": "Reaction & Name Actions",
+   "name": "Lower_Hand",
+   "text": "Lower Hand",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "lowerHand",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle_Hand",
+   "category": "Reaction & Name Actions",
+   "name": "Toggle_Hand",
+   "text": "Toggle Hand",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "toggleHand",
+    "options": {}
+   }
+  },
+  {
+   "id": "Request_Gallery_Order",
+   "category": "Data and Custom Actions",
+   "name": "Request_Gallery_Order",
+   "text": "Request Gallery Order",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "requestOrderOfGalleryView",
+    "options": {}
+   }
+  },
+  {
+   "id": "Request_Gallery_Count",
+   "category": "Data and Custom Actions",
+   "name": "Request_Gallery_Count",
+   "text": "Request Gallery Count",
+   "backgroundColor": "#e6e6e6",
+   "action": {
+    "definitionId": "requestGalleryCount",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-zoom-osc-iso",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Justin James"
+  }
+ ],
+ "source": {
+  "module": "zoom-osc-iso",
+  "version": "4.9.1",
+  "license": "MIT",
+  "maintainers": [
+   "Justin James"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-zoom-osc-iso.git"
+ }
+}

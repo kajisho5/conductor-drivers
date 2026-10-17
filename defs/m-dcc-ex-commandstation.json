@@ -1,0 +1,1752 @@
+{
+ "format": 1,
+ "id": "m-dcc-ex-commandstation",
+ "name": "DCC-EX",
+ "category": "DCC-EX",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2560,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "region",
+   "label": "User interface labels",
+   "type": "select",
+   "default": "Point",
+   "choices": [
+    {
+     "id": "Point",
+     "label": "Points"
+    },
+    {
+     "id": "Turnout",
+     "label": "Turnouts"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "power",
+   "name": "Power Control",
+   "options": [
+    {
+     "id": "power",
+     "label": "Power Control",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "1 MAIN",
+       "label": "On Main"
+      },
+      {
+       "id": "1 PROG",
+       "label": "On Prog"
+      },
+      {
+       "id": "1 JOIN",
+       "label": "On Join"
+      },
+      {
+       "id": "1",
+       "label": "On Both Tracks"
+      },
+      {
+       "id": "0 MAIN",
+       "label": "Off Main"
+      },
+      {
+       "id": "0 PROG",
+       "label": "Off Prog"
+      },
+      {
+       "id": "0",
+       "label": "Off Both Tracks"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<{{option.power|map}}>\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "power": {
+     "0": "0",
+     "1": "1",
+     "1 MAIN": "1 MAIN",
+     "1 PROG": "1 PROG",
+     "1 JOIN": "1 JOIN",
+     "0 MAIN": "0 MAIN",
+     "0 PROG": "0 PROG"
+    }
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Emergency Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "<!>\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reset",
+   "name": "Reset Command Station",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "<D RESET>\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "throttle",
+   "name": "Throttle",
+   "options": [
+    {
+     "id": "address",
+     "label": "DCC Address",
+     "type": "text",
+     "default": 3,
+     "help": "Use $(conn1:locoAddress) if you want to change the DCC address using a separate select loco action button"
+    },
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 126
+    },
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Forward"
+      },
+      {
+       "id": "0",
+       "label": "Reverse"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<t {{option.address}} {{option.speed}} {{option.direction|map}}>\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "function",
+   "name": "Decoder Function",
+   "options": [
+    {
+     "id": "address",
+     "label": "DCC Address",
+     "type": "text",
+     "default": 3,
+     "help": "Use $(conn1:locoAddress) if you want to change the DCC address using a separate select loco action button"
+    },
+    {
+     "id": "decoderFunction",
+     "label": "Function",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 68
+    },
+    {
+     "id": "functionState",
+     "label": "State",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<F {{option.address}} {{option.decoderFunction}} {{option.functionState|map}}>\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionState": {
+     "false": "0",
+     "true": "1"
+    }
+   }
+  },
+  {
+   "id": "accessorySubAddress",
+   "name": "Accessory (address and sub-address)",
+   "options": [
+    {
+     "id": "address",
+     "label": "Address",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 511
+    },
+    {
+     "id": "subAddress",
+     "label": "Sub-Address",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 3
+    },
+    {
+     "id": "functionState",
+     "label": "State",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<a {{option.address}} {{option.subAddress}} {{option.functionState|map}}>\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionState": {
+     "false": "0",
+     "true": "1"
+    }
+   }
+  },
+  {
+   "id": "accessoryLinear",
+   "name": "Accessory (linear address)",
+   "options": [
+    {
+     "id": "address",
+     "label": "Address",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2044
+    },
+    {
+     "id": "functionState",
+     "label": "State",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<a {{option.address}} {{option.functionState|map}}>\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionState": {
+     "false": "0",
+     "true": "1"
+    }
+   }
+  },
+  {
+   "id": "turnout",
+   "name": "Point Control",
+   "options": [
+    {
+     "id": "address",
+     "label": "Address",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 32767
+    },
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Throw"
+      },
+      {
+       "id": "0",
+       "label": "Close"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T {{option.address}} {{option.state|map}}>\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "locoSelect",
+   "name": "Set Loco Address Variable",
+   "options": [
+    {
+     "id": "loco",
+     "label": "Loco address variable (A, B, C, D)",
+     "type": "select",
+     "default": "A",
+     "choices": [
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      },
+      {
+       "id": "C",
+       "label": "C"
+      },
+      {
+       "id": "D",
+       "label": "D"
+      }
+     ]
+    },
+    {
+     "id": "address",
+     "label": "DCC address for currently selected loco variable",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 10293
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<t {{option.address}}>\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Custom Command",
+   "options": [
+    {
+     "id": "customCommand",
+     "label": "Custom command string",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.customCommand}}\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Main Power",
+   "category": "Power",
+   "name": "Main Power On & Off",
+   "text": "Main On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "1 MAIN"
+    }
+   }
+  },
+  {
+   "id": "Prog Power",
+   "category": "Power",
+   "name": "Prog Power On & Off",
+   "text": "Prog On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "1 PROG"
+    }
+   }
+  },
+  {
+   "id": "F0",
+   "category": "Decoder Function",
+   "name": "Button to toggle F0",
+   "text": "F0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 0,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F1",
+   "category": "Decoder Function",
+   "name": "Button to toggle F1",
+   "text": "F1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 1,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F2",
+   "category": "Decoder Function",
+   "name": "Button to toggle F2",
+   "text": "F2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 2,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F3",
+   "category": "Decoder Function",
+   "name": "Button to toggle F3",
+   "text": "F3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 3,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F4",
+   "category": "Decoder Function",
+   "name": "Button to toggle F4",
+   "text": "F4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 4,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F5",
+   "category": "Decoder Function",
+   "name": "Button to toggle F5",
+   "text": "F5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 5,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F6",
+   "category": "Decoder Function",
+   "name": "Button to toggle F6",
+   "text": "F6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 6,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F7",
+   "category": "Decoder Function",
+   "name": "Button to toggle F7",
+   "text": "F7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 7,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F8",
+   "category": "Decoder Function",
+   "name": "Button to toggle F8",
+   "text": "F8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 8,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F9",
+   "category": "Decoder Function",
+   "name": "Button to toggle F9",
+   "text": "F9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 9,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F10",
+   "category": "Decoder Function",
+   "name": "Button to toggle F10",
+   "text": "F10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 10,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F11",
+   "category": "Decoder Function",
+   "name": "Button to toggle F11",
+   "text": "F11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 11,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F12",
+   "category": "Decoder Function",
+   "name": "Button to toggle F12",
+   "text": "F12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 12,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F13",
+   "category": "Decoder Function",
+   "name": "Button to toggle F13",
+   "text": "F13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 13,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F14",
+   "category": "Decoder Function",
+   "name": "Button to toggle F14",
+   "text": "F14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 14,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F15",
+   "category": "Decoder Function",
+   "name": "Button to toggle F15",
+   "text": "F15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 15,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F16",
+   "category": "Decoder Function",
+   "name": "Button to toggle F16",
+   "text": "F16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 16,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F17",
+   "category": "Decoder Function",
+   "name": "Button to toggle F17",
+   "text": "F17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 17,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F18",
+   "category": "Decoder Function",
+   "name": "Button to toggle F18",
+   "text": "F18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 18,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F19",
+   "category": "Decoder Function",
+   "name": "Button to toggle F19",
+   "text": "F19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 19,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F20",
+   "category": "Decoder Function",
+   "name": "Button to toggle F20",
+   "text": "F20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 20,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F21",
+   "category": "Decoder Function",
+   "name": "Button to toggle F21",
+   "text": "F21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 21,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F22",
+   "category": "Decoder Function",
+   "name": "Button to toggle F22",
+   "text": "F22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 22,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F23",
+   "category": "Decoder Function",
+   "name": "Button to toggle F23",
+   "text": "F23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 23,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F24",
+   "category": "Decoder Function",
+   "name": "Button to toggle F24",
+   "text": "F24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 24,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F25",
+   "category": "Decoder Function",
+   "name": "Button to toggle F25",
+   "text": "F25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 25,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F26",
+   "category": "Decoder Function",
+   "name": "Button to toggle F26",
+   "text": "F26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 26,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F27",
+   "category": "Decoder Function",
+   "name": "Button to toggle F27",
+   "text": "F27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 27,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F28",
+   "category": "Decoder Function",
+   "name": "Button to toggle F28",
+   "text": "F28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 28,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F29",
+   "category": "Decoder Function",
+   "name": "Button to toggle F29",
+   "text": "F29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 29,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F30",
+   "category": "Decoder Function",
+   "name": "Button to toggle F30",
+   "text": "F30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 30,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F31",
+   "category": "Decoder Function",
+   "name": "Button to toggle F31",
+   "text": "F31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 31,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F32",
+   "category": "Decoder Function",
+   "name": "Button to toggle F32",
+   "text": "F32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 32,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F33",
+   "category": "Decoder Function",
+   "name": "Button to toggle F33",
+   "text": "F33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 33,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F34",
+   "category": "Decoder Function",
+   "name": "Button to toggle F34",
+   "text": "F34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 34,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F35",
+   "category": "Decoder Function",
+   "name": "Button to toggle F35",
+   "text": "F35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 35,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F36",
+   "category": "Decoder Function",
+   "name": "Button to toggle F36",
+   "text": "F36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 36,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F37",
+   "category": "Decoder Function",
+   "name": "Button to toggle F37",
+   "text": "F37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 37,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F38",
+   "category": "Decoder Function",
+   "name": "Button to toggle F38",
+   "text": "F38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 38,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F39",
+   "category": "Decoder Function",
+   "name": "Button to toggle F39",
+   "text": "F39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 39,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F40",
+   "category": "Decoder Function",
+   "name": "Button to toggle F40",
+   "text": "F40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 40,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F41",
+   "category": "Decoder Function",
+   "name": "Button to toggle F41",
+   "text": "F41",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 41,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F42",
+   "category": "Decoder Function",
+   "name": "Button to toggle F42",
+   "text": "F42",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 42,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F43",
+   "category": "Decoder Function",
+   "name": "Button to toggle F43",
+   "text": "F43",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 43,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F44",
+   "category": "Decoder Function",
+   "name": "Button to toggle F44",
+   "text": "F44",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 44,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F45",
+   "category": "Decoder Function",
+   "name": "Button to toggle F45",
+   "text": "F45",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 45,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F46",
+   "category": "Decoder Function",
+   "name": "Button to toggle F46",
+   "text": "F46",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 46,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F47",
+   "category": "Decoder Function",
+   "name": "Button to toggle F47",
+   "text": "F47",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 47,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F48",
+   "category": "Decoder Function",
+   "name": "Button to toggle F48",
+   "text": "F48",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 48,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F49",
+   "category": "Decoder Function",
+   "name": "Button to toggle F49",
+   "text": "F49",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 49,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F50",
+   "category": "Decoder Function",
+   "name": "Button to toggle F50",
+   "text": "F50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 50,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F51",
+   "category": "Decoder Function",
+   "name": "Button to toggle F51",
+   "text": "F51",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 51,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F52",
+   "category": "Decoder Function",
+   "name": "Button to toggle F52",
+   "text": "F52",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 52,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F53",
+   "category": "Decoder Function",
+   "name": "Button to toggle F53",
+   "text": "F53",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 53,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F54",
+   "category": "Decoder Function",
+   "name": "Button to toggle F54",
+   "text": "F54",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 54,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F55",
+   "category": "Decoder Function",
+   "name": "Button to toggle F55",
+   "text": "F55",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 55,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F56",
+   "category": "Decoder Function",
+   "name": "Button to toggle F56",
+   "text": "F56",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 56,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F57",
+   "category": "Decoder Function",
+   "name": "Button to toggle F57",
+   "text": "F57",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 57,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F58",
+   "category": "Decoder Function",
+   "name": "Button to toggle F58",
+   "text": "F58",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 58,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F59",
+   "category": "Decoder Function",
+   "name": "Button to toggle F59",
+   "text": "F59",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 59,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F60",
+   "category": "Decoder Function",
+   "name": "Button to toggle F60",
+   "text": "F60",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 60,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F61",
+   "category": "Decoder Function",
+   "name": "Button to toggle F61",
+   "text": "F61",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 61,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F62",
+   "category": "Decoder Function",
+   "name": "Button to toggle F62",
+   "text": "F62",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 62,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F63",
+   "category": "Decoder Function",
+   "name": "Button to toggle F63",
+   "text": "F63",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 63,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F64",
+   "category": "Decoder Function",
+   "name": "Button to toggle F64",
+   "text": "F64",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 64,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F65",
+   "category": "Decoder Function",
+   "name": "Button to toggle F65",
+   "text": "F65",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 65,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F66",
+   "category": "Decoder Function",
+   "name": "Button to toggle F66",
+   "text": "F66",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 66,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F67",
+   "category": "Decoder Function",
+   "name": "Button to toggle F67",
+   "text": "F67",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 67,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "F68",
+   "category": "Decoder Function",
+   "name": "Button to toggle F68",
+   "text": "F68",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "function",
+    "options": {
+     "address": "$(conn1:locoAddress)",
+     "decoderFunction": 68,
+     "functionState": true
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow0",
+   "category": "Points",
+   "name": "Throw Point 0",
+   "text": "Throw 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 0,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow1",
+   "category": "Points",
+   "name": "Throw Point 1",
+   "text": "Throw 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 1,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow2",
+   "category": "Points",
+   "name": "Throw Point 2",
+   "text": "Throw 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 2,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow3",
+   "category": "Points",
+   "name": "Throw Point 3",
+   "text": "Throw 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 3,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow4",
+   "category": "Points",
+   "name": "Throw Point 4",
+   "text": "Throw 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 4,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow5",
+   "category": "Points",
+   "name": "Throw Point 5",
+   "text": "Throw 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 5,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow6",
+   "category": "Points",
+   "name": "Throw Point 6",
+   "text": "Throw 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 6,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow7",
+   "category": "Points",
+   "name": "Throw Point 7",
+   "text": "Throw 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 7,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow8",
+   "category": "Points",
+   "name": "Throw Point 8",
+   "text": "Throw 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 8,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutThrow9",
+   "category": "Points",
+   "name": "Throw Point 9",
+   "text": "Throw 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 9,
+     "state": 1
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose0",
+   "category": "Points",
+   "name": "Close Point 0",
+   "text": "Close 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 0,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose1",
+   "category": "Points",
+   "name": "Close Point 1",
+   "text": "Close 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 1,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose2",
+   "category": "Points",
+   "name": "Close Point 2",
+   "text": "Close 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 2,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose3",
+   "category": "Points",
+   "name": "Close Point 3",
+   "text": "Close 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 3,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose4",
+   "category": "Points",
+   "name": "Close Point 4",
+   "text": "Close 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 4,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose5",
+   "category": "Points",
+   "name": "Close Point 5",
+   "text": "Close 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 5,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose6",
+   "category": "Points",
+   "name": "Close Point 6",
+   "text": "Close 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 6,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose7",
+   "category": "Points",
+   "name": "Close Point 7",
+   "text": "Close 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 7,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose8",
+   "category": "Points",
+   "name": "Close Point 8",
+   "text": "Close 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 8,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "TurnoutClose9",
+   "category": "Points",
+   "name": "Close Point 9",
+   "text": "Close 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "turnout",
+    "options": {
+     "address": 9,
+     "state": 0
+    }
+   }
+  },
+  {
+   "id": "All Stop",
+   "category": "Loco",
+   "name": "All Stop",
+   "text": "All Stop",
+   "backgroundColor": "#800000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-dcc-ex-commandstation",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel"
+  }
+ ],
+ "source": {
+  "module": "dcc-ex-commandstation",
+  "version": "2.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-dcc-ex-commandstation.git"
+ }
+}

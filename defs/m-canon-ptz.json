@@ -1,0 +1,4760 @@
+{
+ "format": 1,
+ "id": "m-canon-ptz",
+ "name": "Canon CR-N300 / CR-N500 / CR-N700 / CR-X300 / CR-X500 / XF605 / C300 MkIII / …",
+ "category": "Canon",
+ "version": "2.4.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "httpPort",
+   "label": "HTTP Port (Default: 80)",
+   "type": "text",
+   "default": 80
+  },
+  {
+   "id": "model",
+   "label": "Select Your Camera Model",
+   "type": "select",
+   "default": "Auto",
+   "choices": [
+    {
+     "id": "Auto",
+     "label": "Auto Detect"
+    },
+    {
+     "id": "Canon CR-N100",
+     "label": "Canon CR-N100"
+    },
+    {
+     "id": "Canon CR-N300",
+     "label": "Canon CR-N300"
+    },
+    {
+     "id": "Canon CR-N500",
+     "label": "Canon CR-N500"
+    },
+    {
+     "id": "Canon CR-N700",
+     "label": "Canon CR-N700"
+    },
+    {
+     "id": "Canon CR-X300",
+     "label": "Canon CR-X300"
+    },
+    {
+     "id": "Canon CR-X500",
+     "label": "Canon CR-X500"
+    },
+    {
+     "id": "Canon XF-605",
+     "label": "Canon XF-605"
+    },
+    {
+     "id": "Other",
+     "label": "Other Cameras"
+    }
+   ]
+  },
+  {
+   "id": "interval",
+   "label": "Update Interval",
+   "type": "text",
+   "default": 5000
+  },
+  {
+   "id": "continuePolling",
+   "label": "Continue Polling even in error state",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "enableTracking",
+   "label": "Enable Auto Tracking Add-On Features",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "trackingAddonUrl",
+   "label": "Auto Tracking CGI Add-on URL",
+   "type": "text",
+   "default": "/cgi-addon/Auto_Tracking_RA-AT001/app_ctrl/"
+  },
+  {
+   "id": "trackingInterval",
+   "label": "Tracking Update Interval (how often to request latest tracking data)",
+   "type": "text",
+   "default": 250
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Mode",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "powerOff",
+   "name": "System - Power Off",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/standby.cgi?cmd=standby"
+   }
+  },
+  {
+   "id": "powerOn",
+   "name": "System - Power On",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/standby.cgi?cmd=idle"
+   }
+  },
+  {
+   "id": "powerToggle",
+   "name": "System - Power Toggle",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/standby.cgi?cmd=standby"
+   }
+  },
+  {
+   "id": "tallyProgramOff",
+   "name": "System - Tally Off (Program)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?tally=off&tally.mode=program"
+   }
+  },
+  {
+   "id": "tallyProgramOn",
+   "name": "System - Tally On (Program)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?tally=on&tally.mode=program"
+   }
+  },
+  {
+   "id": "tallyPreviewOn",
+   "name": "System - Tally On (Preview)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?tally=on&tally.mode=preview"
+   }
+  },
+  {
+   "id": "tallyToggle",
+   "name": "System - Tally Toggle",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?tally=on&tally.mode=preview"
+   }
+  },
+  {
+   "id": "digitalZoom",
+   "name": "Digital Zoom On/Off",
+   "options": [
+    {
+     "id": "bol",
+     "label": "On/Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.zoom.mode={{option.bol|map}}"
+   },
+   "maps": {
+    "bol": {
+     "0": "off",
+     "1": "dzoom"
+    }
+   }
+  },
+  {
+   "id": "imageStabilization",
+   "name": "Image Stabilization On/Off",
+   "options": [
+    {
+     "id": "bol",
+     "label": "On/Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.is=o{{option.bol|map}}"
+   },
+   "maps": {
+    "bol": {
+     "0": "ff",
+     "1": "n1"
+    }
+   }
+  },
+  {
+   "id": "customCommand",
+   "name": "Send Custom Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Custom Command",
+     "type": "text",
+     "default": "",
+     "help": "Send a custom command. If it is not a supported command, the device may reject it."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?{{option.command}}"
+   }
+  },
+  {
+   "id": "left",
+   "name": "Pan/Tilt - Pan Left",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=left&pan.speed.dir=625"
+   }
+  },
+  {
+   "id": "right",
+   "name": "Pan/Tilt - Pan Right",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=right&pan.speed.dir=625"
+   }
+  },
+  {
+   "id": "up",
+   "name": "Pan/Tilt - Tilt Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?tilt=up&tilt.speed.dir=625"
+   }
+  },
+  {
+   "id": "down",
+   "name": "Pan/Tilt - Tilt Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?tilt=down&tilt.speed.dir=625"
+   }
+  },
+  {
+   "id": "upLeft",
+   "name": "Pan/Tilt - Up Left",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=left&pan.speed.dir=625&tilt=up&tilt.speed.dir=625"
+   }
+  },
+  {
+   "id": "upRight",
+   "name": "Pan/Tilt - Up Right",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=right&pan.speed.dir=625&tilt=up&tilt.speed.dir=625"
+   }
+  },
+  {
+   "id": "downLeft",
+   "name": "Pan/Tilt - Down Left",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=left&pan.speed.dir=625&tilt=down&tilt.speed.dir=625"
+   }
+  },
+  {
+   "id": "downRight",
+   "name": "Pan/Tilt - Down Right",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=right&pan.speed.dir=625&tilt=down&tilt.speed.dir=625"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Pan/Tilt - Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=stop&tilt=stop"
+   }
+  },
+  {
+   "id": "stopPan",
+   "name": "Pan/Tilt - Stop Pan Only",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=stop"
+   }
+  },
+  {
+   "id": "stopTilt",
+   "name": "Pan/Tilt - Stop Tilt Only",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?tilt=stop"
+   }
+  },
+  {
+   "id": "home",
+   "name": "Pan/Tilt - Home",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?pan=0&tilt=0"
+   }
+  },
+  {
+   "id": "ptInitialization",
+   "name": "Pan/Tilt - Initialize",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/maintain?cmd=platform_reset"
+   }
+  },
+  {
+   "id": "zoomI",
+   "name": "Lens - Zoom In",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?zoom=tele&zoom.speed.dir=8"
+   }
+  },
+  {
+   "id": "zoomO",
+   "name": "Lens - Zoom Out",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?zoom=wide&zoom.speed.dir=8"
+   }
+  },
+  {
+   "id": "zoomS",
+   "name": "Lens - Zoom Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?zoom=stop"
+   }
+  },
+  {
+   "id": "zoomValue",
+   "name": "Lens - Set Zoom Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Zoom Value",
+     "type": "text",
+     "default": "",
+     "help": "Set a custom zoom level. If it is not within range, the device may reject it."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?zoom={{option.value}}"
+   }
+  },
+  {
+   "id": "focusN",
+   "name": "Lens - Focus Near",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus.action=near"
+   }
+  },
+  {
+   "id": "focusF",
+   "name": "Lens - Focus Far",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus.action=far"
+   }
+  },
+  {
+   "id": "focusS",
+   "name": "Lens - Focus Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus.action=stop"
+   }
+  },
+  {
+   "id": "fSpeedS",
+   "name": "Lens - Set Focus Speed",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Focus Speed Setting",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "2",
+       "label": "High"
+      },
+      {
+       "id": "1",
+       "label": "Medium"
+      },
+      {
+       "id": "0",
+       "label": "Low"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus.speed={{option.speed|map}}"
+   },
+   "maps": {
+    "speed": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "fSpeedU",
+   "name": "Lens - Focus Speed Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus.speed=1"
+   }
+  },
+  {
+   "id": "fSpeedD",
+   "name": "Lens - Focus Speed Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus.speed=0"
+   }
+  },
+  {
+   "id": "fSpeedToggle",
+   "name": "Lens - Focus Speed Toggle",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus.speed=2"
+   }
+  },
+  {
+   "id": "focusM",
+   "name": "Lens - Focus Mode (Auto/Manual Focus)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Auto / Manual Focus",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto Focus"
+      },
+      {
+       "id": "1",
+       "label": "Manual Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus={{option.bol|map}}"
+   },
+   "maps": {
+    "bol": {
+     "0": "auto",
+     "1": "manual"
+    }
+   }
+  },
+  {
+   "id": "focusToggle",
+   "name": "Lens - Toggle Focus Mode (Auto/Manual Focus)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus=auto"
+   }
+  },
+  {
+   "id": "focusOSAF",
+   "name": "Lens - Focus - One Shot Auto Focus",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?focus=one_shot"
+   }
+  },
+  {
+   "id": "exposureShootingMode",
+   "name": "Exposure Shooting Mode",
+   "options": [
+    {
+     "id": "val",
+     "label": "Exposure Shooting Mode",
+     "type": "select",
+     "default": "fullauto",
+     "choices": [
+      {
+       "id": "fullauto",
+       "label": "Full Auto"
+      },
+      {
+       "id": "manual",
+       "label": "Manual"
+      },
+      {
+       "id": "scene",
+       "label": "Scene"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.shooting={{option.val|map}}"
+   },
+   "maps": {
+    "val": {
+     "fullauto": "fullauto",
+     "manual": "manual",
+     "scene": "scene"
+    }
+   }
+  },
+  {
+   "id": "aeGainLimit",
+   "name": "AE Gain Limit Max",
+   "options": [
+    {
+     "id": "val",
+     "label": "Value",
+     "type": "number",
+     "default": 330,
+     "min": -60,
+     "max": 330,
+     "help": "Sets the Gain Limit Max"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.ae.gainlimit.max={{option.val}}"
+   }
+  },
+  {
+   "id": "aeBrightness",
+   "name": "AE Brightness",
+   "options": [
+    {
+     "id": "val",
+     "label": "AE Brightness",
+     "type": "select",
+     "default": "-8",
+     "choices": [
+      {
+       "id": "-8",
+       "label": "-8"
+      },
+      {
+       "id": "-6",
+       "label": "-6"
+      },
+      {
+       "id": "-4",
+       "label": "-4"
+      },
+      {
+       "id": "-2",
+       "label": "-2"
+      },
+      {
+       "id": "0",
+       "label": "0"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.ae.brightness={{option.val|map}}"
+   },
+   "maps": {
+    "val": {
+     "0": "0",
+     "2": "2",
+     "4": "4",
+     "6": "6",
+     "8": "8",
+     "-8": "-8",
+     "-6": "-6",
+     "-4": "-4",
+     "-2": "-2"
+    }
+   }
+  },
+  {
+   "id": "aePhotometry",
+   "name": "AE Photometry",
+   "options": [
+    {
+     "id": "val",
+     "label": "AE Photometry",
+     "type": "select",
+     "default": "center",
+     "choices": [
+      {
+       "id": "center",
+       "label": "Center"
+      },
+      {
+       "id": "spotlight",
+       "label": "Spotlight"
+      },
+      {
+       "id": "backlight",
+       "label": "Backlight"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.ae.photometry={{option.val|map}}"
+   },
+   "maps": {
+    "val": {
+     "center": "center",
+     "spotlight": "spotlight",
+     "backlight": "backlight"
+    }
+   }
+  },
+  {
+   "id": "aeFlickerReduct",
+   "name": "AE Flicker Reduct",
+   "options": [
+    {
+     "id": "val",
+     "label": "AE Flicker Reduct",
+     "type": "select",
+     "default": "off",
+     "choices": [
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "auto",
+       "label": "Auto"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.ae.flickerreduct={{option.val|map}}"
+   },
+   "maps": {
+    "val": {
+     "off": "off",
+     "auto": "auto"
+    }
+   }
+  },
+  {
+   "id": "aeResp",
+   "name": "AE Resp",
+   "options": [
+    {
+     "id": "val",
+     "label": "Value",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 2,
+     "help": "Sets the AE Resp Value"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.ae.resp={{option.val}}"
+   }
+  },
+  {
+   "id": "shutterM",
+   "name": "Exposure - Shutter Mode (Auto Shutter)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Auto / Manual Shutter",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto Shutter"
+      },
+      {
+       "id": "1",
+       "label": "Manual Shutter"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.me.shutter.mode={{option.bol|map}}"
+   },
+   "maps": {
+    "bol": {
+     "0": "auto",
+     "1": "speed"
+    }
+   }
+  },
+  {
+   "id": "shutterToggle",
+   "name": "Exposure - Toggle Shutter Mode (Auto/Manual Shutter)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.me.shutter.mode=auto"
+   }
+  },
+  {
+   "id": "irisM",
+   "name": "Exposure - Iris Mode (Auto Iris)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Auto / Manual Iris",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto Iris"
+      },
+      {
+       "id": "1",
+       "label": "Manual Iris"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.me.diaphragm.mode={{option.bol|map}}"
+   },
+   "maps": {
+    "bol": {
+     "0": "auto",
+     "1": "manual"
+    }
+   }
+  },
+  {
+   "id": "irisToggle",
+   "name": "Exposure - Toggle Iris Mode (Auto/Manual Iris)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.me.diaphragm.mode=auto"
+   }
+  },
+  {
+   "id": "gainToggle",
+   "name": "Exposure - Toggle Gain Mode (Auto/Manual Gain)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.me.gain.mode=auto"
+   }
+  },
+  {
+   "id": "gainMode",
+   "name": "Exposure - Gain Mode (Auto/Manual Gain)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Auto / Manual Gain",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "auto",
+       "label": "Auto Gain"
+      },
+      {
+       "id": "manual",
+       "label": "Manual Gain"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.me.gain.mode={{option.bol|map}}"
+   },
+   "maps": {
+    "bol": {
+     "0": "auto",
+     "auto": "auto",
+     "manual": "manual"
+    }
+   }
+  },
+  {
+   "id": "ndfilterUp",
+   "name": "Exposure - ND Filter Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.nd.filter=400"
+   }
+  },
+  {
+   "id": "ndfilterDown",
+   "name": "Exposure - ND Filter Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.nd.filter=0"
+   }
+  },
+  {
+   "id": "filterSet",
+   "name": "Exposure - Set ND Filter",
+   "options": [
+    {
+     "id": "val",
+     "label": "ND Filter Setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "400",
+       "label": "ND 1/4"
+      },
+      {
+       "id": "1600",
+       "label": "ND 1/16"
+      },
+      {
+       "id": "6400",
+       "label": "ND 1/64"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.nd.filter={{option.val|map}}0"
+   },
+   "maps": {
+    "val": {
+     "0": "",
+     "400": "40",
+     "1600": "160",
+     "6400": "640"
+    }
+   }
+  },
+  {
+   "id": "pedestalUp",
+   "name": "Exposure - Pedestal Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.blacklevel=-50"
+   }
+  },
+  {
+   "id": "pedestalDown",
+   "name": "Exposure - Pedestal Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.blacklevel=-50"
+   }
+  },
+  {
+   "id": "pedestalSet",
+   "name": "Exposure - Set Pedestal",
+   "options": [
+    {
+     "id": "val",
+     "label": "Pedestal Setting",
+     "type": "select",
+     "default": "-50",
+     "choices": [
+      {
+       "id": "-50",
+       "label": "-50"
+      },
+      {
+       "id": "-49",
+       "label": "-49"
+      },
+      {
+       "id": "-48",
+       "label": "-48"
+      },
+      {
+       "id": "-47",
+       "label": "-47"
+      },
+      {
+       "id": "-46",
+       "label": "-46"
+      },
+      {
+       "id": "-45",
+       "label": "-45"
+      },
+      {
+       "id": "-44",
+       "label": "-44"
+      },
+      {
+       "id": "-43",
+       "label": "-43"
+      },
+      {
+       "id": "-42",
+       "label": "-42"
+      },
+      {
+       "id": "-41",
+       "label": "-41"
+      },
+      {
+       "id": "-40",
+       "label": "-40"
+      },
+      {
+       "id": "-39",
+       "label": "-39"
+      },
+      {
+       "id": "-38",
+       "label": "-38"
+      },
+      {
+       "id": "-37",
+       "label": "-37"
+      },
+      {
+       "id": "-36",
+       "label": "-36"
+      },
+      {
+       "id": "-35",
+       "label": "-35"
+      },
+      {
+       "id": "-34",
+       "label": "-34"
+      },
+      {
+       "id": "-33",
+       "label": "-33"
+      },
+      {
+       "id": "-32",
+       "label": "-32"
+      },
+      {
+       "id": "-31",
+       "label": "-31"
+      },
+      {
+       "id": "-30",
+       "label": "-30"
+      },
+      {
+       "id": "-29",
+       "label": "-29"
+      },
+      {
+       "id": "-28",
+       "label": "-28"
+      },
+      {
+       "id": "-27",
+       "label": "-27"
+      },
+      {
+       "id": "-26",
+       "label": "-26"
+      },
+      {
+       "id": "-25",
+       "label": "-25"
+      },
+      {
+       "id": "-24",
+       "label": "-24"
+      },
+      {
+       "id": "-23",
+       "label": "-23"
+      },
+      {
+       "id": "-22",
+       "label": "-22"
+      },
+      {
+       "id": "-21",
+       "label": "-21"
+      },
+      {
+       "id": "-20",
+       "label": "-20"
+      },
+      {
+       "id": "-19",
+       "label": "-19"
+      },
+      {
+       "id": "-18",
+       "label": "-18"
+      },
+      {
+       "id": "-17",
+       "label": "-17"
+      },
+      {
+       "id": "-16",
+       "label": "-16"
+      },
+      {
+       "id": "-15",
+       "label": "-15"
+      },
+      {
+       "id": "-14",
+       "label": "-14"
+      },
+      {
+       "id": "-13",
+       "label": "-13"
+      },
+      {
+       "id": "-12",
+       "label": "-12"
+      },
+      {
+       "id": "-11",
+       "label": "-11"
+      },
+      {
+       "id": "-10",
+       "label": "-10"
+      },
+      {
+       "id": "-9",
+       "label": "-9"
+      },
+      {
+       "id": "-8",
+       "label": "-8"
+      },
+      {
+       "id": "-7",
+       "label": "-7"
+      },
+      {
+       "id": "-6",
+       "label": "-6"
+      },
+      {
+       "id": "-5",
+       "label": "-5"
+      },
+      {
+       "id": "-4",
+       "label": "-4"
+      },
+      {
+       "id": "-3",
+       "label": "-3"
+      },
+      {
+       "id": "-2",
+       "label": "-2"
+      },
+      {
+       "id": "-1",
+       "label": "-1"
+      },
+      {
+       "id": "0",
+       "label": "0"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      },
+      {
+       "id": "9",
+       "label": "9"
+      },
+      {
+       "id": "10",
+       "label": "10"
+      },
+      {
+       "id": "11",
+       "label": "11"
+      },
+      {
+       "id": "12",
+       "label": "12"
+      },
+      {
+       "id": "13",
+       "label": "13"
+      },
+      {
+       "id": "14",
+       "label": "14"
+      },
+      {
+       "id": "15",
+       "label": "15"
+      },
+      {
+       "id": "16",
+       "label": "16"
+      },
+      {
+       "id": "17",
+       "label": "17"
+      },
+      {
+       "id": "18",
+       "label": "18"
+      },
+      {
+       "id": "19",
+       "label": "19"
+      },
+      {
+       "id": "20",
+       "label": "20"
+      },
+      {
+       "id": "21",
+       "label": "21"
+      },
+      {
+       "id": "22",
+       "label": "22"
+      },
+      {
+       "id": "23",
+       "label": "23"
+      },
+      {
+       "id": "24",
+       "label": "24"
+      },
+      {
+       "id": "25",
+       "label": "25"
+      },
+      {
+       "id": "26",
+       "label": "26"
+      },
+      {
+       "id": "27",
+       "label": "27"
+      },
+      {
+       "id": "28",
+       "label": "28"
+      },
+      {
+       "id": "29",
+       "label": "29"
+      },
+      {
+       "id": "30",
+       "label": "30"
+      },
+      {
+       "id": "31",
+       "label": "31"
+      },
+      {
+       "id": "32",
+       "label": "32"
+      },
+      {
+       "id": "33",
+       "label": "33"
+      },
+      {
+       "id": "34",
+       "label": "34"
+      },
+      {
+       "id": "35",
+       "label": "35"
+      },
+      {
+       "id": "36",
+       "label": "36"
+      },
+      {
+       "id": "37",
+       "label": "37"
+      },
+      {
+       "id": "38",
+       "label": "38"
+      },
+      {
+       "id": "39",
+       "label": "39"
+      },
+      {
+       "id": "40",
+       "label": "40"
+      },
+      {
+       "id": "41",
+       "label": "41"
+      },
+      {
+       "id": "42",
+       "label": "42"
+      },
+      {
+       "id": "43",
+       "label": "43"
+      },
+      {
+       "id": "44",
+       "label": "44"
+      },
+      {
+       "id": "45",
+       "label": "45"
+      },
+      {
+       "id": "46",
+       "label": "46"
+      },
+      {
+       "id": "47",
+       "label": "47"
+      },
+      {
+       "id": "48",
+       "label": "48"
+      },
+      {
+       "id": "49",
+       "label": "49"
+      },
+      {
+       "id": "50",
+       "label": "50"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.blacklevel={{option.val}}"
+   }
+  },
+  {
+   "id": "whitebalanceModeSet",
+   "name": "White Balance - Set Mode",
+   "options": [
+    {
+     "id": "val",
+     "label": "White Balance Mode Setting",
+     "type": "select",
+     "default": "auto",
+     "choices": [
+      {
+       "id": "auto",
+       "label": "Auto"
+      },
+      {
+       "id": "manual",
+       "label": "Manual"
+      },
+      {
+       "id": "wb_a",
+       "label": "WB A"
+      },
+      {
+       "id": "wb_b",
+       "label": "WB B"
+      },
+      {
+       "id": "daylight",
+       "label": "Daylight"
+      },
+      {
+       "id": "tungsten",
+       "label": "Tungsten"
+      },
+      {
+       "id": "kelvin",
+       "label": "Kelvin"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb={{option.val|map}}"
+   },
+   "maps": {
+    "val": {
+     "auto": "auto",
+     "manual": "manual",
+     "wb_a": "wb_a",
+     "wb_b": "wb_b",
+     "daylight": "daylight",
+     "tungsten": "tungsten",
+     "kelvin": "kelvin"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceModeToggle",
+   "name": "White Balance Mode Toggle",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb=manual"
+   }
+  },
+  {
+   "id": "whitebalanceCalibration",
+   "name": "White Balance Calibration",
+   "options": [
+    {
+     "id": "mode",
+     "label": "White Balance Mode",
+     "type": "select",
+     "default": "a",
+     "choices": [
+      {
+       "id": "a",
+       "label": "WB A Mode"
+      },
+      {
+       "id": "b",
+       "label": "WB B Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.action=one_shot_{{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "a": "a",
+     "b": "b"
+    }
+   }
+  },
+  {
+   "id": "kelvinUp",
+   "name": "White Balance - Kelvin Value Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.kelvin=2020"
+   }
+  },
+  {
+   "id": "kelvinDown",
+   "name": "White Balance - Kelvin Value Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.kelvin=2000"
+   }
+  },
+  {
+   "id": "kelvinSet",
+   "name": "White Balance - Set Kelvin Value",
+   "options": [
+    {
+     "id": "val",
+     "label": "Kelvin Setting",
+     "type": "select",
+     "default": "2000",
+     "choices": [
+      {
+       "id": "2000",
+       "label": "2000K"
+      },
+      {
+       "id": "2020",
+       "label": "2020K"
+      },
+      {
+       "id": "2040",
+       "label": "2040K"
+      },
+      {
+       "id": "2060",
+       "label": "2060K"
+      },
+      {
+       "id": "2080",
+       "label": "2080K"
+      },
+      {
+       "id": "2110",
+       "label": "2110K"
+      },
+      {
+       "id": "2130",
+       "label": "2130K"
+      },
+      {
+       "id": "2150",
+       "label": "2150K"
+      },
+      {
+       "id": "2170",
+       "label": "2170K"
+      },
+      {
+       "id": "2200",
+       "label": "2200K"
+      },
+      {
+       "id": "2220",
+       "label": "2220K"
+      },
+      {
+       "id": "2250",
+       "label": "2250K"
+      },
+      {
+       "id": "2270",
+       "label": "2270K"
+      },
+      {
+       "id": "2300",
+       "label": "2300K"
+      },
+      {
+       "id": "2330",
+       "label": "2330K"
+      },
+      {
+       "id": "2350",
+       "label": "2350K"
+      },
+      {
+       "id": "2380",
+       "label": "2380K"
+      },
+      {
+       "id": "2410",
+       "label": "2410K"
+      },
+      {
+       "id": "2440",
+       "label": "2440K"
+      },
+      {
+       "id": "2470",
+       "label": "2470K"
+      },
+      {
+       "id": "2500",
+       "label": "2500K"
+      },
+      {
+       "id": "2530",
+       "label": "2530K"
+      },
+      {
+       "id": "2560",
+       "label": "2560K"
+      },
+      {
+       "id": "2600",
+       "label": "2600K"
+      },
+      {
+       "id": "2630",
+       "label": "2630K"
+      },
+      {
+       "id": "2670",
+       "label": "2670K"
+      },
+      {
+       "id": "2700",
+       "label": "2700K"
+      },
+      {
+       "id": "2740",
+       "label": "2740K"
+      },
+      {
+       "id": "2780",
+       "label": "2780K"
+      },
+      {
+       "id": "2820",
+       "label": "2820K"
+      },
+      {
+       "id": "2860",
+       "label": "2860K"
+      },
+      {
+       "id": "2900",
+       "label": "2900K"
+      },
+      {
+       "id": "2940",
+       "label": "2940K"
+      },
+      {
+       "id": "2990",
+       "label": "2990K"
+      },
+      {
+       "id": "3030",
+       "label": "3030K"
+      },
+      {
+       "id": "3080",
+       "label": "3080K"
+      },
+      {
+       "id": "3130",
+       "label": "3130K"
+      },
+      {
+       "id": "3200",
+       "label": "3200K"
+      },
+      {
+       "id": "3230",
+       "label": "3230K"
+      },
+      {
+       "id": "3280",
+       "label": "3280K"
+      },
+      {
+       "id": "3330",
+       "label": "3330K"
+      },
+      {
+       "id": "3390",
+       "label": "3390K"
+      },
+      {
+       "id": "3450",
+       "label": "3450K"
+      },
+      {
+       "id": "3510",
+       "label": "3510K"
+      },
+      {
+       "id": "3570",
+       "label": "3570K"
+      },
+      {
+       "id": "3640",
+       "label": "3640K"
+      },
+      {
+       "id": "3700",
+       "label": "3700K"
+      },
+      {
+       "id": "3770",
+       "label": "3770K"
+      },
+      {
+       "id": "3850",
+       "label": "3850K"
+      },
+      {
+       "id": "3920",
+       "label": "3920K"
+      },
+      {
+       "id": "4000",
+       "label": "4000K"
+      },
+      {
+       "id": "4080",
+       "label": "4080K"
+      },
+      {
+       "id": "4170",
+       "label": "4170K"
+      },
+      {
+       "id": "4300",
+       "label": "4300K"
+      },
+      {
+       "id": "4350",
+       "label": "4350K"
+      },
+      {
+       "id": "4440",
+       "label": "4440K"
+      },
+      {
+       "id": "4550",
+       "label": "4550K"
+      },
+      {
+       "id": "4650",
+       "label": "4650K"
+      },
+      {
+       "id": "4760",
+       "label": "4760K"
+      },
+      {
+       "id": "4880",
+       "label": "4880K"
+      },
+      {
+       "id": "5000",
+       "label": "5000K"
+      },
+      {
+       "id": "5130",
+       "label": "5130K"
+      },
+      {
+       "id": "5260",
+       "label": "5260K"
+      },
+      {
+       "id": "5410",
+       "label": "5410K"
+      },
+      {
+       "id": "5600",
+       "label": "5600K"
+      },
+      {
+       "id": "5710",
+       "label": "5710K"
+      },
+      {
+       "id": "5880",
+       "label": "5880K"
+      },
+      {
+       "id": "6060",
+       "label": "6060K"
+      },
+      {
+       "id": "6300",
+       "label": "6300K"
+      },
+      {
+       "id": "6450",
+       "label": "6450K"
+      },
+      {
+       "id": "6670",
+       "label": "6670K"
+      },
+      {
+       "id": "6900",
+       "label": "6900K"
+      },
+      {
+       "id": "7140",
+       "label": "7140K"
+      },
+      {
+       "id": "7410",
+       "label": "7410K"
+      },
+      {
+       "id": "7690",
+       "label": "7690K"
+      },
+      {
+       "id": "8000",
+       "label": "8000K"
+      },
+      {
+       "id": "8330",
+       "label": "8330K"
+      },
+      {
+       "id": "8700",
+       "label": "8700K"
+      },
+      {
+       "id": "9090",
+       "label": "9090K"
+      },
+      {
+       "id": "9520",
+       "label": "9520K"
+      },
+      {
+       "id": "10000",
+       "label": "10000K"
+      },
+      {
+       "id": "10530",
+       "label": "10530K"
+      },
+      {
+       "id": "11110",
+       "label": "11110K"
+      },
+      {
+       "id": "11760",
+       "label": "11760K"
+      },
+      {
+       "id": "12500",
+       "label": "12500K"
+      },
+      {
+       "id": "13330",
+       "label": "13330K"
+      },
+      {
+       "id": "14290",
+       "label": "14290K"
+      },
+      {
+       "id": "15000",
+       "label": "15000K"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.kelvin={{option.val}}"
+   }
+  },
+  {
+   "id": "rGainUp",
+   "name": "White Balance - Red Gain Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.shift.rgain=1"
+   }
+  },
+  {
+   "id": "rGainDown",
+   "name": "White Balance - Red Gain Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.shift.rgain=0"
+   }
+  },
+  {
+   "id": "rGainSet",
+   "name": "White Balance - Set Red Gain",
+   "options": [
+    {
+     "id": "val",
+     "label": "Red Gain Setting",
+     "type": "select",
+     "default": "-50",
+     "choices": [
+      {
+       "id": "-50",
+       "label": "R Gain -50"
+      },
+      {
+       "id": "-49",
+       "label": "R Gain -49"
+      },
+      {
+       "id": "-48",
+       "label": "R Gain -48"
+      },
+      {
+       "id": "-47",
+       "label": "R Gain -47"
+      },
+      {
+       "id": "-46",
+       "label": "R Gain -46"
+      },
+      {
+       "id": "-45",
+       "label": "R Gain -45"
+      },
+      {
+       "id": "-44",
+       "label": "R Gain -44"
+      },
+      {
+       "id": "-43",
+       "label": "R Gain -43"
+      },
+      {
+       "id": "-42",
+       "label": "R Gain -42"
+      },
+      {
+       "id": "-41",
+       "label": "R Gain -41"
+      },
+      {
+       "id": "-40",
+       "label": "R Gain -40"
+      },
+      {
+       "id": "-39",
+       "label": "R Gain -39"
+      },
+      {
+       "id": "-38",
+       "label": "R Gain -38"
+      },
+      {
+       "id": "-37",
+       "label": "R Gain -37"
+      },
+      {
+       "id": "-36",
+       "label": "R Gain -36"
+      },
+      {
+       "id": "-35",
+       "label": "R Gain -35"
+      },
+      {
+       "id": "-34",
+       "label": "R Gain -34"
+      },
+      {
+       "id": "-33",
+       "label": "R Gain -33"
+      },
+      {
+       "id": "-32",
+       "label": "R Gain -32"
+      },
+      {
+       "id": "-31",
+       "label": "R Gain -31"
+      },
+      {
+       "id": "-30",
+       "label": "R Gain -30"
+      },
+      {
+       "id": "-29",
+       "label": "R Gain -29"
+      },
+      {
+       "id": "-28",
+       "label": "R Gain -28"
+      },
+      {
+       "id": "-27",
+       "label": "R Gain -27"
+      },
+      {
+       "id": "-26",
+       "label": "R Gain -26"
+      },
+      {
+       "id": "-25",
+       "label": "R Gain -25"
+      },
+      {
+       "id": "-24",
+       "label": "R Gain -24"
+      },
+      {
+       "id": "-23",
+       "label": "R Gain -23"
+      },
+      {
+       "id": "-22",
+       "label": "R Gain -22"
+      },
+      {
+       "id": "-21",
+       "label": "R Gain -21"
+      },
+      {
+       "id": "-20",
+       "label": "R Gain -20"
+      },
+      {
+       "id": "-19",
+       "label": "R Gain -19"
+      },
+      {
+       "id": "-18",
+       "label": "R Gain -18"
+      },
+      {
+       "id": "-17",
+       "label": "R Gain -17"
+      },
+      {
+       "id": "-16",
+       "label": "R Gain -16"
+      },
+      {
+       "id": "-15",
+       "label": "R Gain -15"
+      },
+      {
+       "id": "-14",
+       "label": "R Gain -14"
+      },
+      {
+       "id": "-13",
+       "label": "R Gain -13"
+      },
+      {
+       "id": "-12",
+       "label": "R Gain -12"
+      },
+      {
+       "id": "-11",
+       "label": "R Gain -11"
+      },
+      {
+       "id": "-10",
+       "label": "R Gain -10"
+      },
+      {
+       "id": "-9",
+       "label": "R Gain -9"
+      },
+      {
+       "id": "-8",
+       "label": "R Gain -8"
+      },
+      {
+       "id": "-7",
+       "label": "R Gain -7"
+      },
+      {
+       "id": "-6",
+       "label": "R Gain -6"
+      },
+      {
+       "id": "-5",
+       "label": "R Gain -5"
+      },
+      {
+       "id": "-4",
+       "label": "R Gain -4"
+      },
+      {
+       "id": "-3",
+       "label": "R Gain -3"
+      },
+      {
+       "id": "-2",
+       "label": "R Gain -2"
+      },
+      {
+       "id": "-1",
+       "label": "R Gain -1"
+      },
+      {
+       "id": "0",
+       "label": "R Gain 0"
+      },
+      {
+       "id": "1",
+       "label": "R Gain 1"
+      },
+      {
+       "id": "2",
+       "label": "R Gain 2"
+      },
+      {
+       "id": "3",
+       "label": "R Gain 3"
+      },
+      {
+       "id": "4",
+       "label": "R Gain 4"
+      },
+      {
+       "id": "5",
+       "label": "R Gain 5"
+      },
+      {
+       "id": "6",
+       "label": "R Gain 6"
+      },
+      {
+       "id": "7",
+       "label": "R Gain 7"
+      },
+      {
+       "id": "8",
+       "label": "R Gain 8"
+      },
+      {
+       "id": "9",
+       "label": "R Gain 9"
+      },
+      {
+       "id": "10",
+       "label": "R Gain 10"
+      },
+      {
+       "id": "11",
+       "label": "R Gain 11"
+      },
+      {
+       "id": "12",
+       "label": "R Gain 12"
+      },
+      {
+       "id": "13",
+       "label": "R Gain 13"
+      },
+      {
+       "id": "14",
+       "label": "R Gain 14"
+      },
+      {
+       "id": "15",
+       "label": "R Gain 15"
+      },
+      {
+       "id": "16",
+       "label": "R Gain 16"
+      },
+      {
+       "id": "17",
+       "label": "R Gain 17"
+      },
+      {
+       "id": "18",
+       "label": "R Gain 18"
+      },
+      {
+       "id": "19",
+       "label": "R Gain 19"
+      },
+      {
+       "id": "20",
+       "label": "R Gain 20"
+      },
+      {
+       "id": "21",
+       "label": "R Gain 21"
+      },
+      {
+       "id": "22",
+       "label": "R Gain 22"
+      },
+      {
+       "id": "23",
+       "label": "R Gain 23"
+      },
+      {
+       "id": "24",
+       "label": "R Gain 24"
+      },
+      {
+       "id": "25",
+       "label": "R Gain 25"
+      },
+      {
+       "id": "26",
+       "label": "R Gain 26"
+      },
+      {
+       "id": "27",
+       "label": "R Gain 27"
+      },
+      {
+       "id": "28",
+       "label": "R Gain 28"
+      },
+      {
+       "id": "29",
+       "label": "R Gain 29"
+      },
+      {
+       "id": "30",
+       "label": "R Gain 30"
+      },
+      {
+       "id": "31",
+       "label": "R Gain 31"
+      },
+      {
+       "id": "32",
+       "label": "R Gain 32"
+      },
+      {
+       "id": "33",
+       "label": "R Gain 33"
+      },
+      {
+       "id": "34",
+       "label": "R Gain 34"
+      },
+      {
+       "id": "35",
+       "label": "R Gain 35"
+      },
+      {
+       "id": "36",
+       "label": "R Gain 36"
+      },
+      {
+       "id": "37",
+       "label": "R Gain 37"
+      },
+      {
+       "id": "38",
+       "label": "R Gain 38"
+      },
+      {
+       "id": "39",
+       "label": "R Gain 39"
+      },
+      {
+       "id": "40",
+       "label": "R Gain 40"
+      },
+      {
+       "id": "41",
+       "label": "R Gain 41"
+      },
+      {
+       "id": "42",
+       "label": "R Gain 42"
+      },
+      {
+       "id": "43",
+       "label": "R Gain 43"
+      },
+      {
+       "id": "44",
+       "label": "R Gain 44"
+      },
+      {
+       "id": "45",
+       "label": "R Gain 45"
+      },
+      {
+       "id": "46",
+       "label": "R Gain 46"
+      },
+      {
+       "id": "47",
+       "label": "R Gain 47"
+      },
+      {
+       "id": "48",
+       "label": "R Gain 48"
+      },
+      {
+       "id": "49",
+       "label": "R Gain 49"
+      },
+      {
+       "id": "50",
+       "label": "R Gain 50"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.shift.rgain={{option.val}}"
+   }
+  },
+  {
+   "id": "bGainUp",
+   "name": "White Balance - Blue Gain Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.shift.bgain=1"
+   }
+  },
+  {
+   "id": "bGainDown",
+   "name": "White Balance - Blue Gain Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.shift.bgain=0"
+   }
+  },
+  {
+   "id": "bGainSet",
+   "name": "White Balance - Set Blue Gain",
+   "options": [
+    {
+     "id": "val",
+     "label": "Blue Gain Setting",
+     "type": "select",
+     "default": "-50",
+     "choices": [
+      {
+       "id": "-50",
+       "label": "B Gain -50"
+      },
+      {
+       "id": "-49",
+       "label": "B Gain -49"
+      },
+      {
+       "id": "-48",
+       "label": "B Gain -48"
+      },
+      {
+       "id": "-47",
+       "label": "B Gain -47"
+      },
+      {
+       "id": "-46",
+       "label": "B Gain -46"
+      },
+      {
+       "id": "-45",
+       "label": "B Gain -45"
+      },
+      {
+       "id": "-44",
+       "label": "B Gain -44"
+      },
+      {
+       "id": "-43",
+       "label": "B Gain -43"
+      },
+      {
+       "id": "-42",
+       "label": "B Gain -42"
+      },
+      {
+       "id": "-41",
+       "label": "B Gain -41"
+      },
+      {
+       "id": "-40",
+       "label": "B Gain -40"
+      },
+      {
+       "id": "-39",
+       "label": "B Gain -39"
+      },
+      {
+       "id": "-38",
+       "label": "B Gain -38"
+      },
+      {
+       "id": "-37",
+       "label": "B Gain -37"
+      },
+      {
+       "id": "-36",
+       "label": "B Gain -36"
+      },
+      {
+       "id": "-35",
+       "label": "B Gain -35"
+      },
+      {
+       "id": "-34",
+       "label": "B Gain -34"
+      },
+      {
+       "id": "-33",
+       "label": "B Gain -33"
+      },
+      {
+       "id": "-32",
+       "label": "B Gain -32"
+      },
+      {
+       "id": "-31",
+       "label": "B Gain -31"
+      },
+      {
+       "id": "-30",
+       "label": "B Gain -30"
+      },
+      {
+       "id": "-29",
+       "label": "B Gain -29"
+      },
+      {
+       "id": "-28",
+       "label": "B Gain -28"
+      },
+      {
+       "id": "-27",
+       "label": "B Gain -27"
+      },
+      {
+       "id": "-26",
+       "label": "B Gain -26"
+      },
+      {
+       "id": "-25",
+       "label": "B Gain -25"
+      },
+      {
+       "id": "-24",
+       "label": "B Gain -24"
+      },
+      {
+       "id": "-23",
+       "label": "B Gain -23"
+      },
+      {
+       "id": "-22",
+       "label": "B Gain -22"
+      },
+      {
+       "id": "-21",
+       "label": "B Gain -21"
+      },
+      {
+       "id": "-20",
+       "label": "B Gain -20"
+      },
+      {
+       "id": "-19",
+       "label": "B Gain -19"
+      },
+      {
+       "id": "-18",
+       "label": "B Gain -18"
+      },
+      {
+       "id": "-17",
+       "label": "B Gain -17"
+      },
+      {
+       "id": "-16",
+       "label": "B Gain -16"
+      },
+      {
+       "id": "-15",
+       "label": "B Gain -15"
+      },
+      {
+       "id": "-14",
+       "label": "B Gain -14"
+      },
+      {
+       "id": "-13",
+       "label": "B Gain -13"
+      },
+      {
+       "id": "-12",
+       "label": "B Gain -12"
+      },
+      {
+       "id": "-11",
+       "label": "B Gain -11"
+      },
+      {
+       "id": "-10",
+       "label": "B Gain -10"
+      },
+      {
+       "id": "-9",
+       "label": "B Gain -9"
+      },
+      {
+       "id": "-8",
+       "label": "B Gain -8"
+      },
+      {
+       "id": "-7",
+       "label": "B Gain -7"
+      },
+      {
+       "id": "-6",
+       "label": "B Gain -6"
+      },
+      {
+       "id": "-5",
+       "label": "B Gain -5"
+      },
+      {
+       "id": "-4",
+       "label": "B Gain -4"
+      },
+      {
+       "id": "-3",
+       "label": "B Gain -3"
+      },
+      {
+       "id": "-2",
+       "label": "B Gain -2"
+      },
+      {
+       "id": "-1",
+       "label": "B Gain -1"
+      },
+      {
+       "id": "0",
+       "label": "B Gain 0"
+      },
+      {
+       "id": "1",
+       "label": "B Gain 1"
+      },
+      {
+       "id": "2",
+       "label": "B Gain 2"
+      },
+      {
+       "id": "3",
+       "label": "B Gain 3"
+      },
+      {
+       "id": "4",
+       "label": "B Gain 4"
+      },
+      {
+       "id": "5",
+       "label": "B Gain 5"
+      },
+      {
+       "id": "6",
+       "label": "B Gain 6"
+      },
+      {
+       "id": "7",
+       "label": "B Gain 7"
+      },
+      {
+       "id": "8",
+       "label": "B Gain 8"
+      },
+      {
+       "id": "9",
+       "label": "B Gain 9"
+      },
+      {
+       "id": "10",
+       "label": "B Gain 10"
+      },
+      {
+       "id": "11",
+       "label": "B Gain 11"
+      },
+      {
+       "id": "12",
+       "label": "B Gain 12"
+      },
+      {
+       "id": "13",
+       "label": "B Gain 13"
+      },
+      {
+       "id": "14",
+       "label": "B Gain 14"
+      },
+      {
+       "id": "15",
+       "label": "B Gain 15"
+      },
+      {
+       "id": "16",
+       "label": "B Gain 16"
+      },
+      {
+       "id": "17",
+       "label": "B Gain 17"
+      },
+      {
+       "id": "18",
+       "label": "B Gain 18"
+      },
+      {
+       "id": "19",
+       "label": "B Gain 19"
+      },
+      {
+       "id": "20",
+       "label": "B Gain 20"
+      },
+      {
+       "id": "21",
+       "label": "B Gain 21"
+      },
+      {
+       "id": "22",
+       "label": "B Gain 22"
+      },
+      {
+       "id": "23",
+       "label": "B Gain 23"
+      },
+      {
+       "id": "24",
+       "label": "B Gain 24"
+      },
+      {
+       "id": "25",
+       "label": "B Gain 25"
+      },
+      {
+       "id": "26",
+       "label": "B Gain 26"
+      },
+      {
+       "id": "27",
+       "label": "B Gain 27"
+      },
+      {
+       "id": "28",
+       "label": "B Gain 28"
+      },
+      {
+       "id": "29",
+       "label": "B Gain 29"
+      },
+      {
+       "id": "30",
+       "label": "B Gain 30"
+      },
+      {
+       "id": "31",
+       "label": "B Gain 31"
+      },
+      {
+       "id": "32",
+       "label": "B Gain 32"
+      },
+      {
+       "id": "33",
+       "label": "B Gain 33"
+      },
+      {
+       "id": "34",
+       "label": "B Gain 34"
+      },
+      {
+       "id": "35",
+       "label": "B Gain 35"
+      },
+      {
+       "id": "36",
+       "label": "B Gain 36"
+      },
+      {
+       "id": "37",
+       "label": "B Gain 37"
+      },
+      {
+       "id": "38",
+       "label": "B Gain 38"
+      },
+      {
+       "id": "39",
+       "label": "B Gain 39"
+      },
+      {
+       "id": "40",
+       "label": "B Gain 40"
+      },
+      {
+       "id": "41",
+       "label": "B Gain 41"
+      },
+      {
+       "id": "42",
+       "label": "B Gain 42"
+      },
+      {
+       "id": "43",
+       "label": "B Gain 43"
+      },
+      {
+       "id": "44",
+       "label": "B Gain 44"
+      },
+      {
+       "id": "45",
+       "label": "B Gain 45"
+      },
+      {
+       "id": "46",
+       "label": "B Gain 46"
+      },
+      {
+       "id": "47",
+       "label": "B Gain 47"
+      },
+      {
+       "id": "48",
+       "label": "B Gain 48"
+      },
+      {
+       "id": "49",
+       "label": "B Gain 49"
+      },
+      {
+       "id": "50",
+       "label": "B Gain 50"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?c.1.wb.shift.bgain={{option.val}}"
+   }
+  },
+  {
+   "id": "recallPset",
+   "name": "Preset - Recall (by number)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Preset Number",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?p={{option.val}}"
+   }
+  },
+  {
+   "id": "traceStop",
+   "name": "Trace - Stop",
+   "options": [
+    {
+     "id": "trace",
+     "label": "Trace Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Trace 1"
+      },
+      {
+       "id": "2",
+       "label": "Trace 2"
+      },
+      {
+       "id": "3",
+       "label": "Trace 3"
+      },
+      {
+       "id": "4",
+       "label": "Trace 4"
+      },
+      {
+       "id": "5",
+       "label": "Trace 5"
+      },
+      {
+       "id": "6",
+       "label": "Trace 6"
+      },
+      {
+       "id": "7",
+       "label": "Trace 7"
+      },
+      {
+       "id": "8",
+       "label": "Trace 8"
+      },
+      {
+       "id": "9",
+       "label": "Trace 9"
+      },
+      {
+       "id": "10",
+       "label": "Trace 10"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/trace/control?t={{option.trace|map}}&cmd=stop"
+   },
+   "maps": {
+    "trace": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "powerOff",
+   "category": "System",
+   "name": "Power Off",
+   "text": "Power\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "powerOff",
+    "options": {}
+   }
+  },
+  {
+   "id": "powerOn",
+   "category": "System",
+   "name": "Power On",
+   "text": "Power\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "powerOn",
+    "options": {}
+   }
+  },
+  {
+   "id": "powerToggle",
+   "category": "System",
+   "name": "Power Toggle",
+   "text": "Power\nTOGGLE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "powerToggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "tallyToggle",
+   "category": "System",
+   "name": "Tally Toggle",
+   "text": "Tally\nTOGGLE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tallyToggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "panTiltHome",
+   "category": "Pan/Tilt",
+   "name": "Home",
+   "text": "HOME",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "home",
+    "options": {}
+   }
+  },
+  {
+   "id": "focusSpeedUp",
+   "category": "Lens",
+   "name": "Focus Speed Up",
+   "text": "FOCUS\nSPEED\nUP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fSpeedU",
+    "options": {}
+   }
+  },
+  {
+   "id": "focusSpeedDown",
+   "category": "Lens",
+   "name": "Focus Speed Down",
+   "text": "FOCUS\nSPEED\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fSpeedD",
+    "options": {}
+   }
+  },
+  {
+   "id": "focusSpeedSetHigh",
+   "category": "Lens",
+   "name": "Focus Speed High",
+   "text": "FOCUS\nSPEED\nHIGH",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fSpeedS",
+    "options": {
+     "speed": 2
+    }
+   }
+  },
+  {
+   "id": "focusSpeedSetMid",
+   "category": "Lens",
+   "name": "Focus Speed Mid",
+   "text": "FOCUS\nSPEED\nMID",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fSpeedS",
+    "options": {
+     "speed": 1
+    }
+   }
+  },
+  {
+   "id": "focusSpeedSetLow",
+   "category": "Lens",
+   "name": "Focus Speed Low",
+   "text": "FOCUS\nSPEED\nLOW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fSpeedS",
+    "options": {
+     "speed": 0
+    }
+   }
+  },
+  {
+   "id": "manualFocus",
+   "category": "Lens",
+   "name": "Manual Focus",
+   "text": "MANUAL\nFOCUS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusM",
+    "options": {
+     "bol": 1
+    }
+   }
+  },
+  {
+   "id": "autoFocus",
+   "category": "Lens",
+   "name": "Auto Focus",
+   "text": "AUTO\nFOCUS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusM",
+    "options": {
+     "bol": 0
+    }
+   }
+  },
+  {
+   "id": "focusToggle",
+   "category": "Lens",
+   "name": "Toggle Auto/Manual Focus",
+   "text": "TOGGLE\nFOCUS MODE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusToggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "oneshotAutoFocus",
+   "category": "Lens",
+   "name": "One Shot Auto Focus",
+   "text": "One Shot\nAF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusOSAF",
+    "options": {}
+   }
+  },
+  {
+   "id": "exposureShootingMode-fullauto",
+   "category": "Exposure",
+   "name": "Exposure Shooting: Full Auto",
+   "text": "Full Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureShootingMode",
+    "options": {
+     "val": "fullauto"
+    }
+   }
+  },
+  {
+   "id": "exposureShootingMode-manual",
+   "category": "Exposure",
+   "name": "Exposure Shooting: Manual",
+   "text": "Manual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureShootingMode",
+    "options": {
+     "val": "manual"
+    }
+   }
+  },
+  {
+   "id": "exposureShootingMode-scene",
+   "category": "Exposure",
+   "name": "Exposure Shooting: Scene",
+   "text": "Scene",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureShootingMode",
+    "options": {
+     "val": "scene"
+    }
+   }
+  },
+  {
+   "id": "manualShutter",
+   "category": "Exposure",
+   "name": "Manual Shutter",
+   "text": "MANUAL\nSHUTTER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutterM",
+    "options": {
+     "bol": 1
+    }
+   }
+  },
+  {
+   "id": "autoShutter",
+   "category": "Exposure",
+   "name": "Auto Shutter",
+   "text": "AUTO\nSHUTTER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutterM",
+    "options": {
+     "bol": 0
+    }
+   }
+  },
+  {
+   "id": "toggleShutterMode",
+   "category": "Exposure",
+   "name": "Toggle Shutter Mode",
+   "text": "TOGGLE\nSHUTTER MODE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutterToggle",
+    "options": {
+     "bol": 0
+    }
+   }
+  },
+  {
+   "id": "manualIris",
+   "category": "Exposure",
+   "name": "Manual Iris",
+   "text": "MANUAL\nIRIS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "irisM",
+    "options": {
+     "bol": 1
+    }
+   }
+  },
+  {
+   "id": "autoIris",
+   "category": "Exposure",
+   "name": "Auto Iris",
+   "text": "AUTO\nIRIS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "irisM",
+    "options": {
+     "bol": 0
+    }
+   }
+  },
+  {
+   "id": "toggleIris",
+   "category": "Exposure",
+   "name": "Toggle Iris Mode",
+   "text": "TOGGLE\nIRIS MODE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "irisToggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggleGain",
+   "category": "Exposure",
+   "name": "Toggle Gain Mode",
+   "text": "TOGGLE\nGAIN MODE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gainToggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "ndfilterUp",
+   "category": "Exposure",
+   "name": "ND Filter Up",
+   "text": "ND Filter\nUP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ndfilterUp",
+    "options": {}
+   }
+  },
+  {
+   "id": "ndFilterDown",
+   "category": "Exposure",
+   "name": "ND Filter Down",
+   "text": "ND Filter\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ndfilterDown",
+    "options": {}
+   }
+  },
+  {
+   "id": "pedestalUp",
+   "category": "Exposure",
+   "name": "Pedestal Up",
+   "text": "Pedestal\nUP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pedestalUp",
+    "options": {}
+   }
+  },
+  {
+   "id": "pedestalDown",
+   "category": "Exposure",
+   "name": "Pedestal Down",
+   "text": "Pedestal\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pedestalDown",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggleWhiteBalanceMode",
+   "category": "White Balance",
+   "name": "Current White Balance Mode",
+   "text": "Current White Balance Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeToggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "whiteBalanceCalibrationA",
+   "category": "White Balance",
+   "name": "White Balance Calibration",
+   "text": "WB CALIB A",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceCalibration",
+    "options": {
+     "mode": "a"
+    }
+   }
+  },
+  {
+   "id": "whiteBalanceCalibrationB",
+   "category": "White Balance",
+   "name": "White Balance Calibration",
+   "text": "WB CALIB B",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceCalibration",
+    "options": {
+     "mode": "b"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceMode-auto",
+   "category": "White Balance",
+   "name": "White Balance Mode Set Auto",
+   "text": "WB MODE\nSET\nAuto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeSet",
+    "options": {
+     "val": "auto"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceMode-manual",
+   "category": "White Balance",
+   "name": "White Balance Mode Set Manual",
+   "text": "WB MODE\nSET\nManual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeSet",
+    "options": {
+     "val": "manual"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceMode-wb_a",
+   "category": "White Balance",
+   "name": "White Balance Mode Set WB A",
+   "text": "WB MODE\nSET\nWB A",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeSet",
+    "options": {
+     "val": "wb_a"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceMode-wb_b",
+   "category": "White Balance",
+   "name": "White Balance Mode Set WB B",
+   "text": "WB MODE\nSET\nWB B",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeSet",
+    "options": {
+     "val": "wb_b"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceMode-daylight",
+   "category": "White Balance",
+   "name": "White Balance Mode Set Daylight",
+   "text": "WB MODE\nSET\nDaylight",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeSet",
+    "options": {
+     "val": "daylight"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceMode-tungsten",
+   "category": "White Balance",
+   "name": "White Balance Mode Set Tungsten",
+   "text": "WB MODE\nSET\nTungsten",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeSet",
+    "options": {
+     "val": "tungsten"
+    }
+   }
+  },
+  {
+   "id": "whitebalanceMode-kelvin",
+   "category": "White Balance",
+   "name": "White Balance Mode Set Kelvin",
+   "text": "WB MODE\nSET\nKelvin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whitebalanceModeSet",
+    "options": {
+     "val": "kelvin"
+    }
+   }
+  },
+  {
+   "id": "kelvinUp",
+   "category": "White Balance",
+   "name": "Kelvin Up",
+   "text": "KELVIN\nUP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "kelvinUp",
+    "options": {}
+   }
+  },
+  {
+   "id": "kelvinDown",
+   "category": "White Balance",
+   "name": "Kelvin Down",
+   "text": "KELVIN\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "kelvinDown",
+    "options": {}
+   }
+  },
+  {
+   "id": "redGainUp",
+   "category": "White Balance",
+   "name": "Red Gain Up",
+   "text": "RED\nGAIN\nUP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rGainUp",
+    "options": {}
+   }
+  },
+  {
+   "id": "redGainDown",
+   "category": "White Balance",
+   "name": "Red Gain Down",
+   "text": "RED\nGAIN\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rGainDown",
+    "options": {}
+   }
+  },
+  {
+   "id": "blueGainUp",
+   "category": "White Balance",
+   "name": "Blue Gain Up",
+   "text": "BLUE\nGAIN\nUP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "bGainUp",
+    "options": {}
+   }
+  },
+  {
+   "id": "blueGainDown",
+   "category": "White Balance",
+   "name": "Blue Gain Down",
+   "text": "BLUE\nGAIN\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "bGainDown",
+    "options": {}
+   }
+  },
+  {
+   "id": "recallPreset1",
+   "category": "Recall Preset",
+   "name": "Recall Preset 1",
+   "text": "Recall\nPSET\n1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 1
+    }
+   }
+  },
+  {
+   "id": "recallPreset2",
+   "category": "Recall Preset",
+   "name": "Recall Preset 2",
+   "text": "Recall\nPSET\n2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 2
+    }
+   }
+  },
+  {
+   "id": "recallPreset3",
+   "category": "Recall Preset",
+   "name": "Recall Preset 3",
+   "text": "Recall\nPSET\n3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 3
+    }
+   }
+  },
+  {
+   "id": "recallPreset4",
+   "category": "Recall Preset",
+   "name": "Recall Preset 4",
+   "text": "Recall\nPSET\n4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 4
+    }
+   }
+  },
+  {
+   "id": "recallPreset5",
+   "category": "Recall Preset",
+   "name": "Recall Preset 5",
+   "text": "Recall\nPSET\n5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 5
+    }
+   }
+  },
+  {
+   "id": "recallPreset6",
+   "category": "Recall Preset",
+   "name": "Recall Preset 6",
+   "text": "Recall\nPSET\n6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 6
+    }
+   }
+  },
+  {
+   "id": "recallPreset7",
+   "category": "Recall Preset",
+   "name": "Recall Preset 7",
+   "text": "Recall\nPSET\n7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 7
+    }
+   }
+  },
+  {
+   "id": "recallPreset8",
+   "category": "Recall Preset",
+   "name": "Recall Preset 8",
+   "text": "Recall\nPSET\n8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 8
+    }
+   }
+  },
+  {
+   "id": "recallPreset9",
+   "category": "Recall Preset",
+   "name": "Recall Preset 9",
+   "text": "Recall\nPSET\n9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 9
+    }
+   }
+  },
+  {
+   "id": "recallPreset10",
+   "category": "Recall Preset",
+   "name": "Recall Preset 10",
+   "text": "Recall\nPSET\n10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 10
+    }
+   }
+  },
+  {
+   "id": "recallPreset11",
+   "category": "Recall Preset",
+   "name": "Recall Preset 11",
+   "text": "Recall\nPSET\n11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 11
+    }
+   }
+  },
+  {
+   "id": "recallPreset12",
+   "category": "Recall Preset",
+   "name": "Recall Preset 12",
+   "text": "Recall\nPSET\n12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 12
+    }
+   }
+  },
+  {
+   "id": "recallPreset13",
+   "category": "Recall Preset",
+   "name": "Recall Preset 13",
+   "text": "Recall\nPSET\n13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 13
+    }
+   }
+  },
+  {
+   "id": "recallPreset14",
+   "category": "Recall Preset",
+   "name": "Recall Preset 14",
+   "text": "Recall\nPSET\n14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 14
+    }
+   }
+  },
+  {
+   "id": "recallPreset15",
+   "category": "Recall Preset",
+   "name": "Recall Preset 15",
+   "text": "Recall\nPSET\n15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 15
+    }
+   }
+  },
+  {
+   "id": "recallPreset16",
+   "category": "Recall Preset",
+   "name": "Recall Preset 16",
+   "text": "Recall\nPSET\n16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 16
+    }
+   }
+  },
+  {
+   "id": "recallPreset17",
+   "category": "Recall Preset",
+   "name": "Recall Preset 17",
+   "text": "Recall\nPSET\n17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 17
+    }
+   }
+  },
+  {
+   "id": "recallPreset18",
+   "category": "Recall Preset",
+   "name": "Recall Preset 18",
+   "text": "Recall\nPSET\n18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 18
+    }
+   }
+  },
+  {
+   "id": "recallPreset19",
+   "category": "Recall Preset",
+   "name": "Recall Preset 19",
+   "text": "Recall\nPSET\n19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 19
+    }
+   }
+  },
+  {
+   "id": "recallPreset20",
+   "category": "Recall Preset",
+   "name": "Recall Preset 20",
+   "text": "Recall\nPSET\n20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 20
+    }
+   }
+  },
+  {
+   "id": "recallPreset21",
+   "category": "Recall Preset",
+   "name": "Recall Preset 21",
+   "text": "Recall\nPSET\n21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 21
+    }
+   }
+  },
+  {
+   "id": "recallPreset22",
+   "category": "Recall Preset",
+   "name": "Recall Preset 22",
+   "text": "Recall\nPSET\n22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 22
+    }
+   }
+  },
+  {
+   "id": "recallPreset23",
+   "category": "Recall Preset",
+   "name": "Recall Preset 23",
+   "text": "Recall\nPSET\n23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 23
+    }
+   }
+  },
+  {
+   "id": "recallPreset24",
+   "category": "Recall Preset",
+   "name": "Recall Preset 24",
+   "text": "Recall\nPSET\n24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 24
+    }
+   }
+  },
+  {
+   "id": "recallPreset25",
+   "category": "Recall Preset",
+   "name": "Recall Preset 25",
+   "text": "Recall\nPSET\n25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 25
+    }
+   }
+  },
+  {
+   "id": "recallPreset26",
+   "category": "Recall Preset",
+   "name": "Recall Preset 26",
+   "text": "Recall\nPSET\n26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 26
+    }
+   }
+  },
+  {
+   "id": "recallPreset27",
+   "category": "Recall Preset",
+   "name": "Recall Preset 27",
+   "text": "Recall\nPSET\n27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 27
+    }
+   }
+  },
+  {
+   "id": "recallPreset28",
+   "category": "Recall Preset",
+   "name": "Recall Preset 28",
+   "text": "Recall\nPSET\n28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 28
+    }
+   }
+  },
+  {
+   "id": "recallPreset29",
+   "category": "Recall Preset",
+   "name": "Recall Preset 29",
+   "text": "Recall\nPSET\n29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 29
+    }
+   }
+  },
+  {
+   "id": "recallPreset30",
+   "category": "Recall Preset",
+   "name": "Recall Preset 30",
+   "text": "Recall\nPSET\n30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 30
+    }
+   }
+  },
+  {
+   "id": "recallPreset31",
+   "category": "Recall Preset",
+   "name": "Recall Preset 31",
+   "text": "Recall\nPSET\n31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 31
+    }
+   }
+  },
+  {
+   "id": "recallPreset32",
+   "category": "Recall Preset",
+   "name": "Recall Preset 32",
+   "text": "Recall\nPSET\n32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 32
+    }
+   }
+  },
+  {
+   "id": "recallPreset33",
+   "category": "Recall Preset",
+   "name": "Recall Preset 33",
+   "text": "Recall\nPSET\n33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 33
+    }
+   }
+  },
+  {
+   "id": "recallPreset34",
+   "category": "Recall Preset",
+   "name": "Recall Preset 34",
+   "text": "Recall\nPSET\n34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 34
+    }
+   }
+  },
+  {
+   "id": "recallPreset35",
+   "category": "Recall Preset",
+   "name": "Recall Preset 35",
+   "text": "Recall\nPSET\n35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 35
+    }
+   }
+  },
+  {
+   "id": "recallPreset36",
+   "category": "Recall Preset",
+   "name": "Recall Preset 36",
+   "text": "Recall\nPSET\n36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 36
+    }
+   }
+  },
+  {
+   "id": "recallPreset37",
+   "category": "Recall Preset",
+   "name": "Recall Preset 37",
+   "text": "Recall\nPSET\n37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 37
+    }
+   }
+  },
+  {
+   "id": "recallPreset38",
+   "category": "Recall Preset",
+   "name": "Recall Preset 38",
+   "text": "Recall\nPSET\n38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 38
+    }
+   }
+  },
+  {
+   "id": "recallPreset39",
+   "category": "Recall Preset",
+   "name": "Recall Preset 39",
+   "text": "Recall\nPSET\n39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 39
+    }
+   }
+  },
+  {
+   "id": "recallPreset40",
+   "category": "Recall Preset",
+   "name": "Recall Preset 40",
+   "text": "Recall\nPSET\n40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 40
+    }
+   }
+  },
+  {
+   "id": "recallPreset41",
+   "category": "Recall Preset",
+   "name": "Recall Preset 41",
+   "text": "Recall\nPSET\n41",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 41
+    }
+   }
+  },
+  {
+   "id": "recallPreset42",
+   "category": "Recall Preset",
+   "name": "Recall Preset 42",
+   "text": "Recall\nPSET\n42",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 42
+    }
+   }
+  },
+  {
+   "id": "recallPreset43",
+   "category": "Recall Preset",
+   "name": "Recall Preset 43",
+   "text": "Recall\nPSET\n43",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 43
+    }
+   }
+  },
+  {
+   "id": "recallPreset44",
+   "category": "Recall Preset",
+   "name": "Recall Preset 44",
+   "text": "Recall\nPSET\n44",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 44
+    }
+   }
+  },
+  {
+   "id": "recallPreset45",
+   "category": "Recall Preset",
+   "name": "Recall Preset 45",
+   "text": "Recall\nPSET\n45",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 45
+    }
+   }
+  },
+  {
+   "id": "recallPreset46",
+   "category": "Recall Preset",
+   "name": "Recall Preset 46",
+   "text": "Recall\nPSET\n46",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 46
+    }
+   }
+  },
+  {
+   "id": "recallPreset47",
+   "category": "Recall Preset",
+   "name": "Recall Preset 47",
+   "text": "Recall\nPSET\n47",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 47
+    }
+   }
+  },
+  {
+   "id": "recallPreset48",
+   "category": "Recall Preset",
+   "name": "Recall Preset 48",
+   "text": "Recall\nPSET\n48",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 48
+    }
+   }
+  },
+  {
+   "id": "recallPreset49",
+   "category": "Recall Preset",
+   "name": "Recall Preset 49",
+   "text": "Recall\nPSET\n49",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 49
+    }
+   }
+  },
+  {
+   "id": "recallPreset50",
+   "category": "Recall Preset",
+   "name": "Recall Preset 50",
+   "text": "Recall\nPSET\n50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 50
+    }
+   }
+  },
+  {
+   "id": "recallPreset51",
+   "category": "Recall Preset",
+   "name": "Recall Preset 51",
+   "text": "Recall\nPSET\n51",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 51
+    }
+   }
+  },
+  {
+   "id": "recallPreset52",
+   "category": "Recall Preset",
+   "name": "Recall Preset 52",
+   "text": "Recall\nPSET\n52",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 52
+    }
+   }
+  },
+  {
+   "id": "recallPreset53",
+   "category": "Recall Preset",
+   "name": "Recall Preset 53",
+   "text": "Recall\nPSET\n53",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 53
+    }
+   }
+  },
+  {
+   "id": "recallPreset54",
+   "category": "Recall Preset",
+   "name": "Recall Preset 54",
+   "text": "Recall\nPSET\n54",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 54
+    }
+   }
+  },
+  {
+   "id": "recallPreset55",
+   "category": "Recall Preset",
+   "name": "Recall Preset 55",
+   "text": "Recall\nPSET\n55",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 55
+    }
+   }
+  },
+  {
+   "id": "recallPreset56",
+   "category": "Recall Preset",
+   "name": "Recall Preset 56",
+   "text": "Recall\nPSET\n56",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 56
+    }
+   }
+  },
+  {
+   "id": "recallPreset57",
+   "category": "Recall Preset",
+   "name": "Recall Preset 57",
+   "text": "Recall\nPSET\n57",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 57
+    }
+   }
+  },
+  {
+   "id": "recallPreset58",
+   "category": "Recall Preset",
+   "name": "Recall Preset 58",
+   "text": "Recall\nPSET\n58",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 58
+    }
+   }
+  },
+  {
+   "id": "recallPreset59",
+   "category": "Recall Preset",
+   "name": "Recall Preset 59",
+   "text": "Recall\nPSET\n59",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 59
+    }
+   }
+  },
+  {
+   "id": "recallPreset60",
+   "category": "Recall Preset",
+   "name": "Recall Preset 60",
+   "text": "Recall\nPSET\n60",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 60
+    }
+   }
+  },
+  {
+   "id": "recallPreset61",
+   "category": "Recall Preset",
+   "name": "Recall Preset 61",
+   "text": "Recall\nPSET\n61",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 61
+    }
+   }
+  },
+  {
+   "id": "recallPreset62",
+   "category": "Recall Preset",
+   "name": "Recall Preset 62",
+   "text": "Recall\nPSET\n62",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 62
+    }
+   }
+  },
+  {
+   "id": "recallPreset63",
+   "category": "Recall Preset",
+   "name": "Recall Preset 63",
+   "text": "Recall\nPSET\n63",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 63
+    }
+   }
+  },
+  {
+   "id": "recallPreset64",
+   "category": "Recall Preset",
+   "name": "Recall Preset 64",
+   "text": "Recall\nPSET\n64",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 64
+    }
+   }
+  },
+  {
+   "id": "recallPreset65",
+   "category": "Recall Preset",
+   "name": "Recall Preset 65",
+   "text": "Recall\nPSET\n65",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 65
+    }
+   }
+  },
+  {
+   "id": "recallPreset66",
+   "category": "Recall Preset",
+   "name": "Recall Preset 66",
+   "text": "Recall\nPSET\n66",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 66
+    }
+   }
+  },
+  {
+   "id": "recallPreset67",
+   "category": "Recall Preset",
+   "name": "Recall Preset 67",
+   "text": "Recall\nPSET\n67",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 67
+    }
+   }
+  },
+  {
+   "id": "recallPreset68",
+   "category": "Recall Preset",
+   "name": "Recall Preset 68",
+   "text": "Recall\nPSET\n68",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 68
+    }
+   }
+  },
+  {
+   "id": "recallPreset69",
+   "category": "Recall Preset",
+   "name": "Recall Preset 69",
+   "text": "Recall\nPSET\n69",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 69
+    }
+   }
+  },
+  {
+   "id": "recallPreset70",
+   "category": "Recall Preset",
+   "name": "Recall Preset 70",
+   "text": "Recall\nPSET\n70",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 70
+    }
+   }
+  },
+  {
+   "id": "recallPreset71",
+   "category": "Recall Preset",
+   "name": "Recall Preset 71",
+   "text": "Recall\nPSET\n71",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 71
+    }
+   }
+  },
+  {
+   "id": "recallPreset72",
+   "category": "Recall Preset",
+   "name": "Recall Preset 72",
+   "text": "Recall\nPSET\n72",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 72
+    }
+   }
+  },
+  {
+   "id": "recallPreset73",
+   "category": "Recall Preset",
+   "name": "Recall Preset 73",
+   "text": "Recall\nPSET\n73",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 73
+    }
+   }
+  },
+  {
+   "id": "recallPreset74",
+   "category": "Recall Preset",
+   "name": "Recall Preset 74",
+   "text": "Recall\nPSET\n74",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 74
+    }
+   }
+  },
+  {
+   "id": "recallPreset75",
+   "category": "Recall Preset",
+   "name": "Recall Preset 75",
+   "text": "Recall\nPSET\n75",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 75
+    }
+   }
+  },
+  {
+   "id": "recallPreset76",
+   "category": "Recall Preset",
+   "name": "Recall Preset 76",
+   "text": "Recall\nPSET\n76",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 76
+    }
+   }
+  },
+  {
+   "id": "recallPreset77",
+   "category": "Recall Preset",
+   "name": "Recall Preset 77",
+   "text": "Recall\nPSET\n77",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 77
+    }
+   }
+  },
+  {
+   "id": "recallPreset78",
+   "category": "Recall Preset",
+   "name": "Recall Preset 78",
+   "text": "Recall\nPSET\n78",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 78
+    }
+   }
+  },
+  {
+   "id": "recallPreset79",
+   "category": "Recall Preset",
+   "name": "Recall Preset 79",
+   "text": "Recall\nPSET\n79",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 79
+    }
+   }
+  },
+  {
+   "id": "recallPreset80",
+   "category": "Recall Preset",
+   "name": "Recall Preset 80",
+   "text": "Recall\nPSET\n80",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 80
+    }
+   }
+  },
+  {
+   "id": "recallPreset81",
+   "category": "Recall Preset",
+   "name": "Recall Preset 81",
+   "text": "Recall\nPSET\n81",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 81
+    }
+   }
+  },
+  {
+   "id": "recallPreset82",
+   "category": "Recall Preset",
+   "name": "Recall Preset 82",
+   "text": "Recall\nPSET\n82",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 82
+    }
+   }
+  },
+  {
+   "id": "recallPreset83",
+   "category": "Recall Preset",
+   "name": "Recall Preset 83",
+   "text": "Recall\nPSET\n83",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 83
+    }
+   }
+  },
+  {
+   "id": "recallPreset84",
+   "category": "Recall Preset",
+   "name": "Recall Preset 84",
+   "text": "Recall\nPSET\n84",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 84
+    }
+   }
+  },
+  {
+   "id": "recallPreset85",
+   "category": "Recall Preset",
+   "name": "Recall Preset 85",
+   "text": "Recall\nPSET\n85",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 85
+    }
+   }
+  },
+  {
+   "id": "recallPreset86",
+   "category": "Recall Preset",
+   "name": "Recall Preset 86",
+   "text": "Recall\nPSET\n86",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 86
+    }
+   }
+  },
+  {
+   "id": "recallPreset87",
+   "category": "Recall Preset",
+   "name": "Recall Preset 87",
+   "text": "Recall\nPSET\n87",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 87
+    }
+   }
+  },
+  {
+   "id": "recallPreset88",
+   "category": "Recall Preset",
+   "name": "Recall Preset 88",
+   "text": "Recall\nPSET\n88",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 88
+    }
+   }
+  },
+  {
+   "id": "recallPreset89",
+   "category": "Recall Preset",
+   "name": "Recall Preset 89",
+   "text": "Recall\nPSET\n89",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 89
+    }
+   }
+  },
+  {
+   "id": "recallPreset90",
+   "category": "Recall Preset",
+   "name": "Recall Preset 90",
+   "text": "Recall\nPSET\n90",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 90
+    }
+   }
+  },
+  {
+   "id": "recallPreset91",
+   "category": "Recall Preset",
+   "name": "Recall Preset 91",
+   "text": "Recall\nPSET\n91",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 91
+    }
+   }
+  },
+  {
+   "id": "recallPreset92",
+   "category": "Recall Preset",
+   "name": "Recall Preset 92",
+   "text": "Recall\nPSET\n92",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 92
+    }
+   }
+  },
+  {
+   "id": "recallPreset93",
+   "category": "Recall Preset",
+   "name": "Recall Preset 93",
+   "text": "Recall\nPSET\n93",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 93
+    }
+   }
+  },
+  {
+   "id": "recallPreset94",
+   "category": "Recall Preset",
+   "name": "Recall Preset 94",
+   "text": "Recall\nPSET\n94",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 94
+    }
+   }
+  },
+  {
+   "id": "recallPreset95",
+   "category": "Recall Preset",
+   "name": "Recall Preset 95",
+   "text": "Recall\nPSET\n95",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 95
+    }
+   }
+  },
+  {
+   "id": "recallPreset96",
+   "category": "Recall Preset",
+   "name": "Recall Preset 96",
+   "text": "Recall\nPSET\n96",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 96
+    }
+   }
+  },
+  {
+   "id": "recallPreset97",
+   "category": "Recall Preset",
+   "name": "Recall Preset 97",
+   "text": "Recall\nPSET\n97",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 97
+    }
+   }
+  },
+  {
+   "id": "recallPreset98",
+   "category": "Recall Preset",
+   "name": "Recall Preset 98",
+   "text": "Recall\nPSET\n98",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 98
+    }
+   }
+  },
+  {
+   "id": "recallPreset99",
+   "category": "Recall Preset",
+   "name": "Recall Preset 99",
+   "text": "Recall\nPSET\n99",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 99
+    }
+   }
+  },
+  {
+   "id": "recallPreset100",
+   "category": "Recall Preset",
+   "name": "Recall Preset 100",
+   "text": "Recall\nPSET\n100",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallPset",
+    "options": {
+     "val": 100
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-canon-ptz",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "canon-ptz",
+  "version": "2.4.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-canon-ptz.git"
+ }
+}

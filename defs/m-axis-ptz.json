@@ -1,0 +1,3777 @@
+{
+ "format": 1,
+ "id": "m-axis-ptz",
+ "name": "axis PTZ Camera",
+ "category": "axis",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "user",
+   "label": "User name",
+   "type": "text",
+   "help": "The user name."
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "help": "The password"
+  },
+  {
+   "id": "authmethod",
+   "label": "Authentication method",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "0",
+     "label": "BasicAuth"
+    },
+    {
+     "id": "1",
+     "label": "DigestAuth"
+    }
+   ]
+  },
+  {
+   "id": "timeout",
+   "label": "timeout",
+   "type": "text",
+   "help": "In case of a high latency network you can set the timeout to another value"
+  },
+  {
+   "id": "debug",
+   "label": "extended debug",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "0",
+     "label": "off"
+    },
+    {
+     "id": "1",
+     "label": "on"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "left",
+   "name": "Pan/Tilt - Pan Left",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 50,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove={{option.speed|lin:-1:0}},0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "right",
+   "name": "Pan/Tilt - Pan Right",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 50,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove={{option.speed}},0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "up",
+   "name": "Pan/Tilt - Tilt Up",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 50,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,{{option.speed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "down",
+   "name": "Pan/Tilt - Tilt Down",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 50,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,{{option.speed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Pan/Tilt - Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "home",
+   "name": "Pan/Tilt - Home",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 50,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?move=home&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zoomI",
+   "name": "Lens - Zoom In",
+   "options": [
+    {
+     "id": "zoomspeed",
+     "label": "ZoomSpeed",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 10000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove={{option.zoomspeed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zoomO",
+   "name": "Lens - Zoom Out",
+   "options": [
+    {
+     "id": "zoomspeed",
+     "label": "ZoomSpeed",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 10000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove={{option.zoomspeed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zoomS",
+   "name": "Lens - Zoom Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove=0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "focusI",
+   "name": "Lens - focus In",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 50,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove={{option.speed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "focusO",
+   "name": "Lens - focus Out",
+   "options": [
+    {
+     "id": "speed",
+     "label": "Speed",
+     "type": "number",
+     "default": 50,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove={{option.speed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "focusS",
+   "name": "Lens - Focus Stop`",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove=0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "focusM",
+   "name": "Lens - Focus Mode (Auto Focus)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Auto / Manual Focus",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto Focus"
+      },
+      {
+       "id": "1",
+       "label": "Manual Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?autofocus=o{{option.bol|map}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "bol": {
+     "0": "n",
+     "1": "ff"
+    }
+   }
+  },
+  {
+   "id": "Setpreset",
+   "name": "Preset - Save",
+   "options": [
+    {
+     "id": "val",
+     "label": "Preset Nr.",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "Preset 1"
+      },
+      {
+       "id": "02",
+       "label": "Preset 2"
+      },
+      {
+       "id": "03",
+       "label": "Preset 3"
+      },
+      {
+       "id": "04",
+       "label": "Preset 4"
+      },
+      {
+       "id": "05",
+       "label": "Preset 5"
+      },
+      {
+       "id": "06",
+       "label": "Preset 6"
+      },
+      {
+       "id": "07",
+       "label": "Preset 7"
+      },
+      {
+       "id": "08",
+       "label": "Preset 8"
+      },
+      {
+       "id": "09",
+       "label": "Preset 9"
+      },
+      {
+       "id": "10",
+       "label": "Preset 10"
+      },
+      {
+       "id": "11",
+       "label": "Preset 11"
+      },
+      {
+       "id": "12",
+       "label": "Preset 12"
+      },
+      {
+       "id": "13",
+       "label": "Preset 13"
+      },
+      {
+       "id": "14",
+       "label": "Preset 14"
+      },
+      {
+       "id": "15",
+       "label": "Preset 15"
+      },
+      {
+       "id": "16",
+       "label": "Preset 16"
+      },
+      {
+       "id": "17",
+       "label": "Preset 17"
+      },
+      {
+       "id": "18",
+       "label": "Preset 18"
+      },
+      {
+       "id": "19",
+       "label": "Preset 19"
+      },
+      {
+       "id": "20",
+       "label": "Preset 20"
+      },
+      {
+       "id": "21",
+       "label": "Preset 21"
+      },
+      {
+       "id": "22",
+       "label": "Preset 22"
+      },
+      {
+       "id": "23",
+       "label": "Preset 23"
+      },
+      {
+       "id": "24",
+       "label": "Preset 24"
+      },
+      {
+       "id": "25",
+       "label": "Preset 25"
+      },
+      {
+       "id": "26",
+       "label": "Preset 26"
+      },
+      {
+       "id": "27",
+       "label": "Preset 27"
+      },
+      {
+       "id": "28",
+       "label": "Preset 28"
+      },
+      {
+       "id": "29",
+       "label": "Preset 29"
+      },
+      {
+       "id": "30",
+       "label": "Preset 30"
+      },
+      {
+       "id": "31",
+       "label": "Preset 31"
+      },
+      {
+       "id": "32",
+       "label": "Preset 32"
+      },
+      {
+       "id": "33",
+       "label": "Preset 33"
+      },
+      {
+       "id": "34",
+       "label": "Preset 34"
+      },
+      {
+       "id": "35",
+       "label": "Preset 35"
+      },
+      {
+       "id": "36",
+       "label": "Preset 36"
+      },
+      {
+       "id": "37",
+       "label": "Preset 37"
+      },
+      {
+       "id": "38",
+       "label": "Preset 38"
+      },
+      {
+       "id": "39",
+       "label": "Preset 39"
+      },
+      {
+       "id": "40",
+       "label": "Preset 40"
+      },
+      {
+       "id": "41",
+       "label": "Preset 41"
+      },
+      {
+       "id": "42",
+       "label": "Preset 42"
+      },
+      {
+       "id": "43",
+       "label": "Preset 43"
+      },
+      {
+       "id": "44",
+       "label": "Preset 44"
+      },
+      {
+       "id": "45",
+       "label": "Preset 45"
+      },
+      {
+       "id": "46",
+       "label": "Preset 46"
+      },
+      {
+       "id": "47",
+       "label": "Preset 47"
+      },
+      {
+       "id": "48",
+       "label": "Preset 48"
+      },
+      {
+       "id": "49",
+       "label": "Preset 49"
+      },
+      {
+       "id": "50",
+       "label": "Preset 50"
+      },
+      {
+       "id": "51",
+       "label": "Preset 51"
+      },
+      {
+       "id": "52",
+       "label": "Preset 52"
+      },
+      {
+       "id": "53",
+       "label": "Preset 53"
+      },
+      {
+       "id": "54",
+       "label": "Preset 54"
+      },
+      {
+       "id": "55",
+       "label": "Preset 55"
+      },
+      {
+       "id": "56",
+       "label": "Preset 56"
+      },
+      {
+       "id": "57",
+       "label": "Preset 57"
+      },
+      {
+       "id": "58",
+       "label": "Preset 58"
+      },
+      {
+       "id": "59",
+       "label": "Preset 59"
+      },
+      {
+       "id": "60",
+       "label": "Preset 60"
+      },
+      {
+       "id": "61",
+       "label": "Preset 61"
+      },
+      {
+       "id": "62",
+       "label": "Preset 62"
+      },
+      {
+       "id": "63",
+       "label": "Preset 63"
+      },
+      {
+       "id": "64",
+       "label": "Preset 64"
+      },
+      {
+       "id": "65",
+       "label": "Preset 65"
+      },
+      {
+       "id": "66",
+       "label": "Preset 66"
+      },
+      {
+       "id": "67",
+       "label": "Preset 67"
+      },
+      {
+       "id": "68",
+       "label": "Preset 68"
+      },
+      {
+       "id": "69",
+       "label": "Preset 69"
+      },
+      {
+       "id": "70",
+       "label": "Preset 70"
+      },
+      {
+       "id": "71",
+       "label": "Preset 71"
+      },
+      {
+       "id": "72",
+       "label": "Preset 72"
+      },
+      {
+       "id": "73",
+       "label": "Preset 73"
+      },
+      {
+       "id": "74",
+       "label": "Preset 74"
+      },
+      {
+       "id": "75",
+       "label": "Preset 75"
+      },
+      {
+       "id": "76",
+       "label": "Preset 76"
+      },
+      {
+       "id": "77",
+       "label": "Preset 77"
+      },
+      {
+       "id": "78",
+       "label": "Preset 78"
+      },
+      {
+       "id": "79",
+       "label": "Preset 79"
+      },
+      {
+       "id": "80",
+       "label": "Preset 80"
+      },
+      {
+       "id": "81",
+       "label": "Preset 81"
+      },
+      {
+       "id": "82",
+       "label": "Preset 82"
+      },
+      {
+       "id": "83",
+       "label": "Preset 83"
+      },
+      {
+       "id": "84",
+       "label": "Preset 84"
+      },
+      {
+       "id": "85",
+       "label": "Preset 85"
+      },
+      {
+       "id": "86",
+       "label": "Preset 86"
+      },
+      {
+       "id": "87",
+       "label": "Preset 87"
+      },
+      {
+       "id": "88",
+       "label": "Preset 88"
+      },
+      {
+       "id": "89",
+       "label": "Preset 89"
+      },
+      {
+       "id": "90",
+       "label": "Preset 90"
+      },
+      {
+       "id": "91",
+       "label": "Preset 91"
+      },
+      {
+       "id": "92",
+       "label": "Preset 92"
+      },
+      {
+       "id": "93",
+       "label": "Preset 93"
+      },
+      {
+       "id": "94",
+       "label": "Preset 94"
+      },
+      {
+       "id": "95",
+       "label": "Preset 95"
+      },
+      {
+       "id": "96",
+       "label": "Preset 96"
+      },
+      {
+       "id": "97",
+       "label": "Preset 97"
+      },
+      {
+       "id": "98",
+       "label": "Preset 98"
+      },
+      {
+       "id": "99",
+       "label": "Preset 99"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?setserverpresetno={{option.val}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "preset",
+   "name": "Preset - Recall",
+   "options": [
+    {
+     "id": "val",
+     "label": "Preset Nr.",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "Preset 1"
+      },
+      {
+       "id": "02",
+       "label": "Preset 2"
+      },
+      {
+       "id": "03",
+       "label": "Preset 3"
+      },
+      {
+       "id": "04",
+       "label": "Preset 4"
+      },
+      {
+       "id": "05",
+       "label": "Preset 5"
+      },
+      {
+       "id": "06",
+       "label": "Preset 6"
+      },
+      {
+       "id": "07",
+       "label": "Preset 7"
+      },
+      {
+       "id": "08",
+       "label": "Preset 8"
+      },
+      {
+       "id": "09",
+       "label": "Preset 9"
+      },
+      {
+       "id": "10",
+       "label": "Preset 10"
+      },
+      {
+       "id": "11",
+       "label": "Preset 11"
+      },
+      {
+       "id": "12",
+       "label": "Preset 12"
+      },
+      {
+       "id": "13",
+       "label": "Preset 13"
+      },
+      {
+       "id": "14",
+       "label": "Preset 14"
+      },
+      {
+       "id": "15",
+       "label": "Preset 15"
+      },
+      {
+       "id": "16",
+       "label": "Preset 16"
+      },
+      {
+       "id": "17",
+       "label": "Preset 17"
+      },
+      {
+       "id": "18",
+       "label": "Preset 18"
+      },
+      {
+       "id": "19",
+       "label": "Preset 19"
+      },
+      {
+       "id": "20",
+       "label": "Preset 20"
+      },
+      {
+       "id": "21",
+       "label": "Preset 21"
+      },
+      {
+       "id": "22",
+       "label": "Preset 22"
+      },
+      {
+       "id": "23",
+       "label": "Preset 23"
+      },
+      {
+       "id": "24",
+       "label": "Preset 24"
+      },
+      {
+       "id": "25",
+       "label": "Preset 25"
+      },
+      {
+       "id": "26",
+       "label": "Preset 26"
+      },
+      {
+       "id": "27",
+       "label": "Preset 27"
+      },
+      {
+       "id": "28",
+       "label": "Preset 28"
+      },
+      {
+       "id": "29",
+       "label": "Preset 29"
+      },
+      {
+       "id": "30",
+       "label": "Preset 30"
+      },
+      {
+       "id": "31",
+       "label": "Preset 31"
+      },
+      {
+       "id": "32",
+       "label": "Preset 32"
+      },
+      {
+       "id": "33",
+       "label": "Preset 33"
+      },
+      {
+       "id": "34",
+       "label": "Preset 34"
+      },
+      {
+       "id": "35",
+       "label": "Preset 35"
+      },
+      {
+       "id": "36",
+       "label": "Preset 36"
+      },
+      {
+       "id": "37",
+       "label": "Preset 37"
+      },
+      {
+       "id": "38",
+       "label": "Preset 38"
+      },
+      {
+       "id": "39",
+       "label": "Preset 39"
+      },
+      {
+       "id": "40",
+       "label": "Preset 40"
+      },
+      {
+       "id": "41",
+       "label": "Preset 41"
+      },
+      {
+       "id": "42",
+       "label": "Preset 42"
+      },
+      {
+       "id": "43",
+       "label": "Preset 43"
+      },
+      {
+       "id": "44",
+       "label": "Preset 44"
+      },
+      {
+       "id": "45",
+       "label": "Preset 45"
+      },
+      {
+       "id": "46",
+       "label": "Preset 46"
+      },
+      {
+       "id": "47",
+       "label": "Preset 47"
+      },
+      {
+       "id": "48",
+       "label": "Preset 48"
+      },
+      {
+       "id": "49",
+       "label": "Preset 49"
+      },
+      {
+       "id": "50",
+       "label": "Preset 50"
+      },
+      {
+       "id": "51",
+       "label": "Preset 51"
+      },
+      {
+       "id": "52",
+       "label": "Preset 52"
+      },
+      {
+       "id": "53",
+       "label": "Preset 53"
+      },
+      {
+       "id": "54",
+       "label": "Preset 54"
+      },
+      {
+       "id": "55",
+       "label": "Preset 55"
+      },
+      {
+       "id": "56",
+       "label": "Preset 56"
+      },
+      {
+       "id": "57",
+       "label": "Preset 57"
+      },
+      {
+       "id": "58",
+       "label": "Preset 58"
+      },
+      {
+       "id": "59",
+       "label": "Preset 59"
+      },
+      {
+       "id": "60",
+       "label": "Preset 60"
+      },
+      {
+       "id": "61",
+       "label": "Preset 61"
+      },
+      {
+       "id": "62",
+       "label": "Preset 62"
+      },
+      {
+       "id": "63",
+       "label": "Preset 63"
+      },
+      {
+       "id": "64",
+       "label": "Preset 64"
+      },
+      {
+       "id": "65",
+       "label": "Preset 65"
+      },
+      {
+       "id": "66",
+       "label": "Preset 66"
+      },
+      {
+       "id": "67",
+       "label": "Preset 67"
+      },
+      {
+       "id": "68",
+       "label": "Preset 68"
+      },
+      {
+       "id": "69",
+       "label": "Preset 69"
+      },
+      {
+       "id": "70",
+       "label": "Preset 70"
+      },
+      {
+       "id": "71",
+       "label": "Preset 71"
+      },
+      {
+       "id": "72",
+       "label": "Preset 72"
+      },
+      {
+       "id": "73",
+       "label": "Preset 73"
+      },
+      {
+       "id": "74",
+       "label": "Preset 74"
+      },
+      {
+       "id": "75",
+       "label": "Preset 75"
+      },
+      {
+       "id": "76",
+       "label": "Preset 76"
+      },
+      {
+       "id": "77",
+       "label": "Preset 77"
+      },
+      {
+       "id": "78",
+       "label": "Preset 78"
+      },
+      {
+       "id": "79",
+       "label": "Preset 79"
+      },
+      {
+       "id": "80",
+       "label": "Preset 80"
+      },
+      {
+       "id": "81",
+       "label": "Preset 81"
+      },
+      {
+       "id": "82",
+       "label": "Preset 82"
+      },
+      {
+       "id": "83",
+       "label": "Preset 83"
+      },
+      {
+       "id": "84",
+       "label": "Preset 84"
+      },
+      {
+       "id": "85",
+       "label": "Preset 85"
+      },
+      {
+       "id": "86",
+       "label": "Preset 86"
+      },
+      {
+       "id": "87",
+       "label": "Preset 87"
+      },
+      {
+       "id": "88",
+       "label": "Preset 88"
+      },
+      {
+       "id": "89",
+       "label": "Preset 89"
+      },
+      {
+       "id": "90",
+       "label": "Preset 90"
+      },
+      {
+       "id": "91",
+       "label": "Preset 91"
+      },
+      {
+       "id": "92",
+       "label": "Preset 92"
+      },
+      {
+       "id": "93",
+       "label": "Preset 93"
+      },
+      {
+       "id": "94",
+       "label": "Preset 94"
+      },
+      {
+       "id": "95",
+       "label": "Preset 95"
+      },
+      {
+       "id": "96",
+       "label": "Preset 96"
+      },
+      {
+       "id": "97",
+       "label": "Preset 97"
+      },
+      {
+       "id": "98",
+       "label": "Preset 98"
+      },
+      {
+       "id": "99",
+       "label": "Preset 99"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /axis-cgi/com/ptz.cgi?gotoserverpresetno={{option.val}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "pan-tilt-home",
+   "category": "Pan/Tilt",
+   "name": "Home",
+   "text": "HOME",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "home",
+    "options": {}
+   }
+  },
+  {
+   "id": "lens-focus-manual",
+   "category": "Lens",
+   "name": "Manual Focus",
+   "text": "MANUAL\nFOCUS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusM",
+    "options": {
+     "bol": 1
+    }
+   }
+  },
+  {
+   "id": "lens-focus-auto",
+   "category": "Lens",
+   "name": "Auto Focus",
+   "text": "AUTO\nFOCUS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusM",
+    "options": {
+     "bol": 0
+    }
+   }
+  },
+  {
+   "id": "save-preset-1",
+   "category": "Save Preset",
+   "name": "Save Preset 1",
+   "text": "SAVE\nPSET\n1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "01"
+    }
+   }
+  },
+  {
+   "id": "save-preset-2",
+   "category": "Save Preset",
+   "name": "Save Preset 2",
+   "text": "SAVE\nPSET\n2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "02"
+    }
+   }
+  },
+  {
+   "id": "save-preset-3",
+   "category": "Save Preset",
+   "name": "Save Preset 3",
+   "text": "SAVE\nPSET\n3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "03"
+    }
+   }
+  },
+  {
+   "id": "save-preset-4",
+   "category": "Save Preset",
+   "name": "Save Preset 4",
+   "text": "SAVE\nPSET\n4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "04"
+    }
+   }
+  },
+  {
+   "id": "save-preset-5",
+   "category": "Save Preset",
+   "name": "Save Preset 5",
+   "text": "SAVE\nPSET\n5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "05"
+    }
+   }
+  },
+  {
+   "id": "save-preset-6",
+   "category": "Save Preset",
+   "name": "Save Preset 6",
+   "text": "SAVE\nPSET\n6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "06"
+    }
+   }
+  },
+  {
+   "id": "save-preset-7",
+   "category": "Save Preset",
+   "name": "Save Preset 7",
+   "text": "SAVE\nPSET\n7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "07"
+    }
+   }
+  },
+  {
+   "id": "save-preset-8",
+   "category": "Save Preset",
+   "name": "Save Preset 8",
+   "text": "SAVE\nPSET\n8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "08"
+    }
+   }
+  },
+  {
+   "id": "save-preset-9",
+   "category": "Save Preset",
+   "name": "Save Preset 9",
+   "text": "SAVE\nPSET\n9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "09"
+    }
+   }
+  },
+  {
+   "id": "save-preset-10",
+   "category": "Save Preset",
+   "name": "Save Preset 10",
+   "text": "SAVE\nPSET\n10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "10"
+    }
+   }
+  },
+  {
+   "id": "save-preset-11",
+   "category": "Save Preset",
+   "name": "Save Preset 11",
+   "text": "SAVE\nPSET\n11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "11"
+    }
+   }
+  },
+  {
+   "id": "save-preset-12",
+   "category": "Save Preset",
+   "name": "Save Preset 12",
+   "text": "SAVE\nPSET\n12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "12"
+    }
+   }
+  },
+  {
+   "id": "save-preset-13",
+   "category": "Save Preset",
+   "name": "Save Preset 13",
+   "text": "SAVE\nPSET\n13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "13"
+    }
+   }
+  },
+  {
+   "id": "save-preset-14",
+   "category": "Save Preset",
+   "name": "Save Preset 14",
+   "text": "SAVE\nPSET\n14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "14"
+    }
+   }
+  },
+  {
+   "id": "save-preset-15",
+   "category": "Save Preset",
+   "name": "Save Preset 15",
+   "text": "SAVE\nPSET\n15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "15"
+    }
+   }
+  },
+  {
+   "id": "save-preset-16",
+   "category": "Save Preset",
+   "name": "Save Preset 16",
+   "text": "SAVE\nPSET\n16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "16"
+    }
+   }
+  },
+  {
+   "id": "save-preset-17",
+   "category": "Save Preset",
+   "name": "Save Preset 17",
+   "text": "SAVE\nPSET\n17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "17"
+    }
+   }
+  },
+  {
+   "id": "save-preset-18",
+   "category": "Save Preset",
+   "name": "Save Preset 18",
+   "text": "SAVE\nPSET\n18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "18"
+    }
+   }
+  },
+  {
+   "id": "save-preset-19",
+   "category": "Save Preset",
+   "name": "Save Preset 19",
+   "text": "SAVE\nPSET\n19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "19"
+    }
+   }
+  },
+  {
+   "id": "save-preset-20",
+   "category": "Save Preset",
+   "name": "Save Preset 20",
+   "text": "SAVE\nPSET\n20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "20"
+    }
+   }
+  },
+  {
+   "id": "save-preset-21",
+   "category": "Save Preset",
+   "name": "Save Preset 21",
+   "text": "SAVE\nPSET\n21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "21"
+    }
+   }
+  },
+  {
+   "id": "save-preset-22",
+   "category": "Save Preset",
+   "name": "Save Preset 22",
+   "text": "SAVE\nPSET\n22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "22"
+    }
+   }
+  },
+  {
+   "id": "save-preset-23",
+   "category": "Save Preset",
+   "name": "Save Preset 23",
+   "text": "SAVE\nPSET\n23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "23"
+    }
+   }
+  },
+  {
+   "id": "save-preset-24",
+   "category": "Save Preset",
+   "name": "Save Preset 24",
+   "text": "SAVE\nPSET\n24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "24"
+    }
+   }
+  },
+  {
+   "id": "save-preset-25",
+   "category": "Save Preset",
+   "name": "Save Preset 25",
+   "text": "SAVE\nPSET\n25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "25"
+    }
+   }
+  },
+  {
+   "id": "save-preset-26",
+   "category": "Save Preset",
+   "name": "Save Preset 26",
+   "text": "SAVE\nPSET\n26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "26"
+    }
+   }
+  },
+  {
+   "id": "save-preset-27",
+   "category": "Save Preset",
+   "name": "Save Preset 27",
+   "text": "SAVE\nPSET\n27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "27"
+    }
+   }
+  },
+  {
+   "id": "save-preset-28",
+   "category": "Save Preset",
+   "name": "Save Preset 28",
+   "text": "SAVE\nPSET\n28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "28"
+    }
+   }
+  },
+  {
+   "id": "save-preset-29",
+   "category": "Save Preset",
+   "name": "Save Preset 29",
+   "text": "SAVE\nPSET\n29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "29"
+    }
+   }
+  },
+  {
+   "id": "save-preset-30",
+   "category": "Save Preset",
+   "name": "Save Preset 30",
+   "text": "SAVE\nPSET\n30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "30"
+    }
+   }
+  },
+  {
+   "id": "save-preset-31",
+   "category": "Save Preset",
+   "name": "Save Preset 31",
+   "text": "SAVE\nPSET\n31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "31"
+    }
+   }
+  },
+  {
+   "id": "save-preset-32",
+   "category": "Save Preset",
+   "name": "Save Preset 32",
+   "text": "SAVE\nPSET\n32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "32"
+    }
+   }
+  },
+  {
+   "id": "save-preset-33",
+   "category": "Save Preset",
+   "name": "Save Preset 33",
+   "text": "SAVE\nPSET\n33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "33"
+    }
+   }
+  },
+  {
+   "id": "save-preset-34",
+   "category": "Save Preset",
+   "name": "Save Preset 34",
+   "text": "SAVE\nPSET\n34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "34"
+    }
+   }
+  },
+  {
+   "id": "save-preset-35",
+   "category": "Save Preset",
+   "name": "Save Preset 35",
+   "text": "SAVE\nPSET\n35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "35"
+    }
+   }
+  },
+  {
+   "id": "save-preset-36",
+   "category": "Save Preset",
+   "name": "Save Preset 36",
+   "text": "SAVE\nPSET\n36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "36"
+    }
+   }
+  },
+  {
+   "id": "save-preset-37",
+   "category": "Save Preset",
+   "name": "Save Preset 37",
+   "text": "SAVE\nPSET\n37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "37"
+    }
+   }
+  },
+  {
+   "id": "save-preset-38",
+   "category": "Save Preset",
+   "name": "Save Preset 38",
+   "text": "SAVE\nPSET\n38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "38"
+    }
+   }
+  },
+  {
+   "id": "save-preset-39",
+   "category": "Save Preset",
+   "name": "Save Preset 39",
+   "text": "SAVE\nPSET\n39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "39"
+    }
+   }
+  },
+  {
+   "id": "save-preset-40",
+   "category": "Save Preset",
+   "name": "Save Preset 40",
+   "text": "SAVE\nPSET\n40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "40"
+    }
+   }
+  },
+  {
+   "id": "save-preset-41",
+   "category": "Save Preset",
+   "name": "Save Preset 41",
+   "text": "SAVE\nPSET\n41",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "41"
+    }
+   }
+  },
+  {
+   "id": "save-preset-42",
+   "category": "Save Preset",
+   "name": "Save Preset 42",
+   "text": "SAVE\nPSET\n42",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "42"
+    }
+   }
+  },
+  {
+   "id": "save-preset-43",
+   "category": "Save Preset",
+   "name": "Save Preset 43",
+   "text": "SAVE\nPSET\n43",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "43"
+    }
+   }
+  },
+  {
+   "id": "save-preset-44",
+   "category": "Save Preset",
+   "name": "Save Preset 44",
+   "text": "SAVE\nPSET\n44",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "44"
+    }
+   }
+  },
+  {
+   "id": "save-preset-45",
+   "category": "Save Preset",
+   "name": "Save Preset 45",
+   "text": "SAVE\nPSET\n45",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "45"
+    }
+   }
+  },
+  {
+   "id": "save-preset-46",
+   "category": "Save Preset",
+   "name": "Save Preset 46",
+   "text": "SAVE\nPSET\n46",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "46"
+    }
+   }
+  },
+  {
+   "id": "save-preset-47",
+   "category": "Save Preset",
+   "name": "Save Preset 47",
+   "text": "SAVE\nPSET\n47",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "47"
+    }
+   }
+  },
+  {
+   "id": "save-preset-48",
+   "category": "Save Preset",
+   "name": "Save Preset 48",
+   "text": "SAVE\nPSET\n48",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "48"
+    }
+   }
+  },
+  {
+   "id": "save-preset-49",
+   "category": "Save Preset",
+   "name": "Save Preset 49",
+   "text": "SAVE\nPSET\n49",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "49"
+    }
+   }
+  },
+  {
+   "id": "save-preset-50",
+   "category": "Save Preset",
+   "name": "Save Preset 50",
+   "text": "SAVE\nPSET\n50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "50"
+    }
+   }
+  },
+  {
+   "id": "save-preset-51",
+   "category": "Save Preset",
+   "name": "Save Preset 51",
+   "text": "SAVE\nPSET\n51",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "51"
+    }
+   }
+  },
+  {
+   "id": "save-preset-52",
+   "category": "Save Preset",
+   "name": "Save Preset 52",
+   "text": "SAVE\nPSET\n52",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "52"
+    }
+   }
+  },
+  {
+   "id": "save-preset-53",
+   "category": "Save Preset",
+   "name": "Save Preset 53",
+   "text": "SAVE\nPSET\n53",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "53"
+    }
+   }
+  },
+  {
+   "id": "save-preset-54",
+   "category": "Save Preset",
+   "name": "Save Preset 54",
+   "text": "SAVE\nPSET\n54",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "54"
+    }
+   }
+  },
+  {
+   "id": "save-preset-55",
+   "category": "Save Preset",
+   "name": "Save Preset 55",
+   "text": "SAVE\nPSET\n55",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "55"
+    }
+   }
+  },
+  {
+   "id": "save-preset-56",
+   "category": "Save Preset",
+   "name": "Save Preset 56",
+   "text": "SAVE\nPSET\n56",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "56"
+    }
+   }
+  },
+  {
+   "id": "save-preset-57",
+   "category": "Save Preset",
+   "name": "Save Preset 57",
+   "text": "SAVE\nPSET\n57",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "57"
+    }
+   }
+  },
+  {
+   "id": "save-preset-58",
+   "category": "Save Preset",
+   "name": "Save Preset 58",
+   "text": "SAVE\nPSET\n58",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "58"
+    }
+   }
+  },
+  {
+   "id": "save-preset-59",
+   "category": "Save Preset",
+   "name": "Save Preset 59",
+   "text": "SAVE\nPSET\n59",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "59"
+    }
+   }
+  },
+  {
+   "id": "save-preset-60",
+   "category": "Save Preset",
+   "name": "Save Preset 60",
+   "text": "SAVE\nPSET\n60",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "60"
+    }
+   }
+  },
+  {
+   "id": "save-preset-61",
+   "category": "Save Preset",
+   "name": "Save Preset 61",
+   "text": "SAVE\nPSET\n61",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "61"
+    }
+   }
+  },
+  {
+   "id": "save-preset-62",
+   "category": "Save Preset",
+   "name": "Save Preset 62",
+   "text": "SAVE\nPSET\n62",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "62"
+    }
+   }
+  },
+  {
+   "id": "save-preset-63",
+   "category": "Save Preset",
+   "name": "Save Preset 63",
+   "text": "SAVE\nPSET\n63",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "63"
+    }
+   }
+  },
+  {
+   "id": "save-preset-64",
+   "category": "Save Preset",
+   "name": "Save Preset 64",
+   "text": "SAVE\nPSET\n64",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "64"
+    }
+   }
+  },
+  {
+   "id": "save-preset-65",
+   "category": "Save Preset",
+   "name": "Save Preset 65",
+   "text": "SAVE\nPSET\n65",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "65"
+    }
+   }
+  },
+  {
+   "id": "save-preset-66",
+   "category": "Save Preset",
+   "name": "Save Preset 66",
+   "text": "SAVE\nPSET\n66",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "66"
+    }
+   }
+  },
+  {
+   "id": "save-preset-67",
+   "category": "Save Preset",
+   "name": "Save Preset 67",
+   "text": "SAVE\nPSET\n67",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "67"
+    }
+   }
+  },
+  {
+   "id": "save-preset-68",
+   "category": "Save Preset",
+   "name": "Save Preset 68",
+   "text": "SAVE\nPSET\n68",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "68"
+    }
+   }
+  },
+  {
+   "id": "save-preset-69",
+   "category": "Save Preset",
+   "name": "Save Preset 69",
+   "text": "SAVE\nPSET\n69",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "69"
+    }
+   }
+  },
+  {
+   "id": "save-preset-70",
+   "category": "Save Preset",
+   "name": "Save Preset 70",
+   "text": "SAVE\nPSET\n70",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "70"
+    }
+   }
+  },
+  {
+   "id": "save-preset-71",
+   "category": "Save Preset",
+   "name": "Save Preset 71",
+   "text": "SAVE\nPSET\n71",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "71"
+    }
+   }
+  },
+  {
+   "id": "save-preset-72",
+   "category": "Save Preset",
+   "name": "Save Preset 72",
+   "text": "SAVE\nPSET\n72",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "72"
+    }
+   }
+  },
+  {
+   "id": "save-preset-73",
+   "category": "Save Preset",
+   "name": "Save Preset 73",
+   "text": "SAVE\nPSET\n73",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "73"
+    }
+   }
+  },
+  {
+   "id": "save-preset-74",
+   "category": "Save Preset",
+   "name": "Save Preset 74",
+   "text": "SAVE\nPSET\n74",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "74"
+    }
+   }
+  },
+  {
+   "id": "save-preset-75",
+   "category": "Save Preset",
+   "name": "Save Preset 75",
+   "text": "SAVE\nPSET\n75",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "75"
+    }
+   }
+  },
+  {
+   "id": "save-preset-76",
+   "category": "Save Preset",
+   "name": "Save Preset 76",
+   "text": "SAVE\nPSET\n76",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "76"
+    }
+   }
+  },
+  {
+   "id": "save-preset-77",
+   "category": "Save Preset",
+   "name": "Save Preset 77",
+   "text": "SAVE\nPSET\n77",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "77"
+    }
+   }
+  },
+  {
+   "id": "save-preset-78",
+   "category": "Save Preset",
+   "name": "Save Preset 78",
+   "text": "SAVE\nPSET\n78",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "78"
+    }
+   }
+  },
+  {
+   "id": "save-preset-79",
+   "category": "Save Preset",
+   "name": "Save Preset 79",
+   "text": "SAVE\nPSET\n79",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "79"
+    }
+   }
+  },
+  {
+   "id": "save-preset-80",
+   "category": "Save Preset",
+   "name": "Save Preset 80",
+   "text": "SAVE\nPSET\n80",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "80"
+    }
+   }
+  },
+  {
+   "id": "save-preset-81",
+   "category": "Save Preset",
+   "name": "Save Preset 81",
+   "text": "SAVE\nPSET\n81",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "81"
+    }
+   }
+  },
+  {
+   "id": "save-preset-82",
+   "category": "Save Preset",
+   "name": "Save Preset 82",
+   "text": "SAVE\nPSET\n82",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "82"
+    }
+   }
+  },
+  {
+   "id": "save-preset-83",
+   "category": "Save Preset",
+   "name": "Save Preset 83",
+   "text": "SAVE\nPSET\n83",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "83"
+    }
+   }
+  },
+  {
+   "id": "save-preset-84",
+   "category": "Save Preset",
+   "name": "Save Preset 84",
+   "text": "SAVE\nPSET\n84",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "84"
+    }
+   }
+  },
+  {
+   "id": "save-preset-85",
+   "category": "Save Preset",
+   "name": "Save Preset 85",
+   "text": "SAVE\nPSET\n85",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "85"
+    }
+   }
+  },
+  {
+   "id": "save-preset-86",
+   "category": "Save Preset",
+   "name": "Save Preset 86",
+   "text": "SAVE\nPSET\n86",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "86"
+    }
+   }
+  },
+  {
+   "id": "save-preset-87",
+   "category": "Save Preset",
+   "name": "Save Preset 87",
+   "text": "SAVE\nPSET\n87",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "87"
+    }
+   }
+  },
+  {
+   "id": "save-preset-88",
+   "category": "Save Preset",
+   "name": "Save Preset 88",
+   "text": "SAVE\nPSET\n88",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "88"
+    }
+   }
+  },
+  {
+   "id": "save-preset-89",
+   "category": "Save Preset",
+   "name": "Save Preset 89",
+   "text": "SAVE\nPSET\n89",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "89"
+    }
+   }
+  },
+  {
+   "id": "save-preset-90",
+   "category": "Save Preset",
+   "name": "Save Preset 90",
+   "text": "SAVE\nPSET\n90",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "90"
+    }
+   }
+  },
+  {
+   "id": "save-preset-91",
+   "category": "Save Preset",
+   "name": "Save Preset 91",
+   "text": "SAVE\nPSET\n91",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "91"
+    }
+   }
+  },
+  {
+   "id": "save-preset-92",
+   "category": "Save Preset",
+   "name": "Save Preset 92",
+   "text": "SAVE\nPSET\n92",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "92"
+    }
+   }
+  },
+  {
+   "id": "save-preset-93",
+   "category": "Save Preset",
+   "name": "Save Preset 93",
+   "text": "SAVE\nPSET\n93",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "93"
+    }
+   }
+  },
+  {
+   "id": "save-preset-94",
+   "category": "Save Preset",
+   "name": "Save Preset 94",
+   "text": "SAVE\nPSET\n94",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "94"
+    }
+   }
+  },
+  {
+   "id": "save-preset-95",
+   "category": "Save Preset",
+   "name": "Save Preset 95",
+   "text": "SAVE\nPSET\n95",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "95"
+    }
+   }
+  },
+  {
+   "id": "save-preset-96",
+   "category": "Save Preset",
+   "name": "Save Preset 96",
+   "text": "SAVE\nPSET\n96",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "96"
+    }
+   }
+  },
+  {
+   "id": "save-preset-97",
+   "category": "Save Preset",
+   "name": "Save Preset 97",
+   "text": "SAVE\nPSET\n97",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "97"
+    }
+   }
+  },
+  {
+   "id": "save-preset-98",
+   "category": "Save Preset",
+   "name": "Save Preset 98",
+   "text": "SAVE\nPSET\n98",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "98"
+    }
+   }
+  },
+  {
+   "id": "save-preset-99",
+   "category": "Save Preset",
+   "name": "Save Preset 99",
+   "text": "SAVE\nPSET\n99",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Setpreset",
+    "options": {
+     "val": "99"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-1",
+   "category": "Recall Preset",
+   "name": "Recall Preset 1",
+   "text": "Recall\nPSET\n1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "01"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-2",
+   "category": "Recall Preset",
+   "name": "Recall Preset 2",
+   "text": "Recall\nPSET\n2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "02"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-3",
+   "category": "Recall Preset",
+   "name": "Recall Preset 3",
+   "text": "Recall\nPSET\n3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "03"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-4",
+   "category": "Recall Preset",
+   "name": "Recall Preset 4",
+   "text": "Recall\nPSET\n4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "04"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-5",
+   "category": "Recall Preset",
+   "name": "Recall Preset 5",
+   "text": "Recall\nPSET\n5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "05"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-6",
+   "category": "Recall Preset",
+   "name": "Recall Preset 6",
+   "text": "Recall\nPSET\n6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "06"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-7",
+   "category": "Recall Preset",
+   "name": "Recall Preset 7",
+   "text": "Recall\nPSET\n7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "07"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-8",
+   "category": "Recall Preset",
+   "name": "Recall Preset 8",
+   "text": "Recall\nPSET\n8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "08"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-9",
+   "category": "Recall Preset",
+   "name": "Recall Preset 9",
+   "text": "Recall\nPSET\n9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "09"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-10",
+   "category": "Recall Preset",
+   "name": "Recall Preset 10",
+   "text": "Recall\nPSET\n10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "10"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-11",
+   "category": "Recall Preset",
+   "name": "Recall Preset 11",
+   "text": "Recall\nPSET\n11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "11"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-12",
+   "category": "Recall Preset",
+   "name": "Recall Preset 12",
+   "text": "Recall\nPSET\n12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "12"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-13",
+   "category": "Recall Preset",
+   "name": "Recall Preset 13",
+   "text": "Recall\nPSET\n13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "13"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-14",
+   "category": "Recall Preset",
+   "name": "Recall Preset 14",
+   "text": "Recall\nPSET\n14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "14"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-15",
+   "category": "Recall Preset",
+   "name": "Recall Preset 15",
+   "text": "Recall\nPSET\n15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "15"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-16",
+   "category": "Recall Preset",
+   "name": "Recall Preset 16",
+   "text": "Recall\nPSET\n16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "16"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-17",
+   "category": "Recall Preset",
+   "name": "Recall Preset 17",
+   "text": "Recall\nPSET\n17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "17"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-18",
+   "category": "Recall Preset",
+   "name": "Recall Preset 18",
+   "text": "Recall\nPSET\n18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "18"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-19",
+   "category": "Recall Preset",
+   "name": "Recall Preset 19",
+   "text": "Recall\nPSET\n19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "19"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-20",
+   "category": "Recall Preset",
+   "name": "Recall Preset 20",
+   "text": "Recall\nPSET\n20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "20"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-21",
+   "category": "Recall Preset",
+   "name": "Recall Preset 21",
+   "text": "Recall\nPSET\n21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "21"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-22",
+   "category": "Recall Preset",
+   "name": "Recall Preset 22",
+   "text": "Recall\nPSET\n22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "22"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-23",
+   "category": "Recall Preset",
+   "name": "Recall Preset 23",
+   "text": "Recall\nPSET\n23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "23"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-24",
+   "category": "Recall Preset",
+   "name": "Recall Preset 24",
+   "text": "Recall\nPSET\n24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "24"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-25",
+   "category": "Recall Preset",
+   "name": "Recall Preset 25",
+   "text": "Recall\nPSET\n25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "25"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-26",
+   "category": "Recall Preset",
+   "name": "Recall Preset 26",
+   "text": "Recall\nPSET\n26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "26"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-27",
+   "category": "Recall Preset",
+   "name": "Recall Preset 27",
+   "text": "Recall\nPSET\n27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "27"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-28",
+   "category": "Recall Preset",
+   "name": "Recall Preset 28",
+   "text": "Recall\nPSET\n28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "28"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-29",
+   "category": "Recall Preset",
+   "name": "Recall Preset 29",
+   "text": "Recall\nPSET\n29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "29"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-30",
+   "category": "Recall Preset",
+   "name": "Recall Preset 30",
+   "text": "Recall\nPSET\n30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "30"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-31",
+   "category": "Recall Preset",
+   "name": "Recall Preset 31",
+   "text": "Recall\nPSET\n31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "31"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-32",
+   "category": "Recall Preset",
+   "name": "Recall Preset 32",
+   "text": "Recall\nPSET\n32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "32"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-33",
+   "category": "Recall Preset",
+   "name": "Recall Preset 33",
+   "text": "Recall\nPSET\n33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "33"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-34",
+   "category": "Recall Preset",
+   "name": "Recall Preset 34",
+   "text": "Recall\nPSET\n34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "34"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-35",
+   "category": "Recall Preset",
+   "name": "Recall Preset 35",
+   "text": "Recall\nPSET\n35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "35"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-36",
+   "category": "Recall Preset",
+   "name": "Recall Preset 36",
+   "text": "Recall\nPSET\n36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "36"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-37",
+   "category": "Recall Preset",
+   "name": "Recall Preset 37",
+   "text": "Recall\nPSET\n37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "37"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-38",
+   "category": "Recall Preset",
+   "name": "Recall Preset 38",
+   "text": "Recall\nPSET\n38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "38"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-39",
+   "category": "Recall Preset",
+   "name": "Recall Preset 39",
+   "text": "Recall\nPSET\n39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "39"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-40",
+   "category": "Recall Preset",
+   "name": "Recall Preset 40",
+   "text": "Recall\nPSET\n40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "40"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-41",
+   "category": "Recall Preset",
+   "name": "Recall Preset 41",
+   "text": "Recall\nPSET\n41",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "41"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-42",
+   "category": "Recall Preset",
+   "name": "Recall Preset 42",
+   "text": "Recall\nPSET\n42",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "42"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-43",
+   "category": "Recall Preset",
+   "name": "Recall Preset 43",
+   "text": "Recall\nPSET\n43",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "43"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-44",
+   "category": "Recall Preset",
+   "name": "Recall Preset 44",
+   "text": "Recall\nPSET\n44",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "44"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-45",
+   "category": "Recall Preset",
+   "name": "Recall Preset 45",
+   "text": "Recall\nPSET\n45",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "45"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-46",
+   "category": "Recall Preset",
+   "name": "Recall Preset 46",
+   "text": "Recall\nPSET\n46",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "46"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-47",
+   "category": "Recall Preset",
+   "name": "Recall Preset 47",
+   "text": "Recall\nPSET\n47",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "47"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-48",
+   "category": "Recall Preset",
+   "name": "Recall Preset 48",
+   "text": "Recall\nPSET\n48",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "48"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-49",
+   "category": "Recall Preset",
+   "name": "Recall Preset 49",
+   "text": "Recall\nPSET\n49",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "49"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-50",
+   "category": "Recall Preset",
+   "name": "Recall Preset 50",
+   "text": "Recall\nPSET\n50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "50"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-51",
+   "category": "Recall Preset",
+   "name": "Recall Preset 51",
+   "text": "Recall\nPSET\n51",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "51"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-52",
+   "category": "Recall Preset",
+   "name": "Recall Preset 52",
+   "text": "Recall\nPSET\n52",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "52"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-53",
+   "category": "Recall Preset",
+   "name": "Recall Preset 53",
+   "text": "Recall\nPSET\n53",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "53"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-54",
+   "category": "Recall Preset",
+   "name": "Recall Preset 54",
+   "text": "Recall\nPSET\n54",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "54"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-55",
+   "category": "Recall Preset",
+   "name": "Recall Preset 55",
+   "text": "Recall\nPSET\n55",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "55"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-56",
+   "category": "Recall Preset",
+   "name": "Recall Preset 56",
+   "text": "Recall\nPSET\n56",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "56"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-57",
+   "category": "Recall Preset",
+   "name": "Recall Preset 57",
+   "text": "Recall\nPSET\n57",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "57"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-58",
+   "category": "Recall Preset",
+   "name": "Recall Preset 58",
+   "text": "Recall\nPSET\n58",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "58"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-59",
+   "category": "Recall Preset",
+   "name": "Recall Preset 59",
+   "text": "Recall\nPSET\n59",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "59"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-60",
+   "category": "Recall Preset",
+   "name": "Recall Preset 60",
+   "text": "Recall\nPSET\n60",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "60"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-61",
+   "category": "Recall Preset",
+   "name": "Recall Preset 61",
+   "text": "Recall\nPSET\n61",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "61"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-62",
+   "category": "Recall Preset",
+   "name": "Recall Preset 62",
+   "text": "Recall\nPSET\n62",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "62"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-63",
+   "category": "Recall Preset",
+   "name": "Recall Preset 63",
+   "text": "Recall\nPSET\n63",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "63"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-64",
+   "category": "Recall Preset",
+   "name": "Recall Preset 64",
+   "text": "Recall\nPSET\n64",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "64"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-65",
+   "category": "Recall Preset",
+   "name": "Recall Preset 65",
+   "text": "Recall\nPSET\n65",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "65"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-66",
+   "category": "Recall Preset",
+   "name": "Recall Preset 66",
+   "text": "Recall\nPSET\n66",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "66"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-67",
+   "category": "Recall Preset",
+   "name": "Recall Preset 67",
+   "text": "Recall\nPSET\n67",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "67"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-68",
+   "category": "Recall Preset",
+   "name": "Recall Preset 68",
+   "text": "Recall\nPSET\n68",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "68"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-69",
+   "category": "Recall Preset",
+   "name": "Recall Preset 69",
+   "text": "Recall\nPSET\n69",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "69"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-70",
+   "category": "Recall Preset",
+   "name": "Recall Preset 70",
+   "text": "Recall\nPSET\n70",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "70"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-71",
+   "category": "Recall Preset",
+   "name": "Recall Preset 71",
+   "text": "Recall\nPSET\n71",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "71"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-72",
+   "category": "Recall Preset",
+   "name": "Recall Preset 72",
+   "text": "Recall\nPSET\n72",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "72"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-73",
+   "category": "Recall Preset",
+   "name": "Recall Preset 73",
+   "text": "Recall\nPSET\n73",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "73"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-74",
+   "category": "Recall Preset",
+   "name": "Recall Preset 74",
+   "text": "Recall\nPSET\n74",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "74"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-75",
+   "category": "Recall Preset",
+   "name": "Recall Preset 75",
+   "text": "Recall\nPSET\n75",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "75"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-76",
+   "category": "Recall Preset",
+   "name": "Recall Preset 76",
+   "text": "Recall\nPSET\n76",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "76"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-77",
+   "category": "Recall Preset",
+   "name": "Recall Preset 77",
+   "text": "Recall\nPSET\n77",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "77"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-78",
+   "category": "Recall Preset",
+   "name": "Recall Preset 78",
+   "text": "Recall\nPSET\n78",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "78"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-79",
+   "category": "Recall Preset",
+   "name": "Recall Preset 79",
+   "text": "Recall\nPSET\n79",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "79"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-80",
+   "category": "Recall Preset",
+   "name": "Recall Preset 80",
+   "text": "Recall\nPSET\n80",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "80"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-81",
+   "category": "Recall Preset",
+   "name": "Recall Preset 81",
+   "text": "Recall\nPSET\n81",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "81"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-82",
+   "category": "Recall Preset",
+   "name": "Recall Preset 82",
+   "text": "Recall\nPSET\n82",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "82"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-83",
+   "category": "Recall Preset",
+   "name": "Recall Preset 83",
+   "text": "Recall\nPSET\n83",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "83"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-84",
+   "category": "Recall Preset",
+   "name": "Recall Preset 84",
+   "text": "Recall\nPSET\n84",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "84"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-85",
+   "category": "Recall Preset",
+   "name": "Recall Preset 85",
+   "text": "Recall\nPSET\n85",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "85"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-86",
+   "category": "Recall Preset",
+   "name": "Recall Preset 86",
+   "text": "Recall\nPSET\n86",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "86"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-87",
+   "category": "Recall Preset",
+   "name": "Recall Preset 87",
+   "text": "Recall\nPSET\n87",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "87"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-88",
+   "category": "Recall Preset",
+   "name": "Recall Preset 88",
+   "text": "Recall\nPSET\n88",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "88"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-89",
+   "category": "Recall Preset",
+   "name": "Recall Preset 89",
+   "text": "Recall\nPSET\n89",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "89"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-90",
+   "category": "Recall Preset",
+   "name": "Recall Preset 90",
+   "text": "Recall\nPSET\n90",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "90"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-91",
+   "category": "Recall Preset",
+   "name": "Recall Preset 91",
+   "text": "Recall\nPSET\n91",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "91"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-92",
+   "category": "Recall Preset",
+   "name": "Recall Preset 92",
+   "text": "Recall\nPSET\n92",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "92"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-93",
+   "category": "Recall Preset",
+   "name": "Recall Preset 93",
+   "text": "Recall\nPSET\n93",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "93"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-94",
+   "category": "Recall Preset",
+   "name": "Recall Preset 94",
+   "text": "Recall\nPSET\n94",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "94"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-95",
+   "category": "Recall Preset",
+   "name": "Recall Preset 95",
+   "text": "Recall\nPSET\n95",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "95"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-96",
+   "category": "Recall Preset",
+   "name": "Recall Preset 96",
+   "text": "Recall\nPSET\n96",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "96"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-97",
+   "category": "Recall Preset",
+   "name": "Recall Preset 97",
+   "text": "Recall\nPSET\n97",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "97"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-98",
+   "category": "Recall Preset",
+   "name": "Recall Preset 98",
+   "text": "Recall\nPSET\n98",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "98"
+    }
+   }
+  },
+  {
+   "id": "recall-preset-99",
+   "category": "Recall Preset",
+   "name": "Recall Preset 99",
+   "text": "Recall\nPSET\n99",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset",
+    "options": {
+     "val": "99"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-axis-ptz",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Andreas H. Thomsen, Per Røine, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "axis-ptz",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Andreas H. Thomsen",
+   "Per Røine",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-axis-ptz.git"
+ }
+}

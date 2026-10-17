@@ -1,0 +1,232 @@
+{
+ "format": 1,
+ "id": "m-matrox-monarch",
+ "name": "Matrox Monarch HD/HDX/LCS",
+ "category": "Matrox",
+ "version": "3.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "device_type",
+   "label": "Device Type",
+   "type": "select",
+   "default": "monarch-hdx",
+   "choices": [
+    {
+     "id": "monarch-hd",
+     "label": "Monarch HD"
+    },
+    {
+     "id": "monarch-hdx",
+     "label": "Monarch HDX"
+    },
+    {
+     "id": "monarch-lcs",
+     "label": "Monarch LCS"
+    },
+    {
+     "id": "nvs-30",
+     "label": "Datavideo NVS-30"
+    }
+   ]
+  },
+  {
+   "id": "user",
+   "label": "Username (if applicable)",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "password",
+   "label": "Password (if applicable)",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "enable_polling",
+   "label": "Enable Polling?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "polling_rate",
+   "label": "Polling Rate",
+   "type": "select",
+   "default": "10000",
+   "choices": [
+    {
+     "id": "5000",
+     "label": "5000ms"
+    },
+    {
+     "id": "10000",
+     "label": "10000ms"
+    },
+    {
+     "id": "30000",
+     "label": "30000ms"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "StartEncoder1",
+   "name": "Start Encoder 1",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/Monarch/syncconnect/sdk.aspx?command=StartEncoder1"
+   }
+  },
+  {
+   "id": "StartEncoder2",
+   "name": "Start Encoder 2",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/Monarch/syncconnect/sdk.aspx?command=StartEncoder2"
+   }
+  },
+  {
+   "id": "StopEncoder1",
+   "name": "Stop Encoder 1",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/Monarch/syncconnect/sdk.aspx?command=StopEncoder1"
+   }
+  },
+  {
+   "id": "StopEncoder2",
+   "name": "Stop Encoder 2",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/Monarch/syncconnect/sdk.aspx?command=StopEncoder2"
+   }
+  },
+  {
+   "id": "StartBothEncoders",
+   "name": "Start Both Encoders",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/Monarch/syncconnect/sdk.aspx?command=StartBothEncoders"
+   }
+  },
+  {
+   "id": "StopBothEncoders",
+   "name": "Stop Both Encoders",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/Monarch/syncconnect/sdk.aspx?command=StopBothEncoders"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "startEncoder1",
+   "category": "Commands",
+   "name": "Start Encoder/Recorder 1",
+   "text": "Start Enc 1",
+   "backgroundColor": "#2aa745",
+   "action": {
+    "definitionId": "StartEncoder1",
+    "options": {}
+   }
+  },
+  {
+   "id": "startEncoder2",
+   "category": "Commands",
+   "name": "Start Encoder/Recorder 2",
+   "text": "Start Enc 2",
+   "backgroundColor": "#2aa745",
+   "action": {
+    "definitionId": "StartEncoder2",
+    "options": {}
+   }
+  },
+  {
+   "id": "startBothEncoders",
+   "category": "Commands",
+   "name": "Start Both Encoder/Recorders",
+   "text": "Start Both",
+   "backgroundColor": "#2aa745",
+   "action": {
+    "definitionId": "StartBothEncoders",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopEncoder1",
+   "category": "Commands",
+   "name": "Stop Encoder/Recorder 1",
+   "text": "Stop Enc 1",
+   "backgroundColor": "#dc3545",
+   "action": {
+    "definitionId": "StopEncoder1",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopEncoder2",
+   "category": "Commands",
+   "name": "Stop Encoder/Recorder 2",
+   "text": "Stop Enc 2",
+   "backgroundColor": "#dc3545",
+   "action": {
+    "definitionId": "StopEncoder2",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopBothEncoder",
+   "category": "Commands",
+   "name": "Stop Both Encoder/Recorders",
+   "text": "Stop Both",
+   "backgroundColor": "#dc3545",
+   "action": {
+    "definitionId": "StopBothEncoders",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-matrox-monarch",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Todd Eichel, Bevan Kay, Bert Bredewold"
+  }
+ ],
+ "source": {
+  "module": "matrox-monarch",
+  "version": "3.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Todd Eichel",
+   "Bevan Kay",
+   "Bert Bredewold"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-matrox-monarch.git"
+ }
+}

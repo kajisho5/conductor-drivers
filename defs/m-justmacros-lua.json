@@ -1,0 +1,77 @@
+{
+ "format": 1,
+ "id": "m-justmacros-lua",
+ "name": "JustMacros LUA",
+ "category": "JustMacros",
+ "version": "2.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:39812",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "luaFunc",
+   "name": "Execute Function",
+   "options": [
+    {
+     "id": "func",
+     "label": "Function Name",
+     "type": "text"
+    },
+    {
+     "id": "params",
+     "label": "Parameters (comma separated)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/EXECUTELUA:{{option.func}}({{option.params}});"
+   }
+  },
+  {
+   "id": "luaScript",
+   "name": "Execute Script",
+   "options": [
+    {
+     "id": "script",
+     "label": "Script Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/EXECUTELUA:ScriptExecute(%22{{option.script}}%22);"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-justmacros-lua",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "justmacros-lua",
+  "version": "2.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-justmacros-lua.git"
+ }
+}

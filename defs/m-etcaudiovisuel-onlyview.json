@@ -1,0 +1,739 @@
+{
+ "format": 1,
+ "id": "m-etcaudiovisuel-onlyview",
+ "name": "ETC Audiovisuel Onlyview",
+ "category": "ETC Audiovisuel",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 0,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "onlineAction",
+   "name": "Online Displays",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "online\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "quickkeyAction",
+   "name": "Launch quick key",
+   "options": [
+    {
+     "id": "quickkeyId",
+     "label": "Quick key Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "launchquickkey*{{option.quickkeyId}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "testPatternAction",
+   "name": "Test pattern",
+   "options": [
+    {
+     "id": "testPatternId",
+     "label": "Test pattern",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "None"
+      },
+      {
+       "id": "1",
+       "label": "Small pattern"
+      },
+      {
+       "id": "2",
+       "label": "Horizontal black level"
+      },
+      {
+       "id": "3",
+       "label": "Vertical black level"
+      },
+      {
+       "id": "4",
+       "label": "Tile"
+      },
+      {
+       "id": "5",
+       "label": "Onlyview logo"
+      },
+      {
+       "id": "6",
+       "label": "SMPTE HD color bar"
+      },
+      {
+       "id": "7",
+       "label": "SMPTE SD color bar"
+      },
+      {
+       "id": "8",
+       "label": "OSD"
+      },
+      {
+       "id": "9",
+       "label": "Framerate (CPU)"
+      },
+      {
+       "id": "10",
+       "label": "Framerate (GPU)"
+      },
+      {
+       "id": "11",
+       "label": "White"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setpattern*{{option.testPatternId|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "testPatternId": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11"
+    }
+   }
+  },
+  {
+   "id": "shutdownMasterAction",
+   "name": "Shutdown Master",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "shutdownmaster\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timelinePlayAction",
+   "name": "Timeline play",
+   "options": [
+    {
+     "id": "timelineId",
+     "label": "Timeline Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "play*{{option.timelineId}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timelinePauseAction",
+   "name": "Timeline pause",
+   "options": [
+    {
+     "id": "timelineId",
+     "label": "Timeline Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "locate*{{option.timelineId}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timelineOnOffStateAction",
+   "name": "Timeline ON/OFF state",
+   "options": [
+    {
+     "id": "timelineId",
+     "label": "Timeline Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "state",
+     "label": "ON/OFF state",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "settimelineon*{{option.timelineId}}*{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "timelineGrandMasterAction",
+   "name": "Timeline grand master",
+   "options": [
+    {
+     "id": "timelineId",
+     "label": "Timeline Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "value",
+     "label": "Grand master value",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "fadeTime",
+     "label": "Fade time (seconds)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setgrandmaster*{{option.timelineId}}*{{option.value}}*{{option.fadeTime|lin:1000:0}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timelineLayerOnOffStateAction",
+   "name": "Timeline layer ON/OFF state",
+   "options": [
+    {
+     "id": "timelineId",
+     "label": "Timeline Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "layerType",
+     "label": "Layer type",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Command layer"
+      },
+      {
+       "id": "1",
+       "label": "Media layer"
+      }
+     ]
+    },
+    {
+     "id": "layerId",
+     "label": "Layer Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 199
+    },
+    {
+     "id": "state",
+     "label": "ON/OFF state",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setlayerblind*{{option.timelineId}}*{{option.layerType|map}}*{{option.layerId}}*{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "layerType": {
+     "0": "0",
+     "1": "2"
+    },
+    "state": {
+     "true": "0",
+     "false": "1"
+    }
+   }
+  },
+  {
+   "id": "timelineLayerSoloStateAction",
+   "name": "Timeline layer solo state",
+   "options": [
+    {
+     "id": "timelineId",
+     "label": "Timeline Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "layerType",
+     "label": "Layer type",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Command layer"
+      },
+      {
+       "id": "1",
+       "label": "Media layer"
+      }
+     ]
+    },
+    {
+     "id": "layerId",
+     "label": "Layer Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 199
+    },
+    {
+     "id": "state",
+     "label": "Solo state",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setlayersolo*{{option.timelineId}}*{{option.layerType|map}}*{{option.layerId}}*{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "layerType": {
+     "0": "0",
+     "1": "2"
+    },
+    "state": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "boardPlayAction",
+   "name": "Board play",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setBoardPlayState*{{option.boardId}}*0*1\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardPauseAction",
+   "name": "Board pause",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setBoardPlayState*{{option.boardId}}*0*0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardEnqueueSequenceAction",
+   "name": "Board enqueue sequence",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "sequenceId",
+     "label": "Sequence Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "enqueueSequenceAndPreset*{{option.boardId}}*{{option.sequenceId|lin:1:-1}}*-1\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardEnqueueSequenceAndPresetAction",
+   "name": "Board enqueue sequence and preset",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "sequenceId",
+     "label": "Sequence Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "presetId",
+     "label": "Preset Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "enqueueSequenceAndPreset*{{option.boardId}}*{{option.sequenceId|lin:1:-1}}*{{option.presetId|lin:1:-1}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardPlaySequenceAction",
+   "name": "Board play sequence",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "sequenceId",
+     "label": "Sequence Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "playBoard*{{option.boardId}}*{{option.sequenceId|lin:1:-1}}*1*0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardNextAction",
+   "name": "Board play next sequence",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "boardPlayNext*{{option.boardId}}*0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardNextSequenceAction",
+   "name": "Board play next sequence (sequence + 1)",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "boardPlayNext*{{option.boardId}}*1\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardNextEnqueuedAction",
+   "name": "Board play next sequence (enqueued sequence)",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "boardPlayNext*{{option.boardId}}*2\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardPreviousAction",
+   "name": "Board play previous sequence",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "boardPlayPrevious*{{option.boardId}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardOnOffStateAction",
+   "name": "Board ON/OFF state",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "state",
+     "label": "ON/OFF state",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setBoardOn*{{option.boardId}}*{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "boardGrandMasterAction",
+   "name": "Board grand master",
+   "options": [
+    {
+     "id": "baoardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "value",
+     "label": "Grand master value",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "fadeTime",
+     "label": "Fade time (seconds)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setBoardGrandMaster*{{option.baoardId}}*{{option.value}}*{{option.fadeTime|lin:1000:0}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "boardLayerOnOffStateAction",
+   "name": "Board layer ON/OFF state",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "layerId",
+     "label": "Layer Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 199
+    },
+    {
+     "id": "state",
+     "label": "ON/OFF state",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setBoardLayerBlind*{{option.boardId}}*{{option.layerId|lin:1:-1}}*{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "true": "0",
+     "false": "1"
+    }
+   }
+  },
+  {
+   "id": "boardLayerSoloStateAction",
+   "name": "Board layer solo state",
+   "options": [
+    {
+     "id": "boardId",
+     "label": "Board Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "layerId",
+     "label": "Layer Id",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 199
+    },
+    {
+     "id": "state",
+     "label": "ON/OFF state",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setBoardLayerSolo*{{option.boardId}}*{{option.layerId|lin:1:-1}}*{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-etcaudiovisuel-onlyview",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Guillaume Breda"
+  }
+ ],
+ "source": {
+  "module": "etcaudiovisuel-onlyview",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Guillaume Breda"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-etcaudiovisuel-onlyview.git"
+ }
+}

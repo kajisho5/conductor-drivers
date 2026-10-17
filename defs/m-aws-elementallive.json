@@ -1,0 +1,204 @@
+{
+ "format": 1,
+ "id": "m-aws-elementallive",
+ "name": "AWS Elemental Live",
+ "category": "AWS",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "rejectUnauthorized",
+   "label": "Unauthorized Certificates",
+   "type": "select",
+   "default": "true",
+   "choices": [
+    {
+     "id": "true",
+     "label": "Reject"
+    },
+    {
+     "id": "false",
+     "label": "Accept - Use at your own risk!"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "startLiveEvent",
+   "name": "Start Live Event",
+   "options": [
+    {
+     "id": "id",
+     "label": "Event ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/live_events/{{option.id}}/start",
+    "body": "<start></start>",
+    "contentType": "text/xml"
+   }
+  },
+  {
+   "id": "stopLiveEvent",
+   "name": "Stop Live Event",
+   "options": [
+    {
+     "id": "id",
+     "label": "Event ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/live_events/{{option.id}}/stop",
+    "body": "<stop></stop>",
+    "contentType": "text/xml"
+   }
+  },
+  {
+   "id": "cancelLiveEvent",
+   "name": "Cancel Live Event",
+   "options": [
+    {
+     "id": "id",
+     "label": "Event ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/live_events/{{option.id}}/cancel",
+    "body": "<cancel></cancel>",
+    "contentType": "text/xml"
+   }
+  },
+  {
+   "id": "archiveLiveEvent",
+   "name": "Archive Live Event",
+   "options": [
+    {
+     "id": "id",
+     "label": "Event ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/live_events/{{option.id}}/archive",
+    "body": "<archive></archive>",
+    "contentType": "text/xml"
+   }
+  },
+  {
+   "id": "resetLiveEvent",
+   "name": "Reset Live Event",
+   "options": [
+    {
+     "id": "id",
+     "label": "Event ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/live_events/{{option.id}}/reset",
+    "body": "<reset></reset>",
+    "contentType": "text/xml"
+   }
+  },
+  {
+   "id": "setAudioGain",
+   "name": "Set Audio Gain",
+   "options": [
+    {
+     "id": "id",
+     "label": "Event ID",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "gain",
+     "label": "Gain (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -60,
+     "max": 60
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/live_events/{{option.id}}/adjust_audio_gain",
+    "body": "<gain>{{option.gain}}</gain>",
+    "contentType": "text/xml"
+   }
+  },
+  {
+   "id": "insertSCTE35Message",
+   "name": "Insert SCTE35",
+   "options": [
+    {
+     "id": "id",
+     "label": "Event ID",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "duration",
+     "label": "Duration",
+     "type": "number",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/live_events/{{option.id}}/cue_point",
+    "body": "<cue_point><duration>{{option.duration}}</duration><splice_offset>0</splice_offset></cue_point>",
+    "contentType": "text/xml"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aws-elementallive",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Bryce Seifert, Wyatt Vaughan"
+  }
+ ],
+ "source": {
+  "module": "aws-elementallive",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Bryce Seifert",
+   "Wyatt Vaughan"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aws-elementallive.git"
+ }
+}

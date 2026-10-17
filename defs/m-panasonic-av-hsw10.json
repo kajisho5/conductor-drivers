@@ -1,0 +1,820 @@
+{
+ "format": 1,
+ "id": "m-panasonic-av-hsw10",
+ "name": "Panasonic AV-HSW10",
+ "category": "Panasonic",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 62000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "portRecieve",
+   "label": "UDP Destination Port",
+   "type": "number",
+   "default": 65000,
+   "min": 1,
+   "max": 65535,
+   "help": "Companion will bind to this port on 0.0.0.0. This must match the Destination Port in the device configuration"
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logs",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "SetBusSource",
+   "name": "Bus Source",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "PGM"
+      },
+      {
+       "id": "02",
+       "label": "PVW"
+      },
+      {
+       "id": "113",
+       "label": "AUX 1"
+      },
+      {
+       "id": "114",
+       "label": "AUX 2"
+      },
+      {
+       "id": "03",
+       "label": "KEY 1 F"
+      },
+      {
+       "id": "04",
+       "label": "KEY 1 S"
+      },
+      {
+       "id": "05",
+       "label": "KEY 2 F"
+      },
+      {
+       "id": "06",
+       "label": "KEY 2 S"
+      },
+      {
+       "id": "153",
+       "label": "MV 1"
+      },
+      {
+       "id": "154",
+       "label": "MV 2"
+      },
+      {
+       "id": "155",
+       "label": "MV 3"
+      },
+      {
+       "id": "156",
+       "label": "MV 4"
+      },
+      {
+       "id": "157",
+       "label": "MV 5"
+      },
+      {
+       "id": "158",
+       "label": "MV 6"
+      },
+      {
+       "id": "159",
+       "label": "MV 7"
+      },
+      {
+       "id": "160",
+       "label": "MV 8"
+      },
+      {
+       "id": "161",
+       "label": "MV 9"
+      },
+      {
+       "id": "162",
+       "label": "MV 10"
+      },
+      {
+       "id": "163",
+       "label": "MV 11"
+      },
+      {
+       "id": "164",
+       "label": "MV 12"
+      },
+      {
+       "id": "165",
+       "label": "MV 13"
+      },
+      {
+       "id": "166",
+       "label": "MV 14"
+      },
+      {
+       "id": "167",
+       "label": "MV 15"
+      },
+      {
+       "id": "168",
+       "label": "MV 16"
+      }
+     ]
+    },
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "INPUT 1"
+      },
+      {
+       "id": "02",
+       "label": "INPUT 2"
+      },
+      {
+       "id": "03",
+       "label": "INPUT 3"
+      },
+      {
+       "id": "04",
+       "label": "INPUT 4"
+      },
+      {
+       "id": "05",
+       "label": "INPUT 5"
+      },
+      {
+       "id": "06",
+       "label": "INPUT 6"
+      },
+      {
+       "id": "07",
+       "label": "INPUT 7"
+      },
+      {
+       "id": "08",
+       "label": "INPUT 8"
+      },
+      {
+       "id": "09",
+       "label": "INPUT 9"
+      },
+      {
+       "id": "10",
+       "label": "ANALOG IN"
+      },
+      {
+       "id": "145",
+       "label": "CBGD 1"
+      },
+      {
+       "id": "146",
+       "label": "CBGD 2"
+      },
+      {
+       "id": "147",
+       "label": "COLOR BARS"
+      },
+      {
+       "id": "148",
+       "label": "BLACK"
+      },
+      {
+       "id": "149",
+       "label": "STILL 1 - V"
+      },
+      {
+       "id": "150",
+       "label": "STILL 1 - K"
+      },
+      {
+       "id": "151",
+       "label": "STILL 2 - V"
+      },
+      {
+       "id": "152",
+       "label": "STILL 2 - K"
+      },
+      {
+       "id": "165",
+       "label": "MV"
+      },
+      {
+       "id": "171",
+       "label": "KEY OUT"
+      },
+      {
+       "id": "172",
+       "label": "CLEAN"
+      },
+      {
+       "id": "201",
+       "label": "PGM"
+      },
+      {
+       "id": "203",
+       "label": "PVW"
+      },
+      {
+       "id": "227",
+       "label": "AUX 1"
+      },
+      {
+       "id": "228",
+       "label": "AUX 2"
+      },
+      {
+       "id": "231",
+       "label": "IP OUT 1"
+      },
+      {
+       "id": "232",
+       "label": "IP OUT 2"
+      },
+      {
+       "id": "251",
+       "label": "CLOCK"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02534255533a{{option.bus|map}}3a{{option.source|map}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bus": {
+     "113": "313133",
+     "114": "313134",
+     "153": "313533",
+     "154": "313534",
+     "155": "313535",
+     "156": "313536",
+     "157": "313537",
+     "158": "313538",
+     "159": "313539",
+     "160": "313630",
+     "161": "313631",
+     "162": "313632",
+     "163": "313633",
+     "164": "313634",
+     "165": "313635",
+     "166": "313636",
+     "167": "313637",
+     "168": "313638",
+     "01": "3031",
+     "02": "3032",
+     "03": "3033",
+     "04": "3034",
+     "05": "3035",
+     "06": "3036"
+    },
+    "source": {
+     "10": "3130",
+     "145": "313435",
+     "146": "313436",
+     "147": "313437",
+     "148": "313438",
+     "149": "313439",
+     "150": "313530",
+     "151": "313531",
+     "152": "313532",
+     "165": "313635",
+     "171": "313731",
+     "172": "313732",
+     "201": "323031",
+     "203": "323033",
+     "227": "323237",
+     "228": "323238",
+     "231": "323331",
+     "232": "323332",
+     "251": "323531",
+     "01": "3031",
+     "02": "3032",
+     "03": "3033",
+     "04": "3034",
+     "05": "3035",
+     "06": "3036",
+     "07": "3037",
+     "08": "3038",
+     "09": "3039"
+    }
+   }
+  },
+  {
+   "id": "SetSourceNameDisplay",
+   "name": "Source Name Display",
+   "options": [
+    {
+     "id": "classisfication",
+     "label": "Classification",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "DEFAULT"
+      },
+      {
+       "id": "01",
+       "label": "USER"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02535053543a303a30{{option.classisfication|map}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "classisfication": {
+     "00": "30",
+     "01": "31"
+    }
+   }
+  },
+  {
+   "id": "SetSourceName",
+   "name": "Source Name",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "IN 1"
+      },
+      {
+       "id": "02",
+       "label": "IN 2"
+      },
+      {
+       "id": "03",
+       "label": "IN 3"
+      },
+      {
+       "id": "04",
+       "label": "IN 4"
+      },
+      {
+       "id": "05",
+       "label": "IN 5"
+      },
+      {
+       "id": "06",
+       "label": "IN 6"
+      },
+      {
+       "id": "07",
+       "label": "IN 7"
+      },
+      {
+       "id": "08",
+       "label": "IN 8"
+      },
+      {
+       "id": "09",
+       "label": "IN 9"
+      },
+      {
+       "id": "227",
+       "label": "AUX 1"
+      },
+      {
+       "id": "228",
+       "label": "AUX 2"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": "INPUT 1",
+     "help": "Maximum 12 Characters"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0253534e4d3a30303a{{option.source|map}}3a{{option.name|hexstr}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "source": {
+     "227": "323237",
+     "228": "323238",
+     "01": "3031",
+     "02": "3032",
+     "03": "3033",
+     "04": "3034",
+     "05": "3035",
+     "06": "3036",
+     "07": "3037",
+     "08": "3038",
+     "09": "3039"
+    }
+   }
+  },
+  {
+   "id": "SetKeySignalCoupling",
+   "name": "Key Signal Coupling",
+   "options": [
+    {
+     "id": "status",
+     "label": "Status",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "FILL TO SOURCE"
+      },
+      {
+       "id": "01",
+       "label": "SOURCE TO FILL"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02534b52533a30{{option.status|map}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "status": {
+     "00": "30",
+     "01": "31"
+    }
+   }
+  },
+  {
+   "id": "SetAuxTransition",
+   "name": "Auto Transition",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "BACKGROUND"
+      },
+      {
+       "id": "06",
+       "label": "FTB"
+      },
+      {
+       "id": "01",
+       "label": "KEY 1"
+      },
+      {
+       "id": "04",
+       "label": "KEY 2"
+      }
+     ]
+    },
+    {
+     "id": "effect",
+     "label": "Effect",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "MIX"
+      },
+      {
+       "id": "01",
+       "label": "WIPE"
+      }
+     ]
+    },
+    {
+     "id": "operation",
+     "label": "Operation Setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Trigger ON"
+      },
+      {
+       "id": "1",
+       "label": "ON Take"
+      },
+      {
+       "id": "2",
+       "label": "OFF Take"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02534155543a30{{option.source|map}}3a30{{option.effect|map}}3a{{option.operation|map}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "source": {
+     "00": "30",
+     "06": "36",
+     "01": "31",
+     "04": "34"
+    },
+    "effect": {
+     "00": "30",
+     "01": "31"
+    },
+    "operation": {
+     "0": "30",
+     "1": "31",
+     "2": "32"
+    }
+   }
+  },
+  {
+   "id": "SetCutTransition",
+   "name": "Cut Transition",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "BACKGROUND"
+      },
+      {
+       "id": "06",
+       "label": "FTB"
+      },
+      {
+       "id": "01",
+       "label": "KEY 1"
+      },
+      {
+       "id": "04",
+       "label": "KEY 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02534355543a30{{option.source|map}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "source": {
+     "00": "30",
+     "06": "36",
+     "01": "31",
+     "04": "34"
+    }
+   }
+  },
+  {
+   "id": "SetBusTransitionStatus",
+   "name": "Bus Transition Status",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "01",
+       "label": "AUX 1"
+      },
+      {
+       "id": "02",
+       "label": "AUX 2"
+      }
+     ]
+    },
+    {
+     "id": "enable",
+     "label": "Enable",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "Enable"
+      },
+      {
+       "id": "02",
+       "label": "Disable"
+      }
+     ]
+    },
+    {
+     "id": "time",
+     "label": "Time (Frames)",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02534254493a30{{option.bus|map}}3a30{{option.enable|map}}3a{{option.time|hexstr}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bus": {
+     "02": "32",
+     "01": "31"
+    },
+    "enable": {
+     "01": "31",
+     "02": "32"
+    }
+   }
+  },
+  {
+   "id": "SetTransitionPattern",
+   "name": "Transition Pattern",
+   "options": [
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "BACKGROUND"
+      },
+      {
+       "id": "02",
+       "label": "KEY 1"
+      }
+     ]
+    },
+    {
+     "id": "pattern",
+     "label": "Pattern",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "WIPE 1"
+      },
+      {
+       "id": "02",
+       "label": "WIPE 2"
+      },
+      {
+       "id": "03",
+       "label": "WIPE 3"
+      },
+      {
+       "id": "04",
+       "label": "WIPE 4"
+      },
+      {
+       "id": "05",
+       "label": "WIPE 5"
+      },
+      {
+       "id": "06",
+       "label": "WIPE 6"
+      },
+      {
+       "id": "07",
+       "label": "WIPE 7"
+      },
+      {
+       "id": "08",
+       "label": "WIPE 8"
+      },
+      {
+       "id": "09",
+       "label": "WIPE 9"
+      },
+      {
+       "id": "10",
+       "label": "WIPE 10"
+      },
+      {
+       "id": "11",
+       "label": "WIPE 11"
+      },
+      {
+       "id": "12",
+       "label": "WIPE 12"
+      },
+      {
+       "id": "13",
+       "label": "WIPE 13"
+      },
+      {
+       "id": "14",
+       "label": "WIPE 14"
+      },
+      {
+       "id": "15",
+       "label": "WIPE 15"
+      },
+      {
+       "id": "16",
+       "label": "WIPE 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "02535041543a30{{option.type|map}}3a{{option.pattern|map}}03",
+    "encoding": "hex"
+   },
+   "maps": {
+    "type": {
+     "01": "31",
+     "02": "32"
+    },
+    "pattern": {
+     "10": "3130",
+     "11": "3131",
+     "12": "3132",
+     "13": "3133",
+     "14": "3134",
+     "15": "3135",
+     "16": "3136",
+     "01": "3031",
+     "02": "3032",
+     "03": "3033",
+     "04": "3034",
+     "05": "3035",
+     "06": "3036",
+     "07": "3037",
+     "08": "3038",
+     "09": "3039"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-panasonic-av-hsw10",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "panasonic-av-hsw10",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-panasonic-av-hsw10.git"
+ }
+}

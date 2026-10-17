@@ -1,0 +1,131 @@
+{
+ "format": 1,
+ "id": "m-optimalaudio-zone",
+ "name": "Optimal Audio Zone",
+ "category": "Optimal Audio",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "selectRoutine",
+   "name": "Select routine",
+   "options": [
+    {
+     "id": "routine",
+     "label": "Routine",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000242f6f612f7a6f6e652f726f7574696e652f74726967676572000000002c6600003f800000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "selectSource",
+   "name": "Select source",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    },
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Local"
+      },
+      {
+       "id": "2",
+       "label": "Line in 1"
+      },
+      {
+       "id": "3",
+       "label": "Line in 2"
+      },
+      {
+       "id": "4",
+       "label": "Line in 3"
+      },
+      {
+       "id": "5",
+       "label": "Line in 4"
+      },
+      {
+       "id": "6",
+       "label": "Hdmi 1"
+      },
+      {
+       "id": "7",
+       "label": "Hdmi 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000242f6f612f7a6f6e652f7365742f7a6f6e652f312f736f7572636500002c660000{{option.source|map}}0000",
+    "encoding": "hex"
+   },
+   "maps": {
+    "source": {
+     "1": "3f80",
+     "2": "4000",
+     "3": "4040",
+     "4": "4080",
+     "5": "40a0",
+     "6": "40c0",
+     "7": "40e0"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-optimalaudio-zone",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Egill"
+  }
+ ],
+ "source": {
+  "module": "optimalaudio-zone",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Egill"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-optimalaudio-zone.git"
+ }
+}

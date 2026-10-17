@@ -1,0 +1,464 @@
+{
+ "format": 1,
+ "id": "m-rossvideo-xpression",
+ "name": "Ross Video Xpression",
+ "category": "Ross Video",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7788,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "CLRA",
+   "name": "Clear all framebuffers (CLRA)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CLRA\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CLFB",
+   "name": "Clear framebuffer (CLFB)",
+   "options": [
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CLFB {{option.fb|lin:1:-1}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CLFB_L",
+   "name": "Clear layer in framebuffer (CLFB)",
+   "options": [
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 0,
+     "min": -999,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CLFB {{option.fb|lin:1:-1}}:{{option.layer}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SWAP_A",
+   "name": "Load all cued items to all framebuffers (SWAP)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SWAP\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SWAP",
+   "name": "Load cued items in framebuffer (SWAP)",
+   "options": [
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SWAP {{option.fb|lin:1:-1}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SEQI",
+   "name": "Load take item to air on layer (SEQI)",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "Take ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 0,
+     "min": -999,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SEQI {{option.takeID}}:{{option.layer}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "TAKE",
+   "name": "Load take item to framebuffer layer (TAKE)",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "Take ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    },
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 0,
+     "min": -999,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "TAKE {{option.takeID}}:{{option.fb|lin:1:-1}}:{{option.layer}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "DOWN",
+   "name": "Move sequencer focus to next item (DOWN)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "DOWN\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "UP",
+   "name": "Move sequencer focus to previous item (UP)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "UP\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CUE",
+   "name": "Ready item into a framebuffer layer (CUE)",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "Take ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    },
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 0,
+     "min": -999,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CUE {{option.takeID}}:{{option.fb|lin:1:-1}}:{{option.layer}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "UNCUEALL",
+   "name": "Remove all cued items from the cued state (UNCUEALL)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "UNCUEALL\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "UNCUE",
+   "name": "Remove take item from the cued state (UNCUE)",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "Take ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "UNCUE {{option.takeID}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "RESUME",
+   "name": "Resume all layers in framebuffer (RESUME)",
+   "options": [
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "RESUME {{option.fb|lin:1:-1}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "RESUME_L",
+   "name": "Resume layer in framebuffer (RESUME)",
+   "options": [
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 0,
+     "min": -999,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "RESUME {{option.fb|lin:1:-1}}:{{option.layer}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "UPNEXT",
+   "name": "Set preview to take item (UPNEXT)",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "Take ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "UPNEXT {{option.takeID}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FOCUS",
+   "name": "Set sequencer focus to take item (FOCUS)",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "Take ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FOCUS {{option.takeID}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "LAYEROFF",
+   "name": "Take layer in framebuffer off air (LAYEROFF)",
+   "options": [
+    {
+     "id": "fb",
+     "label": "Framebuffer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    },
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 0,
+     "min": -999,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "LAYEROFF {{option.fb|lin:1:-1}}:{{option.layer}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "READ",
+   "name": "Take sequencer item to air (READ)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "READ\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "NEXT",
+   "name": "Take sequencer item to air and advance next (NEXT)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NEXT\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SEQO",
+   "name": "Take take item off air (SEQO)",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "Take ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SEQO {{option.takeID}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "GPI",
+   "name": "Trigger simulated GPI (GPI)",
+   "options": [
+    {
+     "id": "gpi",
+     "label": "GPI",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GPI {{option.gpi|pad2}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CUSTOM",
+   "name": "Send a custom command",
+   "options": [
+    {
+     "id": "cmd",
+     "label": "Command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.cmd}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-rossvideo-xpression",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "rossvideo-xpression",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-rossvideo-xpression.git"
+ }
+}

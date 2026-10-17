@@ -1,0 +1,1514 @@
+{
+ "format": 1,
+ "id": "m-netron-en",
+ "name": "Netron EN / EN-12",
+ "category": "Netron",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "polling",
+   "label": "Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingRate",
+   "label": "Polling Rate (ms)",
+   "type": "number",
+   "default": 500,
+   "min": 100,
+   "max": 5000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "runCue",
+   "name": "Run Cue",
+   "options": [
+    {
+     "id": "cueNumber",
+     "label": "Cue Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    },
+    {
+     "id": "resendEthernet",
+     "label": "Resend Ethernet",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/run_cues",
+    "body": "CueResendEth={{option.resendEthernet|map}}&RunCue={{option.cueNumber}}&EndFlag=1",
+    "contentType": "application/x-www-form-urlencoded"
+   },
+   "maps": {
+    "resendEthernet": {
+     "true": "1",
+     "false": "0"
+    }
+   }
+  },
+  {
+   "id": "saveCue",
+   "name": "Save Cue",
+   "options": [
+    {
+     "id": "cueNumber",
+     "label": "Cue Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/save_cues",
+    "body": "CueNum={{option.cueNumber}}&EndFlag=1",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "clearCue",
+   "name": "Clear Cue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/run_cues",
+    "body": "CueResendEth=1&RunCue=0&EndFlag=1",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Cues",
+   "name": "Run Cue 1",
+   "text": "Run Cue 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 1,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Cues",
+   "name": "Run Cue 2",
+   "text": "Run Cue 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 2,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Cues",
+   "name": "Run Cue 3",
+   "text": "Run Cue 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 3,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Cues",
+   "name": "Run Cue 4",
+   "text": "Run Cue 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 4,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Cues",
+   "name": "Run Cue 5",
+   "text": "Run Cue 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 5,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Cues",
+   "name": "Run Cue 6",
+   "text": "Run Cue 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 6,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Cues",
+   "name": "Run Cue 7",
+   "text": "Run Cue 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 7,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Cues",
+   "name": "Run Cue 8",
+   "text": "Run Cue 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 8,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Cues",
+   "name": "Run Cue 9",
+   "text": "Run Cue 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 9,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Cues",
+   "name": "Run Cue 10",
+   "text": "Run Cue 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 10,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Cues",
+   "name": "Run Cue 11",
+   "text": "Run Cue 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 11,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Cues",
+   "name": "Run Cue 12",
+   "text": "Run Cue 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 12,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Cues",
+   "name": "Run Cue 13",
+   "text": "Run Cue 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 13,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Cues",
+   "name": "Run Cue 14",
+   "text": "Run Cue 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 14,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Cues",
+   "name": "Run Cue 15",
+   "text": "Run Cue 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 15,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Cues",
+   "name": "Run Cue 16",
+   "text": "Run Cue 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 16,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "16",
+   "category": "Cues",
+   "name": "Run Cue 17",
+   "text": "Run Cue 17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 17,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "17",
+   "category": "Cues",
+   "name": "Run Cue 18",
+   "text": "Run Cue 18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 18,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "18",
+   "category": "Cues",
+   "name": "Run Cue 19",
+   "text": "Run Cue 19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 19,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "19",
+   "category": "Cues",
+   "name": "Run Cue 20",
+   "text": "Run Cue 20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 20,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "20",
+   "category": "Cues",
+   "name": "Run Cue 21",
+   "text": "Run Cue 21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 21,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "21",
+   "category": "Cues",
+   "name": "Run Cue 22",
+   "text": "Run Cue 22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 22,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "22",
+   "category": "Cues",
+   "name": "Run Cue 23",
+   "text": "Run Cue 23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 23,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "23",
+   "category": "Cues",
+   "name": "Run Cue 24",
+   "text": "Run Cue 24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 24,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "24",
+   "category": "Cues",
+   "name": "Run Cue 25",
+   "text": "Run Cue 25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 25,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "25",
+   "category": "Cues",
+   "name": "Run Cue 26",
+   "text": "Run Cue 26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 26,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "26",
+   "category": "Cues",
+   "name": "Run Cue 27",
+   "text": "Run Cue 27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 27,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "27",
+   "category": "Cues",
+   "name": "Run Cue 28",
+   "text": "Run Cue 28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 28,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "28",
+   "category": "Cues",
+   "name": "Run Cue 29",
+   "text": "Run Cue 29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 29,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "29",
+   "category": "Cues",
+   "name": "Run Cue 30",
+   "text": "Run Cue 30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 30,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "30",
+   "category": "Cues",
+   "name": "Run Cue 31",
+   "text": "Run Cue 31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 31,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "31",
+   "category": "Cues",
+   "name": "Run Cue 32",
+   "text": "Run Cue 32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 32,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "32",
+   "category": "Cues",
+   "name": "Run Cue 33",
+   "text": "Run Cue 33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 33,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "33",
+   "category": "Cues",
+   "name": "Run Cue 34",
+   "text": "Run Cue 34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 34,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "34",
+   "category": "Cues",
+   "name": "Run Cue 35",
+   "text": "Run Cue 35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 35,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "35",
+   "category": "Cues",
+   "name": "Run Cue 36",
+   "text": "Run Cue 36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 36,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "36",
+   "category": "Cues",
+   "name": "Run Cue 37",
+   "text": "Run Cue 37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 37,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "37",
+   "category": "Cues",
+   "name": "Run Cue 38",
+   "text": "Run Cue 38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 38,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "38",
+   "category": "Cues",
+   "name": "Run Cue 39",
+   "text": "Run Cue 39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 39,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "39",
+   "category": "Cues",
+   "name": "Run Cue 40",
+   "text": "Run Cue 40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 40,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "40",
+   "category": "Cues",
+   "name": "Run Cue 41",
+   "text": "Run Cue 41",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 41,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "41",
+   "category": "Cues",
+   "name": "Run Cue 42",
+   "text": "Run Cue 42",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 42,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "42",
+   "category": "Cues",
+   "name": "Run Cue 43",
+   "text": "Run Cue 43",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 43,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "43",
+   "category": "Cues",
+   "name": "Run Cue 44",
+   "text": "Run Cue 44",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 44,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "44",
+   "category": "Cues",
+   "name": "Run Cue 45",
+   "text": "Run Cue 45",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 45,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "45",
+   "category": "Cues",
+   "name": "Run Cue 46",
+   "text": "Run Cue 46",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 46,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "46",
+   "category": "Cues",
+   "name": "Run Cue 47",
+   "text": "Run Cue 47",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 47,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "47",
+   "category": "Cues",
+   "name": "Run Cue 48",
+   "text": "Run Cue 48",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 48,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "48",
+   "category": "Cues",
+   "name": "Run Cue 49",
+   "text": "Run Cue 49",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 49,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "49",
+   "category": "Cues",
+   "name": "Run Cue 50",
+   "text": "Run Cue 50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 50,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "50",
+   "category": "Cues",
+   "name": "Run Cue 51",
+   "text": "Run Cue 51",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 51,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "51",
+   "category": "Cues",
+   "name": "Run Cue 52",
+   "text": "Run Cue 52",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 52,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "52",
+   "category": "Cues",
+   "name": "Run Cue 53",
+   "text": "Run Cue 53",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 53,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "53",
+   "category": "Cues",
+   "name": "Run Cue 54",
+   "text": "Run Cue 54",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 54,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "54",
+   "category": "Cues",
+   "name": "Run Cue 55",
+   "text": "Run Cue 55",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 55,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "55",
+   "category": "Cues",
+   "name": "Run Cue 56",
+   "text": "Run Cue 56",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 56,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "56",
+   "category": "Cues",
+   "name": "Run Cue 57",
+   "text": "Run Cue 57",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 57,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "57",
+   "category": "Cues",
+   "name": "Run Cue 58",
+   "text": "Run Cue 58",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 58,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "58",
+   "category": "Cues",
+   "name": "Run Cue 59",
+   "text": "Run Cue 59",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 59,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "59",
+   "category": "Cues",
+   "name": "Run Cue 60",
+   "text": "Run Cue 60",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 60,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "60",
+   "category": "Cues",
+   "name": "Run Cue 61",
+   "text": "Run Cue 61",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 61,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "61",
+   "category": "Cues",
+   "name": "Run Cue 62",
+   "text": "Run Cue 62",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 62,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "62",
+   "category": "Cues",
+   "name": "Run Cue 63",
+   "text": "Run Cue 63",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 63,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "63",
+   "category": "Cues",
+   "name": "Run Cue 64",
+   "text": "Run Cue 64",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 64,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "64",
+   "category": "Cues",
+   "name": "Run Cue 65",
+   "text": "Run Cue 65",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 65,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "65",
+   "category": "Cues",
+   "name": "Run Cue 66",
+   "text": "Run Cue 66",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 66,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "66",
+   "category": "Cues",
+   "name": "Run Cue 67",
+   "text": "Run Cue 67",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 67,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "67",
+   "category": "Cues",
+   "name": "Run Cue 68",
+   "text": "Run Cue 68",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 68,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "68",
+   "category": "Cues",
+   "name": "Run Cue 69",
+   "text": "Run Cue 69",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 69,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "69",
+   "category": "Cues",
+   "name": "Run Cue 70",
+   "text": "Run Cue 70",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 70,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "70",
+   "category": "Cues",
+   "name": "Run Cue 71",
+   "text": "Run Cue 71",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 71,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "71",
+   "category": "Cues",
+   "name": "Run Cue 72",
+   "text": "Run Cue 72",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 72,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "72",
+   "category": "Cues",
+   "name": "Run Cue 73",
+   "text": "Run Cue 73",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 73,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "73",
+   "category": "Cues",
+   "name": "Run Cue 74",
+   "text": "Run Cue 74",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 74,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "74",
+   "category": "Cues",
+   "name": "Run Cue 75",
+   "text": "Run Cue 75",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 75,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "75",
+   "category": "Cues",
+   "name": "Run Cue 76",
+   "text": "Run Cue 76",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 76,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "76",
+   "category": "Cues",
+   "name": "Run Cue 77",
+   "text": "Run Cue 77",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 77,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "77",
+   "category": "Cues",
+   "name": "Run Cue 78",
+   "text": "Run Cue 78",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 78,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "78",
+   "category": "Cues",
+   "name": "Run Cue 79",
+   "text": "Run Cue 79",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 79,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "79",
+   "category": "Cues",
+   "name": "Run Cue 80",
+   "text": "Run Cue 80",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 80,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "80",
+   "category": "Cues",
+   "name": "Run Cue 81",
+   "text": "Run Cue 81",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 81,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "81",
+   "category": "Cues",
+   "name": "Run Cue 82",
+   "text": "Run Cue 82",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 82,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "82",
+   "category": "Cues",
+   "name": "Run Cue 83",
+   "text": "Run Cue 83",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 83,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "83",
+   "category": "Cues",
+   "name": "Run Cue 84",
+   "text": "Run Cue 84",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 84,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "84",
+   "category": "Cues",
+   "name": "Run Cue 85",
+   "text": "Run Cue 85",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 85,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "85",
+   "category": "Cues",
+   "name": "Run Cue 86",
+   "text": "Run Cue 86",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 86,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "86",
+   "category": "Cues",
+   "name": "Run Cue 87",
+   "text": "Run Cue 87",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 87,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "87",
+   "category": "Cues",
+   "name": "Run Cue 88",
+   "text": "Run Cue 88",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 88,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "88",
+   "category": "Cues",
+   "name": "Run Cue 89",
+   "text": "Run Cue 89",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 89,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "89",
+   "category": "Cues",
+   "name": "Run Cue 90",
+   "text": "Run Cue 90",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 90,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "90",
+   "category": "Cues",
+   "name": "Run Cue 91",
+   "text": "Run Cue 91",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 91,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "91",
+   "category": "Cues",
+   "name": "Run Cue 92",
+   "text": "Run Cue 92",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 92,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "92",
+   "category": "Cues",
+   "name": "Run Cue 93",
+   "text": "Run Cue 93",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 93,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "93",
+   "category": "Cues",
+   "name": "Run Cue 94",
+   "text": "Run Cue 94",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 94,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "94",
+   "category": "Cues",
+   "name": "Run Cue 95",
+   "text": "Run Cue 95",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 95,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "95",
+   "category": "Cues",
+   "name": "Run Cue 96",
+   "text": "Run Cue 96",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 96,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "96",
+   "category": "Cues",
+   "name": "Run Cue 97",
+   "text": "Run Cue 97",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 97,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "97",
+   "category": "Cues",
+   "name": "Run Cue 98",
+   "text": "Run Cue 98",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 98,
+     "resendEthernet": true
+    }
+   }
+  },
+  {
+   "id": "98",
+   "category": "Cues",
+   "name": "Run Cue 99",
+   "text": "Run Cue 99",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCue",
+    "options": {
+     "cueNumber": 99,
+     "resendEthernet": true
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-netron-en",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "netron-en",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-netron-en.git"
+ }
+}

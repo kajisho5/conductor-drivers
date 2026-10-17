@@ -1,0 +1,86 @@
+{
+ "format": 1,
+ "id": "m-cyberpower-pdu",
+ "name": "CyberPower PDU",
+ "category": "CyberPower",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 161,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "communityRead",
+   "label": "Community read string",
+   "type": "text",
+   "default": "public"
+  },
+  {
+   "id": "communityWrite",
+   "label": "Community write string",
+   "type": "text",
+   "default": "private"
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "allOn",
+   "name": "Set All Sockets On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3031020100040770726976617465a323020400c02d9002010002010030153013060e2b060104019d6001010303010100020102",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "allOff",
+   "name": "Set All Sockets Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3031020100040770726976617465a323020404222f3702010002010030153013060e2b060104019d6001010303010100020103",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-cyberpower-pdu",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "cyberpower-pdu",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-cyberpower-pdu.git"
+ }
+}

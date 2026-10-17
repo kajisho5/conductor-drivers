@@ -1,0 +1,163 @@
+{
+ "format": 1,
+ "id": "m-textmebot-whatsappapi",
+ "name": "TextMeBot WhatsAppApi",
+ "category": "TextMeBot",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.textmebot.com",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "apiKey",
+   "label": "API-Key",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "sendTextMessage",
+   "name": "Send a Text Message",
+   "options": [
+    {
+     "id": "recipient",
+     "label": "Recipient",
+     "type": "text",
+     "default": "49123456789",
+     "help": "⏎↹↹↹↹↹↹\"Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789)⏎↹↹↹↹If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·"
+    },
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/send.php?recipient={{option.recipient}}&apikey=&text={{option.message}}&json=yes"
+   }
+  },
+  {
+   "id": "sendImageMessage",
+   "name": "Send a Text Message with Attachement",
+   "options": [
+    {
+     "id": "recipient",
+     "label": "Recipient",
+     "type": "text",
+     "default": "49123456789",
+     "help": "Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·+·(+49123456789). If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·G"
+    },
+    {
+     "id": "image",
+     "label": "File Url",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "fileType",
+     "label": "FileType",
+     "type": "select",
+     "default": "file",
+     "choices": [
+      {
+       "id": "file",
+       "label": "Image/Video"
+      },
+      {
+       "id": "document",
+       "label": "Document"
+      }
+     ]
+    },
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/send.php?recipient={{option.recipient}}&apikey=&text={{option.message}}&{{option.fileType|map}}={{option.image}}&json=yes"
+   },
+   "maps": {
+    "fileType": {
+     "file": "file",
+     "document": "document"
+    }
+   }
+  },
+  {
+   "id": "sendFileMessage",
+   "name": "Send Audio",
+   "options": [
+    {
+     "id": "recipient",
+     "label": "Recipient",
+     "type": "text",
+     "default": "49123456789",
+     "help": "Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·+·(+49123456789). If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·G"
+    },
+    {
+     "id": "file",
+     "label": "File Url",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/send.php?recipient={{option.recipient}}&apikey=&&audio={{option.file}}&json=yes"
+   }
+  },
+  {
+   "id": "getGroupIDFromGroupInfo",
+   "name": "Convert Group_Info to Group_ID",
+   "options": [
+    {
+     "id": "group_info",
+     "label": "Group_Info",
+     "type": "text",
+     "default": "XYABCDEFG",
+     "help": "Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·+·(+49123456789). If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·G"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/send.php?group_info={{option.group_info}}&apikey=&json=yes"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-textmebot.whatsappapi",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leopold Strobl"
+  }
+ ],
+ "source": {
+  "module": "textmebot-whatsappapi",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Leopold Strobl"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-textmebot.whatsappapi.git"
+ }
+}

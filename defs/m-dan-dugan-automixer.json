@@ -1,0 +1,565 @@
+{
+ "format": 1,
+ "id": "m-dan-dugan-automixer",
+ "name": "Dan Dugan Sound Design Model M / Model N",
+ "category": "Dan Dugan Sound Design",
+ "version": "1.1.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "udp",
+   "label": "Use UDP",
+   "type": "boolean",
+   "default": false,
+   "help": "Connect via UDP instead of TCP"
+  },
+  {
+   "id": "keepAlive",
+   "label": "Poll Interval",
+   "type": "number",
+   "default": 60,
+   "min": 0,
+   "max": 180,
+   "help": "Seconds, set to 0 to turn off"
+  },
+  {
+   "id": "meterRate",
+   "label": "Meter rate",
+   "type": "select",
+   "default": "1000",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Off"
+    },
+    {
+     "id": "250",
+     "label": "250 ms"
+    },
+    {
+     "id": "500",
+     "label": "500 ms"
+    },
+    {
+     "id": "1000",
+     "label": "1 Seconds"
+    },
+    {
+     "id": "2000",
+     "label": "2 Seconds"
+    },
+    {
+     "id": "4000",
+     "label": "4 Seconds"
+    }
+   ]
+  },
+  {
+   "id": "model",
+   "label": "Dugan Model",
+   "type": "select",
+   "default": "11",
+   "choices": [
+    {
+     "id": "11",
+     "label": "Model-M"
+    },
+    {
+     "id": "12",
+     "label": "Model-N"
+    }
+   ]
+  },
+  {
+   "id": "channels",
+   "label": "Automix Channels",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "1",
+     "label": "Unit Default"
+    },
+    {
+     "id": "8",
+     "label": "8 Automix Channels"
+    },
+    {
+     "id": "9",
+     "label": "9 Automix Channels"
+    },
+    {
+     "id": "10",
+     "label": "10 Automix Channels"
+    },
+    {
+     "id": "11",
+     "label": "11 Automix Channels"
+    },
+    {
+     "id": "12",
+     "label": "12 Automix Channels"
+    },
+    {
+     "id": "13",
+     "label": "13 Automix Channels"
+    },
+    {
+     "id": "14",
+     "label": "14 Automix Channels"
+    },
+    {
+     "id": "15",
+     "label": "15 Automix Channels"
+    },
+    {
+     "id": "16",
+     "label": "16 Automix Channels"
+    },
+    {
+     "id": "17",
+     "label": "17 Automix Channels"
+    },
+    {
+     "id": "18",
+     "label": "18 Automix Channels"
+    },
+    {
+     "id": "19",
+     "label": "19 Automix Channels"
+    },
+    {
+     "id": "20",
+     "label": "20 Automix Channels"
+    },
+    {
+     "id": "21",
+     "label": "21 Automix Channels"
+    },
+    {
+     "id": "22",
+     "label": "22 Automix Channels"
+    },
+    {
+     "id": "23",
+     "label": "23 Automix Channels"
+    },
+    {
+     "id": "24",
+     "label": "24 Automix Channels"
+    },
+    {
+     "id": "25",
+     "label": "25 Automix Channels"
+    },
+    {
+     "id": "26",
+     "label": "26 Automix Channels"
+    },
+    {
+     "id": "27",
+     "label": "27 Automix Channels"
+    },
+    {
+     "id": "28",
+     "label": "28 Automix Channels"
+    },
+    {
+     "id": "29",
+     "label": "29 Automix Channels"
+    },
+    {
+     "id": "30",
+     "label": "30 Automix Channels"
+    },
+    {
+     "id": "31",
+     "label": "31 Automix Channels"
+    },
+    {
+     "id": "32",
+     "label": "32 Automix Channels"
+    },
+    {
+     "id": "33",
+     "label": "33 Automix Channels"
+    },
+    {
+     "id": "34",
+     "label": "34 Automix Channels"
+    },
+    {
+     "id": "35",
+     "label": "35 Automix Channels"
+    },
+    {
+     "id": "36",
+     "label": "36 Automix Channels"
+    },
+    {
+     "id": "37",
+     "label": "37 Automix Channels"
+    },
+    {
+     "id": "38",
+     "label": "38 Automix Channels"
+    },
+    {
+     "id": "39",
+     "label": "39 Automix Channels"
+    },
+    {
+     "id": "40",
+     "label": "40 Automix Channels"
+    },
+    {
+     "id": "41",
+     "label": "41 Automix Channels"
+    },
+    {
+     "id": "42",
+     "label": "42 Automix Channels"
+    },
+    {
+     "id": "43",
+     "label": "43 Automix Channels"
+    },
+    {
+     "id": "44",
+     "label": "44 Automix Channels"
+    },
+    {
+     "id": "45",
+     "label": "45 Automix Channels"
+    },
+    {
+     "id": "46",
+     "label": "46 Automix Channels"
+    },
+    {
+     "id": "47",
+     "label": "47 Automix Channels"
+    },
+    {
+     "id": "48",
+     "label": "48 Automix Channels"
+    },
+    {
+     "id": "49",
+     "label": "49 Automix Channels"
+    },
+    {
+     "id": "50",
+     "label": "50 Automix Channels"
+    },
+    {
+     "id": "51",
+     "label": "51 Automix Channels"
+    },
+    {
+     "id": "52",
+     "label": "52 Automix Channels"
+    },
+    {
+     "id": "53",
+     "label": "53 Automix Channels"
+    },
+    {
+     "id": "54",
+     "label": "54 Automix Channels"
+    },
+    {
+     "id": "55",
+     "label": "55 Automix Channels"
+    },
+    {
+     "id": "56",
+     "label": "56 Automix Channels"
+    },
+    {
+     "id": "57",
+     "label": "57 Automix Channels"
+    },
+    {
+     "id": "58",
+     "label": "58 Automix Channels"
+    },
+    {
+     "id": "59",
+     "label": "59 Automix Channels"
+    },
+    {
+     "id": "60",
+     "label": "60 Automix Channels"
+    },
+    {
+     "id": "61",
+     "label": "61 Automix Channels"
+    },
+    {
+     "id": "62",
+     "label": "62 Automix Channels"
+    },
+    {
+     "id": "63",
+     "label": "63 Automix Channels"
+    },
+    {
+     "id": "64",
+     "label": "64 Automix Channels"
+    }
+   ]
+  },
+  {
+   "id": "rate",
+   "label": "Messaging rate",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Fast"
+    },
+    {
+     "id": "1",
+     "label": "Medium"
+    },
+    {
+     "id": "2",
+     "label": "Slow"
+    },
+    {
+     "id": "3",
+     "label": "Very Slow"
+    }
+   ]
+  },
+  {
+   "id": "subscription",
+   "label": "Unsocilicted Message Subscription",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Off"
+    },
+    {
+     "id": "1",
+     "label": "On"
+    }
+   ],
+   "help": "This will be forced on if using feedbacks"
+  },
+  {
+   "id": "isTalkingThreshold",
+   "label": "Talking Threshold",
+   "type": "number",
+   "default": -3,
+   "min": -24,
+   "max": 0,
+   "help": "Automix gain threshold for Is Talking function"
+  }
+ ],
+ "actions": [
+  {
+   "id": "sc_recall",
+   "name": "Scene - Recall",
+   "options": [
+    {
+     "id": "name",
+     "label": "Scene Name",
+     "type": "select",
+     "default": "Factory Defaults",
+     "choices": [],
+     "help": "Max Length: 15 char"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SNR,Factory Defaults\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "sc_save",
+   "name": "Scene - Save",
+   "options": [
+    {
+     "id": "name",
+     "label": "Scene Name",
+     "type": "select",
+     "default": "New Scene",
+     "choices": [],
+     "help": "Max Length: 15 char"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SNS,New Scene\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "sc_newsave",
+   "name": "Scene - Save New",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SNN\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "sc_delete",
+   "name": "Scene - Delete",
+   "options": [
+    {
+     "id": "name",
+     "label": "Scene Name",
+     "type": "select",
+     "default": "",
+     "choices": [],
+     "help": "Max Length: 15 char. \",\" \";\" Forbidden."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GS\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recall_default",
+   "name": "Recall Defaults",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Channel or Matrix",
+     "type": "select",
+     "default": "FP",
+     "choices": [
+      {
+       "id": "FP",
+       "label": "Channel Defaults"
+      },
+      {
+       "id": "RM",
+       "label": "Matrix Defaults"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.mode|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "FP": "FP",
+     "RM": "RM"
+    }
+   }
+  },
+  {
+   "id": "query_meters",
+   "name": "Metering",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Meter Type",
+     "type": "select",
+     "default": "GS",
+     "choices": [
+      {
+       "id": "GS",
+       "label": "Channel Status"
+      },
+      {
+       "id": "GSA",
+       "label": "Automix Gains"
+      },
+      {
+       "id": "GSS",
+       "label": "Signal Presence"
+      },
+      {
+       "id": "GSI",
+       "label": "Input Peaks"
+      },
+      {
+       "id": "GSO",
+       "label": "Output Peaks"
+      },
+      {
+       "id": "GSM",
+       "label": "Music Reference Peaks"
+      },
+      {
+       "id": "GSN",
+       "label": "NOM Gain Limits"
+      },
+      {
+       "id": "GSX",
+       "label": "Matrix Output Meters"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GS{{option.mode|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "GS": "",
+     "GSA": "A",
+     "GSS": "S",
+     "GSI": "I",
+     "GSO": "O",
+     "GSM": "M\\r\\nGS",
+     "GSN": "N",
+     "GSX": "X"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-dan-dugan-automixer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "dan-dugan-automixer",
+  "version": "1.1.3",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-dan-dugan-automixer.git"
+ }
+}

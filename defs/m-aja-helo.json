@@ -1,0 +1,488 @@
+{
+ "format": 1,
+ "id": "m-aja-helo",
+ "name": "AJA HELO",
+ "category": "AJA",
+ "version": "2.4.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "classic",
+   "choices": [
+    {
+     "id": "classic",
+     "label": "Classic"
+    },
+    {
+     "id": "plus",
+     "label": "Plus"
+    }
+   ]
+  },
+  {
+   "id": "enable_polling",
+   "label": "Enable Polling?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "polling_rate",
+   "label": "Polling Rate",
+   "type": "select",
+   "default": "10000",
+   "choices": [
+    {
+     "id": "5000",
+     "label": "5s"
+    },
+    {
+     "id": "10000",
+     "label": "10s"
+    },
+    {
+     "id": "30000",
+     "label": "30s"
+    }
+   ]
+  },
+  {
+   "id": "name_refresh_rate",
+   "label": "Name Refresh Rate",
+   "type": "select",
+   "default": "180000",
+   "choices": [
+    {
+     "id": "60000",
+     "label": "1m"
+    },
+    {
+     "id": "180000",
+     "label": "3m"
+    },
+    {
+     "id": "300000",
+     "label": "5m"
+    },
+    {
+     "id": "600000",
+     "label": "10m"
+    },
+    {
+     "id": "-1",
+     "label": "On Config Update"
+    }
+   ]
+  },
+  {
+   "id": "auth_required",
+   "label": "Require password?",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "auth_password",
+   "label": "Password",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "startStop",
+   "name": "Record / Stream Control",
+   "options": [
+    {
+     "id": "command",
+     "label": "Choose Command",
+     "type": "select",
+     "default": "ReplicatorCommand&value=1",
+     "choices": [
+      {
+       "id": "ReplicatorCommand&value=1",
+       "label": "Start Record"
+      },
+      {
+       "id": "ReplicatorCommand&value=2",
+       "label": "Stop Record"
+      },
+      {
+       "id": "ReplicatorCommand&value=3",
+       "label": "Start Stream"
+      },
+      {
+       "id": "ReplicatorCommand&value=4",
+       "label": "Stop Stream"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_ReplicatorCommand&value={{option.command|map}}"
+   },
+   "maps": {
+    "command": {
+     "ReplicatorCommand&value=1": "1",
+     "ReplicatorCommand&value=2": "2",
+     "ReplicatorCommand&value=3": "3",
+     "ReplicatorCommand&value=4": "4"
+    }
+   }
+  },
+  {
+   "id": "toggleRecord",
+   "name": "Toggle Recording",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_ReplicatorCommand&value=1"
+   }
+  },
+  {
+   "id": "toggleStream",
+   "name": "Toggle Streaming",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_ReplicatorCommand&value=3"
+   }
+  },
+  {
+   "id": "videoInSelect",
+   "name": "Set Video Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Choose Video Input",
+     "type": "select",
+     "default": "VideoInSelect&value=0",
+     "choices": [
+      {
+       "id": "VideoInSelect&value=0",
+       "label": "SDI"
+      },
+      {
+       "id": "VideoInSelect&value=1",
+       "label": "HDMI"
+      },
+      {
+       "id": "VideoInSelect&value=2",
+       "label": "Test Pattern"
+      }
+     ],
+     "help": "Selects a video input source from the video input connections available. This is the video that will be recorded and/or passed through."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_VideoInSelect&value={{option.input|map}}"
+   },
+   "maps": {
+    "input": {
+     "VideoInSelect&value=0": "0",
+     "VideoInSelect&value=1": "1",
+     "VideoInSelect&value=2": "2"
+    }
+   }
+  },
+  {
+   "id": "audioInSelect",
+   "name": "Set Audio Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Choose Audio Input",
+     "type": "select",
+     "default": "AudioInSelect&value=0",
+     "choices": [
+      {
+       "id": "AudioInSelect&value=0",
+       "label": "SDI"
+      },
+      {
+       "id": "AudioInSelect&value=1",
+       "label": "HDMI"
+      },
+      {
+       "id": "AudioInSelect&value=2",
+       "label": "Analog"
+      },
+      {
+       "id": "AudioInSelect&value=4",
+       "label": "None"
+      }
+     ],
+     "help": "Selects an audio input source from the audio input connections available, including embedded SDI audio which requires an SDI video source and HDMI audio, which requires an HDMI video source."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_AudioInSelect&value={{option.input|map}}"
+   },
+   "maps": {
+    "input": {
+     "AudioInSelect&value=0": "0",
+     "AudioInSelect&value=1": "1",
+     "AudioInSelect&value=2": "2",
+     "AudioInSelect&value=4": "4"
+    }
+   }
+  },
+  {
+   "id": "analogAudioInputLevel",
+   "name": "Set Audio Level (Analog Audio only)",
+   "options": [
+    {
+     "id": "level",
+     "label": "Choose Audio Level on analog signal",
+     "type": "select",
+     "default": "AnalogAudioInputLevel&value=0",
+     "choices": [
+      {
+       "id": "AnalogAudioInputLevel&value=0",
+       "label": "0dB"
+      },
+      {
+       "id": "AnalogAudioInputLevel&value=1",
+       "label": "+6dB"
+      },
+      {
+       "id": "AnalogAudioInputLevel&value=2",
+       "label": "+12dB"
+      }
+     ],
+     "help": "Selects the analog input audio level, where 0dB is the least sensitive and +12dB is the most sensitive"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_AnalogAudioInputLevel&value={{option.level|map}}"
+   },
+   "maps": {
+    "level": {
+     "AnalogAudioInputLevel&value=0": "0",
+     "AnalogAudioInputLevel&value=1": "1",
+     "AnalogAudioInputLevel&value=2": "2"
+    }
+   }
+  },
+  {
+   "id": "audioDelay",
+   "name": "Set Audio Delay",
+   "options": [
+    {
+     "id": "audioDelay",
+     "label": "Audio Delay (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 300,
+     "help": "Delays audio on analog, HDMI, recordings, and streams by a fixed number of milliseconds relative to input (0-300 ms)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_DelayAudioMs&value={{option.audioDelay}}"
+   }
+  },
+  {
+   "id": "mute",
+   "name": "Mute",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_AVMute&value=1"
+   }
+  },
+  {
+   "id": "unmute",
+   "name": "Unmute",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_AVMute&value=0"
+   }
+  },
+  {
+   "id": "renameFile",
+   "name": "Rename File",
+   "options": [
+    {
+     "id": "fileName",
+     "label": "file name",
+     "type": "text",
+     "help": "Set the base filename for recordings."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value={{option.fileName}}"
+   }
+  },
+  {
+   "id": "renameFileTs",
+   "name": "Rename File - Timestamp",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261017_0106"
+   }
+  },
+  {
+   "id": "schedulerActivity",
+   "name": "Scheduler Activity",
+   "options": [
+    {
+     "id": "activity",
+     "label": "Determine what should be active during a scheduled event",
+     "type": "select",
+     "default": "SchedulerActivity&value=1",
+     "choices": [
+      {
+       "id": "SchedulerActivity&value=1",
+       "label": "Record Only"
+      },
+      {
+       "id": "SchedulerActivity&value=2",
+       "label": "Stream Only"
+      },
+      {
+       "id": "SchedulerActivity&value=3",
+       "label": "Record and Stream"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_SchedulerActivity&value={{option.activity|map}}"
+   },
+   "maps": {
+    "activity": {
+     "SchedulerActivity&value=1": "1",
+     "SchedulerActivity&value=2": "2",
+     "SchedulerActivity&value=3": "3"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "startRecord",
+   "category": "Commands",
+   "name": "Start Record",
+   "text": "START RECORD",
+   "backgroundColor": "#00cc00",
+   "action": {
+    "definitionId": "startStop",
+    "options": {
+     "command": "ReplicatorCommand&value=1"
+    }
+   }
+  },
+  {
+   "id": "stopRecord",
+   "category": "Commands",
+   "name": "Stop Record",
+   "text": "STOP RECORD",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "startStop",
+    "options": {
+     "command": "ReplicatorCommand&value=2"
+    }
+   }
+  },
+  {
+   "id": "toggleRecord",
+   "category": "Commands",
+   "name": "Toggle Record",
+   "text": "HELO RECORD",
+   "backgroundColor": "#00cc00",
+   "action": {
+    "definitionId": "toggleRecord",
+    "options": {}
+   }
+  },
+  {
+   "id": "startStream",
+   "category": "Commands",
+   "name": "Start Stream",
+   "text": "START STREAM",
+   "backgroundColor": "#00cc00",
+   "action": {
+    "definitionId": "startStop",
+    "options": {
+     "command": "ReplicatorCommand&value=3"
+    }
+   }
+  },
+  {
+   "id": "stopStream",
+   "category": "Commands",
+   "name": "Stop Stream",
+   "text": "STOP STREAM",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "startStop",
+    "options": {
+     "command": "ReplicatorCommand&value=4"
+    }
+   }
+  },
+  {
+   "id": "toggleStream",
+   "category": "Commands",
+   "name": "Toggle Stream",
+   "text": "HELO STREAM",
+   "backgroundColor": "#00cc00",
+   "action": {
+    "definitionId": "toggleStream",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aja-helo",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Casey Selph, Caleb Wishart"
+  }
+ ],
+ "source": {
+  "module": "aja-helo",
+  "version": "2.4.2",
+  "license": "MIT",
+  "maintainers": [
+   "Casey Selph",
+   "Caleb Wishart"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aja-helo.git"
+ }
+}

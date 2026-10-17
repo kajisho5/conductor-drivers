@@ -1,0 +1,283 @@
+{
+ "format": 1,
+ "id": "m-resolume-arena",
+ "name": "Resolume Arena",
+ "category": "Resolume",
+ "version": "3.12.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "webapiPort",
+   "label": "Resolume WebAPI Port",
+   "type": "number",
+   "default": 8080,
+   "min": 1,
+   "max": 65536
+  },
+  {
+   "id": "useRest",
+   "label": "Use Rest for web api calls (if false fallback to OSC)",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "useSSL",
+   "label": "Use SSL for web api calls",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "useCroppedThumbs",
+   "label": "Hide black banners on thumbnails (might be slower)",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "clipVolumeChange",
+   "name": "Clip Volume Change",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "column",
+     "label": "Column",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "add",
+     "choices": [
+      {
+       "id": "add",
+       "label": "+"
+      },
+      {
+       "id": "subtract",
+       "label": "-"
+      },
+      {
+       "id": "set",
+       "label": "="
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Value in db (e.g. 100 or 10)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/composition/layers/{{option.layer}}/clips/{{option.column}}"
+   }
+  },
+  {
+   "id": "layerOpacityChange",
+   "name": "Layer Opacity Change",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "add",
+     "choices": [
+      {
+       "id": "add",
+       "label": "+"
+      },
+      {
+       "id": "subtract",
+       "label": "-"
+      },
+      {
+       "id": "set",
+       "label": "="
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Value in percentage (e.g. 100 or 10)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/composition/layers/{{option.layer}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "changeClipVolumeSet100",
+   "category": "Clip",
+   "name": "Volume set 0db",
+   "text": "Clip Volume set 0db",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clipVolumeChange",
+    "options": {
+     "layer": "1",
+     "column": "1",
+     "action": "set",
+     "value": 0
+    }
+   }
+  },
+  {
+   "id": "changeClipVolumeAdd10",
+   "category": "Clip",
+   "name": "Volume Add 3db",
+   "text": "Clip Volume +3db",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clipVolumeChange",
+    "options": {
+     "layer": "1",
+     "column": "1",
+     "action": "add",
+     "value": 3
+    }
+   }
+  },
+  {
+   "id": "changeClipVolumeSubtract10",
+   "category": "Clip",
+   "name": "Volume Subtract 3db",
+   "text": "Clip Volume -3db",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clipVolumeChange",
+    "options": {
+     "layer": "1",
+     "column": "1",
+     "action": "subtract",
+     "value": 3
+    }
+   }
+  },
+  {
+   "id": "changeClipVolumeSet0",
+   "category": "Clip",
+   "name": "Volume set -192db",
+   "text": "Clip Volume set -192db",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clipVolumeChange",
+    "options": {
+     "layer": "1",
+     "column": "1",
+     "action": "set",
+     "value": -192
+    }
+   }
+  },
+  {
+   "id": "changeLayerOpacitySet100",
+   "category": "Layer",
+   "name": "Opacity set 100%",
+   "text": "Layer Opacity set 100%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "layerOpacityChange",
+    "options": {
+     "layer": "1",
+     "action": "set",
+     "value": 100
+    }
+   }
+  },
+  {
+   "id": "changeLayerOpacityAdd10",
+   "category": "Layer",
+   "name": "Opacity Add 10%",
+   "text": "Layer Opacity +10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "layerOpacityChange",
+    "options": {
+     "layer": "1",
+     "action": "add",
+     "value": 10
+    }
+   }
+  },
+  {
+   "id": "changeLayerOpacitySubtract10",
+   "category": "Layer",
+   "name": "Opacity Subtract 10%",
+   "text": "Layer Opacity -10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "layerOpacityChange",
+    "options": {
+     "layer": "1",
+     "action": "subtract",
+     "value": 10
+    }
+   }
+  },
+  {
+   "id": "changeLayerOpacitySet0",
+   "category": "Layer",
+   "name": "Opacity set 0%",
+   "text": "Layer Opacity set 0%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "layerOpacityChange",
+    "options": {
+     "layer": "1",
+     "action": "set",
+     "value": 0
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-resolume-arena",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Oliver Herman, Axel Bergmans"
+  }
+ ],
+ "source": {
+  "module": "resolume-arena",
+  "version": "3.12.0",
+  "license": "MIT",
+  "maintainers": [
+   "Oliver Herman",
+   "Axel Bergmans"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-resolume-arena.git"
+ }
+}

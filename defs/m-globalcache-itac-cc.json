@@ -1,0 +1,217 @@
+{
+ "format": 1,
+ "id": "m-globalcache-itac-cc",
+ "name": "Global Cache iTach IP2CC",
+ "category": "Global Cache",
+ "version": "2.0.5",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 4998,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "ports",
+   "label": "Number of Ports",
+   "type": "select",
+   "default": "3",
+   "choices": [
+    {
+     "id": "3",
+     "label": "3"
+    },
+    {
+     "id": "6",
+     "label": "6"
+    }
+   ]
+  },
+  {
+   "id": "poll_interval",
+   "label": "Polling Interval (ms), set to 0 to disable polling",
+   "type": "number",
+   "default": 1000,
+   "min": 50,
+   "max": 30000
+  }
+ ],
+ "actions": [
+  {
+   "id": "portSet",
+   "name": "Choose port and state",
+   "options": [
+    {
+     "id": "portNum",
+     "label": "Choose Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Port 1"
+      },
+      {
+       "id": "2",
+       "label": "Port 2"
+      },
+      {
+       "id": "3",
+       "label": "Port 3"
+      }
+     ]
+    },
+    {
+     "id": "setPort",
+     "label": "Set On or Off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Turn On (Close)"
+      },
+      {
+       "id": "0",
+       "label": "Turn Off (Open)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "setstate,1:{{option.portNum|map}},{{option.setPort|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "portNum": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    },
+    "setPort": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Port 1",
+   "name": "Close",
+   "text": "PORT 1\nCLOSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "portSet",
+    "options": {
+     "portNum": "1",
+     "setPort": "1"
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Port 1",
+   "name": "Open",
+   "text": "PORT 1\nOPEN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "portSet",
+    "options": {
+     "portNum": "1",
+     "setPort": "0"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Port 2",
+   "name": "Close",
+   "text": "PORT 2\nCLOSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "portSet",
+    "options": {
+     "portNum": "2",
+     "setPort": "1"
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Port 2",
+   "name": "Open",
+   "text": "PORT 2\nOPEN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "portSet",
+    "options": {
+     "portNum": "2",
+     "setPort": "0"
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Port 3",
+   "name": "Close",
+   "text": "PORT 3\nCLOSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "portSet",
+    "options": {
+     "portNum": "3",
+     "setPort": "1"
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Port 3",
+   "name": "Open",
+   "text": "PORT 3\nOPEN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "portSet",
+    "options": {
+     "portNum": "3",
+     "setPort": "0"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-globalcache-itac-cc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Casey Selph"
+  }
+ ],
+ "source": {
+  "module": "globalcache-itac-cc",
+  "version": "2.0.5",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Casey Selph"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-globalcache-itac-cc.git"
+ }
+}

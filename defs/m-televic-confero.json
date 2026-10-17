@@ -1,0 +1,87 @@
+{
+ "format": 1,
+ "id": "m-televic-confero",
+ "name": "Televic Plixus MME / Plixus AE-R / Plixus WAP / D-Cerno AE",
+ "category": "Televic",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:9080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "token",
+   "label": "API Bearer token",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "startMeeting",
+   "name": "Start a Local meeting",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/meeting",
+    "body": "{\"kind\":\"NewMeetingFromLocalTemplate\"}",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  },
+  {
+   "id": "stopMeeting",
+   "name": "Stop a meeting",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "DELETE",
+    "path": "/api/meeting",
+    "body": ""
+   }
+  },
+  {
+   "id": "RecordingState",
+   "name": "Handle Recording",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/recording/state",
+    "body": "{\"state\":\"idle\"}",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-televic-confero",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Stijn Bryq"
+  }
+ ],
+ "source": {
+  "module": "televic-confero",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Stijn Bryq"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-televic-confero.git"
+ }
+}

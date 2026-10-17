@@ -1,0 +1,1002 @@
+{
+ "format": 1,
+ "id": "m-extron-mmx-tcp",
+ "name": "Extron MMX 42/62 Series",
+ "category": "Extron",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 32100,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "saveresponse",
+   "label": "Save TCP Response",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "RouteAV",
+   "name": "Route Audio & Video",
+   "options": [
+    {
+     "id": "id_output",
+     "label": "Output:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Out 1"
+      },
+      {
+       "id": "2",
+       "label": "Out 2"
+      }
+     ]
+    },
+    {
+     "id": "id_input",
+     "label": "Input:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_input|map}}*{{option.id_output|map}}!",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "id_output": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "RouteV",
+   "name": "Route Video",
+   "options": [
+    {
+     "id": "id_output",
+     "label": "Output:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Out 1"
+      },
+      {
+       "id": "2",
+       "label": "Out 2"
+      }
+     ]
+    },
+    {
+     "id": "id_input",
+     "label": "Input:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_input|map}}*{{option.id_output|map}}%",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "id_output": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "RouteA",
+   "name": "Route Audio",
+   "options": [
+    {
+     "id": "id_output",
+     "label": "Output:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Out 1"
+      },
+      {
+       "id": "2",
+       "label": "Out 2"
+      }
+     ]
+    },
+    {
+     "id": "id_input",
+     "label": "Input:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_input|map}}*{{option.id_output|map}}$",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "id_output": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "AudioLevel",
+   "name": "Audio Level",
+   "options": [
+    {
+     "id": "id_input",
+     "label": "Input:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      }
+     ]
+    },
+    {
+     "id": "id_level",
+     "label": "Level:",
+     "type": "select",
+     "default": "0G",
+     "choices": [
+      {
+       "id": "24G",
+       "label": "+24dB"
+      },
+      {
+       "id": "23G",
+       "label": "+23dB"
+      },
+      {
+       "id": "22G",
+       "label": "+22dB"
+      },
+      {
+       "id": "21G",
+       "label": "+21dB"
+      },
+      {
+       "id": "20G",
+       "label": "+20dB"
+      },
+      {
+       "id": "19G",
+       "label": "+19dB"
+      },
+      {
+       "id": "18G",
+       "label": "+18dB"
+      },
+      {
+       "id": "17G",
+       "label": "+17dB"
+      },
+      {
+       "id": "16G",
+       "label": "+16dB"
+      },
+      {
+       "id": "15G",
+       "label": "+15dB"
+      },
+      {
+       "id": "14G",
+       "label": "+14dB"
+      },
+      {
+       "id": "13G",
+       "label": "+13dB"
+      },
+      {
+       "id": "12G",
+       "label": "+12dB"
+      },
+      {
+       "id": "11G",
+       "label": "+11dB"
+      },
+      {
+       "id": "10G",
+       "label": "+10dB"
+      },
+      {
+       "id": "9G",
+       "label": "+9dB"
+      },
+      {
+       "id": "8G",
+       "label": "+8dB"
+      },
+      {
+       "id": "7G",
+       "label": "+7dB"
+      },
+      {
+       "id": "6G",
+       "label": "+6dB"
+      },
+      {
+       "id": "5G",
+       "label": "+5dB"
+      },
+      {
+       "id": "4G",
+       "label": "+4dB"
+      },
+      {
+       "id": "3G",
+       "label": "+3dB"
+      },
+      {
+       "id": "2G",
+       "label": "+2dB"
+      },
+      {
+       "id": "1G",
+       "label": "+1dB"
+      },
+      {
+       "id": "0G",
+       "label": "+0dB"
+      },
+      {
+       "id": "1g",
+       "label": "-1dB"
+      },
+      {
+       "id": "2g",
+       "label": "-2dB"
+      },
+      {
+       "id": "3g",
+       "label": "-3dB"
+      },
+      {
+       "id": "4g",
+       "label": "-4dB"
+      },
+      {
+       "id": "5g",
+       "label": "-5dB"
+      },
+      {
+       "id": "6g",
+       "label": "-6dB"
+      },
+      {
+       "id": "7g",
+       "label": "-7dB"
+      },
+      {
+       "id": "8g",
+       "label": "-8dB"
+      },
+      {
+       "id": "9g",
+       "label": "-9dB"
+      },
+      {
+       "id": "10g",
+       "label": "-10dB"
+      },
+      {
+       "id": "11g",
+       "label": "-11dB"
+      },
+      {
+       "id": "12g",
+       "label": "-12dB"
+      },
+      {
+       "id": "13g",
+       "label": "-13dB"
+      },
+      {
+       "id": "14g",
+       "label": "-14dB"
+      },
+      {
+       "id": "15g",
+       "label": "-15dB"
+      },
+      {
+       "id": "16g",
+       "label": "-16dB"
+      },
+      {
+       "id": "17g",
+       "label": "-17dB"
+      },
+      {
+       "id": "18g",
+       "label": "-18dB"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_input|map}}*{{option.id_level|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "id_level": {
+     "0G": "0G",
+     "24G": "24G",
+     "23G": "23G",
+     "22G": "22G",
+     "21G": "21G",
+     "20G": "20G",
+     "19G": "19G",
+     "18G": "18G",
+     "17G": "17G",
+     "16G": "16G",
+     "15G": "15G",
+     "14G": "14G",
+     "13G": "13G",
+     "12G": "12G",
+     "11G": "11G",
+     "10G": "10G",
+     "9G": "9G",
+     "8G": "8G",
+     "7G": "7G",
+     "6G": "6G",
+     "5G": "5G",
+     "4G": "4G",
+     "3G": "3G",
+     "2G": "2G",
+     "1G": "1G",
+     "1g": "1g",
+     "2g": "2g",
+     "3g": "3g",
+     "4g": "4g",
+     "5g": "5g",
+     "6g": "6g",
+     "7g": "7g",
+     "8g": "8g",
+     "9g": "9g",
+     "10g": "10g",
+     "11g": "11g",
+     "12g": "12g",
+     "13g": "13g",
+     "14g": "14g",
+     "15g": "15g",
+     "16g": "16g",
+     "17g": "17g",
+     "18g": "18g"
+    }
+   }
+  },
+  {
+   "id": "AudioLevelIncDec",
+   "name": "Audio Level In-/Decrease",
+   "options": [
+    {
+     "id": "id_input",
+     "label": "Input:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      }
+     ]
+    },
+    {
+     "id": "id_dir",
+     "label": "Direction:",
+     "type": "select",
+     "default": "+",
+     "choices": [
+      {
+       "id": "+",
+       "label": "Increase +1dB"
+      },
+      {
+       "id": "-",
+       "label": "Decrease -1dB"
+      }
+     ],
+     "help": "in 1dB steps"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_input|map}}{{option.id_dir|map}}G",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "id_dir": {
+     "+": "+",
+     "-": "-"
+    }
+   }
+  },
+  {
+   "id": "Frontpanel",
+   "name": "Frontpanel",
+   "options": [
+    {
+     "id": "id_lock",
+     "label": "Lock/Unlock:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Lock"
+      },
+      {
+       "id": "0",
+       "label": "Unlock"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_lock|map}}X",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_lock": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "AVRoute_In1_to_Out1",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV1\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "1",
+     "id_input": "1"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In1_to_Out1",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud1\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "1",
+     "id_input": "1"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In1_to_Out1",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid1\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "1",
+     "id_input": "1"
+    }
+   }
+  },
+  {
+   "id": "AVRoute_In1_to_Out2",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV1\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "2",
+     "id_input": "1"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In1_to_Out2",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud1\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "2",
+     "id_input": "1"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In1_to_Out2",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid1\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "2",
+     "id_input": "1"
+    }
+   }
+  },
+  {
+   "id": "AVRoute_In2_to_Out1",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV2\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "1",
+     "id_input": "2"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In2_to_Out1",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud2\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "1",
+     "id_input": "2"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In2_to_Out1",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid2\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "1",
+     "id_input": "2"
+    }
+   }
+  },
+  {
+   "id": "AVRoute_In2_to_Out2",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV2\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "2",
+     "id_input": "2"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In2_to_Out2",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud2\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "2",
+     "id_input": "2"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In2_to_Out2",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid2\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "2",
+     "id_input": "2"
+    }
+   }
+  },
+  {
+   "id": "AVRoute_In3_to_Out1",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV3\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "1",
+     "id_input": "3"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In3_to_Out1",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud3\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "1",
+     "id_input": "3"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In3_to_Out1",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid3\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "1",
+     "id_input": "3"
+    }
+   }
+  },
+  {
+   "id": "AVRoute_In3_to_Out2",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV3\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "2",
+     "id_input": "3"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In3_to_Out2",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud3\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "2",
+     "id_input": "3"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In3_to_Out2",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid3\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "2",
+     "id_input": "3"
+    }
+   }
+  },
+  {
+   "id": "AVRoute_In4_to_Out1",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV4\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "1",
+     "id_input": "4"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In4_to_Out1",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud4\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "1",
+     "id_input": "4"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In4_to_Out1",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid4\n🡇\nOut1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "1",
+     "id_input": "4"
+    }
+   }
+  },
+  {
+   "id": "AVRoute_In4_to_Out2",
+   "category": "Route AV",
+   "name": "Route Input Audio and Video to Output and read current routes for feedback",
+   "text": "AV4\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteAV",
+    "options": {
+     "id_output": "2",
+     "id_input": "4"
+    }
+   }
+  },
+  {
+   "id": "ARoute_In4_to_Out2",
+   "category": "Route A",
+   "name": "Route Input Audio to Output and read current routes for feedback",
+   "text": "Aud4\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteA",
+    "options": {
+     "id_output": "2",
+     "id_input": "4"
+    }
+   }
+  },
+  {
+   "id": "VRoute_In4_to_Out2",
+   "category": "Route V",
+   "name": "Route Input Video to Output and read current routes for feedback",
+   "text": "Vid4\n🡇\nOut2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RouteV",
+    "options": {
+     "id_output": "2",
+     "id_input": "4"
+    }
+   }
+  },
+  {
+   "id": "Audio_1_Set_Level",
+   "category": "Audio Level",
+   "name": "Set Audio level and read current setting for feedback.",
+   "text": "Aud 1 Set Level\n0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AudioLevel",
+    "options": {
+     "id_input": "1",
+     "id_level": "0G"
+    }
+   }
+  },
+  {
+   "id": "Audio_2_Set_Level",
+   "category": "Audio Level",
+   "name": "Set Audio level and read current setting for feedback.",
+   "text": "Aud 2 Set Level\n0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AudioLevel",
+    "options": {
+     "id_input": "2",
+     "id_level": "0G"
+    }
+   }
+  },
+  {
+   "id": "Audio_3_Set_Level",
+   "category": "Audio Level",
+   "name": "Set Audio level and read current setting for feedback.",
+   "text": "Aud 3 Set Level\n0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AudioLevel",
+    "options": {
+     "id_input": "3",
+     "id_level": "0G"
+    }
+   }
+  },
+  {
+   "id": "Audio_4_Set_Level",
+   "category": "Audio Level",
+   "name": "Set Audio level and read current setting for feedback.",
+   "text": "Aud 4 Set Level\n0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AudioLevel",
+    "options": {
+     "id_input": "4",
+     "id_level": "0G"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-extron-mmx-tcp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Eugen Hottmann"
+  }
+ ],
+ "source": {
+  "module": "extron-mmx-tcp",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Eugen Hottmann"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-extron-mmx-tcp.git"
+ }
+}

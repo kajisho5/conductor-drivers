@@ -1,0 +1,265 @@
+{
+ "format": 1,
+ "id": "m-ioversal-vertex",
+ "name": "ioversal Vertex",
+ "category": "ioversal",
+ "version": "1.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 50009,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "script",
+   "name": "Run Script/Run Command",
+   "options": [
+    {
+     "id": "script",
+     "label": "Script/Command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.script}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playback Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Playback{{option.id}}.Play\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playback Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Playback{{option.id}}.Pause\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playback Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Playback{{option.id}}.Stop\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "goToCue",
+   "name": "Go to Cue",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playback Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    },
+    {
+     "id": "cueId",
+     "label": "Cue Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Playback{{option.id}}.GotoCue {{option.cueId}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fadeToCue",
+   "name": "Fade to Cue",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playback Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    },
+    {
+     "id": "cueId",
+     "label": "Cue Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    },
+    {
+     "id": "preloadTime",
+     "label": "Preload Time",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    },
+    {
+     "id": "fadeTime",
+     "label": "Fade Time",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Playback{{option.id}}.FadeToCue {{option.cueId}},{{option.preloadTime}},{{option.fadeTime}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "gotoNextCue",
+   "name": "Go to Next Cue",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playback Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Playback{{option.id}}.GotoNextCue\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "gotoPreviousCue",
+   "name": "Go to Previous Cue",
+   "options": [
+    {
+     "id": "id",
+     "label": "Playback Id",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 9007199254740991
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Playback{{option.id}}.GotoPrevCue\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "poll",
+   "name": "Poll",
+   "options": [
+    {
+     "id": "target",
+     "label": "Target",
+     "type": "text",
+     "default": "Playback1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "return CompanionRequest {{option.target}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "update_polling_target",
+   "name": "Update polling target",
+   "options": [
+    {
+     "id": "target",
+     "label": "Target",
+     "type": "text",
+     "default": "Playback1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "return CompanionRequest 52\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-ioversal-vertex",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Manuel Riviere, Jan Gilla"
+  }
+ ],
+ "source": {
+  "module": "ioversal-vertex",
+  "version": "1.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Manuel Riviere",
+   "Jan Gilla"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-ioversal-vertex.git"
+ }
+}

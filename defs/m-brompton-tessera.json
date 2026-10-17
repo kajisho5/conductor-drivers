@@ -1,0 +1,712 @@
+{
+ "format": 1,
+ "id": "m-brompton-tessera",
+ "name": "Brompton Technology Tessera LED Processor Control",
+ "category": "Brompton Technology",
+ "version": "2.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "maxBrightness",
+   "label": "Max Brightness of Device (used for percentage calculation)",
+   "type": "text",
+   "default": "1550"
+  }
+ ],
+ "actions": [
+  {
+   "id": "inputPortNumberSelect",
+   "name": "Input Port Number Select",
+   "options": [
+    {
+     "id": "portNumber",
+     "label": "Port Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ],
+     "help": "Input port number"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/input/active/source/port-number?set={{option.portNumber|map}}"
+   },
+   "maps": {
+    "portNumber": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "inputPortTypeSelect",
+   "name": "Input Port Type Select",
+   "options": [
+    {
+     "id": "portType",
+     "label": "Port Type",
+     "type": "select",
+     "default": "dvi",
+     "choices": [
+      {
+       "id": "dvi",
+       "label": "DVI"
+      },
+      {
+       "id": "hdmi",
+       "label": "HDMI"
+      },
+      {
+       "id": "sdi",
+       "label": "SDI"
+      }
+     ],
+     "help": "Input port type"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/input/active/source/port-type?set={{option.portType|map}}i"
+   },
+   "maps": {
+    "portType": {
+     "dvi": "dv",
+     "hdmi": "hdm",
+     "sdi": "sd"
+    }
+   }
+  },
+  {
+   "id": "lutStrengthSelect",
+   "name": "3D LUT Strength Select",
+   "options": [
+    {
+     "id": "strength",
+     "label": "3D LUT Strength (%)",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 100,
+     "help": "3D LUT Strength (%)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/processing/3d-lut/strength?set={{option.strength}}"
+   }
+  },
+  {
+   "id": "testPatternFormatSelect",
+   "name": "Test Pattern Format Select",
+   "options": [
+    {
+     "id": "format",
+     "label": "Format",
+     "type": "select",
+     "default": "from-input",
+     "choices": [
+      {
+       "id": "from-input",
+       "label": "From Input"
+      },
+      {
+       "id": "standard-dynamic-range",
+       "label": "Standard Dynamic Range"
+      },
+      {
+       "id": "perceptual-quantiser",
+       "label": "Perceptual Quantiser"
+      },
+      {
+       "id": "hybrid-log-gamma",
+       "label": "Hybrid Log Gamma"
+      }
+     ],
+     "help": "Test pattern format"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/override/test-pattern/format?set={{option.format|map}}"
+   },
+   "maps": {
+    "format": {
+     "from-input": "from-input",
+     "standard-dynamic-range": "standard-dynamic-range",
+     "perceptual-quantiser": "perceptual-quantiser",
+     "hybrid-log-gamma": "hybrid-log-gamma"
+    }
+   }
+  },
+  {
+   "id": "testPatternTypeSelect",
+   "name": "Test Pattern Type Select",
+   "options": [
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "brompton",
+     "choices": [
+      {
+       "id": "brompton",
+       "label": "Brompton"
+      },
+      {
+       "id": "red",
+       "label": "Red"
+      },
+      {
+       "id": "green",
+       "label": "Green"
+      },
+      {
+       "id": "blue",
+       "label": "Blue"
+      },
+      {
+       "id": "cyan",
+       "label": "Cyan"
+      },
+      {
+       "id": "magenta",
+       "label": "Magenta"
+      },
+      {
+       "id": "yellow",
+       "label": "Yellow"
+      },
+      {
+       "id": "white",
+       "label": "White"
+      },
+      {
+       "id": "black",
+       "label": "Black"
+      },
+      {
+       "id": "grid",
+       "label": "Grid"
+      },
+      {
+       "id": "scrolling-grid",
+       "label": "Scrolling Grid"
+      },
+      {
+       "id": "checkerboard",
+       "label": "Checkerboard"
+      },
+      {
+       "id": "scrolling-checkerboard",
+       "label": "Scrolling Checkerboard"
+      },
+      {
+       "id": "colour-bars",
+       "label": "Colour Bars"
+      },
+      {
+       "id": "scrolling-colour-bars",
+       "label": "Scrolling Colour Bars"
+      },
+      {
+       "id": "gradient",
+       "label": "Gradient"
+      },
+      {
+       "id": "scrolling-gradient",
+       "label": "Scrolling Gradient"
+      },
+      {
+       "id": "strobe",
+       "label": "Strobe"
+      },
+      {
+       "id": "smpte-bars",
+       "label": "SMPTE Bars"
+      },
+      {
+       "id": "scrolling-smpte-bars",
+       "label": "Scrolling SMPTE Bars"
+      },
+      {
+       "id": "custom-colour",
+       "label": "Custom Colour"
+      },
+      {
+       "id": "custom",
+       "label": "Custom"
+      },
+      {
+       "id": "forty-five-degree-grid",
+       "label": "45 Degree Grid"
+      },
+      {
+       "id": "scrolling-forty-five-degree-grid",
+       "label": "Scrolling 45 Degree Grid"
+      },
+      {
+       "id": "custom-gradient",
+       "label": "Custom Gradient"
+      },
+      {
+       "id": "scrolling-custom-gradient",
+       "label": "Scrolling Custom Gradient"
+      }
+     ],
+     "help": "Test pattern type"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/override/test-pattern/type?set={{option.type|map}}"
+   },
+   "maps": {
+    "type": {
+     "brompton": "brompton",
+     "red": "red",
+     "green": "green",
+     "blue": "blue",
+     "cyan": "cyan",
+     "magenta": "magenta",
+     "yellow": "yellow",
+     "white": "white",
+     "black": "black",
+     "grid": "grid",
+     "scrolling-grid": "scrolling-grid",
+     "checkerboard": "checkerboard",
+     "scrolling-checkerboard": "scrolling-checkerboard",
+     "colour-bars": "colour-bars",
+     "scrolling-colour-bars": "scrolling-colour-bars",
+     "gradient": "gradient",
+     "scrolling-gradient": "scrolling-gradient",
+     "strobe": "strobe",
+     "smpte-bars": "smpte-bars",
+     "scrolling-smpte-bars": "scrolling-smpte-bars",
+     "custom-colour": "custom-colour",
+     "custom": "custom",
+     "forty-five-degree-grid": "forty-five-degree-grid",
+     "scrolling-forty-five-degree-grid": "scrolling-forty-five-degree-grid",
+     "custom-gradient": "custom-gradient",
+     "scrolling-custom-gradient": "scrolling-custom-gradient"
+    }
+   }
+  },
+  {
+   "id": "frameStoreFrameSelect",
+   "name": "Frame Store Select",
+   "options": [
+    {
+     "id": "frameStoreNumber",
+     "label": "Frame Store Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 50,
+     "help": "The frame to select (1-50)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/override/test-pattern/type?set={{option.frameStoreNumber}}"
+   }
+  },
+  {
+   "id": "frameStoreFrameCapture",
+   "name": "Frame Store Capture",
+   "options": [
+    {
+     "id": "frameStoreNumber",
+     "label": "Frame Store Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 50,
+     "help": "The frame to store the capture in (1-50)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/override/test-pattern/frame-store/capture-frame?set={{option.frameStoreNumber}}"
+   }
+  },
+  {
+   "id": "outputBrightnessSelect",
+   "name": "Output Brightness Select",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Brightness (0-10000 nits)",
+     "type": "number",
+     "default": 5000,
+     "min": 0,
+     "max": 10000,
+     "help": "The output brightness (0-10000 nits)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/global-colour/brightness?set={{option.brightness}}"
+   }
+  },
+  {
+   "id": "outputBrightnessSetToMax",
+   "name": "Output Brightness Set To Common Maximum",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/global-colour/brightness?set=-1"
+   }
+  },
+  {
+   "id": "outputColourTemperatureSelect",
+   "name": "Output Colour Temperature Select",
+   "options": [
+    {
+     "id": "temperature",
+     "label": "Colour Temperature (2000-11000 K)",
+     "type": "number",
+     "default": 6504,
+     "min": 2000,
+     "max": 11000,
+     "help": "The output colour temperature (2000-11000 K)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/global-colour/colour-temperature?set={{option.temperature}}"
+   }
+  },
+  {
+   "id": "requestFailover",
+   "name": "Request Failover",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/failover/actions/request-failover?set="
+   }
+  },
+  {
+   "id": "phaseOffsetModeSelect",
+   "name": "Phase Offset Mode Select",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "none",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "angle",
+       "label": "Angle"
+      },
+      {
+       "id": "fraction",
+       "label": "Fraction"
+      }
+     ],
+     "help": "Phase offset mode"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/genlock/phase-offset/mode?set={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "none": "none",
+     "angle": "angle",
+     "fraction": "fraction"
+    }
+   }
+  },
+  {
+   "id": "phaseOffsetAngleSelect",
+   "name": "Phase Offset (Angle) Select",
+   "options": [
+    {
+     "id": "offset",
+     "label": "Phase Offset Angle (-360˚ - 360˚)",
+     "type": "number",
+     "default": 0,
+     "min": -360,
+     "max": 360,
+     "help": "The phase offset angle (-360˚ - 360˚)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/genlock/phase-offset/angle?set={{option.offset}}"
+   }
+  },
+  {
+   "id": "phaseOffsetFractionSelect",
+   "name": "Phase Offset (Fraction) Select",
+   "options": [
+    {
+     "id": "offset",
+     "label": "Phase Offset Fraction (-100% - 100%)",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100,
+     "help": "The phase offset fraction (-100% - 100%)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/genlock/phase-offset/fraction?set={{option.offset}}"
+   }
+  },
+  {
+   "id": "shutterSyncModeSelect",
+   "name": "ShutterSync Mode Select (Camera)",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "none",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "angle",
+       "label": "Angle"
+      },
+      {
+       "id": "speed",
+       "label": "Speed"
+      }
+     ],
+     "help": "ShutterSync mode"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/shuttersync/mode?set={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "none": "none",
+     "angle": "angle",
+     "speed": "speed"
+    }
+   }
+  },
+  {
+   "id": "shutterSyncAngleSelect",
+   "name": "ShutterSync (Angle) Select",
+   "options": [
+    {
+     "id": "angle",
+     "label": "ShutterSync Angle (1˚ - 360˚)",
+     "type": "number",
+     "default": 180,
+     "min": 1,
+     "max": 360,
+     "help": "The phase offset angle (1˚ - 360˚)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/shuttersync/angle-settings/shutter-angle?set={{option.angle}}"
+   }
+  },
+  {
+   "id": "shutterSyncSpeedSelect",
+   "name": "ShutterSync (Speed) Select",
+   "options": [
+    {
+     "id": "speed",
+     "label": "ShutterSync Speed (1/10 - 1/250)",
+     "type": "number",
+     "default": 120,
+     "min": 10,
+     "max": 250,
+     "help": "The phase offset speed (1/10 - 1/250)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/shuttersync/speed-settings/shutter-speed?set={{option.speed}}"
+   }
+  },
+  {
+   "id": "shutterSyncTimeSelect",
+   "name": "ShutterSync (Time) Select",
+   "options": [
+    {
+     "id": "time",
+     "label": "ShutterSync Time (4 ms - 100 ms)",
+     "type": "number",
+     "default": 10,
+     "min": 4,
+     "max": 100,
+     "help": "The phase offset time (4 ms - 100 ms)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/output/network/shuttersync/speed-settings/time?set={{option.time}}"
+   }
+  },
+  {
+   "id": "presetSelect",
+   "name": "Preset Select",
+   "options": [
+    {
+     "id": "presetNumber",
+     "label": "Preset Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 128,
+     "help": "The preset to activate (1-128)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/presets/active/number?set={{option.presetNumber}}"
+   }
+  },
+  {
+   "id": "groupBrightnessSelect",
+   "name": "Group Brightness Select",
+   "options": [
+    {
+     "id": "group",
+     "label": "Group Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4294967295,
+     "help": "The group number"
+    },
+    {
+     "id": "brightness",
+     "label": "Brightness (0-10000 nits)",
+     "type": "number",
+     "default": 5000,
+     "min": 0,
+     "max": 10000,
+     "help": "The group brightness (0-10000 nits)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/groups/items/{{option.group}}/brightness?set={{option.brightness}}"
+   }
+  },
+  {
+   "id": "shutDown",
+   "name": "Shut Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/system/actions/shutdown?set="
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/system/actions/reboot?set="
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "testPatternTypeSelectorAll",
+   "category": "Test Pattern Selector",
+   "name": "Test Pattern Type Selector: All",
+   "text": "Test Pattern Type Selector: All",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "testPatternTypeSelect",
+    "options": {
+     "type": "brompton"
+    }
+   }
+  },
+  {
+   "id": "testPatternTypeSelectorColour",
+   "category": "Test Pattern Selector",
+   "name": "Test Pattern Type Selector: Colours",
+   "text": "Test Pattern Type Selector: Colours",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "testPatternTypeSelect",
+    "options": {
+     "type": "white"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-brompton-tessera",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Seraphin Gnehm"
+  }
+ ],
+ "source": {
+  "module": "brompton-tessera",
+  "version": "2.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Seraphin Gnehm"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-brompton-tessera.git"
+ }
+}

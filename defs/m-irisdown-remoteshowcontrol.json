@@ -1,0 +1,274 @@
+{
+ "format": 1,
+ "id": "m-irisdown-remoteshowcontrol",
+ "name": "Irisdown Remote Show Control",
+ "category": "Irisdown",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 61001,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "open",
+   "name": "Open file",
+   "options": [
+    {
+     "id": "file",
+     "label": "filename",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "OPEN \"{{option.file}}\"\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "close",
+   "name": "Close file",
+   "options": [
+    {
+     "id": "file",
+     "label": "filename",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CLOSE \"{{option.file}}\"\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "run",
+   "name": "Run (file)",
+   "options": [
+    {
+     "id": "file",
+     "label": "filename (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "RUN \"{{option.file}}\"\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "runCurrent",
+   "name": "Run at selected slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "RUNCURRENT\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop (file)",
+   "options": [
+    {
+     "id": "file",
+     "label": "filename (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STOP \"{{option.file}}\"\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "next",
+   "name": "Next slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NEXT\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "prev",
+   "name": "Previous slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "PREV\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "goSection",
+   "name": "Goto Section",
+   "options": [
+    {
+     "id": "section",
+     "label": "section name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GO \"{{option.section}}\"\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setbg",
+   "name": "Set background",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SETBG\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "OpenFile",
+   "category": "Actions",
+   "name": "Open File",
+   "text": "Open File",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "open",
+    "options": {}
+   }
+  },
+  {
+   "id": "CloseFile",
+   "category": "Actions",
+   "name": "Close File",
+   "text": "Close File",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "close",
+    "options": {}
+   }
+  },
+  {
+   "id": "RunFile",
+   "category": "Actions",
+   "name": "Run File",
+   "text": "Run File",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "run",
+    "options": {}
+   }
+  },
+  {
+   "id": "RunCurrent",
+   "category": "Actions",
+   "name": "Run at Selected Slide",
+   "text": "Run at Selected Slide",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "runCurrent",
+    "options": {}
+   }
+  },
+  {
+   "id": "Stop",
+   "category": "Actions",
+   "name": "Stop F ile",
+   "text": "Stop File",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "NextSlide",
+   "category": "Actions",
+   "name": "Next Slide",
+   "text": "Next Slide",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {}
+   }
+  },
+  {
+   "id": "PreviousSlide",
+   "category": "Actions",
+   "name": "Previous Slide",
+   "text": "Previous Slide",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "prev",
+    "options": {}
+   }
+  },
+  {
+   "id": "GotoSection",
+   "category": "Actions",
+   "name": "Goto Section",
+   "text": "Goto Section",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "goSection",
+    "options": {}
+   }
+  },
+  {
+   "id": "SetBackground",
+   "category": "Actions",
+   "name": "Set Background",
+   "text": "Set Background",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setbg",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-irisdown-remoteshowcontrol",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Røine"
+  }
+ ],
+ "source": {
+  "module": "irisdown-remoteshowcontrol",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Per Røine"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-irisdown-remoteshowcontrol.git"
+ }
+}

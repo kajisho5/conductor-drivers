@@ -1,0 +1,373 @@
+{
+ "format": 1,
+ "id": "m-ableton-osc",
+ "name": "Ableton Live",
+ "category": "Ableton",
+ "version": "1.2.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 11000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "receivePort",
+   "label": "Receive Port (Listen)",
+   "type": "number",
+   "default": 11001,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "stop_track",
+   "name": "Track - Stop",
+   "options": [
+    {
+     "id": "track",
+     "label": "Track",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1: Track 1"
+      },
+      {
+       "id": "2",
+       "label": "2: Track 2"
+      },
+      {
+       "id": "3",
+       "label": "3: Track 3"
+      },
+      {
+       "id": "4",
+       "label": "4: Track 4"
+      },
+      {
+       "id": "5",
+       "label": "5: Track 5"
+      },
+      {
+       "id": "6",
+       "label": "6: Track 6"
+      },
+      {
+       "id": "7",
+       "label": "7: Track 7"
+      },
+      {
+       "id": "8",
+       "label": "8: Track 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/live/track/stop_all_clips",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.track|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "track": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "mute_track",
+   "name": "Track - Mute",
+   "options": [
+    {
+     "id": "track",
+     "label": "Track",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1: Track 1"
+      },
+      {
+       "id": "2",
+       "label": "2: Track 2"
+      },
+      {
+       "id": "3",
+       "label": "3: Track 3"
+      },
+      {
+       "id": "4",
+       "label": "4: Track 4"
+      },
+      {
+       "id": "5",
+       "label": "5: Track 5"
+      },
+      {
+       "id": "6",
+       "label": "6: Track 6"
+      },
+      {
+       "id": "7",
+       "label": "7: Track 7"
+      },
+      {
+       "id": "8",
+       "label": "8: Track 8"
+      }
+     ]
+    },
+    {
+     "id": "mute",
+     "label": "Mute State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      },
+      {
+       "id": "on",
+       "label": "Mute"
+      },
+      {
+       "id": "off",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/live/track/set/mute",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.track|map}}"
+     },
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "track": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    },
+    "mute": {
+     "toggle": "1",
+     "on": "1",
+     "off": "0"
+    }
+   }
+  },
+  {
+   "id": "fade_stop_track",
+   "name": "Track - Fade Out and Stop",
+   "options": [
+    {
+     "id": "track",
+     "label": "Track",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1: Track 1"
+      },
+      {
+       "id": "2",
+       "label": "2: Track 2"
+      },
+      {
+       "id": "3",
+       "label": "3: Track 3"
+      },
+      {
+       "id": "4",
+       "label": "4: Track 4"
+      },
+      {
+       "id": "5",
+       "label": "5: Track 5"
+      },
+      {
+       "id": "6",
+       "label": "6: Track 6"
+      },
+      {
+       "id": "7",
+       "label": "7: Track 7"
+      },
+      {
+       "id": "8",
+       "label": "8: Track 8"
+      }
+     ]
+    },
+    {
+     "id": "duration",
+     "label": "Duration (ms)",
+     "type": "number",
+     "default": 3500,
+     "min": 100,
+     "max": 60000
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/live/track/get/volume",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.track|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "track": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "fade_in_track",
+   "name": "Track - Fade In",
+   "options": [
+    {
+     "id": "track",
+     "label": "Track",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1: Track 1"
+      },
+      {
+       "id": "2",
+       "label": "2: Track 2"
+      },
+      {
+       "id": "3",
+       "label": "3: Track 3"
+      },
+      {
+       "id": "4",
+       "label": "4: Track 4"
+      },
+      {
+       "id": "5",
+       "label": "5: Track 5"
+      },
+      {
+       "id": "6",
+       "label": "6: Track 6"
+      },
+      {
+       "id": "7",
+       "label": "7: Track 7"
+      },
+      {
+       "id": "8",
+       "label": "8: Track 8"
+      }
+     ]
+    },
+    {
+     "id": "duration",
+     "label": "Duration (ms)",
+     "type": "number",
+     "default": 3500,
+     "min": 100,
+     "max": 60000
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/live/track/get/volume",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.track|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "track": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-ableton-osc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Mathieu Lantin"
+  }
+ ],
+ "source": {
+  "module": "ableton-osc",
+  "version": "1.2.2",
+  "license": "MIT",
+  "maintainers": [
+   "Mathieu Lantin"
+  ],
+  "repository": "https://github.com/bitfocus/companion-module-ableton-osc"
+ }
+}

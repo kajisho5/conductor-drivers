@@ -1,0 +1,985 @@
+{
+ "format": 1,
+ "id": "m-shure-scm820",
+ "name": "Shure SCM820",
+ "category": "Shure",
+ "version": "2.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "meteringOn",
+   "label": "Enable Metering?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "meteringInterval",
+   "label": "Metering Interval (in ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 250,
+   "max": 99999
+  },
+  {
+   "id": "variableFormat",
+   "label": "Variable Format",
+   "type": "select",
+   "default": "units",
+   "choices": [
+    {
+     "id": "units",
+     "label": "Include Units"
+    },
+    {
+     "id": "numeric",
+     "label": "Numeric Only"
+    }
+   ],
+   "help": "Changing this setting will apply to new values received.  To refresh all variables with the new setting, disable and re-enable the connection after saving these settings."
+  }
+ ],
+ "actions": [
+  {
+   "id": "chan_name",
+   "name": "Set channel name",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Aux In"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name (31 characters max)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} CHAN_NAME {{{option.name}}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_mute",
+   "name": "Set channel mute",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Aux In"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_MUTE {{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    },
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "audio_gain",
+   "name": "Set audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Aux In"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -110,
+     "max": 18
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES {{option.gain|lin:10:1100}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_gain_inc",
+   "name": "Increase audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Aux In"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 0.1,
+     "max": 120
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES INC {{option.gain|lin:10:0}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_gain_dec",
+   "name": "Decrease audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Aux In"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 0.1,
+     "max": 120
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES DEC {{option.gain|lin:10:0}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "always_on_enable",
+   "name": "Set channel always on in mix",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix",
+     "type": "select",
+     "default": "A",
+     "choices": [
+      {
+       "id": "A",
+       "label": "Mix A"
+      },
+      {
+       "id": "B",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Set On/Off/Toggle",
+     "type": "select",
+     "default": "TOGGLE",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} ALWAYS_ON_ENABLE_{{option.mix|map}} {{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "mix": {
+     "A": "A",
+     "B": "B"
+    },
+    "choice": {
+     "TOGGLE": "TOGGLE",
+     "ON": "ON",
+     "OFF": "OFF"
+    }
+   }
+  },
+  {
+   "id": "intellimix_mode",
+   "name": "Set IntelliMix Mode",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "18",
+     "choices": [
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "IntelliMix Mode",
+     "type": "select",
+     "default": "CLASSIC",
+     "choices": [
+      {
+       "id": "CLASSIC",
+       "label": "Classic"
+      },
+      {
+       "id": "SMOOTH",
+       "label": "Smooth"
+      },
+      {
+       "id": "EXTREME",
+       "label": "Extreme"
+      },
+      {
+       "id": "CUSTOM",
+       "label": "Custom"
+      },
+      {
+       "id": "MANUAL",
+       "label": "Manual"
+      },
+      {
+       "id": "CUSTOM_PRESET",
+       "label": "Custom Preset"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1{{option.channel|map}} INTELLIMIX_MODE {{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "18": "8",
+     "19": "9"
+    },
+    "choice": {
+     "CLASSIC": "CLASSIC",
+     "SMOOTH": "SMOOTH",
+     "EXTREME": "EXTREME",
+     "CUSTOM": "CUSTOM",
+     "MANUAL": "MANUAL",
+     "CUSTOM_PRESET": "CUSTOM_PRESET"
+    }
+   }
+  },
+  {
+   "id": "dfr_assigned_chan",
+   "name": "Set DFR assigned channel",
+   "options": [
+    {
+     "id": "dfr",
+     "label": "DFR #",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "DFR 1"
+      },
+      {
+       "id": "2",
+       "label": "DFR 2"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      },
+      {
+       "id": "20",
+       "label": "Unassigned"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DFR{{option.dfr|map}}_ASSIGN_CHAN {{option.channel|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dfr": {
+     "1": "1",
+     "2": "2"
+    },
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "18": "18",
+     "19": "19",
+     "20": "20"
+    }
+   }
+  },
+  {
+   "id": "dfr_bypass",
+   "name": "Set DFR bypass",
+   "options": [
+    {
+     "id": "dfr",
+     "label": "DFR #",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "DFR 1"
+      },
+      {
+       "id": "2",
+       "label": "DFR 2"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Set On/Off",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DFR{{option.dfr|map}}_BYPASS O{{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dfr": {
+     "1": "1",
+     "2": "2"
+    },
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "dfr_clear",
+   "name": "Clear DFR filters",
+   "options": [
+    {
+     "id": "dfr",
+     "label": "DFR #",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "DFR 1"
+      },
+      {
+       "id": "2",
+       "label": "DFR 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DFR{{option.dfr|map}}_CLEAR_ALL_FILTERS ON >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dfr": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "dfr_freeze",
+   "name": "Set DFR freeze",
+   "options": [
+    {
+     "id": "dfr",
+     "label": "DFR #",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "DFR 1"
+      },
+      {
+       "id": "2",
+       "label": "DFR 2"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Set On/Off",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DFR{{option.dfr|map}}_FREEZE O{{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dfr": {
+     "1": "1",
+     "2": "2"
+    },
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "auto_link_mode",
+   "name": "Set auto link mode",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Set On/Off",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET AUTO_LINK_MODE O{{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "flash_lights",
+   "name": "Flash lights on the mixer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH ON >\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-scm820",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "shure-scm820",
+  "version": "2.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-scm820.git"
+ }
+}

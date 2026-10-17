@@ -1,0 +1,285 @@
+{
+ "format": 1,
+ "id": "m-nanoleaf-shapes",
+ "name": "Nanoleaf Shapes / Aurora / Canvas / Elements",
+ "category": "Nanoleaf",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:16021",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "turnOn",
+   "name": "Turn on",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"on\":{\"value\":true}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "turnOff",
+   "name": "Turn off",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"on\":{\"value\":false}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setSaturation",
+   "name": "Set Saturation",
+   "options": [
+    {
+     "id": "saturation",
+     "label": "Saturation",
+     "type": "number",
+     "default": 10,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"sat\":{\"value\":{{option.saturation}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "changeSaturation",
+   "name": "Change Saturation",
+   "options": [
+    {
+     "id": "saturation",
+     "label": "Change saturation by",
+     "type": "number",
+     "default": 10,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"sat\":{\"increment\":{{option.saturation}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setBrightness",
+   "name": "Set Brightness",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Brightness",
+     "type": "number",
+     "default": 10,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"brightness\":{\"value\":{{option.brightness}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "changeBrightness",
+   "name": "Change Brightness",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Change Brightness by",
+     "type": "number",
+     "default": 10,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"brightness\":{\"increment\":{{option.brightness}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setDurationBrightness",
+   "name": "Fade to Brightness",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Brightness",
+     "type": "number",
+     "default": 10,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "duration",
+     "label": "Duration",
+     "type": "number",
+     "default": 10,
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"brightness\":{\"value\":{{option.brightness}},\"duration\":{{option.duration}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setHue",
+   "name": "Set Hue",
+   "options": [
+    {
+     "id": "hue",
+     "label": "Hue",
+     "type": "number",
+     "default": 10,
+     "min": 0,
+     "max": 360
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"hue\":{\"value\":{{option.hue}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "changeHue",
+   "name": "Change Hue",
+   "options": [
+    {
+     "id": "hue",
+     "label": "Change Hue by",
+     "type": "number",
+     "default": 10,
+     "min": -360,
+     "max": 360
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"hue\":{\"increment\":{{option.hue}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setColorTemperature",
+   "name": "Set Color Temperature",
+   "options": [
+    {
+     "id": "temperature",
+     "label": "Color Temperature",
+     "type": "number",
+     "default": 3850,
+     "min": 1200,
+     "max": 6500
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"ct\":{\"value\":{{option.temperature}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "changeColorTemperature",
+   "name": "Change Color Temperature",
+   "options": [
+    {
+     "id": "temperature",
+     "label": "Change Color Temperature by",
+     "type": "number",
+     "default": 10,
+     "min": -5000,
+     "max": 5000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/state",
+    "body": "{\"ct\":{\"increment\":{{option.temperature}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setEffect",
+   "name": "Set Effect",
+   "options": [
+    {
+     "id": "effect",
+     "label": "Effect",
+     "type": "select",
+     "default": "x",
+     "choices": [
+      {
+       "id": "x",
+       "label": "** Connection failed **"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/effects",
+    "body": "{\"select\":\"x\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-nanoleaf-shapes",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jens Frank"
+  }
+ ],
+ "source": {
+  "module": "nanoleaf-shapes",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jens Frank"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-nanoleaf-shapes.git"
+ }
+}

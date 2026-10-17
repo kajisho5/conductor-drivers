@@ -1,0 +1,322 @@
+{
+ "format": 1,
+ "id": "m-leolabs-ableset",
+ "name": "Leolabs AbleSet",
+ "category": "Leolabs",
+ "version": "1.7.3",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 39051,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "fineUpdates",
+   "label": "Fine Updates",
+   "type": "boolean",
+   "default": true,
+   "help": "Disable this if it causes performance issues. With this enabled, progress bars are updated every 40ms, otherwise they are updated every beat."
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/play",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=warkwaZnXBpYpCo9ZwpvNr"
+     }
+    ]
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/pause",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=mgvM6X3R61XFfEHDkmpWi7"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/stop",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=njYNBa2tszYS4HGzQgf3ih"
+     }
+    ]
+   }
+  },
+  {
+   "id": "playPause",
+   "name": "Toggle Play/Pause",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/play",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=rHG9hKfN4vFt6CUTGtr5Kv"
+     }
+    ]
+   }
+  },
+  {
+   "id": "playStop",
+   "name": "Toggle Play/Stop",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/play",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=817eNxS3hRjDTjes63sbrS"
+     }
+    ]
+   }
+  },
+  {
+   "id": "record",
+   "name": "Start Recording",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/record",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=uuTHsAMhGDB6KjPtheZBFd"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stopRecord",
+   "name": "Stop Recording",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/stopRecording",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=rQwejg4Z3Df2WzKF38hjFo"
+     }
+    ]
+   }
+  },
+  {
+   "id": "toggleRecord",
+   "name": "Toggle Recording",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/toggleRecording",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=jEetE2SHbYJUYG7mQdWLwu"
+     }
+    ]
+   }
+  },
+  {
+   "id": "enableLoop",
+   "name": "Enable Loop",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/setlist/enableLoop",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=h2Wvsd8dY6cFeVchSGdTgP"
+     }
+    ]
+   }
+  },
+  {
+   "id": "escapeLoop",
+   "name": "Escape Loop",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/setlist/escapeLoop",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=9SB1rid9EhJtAJ4zK7Q1Ak"
+     }
+    ]
+   }
+  },
+  {
+   "id": "toggleLoop",
+   "name": "Toggle Loop",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/setlist/enableLoop",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=75J9B1SNJfXGbmygJV21JV"
+     }
+    ]
+   }
+  },
+  {
+   "id": "playCuedSong",
+   "name": "Play Cued Song",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/setlist/playCuedSong",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=e43NV4TnNYQgEBEmDsFH4g"
+     }
+    ]
+   }
+  },
+  {
+   "id": "pa12ToggleScene",
+   "name": "PlayAUDIO12: Toggle Scene",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/playaudio12/toggleScene",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=e3PfZ5wRMTnpGKD8jbEW8r"
+     }
+    ]
+   }
+  },
+  {
+   "id": "syncPlaybackNow",
+   "name": "AbleNet: Sync Playback Now",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/global/syncToRemoteTick",
+    "args": [
+     {
+      "type": "s",
+      "value": "uuid=oReMPJx8F9FRh3mpt6tyKN"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "playPause",
+   "category": "Playback",
+   "name": "Toggle Play/Pause",
+   "text": "Toggle Play/Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playPause",
+    "options": {}
+   }
+  },
+  {
+   "id": "playStop",
+   "category": "Playback",
+   "name": "Toggle Play/Stop",
+   "text": "Toggle Play/Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playStop",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggleRecord",
+   "category": "Playback",
+   "name": "Toggle Record",
+   "text": "Toggle Record",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleRecord",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggleLoop",
+   "category": "Playback",
+   "name": "Toggle Loop",
+   "text": "Toggle Loop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleLoop",
+    "options": {}
+   }
+  },
+  {
+   "id": "playAudio12",
+   "category": "AbleNet",
+   "name": "Sync Playback Now",
+   "text": "Sync Playback Now",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "syncPlaybackNow",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-leolabs-ableset",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Léo Bernard"
+  }
+ ],
+ "source": {
+  "module": "leolabs-ableset",
+  "version": "1.7.3",
+  "license": "MIT",
+  "maintainers": [
+   "Léo Bernard"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-leolabs-ableset.git"
+ }
+}

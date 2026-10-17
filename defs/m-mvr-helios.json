@@ -1,0 +1,955 @@
+{
+ "format": 1,
+ "id": "m-mvr-helios",
+ "name": "Megapixel Helios",
+ "category": "Megapixel",
+ "version": "2.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "poll_presets",
+   "label": "Poll for available configurations",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_blackout",
+   "name": "Set Blackout",
+   "options": [
+    {
+     "id": "bo",
+     "label": "Select State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"display\":{\"blackout\":{{option.bo|map}}e}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "bo": {
+     "toggle": "tru",
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "set_freeze",
+   "name": "Set Freeze",
+   "options": [
+    {
+     "id": "freeze",
+     "label": "Select State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"display\":{\"freeze\":{{option.freeze|map}}e}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "freeze": {
+     "toggle": "tru",
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "set_input",
+   "name": "Set Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Select Input",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "hdmi",
+       "label": "HDMI"
+      },
+      {
+       "id": "hdmi1",
+       "label": "HDMI1"
+      },
+      {
+       "id": "hdmi2",
+       "label": "HDMI2"
+      },
+      {
+       "id": "hdmi1X2",
+       "label": "HDMI1X2"
+      },
+      {
+       "id": "hdmi2X1",
+       "label": "HDMI2X1"
+      },
+      {
+       "id": "dp",
+       "label": "DP"
+      },
+      {
+       "id": "dp1",
+       "label": "DP1"
+      },
+      {
+       "id": "dp2",
+       "label": "DP2"
+      },
+      {
+       "id": "dp1X2",
+       "label": "DP1X2"
+      },
+      {
+       "id": "dp2X1",
+       "label": "DP2X1"
+      },
+      {
+       "id": "sdi1",
+       "label": "SDI1"
+      },
+      {
+       "id": "sdi2",
+       "label": "SDI2"
+      },
+      {
+       "id": "sdi3",
+       "label": "SDI3"
+      },
+      {
+       "id": "sdi4",
+       "label": "SDI4"
+      },
+      {
+       "id": "sdi1X2",
+       "label": "SDI1X2"
+      },
+      {
+       "id": "sdi1X3",
+       "label": "SDI1X3"
+      },
+      {
+       "id": "sdi1X4",
+       "label": "SDI1X4"
+      },
+      {
+       "id": "sdi2X1",
+       "label": "SDI2X1"
+      },
+      {
+       "id": "sdi2X2",
+       "label": "SDI2X2"
+      },
+      {
+       "id": "sdi3X1",
+       "label": "SDI3X1"
+      },
+      {
+       "id": "sdi4X1",
+       "label": "SDI4X1"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"ingest\":{\"input\":\"{{option.input|map}}\"}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "input": {
+     "": "",
+     "hdmi": "hdmi",
+     "hdmi1": "hdmi1",
+     "hdmi2": "hdmi2",
+     "hdmi1X2": "hdmi1X2",
+     "hdmi2X1": "hdmi2X1",
+     "dp": "dp",
+     "dp1": "dp1",
+     "dp2": "dp2",
+     "dp1X2": "dp1X2",
+     "dp2X1": "dp2X1",
+     "sdi1": "sdi1",
+     "sdi2": "sdi2",
+     "sdi3": "sdi3",
+     "sdi4": "sdi4",
+     "sdi1X2": "sdi1X2",
+     "sdi1X3": "sdi1X3",
+     "sdi1X4": "sdi1X4",
+     "sdi2X1": "sdi2X1",
+     "sdi2X2": "sdi2X2",
+     "sdi3X1": "sdi3X1",
+     "sdi4X1": "sdi4X1"
+    }
+   }
+  },
+  {
+   "id": "set_still",
+   "name": "Set Still",
+   "options": [
+    {
+     "id": "still",
+     "label": "Select Still",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/media/show",
+    "body": "{\"name\":\"\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "hide_still",
+   "name": "Hide Still",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/media/show",
+    "body": "{\"name\":null}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_brightness",
+   "name": "Set Screen Brightness",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Brightness",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"display\":{\"brightness\":{{option.brightness}}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_cct",
+   "name": "Set Screen Color Temperature",
+   "options": [
+    {
+     "id": "temp",
+     "label": "Temperature",
+     "type": "number",
+     "default": 6504,
+     "min": 1667,
+     "max": 10000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"display\":{\"cct\":{{option.temp}}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_resolution",
+   "name": "Set Canvas Resolution",
+   "options": [
+    {
+     "id": "width",
+     "label": "Width",
+     "type": "number",
+     "default": 1920,
+     "min": 0,
+     "max": 8192
+    },
+    {
+     "id": "height",
+     "label": "Height",
+     "type": "number",
+     "default": 1080,
+     "min": 0,
+     "max": 4320
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"display\":{\"width\":{{option.width}},\"height\":{{option.height}}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_position",
+   "name": "Set Canvas Position",
+   "options": [
+    {
+     "id": "x",
+     "label": "X",
+     "type": "number",
+     "default": 0
+    },
+    {
+     "id": "y",
+     "label": "Y",
+     "type": "number",
+     "default": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"display\":{\"x\":{{option.x}},\"y\":{{option.y}}}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_show_test",
+   "name": "Show Test Pattern",
+   "options": [
+    {
+     "id": "show",
+     "label": "Select State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"ingest\":{\"testPattern\":{\"enabled\":{{option.show|map}}e}}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "show": {
+     "toggle": "tru",
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "set_test_pattern",
+   "name": "Set Test Pattern",
+   "options": [
+    {
+     "id": "pattern",
+     "label": "Select Pattern",
+     "type": "select",
+     "default": "white",
+     "choices": [
+      {
+       "id": "black",
+       "label": "Black"
+      },
+      {
+       "id": "red",
+       "label": "Red"
+      },
+      {
+       "id": "green",
+       "label": "Green"
+      },
+      {
+       "id": "blue",
+       "label": "Blue"
+      },
+      {
+       "id": "white",
+       "label": "White"
+      },
+      {
+       "id": "aspectRatioTest",
+       "label": "Aspect Ratio Test"
+      },
+      {
+       "id": "colorBars",
+       "label": "Color Bars"
+      },
+      {
+       "id": "diagonal",
+       "label": "Diagonal"
+      },
+      {
+       "id": "diagonalColorBars",
+       "label": "Diagonal Color Bars"
+      },
+      {
+       "id": "diagonalGradient",
+       "label": "Diagonal Gradient"
+      },
+      {
+       "id": "grid",
+       "label": "Grid"
+      },
+      {
+       "id": "horizontalGradient",
+       "label": "Horizontal Gradient"
+      },
+      {
+       "id": "horizontalGraySteps",
+       "label": "Horizontal Gray Steps"
+      },
+      {
+       "id": "smallGrid",
+       "label": "Small Grid"
+      },
+      {
+       "id": "verticalGradient",
+       "label": "Vertical Gradient"
+      },
+      {
+       "id": "verticalGraySteps",
+       "label": "verticalGraySteps"
+      }
+     ]
+    },
+    {
+     "id": "moving",
+     "label": "Moving Pattern",
+     "type": "select",
+     "default": "false",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Moving"
+      },
+      {
+       "id": "false",
+       "label": "Static"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"ingest\":{\"testPattern\":{\"type\":\"{{option.pattern|map}}\",\"motion\":{{option.moving|map}}e,\"color\":16777215}}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "pattern": {
+     "white": "white",
+     "black": "black",
+     "red": "red",
+     "green": "green",
+     "blue": "blue",
+     "aspectRatioTest": "aspectRatioTest",
+     "colorBars": "colorBars",
+     "diagonal": "diagonal",
+     "diagonalColorBars": "diagonalColorBars",
+     "diagonalGradient": "diagonalGradient",
+     "grid": "grid",
+     "horizontalGradient": "horizontalGradient",
+     "horizontalGraySteps": "horizontalGraySteps",
+     "smallGrid": "smallGrid",
+     "verticalGradient": "verticalGradient",
+     "verticalGraySteps": "verticalGraySteps"
+    },
+    "moving": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "set_preset",
+   "name": "Select Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset Nane",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/presets/apply",
+    "body": "{\"presetName\":\"{{option.preset}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_preset_select",
+   "name": "Select Preset (Dropdown)",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset Name",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v1/presets/apply",
+    "body": "{\"presetName\":\"\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_group_gains",
+   "name": "Set Group Gains",
+   "options": [
+    {
+     "id": "group",
+     "label": "Select Group",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    },
+    {
+     "id": "intensity",
+     "label": "Intensity",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 2
+    },
+    {
+     "id": "red",
+     "label": "Red",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 2
+    },
+    {
+     "id": "green",
+     "label": "Green",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 2
+    },
+    {
+     "id": "blue",
+     "label": "Blue",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 2
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/v1/public",
+    "body": "{\"dev\":{\"groups\":{\"0\":{\"gains\":{\"i\":{{option.intensity}},\"r\":{{option.red}},\"g\":{{option.green}},\"b\":{{option.blue}}}}}}}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "hdmi",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "HDMI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "hdmi"
+    }
+   }
+  },
+  {
+   "id": "hdmi1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "HDMI1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "hdmi1"
+    }
+   }
+  },
+  {
+   "id": "hdmi2",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "HDMI2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "hdmi2"
+    }
+   }
+  },
+  {
+   "id": "hdmi1X2",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "HDMI1X2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "hdmi1X2"
+    }
+   }
+  },
+  {
+   "id": "hdmi2X1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "HDMI2X1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "hdmi2X1"
+    }
+   }
+  },
+  {
+   "id": "dp",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "DP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "dp"
+    }
+   }
+  },
+  {
+   "id": "dp1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "DP1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "dp1"
+    }
+   }
+  },
+  {
+   "id": "dp2",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "DP2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "dp2"
+    }
+   }
+  },
+  {
+   "id": "dp1X2",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "DP1X2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "dp1X2"
+    }
+   }
+  },
+  {
+   "id": "dp2X1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "DP2X1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "dp2X1"
+    }
+   }
+  },
+  {
+   "id": "sdi1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi1"
+    }
+   }
+  },
+  {
+   "id": "sdi2",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi2"
+    }
+   }
+  },
+  {
+   "id": "sdi3",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi3"
+    }
+   }
+  },
+  {
+   "id": "sdi4",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi4"
+    }
+   }
+  },
+  {
+   "id": "sdi1X2",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI1X2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi1X2"
+    }
+   }
+  },
+  {
+   "id": "sdi1X3",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI1X3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi1X3"
+    }
+   }
+  },
+  {
+   "id": "sdi1X4",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI1X4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi1X4"
+    }
+   }
+  },
+  {
+   "id": "sdi2X1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI2X1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi2X1"
+    }
+   }
+  },
+  {
+   "id": "sdi2X2",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI2X2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi2X2"
+    }
+   }
+  },
+  {
+   "id": "sdi3X1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI3X1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi3X1"
+    }
+   }
+  },
+  {
+   "id": "sdi4X1",
+   "category": "Inputs",
+   "name": "Switch Input",
+   "text": "SDI4X1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "input": "sdi4X1"
+    }
+   }
+  },
+  {
+   "id": "blackout",
+   "category": "Utility",
+   "name": "Blackout",
+   "text": "BO",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_blackout",
+    "options": {
+     "bo": "toggle"
+    }
+   }
+  },
+  {
+   "id": "freeze",
+   "category": "Utility",
+   "name": "Freeze",
+   "text": "Freeze",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_freeze",
+    "options": {
+     "freeze": "toggle"
+    }
+   }
+  },
+  {
+   "id": "toggle_test",
+   "category": "Utility",
+   "name": "Toggle test pattern",
+   "text": "Toggle test pattern",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_show_test",
+    "options": {
+     "show": "toggle"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-mvr-helios",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jelle van Abbema, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "mvr-helios",
+  "version": "2.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Jelle van Abbema",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-mvr-helios.git"
+ }
+}

@@ -1,0 +1,2981 @@
+{
+ "format": 1,
+ "id": "m-denon-receiver",
+ "name": "Denon AVR",
+ "category": "Denon",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "power",
+   "name": "Power control",
+   "options": [
+    {
+     "id": "power",
+     "label": "on/standby",
+     "type": "select",
+     "default": "PWON",
+     "choices": [
+      {
+       "id": "PWON",
+       "label": "Power on"
+      },
+      {
+       "id": "PWSTANDBY",
+       "label": "standby"
+      },
+      {
+       "id": "Z2ON",
+       "label": "Zone2 on"
+      },
+      {
+       "id": "Z2OFF",
+       "label": "Zone2 off"
+      },
+      {
+       "id": "Z3ON",
+       "label": "Zone3 on"
+      },
+      {
+       "id": "Z3OFF",
+       "label": "Zone3 off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.power|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "power": {
+     "PWON": "PWON",
+     "PWSTANDBY": "PWSTANDBY",
+     "Z2ON": "Z2ON",
+     "Z2OFF": "Z2OFF",
+     "Z3ON": "Z3ON",
+     "Z3OFF": "Z3OFF"
+    }
+   }
+  },
+  {
+   "id": "mute",
+   "name": "Mute controls",
+   "options": [
+    {
+     "id": "mute",
+     "label": "zone/on/off",
+     "type": "select",
+     "default": "MUON",
+     "choices": [
+      {
+       "id": "MUON",
+       "label": "Main zone mute on"
+      },
+      {
+       "id": "MUOFF",
+       "label": "Main zone mute off"
+      },
+      {
+       "id": "Z2MUON",
+       "label": "Zone 2 mute on"
+      },
+      {
+       "id": "Z2MUOFF",
+       "label": "Zone 2 mute off"
+      },
+      {
+       "id": "Z3MUON",
+       "label": "Zone 3 mute on"
+      },
+      {
+       "id": "Z3MUOFF",
+       "label": "Zone 3 mute off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.mute|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "MUON": "MUON",
+     "MUOFF": "MUOFF",
+     "Z2MUON": "Z2MUON",
+     "Z2MUOFF": "Z2MUOFF",
+     "Z3MUON": "Z3MUON",
+     "Z3MUOFF": "Z3MUOFF"
+    }
+   }
+  },
+  {
+   "id": "volume",
+   "name": "Volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "zone/up/down",
+     "type": "select",
+     "default": "MVUP",
+     "choices": [
+      {
+       "id": "MVUP",
+       "label": "Main Zone volume up"
+      },
+      {
+       "id": "MVDOWN",
+       "label": "Main Zone volume down"
+      },
+      {
+       "id": "Z2UP",
+       "label": "Zone 2 volume up"
+      },
+      {
+       "id": "Z2DOWN",
+       "label": "Zone 2 volume down"
+      },
+      {
+       "id": "Z3UP",
+       "label": "Zone 3 volume up"
+      },
+      {
+       "id": "Z3DOWN",
+       "label": "Zone 3 volume down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.volume|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "volume": {
+     "MVUP": "MVUP",
+     "MVDOWN": "MVDOWN",
+     "Z2UP": "Z2UP",
+     "Z2DOWN": "Z2DOWN",
+     "Z3UP": "Z3UP",
+     "Z3DOWN": "Z3DOWN"
+    }
+   }
+  },
+  {
+   "id": "set_volume",
+   "name": "Set Volume",
+   "options": [
+    {
+     "id": "zone",
+     "label": "select zone",
+     "type": "select",
+     "default": "MV",
+     "choices": [
+      {
+       "id": "MV",
+       "label": "Main Zone"
+      },
+      {
+       "id": "Z2",
+       "label": "Zone 2"
+      },
+      {
+       "id": "Z3",
+       "label": "Zone 3"
+      }
+     ]
+    },
+    {
+     "id": "set_volume",
+     "label": "set_volume",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "98",
+       "label": "18dB"
+      },
+      {
+       "id": "97",
+       "label": "17dB"
+      },
+      {
+       "id": "96",
+       "label": "16dB"
+      },
+      {
+       "id": "95",
+       "label": "15dB"
+      },
+      {
+       "id": "94",
+       "label": "14dB"
+      },
+      {
+       "id": "93",
+       "label": "13dB"
+      },
+      {
+       "id": "92",
+       "label": "12dB"
+      },
+      {
+       "id": "91",
+       "label": "11dB"
+      },
+      {
+       "id": "90",
+       "label": "10dB"
+      },
+      {
+       "id": "89",
+       "label": "9dB"
+      },
+      {
+       "id": "88",
+       "label": "8dB"
+      },
+      {
+       "id": "87",
+       "label": "7dB"
+      },
+      {
+       "id": "86",
+       "label": "6dB"
+      },
+      {
+       "id": "85",
+       "label": "5dB"
+      },
+      {
+       "id": "84",
+       "label": "4dB"
+      },
+      {
+       "id": "83",
+       "label": "3dB"
+      },
+      {
+       "id": "82",
+       "label": "2dB"
+      },
+      {
+       "id": "81",
+       "label": "1dB"
+      },
+      {
+       "id": "80",
+       "label": "0dB"
+      },
+      {
+       "id": "79",
+       "label": "-1dB"
+      },
+      {
+       "id": "78",
+       "label": "-2dB"
+      },
+      {
+       "id": "77",
+       "label": "-3dB"
+      },
+      {
+       "id": "76",
+       "label": "-4dB"
+      },
+      {
+       "id": "75",
+       "label": "-5dB"
+      },
+      {
+       "id": "74",
+       "label": "-6dB"
+      },
+      {
+       "id": "73",
+       "label": "-7dB"
+      },
+      {
+       "id": "72",
+       "label": "-8dB"
+      },
+      {
+       "id": "71",
+       "label": "-9dB"
+      },
+      {
+       "id": "70",
+       "label": "-10dB"
+      },
+      {
+       "id": "69",
+       "label": "-11dB"
+      },
+      {
+       "id": "68",
+       "label": "-12dB"
+      },
+      {
+       "id": "67",
+       "label": "-13dB"
+      },
+      {
+       "id": "66",
+       "label": "-14dB"
+      },
+      {
+       "id": "65",
+       "label": "-15dB"
+      },
+      {
+       "id": "64",
+       "label": "-16dB"
+      },
+      {
+       "id": "63",
+       "label": "-17dB"
+      },
+      {
+       "id": "62",
+       "label": "-18dB"
+      },
+      {
+       "id": "61",
+       "label": "-19dB"
+      },
+      {
+       "id": "60",
+       "label": "-20dB"
+      },
+      {
+       "id": "59",
+       "label": "-21dB"
+      },
+      {
+       "id": "58",
+       "label": "-22dB"
+      },
+      {
+       "id": "57",
+       "label": "-23dB"
+      },
+      {
+       "id": "56",
+       "label": "-24dB"
+      },
+      {
+       "id": "55",
+       "label": "-25dB"
+      },
+      {
+       "id": "54",
+       "label": "-26dB"
+      },
+      {
+       "id": "53",
+       "label": "-27dB"
+      },
+      {
+       "id": "52",
+       "label": "-28dB"
+      },
+      {
+       "id": "51",
+       "label": "-29dB"
+      },
+      {
+       "id": "50",
+       "label": "-30dB"
+      },
+      {
+       "id": "49",
+       "label": "-31dB"
+      },
+      {
+       "id": "48",
+       "label": "-32dB"
+      },
+      {
+       "id": "47",
+       "label": "-33dB"
+      },
+      {
+       "id": "46",
+       "label": "-34dB"
+      },
+      {
+       "id": "45",
+       "label": "-35dB"
+      },
+      {
+       "id": "44",
+       "label": "-36dB"
+      },
+      {
+       "id": "43",
+       "label": "-37dB"
+      },
+      {
+       "id": "42",
+       "label": "-38dB"
+      },
+      {
+       "id": "41",
+       "label": "-39dB"
+      },
+      {
+       "id": "40",
+       "label": "-40dB"
+      },
+      {
+       "id": "39",
+       "label": "-41dB"
+      },
+      {
+       "id": "38",
+       "label": "-42dB"
+      },
+      {
+       "id": "37",
+       "label": "-43dB"
+      },
+      {
+       "id": "36",
+       "label": "-44dB"
+      },
+      {
+       "id": "35",
+       "label": "-45dB"
+      },
+      {
+       "id": "34",
+       "label": "-46dB"
+      },
+      {
+       "id": "33",
+       "label": "-47dB"
+      },
+      {
+       "id": "32",
+       "label": "-48dB"
+      },
+      {
+       "id": "31",
+       "label": "-49dB"
+      },
+      {
+       "id": "30",
+       "label": "-50dB"
+      },
+      {
+       "id": "29",
+       "label": "-51dB"
+      },
+      {
+       "id": "28",
+       "label": "-52dB"
+      },
+      {
+       "id": "27",
+       "label": "-53dB"
+      },
+      {
+       "id": "26",
+       "label": "-54dB"
+      },
+      {
+       "id": "25",
+       "label": "-55dB"
+      },
+      {
+       "id": "24",
+       "label": "-56dB"
+      },
+      {
+       "id": "23",
+       "label": "-57dB"
+      },
+      {
+       "id": "22",
+       "label": "-58dB"
+      },
+      {
+       "id": "21",
+       "label": "-59dB"
+      },
+      {
+       "id": "20",
+       "label": "-60dB"
+      },
+      {
+       "id": "19",
+       "label": "-61dB"
+      },
+      {
+       "id": "18",
+       "label": "-62dB"
+      },
+      {
+       "id": "17",
+       "label": "-63dB"
+      },
+      {
+       "id": "16",
+       "label": "-64dB"
+      },
+      {
+       "id": "15",
+       "label": "-65dB"
+      },
+      {
+       "id": "14",
+       "label": "-66dB"
+      },
+      {
+       "id": "13",
+       "label": "-67dB"
+      },
+      {
+       "id": "12",
+       "label": "-68dB"
+      },
+      {
+       "id": "11",
+       "label": "-69dB"
+      },
+      {
+       "id": "10",
+       "label": "-70dB"
+      },
+      {
+       "id": "09",
+       "label": "-71dB"
+      },
+      {
+       "id": "08",
+       "label": "-72dB"
+      },
+      {
+       "id": "07",
+       "label": "-73dB"
+      },
+      {
+       "id": "06",
+       "label": "-74dB"
+      },
+      {
+       "id": "05",
+       "label": "-75dB"
+      },
+      {
+       "id": "04",
+       "label": "-76dB"
+      },
+      {
+       "id": "03",
+       "label": "-77dB"
+      },
+      {
+       "id": "02",
+       "label": "-78dB"
+      },
+      {
+       "id": "01",
+       "label": "-79dB"
+      },
+      {
+       "id": "00",
+       "label": "Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.zone|map}}{{option.set_volume}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "zone": {
+     "MV": "MV",
+     "Z2": "Z2",
+     "Z3": "Z3"
+    }
+   }
+  },
+  {
+   "id": "source",
+   "name": "Source selection",
+   "options": [
+    {
+     "id": "zone",
+     "label": "select zone",
+     "type": "select",
+     "default": "SI",
+     "choices": [
+      {
+       "id": "SI",
+       "label": "Main Zone"
+      },
+      {
+       "id": "Z2",
+       "label": "Zone 2"
+      },
+      {
+       "id": "Z3",
+       "label": "Zone 3"
+      }
+     ]
+    },
+    {
+     "id": "source",
+     "label": "select source",
+     "type": "select",
+     "default": "DVD",
+     "choices": [
+      {
+       "id": "PHONO",
+       "label": "PHONO"
+      },
+      {
+       "id": "CD",
+       "label": "CD"
+      },
+      {
+       "id": "TUNER",
+       "label": "TUNER"
+      },
+      {
+       "id": "DVD",
+       "label": "DVD"
+      },
+      {
+       "id": "BD",
+       "label": "BluRay"
+      },
+      {
+       "id": "HDP",
+       "label": "HDP"
+      },
+      {
+       "id": "TV",
+       "label": "TV"
+      },
+      {
+       "id": "TV/CBL",
+       "label": "TV/CBL"
+      },
+      {
+       "id": "SAT/CBL",
+       "label": "SAT/CBL"
+      },
+      {
+       "id": "SAT",
+       "label": "SAT"
+      },
+      {
+       "id": "MPLAY",
+       "label": "Media Player"
+      },
+      {
+       "id": "GAME",
+       "label": "Game"
+      },
+      {
+       "id": "HDRADIO",
+       "label": "HD Radio"
+      },
+      {
+       "id": "NET",
+       "label": "NET/Online"
+      },
+      {
+       "id": "PANDORA",
+       "label": "Pandora"
+      },
+      {
+       "id": "SIRIUSXM",
+       "label": "SiriusXM"
+      },
+      {
+       "id": "SPOTIFY",
+       "label": "Spotify"
+      },
+      {
+       "id": "LASTFM",
+       "label": "LastFM"
+      },
+      {
+       "id": "FLICKR",
+       "label": "Flickr"
+      },
+      {
+       "id": "IRADIO",
+       "label": "iRadio"
+      },
+      {
+       "id": "SERVER",
+       "label": "Server"
+      },
+      {
+       "id": "FAVORITES",
+       "label": "Favorites"
+      },
+      {
+       "id": "VCR",
+       "label": "VCR"
+      },
+      {
+       "id": "DVR",
+       "label": "DVR"
+      },
+      {
+       "id": "V.AUX",
+       "label": "V.AUX"
+      },
+      {
+       "id": "AUX1",
+       "label": "Aux1"
+      },
+      {
+       "id": "AUX2",
+       "label": "Aux2"
+      },
+      {
+       "id": "AUX3",
+       "label": "Aux3"
+      },
+      {
+       "id": "AUX4",
+       "label": "Aux4"
+      },
+      {
+       "id": "BT",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "NET/USB",
+       "label": "NET/USB"
+      },
+      {
+       "id": "XM",
+       "label": "XM"
+      },
+      {
+       "id": "8K",
+       "label": "8K"
+      },
+      {
+       "id": "IPOD",
+       "label": "IPOD"
+      },
+      {
+       "id": "SOURCE",
+       "label": "Same as zone 1"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.zone|map}}{{option.source|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "zone": {
+     "SI": "SI",
+     "Z2": "Z2",
+     "Z3": "Z3"
+    },
+    "source": {
+     "DVD": "DVD",
+     "PHONO": "PHONO",
+     "CD": "CD",
+     "TUNER": "TUNER",
+     "BD": "BD",
+     "HDP": "HDP",
+     "TV": "TV",
+     "TV/CBL": "TV/CBL",
+     "SAT/CBL": "SAT/CBL",
+     "SAT": "SAT",
+     "MPLAY": "MPLAY",
+     "GAME": "GAME",
+     "HDRADIO": "HDRADIO",
+     "NET": "NET",
+     "PANDORA": "PANDORA",
+     "SIRIUSXM": "SIRIUSXM",
+     "SPOTIFY": "SPOTIFY",
+     "LASTFM": "LASTFM",
+     "FLICKR": "FLICKR",
+     "IRADIO": "IRADIO",
+     "SERVER": "SERVER",
+     "FAVORITES": "FAVORITES",
+     "VCR": "VCR",
+     "DVR": "DVR",
+     "V.AUX": "V.AUX",
+     "AUX1": "AUX1",
+     "AUX2": "AUX2",
+     "AUX3": "AUX3",
+     "AUX4": "AUX4",
+     "BT": "BT",
+     "NET/USB": "NET/USB",
+     "XM": "XM",
+     "8K": "8K",
+     "IPOD": "IPOD",
+     "SOURCE": "SOURCE"
+    }
+   }
+  },
+  {
+   "id": "surround",
+   "name": "Surround mode selection",
+   "options": [
+    {
+     "id": "surround",
+     "label": "Select surround mode",
+     "type": "select",
+     "default": "MSAUTO",
+     "choices": [
+      {
+       "id": "MSMOVIE",
+       "label": "Movie"
+      },
+      {
+       "id": "MSMUSIC",
+       "label": "Music"
+      },
+      {
+       "id": "MSGAME",
+       "label": "Game"
+      },
+      {
+       "id": "MSDIRECT",
+       "label": "Direct"
+      },
+      {
+       "id": "MSPURE DIRECT",
+       "label": "Pure Direct"
+      },
+      {
+       "id": "MSSTEREO",
+       "label": "Stereo"
+      },
+      {
+       "id": "MSAUTO",
+       "label": "Auto"
+      },
+      {
+       "id": "MSDOLBY DIGITAL",
+       "label": "Dolby Digital"
+      },
+      {
+       "id": "MSDTS SURROUND",
+       "label": "DTS Surround"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MS{{option.surround|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "surround": {
+     "MSAUTO": "AUTO",
+     "MSMOVIE": "MOVIE",
+     "MSMUSIC": "MUSIC",
+     "MSGAME": "GAME",
+     "MSDIRECT": "DIRECT",
+     "MSPURE DIRECT": "PURE DIRECT",
+     "MSSTEREO": "STEREO",
+     "MSDOLBY DIGITAL": "DOLBY DIGITAL",
+     "MSDTS SURROUND": "DTS SURROUND"
+    }
+   }
+  },
+  {
+   "id": "navigate",
+   "name": "Menu navigation controls",
+   "options": [
+    {
+     "id": "navigate",
+     "label": "Select control",
+     "type": "select",
+     "default": "MNENT",
+     "choices": [
+      {
+       "id": "MNCUP",
+       "label": "up"
+      },
+      {
+       "id": "MNCDN",
+       "label": "down"
+      },
+      {
+       "id": "MNCLT",
+       "label": "left"
+      },
+      {
+       "id": "MNCRT",
+       "label": "right"
+      },
+      {
+       "id": "MNENT",
+       "label": "enter"
+      },
+      {
+       "id": "MNRTN",
+       "label": "return"
+      },
+      {
+       "id": "MNOPT",
+       "label": "option"
+      },
+      {
+       "id": "MNINF",
+       "label": "info"
+      },
+      {
+       "id": "MNMEN ON",
+       "label": "setup menu on"
+      },
+      {
+       "id": "MNMEN OFF",
+       "label": "setuip menu off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MN{{option.navigate|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "navigate": {
+     "MNENT": "ENT",
+     "MNCUP": "CUP",
+     "MNCDN": "CDN",
+     "MNCLT": "CLT",
+     "MNCRT": "CRT",
+     "MNRTN": "RTN",
+     "MNOPT": "OPT",
+     "MNINF": "INF",
+     "MNMEN ON": "MEN ON",
+     "MNMEN OFF": "MEN OFF"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Volume_set_volumeMV",
+   "category": "Volume",
+   "name": "set volume zone 1",
+   "text": "set volume zone 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_volume",
+    "options": {
+     "zone": "MV",
+     "set_volume": "00"
+    }
+   }
+  },
+  {
+   "id": "Volume_set_volumeZ2",
+   "category": "Volume",
+   "name": "set volume zone 2",
+   "text": "set volume zone 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_volume",
+    "options": {
+     "zone": "Z2",
+     "set_volume": "00"
+    }
+   }
+  },
+  {
+   "id": "Volume_set_volumeZ3",
+   "category": "Volume",
+   "name": "set volume zone 3",
+   "text": "set volume zone 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_volume",
+    "options": {
+     "zone": "Z3",
+     "set_volume": "00"
+    }
+   }
+  },
+  {
+   "id": "PowerPWON",
+   "category": "Power",
+   "name": "main power on",
+   "text": "main power on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "PWON"
+    }
+   }
+  },
+  {
+   "id": "PowerZ2ON",
+   "category": "Power",
+   "name": "zone 2 power on",
+   "text": "zone 2 power on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "Z2ON"
+    }
+   }
+  },
+  {
+   "id": "PowerZ3ON",
+   "category": "Power",
+   "name": "zone 3 power on",
+   "text": "zone 3 power on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "Z3ON"
+    }
+   }
+  },
+  {
+   "id": "PowerPWSTANDBY",
+   "category": "Power",
+   "name": "main power off",
+   "text": "main power off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "PWSTANDBY"
+    }
+   }
+  },
+  {
+   "id": "PowerZ2OFF",
+   "category": "Power",
+   "name": "zone 2 power off",
+   "text": "zone 2 power off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "Z2OFF"
+    }
+   }
+  },
+  {
+   "id": "PowerZ3OFF",
+   "category": "Power",
+   "name": "zone 3 power off",
+   "text": "zone 3 power off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "power": "Z3OFF"
+    }
+   }
+  },
+  {
+   "id": "VolumeMVUP",
+   "category": "Volume",
+   "name": "main zone volume up",
+   "text": "main zone volume up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "volume": "MVUP"
+    }
+   }
+  },
+  {
+   "id": "VolumeMVUDOWN",
+   "category": "Volume",
+   "name": "main zone volume down",
+   "text": "main zone volume down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "volume": "MVUDOWN"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ2UP",
+   "category": "Volume",
+   "name": "zone 2 volume up",
+   "text": "zone 2 volume up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "volume": "Z2UP"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ2DOWN",
+   "category": "Volume",
+   "name": "zone 2 volume down",
+   "text": "zone 2 volume down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "volume": "Z2DOWN"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ3UP",
+   "category": "Volume",
+   "name": "zone 3 volume up",
+   "text": "zone 3 volume up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "volume": "Z3UP"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ3DOWN",
+   "category": "Volume",
+   "name": "zone 3 volume down",
+   "text": "zone 3 volume down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "volume": "Z3DOWN"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSMUSIC",
+   "category": "Surround",
+   "name": "Surround mode Music",
+   "text": "Surround mode Music",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSMUSIC"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSGAME",
+   "category": "Surround",
+   "name": "Surround mode Game",
+   "text": "Surround mode Game",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSGAME"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSDIRECT",
+   "category": "Surround",
+   "name": "Surround mode Direct",
+   "text": "Surround mode Direct",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSDIRECT"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSPURE DIRECT",
+   "category": "Surround",
+   "name": "Surround mode Pure Direct",
+   "text": "Surround mode Pure Direct",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSPURE DIRECT"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSSTEREO",
+   "category": "Surround",
+   "name": "Surround mode Stereo",
+   "text": "Surround mode Stereo",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSSTEREO"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSAUTO",
+   "category": "Surround",
+   "name": "Surround mode Auto",
+   "text": "Surround mode Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSAUTO"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSDOLBY DIGITAL",
+   "category": "Surround",
+   "name": "Surround mode Dolby Digital",
+   "text": "Surround mode Dolby Digital",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSDOLBY DIGITAL"
+    }
+   }
+  },
+  {
+   "id": "SurroundMSDTS SURROUND",
+   "category": "Surround",
+   "name": "Surround mode DTS",
+   "text": "Surround mode DTS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "surround",
+    "options": {
+     "surround": "MSDTS SURROUND"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNCUP",
+   "category": "Menu navigation",
+   "name": "up",
+   "text": "up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNCUP"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNCDN",
+   "category": "Menu navigation",
+   "name": "down",
+   "text": "down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNCDN"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNCLT",
+   "category": "Menu navigation",
+   "name": "left",
+   "text": "left",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNCLT"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNCRT",
+   "category": "Menu navigation",
+   "name": "right",
+   "text": "right",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNCRT"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNENT",
+   "category": "Menu navigation",
+   "name": "enter",
+   "text": "enter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNENT"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNRTN",
+   "category": "Menu navigation",
+   "name": "return",
+   "text": "return",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNRTN"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNOPT",
+   "category": "Menu navigation",
+   "name": "option",
+   "text": "option",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNOPT"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNINF",
+   "category": "Menu navigation",
+   "name": "info",
+   "text": "info",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNINF"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNMEN ON",
+   "category": "Menu navigation",
+   "name": "setup menu on",
+   "text": "setup menu on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNMEN ON"
+    }
+   }
+  },
+  {
+   "id": "Menu navigationMNMEN OFF",
+   "category": "Menu navigation",
+   "name": "setup menu off",
+   "text": "setup menu off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate",
+    "options": {
+     "navigate": "MNMEN OFF"
+    }
+   }
+  },
+  {
+   "id": "VolumeMUON",
+   "category": "Volume",
+   "name": "Main zone mute on",
+   "text": "Main zone mute on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "mute": "MUON"
+    }
+   }
+  },
+  {
+   "id": "VolumeMUOFF",
+   "category": "Volume",
+   "name": "Main zone mute off",
+   "text": "Main zone mute off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "mute": "MUOFF"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ2MUON",
+   "category": "Volume",
+   "name": "Zone 2 mute on",
+   "text": "Zone 2 mute on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "mute": "Z2MUON"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ2MUOFF",
+   "category": "Volume",
+   "name": "Zone 2 mute off",
+   "text": "Zone 2 mute off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "mute": "Z2MUOFF"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ3MUON",
+   "category": "Volume",
+   "name": "Zone 3 mute on",
+   "text": "Zone 3 mute on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "mute": "Z3MUON"
+    }
+   }
+  },
+  {
+   "id": "VolumeZ3MUOFF",
+   "category": "Volume",
+   "name": "Zone 3 mute off",
+   "text": "Zone 3 mute off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "mute": "Z3MUOFF"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcPHONO",
+   "category": "Main Zone Sources",
+   "name": "main zone PHONO",
+   "text": "PHONO",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "PHONO"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcCD",
+   "category": "Main Zone Sources",
+   "name": "main zone CD",
+   "text": "CD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "CD"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcTUNER",
+   "category": "Main Zone Sources",
+   "name": "main zone TUNER",
+   "text": "TUNER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "TUNER"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcDVD",
+   "category": "Main Zone Sources",
+   "name": "main zone DVD",
+   "text": "DVD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "DVD"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcBD",
+   "category": "Main Zone Sources",
+   "name": "main zone BluRay",
+   "text": "BluRay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "BD"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcHDP",
+   "category": "Main Zone Sources",
+   "name": "main zone HDP",
+   "text": "HDP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "HDP"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcTV",
+   "category": "Main Zone Sources",
+   "name": "main zone TV",
+   "text": "TV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "TV"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcTV/CBL",
+   "category": "Main Zone Sources",
+   "name": "main zone TV/CBL",
+   "text": "TV/CBL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "TV/CBL"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcSAT/CBL",
+   "category": "Main Zone Sources",
+   "name": "main zone SAT/CBL",
+   "text": "SAT/CBL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "SAT/CBL"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcSAT",
+   "category": "Main Zone Sources",
+   "name": "main zone SAT",
+   "text": "SAT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "SAT"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcMPLAY",
+   "category": "Main Zone Sources",
+   "name": "main zone Media Player",
+   "text": "Media Player",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "MPLAY"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcGAME",
+   "category": "Main Zone Sources",
+   "name": "main zone Game",
+   "text": "Game",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "GAME"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcHDRADIO",
+   "category": "Main Zone Sources",
+   "name": "main zone HD Radio",
+   "text": "HD Radio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "HDRADIO"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcNET",
+   "category": "Main Zone Sources",
+   "name": "main zone NET/Online",
+   "text": "NET/Online",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "NET"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcPANDORA",
+   "category": "Main Zone Sources",
+   "name": "main zone Pandora",
+   "text": "Pandora",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "PANDORA"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcSIRIUSXM",
+   "category": "Main Zone Sources",
+   "name": "main zone SiriusXM",
+   "text": "SiriusXM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "SIRIUSXM"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcSPOTIFY",
+   "category": "Main Zone Sources",
+   "name": "main zone Spotify",
+   "text": "Spotify",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "SPOTIFY"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcLASTFM",
+   "category": "Main Zone Sources",
+   "name": "main zone LastFM",
+   "text": "LastFM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "LASTFM"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcFLICKR",
+   "category": "Main Zone Sources",
+   "name": "main zone Flickr",
+   "text": "Flickr",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "FLICKR"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcIRADIO",
+   "category": "Main Zone Sources",
+   "name": "main zone iRadio",
+   "text": "iRadio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "IRADIO"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcSERVER",
+   "category": "Main Zone Sources",
+   "name": "main zone Server",
+   "text": "Server",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "SERVER"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcFAVORITES",
+   "category": "Main Zone Sources",
+   "name": "main zone Favorites",
+   "text": "Favorites",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "FAVORITES"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcVCR",
+   "category": "Main Zone Sources",
+   "name": "main zone VCR",
+   "text": "VCR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "VCR"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcDVR",
+   "category": "Main Zone Sources",
+   "name": "main zone DVR",
+   "text": "DVR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "DVR"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcV.AUX",
+   "category": "Main Zone Sources",
+   "name": "main zone V.AUX",
+   "text": "V.AUX",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "V.AUX"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcAUX1",
+   "category": "Main Zone Sources",
+   "name": "main zone Aux1",
+   "text": "Aux1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "AUX1"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcAUX2",
+   "category": "Main Zone Sources",
+   "name": "main zone Aux2",
+   "text": "Aux2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "AUX2"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcAUX3",
+   "category": "Main Zone Sources",
+   "name": "main zone Aux3",
+   "text": "Aux3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "AUX3"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcAUX4",
+   "category": "Main Zone Sources",
+   "name": "main zone Aux4",
+   "text": "Aux4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "AUX4"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcBT",
+   "category": "Main Zone Sources",
+   "name": "main zone Bluetooth",
+   "text": "Bluetooth",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "BT"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcNET/USB",
+   "category": "Main Zone Sources",
+   "name": "main zone NET/USB",
+   "text": "NET/USB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "NET/USB"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcXM",
+   "category": "Main Zone Sources",
+   "name": "main zone XM",
+   "text": "XM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "XM"
+    }
+   }
+  },
+  {
+   "id": "mainzone_src8K",
+   "category": "Main Zone Sources",
+   "name": "main zone 8K",
+   "text": "8K",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "8K"
+    }
+   }
+  },
+  {
+   "id": "mainzone_srcIPOD",
+   "category": "Main Zone Sources",
+   "name": "main zone IPOD",
+   "text": "IPOD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "SI",
+     "source": "IPOD"
+    }
+   }
+  },
+  {
+   "id": "z2_srcPHONO",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 PHONO",
+   "text": "PHONO",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "PHONO"
+    }
+   }
+  },
+  {
+   "id": "z2_srcCD",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 CD",
+   "text": "CD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "CD"
+    }
+   }
+  },
+  {
+   "id": "z2_srcTUNER",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 TUNER",
+   "text": "TUNER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "TUNER"
+    }
+   }
+  },
+  {
+   "id": "z2_srcDVD",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 DVD",
+   "text": "DVD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "DVD"
+    }
+   }
+  },
+  {
+   "id": "z2_srcBD",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 BluRay",
+   "text": "BluRay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "BD"
+    }
+   }
+  },
+  {
+   "id": "z2_srcHDP",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 HDP",
+   "text": "HDP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "HDP"
+    }
+   }
+  },
+  {
+   "id": "z2_srcTV",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 TV",
+   "text": "TV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "TV"
+    }
+   }
+  },
+  {
+   "id": "z2_srcTV/CBL",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 TV/CBL",
+   "text": "TV/CBL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "TV/CBL"
+    }
+   }
+  },
+  {
+   "id": "z2_srcSAT/CBL",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 SAT/CBL",
+   "text": "SAT/CBL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "SAT/CBL"
+    }
+   }
+  },
+  {
+   "id": "z2_srcSAT",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 SAT",
+   "text": "SAT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "SAT"
+    }
+   }
+  },
+  {
+   "id": "z2_srcMPLAY",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Media Player",
+   "text": "Media Player",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "MPLAY"
+    }
+   }
+  },
+  {
+   "id": "z2_srcGAME",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Game",
+   "text": "Game",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "GAME"
+    }
+   }
+  },
+  {
+   "id": "z2_srcHDRADIO",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 HD Radio",
+   "text": "HD Radio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "HDRADIO"
+    }
+   }
+  },
+  {
+   "id": "z2_srcNET",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 NET/Online",
+   "text": "NET/Online",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "NET"
+    }
+   }
+  },
+  {
+   "id": "z2_srcPANDORA",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Pandora",
+   "text": "Pandora",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "PANDORA"
+    }
+   }
+  },
+  {
+   "id": "z2_srcSIRIUSXM",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 SiriusXM",
+   "text": "SiriusXM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "SIRIUSXM"
+    }
+   }
+  },
+  {
+   "id": "z2_srcSPOTIFY",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Spotify",
+   "text": "Spotify",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "SPOTIFY"
+    }
+   }
+  },
+  {
+   "id": "z2_srcLASTFM",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 LastFM",
+   "text": "LastFM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "LASTFM"
+    }
+   }
+  },
+  {
+   "id": "z2_srcFLICKR",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Flickr",
+   "text": "Flickr",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "FLICKR"
+    }
+   }
+  },
+  {
+   "id": "z2_srcIRADIO",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 iRadio",
+   "text": "iRadio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "IRADIO"
+    }
+   }
+  },
+  {
+   "id": "z2_srcSERVER",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Server",
+   "text": "Server",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "SERVER"
+    }
+   }
+  },
+  {
+   "id": "z2_srcFAVORITES",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Favorites",
+   "text": "Favorites",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "FAVORITES"
+    }
+   }
+  },
+  {
+   "id": "z2_srcVCR",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 VCR",
+   "text": "VCR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "VCR"
+    }
+   }
+  },
+  {
+   "id": "z2_srcDVR",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 DVR",
+   "text": "DVR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "DVR"
+    }
+   }
+  },
+  {
+   "id": "z2_srcV.AUX",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 V.AUX",
+   "text": "V.AUX",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "V.AUX"
+    }
+   }
+  },
+  {
+   "id": "z2_srcAUX1",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Aux1",
+   "text": "Aux1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "AUX1"
+    }
+   }
+  },
+  {
+   "id": "z2_srcAUX2",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Aux2",
+   "text": "Aux2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "AUX2"
+    }
+   }
+  },
+  {
+   "id": "z2_srcAUX3",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Aux3",
+   "text": "Aux3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "AUX3"
+    }
+   }
+  },
+  {
+   "id": "z2_srcAUX4",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Aux4",
+   "text": "Aux4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "AUX4"
+    }
+   }
+  },
+  {
+   "id": "z2_srcBT",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 Bluetooth",
+   "text": "Bluetooth",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "BT"
+    }
+   }
+  },
+  {
+   "id": "z2_srcNET/USB",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 NET/USB",
+   "text": "NET/USB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "NET/USB"
+    }
+   }
+  },
+  {
+   "id": "z2_srcXM",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 XM",
+   "text": "XM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "XM"
+    }
+   }
+  },
+  {
+   "id": "z2_src8K",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 8K",
+   "text": "8K",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "8K"
+    }
+   }
+  },
+  {
+   "id": "z2_srcIPOD",
+   "category": "Zone 2 Sources",
+   "name": "Zone 2 IPOD",
+   "text": "IPOD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "IPOD"
+    }
+   }
+  },
+  {
+   "id": "z3_srcPHONO",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 PHONO",
+   "text": "PHONO",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "PHONO"
+    }
+   }
+  },
+  {
+   "id": "z3_srcCD",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 CD",
+   "text": "CD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "CD"
+    }
+   }
+  },
+  {
+   "id": "z3_srcTUNER",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 TUNER",
+   "text": "TUNER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "TUNER"
+    }
+   }
+  },
+  {
+   "id": "z3_srcDVD",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 DVD",
+   "text": "DVD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "DVD"
+    }
+   }
+  },
+  {
+   "id": "z3_srcBD",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 BluRay",
+   "text": "BluRay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "BD"
+    }
+   }
+  },
+  {
+   "id": "z3_srcHDP",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 HDP",
+   "text": "HDP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "HDP"
+    }
+   }
+  },
+  {
+   "id": "z3_srcTV",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 TV",
+   "text": "TV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "TV"
+    }
+   }
+  },
+  {
+   "id": "z3_srcTV/CBL",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 TV/CBL",
+   "text": "TV/CBL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "TV/CBL"
+    }
+   }
+  },
+  {
+   "id": "z3_srcSAT/CBL",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 SAT/CBL",
+   "text": "SAT/CBL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "SAT/CBL"
+    }
+   }
+  },
+  {
+   "id": "z3_srcSAT",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 SAT",
+   "text": "SAT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "SAT"
+    }
+   }
+  },
+  {
+   "id": "z3_srcMPLAY",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Media Player",
+   "text": "Media Player",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "MPLAY"
+    }
+   }
+  },
+  {
+   "id": "z3_srcGAME",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Game",
+   "text": "Game",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "GAME"
+    }
+   }
+  },
+  {
+   "id": "z3_srcHDRADIO",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 HD Radio",
+   "text": "HD Radio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "HDRADIO"
+    }
+   }
+  },
+  {
+   "id": "z3_srcNET",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 NET/Online",
+   "text": "NET/Online",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "NET"
+    }
+   }
+  },
+  {
+   "id": "z3_srcPANDORA",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Pandora",
+   "text": "Pandora",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "PANDORA"
+    }
+   }
+  },
+  {
+   "id": "z3_srcSIRIUSXM",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 SiriusXM",
+   "text": "SiriusXM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "SIRIUSXM"
+    }
+   }
+  },
+  {
+   "id": "z3_srcSPOTIFY",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Spotify",
+   "text": "Spotify",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "SPOTIFY"
+    }
+   }
+  },
+  {
+   "id": "z3_srcLASTFM",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 LastFM",
+   "text": "LastFM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "LASTFM"
+    }
+   }
+  },
+  {
+   "id": "z3_srcFLICKR",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Flickr",
+   "text": "Flickr",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "FLICKR"
+    }
+   }
+  },
+  {
+   "id": "z3_srcIRADIO",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 iRadio",
+   "text": "iRadio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "IRADIO"
+    }
+   }
+  },
+  {
+   "id": "z3_srcSERVER",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Server",
+   "text": "Server",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "SERVER"
+    }
+   }
+  },
+  {
+   "id": "z3_srcFAVORITES",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Favorites",
+   "text": "Favorites",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "FAVORITES"
+    }
+   }
+  },
+  {
+   "id": "z3_srcVCR",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 VCR",
+   "text": "VCR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "VCR"
+    }
+   }
+  },
+  {
+   "id": "z3_srcDVR",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 DVR",
+   "text": "DVR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "DVR"
+    }
+   }
+  },
+  {
+   "id": "z3_srcV.AUX",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 V.AUX",
+   "text": "V.AUX",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "V.AUX"
+    }
+   }
+  },
+  {
+   "id": "z3_srcAUX1",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Aux1",
+   "text": "Aux1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "AUX1"
+    }
+   }
+  },
+  {
+   "id": "z3_srcAUX2",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Aux2",
+   "text": "Aux2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "AUX2"
+    }
+   }
+  },
+  {
+   "id": "z3_srcAUX3",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Aux3",
+   "text": "Aux3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "AUX3"
+    }
+   }
+  },
+  {
+   "id": "z3_srcAUX4",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Aux4",
+   "text": "Aux4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "AUX4"
+    }
+   }
+  },
+  {
+   "id": "z3_srcBT",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 Bluetooth",
+   "text": "Bluetooth",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "BT"
+    }
+   }
+  },
+  {
+   "id": "z3_srcNET/USB",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 NET/USB",
+   "text": "NET/USB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "NET/USB"
+    }
+   }
+  },
+  {
+   "id": "z3_srcXM",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 XM",
+   "text": "XM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "XM"
+    }
+   }
+  },
+  {
+   "id": "z3_src8K",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 8K",
+   "text": "8K",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "8K"
+    }
+   }
+  },
+  {
+   "id": "z3_srcIPOD",
+   "category": "Zone 3 Sources",
+   "name": "Zone 3 IPOD",
+   "text": "IPOD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "IPOD"
+    }
+   }
+  },
+  {
+   "id": "z2sameAsZ1",
+   "category": "Zone 2 Sources",
+   "name": "Same as Zone 1",
+   "text": "Same as zone 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z2",
+     "source": "SOURCE"
+    }
+   }
+  },
+  {
+   "id": "z3sameAsZ1",
+   "category": "Zone 3 Sources",
+   "name": "Same as Zone 1",
+   "text": "Same as zone 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "zone": "Z3",
+     "source": "SOURCE"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-denon-receiver",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Tim Terry"
+  }
+ ],
+ "source": {
+  "module": "denon-receiver",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Tim Terry"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-denon-receiver.git"
+ }
+}

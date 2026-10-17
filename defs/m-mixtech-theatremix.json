@@ -1,0 +1,638 @@
+{
+ "format": 1,
+ "id": "m-mixtech-theatremix",
+ "name": "Mixing Technology TheatreMix",
+ "category": "Mixing Technology",
+ "version": "2.1.3",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 32000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "go",
+   "name": "Go",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/go",
+    "args": []
+   }
+  },
+  {
+   "id": "back",
+   "name": "Back",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/back",
+    "args": []
+   }
+  },
+  {
+   "id": "jump_cue",
+   "name": "Jump to cue",
+   "options": [
+    {
+     "id": "jumpcue",
+     "label": "Cue number",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/jump",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.jumpcue}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "select_current",
+   "name": "Select current cue",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/select",
+    "args": [
+     {
+      "type": "s",
+      "value": "current"
+     }
+    ]
+   }
+  },
+  {
+   "id": "select_up",
+   "name": "Select up",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/select",
+    "args": [
+     {
+      "type": "s",
+      "value": "up"
+     }
+    ]
+   }
+  },
+  {
+   "id": "select_down",
+   "name": "Select down",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/select",
+    "args": [
+     {
+      "type": "s",
+      "value": "down"
+     }
+    ]
+   }
+  },
+  {
+   "id": "jump_selected",
+   "name": "Jump to selected cue",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/jump",
+    "args": [
+     {
+      "type": "s",
+      "value": "selected"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mark_cue",
+   "name": "Mark cue",
+   "options": [
+    {
+     "id": "selection",
+     "label": "Which cue",
+     "type": "select",
+     "default": "current",
+     "choices": [
+      {
+       "id": "current",
+       "label": "Current cue"
+      },
+      {
+       "id": "selected",
+       "label": "Selected cue"
+      }
+     ]
+    },
+    {
+     "id": "notes",
+     "label": "Notes (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/markcue",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.selection|map}}"
+     },
+     {
+      "type": "s",
+      "value": "{{option.notes}}"
+     }
+    ]
+   },
+   "maps": {
+    "selection": {
+     "current": "current",
+     "selected": "selected"
+    }
+   }
+  },
+  {
+   "id": "insert_cue",
+   "name": "Insert cue",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/insertcue",
+    "args": []
+   }
+  },
+  {
+   "id": "clone_cue",
+   "name": "Clone cue",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/clonecue",
+    "args": []
+   }
+  },
+  {
+   "id": "delete_cue",
+   "name": "Delete cue",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/deletecue",
+    "args": []
+   }
+  },
+  {
+   "id": "undo",
+   "name": "Undo",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/undo",
+    "args": []
+   }
+  },
+  {
+   "id": "redo",
+   "name": "Redo",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/redo",
+    "args": []
+   }
+  },
+  {
+   "id": "unlock",
+   "name": "Unlock editing",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/unlock",
+    "args": []
+   }
+  },
+  {
+   "id": "lock",
+   "name": "Lock editing",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/lock",
+    "args": []
+   }
+  },
+  {
+   "id": "record_offsets",
+   "name": "Record level offsets",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/recordoffsets",
+    "args": []
+   }
+  },
+  {
+   "id": "clone_offsets",
+   "name": "Clone level offsets",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/cloneoffsets",
+    "args": []
+   }
+  },
+  {
+   "id": "toggle_backup",
+   "name": "Toggle backup channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Main channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/togglebackup",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.channel}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "allocate_spare",
+   "name": "Allocate spare backup",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Main channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/allocatespare",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.channel}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "toggle_spare",
+   "name": "Toggle spare backup",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/togglespare",
+    "args": []
+   }
+  },
+  {
+   "id": "remove_spare",
+   "name": "Remove spare allocation",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/removespare",
+    "args": []
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "back",
+   "category": "Cue Control",
+   "name": "Back",
+   "text": "Back",
+   "backgroundColor": "#aa0000",
+   "action": {
+    "definitionId": "back",
+    "options": {}
+   }
+  },
+  {
+   "id": "go",
+   "category": "Cue Control",
+   "name": "Go",
+   "text": "Go",
+   "backgroundColor": "#00aa00",
+   "action": {
+    "definitionId": "go",
+    "options": {}
+   }
+  },
+  {
+   "id": "go_indicator",
+   "category": "Cue Control",
+   "name": "Go (with current cue display)",
+   "text": "Go (with current cue display)",
+   "backgroundColor": "#00aa00",
+   "action": {
+    "definitionId": "go",
+    "options": {}
+   }
+  },
+  {
+   "id": "jump_cue",
+   "category": "Cue Control",
+   "name": "Jump to cue...",
+   "text": "0",
+   "backgroundColor": "#cc6600",
+   "action": {
+    "definitionId": "jump_cue",
+    "options": {
+     "jumpcue": "0"
+    }
+   }
+  },
+  {
+   "id": "select_current",
+   "category": "Selection",
+   "name": "Select current cue",
+   "text": "Select current cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select_current",
+    "options": {}
+   }
+  },
+  {
+   "id": "select_up",
+   "category": "Selection",
+   "name": "Select up",
+   "text": "Select up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select_up",
+    "options": {}
+   }
+  },
+  {
+   "id": "select_down",
+   "category": "Selection",
+   "name": "Select down",
+   "text": "Select down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select_down",
+    "options": {}
+   }
+  },
+  {
+   "id": "jump_selected",
+   "category": "Selection",
+   "name": "Jump to selected cue",
+   "text": "Jump to selected cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "jump_selected",
+    "options": {}
+   }
+  },
+  {
+   "id": "insert_cue",
+   "category": "Editing",
+   "name": "Insert cue",
+   "text": "Insert cue",
+   "backgroundColor": "#4c0066",
+   "action": {
+    "definitionId": "insert_cue",
+    "options": {}
+   }
+  },
+  {
+   "id": "clone_cue",
+   "category": "Editing",
+   "name": "Clone cue",
+   "text": "Clone cue",
+   "backgroundColor": "#4c0066",
+   "action": {
+    "definitionId": "clone_cue",
+    "options": {}
+   }
+  },
+  {
+   "id": "delete_cue",
+   "category": "Editing",
+   "name": "Delete cue",
+   "text": "Delete cue",
+   "backgroundColor": "#4c0066",
+   "action": {
+    "definitionId": "delete_cue",
+    "options": {}
+   }
+  },
+  {
+   "id": "undo",
+   "category": "Editing",
+   "name": "Undo",
+   "text": "Undo",
+   "backgroundColor": "#005555",
+   "action": {
+    "definitionId": "undo",
+    "options": {}
+   }
+  },
+  {
+   "id": "redo",
+   "category": "Editing",
+   "name": "Redo",
+   "text": "Redo",
+   "backgroundColor": "#005555",
+   "action": {
+    "definitionId": "redo",
+    "options": {}
+   }
+  },
+  {
+   "id": "unlock",
+   "category": "Editing",
+   "name": "Unlock editing",
+   "text": "Unlock editing",
+   "backgroundColor": "#600027",
+   "action": {
+    "definitionId": "unlock",
+    "options": {}
+   }
+  },
+  {
+   "id": "lock",
+   "category": "Editing",
+   "name": "Lock editing",
+   "text": "Lock editing",
+   "backgroundColor": "#600027",
+   "action": {
+    "definitionId": "lock",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle_backup",
+   "category": "Backups",
+   "name": "Toggle backup channel...",
+   "text": "Alice",
+   "backgroundColor": "#000055",
+   "action": {
+    "definitionId": "toggle_backup",
+    "options": {
+     "channel": 1
+    }
+   }
+  },
+  {
+   "id": "allocate_spare",
+   "category": "Backups",
+   "name": "Allocate spare backup...",
+   "text": "Bob",
+   "backgroundColor": "#000055",
+   "action": {
+    "definitionId": "allocate_spare",
+    "options": {
+     "channel": 2
+    }
+   }
+  },
+  {
+   "id": "toggle_spare",
+   "category": "Backups",
+   "name": "Toggle spare backup",
+   "text": "Spare",
+   "backgroundColor": "#000055",
+   "action": {
+    "definitionId": "toggle_spare",
+    "options": {}
+   }
+  },
+  {
+   "id": "remove_spare",
+   "category": "Backups",
+   "name": "Remove spare allocation",
+   "text": "Remove spare allocation",
+   "backgroundColor": "#000055",
+   "action": {
+    "definitionId": "remove_spare",
+    "options": {}
+   }
+  },
+  {
+   "id": "record_offsets",
+   "category": "Level Offsets",
+   "name": "Record level offsets",
+   "text": "Record level offsets",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "record_offsets",
+    "options": {}
+   }
+  },
+  {
+   "id": "clone_offsets",
+   "category": "Level Offsets",
+   "name": "Clone level offsets",
+   "text": "Clone level offsets",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clone_offsets",
+    "options": {}
+   }
+  },
+  {
+   "id": "mark_current",
+   "category": "Markers/Notes",
+   "name": "Mark current cue",
+   "text": "Mark current cue",
+   "backgroundColor": "#02518a",
+   "action": {
+    "definitionId": "mark_cue",
+    "options": {
+     "selection": "current",
+     "notes": ""
+    }
+   }
+  },
+  {
+   "id": "mark_current_note",
+   "category": "Markers/Notes",
+   "name": "Mark current cue with note",
+   "text": "Note",
+   "backgroundColor": "#02518a",
+   "action": {
+    "definitionId": "mark_cue",
+    "options": {
+     "selection": "current",
+     "notes": "Note"
+    }
+   }
+  },
+  {
+   "id": "mark_selected",
+   "category": "Markers/Notes",
+   "name": "Mark selected cue",
+   "text": "Mark selected cue",
+   "backgroundColor": "#02518a",
+   "action": {
+    "definitionId": "mark_cue",
+    "options": {
+     "selection": "selected",
+     "notes": ""
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-mixtech-theatremix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：James Holt, Anthony Hunt"
+  }
+ ],
+ "source": {
+  "module": "mixtech-theatremix",
+  "version": "2.1.3",
+  "license": "MIT",
+  "maintainers": [
+   "James Holt",
+   "Anthony Hunt"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-mixtech-theatremix.git"
+ }
+}

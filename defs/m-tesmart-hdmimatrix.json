@@ -1,0 +1,606 @@
+{
+ "format": 1,
+ "id": "m-tesmart-hdmimatrix",
+ "name": "TESMART HDMI Matrix (multiple variants)",
+ "category": "TESMART",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": null,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "outChannels",
+   "label": "Number of output channels",
+   "type": "select",
+   "default": "8",
+   "choices": [
+    {
+     "id": "2",
+     "label": "2"
+    },
+    {
+     "id": "4",
+     "label": "4"
+    },
+    {
+     "id": "8",
+     "label": "8"
+    },
+    {
+     "id": "16",
+     "label": "16"
+    }
+   ]
+  },
+  {
+   "id": "inChannels",
+   "label": "Number of input channels",
+   "type": "select",
+   "default": "8",
+   "choices": [
+    {
+     "id": "4",
+     "label": "4"
+    },
+    {
+     "id": "8",
+     "label": "8"
+    },
+    {
+     "id": "16",
+     "label": "16"
+    }
+   ]
+  },
+  {
+   "id": "poll_interval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 300,
+   "max": 30000
+  },
+  {
+   "id": "polled_data",
+   "label": "Use polled data from unit    :",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "log_responses",
+   "label": "Log returned data    :",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "log_tokens",
+   "label": "Log token data    :",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "switch_output",
+   "name": "Switch Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MT00SW010{{option.output|map}}NT\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "sendInputToOutput",
+   "name": "Input to Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    },
+    {
+     "id": "input",
+     "label": "Input Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MT00SW0{{option.input|map}}0{{option.output|map}}NT\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    },
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "mirror",
+   "name": "Mirror each output to input",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MT00SW0000NT\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadPreset",
+   "name": "Recall routes from preset number",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MT00RD010{{option.preset|map}}NT\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "savePreset",
+   "name": "Save current routes to preset number",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MT00SV000{{option.preset|map}}NT\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "buzzerON",
+   "name": "Buzzer On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MT00BZEN00NT\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "buzzerOFF",
+   "name": "Buzzer Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MT00BZEN01NT\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "8",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 1\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 1
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 2\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 2
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 3\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 3
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 4\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 4
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 5\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 5
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 6\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 6
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 7\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 7
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "Out 8\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": 8
+    }
+   }
+  },
+  {
+   "id": "24",
+   "category": "In to Out",
+   "name": "In to Out",
+   "text": "In to Out",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sendInputToOutput",
+    "options": {
+     "input": "1",
+     "output": "1",
+     "select": false
+    }
+   }
+  },
+  {
+   "id": "25",
+   "category": "Buzzer",
+   "name": "Buzzer On",
+   "text": "Buzzer On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "buzzerON",
+    "options": {}
+   }
+  },
+  {
+   "id": "26",
+   "category": "Buzzer",
+   "name": "Buzzer Off",
+   "text": "Buzzer Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "buzzerOFF",
+    "options": {}
+   }
+  },
+  {
+   "id": "27",
+   "category": "Mirror",
+   "name": "Mirror",
+   "text": "Mirror",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mirror",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-tesmart-hdmimatrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, David Stevens, James Rankin"
+  }
+ ],
+ "source": {
+  "module": "tesmart-hdmimatrix",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "David Stevens",
+   "James Rankin"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-tesmart-hdmimatrix.git"
+ }
+}

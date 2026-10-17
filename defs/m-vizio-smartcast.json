@@ -1,0 +1,110 @@
+{
+ "format": 1,
+ "id": "m-vizio-smartcast",
+ "name": "VIZIO SmartCast",
+ "category": "VIZIO",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://192.168.0.10:7345",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "firmware",
+   "label": "Firmware",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "1",
+     "label": ">4.0"
+    },
+    {
+     "id": "2",
+     "label": "<4.0"
+    }
+   ]
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling (necessary for feedbacks and variables)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollingrate",
+   "label": "Polling Rate (in ms)",
+   "type": "text",
+   "default": 1000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "authToken",
+   "label": "Authorization Token",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "pair",
+   "name": "Pair Device",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/pairing/start",
+    "body": "{\"DEVICE_NAME\":\"node-app-1792199331077\",\"DEVICE_ID\":\"node-app-1792199331077\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "pin",
+   "name": "Enter PIN Code",
+   "options": [
+    {
+     "id": "pin",
+     "label": "Enter the PIN Code as displayed on the TV",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/pairing/pair",
+    "body": "{\"DEVICE_ID\":\"node-app-1792199331077\",\"CHALLENGE_TYPE\":1,\"RESPONSE_VALUE\":\"QB0x\",\"PAIRING_REQ_TOKEN\":\"\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-vizio-smartcast",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "vizio-smartcast",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-vizio-smartcast.git"
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "format": 1,
+ "id": "m-haivision-kbencoder",
+ "name": "Haivision KB Encoder",
+ "category": "Haivision",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": ""
+  }
+ ],
+ "actions": [
+  {
+   "id": "start_channel",
+   "name": "Start a Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "channel",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/kulabyte/undefined/channels/undefined/start",
+    "body": ""
+   }
+  },
+  {
+   "id": "stop_channel",
+   "name": "Stop a Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/kulabyte/undefined/channels/undefined/stop",
+    "body": ""
+   }
+  },
+  {
+   "id": "arm_recording",
+   "name": "Arm Recording",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/kulabyte/undefined/channels/undefined/recording/start",
+    "body": ""
+   }
+  },
+  {
+   "id": "disarm_recording",
+   "name": "Disarm Recording",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/kulabyte/undefined/channels/undefined/recording/stop",
+    "body": ""
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-haivision-kbencoder",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "haivision-kbencoder",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-haivision-kbencoder.git"
+ }
+}

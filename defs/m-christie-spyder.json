@@ -1,0 +1,351 @@
+{
+ "format": 1,
+ "id": "m-christie-spyder",
+ "name": "Christie Spyder X20/X80",
+ "category": "Christie",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 11116,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "asc",
+   "name": "Take (Advance Script Cue)",
+   "options": [
+    {
+     "id": "cueNum",
+     "label": "Cues to advance / step Back",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "-10",
+       "label": "Step back 10 Cues"
+      },
+      {
+       "id": "-1",
+       "label": "Step back 1 Cue"
+      },
+      {
+       "id": "0",
+       "label": "None / Take"
+      },
+      {
+       "id": "+1",
+       "label": "Advance 1 Cue"
+      },
+      {
+       "id": "+10",
+       "label": "Advance 10 Cues"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "73707964657200000000415343{{option.cueNum|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "cueNum": {
+     "0": "",
+     "-10": "202d3130",
+     "-1": "202d31",
+     "+1": "202b31",
+     "+10": "202b3130"
+    }
+   }
+  },
+  {
+   "id": "bpr",
+   "name": "Basic Preset Recall (Index Nr)",
+   "options": [
+    {
+     "id": "idx",
+     "label": "Preset Index",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "dur",
+     "label": "Duration (Optional)",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "7370796465720000000042505220{{option.idx|hexstr}}20{{option.dur|hexstr}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "rsc",
+   "name": "Recall Script Cue (Script, Cue)",
+   "options": [
+    {
+     "id": "sidx",
+     "label": "Script ID/Register ID",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "cidx",
+     "label": "Script Cue",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "type",
+     "label": "ID Type being recalled",
+     "type": "select",
+     "default": "S",
+     "choices": [
+      {
+       "id": "S",
+       "label": "ScriptID (default)"
+      },
+      {
+       "id": "R",
+       "label": "RegisterID"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "7370796465720000000052534320{{option.sidx|hexstr}}20{{option.cidx|hexstr}}20{{option.type|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "type": {
+     "S": "53",
+     "R": "52"
+    }
+   }
+  },
+  {
+   "id": "trn",
+   "name": "Transition layer(s)",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Transition Mix on/off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mix On"
+      },
+      {
+       "id": "0",
+       "label": "Mix Off"
+      }
+     ]
+    },
+    {
+     "id": "dur",
+     "label": "duration",
+     "type": "text",
+     "default": 60
+    },
+    {
+     "id": "lay",
+     "label": "lay",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "7370796465720000000054524e20{{option.mix|map}}20{{option.dur|hexstr}}20{{option.lay|hexstr}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mix": {
+     "0": "30",
+     "1": "31"
+    }
+   }
+  },
+  {
+   "id": "frz",
+   "name": "frz",
+   "options": [
+    {
+     "id": "frzonoff",
+     "label": "Freeze Layer on/off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Freeze On"
+      },
+      {
+       "id": "0",
+       "label": "Freeze Off"
+      }
+     ]
+    },
+    {
+     "id": "lay",
+     "label": "Layer(s) input multiple layers space delimited",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "7370796465720000000046525a20{{option.frzonoff|map}}20{{option.lay|hexstr}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "frzonoff": {
+     "0": "30",
+     "1": "31"
+    }
+   }
+  },
+  {
+   "id": "btr",
+   "name": "Background Transition",
+   "options": [
+    {
+     "id": "dur",
+     "label": "duration",
+     "type": "text",
+     "default": 60
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "7370796465720000000042545220{{option.dur|hexstr}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "fkr",
+   "name": "Function Key Recall",
+   "options": [
+    {
+     "id": "fkrid",
+     "label": "Funktion key ID",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "lay",
+     "label": "Layer(s) input multiple layers space delimited",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "73707964657200000000464b5220{{option.fkrid|hexstr}}20{{option.lay|hexstr}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "ofz",
+   "name": "Output Freeze",
+   "options": [
+    {
+     "id": "frzonoff",
+     "label": "Freeze Output on/off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Freeze On"
+      },
+      {
+       "id": "0",
+       "label": "Freeze Off"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output(s)input multiple outputs space delimited",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "737079646572000000004f465a20{{option.frzonoff|map}}20{{option.output|hexstr}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "frzonoff": {
+     "0": "30",
+     "1": "31"
+    }
+   }
+  },
+  {
+   "id": "dmt",
+   "name": "Device Mixer Transition",
+   "options": [
+    {
+     "id": "dur",
+     "label": "duration",
+     "type": "text",
+     "default": 60
+    },
+    {
+     "id": "dev",
+     "label": "Device(s)",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "73707964657200000000444d5420{{option.dur|hexstr}}20{{option.dev|hexstr}}",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（ISC）",
+   "url": "https://github.com/bitfocus/companion-module-christie-spyder",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Røine, John A Knight, Jr"
+  }
+ ],
+ "source": {
+  "module": "christie-spyder",
+  "version": "2.3.0",
+  "license": "ISC",
+  "maintainers": [
+   "Per Røine",
+   "John A Knight, Jr"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-christie-spyder.git"
+ }
+}

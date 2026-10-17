@@ -1,0 +1,7969 @@
+{
+ "format": 1,
+ "id": "m-christie-projector",
+ "name": "Christie Projector",
+ "category": "Christie",
+ "version": "4.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3002,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "interval",
+   "label": "Update Interval",
+   "type": "text",
+   "default": 5000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "alc",
+   "name": "Automatic Lens Calibration On / Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ALC {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "apw",
+   "name": "Auto Power Up On / Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(APW {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "aro",
+   "name": "Aspect Ratio Overlay / Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ARO {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "asr",
+   "name": "Auto Source On / Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Source Setup (1-50)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 50
+    },
+    {
+     "id": "p2",
+     "label": "On / Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ASR {{option.p1|pad2}} {{option.p2|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p2": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "asu",
+   "name": "Auto Setup",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(ASU)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "brt",
+   "name": "Brightness",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Brightness (0-1000 = 0%-100%, 505 = 50.5%)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(BRT {{option.p1|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ccs",
+   "name": "Select Output Color",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Color Profile",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Max Drives (Default)"
+      },
+      {
+       "id": "1",
+       "label": "Color Temperature"
+      },
+      {
+       "id": "2",
+       "label": "SD Video"
+      },
+      {
+       "id": "3",
+       "label": "HD Video"
+      },
+      {
+       "id": "4",
+       "label": "User 1"
+      },
+      {
+       "id": "5",
+       "label": "User 2"
+      },
+      {
+       "id": "6",
+       "label": "User 3"
+      },
+      {
+       "id": "7",
+       "label": "User 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(CCS {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "cha",
+   "name": "Channel Select",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Channel Number (1-50)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 50
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(CHA {{option.p1|pad2}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cle",
+   "name": "Color Enable",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Color",
+     "type": "select",
+     "default": "8",
+     "choices": [
+      {
+       "id": "0",
+       "label": "White (all colors on)"
+      },
+      {
+       "id": "1",
+       "label": "Red"
+      },
+      {
+       "id": "2",
+       "label": "Green"
+      },
+      {
+       "id": "3",
+       "label": "Blue"
+      },
+      {
+       "id": "4",
+       "label": "Yellow"
+      },
+      {
+       "id": "5",
+       "label": "Cyan"
+      },
+      {
+       "id": "6",
+       "label": "Magenta"
+      },
+      {
+       "id": "7",
+       "label": "White"
+      },
+      {
+       "id": "8",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(CLE {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "clr",
+   "name": "Color Intensity",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Intensity (0-1000 = 0%-100%, 505 = 50.5%)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(CLR {{option.p1|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "con",
+   "name": "Contrast",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Contrast (0-1000 = 0%-100%, 505 = 50.5%)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(CON {{option.p1|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "csp",
+   "name": "Color Space",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Color Space",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "RGB"
+      },
+      {
+       "id": "1",
+       "label": "YPbPr (SDTV)"
+      },
+      {
+       "id": "2",
+       "label": "YPbPr (HDTV)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(CSP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "def",
+   "name": "Factory Defaults",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Are you sure?",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "",
+       "label": "No"
+      },
+      {
+       "id": "111",
+       "label": "Yes"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(DEF {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "111": "111",
+     "": ""
+    }
+   }
+  },
+  {
+   "id": "eme",
+   "name": "Error Message Enable",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select an Option",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On-Screen display"
+      },
+      {
+       "id": "2",
+       "label": "ASCII message"
+      },
+      {
+       "id": "3",
+       "label": "Both"
+      },
+      {
+       "id": "4",
+       "label": "All except error 1E & F"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(EME {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "fcs",
+   "name": "Focus (Fixed)",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Focus Set (-1200 to 1200)",
+     "type": "number",
+     "default": 0,
+     "min": -1200,
+     "max": 1200
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(FCS {{option.p1|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fil",
+   "name": "Input Filter",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Filter Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "HDTV"
+      },
+      {
+       "id": "2",
+       "label": "SDTV"
+      },
+      {
+       "id": "3",
+       "label": "EDTV"
+      },
+      {
+       "id": "4",
+       "label": "Graphics/RGB"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(FIL {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "frz",
+   "name": "Freeze On / Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(FRZ {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "gam",
+   "name": "Gamma",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Gamma Set (100-280)",
+     "type": "number",
+     "default": 220,
+     "min": 100,
+     "max": 280
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(GAM {{option.p1}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "hor",
+   "name": "Horizontal Position",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Horizontal Position",
+     "type": "number",
+     "default": 500,
+     "min": 0,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(HOR{{option.p1}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ils",
+   "name": "Intelligent Lens System On/Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ILS {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "iop",
+   "name": "Image Optimization",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select an Option",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Best Image Quality"
+      },
+      {
+       "id": "1",
+       "label": "Smooth Switching"
+      },
+      {
+       "id": "2",
+       "label": "Seamless Switching"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(IOP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "itpBasic",
+   "name": "Internal testpattern Basic collection (general use)",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Testpattern",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Grid"
+      },
+      {
+       "id": "2",
+       "label": "Grey Scale 16"
+      },
+      {
+       "id": "3",
+       "label": "White"
+      },
+      {
+       "id": "4",
+       "label": "Flat Grey"
+      },
+      {
+       "id": "5",
+       "label": "Black"
+      },
+      {
+       "id": "6",
+       "label": "Checker"
+      },
+      {
+       "id": "7",
+       "label": "13 Point"
+      },
+      {
+       "id": "8",
+       "label": "Color Bars"
+      },
+      {
+       "id": "9",
+       "label": "RGBW Gray Scale"
+      },
+      {
+       "id": "10",
+       "label": "Multi Color"
+      },
+      {
+       "id": "11",
+       "label": "Edge Blend"
+      },
+      {
+       "id": "12",
+       "label": "Aspect Ratio"
+      },
+      {
+       "id": "13",
+       "label": "Red & Blue Ramp"
+      },
+      {
+       "id": "14",
+       "label": "Calibration Line Ramp"
+      },
+      {
+       "id": "15",
+       "label": "Calibration Black & White Grid"
+      },
+      {
+       "id": "16",
+       "label": "Calibration White & Red Grid"
+      },
+      {
+       "id": "17",
+       "label": "Calibration White & Green Grid"
+      },
+      {
+       "id": "18",
+       "label": "Calibration White & Blue Grid"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ITP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18"
+    }
+   }
+  },
+  {
+   "id": "itpBoxer",
+   "name": "Internal testpattern Boxer series",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Testpattern",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Grid"
+      },
+      {
+       "id": "2",
+       "label": "Grey Scale 16"
+      },
+      {
+       "id": "3",
+       "label": "Flat White"
+      },
+      {
+       "id": "4",
+       "label": "Flat Grey"
+      },
+      {
+       "id": "5",
+       "label": "Flat Black"
+      },
+      {
+       "id": "6",
+       "label": "Checker"
+      },
+      {
+       "id": "7",
+       "label": "17 Point"
+      },
+      {
+       "id": "8",
+       "label": "Edge Blend"
+      },
+      {
+       "id": "9",
+       "label": "Color Bars"
+      },
+      {
+       "id": "10",
+       "label": "Multi Color"
+      },
+      {
+       "id": "11",
+       "label": "RGBW Ramp"
+      },
+      {
+       "id": "12",
+       "label": "Horizontal Ramp"
+      },
+      {
+       "id": "13",
+       "label": "Vertical Ramp"
+      },
+      {
+       "id": "14",
+       "label": "Diagonal Ramp"
+      },
+      {
+       "id": "15",
+       "label": "Square Grid"
+      },
+      {
+       "id": "16",
+       "label": "Diagonal Grid"
+      },
+      {
+       "id": "17",
+       "label": "Maximum Activity"
+      },
+      {
+       "id": "18",
+       "label": "Prism/Convergence"
+      },
+      {
+       "id": "21",
+       "label": "Boresight"
+      },
+      {
+       "id": "22",
+       "label": "Convergence"
+      },
+      {
+       "id": "23",
+       "label": "Integrator Rod"
+      },
+      {
+       "id": "25",
+       "label": "Resolution Demo"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ITP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "25": "25"
+    }
+   }
+  },
+  {
+   "id": "itpMser",
+   "name": "Internal testpattern M series",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Testpattern",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Grid"
+      },
+      {
+       "id": "2",
+       "label": "Grey Scale 16"
+      },
+      {
+       "id": "3",
+       "label": "White"
+      },
+      {
+       "id": "4",
+       "label": "Flat Grey"
+      },
+      {
+       "id": "5",
+       "label": "Black"
+      },
+      {
+       "id": "6",
+       "label": "Checker"
+      },
+      {
+       "id": "7",
+       "label": "13 Point"
+      },
+      {
+       "id": "8",
+       "label": "Color Bars"
+      },
+      {
+       "id": "11",
+       "label": "Aspect Ratio"
+      },
+      {
+       "id": "12",
+       "label": "Edge Blend"
+      },
+      {
+       "id": "14",
+       "label": "Boresight"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ITP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "11": "11",
+     "12": "12",
+     "14": "14"
+    }
+   }
+  },
+  {
+   "id": "ken",
+   "name": "Keypad Enable",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Wired"
+      },
+      {
+       "id": "1",
+       "label": "IR Front"
+      },
+      {
+       "id": "2",
+       "label": "IR Back"
+      }
+     ]
+    },
+    {
+     "id": "p2",
+     "label": "Protocol",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Protocol Any"
+      },
+      {
+       "id": "10",
+       "label": "Protocol A"
+      },
+      {
+       "id": "11",
+       "label": "Protocol B"
+      },
+      {
+       "id": "12",
+       "label": "Protocol C"
+      },
+      {
+       "id": "13",
+       "label": "Protocol D"
+      },
+      {
+       "id": "14",
+       "label": "Protocol E"
+      },
+      {
+       "id": "15",
+       "label": "Protocol F"
+      },
+      {
+       "id": "16",
+       "label": "Protocol G"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(KEN {{option.p1|map}} {{option.p2|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    },
+    "p2": {
+     "0": "0",
+     "1": "1",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "lcb",
+   "name": "Lens Calibrate",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Relative"
+      },
+      {
+       "id": "1",
+       "label": "Manual"
+      },
+      {
+       "id": "2",
+       "label": "Calibrate"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LCB {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "lcn",
+   "name": "lcn",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LCN)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lco",
+   "name": "Lamp Conditioning On/Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LCO {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "lng",
+   "name": "Language",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Language",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "English"
+      },
+      {
+       "id": "2",
+       "label": "French"
+      },
+      {
+       "id": "3",
+       "label": "Spanish"
+      },
+      {
+       "id": "4",
+       "label": "German"
+      },
+      {
+       "id": "5",
+       "label": "Italian"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LNG {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    }
+   }
+  },
+  {
+   "id": "lop",
+   "name": "Lamp Operation",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Mode",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Lamp 1 only"
+      },
+      {
+       "id": "2",
+       "label": "Lamp 2 only"
+      },
+      {
+       "id": "3",
+       "label": "Both"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LOP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "lpc",
+   "name": "Lamp Changed",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Serial nr: (Max 8 Charactors)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LPC {{option.p1}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lph",
+   "name": "Lamp Hours Of Use?",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LPH?)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lpi",
+   "name": "Lamp Intensity",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Setpoint (0-9999)",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LPI {{option.p1|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lpm",
+   "name": "Lamp Mode",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto"
+      },
+      {
+       "id": "1",
+       "label": "Still"
+      },
+      {
+       "id": "2",
+       "label": "Motion"
+      },
+      {
+       "id": "3",
+       "label": "Film"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LPM {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "mot",
+   "name": "Motion Filter",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Filter",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(MOT 0)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "osd",
+   "name": "On Screen Display On/Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(OSD {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "pip",
+   "name": "Picture In Picture On/Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(PIP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "ppp",
+   "name": "PIP Position Preset",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Select Preset",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Top Left"
+      },
+      {
+       "id": "1",
+       "label": "Top Right"
+      },
+      {
+       "id": "2",
+       "label": "Bottom Left"
+      },
+      {
+       "id": "3",
+       "label": "Bottom Right"
+      },
+      {
+       "id": "4",
+       "label": "Custom"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(PPP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "pps",
+   "name": "pps",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(PPS)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pwr",
+   "name": "Power On/Off",
+   "options": [
+    {
+     "id": "p1",
+     "label": "On / Off",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(PWR {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "sde",
+   "name": "Source Dialog Enable",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Show / Hide",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(SDE {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "shu",
+   "name": "Shutter Open / Close",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Open / Close",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Open"
+      },
+      {
+       "id": "1",
+       "label": "Close"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(SHU 00{{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "sin",
+   "name": "Select Input",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Input:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "BNC"
+      },
+      {
+       "id": "2",
+       "label": "DVI-I"
+      },
+      {
+       "id": "3",
+       "label": "Composite"
+      },
+      {
+       "id": "4",
+       "label": "S-Video"
+      },
+      {
+       "id": "5",
+       "label": "Option slot #1"
+      },
+      {
+       "id": "6",
+       "label": "Option slot #2"
+      },
+      {
+       "id": "7",
+       "label": "Option slot #3"
+      },
+      {
+       "id": "8",
+       "label": "Option slot #4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(SIN {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "sinSlot",
+   "name": "Select Input by Slot and Input Number",
+   "options": [
+    {
+     "id": "slot",
+     "label": "Slot Number",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "input",
+     "label": "Input Number",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "target",
+     "label": "Target",
+     "type": "select",
+     "default": "MAIN",
+     "choices": [
+      {
+       "id": "MAIN",
+       "label": "Main"
+      },
+      {
+       "id": "PIIP",
+       "label": "PIP"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(SIN+{{option.target|map}} {{option.slot}}{{option.input}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "target": {
+     "MAIN": "MAIN",
+     "PIIP": "PIIP"
+    }
+   }
+  },
+  {
+   "id": "sor",
+   "name": "Select Orientation",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Orientation:",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Front Projection"
+      },
+      {
+       "id": "1",
+       "label": "Rear Projection"
+      },
+      {
+       "id": "2",
+       "label": "Front Projection Inverted"
+      },
+      {
+       "id": "3",
+       "label": "Rear Projection Inverted"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(SOR {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "std",
+   "name": "Video Standard",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Video Standard",
+     "type": "select",
+     "default": "8",
+     "choices": [
+      {
+       "id": "0",
+       "label": "PAL"
+      },
+      {
+       "id": "1",
+       "label": "NTSC"
+      },
+      {
+       "id": "2",
+       "label": "SECAM"
+      },
+      {
+       "id": "3",
+       "label": "NTSC4.43"
+      },
+      {
+       "id": "4",
+       "label": "PAL-M"
+      },
+      {
+       "id": "5",
+       "label": "PAL-NC"
+      },
+      {
+       "id": "6",
+       "label": "PAL-60"
+      },
+      {
+       "id": "7",
+       "label": "NTSC"
+      },
+      {
+       "id": "8",
+       "label": "Auto-select"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(STD {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "szp",
+   "name": "Size Presets Position",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Size",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Default"
+      },
+      {
+       "id": "1",
+       "label": "No Resizing"
+      },
+      {
+       "id": "2",
+       "label": "Full Screen"
+      },
+      {
+       "id": "3",
+       "label": "Full Width"
+      },
+      {
+       "id": "4",
+       "label": "Full Height"
+      },
+      {
+       "id": "5",
+       "label": "Anamorphic"
+      },
+      {
+       "id": "6",
+       "label": "Custom resizing"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(SZP {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    }
+   }
+  },
+  {
+   "id": "tnt",
+   "name": "Tint",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Tint (0-1000 = 0%-100%, 505 = 50.5%)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(TNT {{option.p1}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "vrt",
+   "name": "Vertical Position",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Vertical Position",
+     "type": "number",
+     "default": 500,
+     "min": 0,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(VRT {{option.p1}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "wps",
+   "name": "Geometry Correction (General)",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Warp Select",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "2D Warp"
+      },
+      {
+       "id": "2",
+       "label": "User 1"
+      },
+      {
+       "id": "3",
+       "label": "User 2"
+      },
+      {
+       "id": "4",
+       "label": "User 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(WPS {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "wrp",
+   "name": "Geometry Correction (Mseries & Boxer)",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Warp Select",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Mseries 2D Warp, Boxer User 1"
+      },
+      {
+       "id": "2",
+       "label": "Mseries User 1, Boxer User 2"
+      },
+      {
+       "id": "3",
+       "label": "Mseries User 2, Boxer User 3"
+      },
+      {
+       "id": "4",
+       "label": "Mseries User 3, Boxer User 4"
+      },
+      {
+       "id": "5",
+       "label": "Mseries User 4"
+      },
+      {
+       "id": "6",
+       "label": "Mseries User 5"
+      },
+      {
+       "id": "7",
+       "label": "Mseries User 6"
+      },
+      {
+       "id": "8",
+       "label": "Mseries User 7"
+      },
+      {
+       "id": "9",
+       "label": "Mseries User 8"
+      },
+      {
+       "id": "10",
+       "label": "Mseries User 9"
+      },
+      {
+       "id": "11",
+       "label": "Mseries User 10, Boxer Keystone"
+      },
+      {
+       "id": "12",
+       "label": "Mseries User 11"
+      },
+      {
+       "id": "13",
+       "label": "Mseries User 12"
+      },
+      {
+       "id": "14",
+       "label": "Mseries User 13"
+      },
+      {
+       "id": "15",
+       "label": "Mseries User 14"
+      },
+      {
+       "id": "16",
+       "label": "Mseries User 15"
+      },
+      {
+       "id": "17",
+       "label": "Mseries User 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(WRP+SLCT {{option.p1|map}})",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17"
+    }
+   }
+  },
+  {
+   "id": "zom",
+   "name": "Zoom (Fixed)",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Zoom Set (-1200 to 1200)",
+     "type": "number",
+     "default": 0,
+     "min": -1200,
+     "max": 1200
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(ZOM {{option.p1|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_h_neg",
+   "name": "Lens Shift - Start to Move Horizontal Motor to Negative Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+HRUN-1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_h_pos",
+   "name": "Lens Shift - Start to Move Horizontal Motor to Positive Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+HRUN1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_h_stop",
+   "name": "Lens Shift - Stop Move Horizontal Motor",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+HRUN0)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_h_number",
+   "name": "Lens Shift - Move Horizontal Motor to Position",
+   "options": [
+    {
+     "id": "pos",
+     "label": "Position (-2050 to 2050)",
+     "type": "number",
+     "default": 0,
+     "min": -2050,
+     "max": 2050
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LHO {{option.pos|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_v_neg",
+   "name": "Lens Shift - Start to Move Vertical Motor to Negative Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+VRUN-1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_v_pos",
+   "name": "Lens Shift - Start to Move Vertical Motor to Positive Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+VRUN1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_v_stop",
+   "name": "Lens Shift - Stop Move Vertical Motor",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+VRUN0)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_move_v_number",
+   "name": "Lens Shift - Move Vertical Motor to Position",
+   "options": [
+    {
+     "id": "pos",
+     "label": "Position (-2050 to 2050)",
+     "type": "number",
+     "default": 0,
+     "min": -2050,
+     "max": 2050
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "(LVO {{option.pos|pad4}})",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_focus_neg",
+   "name": "Lens Shift - Start to Move Focus Motor to Negative Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+FRUN-1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_focus_pos",
+   "name": "Lens Shift - Start to Move Focus Motor to Positive Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+FRUN1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_focus_stop",
+   "name": "Lens Shift - Stop Move Focus Motor",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+FRUN0)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_zoom_neg",
+   "name": "Lens Shift - Start to Move Zoom Motor to Negative Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+ZRUN-1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_zoom_pos",
+   "name": "Lens Shift - Start to Move Zoom Motor to Positive Max",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+ZRUN1)",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lensshift_zoom_stop",
+   "name": "Lens Shift - Stop Move Zoom Motor",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "(LMV+ZRUN0)",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Auto Source",
+   "name": " Auto Source 1 OFF",
+   "text": "ASR CH 1 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 1,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Auto Source",
+   "name": " Auto Source 1 ON",
+   "text": "ASR CH 1 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 1,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Auto Source",
+   "name": " Auto Source 2 OFF",
+   "text": "ASR CH 2 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 2,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Auto Source",
+   "name": " Auto Source 2 ON",
+   "text": "ASR CH 2 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 2,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Auto Source",
+   "name": " Auto Source 3 OFF",
+   "text": "ASR CH 3 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 3,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Auto Source",
+   "name": " Auto Source 3 ON",
+   "text": "ASR CH 3 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 3,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Auto Source",
+   "name": " Auto Source 4 OFF",
+   "text": "ASR CH 4 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 4,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Auto Source",
+   "name": " Auto Source 4 ON",
+   "text": "ASR CH 4 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 4,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Auto Source",
+   "name": " Auto Source 5 OFF",
+   "text": "ASR CH 5 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 5,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Auto Source",
+   "name": " Auto Source 5 ON",
+   "text": "ASR CH 5 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 5,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Auto Source",
+   "name": " Auto Source 6 OFF",
+   "text": "ASR CH 6 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 6,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Auto Source",
+   "name": " Auto Source 6 ON",
+   "text": "ASR CH 6 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 6,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Auto Source",
+   "name": " Auto Source 7 OFF",
+   "text": "ASR CH 7 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 7,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Auto Source",
+   "name": " Auto Source 7 ON",
+   "text": "ASR CH 7 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 7,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Auto Source",
+   "name": " Auto Source 8 OFF",
+   "text": "ASR CH 8 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 8,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Auto Source",
+   "name": " Auto Source 8 ON",
+   "text": "ASR CH 8 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 8,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "16",
+   "category": "Auto Source",
+   "name": " Auto Source 9 OFF",
+   "text": "ASR CH 9 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 9,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "17",
+   "category": "Auto Source",
+   "name": " Auto Source 9 ON",
+   "text": "ASR CH 9 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 9,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "18",
+   "category": "Auto Source",
+   "name": " Auto Source 10 OFF",
+   "text": "ASR CH 10 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 10,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "19",
+   "category": "Auto Source",
+   "name": " Auto Source 10 ON",
+   "text": "ASR CH 10 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 10,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "20",
+   "category": "Auto Source",
+   "name": " Auto Source 11 OFF",
+   "text": "ASR CH 11 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 11,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "21",
+   "category": "Auto Source",
+   "name": " Auto Source 11 ON",
+   "text": "ASR CH 11 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 11,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "22",
+   "category": "Auto Source",
+   "name": " Auto Source 12 OFF",
+   "text": "ASR CH 12 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 12,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "23",
+   "category": "Auto Source",
+   "name": " Auto Source 12 ON",
+   "text": "ASR CH 12 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 12,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "24",
+   "category": "Auto Source",
+   "name": " Auto Source 13 OFF",
+   "text": "ASR CH 13 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 13,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "25",
+   "category": "Auto Source",
+   "name": " Auto Source 13 ON",
+   "text": "ASR CH 13 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 13,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "26",
+   "category": "Auto Source",
+   "name": " Auto Source 14 OFF",
+   "text": "ASR CH 14 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 14,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "27",
+   "category": "Auto Source",
+   "name": " Auto Source 14 ON",
+   "text": "ASR CH 14 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 14,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "28",
+   "category": "Auto Source",
+   "name": " Auto Source 15 OFF",
+   "text": "ASR CH 15 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 15,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "29",
+   "category": "Auto Source",
+   "name": " Auto Source 15 ON",
+   "text": "ASR CH 15 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 15,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "30",
+   "category": "Auto Source",
+   "name": " Auto Source 16 OFF",
+   "text": "ASR CH 16 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 16,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "31",
+   "category": "Auto Source",
+   "name": " Auto Source 16 ON",
+   "text": "ASR CH 16 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 16,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "32",
+   "category": "Auto Source",
+   "name": " Auto Source 17 OFF",
+   "text": "ASR CH 17 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 17,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "33",
+   "category": "Auto Source",
+   "name": " Auto Source 17 ON",
+   "text": "ASR CH 17 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 17,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "34",
+   "category": "Auto Source",
+   "name": " Auto Source 18 OFF",
+   "text": "ASR CH 18 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 18,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "35",
+   "category": "Auto Source",
+   "name": " Auto Source 18 ON",
+   "text": "ASR CH 18 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 18,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "36",
+   "category": "Auto Source",
+   "name": " Auto Source 19 OFF",
+   "text": "ASR CH 19 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 19,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "37",
+   "category": "Auto Source",
+   "name": " Auto Source 19 ON",
+   "text": "ASR CH 19 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 19,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "38",
+   "category": "Auto Source",
+   "name": " Auto Source 20 OFF",
+   "text": "ASR CH 20 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 20,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "39",
+   "category": "Auto Source",
+   "name": " Auto Source 20 ON",
+   "text": "ASR CH 20 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 20,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "40",
+   "category": "Auto Source",
+   "name": " Auto Source 21 OFF",
+   "text": "ASR CH 21 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 21,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "41",
+   "category": "Auto Source",
+   "name": " Auto Source 21 ON",
+   "text": "ASR CH 21 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 21,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "42",
+   "category": "Auto Source",
+   "name": " Auto Source 22 OFF",
+   "text": "ASR CH 22 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 22,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "43",
+   "category": "Auto Source",
+   "name": " Auto Source 22 ON",
+   "text": "ASR CH 22 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 22,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "44",
+   "category": "Auto Source",
+   "name": " Auto Source 23 OFF",
+   "text": "ASR CH 23 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 23,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "45",
+   "category": "Auto Source",
+   "name": " Auto Source 23 ON",
+   "text": "ASR CH 23 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 23,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "46",
+   "category": "Auto Source",
+   "name": " Auto Source 24 OFF",
+   "text": "ASR CH 24 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 24,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "47",
+   "category": "Auto Source",
+   "name": " Auto Source 24 ON",
+   "text": "ASR CH 24 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 24,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "48",
+   "category": "Auto Source",
+   "name": " Auto Source 25 OFF",
+   "text": "ASR CH 25 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 25,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "49",
+   "category": "Auto Source",
+   "name": " Auto Source 25 ON",
+   "text": "ASR CH 25 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 25,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "50",
+   "category": "Auto Source",
+   "name": " Auto Source 26 OFF",
+   "text": "ASR CH 26 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 26,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "51",
+   "category": "Auto Source",
+   "name": " Auto Source 26 ON",
+   "text": "ASR CH 26 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 26,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "52",
+   "category": "Auto Source",
+   "name": " Auto Source 27 OFF",
+   "text": "ASR CH 27 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 27,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "53",
+   "category": "Auto Source",
+   "name": " Auto Source 27 ON",
+   "text": "ASR CH 27 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 27,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "54",
+   "category": "Auto Source",
+   "name": " Auto Source 28 OFF",
+   "text": "ASR CH 28 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 28,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "55",
+   "category": "Auto Source",
+   "name": " Auto Source 28 ON",
+   "text": "ASR CH 28 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 28,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "56",
+   "category": "Auto Source",
+   "name": " Auto Source 29 OFF",
+   "text": "ASR CH 29 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 29,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "57",
+   "category": "Auto Source",
+   "name": " Auto Source 29 ON",
+   "text": "ASR CH 29 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 29,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "58",
+   "category": "Auto Source",
+   "name": " Auto Source 30 OFF",
+   "text": "ASR CH 30 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 30,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "59",
+   "category": "Auto Source",
+   "name": " Auto Source 30 ON",
+   "text": "ASR CH 30 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 30,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "60",
+   "category": "Auto Source",
+   "name": " Auto Source 31 OFF",
+   "text": "ASR CH 31 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 31,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "61",
+   "category": "Auto Source",
+   "name": " Auto Source 31 ON",
+   "text": "ASR CH 31 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 31,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "62",
+   "category": "Auto Source",
+   "name": " Auto Source 32 OFF",
+   "text": "ASR CH 32 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 32,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "63",
+   "category": "Auto Source",
+   "name": " Auto Source 32 ON",
+   "text": "ASR CH 32 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 32,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "64",
+   "category": "Auto Source",
+   "name": " Auto Source 33 OFF",
+   "text": "ASR CH 33 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 33,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "65",
+   "category": "Auto Source",
+   "name": " Auto Source 33 ON",
+   "text": "ASR CH 33 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 33,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "66",
+   "category": "Auto Source",
+   "name": " Auto Source 34 OFF",
+   "text": "ASR CH 34 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 34,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "67",
+   "category": "Auto Source",
+   "name": " Auto Source 34 ON",
+   "text": "ASR CH 34 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 34,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "68",
+   "category": "Auto Source",
+   "name": " Auto Source 35 OFF",
+   "text": "ASR CH 35 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 35,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "69",
+   "category": "Auto Source",
+   "name": " Auto Source 35 ON",
+   "text": "ASR CH 35 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 35,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "70",
+   "category": "Auto Source",
+   "name": " Auto Source 36 OFF",
+   "text": "ASR CH 36 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 36,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "71",
+   "category": "Auto Source",
+   "name": " Auto Source 36 ON",
+   "text": "ASR CH 36 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 36,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "72",
+   "category": "Auto Source",
+   "name": " Auto Source 37 OFF",
+   "text": "ASR CH 37 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 37,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "73",
+   "category": "Auto Source",
+   "name": " Auto Source 37 ON",
+   "text": "ASR CH 37 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 37,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "74",
+   "category": "Auto Source",
+   "name": " Auto Source 38 OFF",
+   "text": "ASR CH 38 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 38,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "75",
+   "category": "Auto Source",
+   "name": " Auto Source 38 ON",
+   "text": "ASR CH 38 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 38,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "76",
+   "category": "Auto Source",
+   "name": " Auto Source 39 OFF",
+   "text": "ASR CH 39 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 39,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "77",
+   "category": "Auto Source",
+   "name": " Auto Source 39 ON",
+   "text": "ASR CH 39 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 39,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "78",
+   "category": "Auto Source",
+   "name": " Auto Source 40 OFF",
+   "text": "ASR CH 40 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 40,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "79",
+   "category": "Auto Source",
+   "name": " Auto Source 40 ON",
+   "text": "ASR CH 40 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 40,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "80",
+   "category": "Auto Source",
+   "name": " Auto Source 41 OFF",
+   "text": "ASR CH 41 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 41,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "81",
+   "category": "Auto Source",
+   "name": " Auto Source 41 ON",
+   "text": "ASR CH 41 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 41,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "82",
+   "category": "Auto Source",
+   "name": " Auto Source 42 OFF",
+   "text": "ASR CH 42 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 42,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "83",
+   "category": "Auto Source",
+   "name": " Auto Source 42 ON",
+   "text": "ASR CH 42 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 42,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "84",
+   "category": "Auto Source",
+   "name": " Auto Source 43 OFF",
+   "text": "ASR CH 43 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 43,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "85",
+   "category": "Auto Source",
+   "name": " Auto Source 43 ON",
+   "text": "ASR CH 43 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 43,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "86",
+   "category": "Auto Source",
+   "name": " Auto Source 44 OFF",
+   "text": "ASR CH 44 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 44,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "87",
+   "category": "Auto Source",
+   "name": " Auto Source 44 ON",
+   "text": "ASR CH 44 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 44,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "88",
+   "category": "Auto Source",
+   "name": " Auto Source 45 OFF",
+   "text": "ASR CH 45 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 45,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "89",
+   "category": "Auto Source",
+   "name": " Auto Source 45 ON",
+   "text": "ASR CH 45 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 45,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "90",
+   "category": "Auto Source",
+   "name": " Auto Source 46 OFF",
+   "text": "ASR CH 46 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 46,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "91",
+   "category": "Auto Source",
+   "name": " Auto Source 46 ON",
+   "text": "ASR CH 46 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 46,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "92",
+   "category": "Auto Source",
+   "name": " Auto Source 47 OFF",
+   "text": "ASR CH 47 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 47,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "93",
+   "category": "Auto Source",
+   "name": " Auto Source 47 ON",
+   "text": "ASR CH 47 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 47,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "94",
+   "category": "Auto Source",
+   "name": " Auto Source 48 OFF",
+   "text": "ASR CH 48 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 48,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "95",
+   "category": "Auto Source",
+   "name": " Auto Source 48 ON",
+   "text": "ASR CH 48 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 48,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "96",
+   "category": "Auto Source",
+   "name": " Auto Source 49 OFF",
+   "text": "ASR CH 49 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 49,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "97",
+   "category": "Auto Source",
+   "name": " Auto Source 49 ON",
+   "text": "ASR CH 49 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 49,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "98",
+   "category": "Auto Source",
+   "name": " Auto Source 50 OFF",
+   "text": "ASR CH 50 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 50,
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "99",
+   "category": "Auto Source",
+   "name": " Auto Source 50 ON",
+   "text": "ASR CH 50 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asr",
+    "options": {
+     "p1": 50,
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "100",
+   "category": "Brightness",
+   "name": "Brightness Set 0%",
+   "text": "Bright 0%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 0
+    }
+   }
+  },
+  {
+   "id": "101",
+   "category": "Brightness",
+   "name": "Brightness Set 10%",
+   "text": "Bright 10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 100
+    }
+   }
+  },
+  {
+   "id": "102",
+   "category": "Brightness",
+   "name": "Brightness Set 20%",
+   "text": "Bright 20%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 200
+    }
+   }
+  },
+  {
+   "id": "103",
+   "category": "Brightness",
+   "name": "Brightness Set 30%",
+   "text": "Bright 30%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 300
+    }
+   }
+  },
+  {
+   "id": "104",
+   "category": "Brightness",
+   "name": "Brightness Set 40%",
+   "text": "Bright 40%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 400
+    }
+   }
+  },
+  {
+   "id": "105",
+   "category": "Brightness",
+   "name": "Brightness Set 50%",
+   "text": "Bright 50%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 500
+    }
+   }
+  },
+  {
+   "id": "106",
+   "category": "Brightness",
+   "name": "Brightness Set 60%",
+   "text": "Bright 60%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 600
+    }
+   }
+  },
+  {
+   "id": "107",
+   "category": "Brightness",
+   "name": "Brightness Set 70%",
+   "text": "Bright 70%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 700
+    }
+   }
+  },
+  {
+   "id": "108",
+   "category": "Brightness",
+   "name": "Brightness Set 80%",
+   "text": "Bright 80%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 800
+    }
+   }
+  },
+  {
+   "id": "109",
+   "category": "Brightness",
+   "name": "Brightness Set 90%",
+   "text": "Bright 90%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 900
+    }
+   }
+  },
+  {
+   "id": "110",
+   "category": "Brightness",
+   "name": "Brightness Set 100%",
+   "text": "Bright 100%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brt",
+    "options": {
+     "p1": 1000
+    }
+   }
+  },
+  {
+   "id": "111",
+   "category": "Contrast",
+   "name": "Contrast Set 0%",
+   "text": "Cont. 0%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 0
+    }
+   }
+  },
+  {
+   "id": "112",
+   "category": "Contrast",
+   "name": "Contrast Set 10%",
+   "text": "Cont. 10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 100
+    }
+   }
+  },
+  {
+   "id": "113",
+   "category": "Contrast",
+   "name": "Contrast Set 20%",
+   "text": "Cont. 20%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 200
+    }
+   }
+  },
+  {
+   "id": "114",
+   "category": "Contrast",
+   "name": "Contrast Set 30%",
+   "text": "Cont. 30%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 300
+    }
+   }
+  },
+  {
+   "id": "115",
+   "category": "Contrast",
+   "name": "Contrast Set 40%",
+   "text": "Cont. 40%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 400
+    }
+   }
+  },
+  {
+   "id": "116",
+   "category": "Contrast",
+   "name": "Contrast Set 50%",
+   "text": "Cont. 50%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 500
+    }
+   }
+  },
+  {
+   "id": "117",
+   "category": "Contrast",
+   "name": "Contrast Set 60%",
+   "text": "Cont. 60%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 600
+    }
+   }
+  },
+  {
+   "id": "118",
+   "category": "Contrast",
+   "name": "Contrast Set 70%",
+   "text": "Cont. 70%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 700
+    }
+   }
+  },
+  {
+   "id": "119",
+   "category": "Contrast",
+   "name": "Contrast Set 80%",
+   "text": "Cont. 80%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 800
+    }
+   }
+  },
+  {
+   "id": "120",
+   "category": "Contrast",
+   "name": "Contrast Set 90%",
+   "text": "Cont. 90%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 900
+    }
+   }
+  },
+  {
+   "id": "121",
+   "category": "Contrast",
+   "name": "Contrast Set 100%",
+   "text": "Cont. 100%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "con",
+    "options": {
+     "p1": 1000
+    }
+   }
+  },
+  {
+   "id": "122",
+   "category": "Color",
+   "name": "Color Set 0%",
+   "text": "Color 0%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 0
+    }
+   }
+  },
+  {
+   "id": "123",
+   "category": "Color",
+   "name": "Color Set 10%",
+   "text": "Color 10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 100
+    }
+   }
+  },
+  {
+   "id": "124",
+   "category": "Color",
+   "name": "Color Set 20%",
+   "text": "Color 20%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 200
+    }
+   }
+  },
+  {
+   "id": "125",
+   "category": "Color",
+   "name": "Color Set 30%",
+   "text": "Color 30%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 300
+    }
+   }
+  },
+  {
+   "id": "126",
+   "category": "Color",
+   "name": "Color Set 40%",
+   "text": "Color 40%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 400
+    }
+   }
+  },
+  {
+   "id": "127",
+   "category": "Color",
+   "name": "Color Set 50%",
+   "text": "Color 50%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 500
+    }
+   }
+  },
+  {
+   "id": "128",
+   "category": "Color",
+   "name": "Color Set 60%",
+   "text": "Color 60%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 600
+    }
+   }
+  },
+  {
+   "id": "129",
+   "category": "Color",
+   "name": "Color Set 70%",
+   "text": "Color 70%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 700
+    }
+   }
+  },
+  {
+   "id": "130",
+   "category": "Color",
+   "name": "Color Set 80%",
+   "text": "Color 80%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 800
+    }
+   }
+  },
+  {
+   "id": "131",
+   "category": "Color",
+   "name": "Color Set 90%",
+   "text": "Color 90%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 900
+    }
+   }
+  },
+  {
+   "id": "132",
+   "category": "Color",
+   "name": "Color Set 100%",
+   "text": "Color 100%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clr",
+    "options": {
+     "p1": 1000
+    }
+   }
+  },
+  {
+   "id": "133",
+   "category": "Tint",
+   "name": "Tint Set 0%",
+   "text": "Tint 0%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 0
+    }
+   }
+  },
+  {
+   "id": "134",
+   "category": "Tint",
+   "name": "Tint Set 10%",
+   "text": "Tint 10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 100
+    }
+   }
+  },
+  {
+   "id": "135",
+   "category": "Tint",
+   "name": "Tint Set 20%",
+   "text": "Tint 20%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 200
+    }
+   }
+  },
+  {
+   "id": "136",
+   "category": "Tint",
+   "name": "Tint Set 30%",
+   "text": "Tint 30%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 300
+    }
+   }
+  },
+  {
+   "id": "137",
+   "category": "Tint",
+   "name": "Tint Set 40%",
+   "text": "Tint 40%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 400
+    }
+   }
+  },
+  {
+   "id": "138",
+   "category": "Tint",
+   "name": "Tint Set 50%",
+   "text": "Tint 50%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 500
+    }
+   }
+  },
+  {
+   "id": "139",
+   "category": "Tint",
+   "name": "Tint Set 60%",
+   "text": "Tint 60%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 600
+    }
+   }
+  },
+  {
+   "id": "140",
+   "category": "Tint",
+   "name": "Tint Set 70%",
+   "text": "Tint 70%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 700
+    }
+   }
+  },
+  {
+   "id": "141",
+   "category": "Tint",
+   "name": "Tint Set 80%",
+   "text": "Tint 80%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 800
+    }
+   }
+  },
+  {
+   "id": "142",
+   "category": "Tint",
+   "name": "Tint Set 90%",
+   "text": "Tint 90%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 900
+    }
+   }
+  },
+  {
+   "id": "143",
+   "category": "Tint",
+   "name": "Tint Set 100%",
+   "text": "Tint 100%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tnt",
+    "options": {
+     "p1": 1000
+    }
+   }
+  },
+  {
+   "id": "144",
+   "category": "Gamma",
+   "name": "Gamma Set 100",
+   "text": "Gamma 100",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 100
+    }
+   }
+  },
+  {
+   "id": "145",
+   "category": "Gamma",
+   "name": "Gamma Set 110",
+   "text": "Gamma 110",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 110
+    }
+   }
+  },
+  {
+   "id": "146",
+   "category": "Gamma",
+   "name": "Gamma Set 120",
+   "text": "Gamma 120",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 120
+    }
+   }
+  },
+  {
+   "id": "147",
+   "category": "Gamma",
+   "name": "Gamma Set 130",
+   "text": "Gamma 130",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 130
+    }
+   }
+  },
+  {
+   "id": "148",
+   "category": "Gamma",
+   "name": "Gamma Set 140",
+   "text": "Gamma 140",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 140
+    }
+   }
+  },
+  {
+   "id": "149",
+   "category": "Gamma",
+   "name": "Gamma Set 150",
+   "text": "Gamma 150",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 150
+    }
+   }
+  },
+  {
+   "id": "150",
+   "category": "Gamma",
+   "name": "Gamma Set 160",
+   "text": "Gamma 160",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 160
+    }
+   }
+  },
+  {
+   "id": "151",
+   "category": "Gamma",
+   "name": "Gamma Set 170",
+   "text": "Gamma 170",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 170
+    }
+   }
+  },
+  {
+   "id": "152",
+   "category": "Gamma",
+   "name": "Gamma Set 180",
+   "text": "Gamma 180",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 180
+    }
+   }
+  },
+  {
+   "id": "153",
+   "category": "Gamma",
+   "name": "Gamma Set 190",
+   "text": "Gamma 190",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 190
+    }
+   }
+  },
+  {
+   "id": "154",
+   "category": "Gamma",
+   "name": "Gamma Set 200",
+   "text": "Gamma 200",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 200
+    }
+   }
+  },
+  {
+   "id": "155",
+   "category": "Gamma",
+   "name": "Gamma Set 210",
+   "text": "Gamma 210",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 210
+    }
+   }
+  },
+  {
+   "id": "156",
+   "category": "Gamma",
+   "name": "Gamma Set 220",
+   "text": "Gamma 220",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 220
+    }
+   }
+  },
+  {
+   "id": "157",
+   "category": "Gamma",
+   "name": "Gamma Set 230",
+   "text": "Gamma 230",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 230
+    }
+   }
+  },
+  {
+   "id": "158",
+   "category": "Gamma",
+   "name": "Gamma Set 240",
+   "text": "Gamma 240",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 240
+    }
+   }
+  },
+  {
+   "id": "159",
+   "category": "Gamma",
+   "name": "Gamma Set 250",
+   "text": "Gamma 250",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 250
+    }
+   }
+  },
+  {
+   "id": "160",
+   "category": "Gamma",
+   "name": "Gamma Set 260",
+   "text": "Gamma 260",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 260
+    }
+   }
+  },
+  {
+   "id": "161",
+   "category": "Gamma",
+   "name": "Gamma Set 270",
+   "text": "Gamma 270",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 270
+    }
+   }
+  },
+  {
+   "id": "162",
+   "category": "Gamma",
+   "name": "Gamma Set 280",
+   "text": "Gamma 280",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gam",
+    "options": {
+     "p1": 280
+    }
+   }
+  },
+  {
+   "id": "163",
+   "category": "Image",
+   "name": "Aspect Ratio Overlay OFF",
+   "text": "ARO OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "aro",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "164",
+   "category": "Image",
+   "name": "Aspect Ratio Overlay ON",
+   "text": "ARO ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "aro",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "165",
+   "category": "Image",
+   "name": "Freeze Image OFF",
+   "text": "Freeze OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "frz",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "166",
+   "category": "Image",
+   "name": "Freeze Image ON",
+   "text": "Freeze ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "frz",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "167",
+   "category": "Image",
+   "name": "Select Color Output/Profile Max Drives (Default)",
+   "text": "Color Prof. Max Drives (Default)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "168",
+   "category": "Image",
+   "name": "Select Color Output/Profile Color Temperature",
+   "text": "Color Prof. Color Temperature",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "169",
+   "category": "Image",
+   "name": "Select Color Output/Profile SD Video",
+   "text": "Color Prof. SD Video",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "170",
+   "category": "Image",
+   "name": "Select Color Output/Profile HD Video",
+   "text": "Color Prof. HD Video",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "171",
+   "category": "Image",
+   "name": "Select Color Output/Profile User 1",
+   "text": "Color Prof. User 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "172",
+   "category": "Image",
+   "name": "Select Color Output/Profile User 2",
+   "text": "Color Prof. User 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "173",
+   "category": "Image",
+   "name": "Select Color Output/Profile User 3",
+   "text": "Color Prof. User 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "174",
+   "category": "Image",
+   "name": "Select Color Output/Profile User 4",
+   "text": "Color Prof. User 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ccs",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "175",
+   "category": "Image",
+   "name": "Color Space RGB",
+   "text": "Color Space RGB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "csp",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "176",
+   "category": "Image",
+   "name": "Color Space YPbPr (SDTV)",
+   "text": "Color Space YPbPr (SDTV)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "csp",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "177",
+   "category": "Image",
+   "name": "Color Space YPbPr (HDTV)",
+   "text": "Color Space YPbPr (HDTV)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "csp",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "178",
+   "category": "Image",
+   "name": "Color Enable White (all colors on)",
+   "text": "Color En. White (all colors on)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "179",
+   "category": "Image",
+   "name": "Color Enable Red",
+   "text": "Color En. Red",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "180",
+   "category": "Image",
+   "name": "Color Enable Green",
+   "text": "Color En. Green",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "181",
+   "category": "Image",
+   "name": "Color Enable Blue",
+   "text": "Color En. Blue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "182",
+   "category": "Image",
+   "name": "Color Enable Yellow",
+   "text": "Color En. Yellow",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "183",
+   "category": "Image",
+   "name": "Color Enable Cyan",
+   "text": "Color En. Cyan",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "184",
+   "category": "Image",
+   "name": "Color Enable Magenta",
+   "text": "Color En. Magenta",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "185",
+   "category": "Image",
+   "name": "Color Enable White",
+   "text": "Color En. White",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "186",
+   "category": "Image",
+   "name": "Color Enable Black",
+   "text": "Color En. Black",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cle",
+    "options": {
+     "p1": "8"
+    }
+   }
+  },
+  {
+   "id": "187",
+   "category": "Image",
+   "name": "Input Filter Off",
+   "text": "Filter Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fil",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "188",
+   "category": "Image",
+   "name": "Input Filter HDTV",
+   "text": "Filter HDTV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fil",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "189",
+   "category": "Image",
+   "name": "Input Filter SDTV",
+   "text": "Filter SDTV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fil",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "190",
+   "category": "Image",
+   "name": "Input Filter EDTV",
+   "text": "Filter EDTV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fil",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "191",
+   "category": "Image",
+   "name": "Input Filter Graphics/RGB",
+   "text": "Filter Graphics/RGB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fil",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "192",
+   "category": "Image",
+   "name": "Image Optimazation Best Image Quality",
+   "text": "Image Op. Best Image Quality",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "iop",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "193",
+   "category": "Image",
+   "name": "Image Optimazation Smooth Switching",
+   "text": "Image Op. Smooth Switching",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "iop",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "194",
+   "category": "Image",
+   "name": "Image Optimazation Seamless Switching",
+   "text": "Image Op. Seamless Switching",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "iop",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "195",
+   "category": "Position",
+   "name": "Horizontal Position: 500",
+   "text": "Hori. Pos 500",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "hor",
+    "options": {
+     "p1": "500"
+    }
+   }
+  },
+  {
+   "id": "196",
+   "category": "Position",
+   "name": "Vertical Position: 500",
+   "text": "Vert. Pos 500",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "vrt",
+    "options": {
+     "p1": "500"
+    }
+   }
+  },
+  {
+   "id": "197",
+   "category": "Position",
+   "name": "Screen Orientation Front Projection",
+   "text": "Orient. Front Projection",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sor",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "198",
+   "category": "Position",
+   "name": "Screen Orientation Rear Projection",
+   "text": "Orient. Rear Projection",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sor",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "199",
+   "category": "Position",
+   "name": "Screen Orientation Front Projection Inverted",
+   "text": "Orient. Front Projection Inverted",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sor",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "200",
+   "category": "Position",
+   "name": "Screen Orientation Rear Projection Inverted",
+   "text": "Orient. Rear Projection Inverted",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sor",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "201",
+   "category": "Position",
+   "name": "Screen Size Preset Default",
+   "text": "Size Preset Default",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "szp",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "202",
+   "category": "Position",
+   "name": "Screen Size Preset No Resizing",
+   "text": "Size Preset No Resizing",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "szp",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "203",
+   "category": "Position",
+   "name": "Screen Size Preset Full Screen",
+   "text": "Size Preset Full Screen",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "szp",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "204",
+   "category": "Position",
+   "name": "Screen Size Preset Full Width",
+   "text": "Size Preset Full Width",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "szp",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "205",
+   "category": "Position",
+   "name": "Screen Size Preset Full Height",
+   "text": "Size Preset Full Height",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "szp",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "206",
+   "category": "Position",
+   "name": "Screen Size Preset Anamorphic",
+   "text": "Size Preset Anamorphic",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "szp",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "207",
+   "category": "Position",
+   "name": "Screen Size Preset Custom resizing",
+   "text": "Size Preset Custom resizing",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "szp",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "208",
+   "category": "Warp Select (Basic)",
+   "name": "Warp Select (Basic) Off",
+   "text": "Warp Basic: Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wps",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "209",
+   "category": "Warp Select (Basic)",
+   "name": "Warp Select (Basic) 2D Warp",
+   "text": "Warp Basic: 2D Warp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wps",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "210",
+   "category": "Warp Select (Basic)",
+   "name": "Warp Select (Basic) User 1",
+   "text": "Warp Basic: User 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wps",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "211",
+   "category": "Warp Select (Basic)",
+   "name": "Warp Select (Basic) User 2",
+   "text": "Warp Basic: User 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wps",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "212",
+   "category": "Warp Select (Basic)",
+   "name": "Warp Select (Basic) User 3",
+   "text": "Warp Basic: User 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wps",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "213",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Off",
+   "text": "Warp Mser: Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "214",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries 2D Warp, Boxer User 1",
+   "text": "Warp Mser: Mseries 2D Warp, Boxer User 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "215",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 1, Boxer User 2",
+   "text": "Warp Mser: Mseries User 1, Boxer User 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "216",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 2, Boxer User 3",
+   "text": "Warp Mser: Mseries User 2, Boxer User 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "217",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 3, Boxer User 4",
+   "text": "Warp Mser: Mseries User 3, Boxer User 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "218",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 4",
+   "text": "Warp Mser: Mseries User 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "219",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 5",
+   "text": "Warp Mser: Mseries User 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "220",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 6",
+   "text": "Warp Mser: Mseries User 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "221",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 7",
+   "text": "Warp Mser: Mseries User 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "8"
+    }
+   }
+  },
+  {
+   "id": "222",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 8",
+   "text": "Warp Mser: Mseries User 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "9"
+    }
+   }
+  },
+  {
+   "id": "223",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 9",
+   "text": "Warp Mser: Mseries User 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "10"
+    }
+   }
+  },
+  {
+   "id": "224",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 10, Boxer Keystone",
+   "text": "Warp Mser: Mseries User 10, Boxer Keysto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "11"
+    }
+   }
+  },
+  {
+   "id": "225",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 11",
+   "text": "Warp Mser: Mseries User 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "12"
+    }
+   }
+  },
+  {
+   "id": "226",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 12",
+   "text": "Warp Mser: Mseries User 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "13"
+    }
+   }
+  },
+  {
+   "id": "227",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 13",
+   "text": "Warp Mser: Mseries User 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "14"
+    }
+   }
+  },
+  {
+   "id": "228",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 14",
+   "text": "Warp Mser: Mseries User 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "15"
+    }
+   }
+  },
+  {
+   "id": "229",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 15",
+   "text": "Warp Mser: Mseries User 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "16"
+    }
+   }
+  },
+  {
+   "id": "230",
+   "category": "Warp Select (M-Serise)",
+   "name": "Warp Select (M-series/Boxer) Mseries User 16",
+   "text": "Warp Mser: Mseries User 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wrp",
+    "options": {
+     "p1": "17"
+    }
+   }
+  },
+  {
+   "id": "231",
+   "category": "Lens",
+   "name": "Automatic Lens Calibration OFF",
+   "text": "Lamp Auto Cali. OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "alc",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "232",
+   "category": "Lens",
+   "name": "Automatic Lens Calibration ON",
+   "text": "Lamp Auto Cali. ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "alc",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "233",
+   "category": "Lens",
+   "name": "Lens Calibrate Relative",
+   "text": "Lamp Cali. Relative",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lcb",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "234",
+   "category": "Lens",
+   "name": "Lens Calibrate Manual",
+   "text": "Lamp Cali. Manual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lcb",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "235",
+   "category": "Lens",
+   "name": "Lens Calibrate Calibrate",
+   "text": "Lamp Cali. Calibrate",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lcb",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "236",
+   "category": "Lens",
+   "name": "Lens Center",
+   "text": "Lens Center",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lcn",
+    "options": {}
+   }
+  },
+  {
+   "id": "237",
+   "category": "Lens",
+   "name": "Intelligent Lens System OFF",
+   "text": "ILS OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ils",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "238",
+   "category": "Lens",
+   "name": "Intelligent Lens System ON",
+   "text": "ILS ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ils",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "239",
+   "category": "Lens",
+   "name": "Zoom",
+   "text": "Zoom 5000",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "zom",
+    "options": {
+     "p1": "5000"
+    }
+   }
+  },
+  {
+   "id": "240",
+   "category": "Lens",
+   "name": "Focus",
+   "text": "Focus 4000",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fcs",
+    "options": {
+     "p1": "4000"
+    }
+   }
+  },
+  {
+   "id": "241",
+   "category": "Lamp",
+   "name": "Get Lamp ON Time",
+   "text": "Get Lamp Time",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lph",
+    "options": {}
+   }
+  },
+  {
+   "id": "242",
+   "category": "Lamp",
+   "name": "Lamp Conditioning OFF",
+   "text": "Lamp Con OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lco",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "243",
+   "category": "Lamp",
+   "name": "Lamp Conditioning ON",
+   "text": "Lamp Con ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lco",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "244",
+   "category": "Lamp",
+   "name": "Lamp Operation Lamp 1 only",
+   "text": "Lamp Op Lamp 1 only",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lop",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "245",
+   "category": "Lamp",
+   "name": "Lamp Operation Lamp 2 only",
+   "text": "Lamp Op Lamp 2 only",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lop",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "246",
+   "category": "Lamp",
+   "name": "Lamp Operation Both",
+   "text": "Lamp Op Both",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lop",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "247",
+   "category": "Lamp",
+   "name": "Lamp Mode Auto",
+   "text": "Lamp Mode Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lpm",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "248",
+   "category": "Lamp",
+   "name": "Lamp Mode Still",
+   "text": "Lamp Mode Still",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lpm",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "249",
+   "category": "Lamp",
+   "name": "Lamp Mode Motion",
+   "text": "Lamp Mode Motion",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lpm",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "250",
+   "category": "Lamp",
+   "name": "Lamp Mode Film",
+   "text": "Lamp Mode Film",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lpm",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "251",
+   "category": "Lamp",
+   "name": "Lamp Intensity",
+   "text": "Lamp Intensity 100",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lpi",
+    "options": {
+     "p1": "100"
+    }
+   }
+  },
+  {
+   "id": "252",
+   "category": "Lamp",
+   "name": "Lamp Changed",
+   "text": "Lamp Changed",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lpc",
+    "options": {
+     "p1": ""
+    }
+   }
+  },
+  {
+   "id": "253",
+   "category": "Select Channel",
+   "name": "CH 1",
+   "text": "CH 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 1
+    }
+   }
+  },
+  {
+   "id": "254",
+   "category": "Select Channel",
+   "name": "CH 2",
+   "text": "CH 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 2
+    }
+   }
+  },
+  {
+   "id": "255",
+   "category": "Select Channel",
+   "name": "CH 3",
+   "text": "CH 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 3
+    }
+   }
+  },
+  {
+   "id": "256",
+   "category": "Select Channel",
+   "name": "CH 4",
+   "text": "CH 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 4
+    }
+   }
+  },
+  {
+   "id": "257",
+   "category": "Select Channel",
+   "name": "CH 5",
+   "text": "CH 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 5
+    }
+   }
+  },
+  {
+   "id": "258",
+   "category": "Select Channel",
+   "name": "CH 6",
+   "text": "CH 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 6
+    }
+   }
+  },
+  {
+   "id": "259",
+   "category": "Select Channel",
+   "name": "CH 7",
+   "text": "CH 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 7
+    }
+   }
+  },
+  {
+   "id": "260",
+   "category": "Select Channel",
+   "name": "CH 8",
+   "text": "CH 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 8
+    }
+   }
+  },
+  {
+   "id": "261",
+   "category": "Select Channel",
+   "name": "CH 9",
+   "text": "CH 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 9
+    }
+   }
+  },
+  {
+   "id": "262",
+   "category": "Select Channel",
+   "name": "CH 10",
+   "text": "CH 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 10
+    }
+   }
+  },
+  {
+   "id": "263",
+   "category": "Select Channel",
+   "name": "CH 11",
+   "text": "CH 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 11
+    }
+   }
+  },
+  {
+   "id": "264",
+   "category": "Select Channel",
+   "name": "CH 12",
+   "text": "CH 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 12
+    }
+   }
+  },
+  {
+   "id": "265",
+   "category": "Select Channel",
+   "name": "CH 13",
+   "text": "CH 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 13
+    }
+   }
+  },
+  {
+   "id": "266",
+   "category": "Select Channel",
+   "name": "CH 14",
+   "text": "CH 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 14
+    }
+   }
+  },
+  {
+   "id": "267",
+   "category": "Select Channel",
+   "name": "CH 15",
+   "text": "CH 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 15
+    }
+   }
+  },
+  {
+   "id": "268",
+   "category": "Select Channel",
+   "name": "CH 16",
+   "text": "CH 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 16
+    }
+   }
+  },
+  {
+   "id": "269",
+   "category": "Select Channel",
+   "name": "CH 17",
+   "text": "CH 17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 17
+    }
+   }
+  },
+  {
+   "id": "270",
+   "category": "Select Channel",
+   "name": "CH 18",
+   "text": "CH 18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 18
+    }
+   }
+  },
+  {
+   "id": "271",
+   "category": "Select Channel",
+   "name": "CH 19",
+   "text": "CH 19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 19
+    }
+   }
+  },
+  {
+   "id": "272",
+   "category": "Select Channel",
+   "name": "CH 20",
+   "text": "CH 20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 20
+    }
+   }
+  },
+  {
+   "id": "273",
+   "category": "Select Channel",
+   "name": "CH 21",
+   "text": "CH 21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 21
+    }
+   }
+  },
+  {
+   "id": "274",
+   "category": "Select Channel",
+   "name": "CH 22",
+   "text": "CH 22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 22
+    }
+   }
+  },
+  {
+   "id": "275",
+   "category": "Select Channel",
+   "name": "CH 23",
+   "text": "CH 23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 23
+    }
+   }
+  },
+  {
+   "id": "276",
+   "category": "Select Channel",
+   "name": "CH 24",
+   "text": "CH 24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 24
+    }
+   }
+  },
+  {
+   "id": "277",
+   "category": "Select Channel",
+   "name": "CH 25",
+   "text": "CH 25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 25
+    }
+   }
+  },
+  {
+   "id": "278",
+   "category": "Select Channel",
+   "name": "CH 26",
+   "text": "CH 26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 26
+    }
+   }
+  },
+  {
+   "id": "279",
+   "category": "Select Channel",
+   "name": "CH 27",
+   "text": "CH 27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 27
+    }
+   }
+  },
+  {
+   "id": "280",
+   "category": "Select Channel",
+   "name": "CH 28",
+   "text": "CH 28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 28
+    }
+   }
+  },
+  {
+   "id": "281",
+   "category": "Select Channel",
+   "name": "CH 29",
+   "text": "CH 29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 29
+    }
+   }
+  },
+  {
+   "id": "282",
+   "category": "Select Channel",
+   "name": "CH 30",
+   "text": "CH 30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 30
+    }
+   }
+  },
+  {
+   "id": "283",
+   "category": "Select Channel",
+   "name": "CH 31",
+   "text": "CH 31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 31
+    }
+   }
+  },
+  {
+   "id": "284",
+   "category": "Select Channel",
+   "name": "CH 32",
+   "text": "CH 32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 32
+    }
+   }
+  },
+  {
+   "id": "285",
+   "category": "Select Channel",
+   "name": "CH 33",
+   "text": "CH 33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 33
+    }
+   }
+  },
+  {
+   "id": "286",
+   "category": "Select Channel",
+   "name": "CH 34",
+   "text": "CH 34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 34
+    }
+   }
+  },
+  {
+   "id": "287",
+   "category": "Select Channel",
+   "name": "CH 35",
+   "text": "CH 35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 35
+    }
+   }
+  },
+  {
+   "id": "288",
+   "category": "Select Channel",
+   "name": "CH 36",
+   "text": "CH 36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 36
+    }
+   }
+  },
+  {
+   "id": "289",
+   "category": "Select Channel",
+   "name": "CH 37",
+   "text": "CH 37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 37
+    }
+   }
+  },
+  {
+   "id": "290",
+   "category": "Select Channel",
+   "name": "CH 38",
+   "text": "CH 38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 38
+    }
+   }
+  },
+  {
+   "id": "291",
+   "category": "Select Channel",
+   "name": "CH 39",
+   "text": "CH 39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 39
+    }
+   }
+  },
+  {
+   "id": "292",
+   "category": "Select Channel",
+   "name": "CH 40",
+   "text": "CH 40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 40
+    }
+   }
+  },
+  {
+   "id": "293",
+   "category": "Select Channel",
+   "name": "CH 41",
+   "text": "CH 41",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 41
+    }
+   }
+  },
+  {
+   "id": "294",
+   "category": "Select Channel",
+   "name": "CH 42",
+   "text": "CH 42",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 42
+    }
+   }
+  },
+  {
+   "id": "295",
+   "category": "Select Channel",
+   "name": "CH 43",
+   "text": "CH 43",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 43
+    }
+   }
+  },
+  {
+   "id": "296",
+   "category": "Select Channel",
+   "name": "CH 44",
+   "text": "CH 44",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 44
+    }
+   }
+  },
+  {
+   "id": "297",
+   "category": "Select Channel",
+   "name": "CH 45",
+   "text": "CH 45",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 45
+    }
+   }
+  },
+  {
+   "id": "298",
+   "category": "Select Channel",
+   "name": "CH 46",
+   "text": "CH 46",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 46
+    }
+   }
+  },
+  {
+   "id": "299",
+   "category": "Select Channel",
+   "name": "CH 47",
+   "text": "CH 47",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 47
+    }
+   }
+  },
+  {
+   "id": "300",
+   "category": "Select Channel",
+   "name": "CH 48",
+   "text": "CH 48",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 48
+    }
+   }
+  },
+  {
+   "id": "301",
+   "category": "Select Channel",
+   "name": "CH 49",
+   "text": "CH 49",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 49
+    }
+   }
+  },
+  {
+   "id": "302",
+   "category": "Select Channel",
+   "name": "CH 50",
+   "text": "CH 50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cha",
+    "options": {
+     "p1": 50
+    }
+   }
+  },
+  {
+   "id": "303",
+   "category": "Input Slot",
+   "name": "Slot BNC",
+   "text": "Slot BNC",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "304",
+   "category": "Input Slot",
+   "name": "Slot DVI-I",
+   "text": "Slot DVI-I",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "305",
+   "category": "Input Slot",
+   "name": "Slot Composite",
+   "text": "Slot Composite",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "306",
+   "category": "Input Slot",
+   "name": "Slot S-Video",
+   "text": "Slot S-Video",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "307",
+   "category": "Input Slot",
+   "name": "Slot Option slot #1",
+   "text": "Slot Option slot #1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "308",
+   "category": "Input Slot",
+   "name": "Slot Option slot #2",
+   "text": "Slot Option slot #2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "309",
+   "category": "Input Slot",
+   "name": "Slot Option slot #3",
+   "text": "Slot Option slot #3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "310",
+   "category": "Input Slot",
+   "name": "Slot Option slot #4",
+   "text": "Slot Option slot #4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sin",
+    "options": {
+     "p1": "8"
+    }
+   }
+  },
+  {
+   "id": "311",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Off",
+   "text": "ITP Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "312",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Grid",
+   "text": "ITP Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "313",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Grey Scale 16",
+   "text": "ITP Grey Scale 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "314",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) White",
+   "text": "ITP White",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "315",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Flat Grey",
+   "text": "ITP Flat Grey",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "316",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Black",
+   "text": "ITP Black",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "317",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Checker",
+   "text": "ITP Checker",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "318",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) 13 Point",
+   "text": "ITP 13 Point",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "319",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Color Bars",
+   "text": "ITP Color Bars",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "8"
+    }
+   }
+  },
+  {
+   "id": "320",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) RGBW Gray Scale",
+   "text": "ITP RGBW Gray Scale",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "9"
+    }
+   }
+  },
+  {
+   "id": "321",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Multi Color",
+   "text": "ITP Multi Color",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "10"
+    }
+   }
+  },
+  {
+   "id": "322",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Edge Blend",
+   "text": "ITP Edge Blend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "11"
+    }
+   }
+  },
+  {
+   "id": "323",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Aspect Ratio",
+   "text": "ITP Aspect Ratio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "12"
+    }
+   }
+  },
+  {
+   "id": "324",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Red & Blue Ramp",
+   "text": "ITP Red & Blue Ramp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "13"
+    }
+   }
+  },
+  {
+   "id": "325",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Calibration Line Ramp",
+   "text": "ITP Calibration Line Ramp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "14"
+    }
+   }
+  },
+  {
+   "id": "326",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Calibration Black & White Grid",
+   "text": "ITP Calibration Black & White Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "15"
+    }
+   }
+  },
+  {
+   "id": "327",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Calibration White & Red Grid",
+   "text": "ITP Calibration White & Red Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "16"
+    }
+   }
+  },
+  {
+   "id": "328",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Calibration White & Green Grid",
+   "text": "ITP Calibration White & Green Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "17"
+    }
+   }
+  },
+  {
+   "id": "329",
+   "category": "Test Pattern (Basic)",
+   "name": "Internal Test Pattern (General/Basic) Calibration White & Blue Grid",
+   "text": "ITP Calibration White & Blue Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBasic",
+    "options": {
+     "p1": "18"
+    }
+   }
+  },
+  {
+   "id": "330",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Off",
+   "text": "ITP Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "331",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Grid",
+   "text": "ITP Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "332",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Grey Scale 16",
+   "text": "ITP Grey Scale 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "333",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Flat White",
+   "text": "ITP Flat White",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "334",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Flat Grey",
+   "text": "ITP Flat Grey",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "335",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Flat Black",
+   "text": "ITP Flat Black",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "336",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Checker",
+   "text": "ITP Checker",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "337",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) 17 Point",
+   "text": "ITP 17 Point",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "338",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Edge Blend",
+   "text": "ITP Edge Blend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "8"
+    }
+   }
+  },
+  {
+   "id": "339",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Color Bars",
+   "text": "ITP Color Bars",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "9"
+    }
+   }
+  },
+  {
+   "id": "340",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Multi Color",
+   "text": "ITP Multi Color",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "10"
+    }
+   }
+  },
+  {
+   "id": "341",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) RGBW Ramp",
+   "text": "ITP RGBW Ramp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "11"
+    }
+   }
+  },
+  {
+   "id": "342",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Horizontal Ramp",
+   "text": "ITP Horizontal Ramp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "12"
+    }
+   }
+  },
+  {
+   "id": "343",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Vertical Ramp",
+   "text": "ITP Vertical Ramp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "13"
+    }
+   }
+  },
+  {
+   "id": "344",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Diagonal Ramp",
+   "text": "ITP Diagonal Ramp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "14"
+    }
+   }
+  },
+  {
+   "id": "345",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Square Grid",
+   "text": "ITP Square Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "15"
+    }
+   }
+  },
+  {
+   "id": "346",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Diagonal Grid",
+   "text": "ITP Diagonal Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "16"
+    }
+   }
+  },
+  {
+   "id": "347",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Maximum Activity",
+   "text": "ITP Maximum Activity",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "17"
+    }
+   }
+  },
+  {
+   "id": "348",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Prism/Convergence",
+   "text": "ITP Prism/Convergence",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "18"
+    }
+   }
+  },
+  {
+   "id": "349",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Boresight",
+   "text": "ITP Boresight",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "21"
+    }
+   }
+  },
+  {
+   "id": "350",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Convergence",
+   "text": "ITP Convergence",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "22"
+    }
+   }
+  },
+  {
+   "id": "351",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Integrator Rod",
+   "text": "ITP Integrator Rod",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "23"
+    }
+   }
+  },
+  {
+   "id": "352",
+   "category": "Test Pattern (Boxer)",
+   "name": "Internal Test Pattern (Boxer) Resolution Demo",
+   "text": "ITP Resolution Demo",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpBoxer",
+    "options": {
+     "p1": "25"
+    }
+   }
+  },
+  {
+   "id": "353",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Off",
+   "text": "ITP Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "354",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Grid",
+   "text": "ITP Grid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "355",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Grey Scale 16",
+   "text": "ITP Grey Scale 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "356",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) White",
+   "text": "ITP White",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "357",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Flat Grey",
+   "text": "ITP Flat Grey",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "358",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Black",
+   "text": "ITP Black",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "359",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Checker",
+   "text": "ITP Checker",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "6"
+    }
+   }
+  },
+  {
+   "id": "360",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) 13 Point",
+   "text": "ITP 13 Point",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "7"
+    }
+   }
+  },
+  {
+   "id": "361",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Color Bars",
+   "text": "ITP Color Bars",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "8"
+    }
+   }
+  },
+  {
+   "id": "362",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Aspect Ratio",
+   "text": "ITP Aspect Ratio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "11"
+    }
+   }
+  },
+  {
+   "id": "363",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Edge Blend",
+   "text": "ITP Edge Blend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "12"
+    }
+   }
+  },
+  {
+   "id": "364",
+   "category": "Test Pattern (M-Series)",
+   "name": "Internal Test Pattern (M-Series) Boresight",
+   "text": "ITP Boresight",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "itpMser",
+    "options": {
+     "p1": "14"
+    }
+   }
+  },
+  {
+   "id": "365",
+   "category": "PIP",
+   "name": "Picture In Picture OFF",
+   "text": "PIP OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pip",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "366",
+   "category": "PIP",
+   "name": "Picture In Picture ON",
+   "text": "PIP ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pip",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "367",
+   "category": "PIP",
+   "name": "Picture In Picture Swap",
+   "text": "PIP Swap",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pps",
+    "options": {}
+   }
+  },
+  {
+   "id": "368",
+   "category": "PIP",
+   "name": "Picture In Picture PresetTop Left",
+   "text": "PIP Top Left",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ppp",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "369",
+   "category": "PIP",
+   "name": "Picture In Picture PresetTop Right",
+   "text": "PIP Top Right",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ppp",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "370",
+   "category": "PIP",
+   "name": "Picture In Picture PresetBottom Left",
+   "text": "PIP Bottom Left",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ppp",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "371",
+   "category": "PIP",
+   "name": "Picture In Picture PresetBottom Right",
+   "text": "PIP Bottom Right",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ppp",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "372",
+   "category": "PIP",
+   "name": "Picture In Picture PresetCustom",
+   "text": "PIP Custom",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ppp",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "373",
+   "category": "Keypad Wired",
+   "name": "Wired Off",
+   "text": "Wired Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "374",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol Any",
+   "text": "Wired Protocol Any",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "375",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol A",
+   "text": "Wired Protocol A",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "10"
+    }
+   }
+  },
+  {
+   "id": "376",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol B",
+   "text": "Wired Protocol B",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "11"
+    }
+   }
+  },
+  {
+   "id": "377",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol C",
+   "text": "Wired Protocol C",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "12"
+    }
+   }
+  },
+  {
+   "id": "378",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol D",
+   "text": "Wired Protocol D",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "13"
+    }
+   }
+  },
+  {
+   "id": "379",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol E",
+   "text": "Wired Protocol E",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "14"
+    }
+   }
+  },
+  {
+   "id": "380",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol F",
+   "text": "Wired Protocol F",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "15"
+    }
+   }
+  },
+  {
+   "id": "381",
+   "category": "Keypad Wired",
+   "name": "Wired Protocol G",
+   "text": "Wired Protocol G",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "0",
+     "p2": "16"
+    }
+   }
+  },
+  {
+   "id": "382",
+   "category": "Keypad IR Front",
+   "name": "IR Front Off",
+   "text": "IR Front Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "383",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol Any",
+   "text": "IR Front Protocol Any",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "384",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol A",
+   "text": "IR Front Protocol A",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "10"
+    }
+   }
+  },
+  {
+   "id": "385",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol B",
+   "text": "IR Front Protocol B",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "11"
+    }
+   }
+  },
+  {
+   "id": "386",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol C",
+   "text": "IR Front Protocol C",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "12"
+    }
+   }
+  },
+  {
+   "id": "387",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol D",
+   "text": "IR Front Protocol D",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "13"
+    }
+   }
+  },
+  {
+   "id": "388",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol E",
+   "text": "IR Front Protocol E",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "14"
+    }
+   }
+  },
+  {
+   "id": "389",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol F",
+   "text": "IR Front Protocol F",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "15"
+    }
+   }
+  },
+  {
+   "id": "390",
+   "category": "Keypad IR Front",
+   "name": "IR Front Protocol G",
+   "text": "IR Front Protocol G",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "1",
+     "p2": "16"
+    }
+   }
+  },
+  {
+   "id": "391",
+   "category": "Keypad IR Back",
+   "name": "IR Back Off",
+   "text": "IR Back Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "0"
+    }
+   }
+  },
+  {
+   "id": "392",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol Any",
+   "text": "IR Back Protocol Any",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "1"
+    }
+   }
+  },
+  {
+   "id": "393",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol A",
+   "text": "IR Back Protocol A",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "10"
+    }
+   }
+  },
+  {
+   "id": "394",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol B",
+   "text": "IR Back Protocol B",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "11"
+    }
+   }
+  },
+  {
+   "id": "395",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol C",
+   "text": "IR Back Protocol C",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "12"
+    }
+   }
+  },
+  {
+   "id": "396",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol D",
+   "text": "IR Back Protocol D",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "13"
+    }
+   }
+  },
+  {
+   "id": "397",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol E",
+   "text": "IR Back Protocol E",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "14"
+    }
+   }
+  },
+  {
+   "id": "398",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol F",
+   "text": "IR Back Protocol F",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "15"
+    }
+   }
+  },
+  {
+   "id": "399",
+   "category": "Keypad IR Back",
+   "name": "IR Back Protocol G",
+   "text": "IR Back Protocol G",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ken",
+    "options": {
+     "p1": "2",
+     "p2": "16"
+    }
+   }
+  },
+  {
+   "id": "450",
+   "category": "Language",
+   "name": "Set Language:English",
+   "text": "LNG: English",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lng",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "451",
+   "category": "Language",
+   "name": "Set Language:French",
+   "text": "LNG: French",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lng",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "452",
+   "category": "Language",
+   "name": "Set Language:Spanish",
+   "text": "LNG: Spanish",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lng",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "453",
+   "category": "Language",
+   "name": "Set Language:German",
+   "text": "LNG: German",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lng",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "454",
+   "category": "Language",
+   "name": "Set Language:Italian",
+   "text": "LNG: Italian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lng",
+    "options": {
+     "p1": "5"
+    }
+   }
+  },
+  {
+   "id": "455",
+   "category": "Commands",
+   "name": "Auto Setup",
+   "text": "Auto Setup",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "asu",
+    "options": {}
+   }
+  },
+  {
+   "id": "456",
+   "category": "Commands",
+   "name": "Auto Power Up OFF",
+   "text": "Auto PWR OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "apw",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "457",
+   "category": "Commands",
+   "name": "Auto Power Up ON",
+   "text": "Auto PWR ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "apw",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "458",
+   "category": "Commands",
+   "name": "Power OFF",
+   "text": "PWR OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pwr",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "459",
+   "category": "Commands",
+   "name": "Power ON",
+   "text": "PWR ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pwr",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "460",
+   "category": "Commands",
+   "name": "Shutter Open",
+   "text": "Shutter Open",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shu",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "461",
+   "category": "Commands",
+   "name": "Shutter Close",
+   "text": "Shutter Close",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shu",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "462",
+   "category": "Commands",
+   "name": "On Screen Display OFF",
+   "text": "OSD OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "osd",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "463",
+   "category": "Commands",
+   "name": "On Screen Display ON",
+   "text": "OSD ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "osd",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "464",
+   "category": "Commands",
+   "name": "Source Dialog Enable OFF",
+   "text": "Source Dia En. OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sde",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "465",
+   "category": "Commands",
+   "name": "Source Dialog Enable ON",
+   "text": "Source Dia En. ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "sde",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "466",
+   "category": "Commands",
+   "name": "Error Message Enable Off",
+   "text": "ERR MSG: Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "eme",
+    "options": {
+     "p1": "0"
+    }
+   }
+  },
+  {
+   "id": "467",
+   "category": "Commands",
+   "name": "Error Message Enable On-Screen display",
+   "text": "ERR MSG: On-Screen display",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "eme",
+    "options": {
+     "p1": "1"
+    }
+   }
+  },
+  {
+   "id": "468",
+   "category": "Commands",
+   "name": "Error Message Enable ASCII message",
+   "text": "ERR MSG: ASCII message",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "eme",
+    "options": {
+     "p1": "2"
+    }
+   }
+  },
+  {
+   "id": "469",
+   "category": "Commands",
+   "name": "Error Message Enable Both",
+   "text": "ERR MSG: Both",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "eme",
+    "options": {
+     "p1": "3"
+    }
+   }
+  },
+  {
+   "id": "470",
+   "category": "Commands",
+   "name": "Error Message Enable All except error 1E & F",
+   "text": "ERR MSG: All except error 1E & F",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "eme",
+    "options": {
+     "p1": "4"
+    }
+   }
+  },
+  {
+   "id": "471",
+   "category": "Commands",
+   "name": "Get Lamp ON Time",
+   "text": "Get Lamp Time",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lph",
+    "options": {}
+   }
+  },
+  {
+   "id": "472",
+   "category": "Commands",
+   "name": "Factory Defaults",
+   "text": "Factory Reset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "def",
+    "options": {
+     "p1": "111"
+    }
+   }
+  },
+  {
+   "id": "481",
+   "category": "Status",
+   "name": "Show Lamp 1 ON Time",
+   "text": "Lamp 1:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lph",
+    "options": {}
+   }
+  },
+  {
+   "id": "482",
+   "category": "Status",
+   "name": "Show Lamp 2 ON Time",
+   "text": "Lamp 2:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lph",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-christie-projector",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Per Røine, Andreas Thomsen"
+  }
+ ],
+ "source": {
+  "module": "christie-projector",
+  "version": "4.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Per Røine",
+   "Andreas Thomsen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-christie-projector.git"
+ }
+}

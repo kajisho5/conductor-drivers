@@ -1,0 +1,336 @@
+{
+ "format": 1,
+ "id": "m-rgblink-vsp628pro",
+ "name": "RGBlink VSP 628pro",
+ "category": "RGBlink",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 0,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Status polling (ask for status every second)",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "logEveryCommand",
+   "label": "Debug logging of every sent/received command (may slow down your computer)",
+   "type": "boolean",
+   "default": false,
+   "help": "test toolitp"
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_system_mode",
+   "name": "Set system mode (standard/pip/dual 2k/switcher...)",
+   "options": [
+    {
+     "id": "mode",
+     "label": "System mode",
+     "type": "select",
+     "default": "16",
+     "choices": [
+      {
+       "id": "11",
+       "label": "PIP"
+      },
+      {
+       "id": "15",
+       "label": "Dual 2K"
+      },
+      {
+       "id": "16",
+       "label": "Standard"
+      },
+      {
+       "id": "17",
+       "label": "Switcher"
+      },
+      {
+       "id": "19",
+       "label": "Split"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T007{{option.mode|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "11": "36B00011100F0",
+     "15": "46B00011500F5",
+     "16": "26B00001600F3",
+     "17": "56B00001700F7",
+     "19": "66B00001900FA"
+    }
+   }
+  },
+  {
+   "id": "set_freeze_status",
+   "name": "Set freeze/live",
+   "options": [
+    {
+     "id": "status",
+     "label": "Status",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Live"
+      },
+      {
+       "id": "01",
+       "label": "Freeze"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T007{{option.status|map}}00EE>",
+    "encoding": "text"
+   },
+   "maps": {
+    "status": {
+     "01": "775000101",
+     "00": "875000100"
+    }
+   }
+  },
+  {
+   "id": "set_layer",
+   "name": "Set layer",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Layer A"
+      },
+      {
+       "id": "01",
+       "label": "Layer B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00B{{option.layer|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "layer": {
+     "00": "16B020000001E",
+     "01": "26B0201000020"
+    }
+   }
+  },
+  {
+   "id": "lock",
+   "name": "Lock front panel",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00B368020100001E>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unlock",
+   "name": "Unlock front panel",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00B468020000001E>",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "132",
+   "category": "System mode",
+   "name": "Set mode PIP",
+   "text": "Set mode PIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_system_mode",
+    "options": {
+     "mode": "11"
+    }
+   }
+  },
+  {
+   "id": "133",
+   "category": "System mode",
+   "name": "Set mode Dual 2K",
+   "text": "Set mode Dual 2K",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_system_mode",
+    "options": {
+     "mode": "15"
+    }
+   }
+  },
+  {
+   "id": "134",
+   "category": "System mode",
+   "name": "Set mode Standard",
+   "text": "Set mode Standard",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_system_mode",
+    "options": {
+     "mode": "16"
+    }
+   }
+  },
+  {
+   "id": "135",
+   "category": "System mode",
+   "name": "Set mode Switcher",
+   "text": "Set mode Switcher",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_system_mode",
+    "options": {
+     "mode": "17"
+    }
+   }
+  },
+  {
+   "id": "136",
+   "category": "System mode",
+   "name": "Set mode Split",
+   "text": "Set mode Split",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_system_mode",
+    "options": {
+     "mode": "19"
+    }
+   }
+  },
+  {
+   "id": "137",
+   "category": "Freeze",
+   "name": "Set Live",
+   "text": "Set Live",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_freeze_status",
+    "options": {
+     "status": "00"
+    }
+   }
+  },
+  {
+   "id": "138",
+   "category": "Freeze",
+   "name": "Set Freeze",
+   "text": "Set Freeze",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_freeze_status",
+    "options": {
+     "status": "01"
+    }
+   }
+  },
+  {
+   "id": "209",
+   "category": "Layer",
+   "name": "Set Layer A",
+   "text": "Set Layer A",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_layer",
+    "options": {
+     "layer": "00"
+    }
+   }
+  },
+  {
+   "id": "210",
+   "category": "Layer",
+   "name": "Set Layer B",
+   "text": "Set Layer B",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_layer",
+    "options": {
+     "layer": "01"
+    }
+   }
+  },
+  {
+   "id": "211",
+   "category": "Front panel",
+   "name": "Lock front panel",
+   "text": "Lock front panel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "lock",
+    "options": {}
+   }
+  },
+  {
+   "id": "212",
+   "category": "Front panel",
+   "name": "Unlock front panel",
+   "text": "Unlock front panel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unlock",
+    "options": []
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-rgblink-vsp628pro",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Marcin Gumułka"
+  }
+ ],
+ "source": {
+  "module": "rgblink-vsp628pro",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Marcin Gumułka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-rgblink-vsp628pro.git"
+ }
+}

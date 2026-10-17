@@ -1,0 +1,110 @@
+{
+ "format": 1,
+ "id": "m-cablematters-matrix",
+ "name": "Cable Matters Matrix",
+ "category": "Cable Matters",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Polling (Required for Variables/Feedback)",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "enableCustomPollRate",
+   "label": "Enable Custom Polling Rate (May Shorten LCD Backlight Life)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "customPollRate",
+   "label": "Poll Rate",
+   "type": "text",
+   "default": "10000"
+  }
+ ],
+ "actions": [
+  {
+   "id": "enableBeep",
+   "name": "Enable Beep",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "a55b06010f00000000000000ea",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "disableBeep",
+   "name": "Disable Beep",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "a55b0601f00000000000000009",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "beepOn",
+   "category": "Settings",
+   "name": "Beep On",
+   "text": "Beep On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "enableBeep",
+    "options": {}
+   }
+  },
+  {
+   "id": "beepOf",
+   "category": "Settings",
+   "name": "Beep Off",
+   "text": "Beep Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disableBeep",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-cablematters-hdmimatrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：David Stevens"
+  }
+ ],
+ "source": {
+  "module": "cablematters-matrix",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "David Stevens"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-cablematters-hdmimatrix.git"
+ }
+}

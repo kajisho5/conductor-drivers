@@ -1,0 +1,114 @@
+{
+ "format": 1,
+ "id": "m-barco-eventmaster-xml",
+ "name": "Barco Event Master xml",
+ "category": "Barco",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9876,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "macAddress",
+   "label": "Target MAC Address",
+   "type": "text",
+   "default": ""
+  }
+ ],
+ "actions": [
+  {
+   "id": "multiviewerlayout",
+   "name": "Change multiviewer layout",
+   "options": [
+    {
+     "id": "layoutNumber",
+     "label": "Layout number",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<System id=\"0\" GUID=\"542696d038d3-bcc201\"><FrameCollection id=\"0\"><Frame id=\"\"><MultiViewer id=\"0\"><LayoutSelect>{{option.layoutNumber|map}}</LayoutSelect></MultiViewer></Frame></FrameCollection></System>",
+    "encoding": "text"
+   },
+   "maps": {
+    "layoutNumber": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Custom XML",
+   "options": [
+    {
+     "id": "custom",
+     "label": "XML content",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.custom}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-barco-eventmaster-xml",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "barco-eventmaster-xml",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-barco-eventmaster-xml.git"
+ }
+}

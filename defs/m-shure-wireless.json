@@ -1,0 +1,297 @@
+{
+ "format": 1,
+ "id": "m-shure-wireless",
+ "name": "Shure ULX-D / QLX-D / SLX-D / Axient Digital (AD)",
+ "category": "Shure",
+ "version": "2.3.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelID",
+   "label": "Model Type",
+   "type": "select",
+   "default": "ulxd4",
+   "choices": [
+    {
+     "id": "ad4d",
+     "label": "AD4D Dual Receiver"
+    },
+    {
+     "id": "ad4q",
+     "label": "AD4Q Quad Receiver"
+    },
+    {
+     "id": "qlxd4",
+     "label": "QLXD4 Single Receiver"
+    },
+    {
+     "id": "slxd4",
+     "label": "SLXD4 Single Receiver"
+    },
+    {
+     "id": "slxd4d",
+     "label": "SLXD4D Dual Receiver"
+    },
+    {
+     "id": "ulxd4",
+     "label": "ULXD4 Single Receiver"
+    },
+    {
+     "id": "ulxd4d",
+     "label": "ULXD4D Dual Receiver"
+    },
+    {
+     "id": "ulxd4q",
+     "label": "ULXD4Q Quad Receiver"
+    }
+   ]
+  },
+  {
+   "id": "meteringOn",
+   "label": "Enable Metering?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "meteringInterval",
+   "label": "Metering Interval (in ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 50,
+   "max": 99999,
+   "help": "If this value is too low (fast)\nthe GUI may lock up."
+  },
+  {
+   "id": "variableFormat",
+   "label": "Variable Format",
+   "type": "select",
+   "default": "units",
+   "choices": [
+    {
+     "id": "units",
+     "label": "Include Units"
+    },
+    {
+     "id": "numeric",
+     "label": "Numeric Only"
+    }
+   ],
+   "help": "Changing this setting will apply to new values received.  To refresh all variables with the new setting, disable and re-enable the connection after saving these settings."
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_channel_name",
+   "name": "Set channel name",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1 (CH 1)"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name (8 characters max)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 CHAN_NAME {{{option.name}}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "channel_mute",
+   "name": "Mute or unmute channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1 (CH 1)"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUDIO_MUTE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "channel_setaudiogain",
+   "name": "Set audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1 (CH 1)"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "text",
+     "default": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUDIO_GAIN {{option.gain|lin:1:18}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "channel_increasegain",
+   "name": "Increase audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1 (CH 1)"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "text",
+     "default": 3
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUDIO_GAIN INC {{option.gain}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "channel_decreasegain",
+   "name": "Decrease audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1 (CH 1)"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "text",
+     "default": 3
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 1 AUDIO_GAIN DEC {{option.gain}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "flash_lights",
+   "name": "Flash lights on receiver",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH ON >",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-wireless",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "shure-wireless",
+  "version": "2.3.1",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-wireless.git"
+ }
+}

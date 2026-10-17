@@ -70,39 +70,6 @@
  ],
  "actions": [
   {
-   "id": "mFad_a",
-   "name": "Main LR Level Adjust",
-   "options": [
-    {
-     "id": "ticks",
-     "label": "Adjust By",
-     "type": "text",
-     "default": "1",
-     "help": "Move fader +/- percent."
-    },
-    {
-     "id": "duration",
-     "label": "Fade Duration (ms)",
-     "type": "number",
-     "default": 0,
-     "min": 0,
-     "max": 60000
-    },
-    {
-     "id": "faderLim",
-     "label": "Limit fader to 0.0dB",
-     "type": "boolean",
-     "default": 0,
-     "help": "This prevents the fader level from going above 0db (75%)"
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "2f6c722f6d69782f66616465720000002c6600007fc00000",
-    "encoding": "hex"
-   }
-  },
-  {
    "id": "mFad_r",
    "name": "Main LR Level Recall",
    "options": [
@@ -176,42 +143,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f6c722f6d69782f66616465720000002c660000bf800000",
-    "encoding": "hex"
-   }
-  },
-  {
-   "id": "usbFad_a",
-   "name": "USB(x12/x16) or Aux In(x18) Level Adjust",
-   "options": [
-    {
-     "id": "ticks",
-     "label": "Adjust By",
-     "type": "text",
-     "default": "1",
-     "help": "Move fader +/- percent."
-    },
-    {
-     "id": "duration",
-     "label": "Fade Duration (ms)",
-     "type": "number",
-     "default": 0,
-     "min": 0,
-     "max": 60000
-    },
-    {
-     "id": "faderLim",
-     "label": "Limit fader to 0.0dB",
-     "type": "boolean",
-     "default": 0,
-     "help": "This prevents the fader level from going above 0db (75%)"
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f6d69782f666164657200002c6600007fc00000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/lr/mix/fader",
+    "args": [
+     {
+      "type": "f",
+      "value": "-1"
+     }
+    ]
    }
   },
   {
@@ -288,9 +227,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f6d69782f666164657200002c660000bf800000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/rtn/aux/mix/fader",
+    "args": [
+     {
+      "type": "f",
+      "value": "-1"
+     }
+    ]
    }
   },
   {
@@ -319,15 +263,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f6c722f6d69782f6f6e00002c690000000000{{option.mute|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/lr/mix/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
    },
    "maps": {
     "mute": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -357,15 +306,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f6d69782f6f6e002c690000000000{{option.mute|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/rtn/aux/mix/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
    },
    "maps": {
     "mute": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -403,42 +357,21 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f6d7574652f{{option.mute_grp|hexstr}}00002c690000000000{{option.mute|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/mute/{{option.mute_grp}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
    },
    "maps": {
     "mute": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
-   }
-  },
-  {
-   "id": "mPan_a",
-   "name": "Main LR Pan Adjust",
-   "options": [
-    {
-     "id": "ticks",
-     "label": "Adjust By",
-     "type": "text",
-     "default": "1",
-     "help": "Move +/-"
-    },
-    {
-     "id": "duration",
-     "label": "Fade Duration (ms)",
-     "type": "number",
-     "default": 0,
-     "min": 0,
-     "max": 60000
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "2f6c722f6d69782f70616e002c6600007fc00000",
-    "encoding": "hex"
    }
   },
   {
@@ -508,35 +441,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f6c722f6d69782f70616e002c660000bf800000",
-    "encoding": "hex"
-   }
-  },
-  {
-   "id": "usbPan_a",
-   "name": "USB(x12/x16) or Aux In(x18) Pan Adjust",
-   "options": [
-    {
-     "id": "ticks",
-     "label": "Adjust By",
-     "type": "text",
-     "default": "1",
-     "help": "Move +/-"
-    },
-    {
-     "id": "duration",
-     "label": "Fade Duration (ms)",
-     "type": "number",
-     "default": 0,
-     "min": 0,
-     "max": 60000
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f6d69782f70616e000000002c6600007fc00000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/lr/mix/pan",
+    "args": [
+     {
+      "type": "f",
+      "value": "-1"
+     }
+    ]
    }
   },
   {
@@ -606,9 +518,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f6d69782f70616e000000002c660000bf800000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/rtn/aux/mix/pan",
+    "args": [
+     {
+      "type": "f",
+      "value": "-1"
+     }
+    ]
    }
   },
   {
@@ -657,15 +574,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f63682f{{option.num|pad2|hexstr}}2f676174652f6f6e00002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/ch/{{option.num|pad2}}/gate/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -695,15 +617,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f6c722f696e736572742f6f6e0000002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/lr/insert/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -733,15 +660,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f6c722f65712f6f6e0000002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/lr/eq/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -771,15 +703,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f6c722f64796e2f6f6e00002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/lr/dyn/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -809,15 +746,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f65712f6f6e00002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/rtn/aux/eq/on",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -847,15 +789,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f6d69782f6c72002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/rtn/aux/mix/lr",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -893,15 +840,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d737461742f736f6c6f73772f{{option.num|pad2|hexstr}}000000002c690000000000{{option.solo|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-stat/solosw/{{option.num|pad2}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
    },
    "maps": {
     "solo": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -931,15 +883,173 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d737461742f736f6c6f73772f3137000000002c690000000000{{option.solo|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-stat/solosw/17",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
    },
    "maps": {
     "solo": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "solosw_fxr",
+   "name": "Solo FX Return (1-4)",
+   "options": [
+    {
+     "id": "num",
+     "label": "FX Return",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/-stat/solosw/{{option.num|lin:1:17}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "solo": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "solosw_bus",
+   "name": "Solo Bus Master (1-6)",
+   "options": [
+    {
+     "id": "num",
+     "label": "Bus Master",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 6
+    },
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/-stat/solosw/{{option.num|lin:1:39}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "solo": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "solosw_fxs",
+   "name": "Solo FX Master (1-4)",
+   "options": [
+    {
+     "id": "num",
+     "label": "FX Master",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "solo",
+     "label": "Solo",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/-stat/solosw/{{option.num|lin:1:45}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "solo": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -969,15 +1079,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d737461742f736f6c6f73772f3530000000002c690000000000{{option.solo|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-stat/solosw/50",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
    },
    "maps": {
     "solo": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -1015,15 +1130,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d737461742f736f6c6f73772f35{{option.num|hexstr}}000000002c690000000000{{option.solo|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-stat/solosw/{{option.num|lin:1:50}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.solo|map}}"
+     }
+    ]
    },
    "maps": {
     "solo": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -1101,27 +1221,32 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f736f6c6f2f736f75726365002c690000000000{{option.source|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/solo/source",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.source|map}}"
+     }
+    ]
    },
    "maps": {
     "source": {
-     "0": "00",
-     "1": "01",
-     "2": "02",
-     "3": "03",
-     "4": "04",
-     "5": "05",
-     "6": "06",
-     "7": "07",
-     "8": "08",
-     "9": "09",
-     "10": "0a",
-     "11": "0b",
-     "12": "0c",
-     "13": "0d",
-     "14": "0e"
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14"
     }
    }
   },
@@ -1147,14 +1272,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f736f6c6f2f63686d6f6465002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/solo/chmode",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -1180,14 +1310,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f736f6c6f2f6275736d6f6465000000002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/solo/busmode",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -1217,15 +1352,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f736f6c6f2f64696d70666c002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/solo/dimpfl",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -1255,15 +1395,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f736f6c6f2f6d7574650000002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/solo/mute",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -1293,15 +1438,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f736f6c6f2f6d6f6e6f0000002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/solo/mono",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -1331,15 +1481,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f636f6e6669672f736f6c6f2f64696d000000002c690000000000{{option.set|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/config/solo/dim",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.set|map}}"
+     }
+    ]
    },
    "maps": {
     "set": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -1348,9 +1503,58 @@
    "name": "Solo Clear",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d616374696f6e2f636c656172736f6c6f00002c69000000000001",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-action/clearsolo",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   }
+  },
+  {
+   "id": "mLabel",
+   "name": "Set Main label",
+   "options": [
+    {
+     "id": "lab",
+     "label": "Label",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/lr/config/name",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.lab}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "usbLabel",
+   "name": "Set USB/Aux label",
+   "options": [
+    {
+     "id": "lab",
+     "label": "Label",
+     "type": "text",
+     "default": "USB"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/rtn/aux/config/name",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.lab}}"
+     }
+    ]
    }
   },
   {
@@ -1430,28 +1634,33 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f6c722f636f6e6669672f636f6c6f72000000002c690000000000{{option.col|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/lr/config/color",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.col|map}}"
+     }
+    ]
    },
    "maps": {
     "col": {
-     "0": "00",
-     "1": "01",
-     "2": "02",
-     "3": "03",
-     "4": "04",
-     "5": "05",
-     "6": "06",
-     "7": "07",
-     "8": "08",
-     "9": "09",
-     "10": "0a",
-     "11": "0b",
-     "12": "0c",
-     "13": "0d",
-     "14": "0e",
-     "15": "0f"
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15"
     }
    }
   },
@@ -1532,28 +1741,33 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f72746e2f6175782f636f6e6669672f636f6c6f720000002c690000000000{{option.col|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/rtn/aux/config/color",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.col|map}}"
+     }
+    ]
    },
    "maps": {
     "col": {
-     "0": "00",
-     "1": "01",
-     "2": "02",
-     "3": "03",
-     "4": "04",
-     "5": "05",
-     "6": "06",
-     "7": "07",
-     "8": "08",
-     "9": "09",
-     "10": "0a",
-     "11": "0b",
-     "12": "0c",
-     "13": "0d",
-     "14": "0e",
-     "15": "0f"
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15"
     }
    }
   },
@@ -1562,9 +1776,14 @@
    "name": "Snapshot: Load Next",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d736e61702f6c6f6164002c69000000000001",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-snap/load",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
    }
   },
   {
@@ -1572,9 +1791,14 @@
    "name": "Snapshot: Load Prior",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d736e61702f6c6f6164002c69000000000001",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-snap/load",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
    }
   },
   {
@@ -1582,9 +1806,14 @@
    "name": "Snapshot: Save Current",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d736e61702f73617665002c69000000000000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-snap/save",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
    }
   },
   {
@@ -1628,19 +1857,24 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f2d737461742f746170652f73746174650000002c690000000000{{option.tFunc|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/-stat/tape/state",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.tFunc|map}}"
+     }
+    ]
    },
    "maps": {
     "tFunc": {
-     "0": "00",
-     "1": "01",
-     "2": "02",
-     "3": "03",
-     "4": "04",
-     "5": "05",
-     "6": "06"
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
     }
    }
   }

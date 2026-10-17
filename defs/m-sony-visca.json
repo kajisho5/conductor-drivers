@@ -1,0 +1,2433 @@
+{
+ "format": 1,
+ "id": "m-sony-visca",
+ "name": "Sony VISCA",
+ "category": "Sony",
+ "version": "2.7.5",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 52381,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "id",
+   "label": "Camera Id",
+   "type": "select",
+   "default": "129",
+   "choices": [
+    {
+     "id": "128",
+     "label": "id 0"
+    },
+    {
+     "id": "129",
+     "label": "id 1 (default)"
+    },
+    {
+     "id": "130",
+     "label": "id 2"
+    },
+    {
+     "id": "131",
+     "label": "id 3"
+    },
+    {
+     "id": "132",
+     "label": "id 4"
+    },
+    {
+     "id": "133",
+     "label": "id 5"
+    },
+    {
+     "id": "134",
+     "label": "id 6"
+    },
+    {
+     "id": "135",
+     "label": "id 7"
+    },
+    {
+     "id": "136",
+     "label": "id 8"
+    }
+   ]
+  },
+  {
+   "id": "model",
+   "label": "Select Your Camera Model",
+   "type": "select",
+   "default": "other",
+   "choices": [
+    {
+     "id": "other",
+     "label": "Other Camera"
+    },
+    {
+     "id": "051B",
+     "label": "BRC-H780"
+    },
+    {
+     "id": "051A",
+     "label": "BRC-H800"
+    },
+    {
+     "id": "051C",
+     "label": "BRC-X400"
+    },
+    {
+     "id": "051D",
+     "label": "BRC-X401"
+    },
+    {
+     "id": "0519",
+     "label": "BRC-X1000"
+    },
+    {
+     "id": "051E",
+     "label": "ILME-FR7"
+    },
+    {
+     "id": "051Ek",
+     "label": "ILME-FR7K"
+    },
+    {
+     "id": "0519",
+     "label": "BRC-X1000"
+    },
+    {
+     "id": "0511",
+     "label": "SRG-120DH"
+    },
+    {
+     "id": "061A",
+     "label": "SRG-201M2"
+    },
+    {
+     "id": "0516a",
+     "label": "SRG-201SE"
+    },
+    {
+     "id": "0516b",
+     "label": "SRG-300SE"
+    },
+    {
+     "id": "0516c",
+     "label": "SRG-301SE"
+    },
+    {
+     "id": "0620",
+     "label": "SRG-H40UH"
+    },
+    {
+     "id": "061B",
+     "label": "SRG-HD1M2"
+    },
+    {
+     "id": "061F",
+     "label": "SRG-X40UH"
+    },
+    {
+     "id": "0618",
+     "label": "SRG-X120"
+    },
+    {
+     "id": "0617",
+     "label": "SRG-X400"
+    },
+    {
+     "id": "061C",
+     "label": "SRG-X402"
+    }
+   ]
+  },
+  {
+   "id": "frameRate",
+   "label": "Select Your Frame Rate",
+   "type": "select",
+   "default": "60",
+   "choices": [
+    {
+     "id": "60",
+     "label": "59.94 or 29.97 (60 Hz)"
+    },
+    {
+     "id": "50",
+     "label": "50 or 25 fps (50 Hz)"
+    },
+    {
+     "id": "24",
+     "label": "23.98 fps"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "left",
+   "name": "Pan Left",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000002810106010c0c0103ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "right",
+   "name": "Pan Right",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000003810106010c0c0203ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "up",
+   "name": "Tilt Up",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000004810106010c0c0301ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "down",
+   "name": "Tilt Down",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000005810106010c0c0302ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "upLeft",
+   "name": "Up Left",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000006810106010c0c0101ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "upRight",
+   "name": "Up Right",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000007810106010c0c0201ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "downLeft",
+   "name": "Down Left",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000008810106010c0c0102ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "downRight",
+   "name": "Down Right",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000900000009810106010c0c0202ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Pan/Tilt Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "010000090000000a810106010c0c0303ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "home",
+   "name": "Pan/Tilt Home",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "010000050000000b81010604ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "ptSlow",
+   "name": "Pan/Tilt Slow Mode",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Slow Mode On/Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.bol|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bol": {
+     "0": "0c8101064403",
+     "1": "0d8101064402"
+    }
+   }
+  },
+  {
+   "id": "zoomI",
+   "name": "Zoom In - standard speed",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "010000060000000e8101040702ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "zoomO",
+   "name": "Zoom Out - standard speed",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "010000060000000f8101040703ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "zoomInVS",
+   "name": "Zoom In - variable speed",
+   "options": [
+    {
+     "id": "val",
+     "label": "Zoom Speed for this button",
+     "type": "select",
+     "default": "v",
+     "choices": [
+      {
+       "id": "v",
+       "label": "Zoom Speed - Variable"
+      },
+      {
+       "id": "7",
+       "label": "Zoom Speed 7 (fast)"
+      },
+      {
+       "id": "6",
+       "label": "Zoom Speed 6"
+      },
+      {
+       "id": "5",
+       "label": "Zoom Speed 5"
+      },
+      {
+       "id": "4",
+       "label": "Zoom Speed 4"
+      },
+      {
+       "id": "3",
+       "label": "Zoom Speed 3"
+      },
+      {
+       "id": "2",
+       "label": "Zoom Speed 2"
+      },
+      {
+       "id": "1",
+       "label": "Zoom Speed 1"
+      },
+      {
+       "id": "0",
+       "label": "Zoom Speed 0 (slow)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "0": "188101040721",
+     "1": "178101040721",
+     "2": "168101040722",
+     "3": "158101040723",
+     "4": "148101040724",
+     "5": "138101040725",
+     "6": "128101040726",
+     "7": "118101040727",
+     "v": "108101040721"
+    }
+   }
+  },
+  {
+   "id": "zoomOutVS",
+   "name": "Zoom Out - variable speed",
+   "options": [
+    {
+     "id": "val",
+     "label": "Zoom Speed for this button",
+     "type": "select",
+     "default": "v",
+     "choices": [
+      {
+       "id": "v",
+       "label": "Zoom Speed - Variable"
+      },
+      {
+       "id": "7",
+       "label": "Zoom Speed 7 (fast)"
+      },
+      {
+       "id": "6",
+       "label": "Zoom Speed 6"
+      },
+      {
+       "id": "5",
+       "label": "Zoom Speed 5"
+      },
+      {
+       "id": "4",
+       "label": "Zoom Speed 4"
+      },
+      {
+       "id": "3",
+       "label": "Zoom Speed 3"
+      },
+      {
+       "id": "2",
+       "label": "Zoom Speed 2"
+      },
+      {
+       "id": "1",
+       "label": "Zoom Speed 1"
+      },
+      {
+       "id": "0",
+       "label": "Zoom Speed 0 (slow)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "0": "218101040731",
+     "1": "208101040731",
+     "2": "1f8101040732",
+     "3": "1e8101040733",
+     "4": "1d8101040734",
+     "5": "1c8101040735",
+     "6": "1b8101040736",
+     "7": "1a8101040737",
+     "v": "198101040731"
+    }
+   }
+  },
+  {
+   "id": "zoomS",
+   "name": "Zoom Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000228101040700ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "zoomMode",
+   "name": "Zoom Mode (digital/optical/clear image)",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Zoom Mode",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "2",
+       "label": "Digital"
+      },
+      {
+       "id": "3",
+       "label": "Optical only"
+      },
+      {
+       "id": "4",
+       "label": "Clear Image Zoom"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.mode|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mode": {
+     "2": "248101040602",
+     "3": "238101040603",
+     "4": "258101040604"
+    }
+   }
+  },
+  {
+   "id": "focusM",
+   "name": "Focus Mode (auto/manual)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Auto / Manual Focus",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto Focus"
+      },
+      {
+       "id": "1",
+       "label": "Manual Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.bol|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bol": {
+     "0": "268101043802",
+     "1": "278101043803"
+    }
+   }
+  },
+  {
+   "id": "focusN",
+   "name": "Focus Near - standard speed",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000288101040803ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "focusF",
+   "name": "Focus Far - standard speed",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000298101040802ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "focusNearVS",
+   "name": "Focus Near - variable speed",
+   "options": [
+    {
+     "id": "val",
+     "label": "Focus Speed for this button",
+     "type": "select",
+     "default": "v",
+     "choices": [
+      {
+       "id": "v",
+       "label": "Focus Speed - Variable"
+      },
+      {
+       "id": "7",
+       "label": "Focus Speed 7 (fast)"
+      },
+      {
+       "id": "6",
+       "label": "Focus Speed 6"
+      },
+      {
+       "id": "5",
+       "label": "Focus Speed 5"
+      },
+      {
+       "id": "4",
+       "label": "Focus Speed 4"
+      },
+      {
+       "id": "3",
+       "label": "Focus Speed 3"
+      },
+      {
+       "id": "2",
+       "label": "Focus Speed 2"
+      },
+      {
+       "id": "1",
+       "label": "Focus Speed 1"
+      },
+      {
+       "id": "0",
+       "label": "Focus Speed 0 (slow)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "0": "328101040831",
+     "1": "318101040831",
+     "2": "308101040832",
+     "3": "2f8101040833",
+     "4": "2e8101040834",
+     "5": "2d8101040835",
+     "6": "2c8101040836",
+     "7": "2b8101040837",
+     "v": "2a8101040831"
+    }
+   }
+  },
+  {
+   "id": "focusFarVS",
+   "name": "Focus Far - variable speed",
+   "options": [
+    {
+     "id": "val",
+     "label": "Focus Speed for this button",
+     "type": "select",
+     "default": "v",
+     "choices": [
+      {
+       "id": "v",
+       "label": "Focus Speed - Variable"
+      },
+      {
+       "id": "7",
+       "label": "Focus Speed 7 (fast)"
+      },
+      {
+       "id": "6",
+       "label": "Focus Speed 6"
+      },
+      {
+       "id": "5",
+       "label": "Focus Speed 5"
+      },
+      {
+       "id": "4",
+       "label": "Focus Speed 4"
+      },
+      {
+       "id": "3",
+       "label": "Focus Speed 3"
+      },
+      {
+       "id": "2",
+       "label": "Focus Speed 2"
+      },
+      {
+       "id": "1",
+       "label": "Focus Speed 1"
+      },
+      {
+       "id": "0",
+       "label": "Focus Speed 0 (slow)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "0": "3b8101040821",
+     "1": "3a8101040821",
+     "2": "398101040822",
+     "3": "388101040823",
+     "4": "378101040824",
+     "5": "368101040825",
+     "6": "358101040826",
+     "7": "348101040827",
+     "v": "338101040821"
+    }
+   }
+  },
+  {
+   "id": "focusS",
+   "name": "Focus Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "010000060000003c8101040800ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "focusOpaf",
+   "name": "One Push Auto Focus",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "010000060000003d8101041801ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "expM",
+   "name": "Exposure Mode (auto/manual/shutter/iris/gain priority)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Mode setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Full auto"
+      },
+      {
+       "id": "1",
+       "label": "Manual"
+      },
+      {
+       "id": "2",
+       "label": "Shutter Pri"
+      },
+      {
+       "id": "3",
+       "label": "Iris Pri"
+      },
+      {
+       "id": "4",
+       "label": "Gain Pri"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "0": "3e8101043900",
+     "1": "3f8101043903",
+     "2": "40810104390a",
+     "3": "41810104390b",
+     "4": "42810104390e"
+    }
+   }
+  },
+  {
+   "id": "irisAdjust",
+   "name": "Iris Adjust (up/down)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Iris setting",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Iris Up"
+      },
+      {
+       "id": "2",
+       "label": "Iris Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "438101040b02",
+     "2": "448101040b03"
+    }
+   }
+  },
+  {
+   "id": "irisS",
+   "name": "Set Iris",
+   "options": [
+    {
+     "id": "val",
+     "label": "Iris adjust",
+     "type": "select",
+     "default": "19",
+     "choices": [
+      {
+       "id": "19",
+       "label": "ƒ 2.0"
+      },
+      {
+       "id": "18",
+       "label": "ƒ 2.2"
+      },
+      {
+       "id": "17",
+       "label": "ƒ 2.4"
+      },
+      {
+       "id": "16",
+       "label": "ƒ 2.6"
+      },
+      {
+       "id": "15",
+       "label": "ƒ 2.8"
+      },
+      {
+       "id": "14",
+       "label": "ƒ 3.1"
+      },
+      {
+       "id": "13",
+       "label": "ƒ 3.4"
+      },
+      {
+       "id": "12",
+       "label": "ƒ 3.7"
+      },
+      {
+       "id": "11",
+       "label": "ƒ 4.0"
+      },
+      {
+       "id": "10",
+       "label": "ƒ 4.4"
+      },
+      {
+       "id": "0F",
+       "label": "ƒ 4.8"
+      },
+      {
+       "id": "0E",
+       "label": "ƒ 5.2"
+      },
+      {
+       "id": "0D",
+       "label": "ƒ 5.6"
+      },
+      {
+       "id": "0C",
+       "label": "ƒ 6.2"
+      },
+      {
+       "id": "0B",
+       "label": "ƒ 6.8"
+      },
+      {
+       "id": "0A",
+       "label": "ƒ 7.3"
+      },
+      {
+       "id": "09",
+       "label": "ƒ 8.0"
+      },
+      {
+       "id": "08",
+       "label": "ƒ 8.7"
+      },
+      {
+       "id": "07",
+       "label": "ƒ 9.6"
+      },
+      {
+       "id": "06",
+       "label": "ƒ 10"
+      },
+      {
+       "id": "05",
+       "label": "ƒ 11"
+      },
+      {
+       "id": "00",
+       "label": "CLOSED"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000009000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "10": "4e8101044b00000100",
+     "11": "4d8101044b00000101",
+     "12": "4c8101044b00000102",
+     "13": "4b8101044b00000103",
+     "14": "4a8101044b00000104",
+     "15": "498101044b00000105",
+     "16": "488101044b00000106",
+     "17": "478101044b00000107",
+     "18": "468101044b00000108",
+     "19": "458101044b00000109",
+     "0F": "4f8101044b0000000f",
+     "0E": "508101044b0000000e",
+     "0D": "518101044b0000000d",
+     "0C": "528101044b0000000c",
+     "0B": "538101044b0000000b",
+     "0A": "548101044b0000000a",
+     "09": "558101044b00000009",
+     "08": "568101044b00000008",
+     "07": "578101044b00000007",
+     "06": "588101044b00000006",
+     "05": "598101044b00000005",
+     "00": "5a8101044b00000000"
+    }
+   }
+  },
+  {
+   "id": "gainAdjust",
+   "name": "Gain Adjust (up/down)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Gain adjust",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Gain Up"
+      },
+      {
+       "id": "2",
+       "label": "Gain Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "5b8101040c02",
+     "2": "5c8101040c03"
+    }
+   }
+  },
+  {
+   "id": "gainS",
+   "name": "Set Gain",
+   "options": [
+    {
+     "id": "val",
+     "label": "Gain setting",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "0 db"
+      },
+      {
+       "id": "02",
+       "label": "3 db"
+      },
+      {
+       "id": "03",
+       "label": "6 db"
+      },
+      {
+       "id": "04",
+       "label": "9 db"
+      },
+      {
+       "id": "05",
+       "label": "12 db"
+      },
+      {
+       "id": "06",
+       "label": "15 db"
+      },
+      {
+       "id": "07",
+       "label": "18 db"
+      },
+      {
+       "id": "08",
+       "label": "21 db"
+      },
+      {
+       "id": "09",
+       "label": "24 db"
+      },
+      {
+       "id": "0A",
+       "label": "27 db"
+      },
+      {
+       "id": "0B",
+       "label": "30 db"
+      },
+      {
+       "id": "0C",
+       "label": "33 db"
+      },
+      {
+       "id": "0D",
+       "label": "36 db"
+      },
+      {
+       "id": "0E",
+       "label": "39 db"
+      },
+      {
+       "id": "0F",
+       "label": "42 db"
+      },
+      {
+       "id": "10",
+       "label": "45 db"
+      },
+      {
+       "id": "11",
+       "label": "48 db"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000009000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "10": "6c8101044c00000100",
+     "11": "6d8101044c00000101",
+     "01": "5d8101044c00000001",
+     "02": "5e8101044c00000002",
+     "03": "5f8101044c00000003",
+     "04": "608101044c00000004",
+     "05": "618101044c00000005",
+     "06": "628101044c00000006",
+     "07": "638101044c00000007",
+     "08": "648101044c00000008",
+     "09": "658101044c00000009",
+     "0A": "668101044c0000000a",
+     "0B": "678101044c0000000b",
+     "0C": "688101044c0000000c",
+     "0D": "698101044c0000000d",
+     "0E": "6a8101044c0000000e",
+     "0F": "6b8101044c0000000f"
+    }
+   }
+  },
+  {
+   "id": "shutterAdjust",
+   "name": "Shutter Adjust (up/down)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Shutter adjust",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Shutter Up"
+      },
+      {
+       "id": "2",
+       "label": "Shutter Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "6e8101040a02",
+     "2": "6f8101040a03"
+    }
+   }
+  },
+  {
+   "id": "shutS",
+   "name": "Set Shutter",
+   "options": [
+    {
+     "id": "val",
+     "label": "Shutter setting",
+     "type": "select",
+     "default": "12",
+     "choices": [
+      {
+       "id": "06",
+       "label": "1/1"
+      },
+      {
+       "id": "07",
+       "label": "2/3"
+      },
+      {
+       "id": "08",
+       "label": "1/2"
+      },
+      {
+       "id": "09",
+       "label": "1/3"
+      },
+      {
+       "id": "0A",
+       "label": "1/4"
+      },
+      {
+       "id": "0B",
+       "label": "1/6"
+      },
+      {
+       "id": "0C",
+       "label": "1/8"
+      },
+      {
+       "id": "0D",
+       "label": "1/10"
+      },
+      {
+       "id": "0E",
+       "label": "1/15"
+      },
+      {
+       "id": "0F",
+       "label": "1/20"
+      },
+      {
+       "id": "10",
+       "label": "1/30"
+      },
+      {
+       "id": "11",
+       "label": "1/50"
+      },
+      {
+       "id": "12",
+       "label": "1/60"
+      },
+      {
+       "id": "13",
+       "label": "1/90"
+      },
+      {
+       "id": "14",
+       "label": "1/100"
+      },
+      {
+       "id": "15",
+       "label": "1/125"
+      },
+      {
+       "id": "16",
+       "label": "1/180"
+      },
+      {
+       "id": "17",
+       "label": "1/250"
+      },
+      {
+       "id": "18",
+       "label": "1/350"
+      },
+      {
+       "id": "19",
+       "label": "1/500"
+      },
+      {
+       "id": "1A",
+       "label": "1/725"
+      },
+      {
+       "id": "1B",
+       "label": "1/1000"
+      },
+      {
+       "id": "1C",
+       "label": "1/1500"
+      },
+      {
+       "id": "1D",
+       "label": "1/2000"
+      },
+      {
+       "id": "1E",
+       "label": "1/3000"
+      },
+      {
+       "id": "1F",
+       "label": "1/4000"
+      },
+      {
+       "id": "20",
+       "label": "1/6000"
+      },
+      {
+       "id": "21",
+       "label": "1/10000"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000009000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "10": "7b8101044a00000100",
+     "11": "7c8101044a00000101",
+     "12": "708101044a00000102",
+     "13": "7d8101044a00000103",
+     "14": "7e8101044a00000104",
+     "15": "7f8101044a00000105",
+     "16": "808101044a00000106",
+     "17": "818101044a00000107",
+     "18": "828101044a00000108",
+     "19": "838101044a00000109",
+     "20": "8a8101044a00000200",
+     "21": "8b8101044a00000201",
+     "06": "718101044a00000006",
+     "07": "728101044a00000007",
+     "08": "738101044a00000008",
+     "09": "748101044a00000009",
+     "0A": "758101044a0000000a",
+     "0B": "768101044a0000000b",
+     "0C": "778101044a0000000c",
+     "0D": "788101044a0000000d",
+     "0E": "798101044a0000000e",
+     "0F": "7a8101044a0000000f",
+     "1A": "848101044a0000010a",
+     "1B": "858101044a0000010b",
+     "1C": "868101044a0000010c",
+     "1D": "878101044a0000010d",
+     "1E": "888101044a0000010e",
+     "1F": "898101044a0000010f"
+    }
+   }
+  },
+  {
+   "id": "brightnessAdjust",
+   "name": "Brightness Adjust (up/down)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Brightness adjust",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Brightness Up"
+      },
+      {
+       "id": "2",
+       "label": "Brightness Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "8c8101040d02",
+     "2": "8d8101040d03"
+    }
+   }
+  },
+  {
+   "id": "brightnessSet",
+   "name": "Set Brightness",
+   "options": [
+    {
+     "id": "val",
+     "label": "Brightness setting",
+     "type": "select",
+     "default": "11",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "010000090000008e8101044d00000101ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "exposureCompOnOff",
+   "name": "Exposure Compensation (on/off)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Exposure Compensation On/Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.bol|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bol": {
+     "0": "8f8101043e03",
+     "1": "908101043e02"
+    }
+   }
+  },
+  {
+   "id": "exposureComp",
+   "name": "Exposure Compensation (up/down/reset)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Exp Comp Adjust",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Exposure Compensation +"
+      },
+      {
+       "id": "2",
+       "label": "Exposure Compensation -"
+      },
+      {
+       "id": "3",
+       "label": "Reset"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "928101040e02",
+     "2": "938101040e03",
+     "3": "918101040e00"
+    }
+   }
+  },
+  {
+   "id": "exposureCompDirect",
+   "name": "Exposure Compensation Set Value",
+   "options": [
+    {
+     "id": "offset",
+     "label": "Offset",
+     "type": "select",
+     "default": "07",
+     "choices": [
+      {
+       "id": "0E",
+       "label": "+7"
+      },
+      {
+       "id": "0D",
+       "label": "+6"
+      },
+      {
+       "id": "0C",
+       "label": "+5"
+      },
+      {
+       "id": "0B",
+       "label": "+4"
+      },
+      {
+       "id": "0A",
+       "label": "+3"
+      },
+      {
+       "id": "09",
+       "label": "+2"
+      },
+      {
+       "id": "08",
+       "label": "+1"
+      },
+      {
+       "id": "07",
+       "label": "0"
+      },
+      {
+       "id": "06",
+       "label": "-1"
+      },
+      {
+       "id": "05",
+       "label": "-2"
+      },
+      {
+       "id": "04",
+       "label": "-3"
+      },
+      {
+       "id": "03",
+       "label": "-4"
+      },
+      {
+       "id": "02",
+       "label": "-5"
+      },
+      {
+       "id": "01",
+       "label": "-6"
+      },
+      {
+       "id": "00",
+       "label": "-7"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000009000000{{option.offset|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "offset": {
+     "07": "948101044e00000007",
+     "0E": "958101044e0000000e",
+     "0D": "968101044e0000000d",
+     "0C": "978101044e0000000c",
+     "0B": "988101044e0000000b",
+     "0A": "998101044e0000000a",
+     "09": "9a8101044e00000009",
+     "08": "9b8101044e00000008",
+     "06": "9c8101044e00000006",
+     "05": "9d8101044e00000005",
+     "04": "9e8101044e00000004",
+     "03": "9f8101044e00000003",
+     "02": "a08101044e00000002",
+     "01": "a18101044e00000001",
+     "00": "a28101044e00000000"
+    }
+   }
+  },
+  {
+   "id": "aperture",
+   "name": "Aperture Compensation (up/down/reset)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Mode setting",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Aperture +"
+      },
+      {
+       "id": "2",
+       "label": "Aperture -"
+      },
+      {
+       "id": "3",
+       "label": "Reset"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "a48101040202",
+     "2": "a58101040203",
+     "3": "a38101040200"
+    }
+   }
+  },
+  {
+   "id": "WDR",
+   "name": "Wide Dynamic Range (off/low/mid/high)",
+   "options": [
+    {
+     "id": "val",
+     "label": "WDR Settings",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Low"
+      },
+      {
+       "id": "2",
+       "label": "Mid"
+      },
+      {
+       "id": "3",
+       "label": "High"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000007000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "0": "a681017e040000",
+     "1": "a781017e040001",
+     "2": "a881017e040002",
+     "3": "a981017e040003"
+    }
+   }
+  },
+  {
+   "id": "noiseReduction",
+   "name": "Noise Reduction Level (off-strong)",
+   "options": [
+    {
+     "id": "level",
+     "label": "Noise Reduction Level",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0-Off"
+      },
+      {
+       "id": "1",
+       "label": "1-Weak"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3-Default"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5-Strong"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.level|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "level": {
+     "0": "ab8101045300",
+     "1": "ac8101045301",
+     "2": "ad8101045302",
+     "3": "aa8101045303",
+     "4": "ae8101045304",
+     "5": "af8101045305"
+    }
+   }
+  },
+  {
+   "id": "backlightComp",
+   "name": "Backlight Compensation (on/off)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Backlight Compensation On/Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.bol|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bol": {
+     "0": "b08101043303",
+     "1": "b18101043302"
+    }
+   }
+  },
+  {
+   "id": "spotlightComp",
+   "name": "Spotlight Compensation (on/off)",
+   "options": [
+    {
+     "id": "bol",
+     "label": "Spotlight Compensation On/Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.bol|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bol": {
+     "0": "b28101043a03",
+     "1": "b38101043a02"
+    }
+   }
+  },
+  {
+   "id": "whiteBal",
+   "name": "White Balance Mode (auto/indoor/outdoor/one push/ATW/manual)",
+   "options": [
+    {
+     "id": "val",
+     "label": "WB setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto1 - Auto"
+      },
+      {
+       "id": "1",
+       "label": "Indoor"
+      },
+      {
+       "id": "2",
+       "label": "Outdoor"
+      },
+      {
+       "id": "3",
+       "label": "One push WB"
+      },
+      {
+       "id": "4",
+       "label": "Auto2 - ATW"
+      },
+      {
+       "id": "5",
+       "label": "Manual"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "0": "b48101043500",
+     "1": "b58101043501",
+     "2": "b68101043502",
+     "3": "b78101043503",
+     "4": "b88101043504",
+     "5": "b98101043505"
+    }
+   }
+  },
+  {
+   "id": "wbTrigger",
+   "name": "One push WB trigger",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000000ba8101041005ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "wbOffsetAdjust",
+   "name": "White Balance - Offset Adjust (up/down/reset)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Adjust",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Up (more red)"
+      },
+      {
+       "id": "2",
+       "label": "Down (more blue)"
+      },
+      {
+       "id": "3",
+       "label": "Reset"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000008000000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "d681017e012e0002",
+     "2": "d781017e012e0003",
+     "3": "d581017e012e0000"
+    }
+   }
+  },
+  {
+   "id": "cameraPower",
+   "name": "Camera Power (on/off)",
+   "options": [
+    {
+     "id": "val",
+     "label": "On / Off",
+     "type": "select",
+     "choices": [
+      {
+       "id": "03",
+       "label": "Off"
+      },
+      {
+       "id": "02",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000006000001{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "03": "848101040003",
+     "02": "858101040002"
+    }
+   }
+  },
+  {
+   "id": "menu",
+   "name": "Menu (on/off/enter)",
+   "options": [
+    {
+     "id": "val",
+     "label": "On / Off (back) or Enter",
+     "type": "select",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On or Back (toggle)"
+      },
+      {
+       "id": "2",
+       "label": "Enter"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "010000{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "1": "060000018b8101060610",
+     "2": "080000018c81017e01020001"
+    }
+   }
+  },
+  {
+   "id": "latency",
+   "name": "Video Latency (normal/low)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Latency",
+     "type": "select",
+     "default": "03",
+     "choices": [
+      {
+       "id": "03",
+       "label": "Normal"
+      },
+      {
+       "id": "02",
+       "label": "Low Latency (disables digital zoom)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000007000001{{option.val|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "val": {
+     "03": "8d81017e015a03",
+     "02": "8e81017e015a02"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "panTilt-home",
+   "category": "Pan/Tilt",
+   "name": "Home",
+   "text": "HOME",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "home",
+    "options": {}
+   }
+  },
+  {
+   "id": "panTilt-slowMode",
+   "category": "Pan/Tilt",
+   "name": "Pan/Tilt Slow Mode (normal/slow)",
+   "text": "ptSlow\nMode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ptSlow",
+    "options": {
+     "bol": "1"
+    }
+   }
+  },
+  {
+   "id": "lens-zoomMode",
+   "category": "Lens",
+   "name": "Zoom Mode",
+   "text": "Zoom\nMode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "zoomMode",
+    "options": {
+     "mode": "3"
+    }
+   }
+  },
+  {
+   "id": "lens-focusAuto",
+   "category": "Lens",
+   "name": "Focus Mode - Auto/Manual",
+   "text": "Focus",
+   "backgroundColor": "#660000",
+   "action": {
+    "definitionId": "focusM",
+    "options": {
+     "bol": "1"
+    }
+   }
+  },
+  {
+   "id": "lens-opaf",
+   "category": "Lens",
+   "name": "One Push Auto Focus",
+   "text": "O.P.\nAF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusOpaf",
+    "options": {}
+   }
+  },
+  {
+   "id": "exposure-autoManual",
+   "category": "Exposure",
+   "name": "Auto/Manual Exposure Toggle",
+   "text": "Expose",
+   "backgroundColor": "#666600",
+   "action": {
+    "definitionId": "expM",
+    "options": {
+     "val": "0"
+    }
+   }
+  },
+  {
+   "id": "exposure-irisUp",
+   "category": "Exposure",
+   "name": "Iris Up",
+   "text": "IRIS\nUp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "irisAdjust",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "exposure-irisDown",
+   "category": "Exposure",
+   "name": "Iris Down",
+   "text": "IRIS\nDown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "irisAdjust",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "exposure-gainUp",
+   "category": "Exposure",
+   "name": "Gain Up",
+   "text": "Gain\nUp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gainAdjust",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "exposure-gainDown",
+   "category": "Exposure",
+   "name": "Gain Down",
+   "text": "Gain\nDown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gainAdjust",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "exposure-shutterUp",
+   "category": "Exposure",
+   "name": "Shutter Up",
+   "text": "Shut\nUp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutterAdjust",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "exposure-shutterDown",
+   "category": "Exposure",
+   "name": "Shutter Down",
+   "text": "Shut\nDown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutterAdjust",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "exposure-brightnessUp",
+   "category": "Exposure",
+   "name": "Brightness Up",
+   "text": "Bright\nUp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brightnessAdjust",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "exposure-brightnessDown",
+   "category": "Exposure",
+   "name": "Brightness Down",
+   "text": "Bright\nDown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brightnessAdjust",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "exposure-ExposureCompOnOff",
+   "category": "Exposure",
+   "name": "Exposure Compensation On/Off",
+   "text": "Expose\nComp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureCompOnOff",
+    "options": {
+     "bol": "1"
+    }
+   }
+  },
+  {
+   "id": "exposure-CompensationUp",
+   "category": "Exposure",
+   "name": "Exposure Compensation Up",
+   "text": "Expose\nComp\nUp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureComp",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "exposure-CompensationDown",
+   "category": "Exposure",
+   "name": "Exposure Compensation Down",
+   "text": "Expose\nComp\nDown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureComp",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "exposure-CompensationReset",
+   "category": "Exposure",
+   "name": "Exposure Compensation Reset",
+   "text": "Expose\nComp\nReset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureComp",
+    "options": {
+     "val": "3"
+    }
+   }
+  },
+  {
+   "id": "exposure-BacklightCompOnOff",
+   "category": "Exposure",
+   "name": "Backlight Compensation On/Off",
+   "text": "BckLite\nComp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "backlightComp",
+    "options": {
+     "bol": "1"
+    }
+   }
+  },
+  {
+   "id": "exposure-SpotlightCompOnOff",
+   "category": "Exposure",
+   "name": "Spotlight Compensation On/Off",
+   "text": "SptLite\nComp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "spotlightComp",
+    "options": {
+     "bol": "1"
+    }
+   }
+  },
+  {
+   "id": "color-wbModeAuto",
+   "category": "Color",
+   "name": "White Balance Mode - Auto1",
+   "text": "WB\nAuto1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whiteBal",
+    "options": {
+     "val": "0"
+    }
+   }
+  },
+  {
+   "id": "color-wbModeAuto2",
+   "category": "Color",
+   "name": "White Balance Mode - Auto2 (ATW)",
+   "text": "WB\nAuto2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whiteBal",
+    "options": {
+     "val": "4"
+    }
+   }
+  },
+  {
+   "id": "color-wbModeIndoor",
+   "category": "Color",
+   "name": "White Balance Mode - Indoor",
+   "text": "WB\nIndoor",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whiteBal",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "color-wbModeOutdoor",
+   "category": "Color",
+   "name": "White Balance Mode - Outdoor",
+   "text": "WB\nOutdoor",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whiteBal",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "color-wbModeManual",
+   "category": "Color",
+   "name": "White Balance Mode - Manual",
+   "text": "WB\nManual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whiteBal",
+    "options": {
+     "val": "5"
+    }
+   }
+  },
+  {
+   "id": "color-wbModeOPWB",
+   "category": "Color",
+   "name": "White Balance Mode - One push WB",
+   "text": "WB\n1 Push",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whiteBal",
+    "options": {
+     "val": "3"
+    }
+   }
+  },
+  {
+   "id": "color-wbOPWBTrigger",
+   "category": "Color",
+   "name": "One push WB trigger (must be in One push WB mode)",
+   "text": "1 Push\nTrigger",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wbTrigger",
+    "options": {}
+   }
+  },
+  {
+   "id": "color-wbOffsetReset",
+   "category": "Color",
+   "name": "White Balance - Offset Reset",
+   "text": "WB\nOffset\nReset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wbOffsetAdjust",
+    "options": {
+     "val": "3"
+    }
+   }
+  },
+  {
+   "id": "color-wbOffsetUp",
+   "category": "Color",
+   "name": "White Balance - Offset Up (more red)",
+   "text": "WB\nOffset\nUp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wbOffsetAdjust",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "color-wbOffsetDown",
+   "category": "Color",
+   "name": "White Balance - Offset Down (more blue)",
+   "text": "WB\nOffset\nDown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wbOffsetAdjust",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "system-powerOn",
+   "category": "System",
+   "name": "Camera Power On",
+   "text": "Cam\nOn",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cameraPower",
+    "options": {
+     "val": "02"
+    }
+   }
+  },
+  {
+   "id": "system-powerOff",
+   "category": "System",
+   "name": "Camera Power Off",
+   "text": "Cam\nOff",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cameraPower",
+    "options": {
+     "val": "03"
+    }
+   }
+  },
+  {
+   "id": "system-menuBack",
+   "category": "System",
+   "name": "Menu/Back Button",
+   "text": "Menu\n/Back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "menu",
+    "options": {
+     "val": "1"
+    }
+   }
+  },
+  {
+   "id": "system-menuEnter",
+   "category": "System",
+   "name": "Menu Enter Button",
+   "text": "Menu\nEnter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "menu",
+    "options": {
+     "val": "2"
+    }
+   }
+  },
+  {
+   "id": "exposure-iris",
+   "category": "Rotation Enabled",
+   "name": "Iris - tap to open iris",
+   "text": "Iris",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "irisS",
+    "options": {
+     "val": "15"
+    }
+   }
+  },
+  {
+   "id": "exposure-gain",
+   "category": "Rotation Enabled",
+   "name": "Gain - tap to set to 0dB",
+   "text": "Gain",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gainS",
+    "options": {
+     "val": "01"
+    }
+   }
+  },
+  {
+   "id": "exposure-shutter",
+   "category": "Rotation Enabled",
+   "name": "Shutter - tap for default (1/60 or 1/50)",
+   "text": "Shutter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutS",
+    "options": {
+     "val": "12"
+    }
+   }
+  },
+  {
+   "id": "exposure-brightness",
+   "category": "Rotation Enabled",
+   "name": "Brightness - tap for default (1/60 or 1/50)",
+   "text": "Bright",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "brightnessSet",
+    "options": {
+     "val": "11"
+    }
+   }
+  },
+  {
+   "id": "exposure-Compensation",
+   "category": "Rotation Enabled",
+   "name": "Exposure Compensation - tap to reset",
+   "text": "Expose\nComp",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposureComp",
+    "options": {
+     "val": "3"
+    }
+   }
+  },
+  {
+   "id": "color-wbOffset",
+   "category": "Rotation Enabled",
+   "name": "White Balance Offset - tap to reset",
+   "text": "WB\nOffset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wbOffsetAdjust",
+    "options": {
+     "val": "3"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-sony-visca",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Greg Oseid, Yuri Vidal, Per Røine"
+  }
+ ],
+ "source": {
+  "module": "sony-visca",
+  "version": "2.7.5",
+  "license": "MIT",
+  "maintainers": [
+   "Greg Oseid",
+   "Yuri Vidal",
+   "Per Røine"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-sony-visca.git"
+ }
+}

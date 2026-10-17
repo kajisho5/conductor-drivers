@@ -1,0 +1,116 @@
+{
+ "format": 1,
+ "id": "m-foscam-ptz",
+ "name": "foscam PTZ Camera",
+ "category": "foscam",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:88",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "user",
+   "label": "User name",
+   "type": "text",
+   "help": "The username for authentication"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "help": "The password for authentication"
+  }
+ ],
+ "actions": [
+  {
+   "id": "zoomI",
+   "name": "Zoom In",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=zoomIn"
+   }
+  },
+  {
+   "id": "zoomO",
+   "name": "Zoom Out",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=zoomOut"
+   }
+  },
+  {
+   "id": "zoomStop",
+   "name": "Zoom Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=zoomStop"
+   }
+  },
+  {
+   "id": "preset",
+   "name": "Goto Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzGotoPresetPoint&name={{option.preset}}"
+   }
+  },
+  {
+   "id": "setPreset",
+   "name": "Set Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/CGIProxy.fcgi?usr=&pwd=&cmd=ptzAddPresetPoint"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-foscam-ptz",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Bastiaan Rodenburg"
+  }
+ ],
+ "source": {
+  "module": "foscam-ptz",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Bastiaan Rodenburg"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-foscam-ptz.git"
+ }
+}

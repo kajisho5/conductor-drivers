@@ -1,0 +1,1742 @@
+{
+ "format": 1,
+ "id": "m-klang-immersive",
+ "name": "Klang Immersive / Konductor / Vokal / DMI-Klang",
+ "category": "Klang",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9110,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "type",
+   "label": "Klang device",
+   "type": "select",
+   "default": "vokal",
+   "choices": [
+    {
+     "id": "vokal",
+     "label": "KLANG:vokal"
+    },
+    {
+     "id": "konductor",
+     "label": "KLANG:konductor"
+    },
+    {
+     "id": "dmi",
+     "label": "DMI-KLANG"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "Action_SetChannelVolume",
+   "name": "Set channel volume",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mix 1"
+      },
+      {
+       "id": "2",
+       "label": "Mix 2"
+      },
+      {
+       "id": "3",
+       "label": "Mix 3"
+      },
+      {
+       "id": "4",
+       "label": "Mix 4"
+      },
+      {
+       "id": "5",
+       "label": "Mix 5"
+      },
+      {
+       "id": "6",
+       "label": "Mix 6"
+      },
+      {
+       "id": "7",
+       "label": "Mix 7"
+      },
+      {
+       "id": "8",
+       "label": "Mix 8"
+      },
+      {
+       "id": "9",
+       "label": "Mix 9"
+      },
+      {
+       "id": "10",
+       "label": "Mix 10"
+      },
+      {
+       "id": "11",
+       "label": "Mix 11"
+      },
+      {
+       "id": "12",
+       "label": "Mix 12"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "41",
+       "label": "Channel 41"
+      },
+      {
+       "id": "42",
+       "label": "Channel 42"
+      },
+      {
+       "id": "43",
+       "label": "Channel 43"
+      },
+      {
+       "id": "44",
+       "label": "Channel 44"
+      },
+      {
+       "id": "45",
+       "label": "Channel 45"
+      },
+      {
+       "id": "46",
+       "label": "Channel 46"
+      },
+      {
+       "id": "47",
+       "label": "Channel 47"
+      },
+      {
+       "id": "48",
+       "label": "Channel 48"
+      },
+      {
+       "id": "49",
+       "label": "Channel 49"
+      },
+      {
+       "id": "50",
+       "label": "Channel 50"
+      },
+      {
+       "id": "51",
+       "label": "Channel 51"
+      },
+      {
+       "id": "52",
+       "label": "Channel 52"
+      },
+      {
+       "id": "53",
+       "label": "Channel 53"
+      },
+      {
+       "id": "54",
+       "label": "Channel 54"
+      },
+      {
+       "id": "55",
+       "label": "Channel 55"
+      },
+      {
+       "id": "56",
+       "label": "Channel 56"
+      },
+      {
+       "id": "57",
+       "label": "Channel 57"
+      },
+      {
+       "id": "58",
+       "label": "Channel 58"
+      },
+      {
+       "id": "59",
+       "label": "Channel 59"
+      },
+      {
+       "id": "60",
+       "label": "Channel 60"
+      },
+      {
+       "id": "61",
+       "label": "Channel 61"
+      },
+      {
+       "id": "62",
+       "label": "Channel 62"
+      },
+      {
+       "id": "63",
+       "label": "Channel 63"
+      },
+      {
+       "id": "64",
+       "label": "Channel 64"
+      }
+     ]
+    },
+    {
+     "id": "fader",
+     "label": "fader value",
+     "type": "select",
+     "default": "-60",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 db"
+      },
+      {
+       "id": "-1",
+       "label": "-1 db"
+      },
+      {
+       "id": "-2",
+       "label": "-2 db"
+      },
+      {
+       "id": "-3",
+       "label": "-3 db"
+      },
+      {
+       "id": "-4",
+       "label": "-4 db"
+      },
+      {
+       "id": "-5",
+       "label": "-5 db"
+      },
+      {
+       "id": "-6",
+       "label": "-6 db"
+      },
+      {
+       "id": "-7",
+       "label": "-7 db"
+      },
+      {
+       "id": "-8",
+       "label": "-8 db"
+      },
+      {
+       "id": "-9",
+       "label": "-9 db"
+      },
+      {
+       "id": "-10",
+       "label": "-10 db"
+      },
+      {
+       "id": "-12",
+       "label": "-12 db"
+      },
+      {
+       "id": "-14",
+       "label": "-14 db"
+      },
+      {
+       "id": "-16",
+       "label": "-16 db"
+      },
+      {
+       "id": "-18",
+       "label": "-18 db"
+      },
+      {
+       "id": "-20",
+       "label": "-20 db"
+      },
+      {
+       "id": "-22",
+       "label": "-22 db"
+      },
+      {
+       "id": "-24",
+       "label": "-24 db"
+      },
+      {
+       "id": "-26",
+       "label": "-26 db"
+      },
+      {
+       "id": "-28",
+       "label": "-28 db"
+      },
+      {
+       "id": "-30",
+       "label": "-30 db"
+      },
+      {
+       "id": "-50",
+       "label": "-50 db"
+      },
+      {
+       "id": "-60",
+       "label": "-60 db"
+      },
+      {
+       "id": "-90",
+       "label": "OFF"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/ui/{{option.mix|map}}/ch/{{option.channel}}/gaindB",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.fader|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mix": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12"
+    },
+    "fader": {
+     "0": "0",
+     "-60": "-60",
+     "-1": "-1",
+     "-2": "-2",
+     "-3": "-3",
+     "-4": "-4",
+     "-5": "-5",
+     "-6": "-6",
+     "-7": "-7",
+     "-8": "-8",
+     "-9": "-9",
+     "-10": "-10",
+     "-12": "-12",
+     "-14": "-14",
+     "-16": "-16",
+     "-18": "-18",
+     "-20": "-20",
+     "-22": "-22",
+     "-24": "-24",
+     "-26": "-26",
+     "-28": "-28",
+     "-30": "-30",
+     "-50": "-50",
+     "-90": "-90"
+    }
+   }
+  },
+  {
+   "id": "Action_SetMixVolume",
+   "name": "Set mix volume",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mix 1"
+      },
+      {
+       "id": "2",
+       "label": "Mix 2"
+      },
+      {
+       "id": "3",
+       "label": "Mix 3"
+      },
+      {
+       "id": "4",
+       "label": "Mix 4"
+      },
+      {
+       "id": "5",
+       "label": "Mix 5"
+      },
+      {
+       "id": "6",
+       "label": "Mix 6"
+      },
+      {
+       "id": "7",
+       "label": "Mix 7"
+      },
+      {
+       "id": "8",
+       "label": "Mix 8"
+      },
+      {
+       "id": "9",
+       "label": "Mix 9"
+      },
+      {
+       "id": "10",
+       "label": "Mix 10"
+      },
+      {
+       "id": "11",
+       "label": "Mix 11"
+      },
+      {
+       "id": "12",
+       "label": "Mix 12"
+      }
+     ]
+    },
+    {
+     "id": "fader",
+     "label": "fader value",
+     "type": "select",
+     "default": "-60",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 db"
+      },
+      {
+       "id": "-1",
+       "label": "-1 db"
+      },
+      {
+       "id": "-2",
+       "label": "-2 db"
+      },
+      {
+       "id": "-3",
+       "label": "-3 db"
+      },
+      {
+       "id": "-4",
+       "label": "-4 db"
+      },
+      {
+       "id": "-5",
+       "label": "-5 db"
+      },
+      {
+       "id": "-6",
+       "label": "-6 db"
+      },
+      {
+       "id": "-7",
+       "label": "-7 db"
+      },
+      {
+       "id": "-8",
+       "label": "-8 db"
+      },
+      {
+       "id": "-9",
+       "label": "-9 db"
+      },
+      {
+       "id": "-10",
+       "label": "-10 db"
+      },
+      {
+       "id": "-12",
+       "label": "-12 db"
+      },
+      {
+       "id": "-14",
+       "label": "-14 db"
+      },
+      {
+       "id": "-16",
+       "label": "-16 db"
+      },
+      {
+       "id": "-18",
+       "label": "-18 db"
+      },
+      {
+       "id": "-20",
+       "label": "-20 db"
+      },
+      {
+       "id": "-22",
+       "label": "-22 db"
+      },
+      {
+       "id": "-24",
+       "label": "-24 db"
+      },
+      {
+       "id": "-26",
+       "label": "-26 db"
+      },
+      {
+       "id": "-28",
+       "label": "-28 db"
+      },
+      {
+       "id": "-30",
+       "label": "-30 db"
+      },
+      {
+       "id": "-50",
+       "label": "-50 db"
+      },
+      {
+       "id": "-60",
+       "label": "-60 db"
+      },
+      {
+       "id": "-90",
+       "label": "OFF"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/ui/{{option.mix|map}}/gaindB",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.fader|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mix": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12"
+    },
+    "fader": {
+     "0": "0",
+     "-60": "-60",
+     "-1": "-1",
+     "-2": "-2",
+     "-3": "-3",
+     "-4": "-4",
+     "-5": "-5",
+     "-6": "-6",
+     "-7": "-7",
+     "-8": "-8",
+     "-9": "-9",
+     "-10": "-10",
+     "-12": "-12",
+     "-14": "-14",
+     "-16": "-16",
+     "-18": "-18",
+     "-20": "-20",
+     "-22": "-22",
+     "-24": "-24",
+     "-26": "-26",
+     "-28": "-28",
+     "-30": "-30",
+     "-50": "-50",
+     "-90": "-90"
+    }
+   }
+  },
+  {
+   "id": "Action_SoloChannel",
+   "name": "Solo channel",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mix 1"
+      },
+      {
+       "id": "2",
+       "label": "Mix 2"
+      },
+      {
+       "id": "3",
+       "label": "Mix 3"
+      },
+      {
+       "id": "4",
+       "label": "Mix 4"
+      },
+      {
+       "id": "5",
+       "label": "Mix 5"
+      },
+      {
+       "id": "6",
+       "label": "Mix 6"
+      },
+      {
+       "id": "7",
+       "label": "Mix 7"
+      },
+      {
+       "id": "8",
+       "label": "Mix 8"
+      },
+      {
+       "id": "9",
+       "label": "Mix 9"
+      },
+      {
+       "id": "10",
+       "label": "Mix 10"
+      },
+      {
+       "id": "11",
+       "label": "Mix 11"
+      },
+      {
+       "id": "12",
+       "label": "Mix 12"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "41",
+       "label": "Channel 41"
+      },
+      {
+       "id": "42",
+       "label": "Channel 42"
+      },
+      {
+       "id": "43",
+       "label": "Channel 43"
+      },
+      {
+       "id": "44",
+       "label": "Channel 44"
+      },
+      {
+       "id": "45",
+       "label": "Channel 45"
+      },
+      {
+       "id": "46",
+       "label": "Channel 46"
+      },
+      {
+       "id": "47",
+       "label": "Channel 47"
+      },
+      {
+       "id": "48",
+       "label": "Channel 48"
+      },
+      {
+       "id": "49",
+       "label": "Channel 49"
+      },
+      {
+       "id": "50",
+       "label": "Channel 50"
+      },
+      {
+       "id": "51",
+       "label": "Channel 51"
+      },
+      {
+       "id": "52",
+       "label": "Channel 52"
+      },
+      {
+       "id": "53",
+       "label": "Channel 53"
+      },
+      {
+       "id": "54",
+       "label": "Channel 54"
+      },
+      {
+       "id": "55",
+       "label": "Channel 55"
+      },
+      {
+       "id": "56",
+       "label": "Channel 56"
+      },
+      {
+       "id": "57",
+       "label": "Channel 57"
+      },
+      {
+       "id": "58",
+       "label": "Channel 58"
+      },
+      {
+       "id": "59",
+       "label": "Channel 59"
+      },
+      {
+       "id": "60",
+       "label": "Channel 60"
+      },
+      {
+       "id": "61",
+       "label": "Channel 61"
+      },
+      {
+       "id": "62",
+       "label": "Channel 62"
+      },
+      {
+       "id": "63",
+       "label": "Channel 63"
+      },
+      {
+       "id": "64",
+       "label": "Channel 64"
+      }
+     ]
+    },
+    {
+     "id": "solo",
+     "label": "Solo on/off",
+     "type": "select",
+     "default": "T",
+     "choices": [
+      {
+       "id": "T",
+       "label": "on"
+      },
+      {
+       "id": "F",
+       "label": "off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/ui/{{option.mix|map}}/ch/{{option.channel}}/solo",
+    "args": [
+     {
+      "type": "{{option.solo|map}}",
+      "value": ""
+     }
+    ]
+   },
+   "maps": {
+    "mix": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12"
+    },
+    "solo": {
+     "T": "T",
+     "F": "F"
+    }
+   }
+  },
+  {
+   "id": "Action_MuteChannel",
+   "name": "Mute channel",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mix 1"
+      },
+      {
+       "id": "2",
+       "label": "Mix 2"
+      },
+      {
+       "id": "3",
+       "label": "Mix 3"
+      },
+      {
+       "id": "4",
+       "label": "Mix 4"
+      },
+      {
+       "id": "5",
+       "label": "Mix 5"
+      },
+      {
+       "id": "6",
+       "label": "Mix 6"
+      },
+      {
+       "id": "7",
+       "label": "Mix 7"
+      },
+      {
+       "id": "8",
+       "label": "Mix 8"
+      },
+      {
+       "id": "9",
+       "label": "Mix 9"
+      },
+      {
+       "id": "10",
+       "label": "Mix 10"
+      },
+      {
+       "id": "11",
+       "label": "Mix 11"
+      },
+      {
+       "id": "12",
+       "label": "Mix 12"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "41",
+       "label": "Channel 41"
+      },
+      {
+       "id": "42",
+       "label": "Channel 42"
+      },
+      {
+       "id": "43",
+       "label": "Channel 43"
+      },
+      {
+       "id": "44",
+       "label": "Channel 44"
+      },
+      {
+       "id": "45",
+       "label": "Channel 45"
+      },
+      {
+       "id": "46",
+       "label": "Channel 46"
+      },
+      {
+       "id": "47",
+       "label": "Channel 47"
+      },
+      {
+       "id": "48",
+       "label": "Channel 48"
+      },
+      {
+       "id": "49",
+       "label": "Channel 49"
+      },
+      {
+       "id": "50",
+       "label": "Channel 50"
+      },
+      {
+       "id": "51",
+       "label": "Channel 51"
+      },
+      {
+       "id": "52",
+       "label": "Channel 52"
+      },
+      {
+       "id": "53",
+       "label": "Channel 53"
+      },
+      {
+       "id": "54",
+       "label": "Channel 54"
+      },
+      {
+       "id": "55",
+       "label": "Channel 55"
+      },
+      {
+       "id": "56",
+       "label": "Channel 56"
+      },
+      {
+       "id": "57",
+       "label": "Channel 57"
+      },
+      {
+       "id": "58",
+       "label": "Channel 58"
+      },
+      {
+       "id": "59",
+       "label": "Channel 59"
+      },
+      {
+       "id": "60",
+       "label": "Channel 60"
+      },
+      {
+       "id": "61",
+       "label": "Channel 61"
+      },
+      {
+       "id": "62",
+       "label": "Channel 62"
+      },
+      {
+       "id": "63",
+       "label": "Channel 63"
+      },
+      {
+       "id": "64",
+       "label": "Channel 64"
+      }
+     ]
+    },
+    {
+     "id": "mute",
+     "label": "Mute on/off",
+     "type": "select",
+     "default": "T",
+     "choices": [
+      {
+       "id": "T",
+       "label": "on"
+      },
+      {
+       "id": "F",
+       "label": "off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/ui/{{option.mix|map}}/ch/{{option.channel}}/mute",
+    "args": [
+     {
+      "type": "{{option.mute|map}}",
+      "value": ""
+     }
+    ]
+   },
+   "maps": {
+    "mix": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12"
+    },
+    "mute": {
+     "T": "T",
+     "F": "F"
+    }
+   }
+  },
+  {
+   "id": "Action_MixMode",
+   "name": "Mix mode",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mix 1"
+      },
+      {
+       "id": "2",
+       "label": "Mix 2"
+      },
+      {
+       "id": "3",
+       "label": "Mix 3"
+      },
+      {
+       "id": "4",
+       "label": "Mix 4"
+      },
+      {
+       "id": "5",
+       "label": "Mix 5"
+      },
+      {
+       "id": "6",
+       "label": "Mix 6"
+      },
+      {
+       "id": "7",
+       "label": "Mix 7"
+      },
+      {
+       "id": "8",
+       "label": "Mix 8"
+      },
+      {
+       "id": "9",
+       "label": "Mix 9"
+      },
+      {
+       "id": "10",
+       "label": "Mix 10"
+      },
+      {
+       "id": "11",
+       "label": "Mix 11"
+      },
+      {
+       "id": "12",
+       "label": "Mix 12"
+      }
+     ]
+    },
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mono"
+      },
+      {
+       "id": "2",
+       "label": "Stereo"
+      },
+      {
+       "id": "3",
+       "label": "3D"
+      },
+      {
+       "id": "4",
+       "label": "i3D"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/ui/{{option.mix|map}}/mode",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mode|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mix": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12"
+    },
+    "mode": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "Action_SnapshotIdUpdate",
+   "name": "Update snapshot by ID",
+   "options": [
+    {
+     "id": "snapshot",
+     "label": "Snapshot ID",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/co/updateSnaphot",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.snapshot}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SnapshotCurrentUpdate",
+   "name": "Update current snapshot",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/co/updateSnaphot",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SnapshotIdGo",
+   "name": "Fire snapshot by ID",
+   "options": [
+    {
+     "id": "snapshot",
+     "label": "Snapshot ID",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/co/recall",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.snapshot}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SnapshotIndexGo",
+   "name": "Fire snapshot by Position",
+   "options": [
+    {
+     "id": "snapshot",
+     "label": "Snapshot Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/co/recallInd",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.snapshot}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SnapshotNext",
+   "name": "Fire next snapshot",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/co/recallNext",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SnapshotPrev",
+   "name": "Fire previous snapshot",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/co/recallPrev",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SnapshotFirst",
+   "name": "Fire previous snapshot",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Kf/co/recallFirst",
+    "args": []
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-klang-immersive",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Pål-Magnus Slåtto"
+  }
+ ],
+ "source": {
+  "module": "klang-immersive",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Pål-Magnus Slåtto"
+  ],
+  "repository": "https://github.com/bitfocus/companion-module-klang-immersive.git"
+ }
+}

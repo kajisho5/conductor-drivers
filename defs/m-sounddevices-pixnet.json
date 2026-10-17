@@ -1,0 +1,475 @@
+{
+ "format": 1,
+ "id": "m-sounddevices-pixnet",
+ "name": "Sound Devices PIXNET",
+ "category": "Sound Devices",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "270",
+   "choices": [
+    {
+     "id": "970",
+     "label": "Sound Devices 970"
+    },
+    {
+     "id": "250",
+     "label": "Video Devices PIX 250i"
+    },
+    {
+     "id": "260",
+     "label": "Video Devices PIX 260i"
+    },
+    {
+     "id": "270",
+     "label": "Video Devices PIX 270i"
+    }
+   ],
+   "help": "The make/model of the device"
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/settransport/play",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/settransport/stop",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "rec",
+   "name": "Record",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/settransport/rec",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "fastForward",
+   "name": "Fast Forward",
+   "options": [
+    {
+     "id": "playbackSpeed",
+     "label": "Speed",
+     "type": "select",
+     "default": "PlayX2",
+     "choices": [
+      {
+       "id": "PlayX2",
+       "label": "x2"
+      },
+      {
+       "id": "PlayX16",
+       "label": "x16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/fastForwardPlay(PlaybackSpeed)/1/10,PlayX{{option.playbackSpeed|map}}",
+    "body": "{}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "playbackSpeed": {
+     "PlayX2": "2",
+     "PlayX16": "16"
+    }
+   }
+  },
+  {
+   "id": "fastReverse",
+   "name": "Fast Reverse",
+   "options": [
+    {
+     "id": "playbackSpeed",
+     "label": "Speed",
+     "type": "select",
+     "default": "PlayX2",
+     "choices": [
+      {
+       "id": "PlayX2",
+       "label": "x2"
+      },
+      {
+       "id": "PlayX16",
+       "label": "x16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/fastReversePlay(PlaybackSpeed)/1/10,PlayX{{option.playbackSpeed|map}}",
+    "body": "{}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "playbackSpeed": {
+     "PlayX2": "2",
+     "PlayX16": "16"
+    }
+   }
+  },
+  {
+   "id": "falseTake",
+   "name": "False Take",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/falseTake()",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "jamReceivedTC",
+   "name": "Jam Received TC",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/jamReceivedTc()",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "jamTimeOfDay",
+   "name": "Jam Time-of-Day",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/jamTimeOfDay()",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "keyPress",
+   "name": "Key Press",
+   "options": [
+    {
+     "id": "keyCode",
+     "label": "Key",
+     "type": "select",
+     "default": "0x01000051",
+     "choices": [
+      {
+       "id": "0x01000080",
+       "label": "Play"
+      },
+      {
+       "id": "0x01000081",
+       "label": "Stop"
+      },
+      {
+       "id": "0x01000082",
+       "label": "RW"
+      },
+      {
+       "id": "0x01000083",
+       "label": "FF"
+      },
+      {
+       "id": "0x01000084",
+       "label": "Record"
+      },
+      {
+       "id": "0x0100004e",
+       "label": "Audio"
+      },
+      {
+       "id": "0x0100004f",
+       "label": "LCD"
+      },
+      {
+       "id": "0x01000050",
+       "label": "Files"
+      },
+      {
+       "id": "0x01000051",
+       "label": "Menu"
+      },
+      {
+       "id": "0x01000004",
+       "label": "Enter"
+      }
+     ]
+    },
+    {
+     "id": "keyEventType",
+     "label": "Event Type",
+     "type": "select",
+     "default": "KeyPressAndRelease",
+     "choices": [
+      {
+       "id": "KeyPressAndRelease",
+       "label": "Press &amp; Release"
+      },
+      {
+       "id": "KeyPress",
+       "label": "Press"
+      },
+      {
+       "id": "KeyRelease",
+       "label": "Release"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/simulateKey(int,KeyEventType)/2/5,0x010000{{option.keyCode|map}}/10,Key{{option.keyEventType|map}}",
+    "body": "{}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "keyCode": {
+     "0x01000051": "51",
+     "0x01000080": "80",
+     "0x01000081": "81",
+     "0x01000082": "82",
+     "0x01000083": "83",
+     "0x01000084": "84",
+     "0x0100004e": "4e",
+     "0x0100004f": "4f",
+     "0x01000050": "50",
+     "0x01000004": "04"
+    },
+    "keyEventType": {
+     "KeyPressAndRelease": "PressAndRelease",
+     "KeyPress": "Press",
+     "KeyRelease": "Release"
+    }
+   }
+  },
+  {
+   "id": "closeMessageBox",
+   "name": "Close Message Box",
+   "options": [
+    {
+     "id": "buttonText",
+     "label": "Button Text to Push",
+     "type": "text",
+     "default": "OK",
+     "help": "Enter text exactly as it appears on the LCD"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/closeMessageBox(QString)/1/10,{{option.buttonText}}",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setDialogDismiss",
+   "name": "Set Dialog Dismiss",
+   "options": [
+    {
+     "id": "time",
+     "label": "Time",
+     "type": "text",
+     "default": "2",
+     "help": "0 disables automatic dismissal"
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "Accept",
+     "choices": [
+      {
+       "id": "Accept",
+       "label": "Accept"
+      },
+      {
+       "id": "Reject",
+       "label": "Reject"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/setAutoDismiss(int,DialogControl)/2/5,{{option.time}}/10,{{option.action|map}}t",
+    "body": "{}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "Accept": "Accep",
+     "Reject": "Rejec"
+    }
+   }
+  },
+  {
+   "id": "formatAllDrives",
+   "name": "Format All Drives",
+   "options": [
+    {
+     "id": "label",
+     "label": "Label",
+     "type": "text",
+     "default": "PIX"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/formatAllDrives(QString,QString)/2/10,{{option.label}}/10,EXFAT",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "createSoundReport",
+   "name": "Create Sound Report",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/invoke/RemoteApi/createSoundReportCurrentReel()",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setDriveMode",
+   "name": "Set Drive Mode",
+   "options": [
+    {
+     "id": "id",
+     "label": "Drive",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "D1"
+      },
+      {
+       "id": "2",
+       "label": "D2"
+      },
+      {
+       "id": "3",
+       "label": "D3"
+      },
+      {
+       "id": "4",
+       "label": "D4"
+      }
+     ]
+    },
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "Record",
+     "choices": [
+      {
+       "id": "Off",
+       "label": "Off"
+      },
+      {
+       "id": "Record",
+       "label": "Record"
+      },
+      {
+       "id": "Ethernet File Transfer",
+       "label": "Ethernet File Transfer"
+      },
+      {
+       "id": "Switch to Network upon Full",
+       "label": "Switch to Network upon Full"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/sounddevices/setsetting/RecordToDrive{{option.id|map}}={{option.mode|map}}",
+    "body": "{}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "id": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "mode": {
+     "Record": "Record",
+     "Off": "Off",
+     "Ethernet File Transfer": "Ethernet%20File%20Transfer",
+     "Switch to Network upon Full": "Switch%20to%20Network%20upon%20Full"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-sounddevices-pixnet",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "sounddevices-pixnet",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-sounddevices-pixnet.git"
+ }
+}

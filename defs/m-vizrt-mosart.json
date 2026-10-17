@@ -1,0 +1,1979 @@
+{
+ "format": 1,
+ "id": "m-vizrt-mosart",
+ "name": "Vizrt Mosart",
+ "category": "Vizrt",
+ "version": "1.0.5",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:55142",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "useWebApi",
+   "label": "Use Web API",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "apiKey",
+   "label": "API Key",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "reload",
+   "name": "Reload rundown",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/reload"
+   }
+  },
+  {
+   "id": "start_continue",
+   "name": "Start/Continue the rundown",
+   "options": [
+    {
+     "id": "option",
+     "label": "Option",
+     "type": "select",
+     "default": "Default",
+     "choices": [
+      {
+       "id": "Default",
+       "label": "Default"
+      },
+      {
+       "id": "Continue",
+       "label": "Continue"
+      },
+      {
+       "id": "Mix",
+       "label": "Mix"
+      },
+      {
+       "id": "Wipe",
+       "label": "Wipe"
+      },
+      {
+       "id": "Effect",
+       "label": "Effect"
+      }
+     ]
+    },
+    {
+     "id": "rate",
+     "label": "Rate",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 1000000,
+     "help": "The transition rate for mix/wipe"
+    },
+    {
+     "id": "effect",
+     "label": "Effect",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100,
+     "help": "The effect number"
+    },
+    {
+     "id": "delay",
+     "label": "Delay",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 1000000,
+     "help": "The delay in milliseconds for continue"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/start-continue?option={{option.option|map}}&rate={{option.rate}}&effect={{option.effect}}&delay={{option.delay}}"
+   },
+   "maps": {
+    "option": {
+     "Default": "Default",
+     "Continue": "Continue",
+     "Mix": "Mix",
+     "Wipe": "Wipe",
+     "Effect": "Effect"
+    }
+   }
+  },
+  {
+   "id": "skip_next",
+   "name": "Skip to next story",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/skip-next"
+   }
+  },
+  {
+   "id": "unskip_next",
+   "name": "Unskip to next story",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/un-skip-next"
+   }
+  },
+  {
+   "id": "skip_next_subitem",
+   "name": "Skip to next subitem",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/skip-next-sub-item"
+   }
+  },
+  {
+   "id": "unskip_next_subitem",
+   "name": "Unskip to next subitem",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/un-skip-next-sub-item"
+   }
+  },
+  {
+   "id": "start_from_top",
+   "name": "Restart the rundown from the first story",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/start-from-top"
+   }
+  },
+  {
+   "id": "set_as_next",
+   "name": "Set the current story as next",
+   "options": [
+    {
+     "id": "storyId",
+     "label": "Story ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/set-as-next?storyId={{option.storyId}}"
+   }
+  },
+  {
+   "id": "rehearsal_mode",
+   "name": "Toggle Rehearsal Mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/rehearsal-mode?state=true"
+   }
+  },
+  {
+   "id": "template",
+   "name": "Take template",
+   "options": [
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "Camera",
+     "choices": [
+      {
+       "id": "Camera",
+       "label": "Camera"
+      },
+      {
+       "id": "Package",
+       "label": "Package"
+      },
+      {
+       "id": "VoiceOver",
+       "label": "VoiceOver"
+      },
+      {
+       "id": "Live",
+       "label": "Live"
+      },
+      {
+       "id": "Graphics",
+       "label": "Graphics"
+      },
+      {
+       "id": "DVE",
+       "label": "DVE"
+      },
+      {
+       "id": "Jingle",
+       "label": "Jingle"
+      },
+      {
+       "id": "Telephone",
+       "label": "Telephone"
+      },
+      {
+       "id": "AdlibPix",
+       "label": "AdlibPix"
+      },
+      {
+       "id": "Break",
+       "label": "Break"
+      },
+      {
+       "id": "VideoWall",
+       "label": "VideoWall"
+      },
+      {
+       "id": "Sound",
+       "label": "Sound"
+      },
+      {
+       "id": "Accessories",
+       "label": "Accessories"
+      }
+     ]
+    },
+    {
+     "id": "variant",
+     "label": "Variant",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "Program",
+       "label": "Program"
+      },
+      {
+       "id": "Preview",
+       "label": "Preview"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/template?type={{option.type|map}}&variant={{option.variant}}&bus={{option.bus|map}}"
+   },
+   "maps": {
+    "type": {
+     "Camera": "Camera",
+     "Package": "Package",
+     "VoiceOver": "VoiceOver",
+     "Live": "Live",
+     "Graphics": "Graphics",
+     "DVE": "DVE",
+     "Jingle": "Jingle",
+     "Telephone": "Telephone",
+     "AdlibPix": "AdlibPix",
+     "Break": "Break",
+     "VideoWall": "VideoWall",
+     "Sound": "Sound",
+     "Accessories": "Accessories"
+    },
+    "bus": {
+     "": "",
+     "Program": "Program",
+     "Preview": "Preview"
+    }
+   }
+  },
+  {
+   "id": "direct_take",
+   "name": "Executes a DirectTake template",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10000000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/directtake?number={{option.number}}"
+   }
+  },
+  {
+   "id": "control_command",
+   "name": "Control command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/{{option.command}}"
+   }
+  },
+  {
+   "id": "open_rundown",
+   "name": "Open rundown",
+   "options": [
+    {
+     "id": "id",
+     "label": "ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/open-rundown?id={{option.id}}"
+   }
+  },
+  {
+   "id": "autotake",
+   "name": "Auto Take (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "TOGGLE",
+     "choices": [
+      {
+       "id": "TOGGLE",
+       "label": "Toggle"
+      },
+      {
+       "id": "ACTIVATE",
+       "label": "Activate"
+      },
+      {
+       "id": "DEACTIVATE",
+       "label": "Deactivate"
+      },
+      {
+       "id": "TRUE",
+       "label": "True"
+      },
+      {
+       "id": "FALSE",
+       "label": "False"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/autotake?Action={{option.Action|map}}E"
+   },
+   "maps": {
+    "Action": {
+     "TOGGLE": "TOGGL",
+     "ACTIVATE": "ACTIVAT",
+     "DEACTIVATE": "DEACTIVAT",
+     "TRUE": "TRU",
+     "FALSE": "FALS"
+    }
+   }
+  },
+  {
+   "id": "play_story",
+   "name": "Play Story (Control Command)",
+   "options": [
+    {
+     "id": "Story_Name",
+     "label": "Story Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/play_story?Story_Name={{option.Story_Name}}"
+   }
+  },
+  {
+   "id": "release_background",
+   "name": "Release Background (Control Command)",
+   "options": [
+    {
+     "id": "CueOnly",
+     "label": "Cue Only",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/release_background?CueOnly={{option.CueOnly|map}}e"
+   },
+   "maps": {
+    "CueOnly": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "overlay_graphics",
+   "name": "Overlay Graphics (Control Command)",
+   "options": [
+    {
+     "id": "Render",
+     "label": "Render",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "CONTINUE",
+     "choices": [
+      {
+       "id": "CONTINUE",
+       "label": "Continue"
+      },
+      {
+       "id": "TAKE_MANUAL_OUT",
+       "label": "Take Manual Out"
+      },
+      {
+       "id": "TAKE_ALL_OUT",
+       "label": "Take All Out"
+      },
+      {
+       "id": "TAKE_LAST_OUT",
+       "label": "Take Last Out"
+      },
+      {
+       "id": "PRETAKE_NEXT",
+       "label": "Pretake Next"
+      },
+      {
+       "id": "CLEAR",
+       "label": "Clear"
+      },
+      {
+       "id": "MACRO",
+       "label": "Macro"
+      },
+      {
+       "id": "TAKE_NAMED_OVERLAY",
+       "label": "Take Named Overlay"
+      }
+     ]
+    },
+    {
+     "id": "Parameter",
+     "label": "Parameter",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "Value",
+     "label": "Value",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/overlay_graphics?Render={{option.Render}}&Action={{option.Action|map}}&Parameter={{option.Parameter}}&Value={{option.Value}}"
+   },
+   "maps": {
+    "Action": {
+     "CONTINUE": "CONTINUE",
+     "TAKE_MANUAL_OUT": "TAKE_MANUAL_OUT",
+     "TAKE_ALL_OUT": "TAKE_ALL_OUT",
+     "TAKE_LAST_OUT": "TAKE_LAST_OUT",
+     "PRETAKE_NEXT": "PRETAKE_NEXT",
+     "CLEAR": "CLEAR",
+     "MACRO": "MACRO",
+     "TAKE_NAMED_OVERLAY": "TAKE_NAMED_OVERLAY"
+    }
+   }
+  },
+  {
+   "id": "marked",
+   "name": "Marked (Control Command)",
+   "options": [
+    {
+     "id": "Description",
+     "label": "Description",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/marked?Description={{option.Description}}"
+   }
+  },
+  {
+   "id": "directtake_cmd",
+   "name": "Direct Take (Control Command)",
+   "options": [
+    {
+     "id": "Template",
+     "label": "Template",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10000000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/directtake"
+   }
+  },
+  {
+   "id": "accessories_cmd",
+   "name": "Accessories (Control Command)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/accessories"
+   }
+  },
+  {
+   "id": "ncs",
+   "name": "NCS (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "START_STATUS",
+     "choices": [
+      {
+       "id": "START_STATUS",
+       "label": "Start Status"
+      },
+      {
+       "id": "STOP_STATUS",
+       "label": "Stop Status"
+      }
+     ]
+    },
+    {
+     "id": "Parameter",
+     "label": "Parameter",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/ncs?Action=ST{{option.Action|map}}_STATUS&Parameter={{option.Parameter}}"
+   },
+   "maps": {
+    "Action": {
+     "START_STATUS": "ART",
+     "STOP_STATUS": "OP"
+    }
+   }
+  },
+  {
+   "id": "rundown_ncs_resync",
+   "name": "Rundown NCS Resync (Control Command)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/rundown_ncs_resync"
+   }
+  },
+  {
+   "id": "user_message",
+   "name": "User Message (Control Command)",
+   "options": [
+    {
+     "id": "Message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/user_message?Message={{option.Message}}"
+   }
+  },
+  {
+   "id": "overlay_to_manual",
+   "name": "Overlay to Manual (Control Command)",
+   "options": [
+    {
+     "id": "Target",
+     "label": "Target",
+     "type": "select",
+     "default": "SELECTED",
+     "choices": [
+      {
+       "id": "SELECTED",
+       "label": "Selected"
+      },
+      {
+       "id": "ONAIR",
+       "label": "On Air"
+      },
+      {
+       "id": "PREVIEW",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "Handlers",
+     "label": "Handlers",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "TakeOutMethod",
+     "label": "Take Out Method",
+     "type": "select",
+     "default": "AUTOMATIC",
+     "choices": [
+      {
+       "id": "AUTOMATIC",
+       "label": "Automatic"
+      },
+      {
+       "id": "MANUAL",
+       "label": "Manual"
+      }
+     ]
+    },
+    {
+     "id": "storyid",
+     "label": "Story ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/overlay_to_manual?Target={{option.Target|map}}&Handlers={{option.Handlers}}&TakeOutMethod={{option.TakeOutMethod|map}}&storyid={{option.storyid}}"
+   },
+   "maps": {
+    "Target": {
+     "SELECTED": "SELECTED",
+     "ONAIR": "ONAIR",
+     "PREVIEW": "PREVIEW"
+    },
+    "TakeOutMethod": {
+     "AUTOMATIC": "AUTOMATIC",
+     "MANUAL": "MANUAL"
+    }
+   }
+  },
+  {
+   "id": "gui",
+   "name": "GUI (Control Command)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/gui"
+   }
+  },
+  {
+   "id": "asrunlog_event",
+   "name": "As Run Log Event (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "RemotePanelFunctions",
+     "choices": [
+      {
+       "id": "RemotePanelFunctions",
+       "label": "Remote Panel Functions"
+      }
+     ]
+    },
+    {
+     "id": "Parameter",
+     "label": "Parameter",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/asrunlog_event?Action=RemotePanelFunctions&Parameter={{option.Parameter}}"
+   }
+  },
+  {
+   "id": "switch_graphics_mirroring",
+   "name": "Switch Graphics Mirroring (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "TOGGLE",
+     "choices": [
+      {
+       "id": "TOGGLE",
+       "label": "Toggle"
+      },
+      {
+       "id": "ACTIVATE",
+       "label": "Activate"
+      },
+      {
+       "id": "DE-ACTIVATE",
+       "label": "Deactivate"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/switch_graphics_mirroring?Action={{option.Action|map}}E"
+   },
+   "maps": {
+    "Action": {
+     "TOGGLE": "TOGGL",
+     "ACTIVATE": "ACTIVAT",
+     "DE-ACTIVATE": "DE-ACTIVAT"
+    }
+   }
+  },
+  {
+   "id": "enable_graphics_mirroring",
+   "name": "Enable Graphics Mirroring (Control Command)",
+   "options": [
+    {
+     "id": "Target",
+     "label": "Target",
+     "type": "select",
+     "default": "NONE",
+     "choices": [
+      {
+       "id": "NONE",
+       "label": "None"
+      },
+      {
+       "id": "OVERLAY",
+       "label": "Overlay"
+      }
+     ]
+    },
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/enable_graphics_mirroring?Target={{option.Target|map}}{{option.Action|map}}"
+   },
+   "maps": {
+    "Target": {
+     "NONE": "NONE",
+     "OVERLAY": "OVERLAY"
+    },
+    "Action": {
+     "false": "",
+     "true": "&Action=true"
+    }
+   }
+  },
+  {
+   "id": "switch_genlock_mode",
+   "name": "Switch Genlock Mode (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "TOGGLE",
+     "choices": [
+      {
+       "id": "TOGGLE",
+       "label": "Toggle"
+      },
+      {
+       "id": "ACTIVATE",
+       "label": "Activate"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/switch_genlock_mode?Action={{option.Action|map}}E"
+   },
+   "maps": {
+    "Action": {
+     "TOGGLE": "TOGGL",
+     "ACTIVATE": "ACTIVAT"
+    }
+   }
+  },
+  {
+   "id": "engine_switcher",
+   "name": "Engine Switcher (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "INIT",
+     "choices": [
+      {
+       "id": "INIT",
+       "label": "Init"
+      },
+      {
+       "id": "PRESET_STYLE",
+       "label": "Preset Style"
+      },
+      {
+       "id": "GOTO_PREV_PRESET",
+       "label": "Goto Prev Preset"
+      }
+     ]
+    },
+    {
+     "id": "PresetName",
+     "label": "Preset Name",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "Transition",
+     "label": "Transition",
+     "type": "select",
+     "default": "CUT",
+     "choices": [
+      {
+       "id": "CUT",
+       "label": "Cut"
+      },
+      {
+       "id": "TAKE",
+       "label": "Take"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/engine_switcher?Action={{option.Action|map}}&PresetName={{option.PresetName}}&Transition={{option.Transition|map}}"
+   },
+   "maps": {
+    "Action": {
+     "INIT": "INIT",
+     "PRESET_STYLE": "PRESET_STYLE",
+     "GOTO_PREV_PRESET": "GOTO_PREV_PRESET"
+    },
+    "Transition": {
+     "CUT": "CUT",
+     "TAKE": "TAKE"
+    }
+   }
+  },
+  {
+   "id": "autotrans",
+   "name": "Auto Trans (Control Command)",
+   "options": [
+    {
+     "id": "MixEffect",
+     "label": "Mix Effect",
+     "type": "select",
+     "default": "PP",
+     "choices": [
+      {
+       "id": "PP",
+       "label": "PP"
+      },
+      {
+       "id": "PROGRAM",
+       "label": "Program"
+      },
+      {
+       "id": "ME1",
+       "label": "ME1"
+      },
+      {
+       "id": "ME2",
+       "label": "ME2"
+      },
+      {
+       "id": "ME3",
+       "label": "ME3"
+      }
+     ]
+    },
+    {
+     "id": "Transitionrate",
+     "label": "Transition Rate",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/autotrans?MixEffect={{option.MixEffect|map}}&Transitionrate={{option.Transitionrate}}"
+   },
+   "maps": {
+    "MixEffect": {
+     "PP": "PP",
+     "PROGRAM": "PROGRAM",
+     "ME1": "ME1",
+     "ME2": "ME2",
+     "ME3": "ME3"
+    }
+   }
+  },
+  {
+   "id": "dve",
+   "name": "DVE (Control Command)",
+   "options": [
+    {
+     "id": "Direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "FORWARD",
+     "choices": [
+      {
+       "id": "FORWARD",
+       "label": "Forward"
+      },
+      {
+       "id": "FWD",
+       "label": "FWD"
+      },
+      {
+       "id": "REVERSE",
+       "label": "Reverse"
+      },
+      {
+       "id": "REV",
+       "label": "REV"
+      },
+      {
+       "id": "BACKWARD",
+       "label": "Backward"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/dve?Direction={{option.Direction|map}}"
+   },
+   "maps": {
+    "Direction": {
+     "FORWARD": "FORWARD",
+     "FWD": "FWD",
+     "REVERSE": "REVERSE",
+     "REV": "REV",
+     "BACKWARD": "BACKWARD"
+    }
+   }
+  },
+  {
+   "id": "fullscreen_graphics",
+   "name": "Fullscreen Graphics (Control Command)",
+   "options": [
+    {
+     "id": "Engine",
+     "label": "Engine",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "CONTINUE",
+     "choices": [
+      {
+       "id": "CONTINUE",
+       "label": "Continue"
+      },
+      {
+       "id": "MACRO",
+       "label": "Macro"
+      }
+     ]
+    },
+    {
+     "id": "Parameter",
+     "label": "Parameter",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/fullscreen_graphics?Engine={{option.Engine}}&Action={{option.Action|map}}&Parameter={{option.Parameter}}"
+   },
+   "maps": {
+    "Action": {
+     "CONTINUE": "CONTINUE",
+     "MACRO": "MACRO"
+    }
+   }
+  },
+  {
+   "id": "sequence",
+   "name": "Sequence (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "START",
+     "choices": [
+      {
+       "id": "START",
+       "label": "Start"
+      },
+      {
+       "id": "STOP",
+       "label": "Stop"
+      },
+      {
+       "id": "LOOP",
+       "label": "Loop"
+      },
+      {
+       "id": "STOPLOOP",
+       "label": "Stop Loop"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/sequence?Action={{option.Action|map}}"
+   },
+   "maps": {
+    "Action": {
+     "START": "START",
+     "STOP": "STOP",
+     "LOOP": "LOOP",
+     "STOPLOOP": "STOPLOOP"
+    }
+   }
+  },
+  {
+   "id": "video_port",
+   "name": "Video Port (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "PLAY",
+     "choices": [
+      {
+       "id": "PLAY_PAUSE",
+       "label": "Play Pause"
+      },
+      {
+       "id": "PLAY",
+       "label": "Play"
+      },
+      {
+       "id": "PAUSE",
+       "label": "Pause"
+      },
+      {
+       "id": "PLAY_CONTINUE",
+       "label": "Play Continue"
+      },
+      {
+       "id": "STOP",
+       "label": "Stop"
+      },
+      {
+       "id": "CUE",
+       "label": "Cue"
+      },
+      {
+       "id": "RECUE",
+       "label": "Recue"
+      },
+      {
+       "id": "SET_LOOP",
+       "label": "Set Loop"
+      },
+      {
+       "id": "SET_LOOP_OFF",
+       "label": "Set Loop Off"
+      },
+      {
+       "id": "PLAY_TAIL",
+       "label": "Play Tail"
+      },
+      {
+       "id": "CUE_TAIL",
+       "label": "Cue Tail"
+      }
+     ]
+    },
+    {
+     "id": "VideoPort",
+     "label": "Video Port",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "Parameter",
+     "label": "Parameter",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/video_port?Action={{option.Action|map}}&VideoPort={{option.VideoPort}}&Parameter={{option.Parameter}}"
+   },
+   "maps": {
+    "Action": {
+     "PLAY": "PLAY",
+     "PLAY_PAUSE": "PLAY_PAUSE",
+     "PAUSE": "PAUSE",
+     "PLAY_CONTINUE": "PLAY_CONTINUE",
+     "STOP": "STOP",
+     "CUE": "CUE",
+     "RECUE": "RECUE",
+     "SET_LOOP": "SET_LOOP",
+     "SET_LOOP_OFF": "SET_LOOP_OFF",
+     "PLAY_TAIL": "PLAY_TAIL",
+     "CUE_TAIL": "CUE_TAIL"
+    }
+   }
+  },
+  {
+   "id": "get_player_status",
+   "name": "Get Player Status (Control Command)",
+   "options": [
+    {
+     "id": "VideoPort",
+     "label": "Video Port",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/get_player_status?VideoPort={{option.VideoPort}}"
+   }
+  },
+  {
+   "id": "weather",
+   "name": "Weather (Control Command)",
+   "options": [
+    {
+     "id": "Action",
+     "label": "Action",
+     "type": "select",
+     "default": "PLAY",
+     "choices": [
+      {
+       "id": "PLAY",
+       "label": "Play"
+      },
+      {
+       "id": "CONTINUE",
+       "label": "Continue"
+      },
+      {
+       "id": "GOTO_FIRST",
+       "label": "Goto First"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/weather?Action={{option.Action|map}}"
+   },
+   "maps": {
+    "Action": {
+     "PLAY": "PLAY",
+     "CONTINUE": "CONTINUE",
+     "GOTO_FIRST": "GOTO_FIRST"
+    }
+   }
+  },
+  {
+   "id": "graphicsprofile",
+   "name": "Graphics Profile (Control Command)",
+   "options": [
+    {
+     "id": "Name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/graphicsprofile?Name={{option.Name}}"
+   }
+  },
+  {
+   "id": "studiosetup",
+   "name": "Studio Setup (Control Command)",
+   "options": [
+    {
+     "id": "Name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/studiosetup?Name={{option.Name}}"
+   }
+  },
+  {
+   "id": "set_aux_crosspoint",
+   "name": "Set Aux Crosspoint (Control Command)",
+   "options": [
+    {
+     "id": "Bus",
+     "label": "Bus",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "CrossPoint",
+     "label": "Cross Point",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/set_aux_crosspoint?Bus={{option.Bus}}&CrossPoint={{option.CrossPoint}}"
+   }
+  },
+  {
+   "id": "set_crosspoint",
+   "name": "Set Crosspoint (Control Command)",
+   "options": [
+    {
+     "id": "MixEffect",
+     "label": "Mix Effect",
+     "type": "select",
+     "default": "PP",
+     "choices": [
+      {
+       "id": "PP",
+       "label": "PP"
+      },
+      {
+       "id": "PROGRAM",
+       "label": "Program"
+      },
+      {
+       "id": "ME1",
+       "label": "ME1"
+      },
+      {
+       "id": "ME2",
+       "label": "ME2"
+      },
+      {
+       "id": "ME3",
+       "label": "ME3"
+      }
+     ]
+    },
+    {
+     "id": "Bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "A",
+     "choices": [
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      },
+      {
+       "id": "C",
+       "label": "C"
+      },
+      {
+       "id": "D",
+       "label": "D"
+      },
+      {
+       "id": "KEY1",
+       "label": "KEY1"
+      },
+      {
+       "id": "KEY2",
+       "label": "KEY2"
+      },
+      {
+       "id": "KEY3",
+       "label": "KEY3"
+      },
+      {
+       "id": "KEY4",
+       "label": "KEY4"
+      }
+     ]
+    },
+    {
+     "id": "CrossPoint",
+     "label": "Cross Point",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/set_crosspoint?MixEffect={{option.MixEffect|map}}&Bus={{option.Bus|map}}&CrossPoint={{option.CrossPoint}}"
+   },
+   "maps": {
+    "MixEffect": {
+     "PP": "PP",
+     "PROGRAM": "PROGRAM",
+     "ME1": "ME1",
+     "ME2": "ME2",
+     "ME3": "ME3"
+    },
+    "Bus": {
+     "A": "A",
+     "B": "B",
+     "C": "C",
+     "D": "D",
+     "KEY1": "KEY1",
+     "KEY2": "KEY2",
+     "KEY3": "KEY3",
+     "KEY4": "KEY4"
+    }
+   }
+  },
+  {
+   "id": "device_properties",
+   "name": "Device Properties (Control Command)",
+   "options": [
+    {
+     "id": "Parameter1",
+     "label": "Parameter 1",
+     "type": "text",
+     "default": "AUDIO"
+    },
+    {
+     "id": "Parameter2",
+     "label": "Parameter 2",
+     "type": "text",
+     "default": "",
+     "help": "The key of the property you want to set"
+    },
+    {
+     "id": "Parameter3",
+     "label": "Parameter 3",
+     "type": "text",
+     "default": "",
+     "help": "The value of the property you want to set"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/device_properties?Parameter1={{option.Parameter1}}&Parameter2={{option.Parameter2}}&Parameter3={{option.Parameter3}}"
+   }
+  },
+  {
+   "id": "set_videoserver_salvo",
+   "name": "Set Video Server Salvo (Control Command)",
+   "options": [
+    {
+     "id": "Salvo",
+     "label": "Salvo",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/set_videoserver_salvo?Salvo={{option.Salvo}}"
+   }
+  },
+  {
+   "id": "switch_videoserver_mirroring",
+   "name": "Switch Video Server Mirroring (Control Command)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mosart/api/v1/command/controlcommand/switch_videoserver_mirroring"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "start_continue",
+   "category": "Rundown",
+   "name": "Start/Continue the rundown",
+   "text": "F12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "start_continue",
+    "options": {
+     "option": "Default"
+    }
+   }
+  },
+  {
+   "id": "toggle_rehearsal_mode",
+   "category": "Rundown",
+   "name": "Toggle Rehearsal Mode",
+   "text": "Rehearsal",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rehearsal_mode",
+    "options": {}
+   }
+  },
+  {
+   "id": "cam_hard_1",
+   "category": "Camera",
+   "name": "Camera 1",
+   "text": "KAM 1\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "1HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_2",
+   "category": "Camera",
+   "name": "Camera 2",
+   "text": "KAM 2\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "2HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_3",
+   "category": "Camera",
+   "name": "Camera 3",
+   "text": "KAM 3\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "3HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_4",
+   "category": "Camera",
+   "name": "Camera 4",
+   "text": "KAM 4\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "4HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_5",
+   "category": "Camera",
+   "name": "Camera 5",
+   "text": "KAM 5\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "5HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_6",
+   "category": "Camera",
+   "name": "Camera 6",
+   "text": "KAM 6\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "6HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_7",
+   "category": "Camera",
+   "name": "Camera 7",
+   "text": "KAM 7\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "7HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_8",
+   "category": "Camera",
+   "name": "Camera 8",
+   "text": "KAM 8\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "8HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_9",
+   "category": "Camera",
+   "name": "Camera 9",
+   "text": "KAM 9\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "9HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_hard_10",
+   "category": "Camera",
+   "name": "Camera 10",
+   "text": "KAM 10\nHARD",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "10HARD",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_1",
+   "category": "Camera",
+   "name": "Camera 1",
+   "text": "KAM 1\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "1SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_2",
+   "category": "Camera",
+   "name": "Camera 2",
+   "text": "KAM 2\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "2SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_3",
+   "category": "Camera",
+   "name": "Camera 3",
+   "text": "KAM 3\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "3SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_4",
+   "category": "Camera",
+   "name": "Camera 4",
+   "text": "KAM 4\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "4SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_5",
+   "category": "Camera",
+   "name": "Camera 5",
+   "text": "KAM 5\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "5SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_6",
+   "category": "Camera",
+   "name": "Camera 6",
+   "text": "KAM 6\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "6SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_7",
+   "category": "Camera",
+   "name": "Camera 7",
+   "text": "KAM 7\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "7SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_8",
+   "category": "Camera",
+   "name": "Camera 8",
+   "text": "KAM 8\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "8SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_9",
+   "category": "Camera",
+   "name": "Camera 9",
+   "text": "KAM 9\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "9SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "cam_soft_10",
+   "category": "Camera",
+   "name": "Camera 10",
+   "text": "KAM 10\nSOFT",
+   "backgroundColor": "#80ff80",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Camera",
+     "variant": "10SOFT",
+     "bus": "Program"
+    }
+   }
+  },
+  {
+   "id": "ext_1",
+   "category": "External",
+   "name": "External 1",
+   "text": "EXT 1",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "1",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_2",
+   "category": "External",
+   "name": "External 2",
+   "text": "EXT 2",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "2",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_3",
+   "category": "External",
+   "name": "External 3",
+   "text": "EXT 3",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "3",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_4",
+   "category": "External",
+   "name": "External 4",
+   "text": "EXT 4",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "4",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_5",
+   "category": "External",
+   "name": "External 5",
+   "text": "EXT 5",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "5",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_6",
+   "category": "External",
+   "name": "External 6",
+   "text": "EXT 6",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "6",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_7",
+   "category": "External",
+   "name": "External 7",
+   "text": "EXT 7",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "7",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_8",
+   "category": "External",
+   "name": "External 8",
+   "text": "EXT 8",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "8",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_9",
+   "category": "External",
+   "name": "External 9",
+   "text": "EXT 9",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "9",
+     "bus": "Preview"
+    }
+   }
+  },
+  {
+   "id": "ext_10",
+   "category": "External",
+   "name": "External 10",
+   "text": "EXT 10",
+   "backgroundColor": "#9b0000",
+   "action": {
+    "definitionId": "template",
+    "options": {
+     "type": "Live",
+     "variant": "10",
+     "bus": "Preview"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Fredrik Hareide"
+  }
+ ],
+ "source": {
+  "module": "vizrt-mosart",
+  "version": "1.0.5",
+  "license": "MIT",
+  "maintainers": [
+   "Fredrik Hareide"
+  ],
+  "repository": ""
+ }
+}

@@ -1,0 +1,1345 @@
+{
+ "format": 1,
+ "id": "m-tascam-bdmp1",
+ "name": "Tascam BD-MP1",
+ "category": "Tascam",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9030,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "placeholder",
+   "label": "Variable Placeholder",
+   "type": "select",
+   "default": "-",
+   "choices": [
+    {
+     "id": "-",
+     "label": "Dash (-)"
+    },
+    {
+     "id": "0",
+     "label": "Zero (0)"
+    }
+   ],
+   "help": "Character that will be used to fill a variable which is unset."
+  }
+ ],
+ "actions": [
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7STP\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7PLY\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7PAS\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "chapter_jump",
+   "name": "Chapter Jump",
+   "options": [
+    {
+     "id": "chapter",
+     "label": "Chapter",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2000,
+     "help": "DVD/BD Chapter, File No (0001-2000)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SKP{{option.chapter|pad4}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "chapter_jump_next",
+   "name": "Track/Chapter Jump Next",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SKPNX\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "chapter_jump_prev",
+   "name": "Track/Chapter Jump Prev",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SKPPV\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "title_jump",
+   "name": "Title Jump",
+   "options": [
+    {
+     "id": "title",
+     "label": "Title",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 2000,
+     "help": "DVD/BD Title/CD Track No (0001-2000)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7GSK{{option.title|pad4}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "title_jump_next",
+   "name": "Title Jump Next",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7GSKNX\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "title_jump_prev",
+   "name": "Title Jump Prev",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7GSKPV\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "time_mode_code",
+   "name": "Time Mode Code",
+   "options": [
+    {
+     "id": "code",
+     "label": "Time Mode",
+     "type": "select",
+     "default": "TL",
+     "choices": [
+      {
+       "id": "TL",
+       "label": "Total Elapsed"
+      },
+      {
+       "id": "TR",
+       "label": "Total Remain"
+      },
+      {
+       "id": "EL",
+       "label": "Elapsed"
+      },
+      {
+       "id": "RM",
+       "label": "Remain"
+      }
+     ],
+     "help": "Time Mode"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7TMD{{option.code|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "code": {
+     "TL": "TL",
+     "TR": "TR",
+     "EL": "EL",
+     "RM": "RM"
+    }
+   }
+  },
+  {
+   "id": "hide_menu",
+   "name": "Hide Menu",
+   "options": [
+    {
+     "id": "hide",
+     "label": "On/Off",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "OSD on"
+      },
+      {
+       "id": "01",
+       "label": "OSD off"
+      }
+     ],
+     "help": "Complete hiding of the menu/icon displayed on the screen."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7OSD0{{option.hide|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "hide": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "setup_menu",
+   "name": "Setup Menu",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SMN\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "top_menu",
+   "name": "Top Menu (Disc Menu)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7TMN\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "option_menu",
+   "name": "Option Menu",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7OMN\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pop_up_menu",
+   "name": "Pop Up Menu",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7PMN\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "return",
+   "name": "Return",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7RET\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "audio_dialog",
+   "name": "Audio Dialog",
+   "options": [
+    {
+     "id": "code",
+     "label": "Audio stream code",
+     "type": "select",
+     "default": "+",
+     "choices": [
+      {
+       "id": "+",
+       "label": "Primary"
+      },
+      {
+       "id": "-",
+       "label": "Secondary"
+      }
+     ],
+     "help": "Selects dialog in the BD/DVD disc."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7ADG{{option.code|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "code": {
+     "+": "+",
+     "-": "-"
+    }
+   }
+  },
+  {
+   "id": "subtitle",
+   "name": "Subtitle",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SBT1\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "enter",
+   "name": "Enter",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7ENT\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disc_tray",
+   "name": "Disc Tray",
+   "options": [
+    {
+     "id": "tray",
+     "label": "Disc Tray Open/Close",
+     "type": "select",
+     "default": "OP",
+     "choices": [
+      {
+       "id": "OP",
+       "label": "Open"
+      },
+      {
+       "id": "CL",
+       "label": "Close"
+      }
+     ],
+     "help": "Controls Disc Tray"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7OPC{{option.tray|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "tray": {
+     "OP": "OP",
+     "CL": "CL"
+    }
+   }
+  },
+  {
+   "id": "video_resolution",
+   "name": "Video Resolution",
+   "options": [
+    {
+     "id": "resolution",
+     "label": "Resolution",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Auto"
+      },
+      {
+       "id": "2",
+       "label": "480/576i"
+      },
+      {
+       "id": "3",
+       "label": "480/576p"
+      },
+      {
+       "id": "4",
+       "label": "720p"
+      },
+      {
+       "id": "5",
+       "label": "1080i"
+      },
+      {
+       "id": "6",
+       "label": "1080p"
+      }
+     ],
+     "help": "Changes the resolution of HDMI"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7RSC{{option.resolution|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "resolution": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    }
+   }
+  },
+  {
+   "id": "display_info",
+   "name": "Display/Info",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7DSP\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "function_color",
+   "name": "Function/Color",
+   "options": [
+    {
+     "id": "color",
+     "label": "Color",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Red"
+      },
+      {
+       "id": "2",
+       "label": "Green"
+      },
+      {
+       "id": "3",
+       "label": "Blue"
+      },
+      {
+       "id": "4",
+       "label": "Yellow"
+      }
+     ],
+     "help": "Carries out a function peculiar to a disc."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7CBC{{option.color|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "color": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "home",
+   "name": "Home",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7HOM\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ten_key",
+   "name": "Ten Key",
+   "options": [
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 9,
+     "help": "Inputs 0-9"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7NUM{{option.number}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "slow_search",
+   "name": "Slow/Search",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "F",
+     "choices": [
+      {
+       "id": "F",
+       "label": "Forward"
+      },
+      {
+       "id": "R",
+       "label": "Reverse"
+      }
+     ]
+    },
+    {
+     "id": "speed",
+     "label": "Search Speed",
+     "type": "select",
+     "default": "f",
+     "choices": [
+      {
+       "id": "f",
+       "label": "Fast (cyclic 1,2,3,4,5)"
+      },
+      {
+       "id": "s",
+       "label": "Slow (cyclic 1/16,1/8,1/4,1/2,1)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SCN{{option.direction|map}}{{option.speed|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "F": "F",
+     "R": "R"
+    },
+    "speed": {
+     "f": "f",
+     "s": "s"
+    }
+   }
+  },
+  {
+   "id": "mute",
+   "name": "Mute",
+   "options": [
+    {
+     "id": "mute",
+     "label": "On/Off",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Mute on"
+      },
+      {
+       "id": "01",
+       "label": "Mute off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7MUT0{{option.mute|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "cursor",
+   "name": "Cursor",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Left"
+      },
+      {
+       "id": "2",
+       "label": "Right"
+      },
+      {
+       "id": "3",
+       "label": "Up"
+      },
+      {
+       "id": "4",
+       "label": "Down"
+      }
+     ],
+     "help": "Direction of cursor movement"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7OSD{{option.direction|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "auto_play",
+   "name": "Auto Play",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "Auto Play",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "On (repeat off)"
+      },
+      {
+       "id": "01",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7APL0{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "pip_mark",
+   "name": "PIP Mark",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "PIP Mark",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "On"
+      },
+      {
+       "id": "01",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7PMK0{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "3d_output",
+   "name": "3D Output",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "3D Output",
+     "type": "select",
+     "default": "AT",
+     "choices": [
+      {
+       "id": "AT",
+       "label": "Auto"
+      },
+      {
+       "id": "01",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!73DO{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "AT": "AT",
+     "01": "01"
+    }
+   }
+  },
+  {
+   "id": "aspect_ratio",
+   "name": "TV Aspect Ratio",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "TV Aspect Ratio",
+     "type": "select",
+     "default": "9W",
+     "choices": [
+      {
+       "id": "9W",
+       "label": "16:9 Wide"
+      },
+      {
+       "id": "9A",
+       "label": "16:9 Wide/Auto"
+      },
+      {
+       "id": "3P",
+       "label": "4:3 pan & scan"
+      },
+      {
+       "id": "3L",
+       "label": "4:3 letterbox"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7ASC{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "9W": "9W",
+     "9A": "9A",
+     "3P": "3P",
+     "3L": "3L"
+    }
+   }
+  },
+  {
+   "id": "tv_system",
+   "name": "TV System",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "TV System",
+     "type": "select",
+     "default": "NT",
+     "choices": [
+      {
+       "id": "NT",
+       "label": "NTSC"
+      },
+      {
+       "id": "PL",
+       "label": "PAL"
+      },
+      {
+       "id": "MS",
+       "label": "Multi-system"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7TVS{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "NT": "NT",
+     "PL": "PL",
+     "MS": "MS"
+    }
+   }
+  },
+  {
+   "id": "24_conversion",
+   "name": "1080p 24 Conversion",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "1080p 24 Conversion",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "On"
+      },
+      {
+       "id": "01",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7R1K0{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "color_space",
+   "name": "HDMI Color Space",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "HDMI Color Space",
+     "type": "select",
+     "default": "RV",
+     "choices": [
+      {
+       "id": "RV",
+       "label": "RGB Video Level"
+      },
+      {
+       "id": "RP",
+       "label": "RGB PC Level"
+      },
+      {
+       "id": "Y4",
+       "label": "YCbCr 4:4:4"
+      },
+      {
+       "id": "Y2",
+       "label": "YCbCr 4:2:2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7CLS{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "RV": "RV",
+     "RP": "RP",
+     "Y4": "Y4",
+     "Y2": "Y2"
+    }
+   }
+  },
+  {
+   "id": "deep_color",
+   "name": "HDMI Deep Color",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "HDMI Deep Color",
+     "type": "select",
+     "default": "48",
+     "choices": [
+      {
+       "id": "48",
+       "label": "48 Bits"
+      },
+      {
+       "id": "36",
+       "label": "36 Bits"
+      },
+      {
+       "id": "30",
+       "label": "30 Bits"
+      },
+      {
+       "id": "OF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7DPC{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "30": "30",
+     "36": "36",
+     "48": "48",
+     "OF": "OF"
+    }
+   }
+  },
+  {
+   "id": "secondary_audio",
+   "name": "Secondary Audio",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "Secondary Audio",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "On"
+      },
+      {
+       "id": "01",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SCA0{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "fs_setting",
+   "name": "Fs Setting",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "Fs Setting",
+     "type": "select",
+     "default": "48",
+     "choices": [
+      {
+       "id": "48",
+       "label": "48k LPCM"
+      },
+      {
+       "id": "96",
+       "label": "96k LPCM"
+      },
+      {
+       "id": "19",
+       "label": "192k LPCM"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7COO{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "19": "19",
+     "48": "48",
+     "96": "96"
+    }
+   }
+  },
+  {
+   "id": "speaker_config",
+   "name": "Speaker Configuration",
+   "options": [
+    {
+     "id": "configuration",
+     "label": "Speaker/Woofer Number",
+     "type": "select",
+     "default": "21",
+     "choices": [
+      {
+       "id": "21",
+       "label": "2.1Ch"
+      },
+      {
+       "id": "31",
+       "label": "3.1Ch"
+      },
+      {
+       "id": "41",
+       "label": "4.1Ch"
+      },
+      {
+       "id": "51",
+       "label": "5.1Ch"
+      },
+      {
+       "id": "61",
+       "label": "6.1Ch"
+      },
+      {
+       "id": "71",
+       "label": "7.1Ch"
+      }
+     ],
+     "help": "Woofer Number is fixed to 1."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7SPC{{option.configuration|map}}1\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "configuration": {
+     "21": "2",
+     "31": "3",
+     "41": "4",
+     "51": "5",
+     "61": "6",
+     "71": "7"
+    }
+   }
+  },
+  {
+   "id": "firmware_upgrade",
+   "name": "Firmware Upgrade",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "Firmware Upgrade",
+     "type": "select",
+     "default": "US",
+     "choices": [
+      {
+       "id": "US",
+       "label": "Via USB"
+      },
+      {
+       "id": "DS",
+       "label": "Via Disc"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7FWU{{option.suffix|map}}S\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "US": "U",
+     "DS": "D"
+    }
+   }
+  },
+  {
+   "id": "hdmi_cec",
+   "name": "HDMI CEC",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "HDMI CEC",
+     "type": "select",
+     "default": "H1",
+     "choices": [
+      {
+       "id": "H1",
+       "label": "HDMI1"
+      },
+      {
+       "id": "OF",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7CCR{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "H1": "H1",
+     "OF": "OF"
+    }
+   }
+  },
+  {
+   "id": "factory_reset",
+   "name": "Reset Factory Defaults",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!7INI\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "bd_live",
+   "name": "BD-Live Network Access",
+   "options": [
+    {
+     "id": "suffix",
+     "label": "BD-Live Network Access",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "On"
+      },
+      {
+       "id": "LT",
+       "label": "Limited"
+      },
+      {
+       "id": "01",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!7LNA{{option.suffix|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "suffix": {
+     "00": "00",
+     "LT": "LT",
+     "01": "01"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "play",
+   "category": "Playback",
+   "name": "Play",
+   "text": "⏵",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {}
+   }
+  },
+  {
+   "id": "stop",
+   "category": "Playback",
+   "name": "Stop",
+   "text": "⏹",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "pause",
+   "category": "Playback",
+   "name": "Pause",
+   "text": "⏸",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "prev",
+   "category": "Playback",
+   "name": "Previous",
+   "text": "⏮",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "title_jump_prev",
+    "options": {}
+   }
+  },
+  {
+   "id": "next",
+   "category": "Playback",
+   "name": "Next",
+   "text": "⏭",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "title_jump_next",
+    "options": {}
+   }
+  },
+  {
+   "id": "reverse",
+   "category": "Playback",
+   "name": "Reverse",
+   "text": "⏪",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "slow_search",
+    "options": {
+     "direction": "R",
+     "speed": "f"
+    }
+   }
+  },
+  {
+   "id": "forward",
+   "category": "Playback",
+   "name": "Forward",
+   "text": "⏩",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "slow_search",
+    "options": {
+     "direction": "F",
+     "speed": "f"
+    }
+   }
+  },
+  {
+   "id": "enter",
+   "category": "Menu",
+   "name": "Enter",
+   "text": "ENTER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "enter",
+    "options": {}
+   }
+  },
+  {
+   "id": "cursor_left",
+   "category": "Menu",
+   "name": "Left",
+   "text": "⬅",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cursor",
+    "options": {
+     "direction": "1"
+    }
+   }
+  },
+  {
+   "id": "cursor_right",
+   "category": "Menu",
+   "name": "Right",
+   "text": "➡",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cursor",
+    "options": {
+     "direction": "2"
+    }
+   }
+  },
+  {
+   "id": "cursor_up",
+   "category": "Menu",
+   "name": "Up",
+   "text": "⬆",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cursor",
+    "options": {
+     "direction": "3"
+    }
+   }
+  },
+  {
+   "id": "cursor_down",
+   "category": "Menu",
+   "name": "Down",
+   "text": "⬇",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cursor",
+    "options": {
+     "direction": "4"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-tascam-bdmp1",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Christian Volmering"
+  }
+ ],
+ "source": {
+  "module": "tascam-bdmp1",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Christian Volmering"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-tascam-bdmp1.git"
+ }
+}

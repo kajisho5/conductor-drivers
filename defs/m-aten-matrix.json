@@ -1,0 +1,124 @@
+{
+ "format": 1,
+ "id": "m-aten-matrix",
+ "name": "ATEN Matrix",
+ "category": "ATEN",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "user",
+   "label": "Username",
+   "type": "text",
+   "default": "administrator"
+  },
+  {
+   "id": "pass",
+   "label": "Password",
+   "type": "text",
+   "default": "password"
+  },
+  {
+   "id": "device",
+   "label": "Device Type",
+   "type": "select",
+   "default": "8",
+   "choices": [
+    {
+     "id": "4",
+     "label": "VM0404HA (4x4)"
+    },
+    {
+     "id": "8",
+     "label": "VM0808HA (8x8)"
+    },
+    {
+     "id": "16",
+     "label": "VM51616H (16x16)"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "LO",
+   "name": "Load Profile",
+   "options": [
+    {
+     "id": "num",
+     "label": "Profile",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "LO {{option.num|pad2}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SS",
+   "name": "Set Crosspoint",
+   "options": [
+    {
+     "id": "src",
+     "label": "Input (Source)",
+     "type": "number",
+     "default": 1,
+     "min": 1
+    },
+    {
+     "id": "dst",
+     "label": "Output (Destination)",
+     "type": "number",
+     "default": 1,
+     "min": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SS {{option.src|pad2}},{{option.dst|pad2}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aten-matrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Noah Callaway"
+  }
+ ],
+ "source": {
+  "module": "aten-matrix",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Noah Callaway"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aten-matrix.git"
+ }
+}

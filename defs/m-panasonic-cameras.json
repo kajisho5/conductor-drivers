@@ -1,0 +1,1051 @@
+{
+ "format": 1,
+ "id": "m-panasonic-cameras",
+ "name": "Panasonic Camera",
+ "category": "Panasonic",
+ "version": "1.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "httpPort",
+   "label": "HTTP Port (Default: 80)",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Select Your Camera Model",
+   "type": "select",
+   "default": "Auto",
+   "choices": [
+    {
+     "id": "Auto",
+     "label": "Auto Detect"
+    },
+    {
+     "id": "AW-HE2",
+     "label": "AW-HE2"
+    },
+    {
+     "id": "AW-HE20",
+     "label": "AW-HE20"
+    },
+    {
+     "id": "AW-HE35",
+     "label": "AW-HE35"
+    },
+    {
+     "id": "AW-HE38",
+     "label": "AW-HE38"
+    },
+    {
+     "id": "AW-HE40",
+     "label": "AW-HE40"
+    },
+    {
+     "id": "AW-HE42",
+     "label": "AW-HE42"
+    },
+    {
+     "id": "AW-HE48",
+     "label": "AW-HE48"
+    },
+    {
+     "id": "AW-HE50",
+     "label": "AW-HE50"
+    },
+    {
+     "id": "AW-HE58",
+     "label": "AW-HE58"
+    },
+    {
+     "id": "AW-HE60",
+     "label": "AW-HE60"
+    },
+    {
+     "id": "AW-HE65",
+     "label": "AW-HE65"
+    },
+    {
+     "id": "AW-HE68",
+     "label": "AW-HE68"
+    },
+    {
+     "id": "AW-HE70",
+     "label": "AW-HE70"
+    },
+    {
+     "id": "AW-HE75",
+     "label": "AW-HE75"
+    },
+    {
+     "id": "AW-HE120",
+     "label": "AW-HE120"
+    },
+    {
+     "id": "AW-HE130",
+     "label": "AW-HE130"
+    },
+    {
+     "id": "AW-HE145",
+     "label": "AW-HE145"
+    },
+    {
+     "id": "AW-HN38",
+     "label": "AW-HN38"
+    },
+    {
+     "id": "AW-HN40",
+     "label": "AW-HN40"
+    },
+    {
+     "id": "AW-HN65",
+     "label": "AW-HN65"
+    },
+    {
+     "id": "AW-HN130",
+     "label": "AW-HN130"
+    },
+    {
+     "id": "AW-HR140",
+     "label": "AW-HR140"
+    },
+    {
+     "id": "AW-UE4",
+     "label": "AW-UE4"
+    },
+    {
+     "id": "AW-UE20",
+     "label": "AW-UE20"
+    },
+    {
+     "id": "AW-UE40",
+     "label": "AW-UE40"
+    },
+    {
+     "id": "AW-UE50",
+     "label": "AW-UE50"
+    },
+    {
+     "id": "AW-UE63",
+     "label": "AW-UE63"
+    },
+    {
+     "id": "AW-UE65",
+     "label": "AW-UE65"
+    },
+    {
+     "id": "AW-UE70",
+     "label": "AW-UE70"
+    },
+    {
+     "id": "AW-UE80",
+     "label": "AW-UE80"
+    },
+    {
+     "id": "AW-UE100",
+     "label": "AW-UE100"
+    },
+    {
+     "id": "AW-UE150",
+     "label": "AW-UE150"
+    },
+    {
+     "id": "AW-UE155",
+     "label": "AW-UE155"
+    },
+    {
+     "id": "AW-UE160",
+     "label": "AW-UE160"
+    },
+    {
+     "id": "AW-UN70",
+     "label": "AW-UN70"
+    },
+    {
+     "id": "AW-UN145",
+     "label": "AW-UN145"
+    },
+    {
+     "id": "AW-UR100",
+     "label": "AW-UR100"
+    },
+    {
+     "id": "AK-UB300",
+     "label": "AK-UB300"
+    },
+    {
+     "id": "AG-CX350",
+     "label": "AG-CX350"
+    },
+    {
+     "id": "AG-CX200",
+     "label": "AG-CX200"
+    },
+    {
+     "id": "AJ-UPX360",
+     "label": "AJ-UPX360"
+    },
+    {
+     "id": "AJ-CX4000",
+     "label": "AJ-CX4000"
+    },
+    {
+     "id": "AJ-UPX900",
+     "label": "AJ-UPX900"
+    },
+    {
+     "id": "Other",
+     "label": "Other Cameras"
+    }
+   ]
+  },
+  {
+   "id": "timeout",
+   "label": "Timeout (ms)",
+   "type": "number",
+   "default": 2000,
+   "min": 100,
+   "max": 5000
+  },
+  {
+   "id": "pollAllow",
+   "label": "Allow",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollDelay",
+   "label": "Poll Delay (ms)",
+   "type": "number",
+   "default": 100,
+   "min": 1,
+   "max": 1000
+  },
+  {
+   "id": "subscriptionEnable",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "portManual",
+   "label": "Manual",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "tcpPort",
+   "label": "TCP Port (1024-65535)",
+   "type": "number",
+   "default": 31004,
+   "min": 1024,
+   "max": 65535
+  },
+  {
+   "id": "debug",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "ptMove",
+   "name": "Pan/Tilt - Move",
+   "options": [
+    {
+     "id": "dir",
+     "label": "Direction",
+     "type": "select",
+     "default": "11",
+     "choices": [
+      {
+       "id": "11",
+       "label": "Stop"
+      },
+      {
+       "id": "21",
+       "label": "➡ Right"
+      },
+      {
+       "id": "01",
+       "label": "⬅ Left"
+      },
+      {
+       "id": "12",
+       "label": "⬆ Up"
+      },
+      {
+       "id": "10",
+       "label": "⬇ Down"
+      },
+      {
+       "id": "22",
+       "label": "⬈ Up Right"
+      },
+      {
+       "id": "02",
+       "label": "⬉ Up Left"
+      },
+      {
+       "id": "00",
+       "label": "⬋ Down Left"
+      },
+      {
+       "id": "20",
+       "label": "⬊ Down Right"
+      }
+     ]
+    },
+    {
+     "id": "liveSpeed",
+     "label": "Adjust the velocity on speed change",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23PTS{{option.dir|map}}&res=1"
+   },
+   "maps": {
+    "dir": {
+     "10": "5025",
+     "11": "5050",
+     "12": "5075",
+     "20": "7525",
+     "21": "7550",
+     "22": "7575",
+     "01": "2550",
+     "02": "2575",
+     "00": "2525"
+    }
+   }
+  },
+  {
+   "id": "home",
+   "name": "Pan/Tilt - Home Position",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23APC80008000&res=1"
+   }
+  },
+  {
+   "id": "zoom",
+   "name": "Lens - Zoom",
+   "options": [
+    {
+     "id": "dir",
+     "label": "Direction",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stop"
+      },
+      {
+       "id": "1",
+       "label": "⬆ In"
+      },
+      {
+       "id": "-1",
+       "label": "⬇ Out"
+      }
+     ]
+    },
+    {
+     "id": "liveSpeed",
+     "label": "Adjust the velocity on speed change",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23Z{{option.dir|map}}&res=1"
+   },
+   "maps": {
+    "dir": {
+     "0": "50",
+     "1": "75",
+     "-1": "25"
+    }
+   }
+  },
+  {
+   "id": "focus",
+   "name": "Lens - Focus",
+   "options": [
+    {
+     "id": "dir",
+     "label": "Direction",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stop"
+      },
+      {
+       "id": "1",
+       "label": "⬆ Far"
+      },
+      {
+       "id": "-1",
+       "label": "⬇ Near"
+      }
+     ]
+    },
+    {
+     "id": "liveSpeed",
+     "label": "Adjust the velocity on speed change",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23F{{option.dir|map}}&res=1"
+   },
+   "maps": {
+    "dir": {
+     "0": "50",
+     "1": "75",
+     "-1": "25"
+    }
+   }
+  },
+  {
+   "id": "focusPushAuto",
+   "name": "Lens - Focus Push Auto",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=OSE:69:1&res=1"
+   }
+  },
+  {
+   "id": "shutterStepUp",
+   "name": "Exposure - Shutter Step Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=OSJ:04:01&res=1"
+   }
+  },
+  {
+   "id": "shutterStepDown",
+   "name": "Exposure - Shutter Step Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=OSJ:05:01&res=1"
+   }
+  },
+  {
+   "id": "whiteBalanceExecAWB",
+   "name": "Image - Execute AWC/AWB",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=OWS&res=1"
+   }
+  },
+  {
+   "id": "whiteBalanceExecABB",
+   "name": "Image - Execute ABC/ABB",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=OAS&res=1"
+   }
+  },
+  {
+   "id": "presetMem",
+   "name": "Preset - Memory Operation",
+   "options": [
+    {
+     "id": "op",
+     "label": "Action",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "R",
+       "label": "Recall / Play"
+      },
+      {
+       "id": "M",
+       "label": "Memorize / Save"
+      },
+      {
+       "id": "C",
+       "label": "Clear / Delete"
+      }
+     ]
+    },
+    {
+     "id": "val",
+     "label": "Preset Nr.",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Preset 1"
+      },
+      {
+       "id": "01",
+       "label": "Preset 2"
+      },
+      {
+       "id": "02",
+       "label": "Preset 3"
+      },
+      {
+       "id": "03",
+       "label": "Preset 4"
+      },
+      {
+       "id": "04",
+       "label": "Preset 5"
+      },
+      {
+       "id": "05",
+       "label": "Preset 6"
+      },
+      {
+       "id": "06",
+       "label": "Preset 7"
+      },
+      {
+       "id": "07",
+       "label": "Preset 8"
+      },
+      {
+       "id": "08",
+       "label": "Preset 9"
+      },
+      {
+       "id": "09",
+       "label": "Preset 10"
+      },
+      {
+       "id": "10",
+       "label": "Preset 11"
+      },
+      {
+       "id": "11",
+       "label": "Preset 12"
+      },
+      {
+       "id": "12",
+       "label": "Preset 13"
+      },
+      {
+       "id": "13",
+       "label": "Preset 14"
+      },
+      {
+       "id": "14",
+       "label": "Preset 15"
+      },
+      {
+       "id": "15",
+       "label": "Preset 16"
+      },
+      {
+       "id": "16",
+       "label": "Preset 17"
+      },
+      {
+       "id": "17",
+       "label": "Preset 18"
+      },
+      {
+       "id": "18",
+       "label": "Preset 19"
+      },
+      {
+       "id": "19",
+       "label": "Preset 20"
+      },
+      {
+       "id": "20",
+       "label": "Preset 21"
+      },
+      {
+       "id": "21",
+       "label": "Preset 22"
+      },
+      {
+       "id": "22",
+       "label": "Preset 23"
+      },
+      {
+       "id": "23",
+       "label": "Preset 24"
+      },
+      {
+       "id": "24",
+       "label": "Preset 25"
+      },
+      {
+       "id": "25",
+       "label": "Preset 26"
+      },
+      {
+       "id": "26",
+       "label": "Preset 27"
+      },
+      {
+       "id": "27",
+       "label": "Preset 28"
+      },
+      {
+       "id": "28",
+       "label": "Preset 29"
+      },
+      {
+       "id": "29",
+       "label": "Preset 30"
+      },
+      {
+       "id": "30",
+       "label": "Preset 31"
+      },
+      {
+       "id": "31",
+       "label": "Preset 32"
+      },
+      {
+       "id": "32",
+       "label": "Preset 33"
+      },
+      {
+       "id": "33",
+       "label": "Preset 34"
+      },
+      {
+       "id": "34",
+       "label": "Preset 35"
+      },
+      {
+       "id": "35",
+       "label": "Preset 36"
+      },
+      {
+       "id": "36",
+       "label": "Preset 37"
+      },
+      {
+       "id": "37",
+       "label": "Preset 38"
+      },
+      {
+       "id": "38",
+       "label": "Preset 39"
+      },
+      {
+       "id": "39",
+       "label": "Preset 40"
+      },
+      {
+       "id": "40",
+       "label": "Preset 41"
+      },
+      {
+       "id": "41",
+       "label": "Preset 42"
+      },
+      {
+       "id": "42",
+       "label": "Preset 43"
+      },
+      {
+       "id": "43",
+       "label": "Preset 44"
+      },
+      {
+       "id": "44",
+       "label": "Preset 45"
+      },
+      {
+       "id": "45",
+       "label": "Preset 46"
+      },
+      {
+       "id": "46",
+       "label": "Preset 47"
+      },
+      {
+       "id": "47",
+       "label": "Preset 48"
+      },
+      {
+       "id": "48",
+       "label": "Preset 49"
+      },
+      {
+       "id": "49",
+       "label": "Preset 50"
+      },
+      {
+       "id": "50",
+       "label": "Preset 51"
+      },
+      {
+       "id": "51",
+       "label": "Preset 52"
+      },
+      {
+       "id": "52",
+       "label": "Preset 53"
+      },
+      {
+       "id": "53",
+       "label": "Preset 54"
+      },
+      {
+       "id": "54",
+       "label": "Preset 55"
+      },
+      {
+       "id": "55",
+       "label": "Preset 56"
+      },
+      {
+       "id": "56",
+       "label": "Preset 57"
+      },
+      {
+       "id": "57",
+       "label": "Preset 58"
+      },
+      {
+       "id": "58",
+       "label": "Preset 59"
+      },
+      {
+       "id": "59",
+       "label": "Preset 60"
+      },
+      {
+       "id": "60",
+       "label": "Preset 61"
+      },
+      {
+       "id": "61",
+       "label": "Preset 62"
+      },
+      {
+       "id": "62",
+       "label": "Preset 63"
+      },
+      {
+       "id": "63",
+       "label": "Preset 64"
+      },
+      {
+       "id": "64",
+       "label": "Preset 65"
+      },
+      {
+       "id": "65",
+       "label": "Preset 66"
+      },
+      {
+       "id": "66",
+       "label": "Preset 67"
+      },
+      {
+       "id": "67",
+       "label": "Preset 68"
+      },
+      {
+       "id": "68",
+       "label": "Preset 69"
+      },
+      {
+       "id": "69",
+       "label": "Preset 70"
+      },
+      {
+       "id": "70",
+       "label": "Preset 71"
+      },
+      {
+       "id": "71",
+       "label": "Preset 72"
+      },
+      {
+       "id": "72",
+       "label": "Preset 73"
+      },
+      {
+       "id": "73",
+       "label": "Preset 74"
+      },
+      {
+       "id": "74",
+       "label": "Preset 75"
+      },
+      {
+       "id": "75",
+       "label": "Preset 76"
+      },
+      {
+       "id": "76",
+       "label": "Preset 77"
+      },
+      {
+       "id": "77",
+       "label": "Preset 78"
+      },
+      {
+       "id": "78",
+       "label": "Preset 79"
+      },
+      {
+       "id": "79",
+       "label": "Preset 80"
+      },
+      {
+       "id": "80",
+       "label": "Preset 81"
+      },
+      {
+       "id": "81",
+       "label": "Preset 82"
+      },
+      {
+       "id": "82",
+       "label": "Preset 83"
+      },
+      {
+       "id": "83",
+       "label": "Preset 84"
+      },
+      {
+       "id": "84",
+       "label": "Preset 85"
+      },
+      {
+       "id": "85",
+       "label": "Preset 86"
+      },
+      {
+       "id": "86",
+       "label": "Preset 87"
+      },
+      {
+       "id": "87",
+       "label": "Preset 88"
+      },
+      {
+       "id": "88",
+       "label": "Preset 89"
+      },
+      {
+       "id": "89",
+       "label": "Preset 90"
+      },
+      {
+       "id": "90",
+       "label": "Preset 91"
+      },
+      {
+       "id": "91",
+       "label": "Preset 92"
+      },
+      {
+       "id": "92",
+       "label": "Preset 93"
+      },
+      {
+       "id": "93",
+       "label": "Preset 94"
+      },
+      {
+       "id": "94",
+       "label": "Preset 95"
+      },
+      {
+       "id": "95",
+       "label": "Preset 96"
+      },
+      {
+       "id": "96",
+       "label": "Preset 97"
+      },
+      {
+       "id": "97",
+       "label": "Preset 98"
+      },
+      {
+       "id": "98",
+       "label": "Preset 99"
+      },
+      {
+       "id": "99",
+       "label": "Preset 100"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23{{option.op|map}}{{option.val}}&res=1"
+   },
+   "maps": {
+    "op": {
+     "00": "00",
+     "R": "R",
+     "M": "M",
+     "C": "C"
+    }
+   }
+  },
+  {
+   "id": "restart",
+   "name": "System - Restart",
+   "options": [
+    {
+     "id": "username",
+     "label": "Username",
+     "type": "text",
+     "default": "admin"
+    },
+    {
+     "id": "password",
+     "label": "Password",
+     "type": "text",
+     "default": "12345"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/initial?cmd=reset&Randomnum=12345"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "pan-tilt-position",
+   "category": "Pan/Tilt",
+   "name": "Pan/Tilt Position",
+   "text": "P/T Pos.\n°\n°",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "home",
+    "options": {}
+   }
+  },
+  {
+   "id": "lens-focus",
+   "category": "Lens",
+   "name": "Focus",
+   "text": "FOCUS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusPushAuto",
+    "options": {}
+   }
+  },
+  {
+   "id": "lens-focus-push-auto",
+   "category": "Lens",
+   "name": "Push Auto Focus",
+   "text": "PUSH\nAUTO\nFOCUS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focusPushAuto",
+    "options": {}
+   }
+  },
+  {
+   "id": "image-awb",
+   "category": "Image",
+   "name": "Execute Auto White Balance",
+   "text": "Execute\nAWB",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "whiteBalanceExecAWB",
+    "options": {}
+   }
+  },
+  {
+   "id": "image-abb",
+   "category": "Image",
+   "name": "Execute Auto Black Balance",
+   "text": "Execute\nABB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "whiteBalanceExecABB",
+    "options": {}
+   }
+  },
+  {
+   "id": "system-restart",
+   "category": "System",
+   "name": "Restart",
+   "text": "Restart\n🗘",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "restart",
+    "options": {
+     "username": "admin",
+     "password": "12345"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-panasonic-cameras",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Andreas H. Thomsen, Per Røine, Joseph Adams, Cyprien Tonnelier, premultiply"
+  }
+ ],
+ "source": {
+  "module": "panasonic-cameras",
+  "version": "1.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Andreas H. Thomsen",
+   "Per Røine",
+   "Joseph Adams",
+   "Cyprien Tonnelier",
+   "premultiply"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-panasonic-cameras.git"
+ }
+}

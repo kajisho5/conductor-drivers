@@ -1,0 +1,748 @@
+{
+ "format": 1,
+ "id": "m-shure-mxa910",
+ "name": "Shure MXA910 / MXA920",
+ "category": "Shure",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "device_mute",
+   "name": "Mute or Unmute Device",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DEVICE_AUDIO_MUTE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "channel_mute",
+   "name": "Mute or Unmute Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Channel 9"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_MUTE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    },
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "channel_incrementgain",
+   "name": "Incremental change of Audio Gain of Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Channel 9"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Increment",
+     "type": "number",
+     "default": 0,
+     "min": -18,
+     "max": 18
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES INC {{option.gain|lin:10:0}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "channel_setgain",
+   "name": "Set Audio Gain of Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Channel 9"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -110,
+     "max": 30,
+     "help": "Value in dB, Range is -110dB to +30dB, Steps of 0.1dB"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES {{option.gain|lin:10:-1100}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "preset_recall",
+   "name": "Preset Recall",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6"
+      },
+      {
+       "id": "7",
+       "label": "Preset 7"
+      },
+      {
+       "id": "8",
+       "label": "Preset 8"
+      },
+      {
+       "id": "9",
+       "label": "Preset 9"
+      },
+      {
+       "id": "10",
+       "label": "Preset 10"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET PRESET {{option.preset|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10"
+    }
+   }
+  },
+  {
+   "id": "setup_led_muted",
+   "name": "Set muted LED behavior",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      },
+      {
+       "id": "FLASHING",
+       "label": "Flashing"
+      }
+     ]
+    },
+    {
+     "id": "color",
+     "label": "Color",
+     "type": "select",
+     "default": "RED",
+     "choices": [
+      {
+       "id": "RED",
+       "label": "Red"
+      },
+      {
+       "id": "ORANGE",
+       "label": "Orange"
+      },
+      {
+       "id": "GOLD",
+       "label": "Gold"
+      },
+      {
+       "id": "YELLOW",
+       "label": "Yellow"
+      },
+      {
+       "id": "YELLOWGREEN",
+       "label": "Yellowgreen"
+      },
+      {
+       "id": "GREEN",
+       "label": "Green"
+      },
+      {
+       "id": "TURQUOISE",
+       "label": "Turquoise"
+      },
+      {
+       "id": "POWDERBLUE",
+       "label": "Powderblue"
+      },
+      {
+       "id": "CYAN",
+       "label": "Cyan"
+      },
+      {
+       "id": "SKYBLUE",
+       "label": "Skyblue"
+      },
+      {
+       "id": "BLUE",
+       "label": "Blue"
+      },
+      {
+       "id": "PURPLE",
+       "label": "Purple"
+      },
+      {
+       "id": "LIGHTPURPLE",
+       "label": "Lightpurple"
+      },
+      {
+       "id": "VIOLET",
+       "label": "Violet"
+      },
+      {
+       "id": "ORCHID",
+       "label": "Orchid"
+      },
+      {
+       "id": "PINK",
+       "label": "Pink"
+      },
+      {
+       "id": "WHITE",
+       "label": "White"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET LED_STATE_MUTED {{option.state|map}} >< SET LED_COLOR_MUTED {{option.color|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "FLASHING": "FLASHING"
+    },
+    "color": {
+     "RED": "RED",
+     "ORANGE": "ORANGE",
+     "GOLD": "GOLD",
+     "YELLOW": "YELLOW",
+     "YELLOWGREEN": "YELLOWGREEN",
+     "GREEN": "GREEN",
+     "TURQUOISE": "TURQUOISE",
+     "POWDERBLUE": "POWDERBLUE",
+     "CYAN": "CYAN",
+     "SKYBLUE": "SKYBLUE",
+     "BLUE": "BLUE",
+     "PURPLE": "PURPLE",
+     "LIGHTPURPLE": "LIGHTPURPLE",
+     "VIOLET": "VIOLET",
+     "ORCHID": "ORCHID",
+     "PINK": "PINK",
+     "WHITE": "WHITE"
+    }
+   }
+  },
+  {
+   "id": "setup_led_unmuted",
+   "name": "Set unmuted LED behavior",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "OFF",
+       "label": "Off"
+      },
+      {
+       "id": "FLASHING",
+       "label": "Flashing"
+      }
+     ]
+    },
+    {
+     "id": "color",
+     "label": "Color",
+     "type": "select",
+     "default": "GREEN",
+     "choices": [
+      {
+       "id": "RED",
+       "label": "Red"
+      },
+      {
+       "id": "ORANGE",
+       "label": "Orange"
+      },
+      {
+       "id": "GOLD",
+       "label": "Gold"
+      },
+      {
+       "id": "YELLOW",
+       "label": "Yellow"
+      },
+      {
+       "id": "YELLOWGREEN",
+       "label": "Yellowgreen"
+      },
+      {
+       "id": "GREEN",
+       "label": "Green"
+      },
+      {
+       "id": "TURQUOISE",
+       "label": "Turquoise"
+      },
+      {
+       "id": "POWDERBLUE",
+       "label": "Powderblue"
+      },
+      {
+       "id": "CYAN",
+       "label": "Cyan"
+      },
+      {
+       "id": "SKYBLUE",
+       "label": "Skyblue"
+      },
+      {
+       "id": "BLUE",
+       "label": "Blue"
+      },
+      {
+       "id": "PURPLE",
+       "label": "Purple"
+      },
+      {
+       "id": "LIGHTPURPLE",
+       "label": "Lightpurple"
+      },
+      {
+       "id": "VIOLET",
+       "label": "Violet"
+      },
+      {
+       "id": "ORCHID",
+       "label": "Orchid"
+      },
+      {
+       "id": "PINK",
+       "label": "Pink"
+      },
+      {
+       "id": "WHITE",
+       "label": "White"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET LED_STATE_UNMUTED {{option.state|map}} >< SET LED_COLOR_UNMUTED {{option.color|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "FLASHING": "FLASHING"
+    },
+    "color": {
+     "GREEN": "GREEN",
+     "RED": "RED",
+     "ORANGE": "ORANGE",
+     "GOLD": "GOLD",
+     "YELLOW": "YELLOW",
+     "YELLOWGREEN": "YELLOWGREEN",
+     "TURQUOISE": "TURQUOISE",
+     "POWDERBLUE": "POWDERBLUE",
+     "CYAN": "CYAN",
+     "SKYBLUE": "SKYBLUE",
+     "BLUE": "BLUE",
+     "PURPLE": "PURPLE",
+     "LIGHTPURPLE": "LIGHTPURPLE",
+     "VIOLET": "VIOLET",
+     "ORCHID": "ORCHID",
+     "PINK": "PINK",
+     "WHITE": "WHITE"
+    }
+   }
+  },
+  {
+   "id": "set_led_state",
+   "name": "Force LED state",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Unmute State"
+      },
+      {
+       "id": "OFF",
+       "label": "Mute State"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DEV_LED_IN_STATE  O{{option.state|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "flash_lights",
+   "name": "Flash Lights on Device",
+   "options": [
+    {
+     "id": "onoff",
+     "label": "On/Off",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "OFF",
+       "label": "Off"
+      },
+      {
+       "id": "ON",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH O{{option.onoff|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "onoff": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot the Device",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET REBOOT >",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-mxa910",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Dorian Meid"
+  }
+ ],
+ "source": {
+  "module": "shure-mxa910",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Dorian Meid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-mxa910.git"
+ }
+}

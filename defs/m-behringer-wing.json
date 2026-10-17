@@ -1,0 +1,613 @@
+{
+ "format": 1,
+ "id": "m-behringer-wing",
+ "name": "Behringer WING",
+ "category": "Behringer",
+ "version": "2.3.0-beta.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2223,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Desk Type",
+   "type": "select",
+   "default": "full",
+   "choices": [
+    {
+     "id": "full",
+     "label": "Full"
+    },
+    {
+     "id": "compact",
+     "label": "Compact"
+    },
+    {
+     "id": "rack",
+     "label": "Rack"
+    }
+   ],
+   "help": "Select the variant of the desk that is connected. Placed for potential future use."
+  },
+  {
+   "id": "fadeUpdateRate",
+   "label": "Fader Update Rate (20 updates/sec)",
+   "type": "number",
+   "default": 50,
+   "min": 20,
+   "max": 60000,
+   "help": "Update rate of the faders in milliseconds. A lower values makes the transitions smoother but increases system load."
+  },
+  {
+   "id": "statusPollUpdateRate",
+   "label": "Status Poll Rate (0.33 updates/sec)",
+   "type": "number",
+   "default": 3000,
+   "min": 20,
+   "max": 60000,
+   "help": "Some values need to be actively requested from the desk, this number sets the interval in milliseconds at which those requests occur."
+  },
+  {
+   "id": "variableUpdateRate",
+   "label": "Variable Update Rate (10 updates/sec)",
+   "type": "number",
+   "default": 100,
+   "min": 20,
+   "max": 60000,
+   "help": "Defines how many milliseconds elapse between variable updates. A lower number makes variables more responsive but may decrease system performance."
+  },
+  {
+   "id": "prefetchVariablesOnStartup",
+   "label": "Fetch variables on startup",
+   "type": "boolean",
+   "default": true,
+   "help": "Request values for all variables when establishing a connection to a desk."
+  },
+  {
+   "id": "show-advanced-options",
+   "label": "Show advanced options",
+   "type": "boolean",
+   "default": false,
+   "help": "Show advanced configuration options. There is no guarantee that these options will work in any combination."
+  },
+  {
+   "id": "requestTimeout",
+   "label": "Request Timeout (ms)",
+   "type": "number",
+   "default": 200,
+   "min": 50,
+   "max": 10000,
+   "help": "Time in milliseconds to wait for a response to a sent command before considering it lost."
+  },
+  {
+   "id": "panicOnLostRequest",
+   "label": "Panic on lost request",
+   "type": "boolean",
+   "default": false,
+   "help": "If enabled, the module will log an error when a sent command does not receive a response within the specified timeframe."
+  },
+  {
+   "id": "startupVariableRequestChunkSize",
+   "label": "Variable Request Chunk",
+   "type": "number",
+   "default": 500,
+   "min": 200,
+   "max": 2000,
+   "help": "When are requested in chunks on startup, waiting between each chunk"
+  },
+  {
+   "id": "startupVariableRequestChunkWait",
+   "label": "Variable Request Wait Time (ms)",
+   "type": "number",
+   "default": 100,
+   "min": 20,
+   "max": 1000,
+   "help": "When are requested in chunks on startup, waiting between each chunk"
+  },
+  {
+   "id": "subscriptionInterval",
+   "label": "Subscription Interval (ms)",
+   "type": "number",
+   "default": 9000,
+   "min": 100,
+   "max": 9999,
+   "help": "Time in milliseconds to wait between subscription requests."
+  },
+  {
+   "id": "enableOscForwarding",
+   "label": "Enable OSC Forwarding",
+   "type": "boolean",
+   "default": false,
+   "help": "Forward all received OSC messages to another OSC endpoint"
+  },
+  {
+   "id": "debugMode",
+   "label": "Enable Debug Mode",
+   "type": "boolean",
+   "default": false,
+   "help": "Enable detailed logging including timestamps and source location information"
+  }
+ ],
+ "actions": [
+  {
+   "id": "set-name",
+   "name": "Set Name",
+   "options": [
+    {
+     "id": "sel_use_variables",
+     "label": "Use Variables for Selection",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to use variables"
+    },
+    {
+     "id": "sel",
+     "label": "Selection",
+     "type": "select",
+     "default": "/ch/1",
+     "choices": [
+      {
+       "id": "/ch/1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "/ch/2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "/ch/3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "/ch/4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "/ch/5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "/ch/6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "/ch/7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "/ch/8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "/ch/9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "/ch/10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "/ch/11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "/ch/12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "/ch/13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "/ch/14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "/ch/15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "/ch/16",
+       "label": "Channel 16"
+      },
+      {
+       "id": "/ch/17",
+       "label": "Channel 17"
+      },
+      {
+       "id": "/ch/18",
+       "label": "Channel 18"
+      },
+      {
+       "id": "/ch/19",
+       "label": "Channel 19"
+      },
+      {
+       "id": "/ch/20",
+       "label": "Channel 20"
+      },
+      {
+       "id": "/ch/21",
+       "label": "Channel 21"
+      },
+      {
+       "id": "/ch/22",
+       "label": "Channel 22"
+      },
+      {
+       "id": "/ch/23",
+       "label": "Channel 23"
+      },
+      {
+       "id": "/ch/24",
+       "label": "Channel 24"
+      },
+      {
+       "id": "/ch/25",
+       "label": "Channel 25"
+      },
+      {
+       "id": "/ch/26",
+       "label": "Channel 26"
+      },
+      {
+       "id": "/ch/27",
+       "label": "Channel 27"
+      },
+      {
+       "id": "/ch/28",
+       "label": "Channel 28"
+      },
+      {
+       "id": "/ch/29",
+       "label": "Channel 29"
+      },
+      {
+       "id": "/ch/30",
+       "label": "Channel 30"
+      },
+      {
+       "id": "/ch/31",
+       "label": "Channel 31"
+      },
+      {
+       "id": "/ch/32",
+       "label": "Channel 32"
+      },
+      {
+       "id": "/ch/33",
+       "label": "Channel 33"
+      },
+      {
+       "id": "/ch/34",
+       "label": "Channel 34"
+      },
+      {
+       "id": "/ch/35",
+       "label": "Channel 35"
+      },
+      {
+       "id": "/ch/36",
+       "label": "Channel 36"
+      },
+      {
+       "id": "/ch/37",
+       "label": "Channel 37"
+      },
+      {
+       "id": "/ch/38",
+       "label": "Channel 38"
+      },
+      {
+       "id": "/ch/39",
+       "label": "Channel 39"
+      },
+      {
+       "id": "/ch/40",
+       "label": "Channel 40"
+      },
+      {
+       "id": "/aux/1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "/aux/2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "/aux/3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "/aux/4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "/aux/5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "/aux/6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "/aux/7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "/aux/8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "/bus/1",
+       "label": "Bus 1"
+      },
+      {
+       "id": "/bus/2",
+       "label": "Bus 2"
+      },
+      {
+       "id": "/bus/3",
+       "label": "Bus 3"
+      },
+      {
+       "id": "/bus/4",
+       "label": "Bus 4"
+      },
+      {
+       "id": "/bus/5",
+       "label": "Bus 5"
+      },
+      {
+       "id": "/bus/6",
+       "label": "Bus 6"
+      },
+      {
+       "id": "/bus/7",
+       "label": "Bus 7"
+      },
+      {
+       "id": "/bus/8",
+       "label": "Bus 8"
+      },
+      {
+       "id": "/bus/9",
+       "label": "Bus 9"
+      },
+      {
+       "id": "/bus/10",
+       "label": "Bus 10"
+      },
+      {
+       "id": "/bus/11",
+       "label": "Bus 11"
+      },
+      {
+       "id": "/bus/12",
+       "label": "Bus 12"
+      },
+      {
+       "id": "/bus/13",
+       "label": "Bus 13"
+      },
+      {
+       "id": "/bus/14",
+       "label": "Bus 14"
+      },
+      {
+       "id": "/bus/15",
+       "label": "Bus 15"
+      },
+      {
+       "id": "/bus/16",
+       "label": "Bus 16"
+      },
+      {
+       "id": "/mtx/1",
+       "label": "Matrix 1"
+      },
+      {
+       "id": "/mtx/2",
+       "label": "Matrix 2"
+      },
+      {
+       "id": "/mtx/3",
+       "label": "Matrix 3"
+      },
+      {
+       "id": "/mtx/4",
+       "label": "Matrix 4"
+      },
+      {
+       "id": "/mtx/5",
+       "label": "Matrix 5"
+      },
+      {
+       "id": "/mtx/6",
+       "label": "Matrix 6"
+      },
+      {
+       "id": "/mtx/7",
+       "label": "Matrix 7"
+      },
+      {
+       "id": "/mtx/8",
+       "label": "Matrix 8"
+      },
+      {
+       "id": "/main/1",
+       "label": "Main 1"
+      },
+      {
+       "id": "/main/2",
+       "label": "Main 2"
+      },
+      {
+       "id": "/main/3",
+       "label": "Main 3"
+      },
+      {
+       "id": "/main/4",
+       "label": "Main 4"
+      },
+      {
+       "id": "/dca/1",
+       "label": "DCA 1"
+      },
+      {
+       "id": "/dca/2",
+       "label": "DCA 2"
+      },
+      {
+       "id": "/dca/3",
+       "label": "DCA 3"
+      },
+      {
+       "id": "/dca/4",
+       "label": "DCA 4"
+      },
+      {
+       "id": "/dca/5",
+       "label": "DCA 5"
+      },
+      {
+       "id": "/dca/6",
+       "label": "DCA 6"
+      },
+      {
+       "id": "/dca/7",
+       "label": "DCA 7"
+      },
+      {
+       "id": "/dca/8",
+       "label": "DCA 8"
+      },
+      {
+       "id": "/dca/9",
+       "label": "DCA 9"
+      },
+      {
+       "id": "/dca/10",
+       "label": "DCA 10"
+      },
+      {
+       "id": "/dca/11",
+       "label": "DCA 11"
+      },
+      {
+       "id": "/dca/12",
+       "label": "DCA 12"
+      },
+      {
+       "id": "/dca/13",
+       "label": "DCA 13"
+      },
+      {
+       "id": "/dca/14",
+       "label": "DCA 14"
+      },
+      {
+       "id": "/dca/15",
+       "label": "DCA 15"
+      },
+      {
+       "id": "/dca/16",
+       "label": "DCA 16"
+      },
+      {
+       "id": "/mgrp/1",
+       "label": "Mute Group 1"
+      },
+      {
+       "id": "/mgrp/2",
+       "label": "Mute Group 2"
+      },
+      {
+       "id": "/mgrp/3",
+       "label": "Mute Group 3"
+      },
+      {
+       "id": "/mgrp/4",
+       "label": "Mute Group 4"
+      },
+      {
+       "id": "/mgrp/5",
+       "label": "Mute Group 5"
+      },
+      {
+       "id": "/mgrp/6",
+       "label": "Mute Group 6"
+      },
+      {
+       "id": "/mgrp/7",
+       "label": "Mute Group 7"
+      },
+      {
+       "id": "/mgrp/8",
+       "label": "Mute Group 8"
+      }
+     ],
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "sel_variables",
+     "label": "Selection",
+     "type": "text",
+     "default": "",
+     "help": "Available choices: /ch/1=Channel 1, /ch/2=Channel 2, /ch/3=Channel 3, /ch/4=Channel 4, /ch/5=Channel 5, /ch/6=Channel 6, /ch/7=Channel 7, /ch/8=Channel 8, /ch/9=Channel 9, /ch/10=Channel 10, /ch/11=Ch"
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "{{option.sel}}/name",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-behringer-wing",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Janik Witzig, Elliot Matson"
+  }
+ ],
+ "source": {
+  "module": "behringer-wing",
+  "version": "2.3.0-beta.2",
+  "license": "MIT",
+  "maintainers": [
+   "Janik Witzig",
+   "Elliot Matson"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-behringer-wing.git"
+ }
+}

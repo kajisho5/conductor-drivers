@@ -1,0 +1,80 @@
+{
+ "format": 1,
+ "id": "m-samsung-display",
+ "name": "Samsung MD Display",
+ "category": "Samsung",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 1515,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "id",
+   "label": "Target ID",
+   "type": "number",
+   "default": 0,
+   "min": 0,
+   "max": 254,
+   "help": "This is the configured ID of this device, 0-253 (254 will broadcast to any ID but there won't be any feedback)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "powerOn",
+   "name": "Power On Display",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "aa1100010113",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Basics",
+   "name": "Power on",
+   "text": "Power On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "powerOn",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-samsung-display",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "samsung-display",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-samsung-display.git"
+ }
+}

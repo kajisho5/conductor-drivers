@@ -1,0 +1,92 @@
+{
+ "format": 1,
+ "id": "m-globalcache-itac-ir",
+ "name": "Global Cache iTach IP2IR",
+ "category": "Global Cache",
+ "version": "2.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 4998,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "portSet",
+   "name": "Choose port",
+   "options": [
+    {
+     "id": "portNum",
+     "label": "Choose Port",
+     "type": "select",
+     "default": "1,",
+     "choices": [
+      {
+       "id": "1,",
+       "label": "Port 1"
+      },
+      {
+       "id": "2,",
+       "label": "Port 2"
+      },
+      {
+       "id": "3,",
+       "label": "Port 3"
+      }
+     ]
+    },
+    {
+     "id": "ir",
+     "label": "IR Code",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "sendir,1:{{option.portNum|map}},,{{option.ir}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "portNum": {
+     "1,": "1",
+     "2,": "2",
+     "3,": "3"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-globalcache-itac-ir",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Casey Selph, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "globalcache-itac-ir",
+  "version": "2.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Casey Selph",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-globalcache-itac-ir.git"
+ }
+}

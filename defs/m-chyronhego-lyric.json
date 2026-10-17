@@ -1,0 +1,115 @@
+{
+ "format": 1,
+ "id": "m-chyronhego-lyric",
+ "name": "ChyronHego Lyric",
+ "category": "ChyronHego",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "keepAlive",
+   "label": "Keep Alive Message",
+   "type": "text",
+   "default": "W\\1002\\6001\\Pinging\\Chyron",
+   "help": "Sent after 30 seconds of inactivity to maintain TCP Connection"
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "sendMacro",
+   "name": "Send and Execute Macro",
+   "options": [
+    {
+     "id": "macro",
+     "label": "Macro",
+     "type": "text",
+     "default": "",
+     "help": "Any VB Script command that can be executed via Lyric Macros may be contained in an E command.  Each command is separated by a \"tilde\" (~) character."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "E\\\\{{option.macro}}\\\\\\\\\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "customMessage",
+   "name": "Custom Message",
+   "options": [
+    {
+     "id": "message",
+     "label": "Custom Message",
+     "type": "text",
+     "default": "",
+     "help": "Send custom message. Module will appead \\\\\\r\\n to the end."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.message}}\\\\\\\\\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "updateMessagePath",
+   "name": "Update Message Path",
+   "options": [
+    {
+     "id": "msgPath",
+     "label": "Message Directory",
+     "type": "text",
+     "default": "C:\\Data\\Messages",
+     "help": "If a colon ( : ) is to be used in the file path information, you may use back slashes ( \\ ), but if using forward slashes ( / ), do not include a colon with the drive letter. "
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "M\\\\{{option.msgPath}}\\\\\\\\\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-chyronhego-lyric",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "chyronhego-lyric",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-chyronhego-lyric.git"
+ }
+}

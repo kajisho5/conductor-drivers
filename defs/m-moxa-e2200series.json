@@ -1,0 +1,328 @@
+{
+ "format": 1,
+ "id": "m-moxa-e2200series",
+ "name": "Moxa e2210 / e2212 / e2214 / e2242 / e2260 / e2262",
+ "category": "Moxa",
+ "version": "1.0.6",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "0",
+     "label": "e2210"
+    },
+    {
+     "id": "1",
+     "label": "e2212"
+    },
+    {
+     "id": "2",
+     "label": "e2214"
+    },
+    {
+     "id": "3",
+     "label": "e2242"
+    },
+    {
+     "id": "4",
+     "label": "e2260"
+    },
+    {
+     "id": "5",
+     "label": "e2262"
+    }
+   ]
+  },
+  {
+   "id": "pollInterval",
+   "label": "Poll Rate (s)",
+   "type": "number",
+   "default": 5,
+   "min": 0,
+   "max": 600,
+   "help": "Set to 0 to turn off"
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logs",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_DO_status",
+   "name": "Set DO Status",
+   "options": [
+    {
+     "id": "status",
+     "label": "Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  },
+  {
+   "id": "get_DO_status",
+   "name": "Get DO Status",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/getParam.cgi?DOStatus_00=?&DOStatus_01=?&DOStatus_02=?&DOStatus_03=?&DOStatus_04=?&DOStatus_05=?&DOStatus_06=?&DOStatus_07=?"
+   }
+  },
+  {
+   "id": "set_DO_mode",
+   "name": "Set DO Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "DO"
+      },
+      {
+       "id": "1",
+       "label": "Pulse"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  },
+  {
+   "id": "get_DO_mode",
+   "name": "Get DO Mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/getParam.cgi?DOMode_00=?&DOMode_01=?&DOMode_02=?&DOMode_03=?&DOMode_04=?&DOMode_05=?&DOMode_06=?&DOMode_07=?"
+   }
+  },
+  {
+   "id": "set_DO_pulseStart",
+   "name": "Set DO Pulse",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stop"
+      },
+      {
+       "id": "1",
+       "label": "Start"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  },
+  {
+   "id": "get_DO_pulseStart",
+   "name": "Get DO Pulse",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/getParam.cgi?DOPulseStart_00=?&DOPulseStart_01=?&DOPulseStart_02=?&DOPulseStart_03=?&DOPulseStart_04=?&DOPulseStart_05=?&DOPulseStart_06=?&DOPulseStart_07=?"
+   }
+  },
+  {
+   "id": "set_DO_lowWidth",
+   "name": "Set DO Pulse Low Width",
+   "options": [
+    {
+     "id": "lowWidth",
+     "label": "Low Width (ms)",
+     "type": "text",
+     "default": "100"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  },
+  {
+   "id": "set_DO_highWidth",
+   "name": "Set DO Pulse High Width",
+   "options": [
+    {
+     "id": "highWidth",
+     "label": "High Width (ms)",
+     "type": "text",
+     "default": "100"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  },
+  {
+   "id": "get_DI_mode",
+   "name": "Get DI Mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/getParam.cgi?DIMode_00=?&DIMode_01=?&DIMode_02=?&DIMode_03=?&DIMode_04=?&DIMode_05=?&DIMode_06=?&DIMode_07=?&DIMode_08=?&DIMode_09=?&DIMode_10=?&DIMode_11=?"
+   }
+  },
+  {
+   "id": "set_DI_trigger",
+   "name": "Set DI Trigger",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Trigger",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Low to High"
+      },
+      {
+       "id": "1",
+       "label": "High to Low"
+      },
+      {
+       "id": "2",
+       "label": "Both"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  },
+  {
+   "id": "get_DI_trigger",
+   "name": "Get DI Trigger",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/getParam.cgi?DITrigger_00=?&DITrigger_01=?&DITrigger_02=?&DITrigger_03=?&DITrigger_04=?&DITrigger_05=?&DITrigger_06=?&DITrigger_07=?&DITrigger_08=?&DITrigger_09=?&DITrigger_10=?&DITrigger_11=?"
+   }
+  },
+  {
+   "id": "set_DI_CNT_start",
+   "name": "Set DI Count Start",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Count",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stop"
+      },
+      {
+       "id": "1",
+       "label": "Start"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  },
+  {
+   "id": "set_DI_filter",
+   "name": "Set DI Filter",
+   "options": [
+    {
+     "id": "filter",
+     "label": "Filter (ms)",
+     "type": "text",
+     "default": "50",
+     "help": "Return an number between 0.5 & 8480"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/setParam.cgi"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-moxa-e2200series",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "moxa-e2200series",
+  "version": "1.0.6",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-moxa-e2200series.git"
+ }
+}

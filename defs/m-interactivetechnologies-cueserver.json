@@ -1,0 +1,169 @@
+{
+ "format": 1,
+ "id": "m-interactivetechnologies-cueserver",
+ "name": "Interactive Technologies CueServer",
+ "category": "Interactive Technologies",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "protocol",
+   "label": "Protocol",
+   "type": "select",
+   "default": "http",
+   "choices": [
+    {
+     "id": "http",
+     "label": "HTTP (Port 80)"
+    },
+    {
+     "id": "udp",
+     "label": "UDP (Port 52737)"
+    }
+   ]
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "cuescript",
+   "name": "CueScript",
+   "options": [
+    {
+     "id": "script",
+     "label": "Custom Cue Script",
+     "type": "text",
+     "default": "",
+     "help": "You can enter a custom CueScript here."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/exe.cgi?cmd={{option.script}}"
+   }
+  },
+  {
+   "id": "audio",
+   "name": "Audio",
+   "options": [
+    {
+     "id": "audiofile",
+     "label": "Audio File to Play",
+     "type": "text",
+     "default": "",
+     "help": "Type in an audio file name for the CueServer to play out."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/exe.cgi?cmd=Audio%20{{option.audiofile}}"
+   }
+  },
+  {
+   "id": "audiostop",
+   "name": "Audio Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/exe.cgi?cmd=Audio%20Stop"
+   }
+  },
+  {
+   "id": "cue",
+   "name": "Cue",
+   "options": [
+    {
+     "id": "cuenumber",
+     "label": "Cue Number",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/exe.cgi?cmd=Cue%20{{option.cuenumber}}"
+   }
+  },
+  {
+   "id": "macro",
+   "name": "Macro",
+   "options": [
+    {
+     "id": "macronumber",
+     "label": "Macro Number",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/exe.cgi?cmd=Macro%20{{option.macronumber}}"
+   }
+  },
+  {
+   "id": "playback",
+   "name": "Playback",
+   "options": [
+    {
+     "id": "playbacknumber",
+     "label": "Playback Number",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/exe.cgi?cmd=Playback%20{{option.playbacknumber}}"
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/exe.cgi?cmd=Reboot"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-interactivetechnologies-cueserver",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "interactivetechnologies-cueserver",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-interactivetechnologies-cueserver.git"
+ }
+}

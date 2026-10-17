@@ -1,0 +1,555 @@
+{
+ "format": 1,
+ "id": "m-roku-tv",
+ "name": "Roku TV",
+ "category": "Roku",
+ "version": "2.0.5",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8060",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "enable_feedbacks",
+   "label": "Enable Feedbacks",
+   "type": "boolean",
+   "default": true,
+   "help": "If enabled, the module will query the device for the latest data."
+  },
+  {
+   "id": "poll_interval",
+   "label": "Poll Interval (ms)",
+   "type": "number",
+   "default": 30000,
+   "min": 100,
+   "max": 60000
+  }
+ ],
+ "actions": [
+  {
+   "id": "power",
+   "name": "Power On/Off",
+   "options": [
+    {
+     "id": "choice",
+     "label": "On/Off",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/keypress/PowerO{{option.choice|map}}",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   },
+   "maps": {
+    "choice": {
+     "on": "n",
+     "off": "ff"
+    }
+   }
+  },
+  {
+   "id": "input",
+   "name": "Change Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "choices": [
+      {
+       "id": "InputTuner",
+       "label": "TV Tuner"
+      },
+      {
+       "id": "InputHDMI1",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "InputHDMI2",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "InputHDMI3",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "InputHDMI4",
+       "label": "HDMI 4"
+      },
+      {
+       "id": "InputAV1",
+       "label": "AV 1"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/keypress/Input{{option.input|map}}",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   },
+   "maps": {
+    "input": {
+     "InputTuner": "Tuner",
+     "InputHDMI1": "HDMI1",
+     "InputHDMI2": "HDMI2",
+     "InputHDMI3": "HDMI3",
+     "InputHDMI4": "HDMI4",
+     "InputAV1": "AV1"
+    }
+   }
+  },
+  {
+   "id": "app",
+   "name": "Launch App",
+   "options": [
+    {
+     "id": "app",
+     "label": "App",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/launch/undefined",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  },
+  {
+   "id": "volume",
+   "name": "Volume Up/Down",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Up/Down",
+     "type": "select",
+     "default": "up",
+     "choices": [
+      {
+       "id": "up",
+       "label": "Up"
+      },
+      {
+       "id": "down",
+       "label": "Down"
+      },
+      {
+       "id": "mute",
+       "label": "Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/keypress/Volume{{option.choice|map}}",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   },
+   "maps": {
+    "choice": {
+     "up": "Up",
+     "down": "Down",
+     "mute": "Mute"
+    }
+   }
+  },
+  {
+   "id": "key",
+   "name": "Key Down/Up/Press",
+   "options": [
+    {
+     "id": "keytype",
+     "label": "Type",
+     "type": "select",
+     "default": "keypress",
+     "choices": [
+      {
+       "id": "keydown",
+       "label": "Key Down"
+      },
+      {
+       "id": "keyup",
+       "label": "Key Up"
+      },
+      {
+       "id": "keypress",
+       "label": "Key Press"
+      }
+     ]
+    },
+    {
+     "id": "keybutton",
+     "label": "Key",
+     "type": "select",
+     "choices": [
+      {
+       "id": "Home",
+       "label": "Home"
+      },
+      {
+       "id": "Rev",
+       "label": "Rewind"
+      },
+      {
+       "id": "Fwd",
+       "label": "Forward"
+      },
+      {
+       "id": "Play",
+       "label": "Play / Pause"
+      },
+      {
+       "id": "Select",
+       "label": "Select"
+      },
+      {
+       "id": "Left",
+       "label": "Left"
+      },
+      {
+       "id": "Right",
+       "label": "Right"
+      },
+      {
+       "id": "Down",
+       "label": "Down"
+      },
+      {
+       "id": "Up",
+       "label": "Up"
+      },
+      {
+       "id": "Back",
+       "label": "Back"
+      },
+      {
+       "id": "InstantReplay",
+       "label": "Instant Replay / Skip Back"
+      },
+      {
+       "id": "Info",
+       "label": "Info"
+      },
+      {
+       "id": "Backspace",
+       "label": "Backspace"
+      },
+      {
+       "id": "Search",
+       "label": "Search"
+      },
+      {
+       "id": "Enter",
+       "label": "Enter / OK"
+      },
+      {
+       "id": "ChannelUp",
+       "label": "Channel Up"
+      },
+      {
+       "id": "ChannelDown",
+       "label": "Channel Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/key{{option.keytype|map}}/{{option.keybutton|map}}",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   },
+   "maps": {
+    "keytype": {
+     "keypress": "press",
+     "keydown": "down",
+     "keyup": "up"
+    },
+    "keybutton": {
+     "Home": "Home",
+     "Rev": "Rev",
+     "Fwd": "Fwd",
+     "Play": "Play",
+     "Select": "Select",
+     "Left": "Left",
+     "Right": "Right",
+     "Down": "Down",
+     "Up": "Up",
+     "Back": "Back",
+     "InstantReplay": "InstantReplay",
+     "Info": "Info",
+     "Backspace": "Backspace",
+     "Search": "Search",
+     "Enter": "Enter",
+     "ChannelUp": "ChannelUp",
+     "ChannelDown": "ChannelDown"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Keys",
+   "name": "Home",
+   "text": "Home",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Home"
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Keys",
+   "name": "Back",
+   "text": "Back",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Back"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Keys",
+   "name": "Instant Replay / Skip Back",
+   "text": "Instant Replay / Skip Back",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "InstantReplay"
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Keys",
+   "name": "Options",
+   "text": "Options",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Info"
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Keys",
+   "name": "Left",
+   "text": "Left",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Left"
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Keys",
+   "name": "Right",
+   "text": "Right",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Right"
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Keys",
+   "name": "Down",
+   "text": "Down",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Down"
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Keys",
+   "name": "Up",
+   "text": "Up",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Up"
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Keys",
+   "name": "Select / OK",
+   "text": "Select / OK",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Select"
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Keys",
+   "name": "Rewind",
+   "text": "Rewind",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Rev"
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Keys",
+   "name": "Forward",
+   "text": "Forward",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Fwd"
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Keys",
+   "name": "Play / Pause",
+   "text": "Play / Pause",
+   "action": {
+    "definitionId": "key",
+    "options": {
+     "keytype": "keypress",
+     "keybutton": "Play"
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Volume",
+   "name": "Volume Up",
+   "text": "Volume Up",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "choice": "up"
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Volume",
+   "name": "Volume Down",
+   "text": "Volume Down",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "choice": "down"
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Volume",
+   "name": "Volume Mute",
+   "text": "Volume Mute",
+   "action": {
+    "definitionId": "volume",
+    "options": {
+     "choice": "mute"
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Power",
+   "name": "Power On",
+   "text": "Power On",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "choice": "on"
+    }
+   }
+  },
+  {
+   "id": "16",
+   "category": "Power",
+   "name": "Power Off",
+   "text": "Power Off",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "choice": "off"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-roku-tv",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "roku-tv",
+  "version": "2.0.5",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-roku-tv.git"
+ }
+}

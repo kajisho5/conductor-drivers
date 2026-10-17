@@ -1,0 +1,429 @@
+{
+ "format": 1,
+ "id": "m-extron-smp351",
+ "name": "Extron SMP 351",
+ "category": "Extron",
+ "version": "2.1.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Admin or User Password",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "route",
+   "name": "Route input to output channel A or B",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text"
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "A"
+      },
+      {
+       "id": "2",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.input}}*{{option.channel|map}}!\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "recall_ps_channel",
+   "name": "Recall a saved user preset",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "A"
+      },
+      {
+       "id": "2",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "preset",
+     "label": "User Preset",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "1*{{option.channel|map}}*{{option.preset}}.\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "recall_ps_input",
+   "name": "Recall a saved input preset",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "A"
+      },
+      {
+       "id": "2",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "preset",
+     "label": "Input Preset",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 128
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "2*{{option.preset}}*{{option.channel|map}}.\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "recall_ps_stream",
+   "name": "Recall a saved stream preset",
+   "options": [
+    {
+     "id": "encoder",
+     "label": "Encoder",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "A"
+      },
+      {
+       "id": "2",
+       "label": "B"
+      },
+      {
+       "id": "3",
+       "label": "Confidence A"
+      }
+     ]
+    },
+    {
+     "id": "preset",
+     "label": "Stream Preset",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3*{{option.encoder|map}}*{{option.preset}}.\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "encoder": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "recall_ps_encoder",
+   "name": "Recall a saved encoder preset",
+   "options": [
+    {
+     "id": "encoder",
+     "label": "Encoder",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "A"
+      },
+      {
+       "id": "2",
+       "label": "B"
+      },
+      {
+       "id": "3",
+       "label": "Confidence A"
+      }
+     ]
+    },
+    {
+     "id": "preset",
+     "label": "Encoder Preset",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "4*{{option.encoder|map}}*{{option.preset}}.\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "encoder": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "recall_ps_layout",
+   "name": "Recall a saved layout preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Layout Preset",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "7*{{option.preset}}.\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recall_ps_layout_dual",
+   "name": "Recall a saved layout preset in Dual Encoding Mode",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Layout Preset",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "9*3*{{option.preset}}.\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "record",
+   "name": "Stop/Record/Pause",
+   "options": [
+    {
+     "id": "record_action",
+     "label": "Action",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stop"
+      },
+      {
+       "id": "1",
+       "label": "Record"
+      },
+      {
+       "id": "2",
+       "label": "Pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "1b59{{option.record_action|map}}524344520a",
+    "encoding": "hex"
+   },
+   "maps": {
+    "record_action": {
+     "0": "30",
+     "1": "31",
+     "2": "32"
+    }
+   }
+  },
+  {
+   "id": "extend_rec",
+   "name": "Extend Scheduled Recording",
+   "options": [
+    {
+     "id": "duration",
+     "label": "Duration to extend (1 to 60 min)",
+     "type": "number",
+     "default": 5,
+     "min": 1,
+     "max": 60
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "1b45{{option.duration|hexstr}}524344520a",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "rtmp_stream",
+   "name": "RTMP Stream",
+   "options": [
+    {
+     "id": "rtmp_stream",
+     "label": "Stream",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "A"
+      },
+      {
+       "id": "2",
+       "label": "B"
+      },
+      {
+       "id": "3",
+       "label": "Confidence A"
+      }
+     ]
+    },
+    {
+     "id": "onoff",
+     "label": "On/Off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "1b45{{option.rtmp_stream|map}}2a{{option.onoff|map}}52544d500a",
+    "encoding": "hex"
+   },
+   "maps": {
+    "rtmp_stream": {
+     "1": "31",
+     "2": "32",
+     "3": "33"
+    },
+    "onoff": {
+     "0": "30",
+     "1": "31"
+    }
+   }
+  },
+  {
+   "id": "mark",
+   "name": "Add Chapter Marker",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "1b42524344520a",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-extron-smp351",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Nigel Brown, Bryce Seifert"
+  }
+ ],
+ "source": {
+  "module": "extron-smp351",
+  "version": "2.1.3",
+  "license": "MIT",
+  "maintainers": [
+   "Nigel Brown",
+   "Bryce Seifert"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-extron-smp351.git"
+ }
+}

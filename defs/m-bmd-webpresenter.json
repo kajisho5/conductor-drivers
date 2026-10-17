@@ -1,0 +1,340 @@
+{
+ "format": 1,
+ "id": "m-bmd-webpresenter",
+ "name": "Blackmagic Design WebPresenter HD / WebPresenter 4K",
+ "category": "Blackmagic Design",
+ "version": "2.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9977,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "stream",
+   "name": "Streaming Control",
+   "options": [
+    {
+     "id": "stream_control",
+     "label": "State",
+     "type": "select",
+     "default": "Start",
+     "choices": [
+      {
+       "id": "Start",
+       "label": "Start"
+      },
+      {
+       "id": "Stop",
+       "label": "Stop"
+      },
+      {
+       "id": "Toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM STATE:\\nAction: St{{option.stream_control|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "stream_control": {
+     "Start": "art",
+     "Stop": "op",
+     "Toggle": "art"
+    }
+   }
+  },
+  {
+   "id": "stream_settings",
+   "name": "Stream Settings",
+   "options": [
+    {
+     "id": "video_mode",
+     "label": "Video Mode",
+     "type": "select",
+     "default": "Auto",
+     "choices": []
+    },
+    {
+     "id": "platform",
+     "label": "Platform",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "server",
+     "label": "Server",
+     "type": "text",
+     "default": "",
+     "help": "Depends on platform.\nRefer to Blackmagic Web Presenter desktop application for possible options. You may use Companion variables."
+    },
+    {
+     "id": "key",
+     "label": "Stream Key",
+     "type": "text",
+     "default": "",
+     "help": "Provided by the streaming platform. You may use Companion variables."
+    },
+    {
+     "id": "quality",
+     "label": "Quality",
+     "type": "select",
+     "default": "Streaming Medium",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM SETTINGS:\\nVideo Mode: Auto\\nCurrent Platform: undefined\\nCurrent Server: {{option.server}}\\nCurrent Quality Level: Streaming Medium\\nStream Key: {{option.key}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "youtube_settings",
+   "name": "YouTube Simple Settings",
+   "options": [
+    {
+     "id": "key",
+     "label": "Stream Key",
+     "type": "text",
+     "default": "",
+     "help": "Enter the Stream Key from your YouTube creator studio. You may use Companion variables."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM SETTINGS:\\nVideo Mode: Auto\\nCurrent Platform: YouTube\\nCurrent Server: Primary\\nCurrent Quality Level: Streaming Medium\\nStream Key: {{option.key}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "custom_settings",
+   "name": "Custom URL H.264/H.265 Settings",
+   "options": [
+    {
+     "id": "platform",
+     "label": "Platform",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "video_mode",
+     "label": "Video Mode",
+     "type": "select",
+     "default": "Auto",
+     "choices": []
+    },
+    {
+     "id": "customURL",
+     "label": "Custom URL",
+     "type": "text",
+     "default": "",
+     "help": "Enter the URL of the custom server. You may use Companion variables."
+    },
+    {
+     "id": "key",
+     "label": "Stream Key",
+     "type": "text",
+     "default": "",
+     "help": "Enter the stream key of the custom server. You may use Companion variables."
+    },
+    {
+     "id": "quality",
+     "label": "Quality",
+     "type": "select",
+     "default": "Streaming Medium",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM SETTINGS:\\nVideo Mode: Auto\\nCurrent Platform:undefined\\nCurrent Server: Custom\\nCurrent Quality Level: Streaming Medium\\nCurrent URL:{{option.customURL}}\\nStream Key: {{option.key}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "device",
+   "name": "Device Control",
+   "options": [
+    {
+     "id": "device_control",
+     "label": "State",
+     "type": "select",
+     "default": "Reboot",
+     "choices": [
+      {
+       "id": "Reboot",
+       "label": "Reboot"
+      },
+      {
+       "id": "Factory Reset",
+       "label": "Factory Reset"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SHUTDOWN:\\nAction: {{option.device_control|map}}t\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "device_control": {
+     "Reboot": "Reboo",
+     "Factory Reset": "Factory Rese"
+    }
+   }
+  },
+  {
+   "id": "videoMode",
+   "name": "Change Video Mode",
+   "options": [
+    {
+     "id": "video_mode",
+     "label": "Video Mode",
+     "type": "select",
+     "default": "Auto",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM SETTINGS:\\nVideo Mode: Auto\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoQuality",
+   "name": "Change Video Quality",
+   "options": [
+    {
+     "id": "quality",
+     "label": "Quality",
+     "type": "select",
+     "default": "Streaming Medium",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM SETTINGS:\\nCurrent Quality Level: Streaming Medium\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "streamKey",
+   "name": "Change Stream Key",
+   "options": [
+    {
+     "id": "key",
+     "label": "Stream Key",
+     "type": "text",
+     "default": "",
+     "help": "Enter the Stream Key. You may use Companion variables."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM SETTINGS:\\nStream Key: {{option.key}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "passphrase",
+   "name": "Change SRT Passphrase",
+   "options": [
+    {
+     "id": "passphrase",
+     "label": "Passphrase",
+     "type": "text",
+     "default": "",
+     "help": "You may use Companion variables."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "STREAM SETTINGS:\\nPassword: {{option.passphrase}}\\n\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Start",
+   "category": "Streaming",
+   "name": "Start Stream",
+   "text": "Start Stream",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stream",
+    "options": {
+     "stream_control": "Start"
+    }
+   }
+  },
+  {
+   "id": "Stop",
+   "category": "Streaming",
+   "name": "Stop Stream",
+   "text": "Stop Stream",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stream",
+    "options": {
+     "stream_control": "Stop"
+    }
+   }
+  },
+  {
+   "id": "Reboot",
+   "category": "Device",
+   "name": "Reboot WebPresenter",
+   "text": "Reboot",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "device",
+    "options": {
+     "device_control": "Reboot"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bmd-webpresenter",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel"
+  }
+ ],
+ "source": {
+  "module": "bmd-webpresenter",
+  "version": "2.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bmd-webpresenter.git"
+ }
+}

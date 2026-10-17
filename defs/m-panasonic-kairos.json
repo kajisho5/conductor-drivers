@@ -1,0 +1,3590 @@
+{
+ "format": 1,
+ "id": "m-panasonic-kairos",
+ "name": "Panasonic Kairos",
+ "category": "Panasonic",
+ "version": "4.2.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3005,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "restPort",
+   "label": "REST API Port",
+   "type": "number",
+   "default": 3004,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": "Kairos"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": ""
+  }
+ ],
+ "actions": [
+  {
+   "id": "setMediaStill",
+   "name": "Set Media Still",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Scene/Layer",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "sourceAB",
+     "label": "SourceA/B",
+     "type": "select",
+     "default": "sourceA",
+     "choices": [
+      {
+       "id": "sourceA",
+       "label": "sourceA"
+      },
+      {
+       "id": "sourceB",
+       "label": "sourceB"
+      }
+     ]
+    },
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": ".source{{option.sourceAB|map}}=1\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "sourceAB": {
+     "sourceA": "A",
+     "sourceB": "B"
+    }
+   }
+  },
+  {
+   "id": "programCut",
+   "name": "Master CUT Transition",
+   "options": [
+    {
+     "id": "scene",
+     "label": "Scene",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SCENES.1.cut\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "programAuto",
+   "name": "Master AUTO Transition",
+   "options": [
+    {
+     "id": "scene",
+     "label": "Scene",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SCENES.1.auto\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "autoTransition",
+   "name": "Layer AUTO Transition",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Transition",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SCENES..transition_auto\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cutTransition",
+   "name": "Layer CUT Transition",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Transition",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SCENES..transition_cut\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "playerControl",
+   "name": "RAM/Clip Player action",
+   "options": [
+    {
+     "id": "player",
+     "label": "Player Source",
+     "type": "select",
+     "default": "RR1",
+     "choices": [
+      {
+       "id": "RR1",
+       "label": "RR1"
+      },
+      {
+       "id": "RR2",
+       "label": "RR2"
+      },
+      {
+       "id": "RR3",
+       "label": "RR3"
+      },
+      {
+       "id": "RR4",
+       "label": "RR4"
+      },
+      {
+       "id": "RR5",
+       "label": "RR5"
+      },
+      {
+       "id": "RR6",
+       "label": "RR6"
+      },
+      {
+       "id": "RR7",
+       "label": "RR7"
+      },
+      {
+       "id": "RR8",
+       "label": "RR8"
+      },
+      {
+       "id": "CP1",
+       "label": "CP1"
+      },
+      {
+       "id": "CP2",
+       "label": "CP2"
+      },
+      {
+       "id": "AP1",
+       "label": "AP1"
+      },
+      {
+       "id": "AP2",
+       "label": "AP2"
+      },
+      {
+       "id": "AP3",
+       "label": "AP3"
+      },
+      {
+       "id": "AP4",
+       "label": "AP4"
+      },
+      {
+       "id": "AP5",
+       "label": "AP5"
+      },
+      {
+       "id": "AP6",
+       "label": "AP6"
+      },
+      {
+       "id": "AP7",
+       "label": "AP7"
+      },
+      {
+       "id": "AP8",
+       "label": "AP8"
+      },
+      {
+       "id": "AP9",
+       "label": "AP9"
+      },
+      {
+       "id": "AP10",
+       "label": "AP10"
+      },
+      {
+       "id": "AP11",
+       "label": "AP11"
+      },
+      {
+       "id": "AP12",
+       "label": "AP12"
+      },
+      {
+       "id": "AP13",
+       "label": "AP13"
+      },
+      {
+       "id": "AP14",
+       "label": "AP14"
+      },
+      {
+       "id": "AP15",
+       "label": "AP15"
+      },
+      {
+       "id": "AP16",
+       "label": "AP16"
+      }
+     ]
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "begin",
+     "choices": [
+      {
+       "id": "begin",
+       "label": "Go to Begin"
+      },
+      {
+       "id": "rewind",
+       "label": "Rewind"
+      },
+      {
+       "id": "step_back",
+       "label": "Step back"
+      },
+      {
+       "id": "reverse",
+       "label": "Reverse play"
+      },
+      {
+       "id": "play",
+       "label": "Play"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      },
+      {
+       "id": "step_forward",
+       "label": "Step forward"
+      },
+      {
+       "id": "fast_forward",
+       "label": "Fast forward"
+      },
+      {
+       "id": "end",
+       "label": "Go to End"
+      },
+      {
+       "id": "repeat=0",
+       "label": "Repeat off"
+      },
+      {
+       "id": "repeat=1",
+       "label": "Repeat on"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.player|map}}.{{option.action|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "player": {
+     "RR1": "RR1",
+     "RR2": "RR2",
+     "RR3": "RR3",
+     "RR4": "RR4",
+     "RR5": "RR5",
+     "RR6": "RR6",
+     "RR7": "RR7",
+     "RR8": "RR8",
+     "CP1": "CP1",
+     "CP2": "CP2",
+     "AP1": "AP1",
+     "AP2": "AP2",
+     "AP3": "AP3",
+     "AP4": "AP4",
+     "AP5": "AP5",
+     "AP6": "AP6",
+     "AP7": "AP7",
+     "AP8": "AP8",
+     "AP9": "AP9",
+     "AP10": "AP10",
+     "AP11": "AP11",
+     "AP12": "AP12",
+     "AP13": "AP13",
+     "AP14": "AP14",
+     "AP15": "AP15",
+     "AP16": "AP16"
+    },
+    "action": {
+     "begin": "begin",
+     "rewind": "rewind",
+     "step_back": "step_back",
+     "reverse": "reverse",
+     "play": "play",
+     "pause": "pause",
+     "step_forward": "step_forward",
+     "fast_forward": "fast_forward",
+     "end": "end\\r\\n",
+     "repeat=0": "repeat=0",
+     "repeat=1": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "muteMaster",
+   "name": "Audio Mixer Master Mute",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "unmute"
+      },
+      {
+       "id": "1",
+       "label": "mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AUDIOMIXER.mute={{option.mute|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Send custom command",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "custom\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "RR1.play",
+   "category": "PLAYERS",
+   "name": "RR1play",
+   "text": "RR1\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR1.pause",
+   "category": "PLAYERS",
+   "name": "RR1pause",
+   "text": "RR1\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR1.begin",
+   "category": "PLAYERS",
+   "name": "RR1begin",
+   "text": "RR1\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR1.step_back",
+   "category": "PLAYERS",
+   "name": "RR1step_back",
+   "text": "RR1\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR1.step_forward",
+   "category": "PLAYERS",
+   "name": "RR1step_forward",
+   "text": "RR1\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR1.end",
+   "category": "PLAYERS",
+   "name": "RR1end",
+   "text": "RR1\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR1.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR1repeat",
+   "text": "RR1\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR1.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR1repeat",
+   "text": "RR1\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR1",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "RR2.play",
+   "category": "PLAYERS",
+   "name": "RR2play",
+   "text": "RR2\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR2.pause",
+   "category": "PLAYERS",
+   "name": "RR2pause",
+   "text": "RR2\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR2.begin",
+   "category": "PLAYERS",
+   "name": "RR2begin",
+   "text": "RR2\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR2.step_back",
+   "category": "PLAYERS",
+   "name": "RR2step_back",
+   "text": "RR2\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR2.step_forward",
+   "category": "PLAYERS",
+   "name": "RR2step_forward",
+   "text": "RR2\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR2.end",
+   "category": "PLAYERS",
+   "name": "RR2end",
+   "text": "RR2\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR2.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR2repeat",
+   "text": "RR2\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR2.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR2repeat",
+   "text": "RR2\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR2",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "RR3.play",
+   "category": "PLAYERS",
+   "name": "RR3play",
+   "text": "RR3\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR3.pause",
+   "category": "PLAYERS",
+   "name": "RR3pause",
+   "text": "RR3\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR3.begin",
+   "category": "PLAYERS",
+   "name": "RR3begin",
+   "text": "RR3\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR3.step_back",
+   "category": "PLAYERS",
+   "name": "RR3step_back",
+   "text": "RR3\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR3.step_forward",
+   "category": "PLAYERS",
+   "name": "RR3step_forward",
+   "text": "RR3\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR3.end",
+   "category": "PLAYERS",
+   "name": "RR3end",
+   "text": "RR3\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR3.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR3repeat",
+   "text": "RR3\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR3.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR3repeat",
+   "text": "RR3\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR3",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "RR4.play",
+   "category": "PLAYERS",
+   "name": "RR4play",
+   "text": "RR4\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR4.pause",
+   "category": "PLAYERS",
+   "name": "RR4pause",
+   "text": "RR4\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR4.begin",
+   "category": "PLAYERS",
+   "name": "RR4begin",
+   "text": "RR4\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR4.step_back",
+   "category": "PLAYERS",
+   "name": "RR4step_back",
+   "text": "RR4\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR4.step_forward",
+   "category": "PLAYERS",
+   "name": "RR4step_forward",
+   "text": "RR4\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR4.end",
+   "category": "PLAYERS",
+   "name": "RR4end",
+   "text": "RR4\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR4.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR4repeat",
+   "text": "RR4\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR4.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR4repeat",
+   "text": "RR4\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR4",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "RR5.play",
+   "category": "PLAYERS",
+   "name": "RR5play",
+   "text": "RR5\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR5.pause",
+   "category": "PLAYERS",
+   "name": "RR5pause",
+   "text": "RR5\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR5.begin",
+   "category": "PLAYERS",
+   "name": "RR5begin",
+   "text": "RR5\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR5.step_back",
+   "category": "PLAYERS",
+   "name": "RR5step_back",
+   "text": "RR5\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR5.step_forward",
+   "category": "PLAYERS",
+   "name": "RR5step_forward",
+   "text": "RR5\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR5.end",
+   "category": "PLAYERS",
+   "name": "RR5end",
+   "text": "RR5\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR5.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR5repeat",
+   "text": "RR5\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR5.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR5repeat",
+   "text": "RR5\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR5",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "RR6.play",
+   "category": "PLAYERS",
+   "name": "RR6play",
+   "text": "RR6\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR6.pause",
+   "category": "PLAYERS",
+   "name": "RR6pause",
+   "text": "RR6\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR6.begin",
+   "category": "PLAYERS",
+   "name": "RR6begin",
+   "text": "RR6\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR6.step_back",
+   "category": "PLAYERS",
+   "name": "RR6step_back",
+   "text": "RR6\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR6.step_forward",
+   "category": "PLAYERS",
+   "name": "RR6step_forward",
+   "text": "RR6\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR6.end",
+   "category": "PLAYERS",
+   "name": "RR6end",
+   "text": "RR6\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR6.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR6repeat",
+   "text": "RR6\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR6.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR6repeat",
+   "text": "RR6\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR6",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "RR7.play",
+   "category": "PLAYERS",
+   "name": "RR7play",
+   "text": "RR7\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR7.pause",
+   "category": "PLAYERS",
+   "name": "RR7pause",
+   "text": "RR7\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR7.begin",
+   "category": "PLAYERS",
+   "name": "RR7begin",
+   "text": "RR7\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR7.step_back",
+   "category": "PLAYERS",
+   "name": "RR7step_back",
+   "text": "RR7\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR7.step_forward",
+   "category": "PLAYERS",
+   "name": "RR7step_forward",
+   "text": "RR7\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR7.end",
+   "category": "PLAYERS",
+   "name": "RR7end",
+   "text": "RR7\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR7.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR7repeat",
+   "text": "RR7\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR7.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR7repeat",
+   "text": "RR7\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR7",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "RR8.play",
+   "category": "PLAYERS",
+   "name": "RR8play",
+   "text": "RR8\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "RR8.pause",
+   "category": "PLAYERS",
+   "name": "RR8pause",
+   "text": "RR8\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "RR8.begin",
+   "category": "PLAYERS",
+   "name": "RR8begin",
+   "text": "RR8\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "RR8.step_back",
+   "category": "PLAYERS",
+   "name": "RR8step_back",
+   "text": "RR8\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "RR8.step_forward",
+   "category": "PLAYERS",
+   "name": "RR8step_forward",
+   "text": "RR8\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "RR8.end",
+   "category": "PLAYERS",
+   "name": "RR8end",
+   "text": "RR8\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "RR8.repeat_off",
+   "category": "PLAYERS",
+   "name": "RR8repeat",
+   "text": "RR8\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "RR8.repeat_on",
+   "category": "PLAYERS",
+   "name": "RR8repeat",
+   "text": "RR8\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "RR8",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "CP1.play",
+   "category": "PLAYERS",
+   "name": "CP1play",
+   "text": "CP1\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "CP1.pause",
+   "category": "PLAYERS",
+   "name": "CP1pause",
+   "text": "CP1\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "CP1.begin",
+   "category": "PLAYERS",
+   "name": "CP1begin",
+   "text": "CP1\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "CP1.step_back",
+   "category": "PLAYERS",
+   "name": "CP1step_back",
+   "text": "CP1\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "CP1.step_forward",
+   "category": "PLAYERS",
+   "name": "CP1step_forward",
+   "text": "CP1\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "CP1.end",
+   "category": "PLAYERS",
+   "name": "CP1end",
+   "text": "CP1\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "CP1.repeat_off",
+   "category": "PLAYERS",
+   "name": "CP1repeat",
+   "text": "CP1\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "CP1.repeat_on",
+   "category": "PLAYERS",
+   "name": "CP1repeat",
+   "text": "CP1\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP1",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "CP2.play",
+   "category": "PLAYERS",
+   "name": "CP2play",
+   "text": "CP2\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "CP2.pause",
+   "category": "PLAYERS",
+   "name": "CP2pause",
+   "text": "CP2\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "CP2.begin",
+   "category": "PLAYERS",
+   "name": "CP2begin",
+   "text": "CP2\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "CP2.step_back",
+   "category": "PLAYERS",
+   "name": "CP2step_back",
+   "text": "CP2\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "CP2.step_forward",
+   "category": "PLAYERS",
+   "name": "CP2step_forward",
+   "text": "CP2\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "CP2.end",
+   "category": "PLAYERS",
+   "name": "CP2end",
+   "text": "CP2\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "CP2.repeat_off",
+   "category": "PLAYERS",
+   "name": "CP2repeat",
+   "text": "CP2\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "CP2.repeat_on",
+   "category": "PLAYERS",
+   "name": "CP2repeat",
+   "text": "CP2\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "CP2",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP1.play",
+   "category": "PLAYERS",
+   "name": "AP1play",
+   "text": "AP1\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP1.pause",
+   "category": "PLAYERS",
+   "name": "AP1pause",
+   "text": "AP1\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP1.begin",
+   "category": "PLAYERS",
+   "name": "AP1begin",
+   "text": "AP1\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP1.step_back",
+   "category": "PLAYERS",
+   "name": "AP1step_back",
+   "text": "AP1\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP1.step_forward",
+   "category": "PLAYERS",
+   "name": "AP1step_forward",
+   "text": "AP1\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP1.end",
+   "category": "PLAYERS",
+   "name": "AP1end",
+   "text": "AP1\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP1.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP1repeat",
+   "text": "AP1\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP1.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP1repeat",
+   "text": "AP1\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP1",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP2.play",
+   "category": "PLAYERS",
+   "name": "AP2play",
+   "text": "AP2\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP2.pause",
+   "category": "PLAYERS",
+   "name": "AP2pause",
+   "text": "AP2\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP2.begin",
+   "category": "PLAYERS",
+   "name": "AP2begin",
+   "text": "AP2\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP2.step_back",
+   "category": "PLAYERS",
+   "name": "AP2step_back",
+   "text": "AP2\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP2.step_forward",
+   "category": "PLAYERS",
+   "name": "AP2step_forward",
+   "text": "AP2\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP2.end",
+   "category": "PLAYERS",
+   "name": "AP2end",
+   "text": "AP2\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP2.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP2repeat",
+   "text": "AP2\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP2.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP2repeat",
+   "text": "AP2\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP2",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP3.play",
+   "category": "PLAYERS",
+   "name": "AP3play",
+   "text": "AP3\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP3.pause",
+   "category": "PLAYERS",
+   "name": "AP3pause",
+   "text": "AP3\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP3.begin",
+   "category": "PLAYERS",
+   "name": "AP3begin",
+   "text": "AP3\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP3.step_back",
+   "category": "PLAYERS",
+   "name": "AP3step_back",
+   "text": "AP3\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP3.step_forward",
+   "category": "PLAYERS",
+   "name": "AP3step_forward",
+   "text": "AP3\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP3.end",
+   "category": "PLAYERS",
+   "name": "AP3end",
+   "text": "AP3\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP3.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP3repeat",
+   "text": "AP3\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP3.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP3repeat",
+   "text": "AP3\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP3",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP4.play",
+   "category": "PLAYERS",
+   "name": "AP4play",
+   "text": "AP4\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP4.pause",
+   "category": "PLAYERS",
+   "name": "AP4pause",
+   "text": "AP4\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP4.begin",
+   "category": "PLAYERS",
+   "name": "AP4begin",
+   "text": "AP4\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP4.step_back",
+   "category": "PLAYERS",
+   "name": "AP4step_back",
+   "text": "AP4\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP4.step_forward",
+   "category": "PLAYERS",
+   "name": "AP4step_forward",
+   "text": "AP4\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP4.end",
+   "category": "PLAYERS",
+   "name": "AP4end",
+   "text": "AP4\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP4.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP4repeat",
+   "text": "AP4\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP4.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP4repeat",
+   "text": "AP4\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP4",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP5.play",
+   "category": "PLAYERS",
+   "name": "AP5play",
+   "text": "AP5\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP5.pause",
+   "category": "PLAYERS",
+   "name": "AP5pause",
+   "text": "AP5\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP5.begin",
+   "category": "PLAYERS",
+   "name": "AP5begin",
+   "text": "AP5\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP5.step_back",
+   "category": "PLAYERS",
+   "name": "AP5step_back",
+   "text": "AP5\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP5.step_forward",
+   "category": "PLAYERS",
+   "name": "AP5step_forward",
+   "text": "AP5\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP5.end",
+   "category": "PLAYERS",
+   "name": "AP5end",
+   "text": "AP5\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP5.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP5repeat",
+   "text": "AP5\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP5.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP5repeat",
+   "text": "AP5\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP5",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP6.play",
+   "category": "PLAYERS",
+   "name": "AP6play",
+   "text": "AP6\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP6.pause",
+   "category": "PLAYERS",
+   "name": "AP6pause",
+   "text": "AP6\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP6.begin",
+   "category": "PLAYERS",
+   "name": "AP6begin",
+   "text": "AP6\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP6.step_back",
+   "category": "PLAYERS",
+   "name": "AP6step_back",
+   "text": "AP6\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP6.step_forward",
+   "category": "PLAYERS",
+   "name": "AP6step_forward",
+   "text": "AP6\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP6.end",
+   "category": "PLAYERS",
+   "name": "AP6end",
+   "text": "AP6\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP6.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP6repeat",
+   "text": "AP6\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP6.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP6repeat",
+   "text": "AP6\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP6",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP7.play",
+   "category": "PLAYERS",
+   "name": "AP7play",
+   "text": "AP7\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP7.pause",
+   "category": "PLAYERS",
+   "name": "AP7pause",
+   "text": "AP7\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP7.begin",
+   "category": "PLAYERS",
+   "name": "AP7begin",
+   "text": "AP7\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP7.step_back",
+   "category": "PLAYERS",
+   "name": "AP7step_back",
+   "text": "AP7\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP7.step_forward",
+   "category": "PLAYERS",
+   "name": "AP7step_forward",
+   "text": "AP7\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP7.end",
+   "category": "PLAYERS",
+   "name": "AP7end",
+   "text": "AP7\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP7.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP7repeat",
+   "text": "AP7\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP7.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP7repeat",
+   "text": "AP7\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP7",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP8.play",
+   "category": "PLAYERS",
+   "name": "AP8play",
+   "text": "AP8\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP8.pause",
+   "category": "PLAYERS",
+   "name": "AP8pause",
+   "text": "AP8\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP8.begin",
+   "category": "PLAYERS",
+   "name": "AP8begin",
+   "text": "AP8\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP8.step_back",
+   "category": "PLAYERS",
+   "name": "AP8step_back",
+   "text": "AP8\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP8.step_forward",
+   "category": "PLAYERS",
+   "name": "AP8step_forward",
+   "text": "AP8\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP8.end",
+   "category": "PLAYERS",
+   "name": "AP8end",
+   "text": "AP8\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP8.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP8repeat",
+   "text": "AP8\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP8.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP8repeat",
+   "text": "AP8\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP8",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP9.play",
+   "category": "PLAYERS",
+   "name": "AP9play",
+   "text": "AP9\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP9.pause",
+   "category": "PLAYERS",
+   "name": "AP9pause",
+   "text": "AP9\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP9.begin",
+   "category": "PLAYERS",
+   "name": "AP9begin",
+   "text": "AP9\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP9.step_back",
+   "category": "PLAYERS",
+   "name": "AP9step_back",
+   "text": "AP9\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP9.step_forward",
+   "category": "PLAYERS",
+   "name": "AP9step_forward",
+   "text": "AP9\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP9.end",
+   "category": "PLAYERS",
+   "name": "AP9end",
+   "text": "AP9\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP9.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP9repeat",
+   "text": "AP9\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP9.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP9repeat",
+   "text": "AP9\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP9",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP10.play",
+   "category": "PLAYERS",
+   "name": "AP10play",
+   "text": "AP10\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP10.pause",
+   "category": "PLAYERS",
+   "name": "AP10pause",
+   "text": "AP10\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP10.begin",
+   "category": "PLAYERS",
+   "name": "AP10begin",
+   "text": "AP10\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP10.step_back",
+   "category": "PLAYERS",
+   "name": "AP10step_back",
+   "text": "AP10\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP10.step_forward",
+   "category": "PLAYERS",
+   "name": "AP10step_forward",
+   "text": "AP10\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP10.end",
+   "category": "PLAYERS",
+   "name": "AP10end",
+   "text": "AP10\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP10.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP10repeat",
+   "text": "AP10\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP10.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP10repeat",
+   "text": "AP10\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP10",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP11.play",
+   "category": "PLAYERS",
+   "name": "AP11play",
+   "text": "AP11\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP11.pause",
+   "category": "PLAYERS",
+   "name": "AP11pause",
+   "text": "AP11\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP11.begin",
+   "category": "PLAYERS",
+   "name": "AP11begin",
+   "text": "AP11\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP11.step_back",
+   "category": "PLAYERS",
+   "name": "AP11step_back",
+   "text": "AP11\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP11.step_forward",
+   "category": "PLAYERS",
+   "name": "AP11step_forward",
+   "text": "AP11\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP11.end",
+   "category": "PLAYERS",
+   "name": "AP11end",
+   "text": "AP11\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP11.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP11repeat",
+   "text": "AP11\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP11.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP11repeat",
+   "text": "AP11\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP11",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP12.play",
+   "category": "PLAYERS",
+   "name": "AP12play",
+   "text": "AP12\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP12.pause",
+   "category": "PLAYERS",
+   "name": "AP12pause",
+   "text": "AP12\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP12.begin",
+   "category": "PLAYERS",
+   "name": "AP12begin",
+   "text": "AP12\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP12.step_back",
+   "category": "PLAYERS",
+   "name": "AP12step_back",
+   "text": "AP12\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP12.step_forward",
+   "category": "PLAYERS",
+   "name": "AP12step_forward",
+   "text": "AP12\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP12.end",
+   "category": "PLAYERS",
+   "name": "AP12end",
+   "text": "AP12\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP12.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP12repeat",
+   "text": "AP12\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP12.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP12repeat",
+   "text": "AP12\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP12",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP13.play",
+   "category": "PLAYERS",
+   "name": "AP13play",
+   "text": "AP13\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP13.pause",
+   "category": "PLAYERS",
+   "name": "AP13pause",
+   "text": "AP13\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP13.begin",
+   "category": "PLAYERS",
+   "name": "AP13begin",
+   "text": "AP13\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP13.step_back",
+   "category": "PLAYERS",
+   "name": "AP13step_back",
+   "text": "AP13\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP13.step_forward",
+   "category": "PLAYERS",
+   "name": "AP13step_forward",
+   "text": "AP13\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP13.end",
+   "category": "PLAYERS",
+   "name": "AP13end",
+   "text": "AP13\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP13.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP13repeat",
+   "text": "AP13\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP13.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP13repeat",
+   "text": "AP13\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP13",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP14.play",
+   "category": "PLAYERS",
+   "name": "AP14play",
+   "text": "AP14\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP14.pause",
+   "category": "PLAYERS",
+   "name": "AP14pause",
+   "text": "AP14\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP14.begin",
+   "category": "PLAYERS",
+   "name": "AP14begin",
+   "text": "AP14\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP14.step_back",
+   "category": "PLAYERS",
+   "name": "AP14step_back",
+   "text": "AP14\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP14.step_forward",
+   "category": "PLAYERS",
+   "name": "AP14step_forward",
+   "text": "AP14\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP14.end",
+   "category": "PLAYERS",
+   "name": "AP14end",
+   "text": "AP14\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP14.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP14repeat",
+   "text": "AP14\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP14.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP14repeat",
+   "text": "AP14\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP14",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP15.play",
+   "category": "PLAYERS",
+   "name": "AP15play",
+   "text": "AP15\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP15.pause",
+   "category": "PLAYERS",
+   "name": "AP15pause",
+   "text": "AP15\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP15.begin",
+   "category": "PLAYERS",
+   "name": "AP15begin",
+   "text": "AP15\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP15.step_back",
+   "category": "PLAYERS",
+   "name": "AP15step_back",
+   "text": "AP15\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP15.step_forward",
+   "category": "PLAYERS",
+   "name": "AP15step_forward",
+   "text": "AP15\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP15.end",
+   "category": "PLAYERS",
+   "name": "AP15end",
+   "text": "AP15\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP15.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP15repeat",
+   "text": "AP15\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP15.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP15repeat",
+   "text": "AP15\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP15",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "AP16.play",
+   "category": "PLAYERS",
+   "name": "AP16play",
+   "text": "AP16\nplay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "AP16.pause",
+   "category": "PLAYERS",
+   "name": "AP16pause",
+   "text": "AP16\npause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "AP16.begin",
+   "category": "PLAYERS",
+   "name": "AP16begin",
+   "text": "AP16\nbegin",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "begin"
+    }
+   }
+  },
+  {
+   "id": "AP16.step_back",
+   "category": "PLAYERS",
+   "name": "AP16step_back",
+   "text": "AP16\nstep_back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "step_back"
+    }
+   }
+  },
+  {
+   "id": "AP16.step_forward",
+   "category": "PLAYERS",
+   "name": "AP16step_forward",
+   "text": "AP16\nstep_fwd",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "step_forward"
+    }
+   }
+  },
+  {
+   "id": "AP16.end",
+   "category": "PLAYERS",
+   "name": "AP16end",
+   "text": "AP16\nend",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "end"
+    }
+   }
+  },
+  {
+   "id": "AP16.repeat_off",
+   "category": "PLAYERS",
+   "name": "AP16repeat",
+   "text": "AP16\nrepeat:off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "repeat=0"
+    }
+   }
+  },
+  {
+   "id": "AP16.repeat_on",
+   "category": "PLAYERS",
+   "name": "AP16repeat",
+   "text": "AP16\nrepeat:on",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playerControl",
+    "options": {
+     "functionID": "",
+     "player": "AP16",
+     "action": "repeat=1"
+    }
+   }
+  },
+  {
+   "id": "Audio_mute",
+   "category": "AUDIO MUTE",
+   "name": "MUTE",
+   "text": "MASTER\nMUTE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "muteMaster",
+    "options": {
+     "mute": 1
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-panasonic-kairos",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "panasonic-kairos",
+  "version": "4.2.2",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-panasonic-kairos.git"
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "format": 1,
+ "id": "m-influxdb-apiv2",
+ "name": "InfluxDB v2",
+ "category": "InfluxDB",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://localhost:8086",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "url",
+   "label": "InfluxDB URL",
+   "type": "text",
+   "default": "http://localhost:8086"
+  },
+  {
+   "id": "token",
+   "label": "InfluxDB Token",
+   "type": "text"
+  },
+  {
+   "id": "org",
+   "label": "InfluxDB Organization",
+   "type": "text",
+   "help": "Can be the name or ID of the organization"
+  },
+  {
+   "id": "bucket",
+   "label": "InfluxDB Bucket",
+   "type": "text",
+   "help": "Can be the name or ID of the bucket"
+  }
+ ],
+ "actions": [
+  {
+   "id": "flushBuffer",
+   "name": "Flush Buffer",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v2/write?org=&bucket=&precision=ns",
+    "body": "example,tag1=value1,tag2=value2 value=0 1792199261573395756\nexample,tag1=value1,tag2=value2 value=\"0\" 1792199261695365872\nexample,tag1=value1,tag2=value2 field=T 1792199261817098580\nexampleMeasurement,tag1=value1,tag2=value2 field1=1234.5,field2=\"value2\" 1792199261940000000",
+    "contentType": "text/plain; charset=utf-8"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-influxdb-apiv2",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Elliot Matson"
+  }
+ ],
+ "source": {
+  "module": "influxdb-apiv2",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Elliot Matson"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-influxdb-apiv2.git"
+ }
+}

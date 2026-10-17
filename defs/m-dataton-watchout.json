@@ -1,0 +1,290 @@
+{
+ "format": 1,
+ "id": "m-dataton-watchout",
+ "name": "Dataton Watchout",
+ "category": "Dataton",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3040,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "type",
+   "label": "Type",
+   "type": "select",
+   "default": "prod",
+   "choices": [
+    {
+     "id": "prod",
+     "label": "Production Computer"
+    },
+    {
+     "id": "disp",
+     "label": "Display Cluster"
+    }
+   ]
+  },
+  {
+   "id": "feedback",
+   "label": "Feedback",
+   "type": "select",
+   "default": "none",
+   "choices": [
+    {
+     "id": "none",
+     "label": "None"
+    },
+    {
+     "id": "simple",
+     "label": "Simple (feedbacks only)"
+    },
+    {
+     "id": "advanced",
+     "label": "Advanced (feedbacks and variables)"
+    }
+   ]
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Auto update timeline list and presets interval in seconds (0 = disabled)",
+   "type": "number",
+   "default": 30,
+   "min": 0
+  }
+ ],
+ "actions": [
+  {
+   "id": "run",
+   "name": "Run",
+   "options": [
+    {
+     "id": "timeline",
+     "label": "timeline (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "run \"{{option.timeline}}\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "halt",
+   "name": "Pause",
+   "options": [
+    {
+     "id": "timeline",
+     "label": "timeline (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "halt \"{{option.timeline}}\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "kill",
+   "name": "Kill",
+   "options": [
+    {
+     "id": "timeline",
+     "label": "timeline (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "kill \"{{option.timeline}}\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reset",
+   "name": "Reset",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "reset\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "gototime",
+   "name": "Jump to time",
+   "options": [
+    {
+     "id": "time",
+     "label": "time position",
+     "type": "text",
+     "default": "\"00:00:00.000\""
+    },
+    {
+     "id": "timeline",
+     "label": "timeline (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "gotoTime {{option.time}} \"{{option.timeline}}\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "gotocue",
+   "name": "Jump to cue",
+   "options": [
+    {
+     "id": "cuename",
+     "label": "Cue name",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "timeline",
+     "label": "timeline (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "gotoControlCue \"{{option.cuename}}\" false \"{{option.timeline}}\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "online",
+   "name": "Go online",
+   "options": [
+    {
+     "id": "online",
+     "label": "go online",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Yes"
+      },
+      {
+       "id": "false",
+       "label": "No"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "online {{option.online|map}}e\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "online": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "standby",
+   "name": "Enter Standby",
+   "options": [
+    {
+     "id": "standby",
+     "label": "Enter Standby",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Yes"
+      },
+      {
+       "id": "false",
+       "label": "No"
+      }
+     ]
+    },
+    {
+     "id": "fadetime",
+     "label": "Fade time in ms",
+     "type": "number",
+     "default": 1000,
+     "min": 0,
+     "max": 60000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "standBy {{option.standby|map}}e {{option.fadetime}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "standby": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "load",
+   "name": "Load Show",
+   "options": [
+    {
+     "id": "show",
+     "label": "Showfile or Showname",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "load \"{{option.show}}\"\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-dataton-watchout",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dorian Meid, Alberto Righetto"
+  }
+ ],
+ "source": {
+  "module": "dataton-watchout",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Dorian Meid",
+   "Alberto Righetto"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-dataton-watchout.git"
+ }
+}

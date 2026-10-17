@@ -1,0 +1,259 @@
+{
+ "format": 1,
+ "id": "m-lofas-ndistudioclock",
+ "name": "Lofas AB NDI Studio Clock",
+ "category": "Lofas AB",
+ "version": "0.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:13344",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 100
+  }
+ ],
+ "actions": [
+  {
+   "id": "enable_onair",
+   "name": "Enable On Air",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/onair/true"
+   }
+  },
+  {
+   "id": "disable_onair",
+   "name": "Disable On Air",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/onair/false"
+   }
+  },
+  {
+   "id": "toggle_onair",
+   "name": "Toggle On Air",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/onair/true"
+   }
+  },
+  {
+   "id": "enable_countdown",
+   "name": "Enable Countdown",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/enablecountdown/true"
+   }
+  },
+  {
+   "id": "disable_countdown",
+   "name": "Disable Countdown",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/enablecountdown/false"
+   }
+  },
+  {
+   "id": "toggle_countdown",
+   "name": "Toggle Countdown",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/enablecountdown/true"
+   }
+  },
+  {
+   "id": "enable_autoonair",
+   "name": "Enable Auto On Air",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/autoonair/true"
+   }
+  },
+  {
+   "id": "disable_autoonair",
+   "name": "Disable Auto On Air",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/autoonair/false"
+   }
+  },
+  {
+   "id": "toggle_autoonair",
+   "name": "Toggle Auto On Air",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/autoonair/true"
+   }
+  },
+  {
+   "id": "enable_12hclock",
+   "name": "Enable 12h Clock",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/12hclock/true"
+   }
+  },
+  {
+   "id": "disable_12hclock",
+   "name": "Disable 12h Clock",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/12hclock/false"
+   }
+  },
+  {
+   "id": "toggle_12hclock",
+   "name": "Toggle 12h Clock",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/12hclock/true"
+   }
+  },
+  {
+   "id": "enable_transparent_background",
+   "name": "Enable Transparent Background",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/transparent/true"
+   }
+  },
+  {
+   "id": "disable_transparent_background",
+   "name": "Disable Transparent Background",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/transparent/false"
+   }
+  },
+  {
+   "id": "toggle_transparent_background",
+   "name": "Toggle Transparent Background",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/transparent/true"
+   }
+  },
+  {
+   "id": "enable_showclockhands",
+   "name": "Enable Show Clock Hands",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/showclockhands/true"
+   }
+  },
+  {
+   "id": "disable_showclockhands",
+   "name": "Disable Show Clock Hands",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/showclockhands/false"
+   }
+  },
+  {
+   "id": "toggle_showclockhands",
+   "name": "Toggle Show Clock Hands",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/showclockhands/true"
+   }
+  },
+  {
+   "id": "set_countdowntext",
+   "name": "Set Countdown Text",
+   "options": [
+    {
+     "id": "text",
+     "label": "Text",
+     "type": "text",
+     "default": "Countdown"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/countdowntext/{{option.text}}"
+   }
+  },
+  {
+   "id": "set_countdowntime",
+   "name": "Set Countdown Time",
+   "options": [
+    {
+     "id": "time",
+     "label": "Time",
+     "type": "text",
+     "default": "00:00:00"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/countdowntime/{{option.time}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-lofas-ndistudioclock",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：不明"
+  }
+ ],
+ "source": {
+  "module": "lofas-ndistudioclock",
+  "version": "0.1.0",
+  "license": "MIT",
+  "maintainers": [],
+  "repository": "git+https://github.com/bitfocus/companion-module-lofas-ndistudioclock.git"
+ }
+}

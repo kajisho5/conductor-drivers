@@ -1,0 +1,283 @@
+{
+ "format": 1,
+ "id": "m-audac-mtx",
+ "name": "Audac MTX48/88",
+ "category": "Audac",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5001,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_zone_volume",
+   "name": "Set Zone Volume",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "number",
+     "default": 0,
+     "min": -70,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SV{{option.zone}}|{{option.volume|lin:-1:0}}|U|\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "up_zone_volume",
+   "name": "Zone Volume +3dB",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SVU{{option.zone}}|0|U|\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "down_zone_volume",
+   "name": "Zone Volume -3dB",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SVD{{option.zone}}|0|U|\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_zone_input",
+   "name": "Set Zone Input",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mic 1"
+      },
+      {
+       "id": "2",
+       "label": "Mic 2"
+      },
+      {
+       "id": "3",
+       "label": "Line 3"
+      },
+      {
+       "id": "4",
+       "label": "Line 4"
+      },
+      {
+       "id": "5",
+       "label": "Line 5"
+      },
+      {
+       "id": "6",
+       "label": "Line 6"
+      },
+      {
+       "id": "7",
+       "label": "WLI/MWX65"
+      },
+      {
+       "id": "8",
+       "label": "MMI"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SR{{option.zone}}|{{option.input|map}}|U|\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "up_zone_input",
+   "name": "Zone Next Input",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SRUO{{option.zone}}|0|U|\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "down_zone_input",
+   "name": "Zone Previous Input",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SRDO{{option.zone}}|0|U|\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_zone_mute",
+   "name": "Set Zone Mute Status",
+   "options": [
+    {
+     "id": "zone",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "mute",
+     "label": "Status",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unmute"
+      },
+      {
+       "id": "1",
+       "label": "Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SM{{option.zone|pad2}}|{{option.mute|map}}|U|\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "save",
+   "name": "Save settings",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|SAVE|0|U|\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "factory_reset",
+   "name": "Factory Reset",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "#|X001|web|DEF|0|U|\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-audac-mtx.get",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jelle van Abbema"
+  }
+ ],
+ "source": {
+  "module": "audac-mtx",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jelle van Abbema"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-audac-mtx.get"
+ }
+}

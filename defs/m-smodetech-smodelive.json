@@ -1,0 +1,476 @@
+{
+ "format": 1,
+ "id": "m-smodetech-smodelive",
+ "name": "Smode Live",
+ "category": "Smode",
+ "version": "1.1.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "httpMode",
+   "label": "Http Mode",
+   "type": "select",
+   "default": "http",
+   "choices": [
+    {
+     "id": "http",
+     "label": "Http"
+    },
+    {
+     "id": "https",
+     "label": "Https"
+    },
+    {
+     "id": "httpsWithCa",
+     "label": "Https with certificate authority"
+    }
+   ]
+  },
+  {
+   "id": "rejectUnauthorized",
+   "label": "Reject Unauthorized",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "certFilePath",
+   "label": "Certifacte File Path",
+   "type": "text"
+  },
+  {
+   "id": "keyFilePath",
+   "label": "Key File Path",
+   "type": "text"
+  },
+  {
+   "id": "certAuthorityFilePath",
+   "label": "Certificate authority File Path",
+   "type": "text"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "Password"
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Status Poll Interval",
+   "type": "number",
+   "default": 1000,
+   "min": 0
+  },
+  {
+   "id": "autoDevices",
+   "label": "Auto Devices",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "markersMove",
+   "name": "TimeLines Marker Move",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/move",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlPlayingToggle",
+   "name": "TimeLine Play Pause",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/trigger?state=play",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlPlay",
+   "name": "TimeLine Play",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/trigger?state=play",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlPause",
+   "name": "TimeLine Pause",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/trigger?state=pause",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlReset",
+   "name": "TimeLines Reset",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/trigger?state=reset",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlFinalize",
+   "name": "TimeLines Finalize",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/trigger?state=finalize",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlNext",
+   "name": "TimeLines Next",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/trigger?state=next",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlPrevious",
+   "name": "TimeLines Previous",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/live/animations/{{option.uuid}}/trigger?state=previous",
+    "body": "",
+    "contentType": "application/x-www-form-urlencoded"
+   }
+  },
+  {
+   "id": "tlLooping",
+   "name": "TimeLines Looping",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/objects/{{option.uuid}}?variablePath=parameters.looping",
+    "body": "{\"value\":true}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "sceneActivationToggle",
+   "name": "Scene Activation Toggle",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/objects/{{option.uuid}}?variablePath=activation",
+    "body": "{\"value\":true}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "sceneActivationOn",
+   "name": "Contents Activation On",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/objects/{{option.uuid}}?variablePath=activation",
+    "body": "{\"value\":true}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "sceneActivationOff",
+   "name": "Contents Activation Off",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/objects/{{option.uuid}}?variablePath=activation",
+    "body": "{\"value\":false}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "sceneLoadingToogle",
+   "name": "Contents Loading Toggle",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/objects/{{option.uuid}}?variablePath=loading",
+    "body": "{\"value\":false}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "sceneLoadingOn",
+   "name": "Contents Loading On",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/objects/{{option.uuid}}?variablePath=loading",
+    "body": "{\"value\":true}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "sceneLoadingOff",
+   "name": "Contents Loading Off",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/objects/{{option.uuid}}?variablePath=loading",
+    "body": "{\"value\":false}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "devices_is_muted",
+   "name": "Devices Mute",
+   "options": [
+    {
+     "id": "uuid",
+     "label": "UUID",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/devices/{{option.uuid}}?variablePath=mute",
+    "body": "{\"value\":false}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setOnAir",
+   "name": "On Air",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/on-air",
+    "body": "{\"value\":true}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setEcoMode",
+   "name": "Power Save Mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/eco-mode",
+    "body": "{\"value\":true}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setOutPut",
+   "name": "Output",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/live/output",
+    "body": "{\"value\":false}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "onAir",
+   "category": "Interface",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#0a0a0a",
+   "action": {
+    "definitionId": "setOnAir",
+    "options": {}
+   }
+  },
+  {
+   "id": "eco_mode",
+   "category": "Interface",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#0a0a0a",
+   "action": {
+    "definitionId": "setEcoMode",
+    "options": {}
+   }
+  },
+  {
+   "id": "output",
+   "category": "Interface",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#0a0a0a",
+   "action": {
+    "definitionId": "setOutPut",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-smodetech-smodelive",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Nicolas Keesst, Smode Tech"
+  }
+ ],
+ "source": {
+  "module": "smodetech-smodelive",
+  "version": "1.1.2",
+  "license": "MIT",
+  "maintainers": [
+   "Nicolas Keesst",
+   "Smode Tech"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-smodetech-smodelive.git"
+ }
+}

@@ -1,0 +1,223 @@
+{
+ "format": 1,
+ "id": "m-binary-moipcontroller",
+ "name": "Binary B-900-MOIP-4K-CTRL",
+ "category": "Binary",
+ "version": "1.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "audioRx_index",
+   "label": "Audio Receiver Index",
+   "type": "text",
+   "default": 1
+  }
+ ],
+ "actions": [
+  {
+   "id": "switch_input",
+   "name": "Switch Input",
+   "options": [
+    {
+     "id": "tx",
+     "label": "Source (Tx)",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "rx",
+     "label": "Destination (Rx)",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!Switch=undefined,undefined\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disconnect_input",
+   "name": "Disconnect Input from Receiver",
+   "options": [
+    {
+     "id": "rx",
+     "label": "Destination (Rx)",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!Switch=0,undefined\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "display_osd",
+   "name": "Display OSD Message",
+   "options": [
+    {
+     "id": "rx",
+     "label": "Receiver Index",
+     "type": "number",
+     "default": 1
+    },
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": "Hello World"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!OSD={{option.rx}},{{option.message}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clear_osd",
+   "name": "Clear OSD Message",
+   "options": [
+    {
+     "id": "rx",
+     "label": "Receiver Index",
+     "type": "number",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!OSD={{option.rx}},CLEAR\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reboot_controller",
+   "name": "Reboot Controller",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!Reboot\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cec_control",
+   "name": "Set CEC Mode",
+   "options": [
+    {
+     "id": "rx",
+     "label": "Receiver Index",
+     "type": "number",
+     "default": 1
+    },
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "!CEC={{option.rx}},{{option.mode|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "volume_up",
+   "name": "Volume Up (+5)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!SetAudioVolumeLevel=1,5\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volume_down",
+   "name": "Volume Down (-5)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!SetAudioVolumeLevel=1,0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volume_mute",
+   "name": "Mute Volume",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!SetAudioVolumeLevel=1,0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volume_unmute",
+   "name": "Unmute Volume",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "!SetAudioVolumeLevel=1,0\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-binary-moipcontroller",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Britt Ryan"
+  }
+ ],
+ "source": {
+  "module": "binary-moipcontroller",
+  "version": "1.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Britt Ryan"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-binary-moipcontroller.git"
+ }
+}

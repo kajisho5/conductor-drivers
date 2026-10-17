@@ -1,0 +1,346 @@
+{
+ "format": 1,
+ "id": "m-rossvideo-rosstalk",
+ "name": "Ross Video Rosstalk",
+ "category": "Ross Video",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7788,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "carbonite",
+   "choices": [
+    {
+     "id": "carbonite",
+     "label": "Carbonite/Graphite"
+    },
+    {
+     "id": "ultrix",
+     "label": "Ultrix"
+    },
+    {
+     "id": "acuity",
+     "label": "Acuity/Vision"
+    },
+    {
+     "id": "opengear",
+     "label": "openGear"
+    }
+   ]
+  },
+  {
+   "id": "keepAlive",
+   "label": "TCP Keep Alive",
+   "type": "boolean",
+   "default": false,
+   "help": "TCP Keep Alive: Use a single TCP connection instead of one per command"
+  }
+ ],
+ "actions": [
+  {
+   "id": "gpi",
+   "name": "Trigger GPI",
+   "options": [
+    {
+     "id": "gpi",
+     "label": "Number",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GPI {{option.gpi|pad2}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "gpiByName",
+   "name": "Trigger GPI by Name",
+   "options": [
+    {
+     "id": "gpi",
+     "label": "Name",
+     "type": "text"
+    },
+    {
+     "id": "parameter",
+     "label": "Parameter",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GPI {{option.gpi}}:{{option.parameter}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Send a custom command",
+   "options": [
+    {
+     "id": "cmd",
+     "label": "Command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.cmd}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadset",
+   "name": "Load Set",
+   "options": [
+    {
+     "id": "set",
+     "label": "Set name",
+     "type": "text",
+     "default": "set1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "LOADSET {{option.set}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cut",
+   "name": "Cut",
+   "options": [
+    {
+     "id": "mle",
+     "label": "MLE",
+     "type": "text",
+     "default": "ME:1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MECUT {{option.mle}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "autotrans",
+   "name": "Auto Transition",
+   "options": [
+    {
+     "id": "mle",
+     "label": "MLE",
+     "type": "text",
+     "default": "ME:1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MEAUTO {{option.mle}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "xpt",
+   "name": "XPT",
+   "options": [
+    {
+     "id": "vidDest",
+     "label": "Destination",
+     "type": "text",
+     "default": "ME:1:PGM",
+     "help": "Program - ME:(ME-number):PGM, AuxBus — AUX:(aux-number), Key — ME:(ME-number):KEY:(key-number), MiniME™ — MME:(ME-number), Preset — ME:(ME-number):PST"
+    },
+    {
+     "id": "vidSource",
+     "label": "Source",
+     "type": "text",
+     "default": "IN:20",
+     "help": "Aux Bus — AUX:(aux-number), Black — BK, Clean — ME:(ME-number):CLN, Input Source — IN:(input-number), Key — ME:(ME-number):KEY:(key-number), Matte Color — BG, Media-Store — MS:(channel-number), MiniME"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "XPT {{option.vidDest}}:{{option.vidSource}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "transKey",
+   "name": "Transition Keyer",
+   "options": [
+    {
+     "id": "mle",
+     "label": "MLE",
+     "type": "text",
+     "default": "ME:1"
+    },
+    {
+     "id": "key",
+     "label": "Keyer",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "transD",
+     "label": "Transition On/Off Air ",
+     "type": "select",
+     "default": "TOGGLE",
+     "choices": [
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Keyer"
+      },
+      {
+       "id": "ON",
+       "label": "Transition OnAir"
+      },
+      {
+       "id": "OFF",
+       "label": "Transition OffAir"
+      }
+     ]
+    },
+    {
+     "id": "transT",
+     "label": "Transition type",
+     "type": "select",
+     "default": "CUT",
+     "choices": [
+      {
+       "id": "AUTO",
+       "label": "Auto Transition"
+      },
+      {
+       "id": "CUT",
+       "label": "Cut Transition "
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "KEY{{option.transT|map}}{{option.transD|map}} {{option.mle}}:{{option.key}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "transT": {
+     "CUT": "CUT",
+     "AUTO": "AUTO"
+    },
+    "transD": {
+     "TOGGLE": "",
+     "ON": "ON",
+     "OFF": "OFF"
+    }
+   }
+  },
+  {
+   "id": "ftb",
+   "name": "ftb",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FTB\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "MEM",
+   "name": "MEM",
+   "options": [
+    {
+     "id": "memID",
+     "label": "Memory ID",
+     "type": "text",
+     "default": "1:1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MEM {{option.memID}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SEQI",
+   "name": "SEQI",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "take ID",
+     "type": "text",
+     "default": 0
+    },
+    {
+     "id": "Layer",
+     "label": "Layer",
+     "type": "text",
+     "default": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SEQI {{option.takeID}}:{{option.Layer}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SEQO",
+   "name": "SEQO",
+   "options": [
+    {
+     "id": "takeID",
+     "label": "take ID",
+     "type": "text",
+     "default": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SEQO {{option.takeID}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-rossvideo-rosstalk",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：William Viker"
+  }
+ ],
+ "source": {
+  "module": "rossvideo-rosstalk",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "William Viker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-rossvideo-rosstalk.git"
+ }
+}

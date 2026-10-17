@@ -1,0 +1,176 @@
+{
+ "format": 1,
+ "id": "m-malighting-msc",
+ "name": "MA Lighting dot2 MSC / grandMA2 MSC",
+ "category": "MA Lighting",
+ "version": "1.4.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 6000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "txAddress",
+   "label": "Transmitter Address",
+   "type": "text",
+   "default": "255.255.255.255",
+   "help": "Address to send outgoing messages to."
+  },
+  {
+   "id": "txDeviceId",
+   "label": "Transmitter Device ID",
+   "type": "number",
+   "default": 1,
+   "min": 0,
+   "max": 111,
+   "help": "Set this to a value between 0 and 111 to restrict messages to a device and set Send to to 'Device'."
+  },
+  {
+   "id": "txGroupId",
+   "label": "Transmitter Group ID",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 15,
+   "help": "Set this to a value between 1 and 15 to restrict messages to a group and set Send to to 'Group'."
+  },
+  {
+   "id": "txSendTo",
+   "label": "Transmitter Send To",
+   "type": "select",
+   "default": "all",
+   "choices": [
+    {
+     "id": "all",
+     "label": "All"
+    },
+    {
+     "id": "device",
+     "label": "Device"
+    },
+    {
+     "id": "group",
+     "label": "Group"
+    }
+   ],
+   "help": "If you want to restrict who should react on messages send you can set this to either 'Device' and set the Device ID or 'Group' and set the Group ID accordingly. By default it is set to 'All' so everyo"
+  },
+  {
+   "id": "rxAddress",
+   "label": "Receiver Address",
+   "type": "text",
+   "default": "0.0.0.0",
+   "help": "Address to listen for incoming messages on."
+  },
+  {
+   "id": "rxPort",
+   "label": "Receiver Port",
+   "type": "number",
+   "min": 6000,
+   "max": 6100,
+   "help": "Port to listen for incoming messages on (Console ⇒ MSC Out)."
+  },
+  {
+   "id": "rxDeviceId",
+   "label": "Receiver Device ID",
+   "type": "number",
+   "default": 1,
+   "min": 0,
+   "max": 111,
+   "help": "Set this to a value between 0 and 111 to only listen for messages received for this device ID. We'll still react on messages send to everyone."
+  },
+  {
+   "id": "rxGroupId",
+   "label": "Receiver Group ID",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 15,
+   "help": "Set this to a value between 1 and 15 to only listen for messages received for this group ID. We'll still react on messages send to everyone."
+  },
+  {
+   "id": "rxEnabled",
+   "label": "Receiver Enabled",
+   "type": "boolean",
+   "default": false,
+   "help": "Enable the Receiver."
+  },
+  {
+   "id": "rxExecList",
+   "label": "Receiver Executor List (Comma Separated)",
+   "type": "text",
+   "help": "Comma separated list of executors that will be created as variables and updated with their fader position."
+  },
+  {
+   "id": "consoleType",
+   "label": "Console/onPC Type",
+   "type": "select",
+   "default": "dot",
+   "choices": [
+    {
+     "id": "dot",
+     "label": "dot2"
+    },
+    {
+     "id": "gma",
+     "label": "grandMA2"
+    }
+   ],
+   "help": "Type of Console/onPC you want to communicate with."
+  }
+ ],
+ "actions": [
+  {
+   "id": "fire",
+   "name": "Fire a macro",
+   "options": [
+    {
+     "id": "macro",
+     "label": "Macro",
+     "type": "text",
+     "default": "1",
+     "help": "Macro number between 1 and 255"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "474d41004d53430013000000f07f7f027f07{{option.macro|u8}}f7",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-malighting-msc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Christian Volmering, John Knight, Jr"
+  }
+ ],
+ "source": {
+  "module": "malighting-msc",
+  "version": "1.4.0",
+  "license": "MIT",
+  "maintainers": [
+   "Christian Volmering",
+   "John Knight, Jr"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-malighting-msc.git"
+ }
+}

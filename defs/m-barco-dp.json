@@ -1,0 +1,223 @@
+{
+ "format": 1,
+ "id": "m-barco-dp",
+ "name": "Barco DP Projector",
+ "category": "Barco",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 43728,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "lamp",
+   "name": "Lamp control",
+   "options": [
+    {
+     "id": "lamp",
+     "label": "On/Off",
+     "type": "select",
+     "default": "lamp_on",
+     "choices": [
+      {
+       "id": "lamp_on",
+       "label": "Lamp On"
+      },
+      {
+       "id": "lamp_off",
+       "label": "Lamp Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "fe00000302761a{{option.lamp|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "lamp": {
+     "lamp_on": "0196",
+     "lamp_off": "0095"
+    }
+   }
+  },
+  {
+   "id": "shutter",
+   "name": "Shutter",
+   "options": [
+    {
+     "id": "shutter",
+     "label": "Open/Close",
+     "type": "select",
+     "default": "shutter_close",
+     "choices": [
+      {
+       "id": "shutter_close",
+       "label": "Close"
+      },
+      {
+       "id": "shutter_open",
+       "label": "Open"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "fe00{{option.shutter|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "shutter": {
+     "shutter_close": "23420065",
+     "shutter_open": "22420064"
+    }
+   }
+  },
+  {
+   "id": "lensShift",
+   "name": "Lens Shift",
+   "options": [
+    {
+     "id": "side",
+     "label": "Shift Direction",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Up"
+      },
+      {
+       "id": "1",
+       "label": "Down"
+      },
+      {
+       "id": "2",
+       "label": "Left"
+      },
+      {
+       "id": "3",
+       "label": "Right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "fe00f481{{option.side|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "side": {
+     "0": "0075",
+     "1": "0176",
+     "2": "0277",
+     "3": "0378"
+    }
+   }
+  },
+  {
+   "id": "lensZoom",
+   "name": "Lens Zoom",
+   "options": [
+    {
+     "id": "zoom",
+     "label": "Zoom",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Zoom In"
+      },
+      {
+       "id": "1",
+       "label": "Zoom Out"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "fe00f482{{option.zoom|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "zoom": {
+     "0": "0076",
+     "1": "0177"
+    }
+   }
+  },
+  {
+   "id": "lensFocus",
+   "name": "Lens Focus",
+   "options": [
+    {
+     "id": "focus",
+     "label": "Focus",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Near"
+      },
+      {
+       "id": "1",
+       "label": "Far"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "fe00f483{{option.focus|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "focus": {
+     "0": "0077",
+     "1": "0178"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-barco-dp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "barco-dp",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-barco-dp.git"
+ }
+}

@@ -1,0 +1,574 @@
+{
+ "format": 1,
+ "id": "m-equipson-lightshark",
+ "name": "LightShark LS1 / LS-Core",
+ "category": "LightShark",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "receivePort",
+   "label": "Receive Port",
+   "type": "number",
+   "default": 9000
+  },
+  {
+   "id": "enablePolling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Polling interval (ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "max": 60000
+  }
+ ],
+ "actions": [
+  {
+   "id": "syncPlaybacks",
+   "name": "Sync: Playbacks",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Sync/Playbacks",
+    "args": []
+   }
+  },
+  {
+   "id": "syncExecutors",
+   "name": "Sync: Executors",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Sync/Executors",
+    "args": []
+   }
+  },
+  {
+   "id": "dbo",
+   "name": "Button: DBO",
+   "options": [
+    {
+     "id": "selectedAction",
+     "label": "Action",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "DBO On (press)"
+      },
+      {
+       "id": "0",
+       "label": "DBO Off (release)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/DBO",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.selectedAction|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "selectedAction": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "playbackFaderLevelAbs",
+   "name": "Playback Fader Level [absolute]",
+   "options": [
+    {
+     "id": "targetPlayback",
+     "label": "Playback number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 30
+    },
+    {
+     "id": "targetFaderLevel",
+     "label": "Fader Level",
+     "type": "number",
+     "default": 127,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Level/PB/{{option.targetPlayback}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetFaderLevel}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "playbackFaderLevelRel",
+   "name": "Playback Fader Level [relative]",
+   "options": [
+    {
+     "id": "targetPlayback",
+     "label": "Playback number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 30
+    },
+    {
+     "id": "targetFaderLevel",
+     "label": "Fader Level",
+     "type": "number",
+     "default": 10,
+     "min": -255,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Level/PB/{{option.targetPlayback}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetFaderLevel}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "playbackChaseSpeed",
+   "name": "Playback Chase Speed",
+   "options": [
+    {
+     "id": "targetPlayback",
+     "label": "Playback number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 30
+    },
+    {
+     "id": "targetSpeed",
+     "label": "Speed",
+     "type": "number",
+     "default": 128,
+     "min": 5,
+     "max": 200
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/ChaseValue/PB/{{option.targetPlayback}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetSpeed}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "grandmasterFaderLevelAbsolute",
+   "name": "GrandMaster Fader Level [absolute]",
+   "options": [
+    {
+     "id": "targetFaderLevel",
+     "label": "Fader Level",
+     "type": "number",
+     "default": 255,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Level/GM",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetFaderLevel}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "encoders",
+   "name": "Encoders Control",
+   "options": [
+    {
+     "id": "selectedEncoder",
+     "label": "Encoder",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Encoder A"
+      },
+      {
+       "id": "2",
+       "label": "Encoder B"
+      },
+      {
+       "id": "3",
+       "label": "Encoder C"
+      },
+      {
+       "id": "4",
+       "label": "Encoder D"
+      }
+     ]
+    },
+    {
+     "id": "targetValue",
+     "label": "Encoder Value",
+     "type": "number",
+     "default": 0,
+     "min": -255,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Encoder/{{option.selectedEncoder|map}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetValue}}"
+     }
+    ]
+   },
+   "maps": {
+    "selectedEncoder": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "triggerExecRow",
+   "name": "Trigger Executor Row",
+   "options": [
+    {
+     "id": "execPage",
+     "label": "Executor Page",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Page 1"
+      },
+      {
+       "id": "2",
+       "label": "Page 2"
+      }
+     ]
+    },
+    {
+     "id": "execRow",
+     "label": "Row",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/ExecutorLine/{{option.execPage|map}}/{{option.execRow}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   },
+   "maps": {
+    "execPage": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "triggerExec",
+   "name": "Trigger Executor",
+   "options": [
+    {
+     "id": "execMode",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Toggle"
+      },
+      {
+       "id": "1",
+       "label": "Flash: Press"
+      },
+      {
+       "id": "2",
+       "label": "Flash: Release"
+      }
+     ]
+    },
+    {
+     "id": "execPage",
+     "label": "Executor Page",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Page 1"
+      },
+      {
+       "id": "2",
+       "label": "Page 2"
+      }
+     ]
+    },
+    {
+     "id": "execRow",
+     "label": "Executor Row",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 6
+    },
+    {
+     "id": "execColumn",
+     "label": "Executor Column",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Executor/{{option.execPage|map}}/{{option.execColumn}}/{{option.execRow}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.execMode|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "execPage": {
+     "1": "1",
+     "2": "2"
+    },
+    "execMode": {
+     "0": "0",
+     "1": "1",
+     "2": "0"
+    }
+   }
+  },
+  {
+   "id": "masterChaseTap",
+   "name": "TAP Master Chase Speed",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Tap",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "masterChaseReset",
+   "name": "Reset Master Chase Speed",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Reset/SmChase",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "masterChaseSet",
+   "name": "Set Master Chase Speed",
+   "options": [
+    {
+     "id": "targetSpeed",
+     "label": "Speed",
+     "type": "number",
+     "default": 128,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Level/SmChase",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetSpeed}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "masterFxSizeReset",
+   "name": "Reset Master FX Size",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Reset/SmSize",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "masterFxSizeSet",
+   "name": "Set Master FX Size",
+   "options": [
+    {
+     "id": "targetSize",
+     "label": "Size",
+     "type": "number",
+     "default": 128,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Level/SmSize",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetSize}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "masterFxSpeedReset",
+   "name": "Reset Master FX Speed",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Reset/SmSpeed",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "masterFxSpeedTap",
+   "name": "TAP Master FX Speed",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/FxTap",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "masterFxSpeedSet",
+   "name": "Set Master FX Speed",
+   "options": [
+    {
+     "id": "targetSpeed",
+     "label": "Speed",
+     "type": "number",
+     "default": 128,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/LS/Level/SmSpeed",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.targetSpeed}}"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-equipson-lightshark",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "equipson-lightshark",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-equipson-lightshark.git"
+ }
+}

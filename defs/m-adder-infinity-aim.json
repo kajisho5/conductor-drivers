@@ -1,0 +1,310 @@
+{
+ "format": 1,
+ "id": "m-adder-infinity-aim",
+ "name": "Adder AIM",
+ "category": "Adder",
+ "version": "2.1.4",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "username",
+   "label": "username",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "password",
+   "label": "password",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "pollInterval",
+   "label": "Channel Poll Interval",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "help": "Refresh feedbacks for each buttons selected channel"
+  },
+  {
+   "id": "poll",
+   "label": "Poll",
+   "type": "boolean",
+   "default": false,
+   "help": "Enable channel polling. Allows for keeping channel feedback updated."
+  }
+ ],
+ "actions": [
+  {
+   "id": "Connect_Channel",
+   "name": "Connect Channel",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "None"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "None"
+      }
+     ]
+    },
+    {
+     "id": "mode",
+     "label": "Connection Mode",
+     "type": "select",
+     "default": "s",
+     "choices": [
+      {
+       "id": "v",
+       "label": "View Only"
+      },
+      {
+       "id": "s",
+       "label": "Shared"
+      },
+      {
+       "id": "e",
+       "label": "Exclusive"
+      },
+      {
+       "id": "p",
+       "label": "Private"
+      }
+     ]
+    },
+    {
+     "id": "force",
+     "label": "Force",
+     "type": "boolean",
+     "default": false,
+     "help": "Forces the channel to connect even if another user is logged in.\n*API User must have permission to channel\n*API User must be admin or the 'Grant All Users Force Disconnect' setting must be enabled on "
+    },
+    {
+     "id": "userCheckbox",
+     "label": "Use a different user?",
+     "type": "boolean",
+     "default": false,
+     "help": "Specify a different user to connect this channel."
+    },
+    {
+     "id": "username",
+     "label": "Connection User",
+     "type": "text"
+    },
+    {
+     "id": "password",
+     "label": "Connection Password",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/?v=5&method=connect_channel&token=undefined&c_id=None&rx_id=None&mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "s": "s",
+     "v": "v",
+     "e": "e",
+     "p": "p"
+    }
+   }
+  },
+  {
+   "id": "connect_preset",
+   "name": "Connect Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "None"
+      }
+     ]
+    },
+    {
+     "id": "mode",
+     "label": "Connection Mode",
+     "type": "select",
+     "default": "s",
+     "choices": [
+      {
+       "id": "v",
+       "label": "View Only"
+      },
+      {
+       "id": "s",
+       "label": "Shared"
+      },
+      {
+       "id": "e",
+       "label": "Exclusive"
+      },
+      {
+       "id": "p",
+       "label": "Private"
+      }
+     ]
+    },
+    {
+     "id": "force",
+     "label": "Force",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "userCheckbox",
+     "label": "Use a different user?",
+     "type": "boolean",
+     "default": false,
+     "help": "Specify a different user to connect this channel."
+    },
+    {
+     "id": "username",
+     "label": "Connection User",
+     "type": "text"
+    },
+    {
+     "id": "password",
+     "label": "Connection Password",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/?v=5&method=connect_preset&token=undefined&id=None&mode={{option.mode|map}}&force={{option.force|map}}e"
+   },
+   "maps": {
+    "mode": {
+     "s": "s",
+     "v": "v",
+     "e": "e",
+     "p": "p"
+    },
+    "force": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "disconnect_preset",
+   "name": "Disconnect Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "None"
+      }
+     ]
+    },
+    {
+     "id": "force",
+     "label": "Force Disconnect",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/?v=5&method=disconnect_preset&token=undefined&id=None&force={{option.force|map}}e"
+   },
+   "maps": {
+    "force": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "disconnect_channel",
+   "name": "Disconnect Receiver",
+   "options": [
+    {
+     "id": "receiver",
+     "label": "Receiver",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "None"
+      }
+     ]
+    },
+    {
+     "id": "force",
+     "label": "Force",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/?v=5&method=disconnect_channel&token=undefined&rx_id=None&force={{option.force|map}}"
+   },
+   "maps": {
+    "force": {
+     "false": "0",
+     "true": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-adder-infinity-aim",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Zachary Larsen"
+  }
+ ],
+ "source": {
+  "module": "adder-infinity-aim",
+  "version": "2.1.4",
+  "license": "MIT",
+  "maintainers": [
+   "Zachary Larsen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-adder-infinity-aim.git"
+ }
+}

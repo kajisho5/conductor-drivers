@@ -1,0 +1,2165 @@
+{
+ "format": 1,
+ "id": "m-hdkatov-visca",
+ "name": "HDkatov VISCA",
+ "category": "HDkatov",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 52381,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "zoom_in_action",
+   "name": "Zoom In",
+   "options": [
+    {
+     "id": "zoom_in",
+     "label": "Select Level",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 (low)"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7 (high)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010407{{option.zoom_in|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "zoom_in": {
+     "0": "20",
+     "1": "21",
+     "2": "22",
+     "3": "23",
+     "4": "24",
+     "5": "25",
+     "6": "26",
+     "7": "27"
+    }
+   }
+  },
+  {
+   "id": "zoom_out_action",
+   "name": "Zoom Out",
+   "options": [
+    {
+     "id": "zoom_out",
+     "label": "Select Level",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 (low)"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7 (high)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010407{{option.zoom_out|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "zoom_out": {
+     "0": "30",
+     "1": "31",
+     "2": "32",
+     "3": "33",
+     "4": "34",
+     "5": "35",
+     "6": "36",
+     "7": "37"
+    }
+   }
+  },
+  {
+   "id": "zoom_stop_action",
+   "name": "Zoom Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "8101040700ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "focus_action",
+   "name": "Focus",
+   "options": [
+    {
+     "id": "focus",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "3802",
+     "choices": [
+      {
+       "id": "0800",
+       "label": "Stop"
+      },
+      {
+       "id": "0802",
+       "label": "Far"
+      },
+      {
+       "id": "082",
+       "label": "Far (var)"
+      },
+      {
+       "id": "0803",
+       "label": "Near"
+      },
+      {
+       "id": "083",
+       "label": "Near (var)"
+      },
+      {
+       "id": "3802",
+       "label": "Auto"
+      },
+      {
+       "id": "3803",
+       "label": "Manual"
+      },
+      {
+       "id": "1801",
+       "label": "One Push"
+      }
+     ]
+    },
+    {
+     "id": "far",
+     "label": "Far: 0 (low) - 15 (high)",
+     "type": "number",
+     "default": 3,
+     "min": 0,
+     "max": 15
+    },
+    {
+     "id": "near",
+     "label": "Near: 0 (low) - 15 (high)",
+     "type": "number",
+     "default": 3,
+     "min": 0,
+     "max": 15
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104{{option.focus|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "focus": {
+     "1801": "1801",
+     "3802": "3802",
+     "3803": "3803",
+     "0800": "0800",
+     "0802": "0802",
+     "082": "0823",
+     "0803": "0803",
+     "083": "0833"
+    }
+   }
+  },
+  {
+   "id": "wb_action",
+   "name": "White Balance",
+   "options": [
+    {
+     "id": "white_balance",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "3500",
+     "choices": [
+      {
+       "id": "3500",
+       "label": "Auto"
+      },
+      {
+       "id": "3504",
+       "label": "ATW"
+      },
+      {
+       "id": "3501",
+       "label": "Indoor"
+      },
+      {
+       "id": "3502",
+       "label": "Outdoor"
+      },
+      {
+       "id": "3503",
+       "label": "One Push WB mode"
+      },
+      {
+       "id": "3505",
+       "label": "Manual"
+      },
+      {
+       "id": "1005",
+       "label": "One Push WB trigger"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104{{option.white_balance|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "white_balance": {
+     "1005": "1005",
+     "3500": "3500",
+     "3501": "3501",
+     "3502": "3502",
+     "3503": "3503",
+     "3504": "3504",
+     "3505": "3505"
+    }
+   }
+  },
+  {
+   "id": "red_gain_action",
+   "name": "Red Gain",
+   "options": [
+    {
+     "id": "red_gain",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "0302",
+     "choices": [
+      {
+       "id": "0302",
+       "label": "Up"
+      },
+      {
+       "id": "0303",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010403{{option.red_gain|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "red_gain": {
+     "0302": "02",
+     "0303": "03"
+    }
+   }
+  },
+  {
+   "id": "blue_gain_action",
+   "name": "Blue Gain",
+   "options": [
+    {
+     "id": "blue_gain",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "0402",
+     "choices": [
+      {
+       "id": "0402",
+       "label": "Up"
+      },
+      {
+       "id": "0403",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010404{{option.blue_gain|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "blue_gain": {
+     "0402": "02",
+     "0403": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_action",
+   "name": "Auto Exposure",
+   "options": [
+    {
+     "id": "auto_exposure",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Full Auto"
+      },
+      {
+       "id": "03",
+       "label": "Manual"
+      },
+      {
+       "id": "0A",
+       "label": "Shutter Priority"
+      },
+      {
+       "id": "0B",
+       "label": "Iris Priority"
+      },
+      {
+       "id": "0D",
+       "label": "Bright"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010439{{option.auto_exposure|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_exposure": {
+     "00": "00",
+     "03": "03",
+     "0A": "0a",
+     "0B": "0b",
+     "0D": "0d"
+    }
+   }
+  },
+  {
+   "id": "shutter_action",
+   "name": "Shutter",
+   "options": [
+    {
+     "id": "shutter",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101040a{{option.shutter|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "shutter": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "iris_action",
+   "name": "Iris",
+   "options": [
+    {
+     "id": "iris",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101040b{{option.iris|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "iris": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "gain_action",
+   "name": "Gain",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101040c{{option.gain|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "gain": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "bright_action",
+   "name": "Bright",
+   "options": [
+    {
+     "id": "bright",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101040d{{option.bright|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bright": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "exposure_comp_action",
+   "name": "Exposure Compensation",
+   "options": [
+    {
+     "id": "exposure_comp",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101040e{{option.exposure_comp|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "exposure_comp": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "backlight_action",
+   "name": "Backlight",
+   "options": [
+    {
+     "id": "backlight",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010433{{option.backlight|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "backlight": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "preset_action",
+   "name": "Camera Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Recall"
+      },
+      {
+       "id": "01",
+       "label": "Set"
+      },
+      {
+       "id": "00",
+       "label": "Reset"
+      }
+     ]
+    },
+    {
+     "id": "num",
+     "label": "Preset Number 0 - 255",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101043f{{option.preset|map}}{{option.num|u8}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "preset": {
+     "02": "02",
+     "01": "01",
+     "00": "00"
+    }
+   }
+  },
+  {
+   "id": "profile_action",
+   "name": "Profile",
+   "options": [
+    {
+     "id": "profile",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "Read"
+      },
+      {
+       "id": "02",
+       "label": "Save"
+      }
+     ]
+    },
+    {
+     "id": "num",
+     "label": "Profile Number 1 - 5",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 5
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010440{{option.profile|map}}{{option.num|u8}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "profile": {
+     "01": "01",
+     "02": "02"
+    }
+   }
+  },
+  {
+   "id": "menu_action",
+   "name": "Menu On/Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "8101060610ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "osd_action",
+   "name": "On Screen Display",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "8101043f015fff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "wdr_action",
+   "name": "Wide Dynamic Range",
+   "options": [
+    {
+     "id": "wdr",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101043d{{option.wdr|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "wdr": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "menu_enter_action",
+   "name": "Menu Enter",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "81017e01020001ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "tally_action",
+   "name": "Tally Lamp",
+   "options": [
+    {
+     "id": "tally_lamp",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81017e010a00{{option.tally_lamp|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "tally_lamp": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "freeze_action",
+   "name": "Freeze",
+   "options": [
+    {
+     "id": "freeze",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      },
+      {
+       "id": "22",
+       "label": "Preset On"
+      },
+      {
+       "id": "23",
+       "label": "Preset Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010462{{option.freeze|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "freeze": {
+     "22": "22",
+     "23": "23",
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_action",
+   "name": "Auto Tracking",
+   "options": [
+    {
+     "id": "auto_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "81010712{{option.auto_tracking|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_tracking": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_v1_action",
+   "name": "Auto Tracking v1",
+   "options": [
+    {
+     "id": "auto_tracking_v1",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101047d{{option.auto_tracking_v1|map}}00ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_tracking_v1": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "frame_tracking_action",
+   "name": "Frame Tracking",
+   "options": [
+    {
+     "id": "frame_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Framing Start"
+      },
+      {
+       "id": "02",
+       "label": "Auto Framing Mode"
+      },
+      {
+       "id": "03",
+       "label": "Manual Framing Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101047d{{option.frame_tracking|map}}00ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "frame_tracking": {
+     "02": "02",
+     "00": "00",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "audio_tracking_action",
+   "name": "Audio Tracking",
+   "options": [
+    {
+     "id": "audio_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "04",
+     "choices": [
+      {
+       "id": "04",
+       "label": "Audio Tracking Mode"
+      },
+      {
+       "id": "05",
+       "label": "Audio Frame Mode"
+      },
+      {
+       "id": "06",
+       "label": "Audio Preset Tracking Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101047d{{option.audio_tracking|map}}00ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "audio_tracking": {
+     "04": "04",
+     "05": "05",
+     "06": "06"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_action",
+   "name": "Tracking Control Mode",
+   "options": [
+    {
+     "id": "tracking_control",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "A4",
+     "choices": [
+      {
+       "id": "A0",
+       "label": "Full Body"
+      },
+      {
+       "id": "A1",
+       "label": "Upper Body"
+      },
+      {
+       "id": "A2",
+       "label": "Tracking Point"
+      },
+      {
+       "id": "A3",
+       "label": "Multi-presenter"
+      },
+      {
+       "id": "A4",
+       "label": "Presenter Mode"
+      },
+      {
+       "id": "A5",
+       "label": "Zone Mode"
+      },
+      {
+       "id": "A6",
+       "label": "Hybrid Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "8101043f01{{option.tracking_control|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "tracking_control": {
+     "A4": "a4",
+     "A0": "a0",
+     "A1": "a1",
+     "A2": "a2",
+     "A3": "a3",
+     "A5": "a5",
+     "A6": "a6"
+    }
+   }
+  },
+  {
+   "id": "multi_presenter_action",
+   "name": "Multi-presenter",
+   "options": [
+    {
+     "id": "multi_presenter",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a9{{option.multi_presenter|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "multi_presenter": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "multi_presenter_set_preset_action",
+   "name": "Multi-presenter Set Preset",
+   "options": [
+    {
+     "id": "num",
+     "label": "Preset Number",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104aa{{option.num|u8}}ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "autozoom_action",
+   "name": "Auto Zoom",
+   "options": [
+    {
+     "id": "auto_zoom",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a0{{option.auto_zoom|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_zoom": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "effective_tracking_action",
+   "name": "Effective Tracking Area",
+   "options": [
+    {
+     "id": "effective_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a1{{option.effective_tracking|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "effective_tracking": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "rtmp_action",
+   "name": "RTMP",
+   "options": [
+    {
+     "id": "rtmp",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a2{{option.rtmp|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "rtmp": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "video_mode_action",
+   "name": "Video Mode",
+   "options": [
+    {
+     "id": "video_mode",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "00",
+       "label": "IP+Stream"
+      },
+      {
+       "id": "01",
+       "label": "USB Only"
+      },
+      {
+       "id": "02",
+       "label": "NDI Only"
+      },
+      {
+       "id": "03",
+       "label": "Streaming Only"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a3{{option.video_mode|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "video_mode": {
+     "02": "02",
+     "00": "00",
+     "01": "01",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "presets_affect_action",
+   "name": "Preset Affects PTZ & Focus",
+   "options": [
+    {
+     "id": "presets_affect",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a5{{option.presets_affect|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "presets_affect": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "relative_zoom_action",
+   "name": "Relative Zoom Ratio",
+   "options": [
+    {
+     "id": "relative_zoom",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a6{{option.relative_zoom|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "relative_zoom": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_tilt_action",
+   "name": "Auto Tilt",
+   "options": [
+    {
+     "id": "auto_tilt",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a7{{option.auto_tilt|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_tilt": {
+     "02": "02",
+     "03": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_zoom_tilt_set_preset_action",
+   "name": "Auto Zoom/Tilt Set Preset",
+   "options": [
+    {
+     "id": "num",
+     "label": "Preset Number",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "810104a8{{option.num|u8}}ff",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "zoom_in",
+   "category": "Lens",
+   "name": "Zoom In",
+   "text": "Zoom In",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "zoom_in_action",
+    "options": {
+     "zoom_in": "3"
+    }
+   }
+  },
+  {
+   "id": "zoom_out",
+   "category": "Lens",
+   "name": "Zoom Out",
+   "text": "Zoom Out",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "zoom_out_action",
+    "options": {
+     "zoom_out": "3"
+    }
+   }
+  },
+  {
+   "id": "zoom_stop",
+   "category": "Lens",
+   "name": "Zoom Stop",
+   "text": "Zoom Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "zoom_stop_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "focus_auto",
+   "category": "Lens",
+   "name": "Focus Auto",
+   "text": "Focus Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focus_action",
+    "options": {
+     "focus": "3802"
+    }
+   }
+  },
+  {
+   "id": "focus_manual",
+   "category": "Lens",
+   "name": "Focus Manual",
+   "text": "Focus Manual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focus_action",
+    "options": {
+     "focus": "3803"
+    }
+   }
+  },
+  {
+   "id": "focus_op",
+   "category": "Lens",
+   "name": "Focus 1 push",
+   "text": "Focus 1 push",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focus_action",
+    "options": {
+     "focus": "1801"
+    }
+   }
+  },
+  {
+   "id": "focus_stop",
+   "category": "Lens",
+   "name": "Focus Stop",
+   "text": "Focus Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "focus_action",
+    "options": {
+     "focus": "0800"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_bright",
+   "category": "Exposure",
+   "name": "Auto Exposure Bright",
+   "text": "Auto Exposure Bright",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "0D"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_full_auto",
+   "category": "Exposure",
+   "name": "Auto Exposure Full Auto",
+   "text": "Auto Exposure Full Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "00"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_iris_priority",
+   "category": "Exposure",
+   "name": "Auto Exposure Iris Priority",
+   "text": "Auto Exposure Iris Priority",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "0B"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_manual",
+   "category": "Exposure",
+   "name": "Auto Exposure Manual",
+   "text": "Auto Exposure Manual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_shutter_priority",
+   "category": "Exposure",
+   "name": "Auto Exposure Shutter Priority",
+   "text": "Auto Exposure Shutter Priority",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "0A"
+    }
+   }
+  },
+  {
+   "id": "gain_up",
+   "category": "Exposure",
+   "name": "Gain +",
+   "text": "Gain +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gain_action",
+    "options": {
+     "gain": "02"
+    }
+   }
+  },
+  {
+   "id": "gain_down",
+   "category": "Exposure",
+   "name": "Gain -",
+   "text": "Gain -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gain_action",
+    "options": {
+     "gain": "03"
+    }
+   }
+  },
+  {
+   "id": "iris_up",
+   "category": "Exposure",
+   "name": "Iris +",
+   "text": "Iris +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "iris_action",
+    "options": {
+     "iris": "02"
+    }
+   }
+  },
+  {
+   "id": "iris_down",
+   "category": "Exposure",
+   "name": "Iris -",
+   "text": "Iris -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "iris_action",
+    "options": {
+     "iris": "03"
+    }
+   }
+  },
+  {
+   "id": "shutter_up",
+   "category": "Exposure",
+   "name": "Shutter +",
+   "text": "Shutter +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutter_action",
+    "options": {
+     "shutter": "02"
+    }
+   }
+  },
+  {
+   "id": "shutter_down",
+   "category": "Exposure",
+   "name": "Shutter -",
+   "text": "Shutter -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutter_action",
+    "options": {
+     "shutter": "03"
+    }
+   }
+  },
+  {
+   "id": "exposure_comp_up",
+   "category": "Exposure",
+   "name": "Exposure Comp +",
+   "text": "Exposure Comp +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposure_comp_action",
+    "options": {
+     "exposure_comp": "02"
+    }
+   }
+  },
+  {
+   "id": "exposure_comp_down",
+   "category": "Exposure",
+   "name": "Exposure Comp -",
+   "text": "Exposure Comp -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposure_comp_action",
+    "options": {
+     "exposure_comp": "03"
+    }
+   }
+  },
+  {
+   "id": "red_gain_up",
+   "category": "White Balance",
+   "name": "Red Gain +",
+   "text": "Red Gain +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "red_gain_action",
+    "options": {
+     "red_gain": "0302"
+    }
+   }
+  },
+  {
+   "id": "red_gain_down",
+   "category": "White Balance",
+   "name": "Red Gain -",
+   "text": "Red Gain -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "red_gain_action",
+    "options": {
+     "red_gain": "0303"
+    }
+   }
+  },
+  {
+   "id": "blue_gain_up",
+   "category": "White Balance",
+   "name": "Blue Gain +",
+   "text": "Blue Gain +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "blue_gain_action",
+    "options": {
+     "blue_gain": "0402"
+    }
+   }
+  },
+  {
+   "id": "blue_gain_down",
+   "category": "White Balance",
+   "name": "Blue Gain -",
+   "text": "Blue Gain -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "blue_gain_action",
+    "options": {
+     "blue_gain": "0403"
+    }
+   }
+  },
+  {
+   "id": "wb_auto",
+   "category": "White Balance",
+   "name": "WB Auto",
+   "text": "WB Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3500"
+    }
+   }
+  },
+  {
+   "id": "wb_atw",
+   "category": "White Balance",
+   "name": "WB ATW",
+   "text": "WB ATW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3504"
+    }
+   }
+  },
+  {
+   "id": "wb_indoor",
+   "category": "White Balance",
+   "name": "WB Indoor",
+   "text": "WB Indoor",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3501"
+    }
+   }
+  },
+  {
+   "id": "wb_outdoor",
+   "category": "White Balance",
+   "name": "WB Outdoor",
+   "text": "WB Outdoor",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3502"
+    }
+   }
+  },
+  {
+   "id": "wb_1_push_wb_mode",
+   "category": "White Balance",
+   "name": "1 push WB mode",
+   "text": "1 push WB mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3503"
+    }
+   }
+  },
+  {
+   "id": "wb_1_push_trigger",
+   "category": "White Balance",
+   "name": "1 push trigger",
+   "text": "1 push trigger",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "1005"
+    }
+   }
+  },
+  {
+   "id": "wb_manual",
+   "category": "White Balance",
+   "name": "WB Manual",
+   "text": "WB Manual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3505"
+    }
+   }
+  },
+  {
+   "id": "menu_toggle",
+   "category": "System",
+   "name": "Menu On/Off",
+   "text": "Menu On/Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "menu_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "menu_enter",
+   "category": "System",
+   "name": "Menu Enter",
+   "text": "Menu Enter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "menu_enter_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "on_screen_display",
+   "category": "System",
+   "name": "On Screen Display",
+   "text": "On Screen Display",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "osd_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "freeze_on",
+   "category": "System",
+   "name": "Freeze On",
+   "text": "Freeze On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "02"
+    }
+   }
+  },
+  {
+   "id": "freeze_off",
+   "category": "System",
+   "name": "Freeze Off",
+   "text": "Freeze Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "03"
+    }
+   }
+  },
+  {
+   "id": "freeze_preset_on",
+   "category": "System",
+   "name": "Freeze Preset On",
+   "text": "Freeze Preset On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "22"
+    }
+   }
+  },
+  {
+   "id": "freeze_preset_off",
+   "category": "System",
+   "name": "Freeze Preset Off",
+   "text": "Freeze Preset Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "23"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_on",
+   "category": "Tracking",
+   "name": "Auto Tracking On",
+   "text": "Auto Tracking On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tracking_action",
+    "options": {
+     "auto_tracking": "02"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_off",
+   "category": "Tracking",
+   "name": "Auto Tracking Off",
+   "text": "Auto Tracking Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tracking_action",
+    "options": {
+     "auto_tracking": "03"
+    }
+   }
+  },
+  {
+   "id": "preset_recall_0",
+   "category": "Presets",
+   "name": "Recall Preset 0",
+   "text": "Recall Preset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 0
+    }
+   }
+  },
+  {
+   "id": "preset_save_0",
+   "category": "Presets",
+   "name": "Save Preset 0",
+   "text": "Save Preset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 0
+    }
+   }
+  },
+  {
+   "id": "preset_recall_1",
+   "category": "Presets",
+   "name": "Recall Preset 1",
+   "text": "Recall Preset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 1
+    }
+   }
+  },
+  {
+   "id": "preset_save_1",
+   "category": "Presets",
+   "name": "Save Preset 1",
+   "text": "Save Preset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 1
+    }
+   }
+  },
+  {
+   "id": "preset_recall_2",
+   "category": "Presets",
+   "name": "Recall Preset 2",
+   "text": "Recall Preset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 2
+    }
+   }
+  },
+  {
+   "id": "preset_save_2",
+   "category": "Presets",
+   "name": "Save Preset 2",
+   "text": "Save Preset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 2
+    }
+   }
+  },
+  {
+   "id": "preset_recall_3",
+   "category": "Presets",
+   "name": "Recall Preset 3",
+   "text": "Recall Preset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 3
+    }
+   }
+  },
+  {
+   "id": "preset_save_3",
+   "category": "Presets",
+   "name": "Save Preset 3",
+   "text": "Save Preset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 3
+    }
+   }
+  },
+  {
+   "id": "preset_recall_4",
+   "category": "Presets",
+   "name": "Recall Preset 4",
+   "text": "Recall Preset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 4
+    }
+   }
+  },
+  {
+   "id": "preset_save_4",
+   "category": "Presets",
+   "name": "Save Preset 4",
+   "text": "Save Preset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 4
+    }
+   }
+  },
+  {
+   "id": "preset_recall_5",
+   "category": "Presets",
+   "name": "Recall Preset 5",
+   "text": "Recall Preset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 5
+    }
+   }
+  },
+  {
+   "id": "preset_save_5",
+   "category": "Presets",
+   "name": "Save Preset 5",
+   "text": "Save Preset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 5
+    }
+   }
+  },
+  {
+   "id": "preset_recall_6",
+   "category": "Presets",
+   "name": "Recall Preset 6",
+   "text": "Recall Preset 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 6
+    }
+   }
+  },
+  {
+   "id": "preset_save_6",
+   "category": "Presets",
+   "name": "Save Preset 6",
+   "text": "Save Preset 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 6
+    }
+   }
+  },
+  {
+   "id": "preset_recall_7",
+   "category": "Presets",
+   "name": "Recall Preset 7",
+   "text": "Recall Preset 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 7
+    }
+   }
+  },
+  {
+   "id": "preset_save_7",
+   "category": "Presets",
+   "name": "Save Preset 7",
+   "text": "Save Preset 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 7
+    }
+   }
+  },
+  {
+   "id": "preset_recall_8",
+   "category": "Presets",
+   "name": "Recall Preset 8",
+   "text": "Recall Preset 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 8
+    }
+   }
+  },
+  {
+   "id": "preset_save_8",
+   "category": "Presets",
+   "name": "Save Preset 8",
+   "text": "Save Preset 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 8
+    }
+   }
+  },
+  {
+   "id": "preset_recall_9",
+   "category": "Presets",
+   "name": "Recall Preset 9",
+   "text": "Recall Preset 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "02",
+     "num": 9
+    }
+   }
+  },
+  {
+   "id": "preset_save_9",
+   "category": "Presets",
+   "name": "Save Preset 9",
+   "text": "Save Preset 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "preset_action",
+    "options": {
+     "preset": "01",
+     "num": 9
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-hdkatov-visca",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：TONY"
+  }
+ ],
+ "source": {
+  "module": "hdkatov-visca",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "TONY"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-hdkatov-visca.git"
+ }
+}

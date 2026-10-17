@@ -1,0 +1,1045 @@
+{
+ "format": 1,
+ "id": "m-hdtv-wolfpackgreen",
+ "name": "HDTV WolfPackGreen HDMI Matrix",
+ "category": "HDTV",
+ "version": "1.4.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "HDTV Model",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "2",
+     "label": "HDTV-FIX800E"
+    },
+    {
+     "id": "1",
+     "label": "HDTV-FIX1600E"
+    },
+    {
+     "id": "0",
+     "label": "HDTV-FIX1600AE"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "apply_Outputs",
+   "name": "Apply All Selections",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "1x1.",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unselect_Output",
+   "name": "Unset Output (Instant Action)",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Out 1"
+      },
+      {
+       "id": "2",
+       "label": "Out 2"
+      },
+      {
+       "id": "3",
+       "label": "Out 3"
+      },
+      {
+       "id": "4",
+       "label": "Out 4"
+      },
+      {
+       "id": "5",
+       "label": "Out 5"
+      },
+      {
+       "id": "6",
+       "label": "Out 6"
+      },
+      {
+       "id": "7",
+       "label": "Out 7"
+      },
+      {
+       "id": "8",
+       "label": "Out 8"
+      },
+      {
+       "id": "9",
+       "label": "Out 9"
+      },
+      {
+       "id": "10",
+       "label": "Out 10"
+      },
+      {
+       "id": "11",
+       "label": "Out 11"
+      },
+      {
+       "id": "12",
+       "label": "Out 12"
+      },
+      {
+       "id": "13",
+       "label": "Out 13"
+      },
+      {
+       "id": "14",
+       "label": "Out 14"
+      },
+      {
+       "id": "15",
+       "label": "Out 15"
+      },
+      {
+       "id": "16",
+       "label": "Out 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0x{{option.output|map}}.",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "unselect_All",
+   "name": "Unset All Output (Instant Action)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0all.",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "save",
+   "name": "Save Layout",
+   "options": [
+    {
+     "id": "saveLayout",
+     "label": "Save Layout",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Save Layout 1"
+      },
+      {
+       "id": "2",
+       "label": "Save Layout 2"
+      },
+      {
+       "id": "3",
+       "label": "Save Layout 3"
+      },
+      {
+       "id": "4",
+       "label": "Save Layout 4"
+      },
+      {
+       "id": "5",
+       "label": "Save Layout 5"
+      },
+      {
+       "id": "6",
+       "label": "Save Layout 6"
+      },
+      {
+       "id": "7",
+       "label": "Save Layout 7"
+      },
+      {
+       "id": "8",
+       "label": "Save Layout 8"
+      },
+      {
+       "id": "9",
+       "label": "Save Layout 9"
+      },
+      {
+       "id": "10",
+       "label": "Save Layout 10"
+      },
+      {
+       "id": "11",
+       "label": "Save Layout 11"
+      },
+      {
+       "id": "12",
+       "label": "Save Layout 12"
+      },
+      {
+       "id": "13",
+       "label": "Save Layout 13"
+      },
+      {
+       "id": "14",
+       "label": "Save Layout 14"
+      },
+      {
+       "id": "15",
+       "label": "Save Layout 15"
+      },
+      {
+       "id": "16",
+       "label": "Save Layout 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Save{{option.saveLayout|map}}.",
+    "encoding": "text"
+   },
+   "maps": {
+    "saveLayout": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "recall",
+   "name": "Load Saved Layout",
+   "options": [
+    {
+     "id": "recallLayout",
+     "label": "Recall Layout",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Recall Layout 1"
+      },
+      {
+       "id": "2",
+       "label": "Recall Layout 2"
+      },
+      {
+       "id": "3",
+       "label": "Recall Layout 3"
+      },
+      {
+       "id": "4",
+       "label": "Recall Layout 4"
+      },
+      {
+       "id": "5",
+       "label": "Recall Layout 5"
+      },
+      {
+       "id": "6",
+       "label": "Recall Layout 6"
+      },
+      {
+       "id": "7",
+       "label": "Recall Layout 7"
+      },
+      {
+       "id": "8",
+       "label": "Recall Layout 8"
+      },
+      {
+       "id": "9",
+       "label": "Recall Layout 9"
+      },
+      {
+       "id": "10",
+       "label": "Recall Layout 10"
+      },
+      {
+       "id": "11",
+       "label": "Recall Layout 11"
+      },
+      {
+       "id": "12",
+       "label": "Recall Layout 12"
+      },
+      {
+       "id": "13",
+       "label": "Recall Layout 13"
+      },
+      {
+       "id": "14",
+       "label": "Recall Layout 14"
+      },
+      {
+       "id": "15",
+       "label": "Recall Layout 15"
+      },
+      {
+       "id": "16",
+       "label": "Recall Layout 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Recall{{option.recallLayout|map}}.",
+    "encoding": "text"
+   },
+   "maps": {
+    "recallLayout": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Apply_Outputs",
+   "category": "Actions",
+   "name": "Apply All Selections",
+   "text": "Apply All Selections",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "apply_Outputs",
+    "options": {}
+   }
+  },
+  {
+   "id": "Unset_All_Output",
+   "category": "Actions",
+   "name": "Unset All Outputs",
+   "text": "Unset All Outputs",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_All",
+    "options": {}
+   }
+  },
+  {
+   "id": "Unselect_Output_1",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel1)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_2",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel2)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_3",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel3)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_4",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel4)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_5",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel5)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "5"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_6",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel6)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "6"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_7",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel7)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "7"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_8",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel8)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "8"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_9",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel9)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "9"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_10",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel10)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "10"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_11",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel11)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "11"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_12",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel12)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "12"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_13",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel13)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "13"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_14",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel14)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "14"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_15",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel15)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "15"
+    }
+   }
+  },
+  {
+   "id": "Unselect_Output_16",
+   "category": "Unset Outputs",
+   "name": "Unset $(hdtv:OutputLabel16)",
+   "text": "Unset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unselect_Output",
+    "options": {
+     "output": "16"
+    }
+   }
+  },
+  {
+   "id": "Save_1",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel1)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "1"
+    }
+   }
+  },
+  {
+   "id": "Recall_1",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel1)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "1"
+    }
+   }
+  },
+  {
+   "id": "Save_2",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel2)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "2"
+    }
+   }
+  },
+  {
+   "id": "Recall_2",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel2)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "2"
+    }
+   }
+  },
+  {
+   "id": "Save_3",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel3)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "3"
+    }
+   }
+  },
+  {
+   "id": "Recall_3",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel3)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "3"
+    }
+   }
+  },
+  {
+   "id": "Save_4",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel4)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "4"
+    }
+   }
+  },
+  {
+   "id": "Recall_4",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel4)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "4"
+    }
+   }
+  },
+  {
+   "id": "Save_5",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel5)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "5"
+    }
+   }
+  },
+  {
+   "id": "Recall_5",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel5)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "5"
+    }
+   }
+  },
+  {
+   "id": "Save_6",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel6)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "6"
+    }
+   }
+  },
+  {
+   "id": "Recall_6",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel6)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "6"
+    }
+   }
+  },
+  {
+   "id": "Save_7",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel7)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "7"
+    }
+   }
+  },
+  {
+   "id": "Recall_7",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel7)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "7"
+    }
+   }
+  },
+  {
+   "id": "Save_8",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel8)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "8"
+    }
+   }
+  },
+  {
+   "id": "Recall_8",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel8)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "8"
+    }
+   }
+  },
+  {
+   "id": "Save_9",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel9)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "9"
+    }
+   }
+  },
+  {
+   "id": "Recall_9",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel9)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "9"
+    }
+   }
+  },
+  {
+   "id": "Save_10",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel10)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "10"
+    }
+   }
+  },
+  {
+   "id": "Recall_10",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel10)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "10"
+    }
+   }
+  },
+  {
+   "id": "Save_11",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel11)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "11"
+    }
+   }
+  },
+  {
+   "id": "Recall_11",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel11)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "11"
+    }
+   }
+  },
+  {
+   "id": "Save_12",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel12)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "12"
+    }
+   }
+  },
+  {
+   "id": "Recall_12",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel12)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "12"
+    }
+   }
+  },
+  {
+   "id": "Save_13",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel13)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "13"
+    }
+   }
+  },
+  {
+   "id": "Recall_13",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel13)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "13"
+    }
+   }
+  },
+  {
+   "id": "Save_14",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel14)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "14"
+    }
+   }
+  },
+  {
+   "id": "Recall_14",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel14)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "14"
+    }
+   }
+  },
+  {
+   "id": "Save_15",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel15)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "15"
+    }
+   }
+  },
+  {
+   "id": "Recall_15",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel15)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "15"
+    }
+   }
+  },
+  {
+   "id": "Save_16",
+   "category": "Save Layout",
+   "name": "Save $(hdtv:RecallSaveLabel16)",
+   "text": "Save",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "save",
+    "options": {
+     "saveLayout": "16"
+    }
+   }
+  },
+  {
+   "id": "Recall_16",
+   "category": "Recall Layout",
+   "name": "Recall $(hdtv:RecallSaveLabel16)",
+   "text": "Recall",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recall",
+    "options": {
+     "recallLayout": "16"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-hdtv-wolfpackgreen",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Justin James"
+  }
+ ],
+ "source": {
+  "module": "hdtv-wolfpackgreen",
+  "version": "1.4.1",
+  "license": "MIT",
+  "maintainers": [
+   "Justin James"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-hdtv-wolfpackgreen.git"
+ }
+}

@@ -1,0 +1,519 @@
+{
+ "format": 1,
+ "id": "m-novastar-controller",
+ "name": "Novastar MCTRL4K / VX4S / VX6S / NovaPro HD / NovaPro UHD Jr / VX1000 / VX600…",
+ "category": "Novastar",
+ "version": "2.6.4",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5200,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelID",
+   "label": "Model",
+   "type": "select",
+   "default": "j6",
+   "choices": [
+    {
+     "id": "j6",
+     "label": "J6"
+    },
+    {
+     "id": "mctrl4k",
+     "label": "MCTRL4K"
+    },
+    {
+     "id": "mctrl",
+     "label": "MCTRLxx0"
+    },
+    {
+     "id": "novaProHD",
+     "label": "NovaPro HD"
+    },
+    {
+     "id": "novaProUHDJr",
+     "label": "NovaPro UHD Jr"
+    },
+    {
+     "id": "vxPro",
+     "label": "VX Pro"
+    },
+    {
+     "id": "vx1000",
+     "label": "VX1000"
+    },
+    {
+     "id": "vx16s",
+     "label": "VX16S"
+    },
+    {
+     "id": "vx4s",
+     "label": "VX4S"
+    },
+    {
+     "id": "vx600",
+     "label": "VX600"
+    },
+    {
+     "id": "vx6s",
+     "label": "VX6s"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "change_brightness",
+   "name": "Change Brightness",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "brightness",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa0001feff01ffffff0100010000020100085e5a",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "change_test_pattern",
+   "name": "Change Test Patterns",
+   "options": [
+    {
+     "id": "pattern",
+     "label": "Test Patterns",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Red"
+      },
+      {
+       "id": "1",
+       "label": "Green"
+      },
+      {
+       "id": "2",
+       "label": "Blue"
+      },
+      {
+       "id": "3",
+       "label": "White"
+      },
+      {
+       "id": "4",
+       "label": "Horizontal"
+      },
+      {
+       "id": "5",
+       "label": "Vertical"
+      },
+      {
+       "id": "6",
+       "label": "Diagonal"
+      },
+      {
+       "id": "7",
+       "label": "Gray-Scale"
+      },
+      {
+       "id": "8",
+       "label": "Aging-All"
+      },
+      {
+       "id": "9",
+       "label": "Pattern Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa00{{option.pattern|map}}59",
+    "encoding": "hex"
+   },
+   "maps": {
+    "pattern": {
+     "0": "10fe0001ffffff01000101000201000269",
+     "1": "11fe0001ffffff0100010100020100036b",
+     "2": "12fe0001ffffff0100010100020100046d",
+     "3": "13fe0001ffffff0100010100020100056f",
+     "4": "14fe0001ffffff01000101000201000671",
+     "5": "15fe0001ffffff01000101000201000773",
+     "6": "16fe0001ffffff01000101000201000875",
+     "7": "17fe0001ffffff01000101000201000977",
+     "8": "18fe0001ffffff01000101000201000a79",
+     "9": "19fe0001ffffff01000101000201000070"
+    }
+   }
+  },
+  {
+   "id": "test_pattern",
+   "name": "Select Test Pattern",
+   "options": [
+    {
+     "id": "pattern",
+     "label": "Which Pattern?",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 - Pattern Off"
+      },
+      {
+       "id": "1",
+       "label": "1 - Red"
+      },
+      {
+       "id": "2",
+       "label": "2 - Green"
+      },
+      {
+       "id": "3",
+       "label": "3 - Blue"
+      },
+      {
+       "id": "4",
+       "label": "4 - White"
+      },
+      {
+       "id": "5",
+       "label": "5 - Horizontal"
+      },
+      {
+       "id": "6",
+       "label": "6 - Vertical"
+      },
+      {
+       "id": "7",
+       "label": "7 - Diagonal"
+      },
+      {
+       "id": "8",
+       "label": "8 - Gray-Scale"
+      },
+      {
+       "id": "9",
+       "label": "9 - Aging (random all)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa00{{option.pattern|map}}59",
+    "encoding": "hex"
+   },
+   "maps": {
+    "pattern": {
+     "0": "1afe0001ffffff01000101000201000071",
+     "1": "1bfe0001ffffff01000101000201000274",
+     "2": "1cfe0001ffffff01000101000201000376",
+     "3": "1dfe0001ffffff01000101000201000478",
+     "4": "1efe0001ffffff0100010100020100057a",
+     "5": "1ffe0001ffffff0100010100020100067c",
+     "6": "20fe0001ffffff0100010100020100077e",
+     "7": "21fe0001ffffff01000101000201000880",
+     "8": "22fe0001ffffff01000101000201000982",
+     "9": "23fe0001ffffff01000101000201000a84"
+    }
+   }
+  },
+  {
+   "id": "change_display_mode",
+   "name": "Change Display Mode",
+   "options": [
+    {
+     "id": "display_mode",
+     "label": "Display Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Normal"
+      },
+      {
+       "id": "1",
+       "label": "Freeze"
+      },
+      {
+       "id": "2",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa00{{option.display_mode|map}}56",
+    "encoding": "hex"
+   },
+   "maps": {
+    "display_mode": {
+     "0": "24fe00000000000100040000130200030094",
+     "1": "25fe00000000000100040000130200040096",
+     "2": "26fe00000000000100040000130200050098"
+    }
+   }
+  },
+  {
+   "id": "change_working_mode",
+   "name": "Change Working Mode",
+   "options": [
+    {
+     "id": "working_mode",
+     "label": "Working Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Splicer Mode"
+      },
+      {
+       "id": "1",
+       "label": "Switcher Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa00{{option.working_mode|map}}56",
+    "encoding": "hex"
+   },
+   "maps": {
+    "working_mode": {
+     "0": "27fe000000000001002c000013010000bb",
+     "1": "28fe000000000001002c000013010001bd"
+    }
+   }
+  },
+  {
+   "id": "load_preset",
+   "name": "Recall Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Preset 1"
+      },
+      {
+       "id": "1",
+       "label": "Preset 2"
+      },
+      {
+       "id": "2",
+       "label": "Preset 3"
+      },
+      {
+       "id": "3",
+       "label": "Preset 4"
+      },
+      {
+       "id": "4",
+       "label": "Preset 5"
+      },
+      {
+       "id": "5",
+       "label": "Preset 6"
+      },
+      {
+       "id": "6",
+       "label": "Preset 7"
+      },
+      {
+       "id": "7",
+       "label": "Preset 8"
+      },
+      {
+       "id": "8",
+       "label": "Preset 9"
+      },
+      {
+       "id": "9",
+       "label": "Preset 10"
+      },
+      {
+       "id": "10",
+       "label": "Preset 11"
+      },
+      {
+       "id": "11",
+       "label": "Preset 12"
+      },
+      {
+       "id": "12",
+       "label": "Preset 13"
+      },
+      {
+       "id": "13",
+       "label": "Preset 14"
+      },
+      {
+       "id": "14",
+       "label": "Preset 15"
+      },
+      {
+       "id": "15",
+       "label": "Preset 16"
+      },
+      {
+       "id": "16",
+       "label": "Preset 17"
+      },
+      {
+       "id": "17",
+       "label": "Preset 18"
+      },
+      {
+       "id": "18",
+       "label": "Preset 19"
+      },
+      {
+       "id": "19",
+       "label": "Preset 20"
+      },
+      {
+       "id": "20",
+       "label": "Preset 21"
+      },
+      {
+       "id": "21",
+       "label": "Preset 22"
+      },
+      {
+       "id": "22",
+       "label": "Preset 23"
+      },
+      {
+       "id": "23",
+       "label": "Preset 24"
+      },
+      {
+       "id": "24",
+       "label": "Preset 25"
+      },
+      {
+       "id": "25",
+       "label": "Preset 26"
+      },
+      {
+       "id": "26",
+       "label": "Preset 27"
+      },
+      {
+       "id": "27",
+       "label": "Preset 28"
+      },
+      {
+       "id": "28",
+       "label": "Preset 29"
+      },
+      {
+       "id": "29",
+       "label": "Preset 30"
+      },
+      {
+       "id": "30",
+       "label": "Preset 31"
+      },
+      {
+       "id": "31",
+       "label": "Preset 32"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa00{{option.preset|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "preset": {
+     "0": "29fe0000000000010000015113010000e356",
+     "1": "2afe0000000000010000015113010001e556",
+     "2": "2bfe0000000000010000015113010002e756",
+     "3": "2cfe0000000000010000015113010003e956",
+     "4": "2dfe0000000000010000015113010004eb56",
+     "5": "2efe0000000000010000015113010005ed56",
+     "6": "2ffe0000000000010000015113010006ef56",
+     "7": "30fe0000000000010000015113010007f156",
+     "8": "31fe0000000000010000015113010008f356",
+     "9": "32fe0000000000010000015113010009f556",
+     "10": "33fe000000000001000001511301000af756",
+     "11": "34fe000000000001000001511301000bf956",
+     "12": "35fe000000000001000001511301000cfb56",
+     "13": "36fe000000000001000001511301000dfd56",
+     "14": "37fe000000000001000001511301000eff56",
+     "15": "38fe000000000001000001511301000f0157",
+     "16": "39fe00000000000100000151130100100357",
+     "17": "3afe00000000000100000151130100110557",
+     "18": "3bfe00000000000100000151130100120757",
+     "19": "3cfe00000000000100000151130100130957",
+     "20": "3dfe00000000000100000151130100140b57",
+     "21": "3efe00000000000100000151130100150d57",
+     "22": "3ffe00000000000100000151130100160f57",
+     "23": "40fe00000000000100000151130100171157",
+     "24": "41fe00000000000100000151130100181357",
+     "25": "42fe00000000000100000151130100191557",
+     "26": "43fe000000000001000001511301001a1757",
+     "27": "44fe000000000001000001511301001b1957",
+     "28": "45fe000000000001000001511301001c1b57",
+     "29": "46fe000000000001000001511301001d1d57",
+     "30": "47fe000000000001000001511301001e1f57",
+     "31": "48fe000000000001000001511301001f2157"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-novastar-controller",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John A Knight, Jr, Ritesh Patel"
+  }
+ ],
+ "source": {
+  "module": "novastar-controller",
+  "version": "2.6.4",
+  "license": "MIT",
+  "maintainers": [
+   "John A Knight, Jr",
+   "Ritesh Patel"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-novastar-controller.git"
+ }
+}

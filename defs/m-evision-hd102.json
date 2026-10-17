@@ -1,0 +1,355 @@
+{
+ "format": 1,
+ "id": "m-evision-hd102",
+ "name": "Evision HD102",
+ "category": "Evision",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9099,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "pollingOn",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Polling interval (ms)",
+   "type": "text",
+   "default": "1000"
+  }
+ ],
+ "actions": [
+  {
+   "id": "test_pattern",
+   "name": "Send Test Pattern",
+   "options": [
+    {
+     "id": "pattern",
+     "label": "Choose Pattern",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Normal"
+      },
+      {
+       "id": "1",
+       "label": "Red"
+      },
+      {
+       "id": "2",
+       "label": "Green"
+      },
+      {
+       "id": "3",
+       "label": "Blue"
+      },
+      {
+       "id": "4",
+       "label": "White"
+      },
+      {
+       "id": "5",
+       "label": "Vertical Line"
+      },
+      {
+       "id": "6",
+       "label": "Horizontal Line"
+      },
+      {
+       "id": "7",
+       "label": "Left Slash"
+      },
+      {
+       "id": "8",
+       "label": "Right Slash"
+      },
+      {
+       "id": "9",
+       "label": "Pane"
+      },
+      {
+       "id": "10",
+       "label": "Gradient Red"
+      },
+      {
+       "id": "11",
+       "label": "Gradient Green"
+      },
+      {
+       "id": "12",
+       "label": "Gradient Blue"
+      },
+      {
+       "id": "13",
+       "label": "Gradient White"
+      },
+      {
+       "id": "14",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "9900000b030000{{option.pattern|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "pattern": {
+     "0": "00ffffffa4",
+     "1": "01ffffffa5",
+     "2": "02ffffffa6",
+     "3": "03ffffffa7",
+     "4": "04ffffffa8",
+     "5": "05ffffffa9",
+     "6": "06ffffffaa",
+     "7": "07ffffffab",
+     "8": "08ffffffac",
+     "9": "09ffffffad",
+     "10": "0affffffae",
+     "11": "0bffffffaf",
+     "12": "0cffffffb0",
+     "13": "0dffffffb1",
+     "14": "0effffffb2"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "test_pattern_0",
+   "category": "Test Patterns",
+   "name": "Test Pattern NORMAL",
+   "text": "NORMAL",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 0
+    }
+   }
+  },
+  {
+   "id": "test_pattern_1",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 1
+    }
+   }
+  },
+  {
+   "id": "test_pattern_2",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#00a000",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 2
+    }
+   }
+  },
+  {
+   "id": "test_pattern_3",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#0000c8",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 3
+    }
+   }
+  },
+  {
+   "id": "test_pattern_4",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 4
+    }
+   }
+  },
+  {
+   "id": "test_pattern_5",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#787878",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 5
+    }
+   }
+  },
+  {
+   "id": "test_pattern_6",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#787878",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 6
+    }
+   }
+  },
+  {
+   "id": "test_pattern_7",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#787878",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 7
+    }
+   }
+  },
+  {
+   "id": "test_pattern_8",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#787878",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 8
+    }
+   }
+  },
+  {
+   "id": "test_pattern_9",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#646464",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 9
+    }
+   }
+  },
+  {
+   "id": "test_pattern_10",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#960000",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 10
+    }
+   }
+  },
+  {
+   "id": "test_pattern_11",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 11
+    }
+   }
+  },
+  {
+   "id": "test_pattern_12",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#000096",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 12
+    }
+   }
+  },
+  {
+   "id": "test_pattern_13",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#c8c8c8",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 13
+    }
+   }
+  },
+  {
+   "id": "test_pattern_14",
+   "category": "Test Patterns",
+   "name": "Test Pattern ",
+   "text": "Test Pattern ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "test_pattern",
+    "options": {
+     "pattern": 14
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-evision-hd102",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Sander Kamp"
+  }
+ ],
+ "source": {
+  "module": "evision-hd102",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Sander Kamp"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-evision-hd102.git"
+ }
+}

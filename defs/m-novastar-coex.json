@@ -1,0 +1,219 @@
+{
+ "format": 1,
+ "id": "m-novastar-coex",
+ "name": "NovaStar Coex MX40 Pro / CX80 Pro / KU20",
+ "category": "NovaStar Coex",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8001",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "brightness",
+   "name": "Brightness",
+   "options": [
+    {
+     "id": "num",
+     "label": "Brightness",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/screen"
+   }
+  },
+  {
+   "id": "gamma",
+   "name": "Gamma",
+   "options": [
+    {
+     "id": "num",
+     "label": "Gamma",
+     "type": "number",
+     "default": 2.8,
+     "min": 1,
+     "max": 4
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/screen"
+   }
+  },
+  {
+   "id": "display_mode",
+   "name": "Display Mode",
+   "options": [
+    {
+     "id": "num",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Normal"
+      },
+      {
+       "id": "1",
+       "label": "Blackout"
+      },
+      {
+       "id": "2",
+       "label": "Freeze"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/screen/output/displaymode",
+    "body": "{\"value\":{{option.num|map}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "num": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "colortemp",
+   "name": "Color Temperature",
+   "options": [
+    {
+     "id": "num",
+     "label": "Color Temp",
+     "type": "number",
+     "default": 6500,
+     "min": 1700,
+     "max": 15000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/screen"
+   }
+  },
+  {
+   "id": "preset",
+   "name": "Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset Name",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/screen"
+   }
+  },
+  {
+   "id": "set_3dlut_status",
+   "name": "3D LUT Status (Set)",
+   "options": [
+    {
+     "id": "enable",
+     "label": "Status",
+     "type": "select",
+     "default": "false",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      }
+     ]
+    },
+    {
+     "id": "screenids",
+     "label": "Screen IDs (optional, comma-separated, blank for all)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/screen/processing/threedlut/enable",
+    "body": "{\"screenIdList\":[\"{{option.screenids}}\"],\"enable\":{{option.enable|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "enable": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "toggle_blackout",
+   "name": "Toggle Blackout/Normal",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/screen/output/displaymode",
+    "body": "{\"value\":1}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "toggle_freeze",
+   "name": "Toggle Freeze/Normal",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/api/v1/screen/output/displaymode",
+    "body": "{\"value\":2}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-novastar-coex",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Kris Dahl"
+  }
+ ],
+ "source": {
+  "module": "novastar-coex",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Kris Dahl"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-novastar-coex.git"
+ }
+}

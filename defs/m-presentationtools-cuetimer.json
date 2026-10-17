@@ -1,0 +1,975 @@
+{
+ "format": 1,
+ "id": "m-presentationtools-cuetimer",
+ "name": "PresentationTools CueTimer",
+ "category": "PresentationTools",
+ "version": "2.2.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 31601,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "list",
+   "label": "List Number",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "",
+     "label": "Active List"
+    },
+    {
+     "id": "1",
+     "label": "1- "
+    },
+    {
+     "id": "2",
+     "label": "2- "
+    },
+    {
+     "id": "3",
+     "label": "3- "
+    },
+    {
+     "id": "4",
+     "label": "4- "
+    },
+    {
+     "id": "5",
+     "label": "5- "
+    },
+    {
+     "id": "6",
+     "label": "6- "
+    },
+    {
+     "id": "7",
+     "label": "7- "
+    },
+    {
+     "id": "8",
+     "label": "8- "
+    },
+    {
+     "id": "9",
+     "label": "9- "
+    },
+    {
+     "id": "10",
+     "label": "10- "
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "FireNext",
+   "name": "Start",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FireNext#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CueNext",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CueNext#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CueCurrent",
+   "name": "Stop and go back",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CueCurrent#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "Pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "Pause#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "Restart",
+   "name": "Restart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "Restart#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "Undo",
+   "name": "Undo",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "Undo#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "AddSpeed",
+   "name": "Increase speed by 5%",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "AddSpeed#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SubSpeed",
+   "name": "Decrease speed by 5%",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SubSpeed#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "AddMinute",
+   "name": "Add 1 minute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "AddMinute#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SubMinute",
+   "name": "Subtract 1 minute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SubMinute#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "Blackout",
+   "name": "Blackout",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "Blackout#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "Fullscreen",
+   "name": "Fullscreen",
+   "options": [
+    {
+     "id": "Key",
+     "label": "State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Fullscreen#{{option.Key|map}}$",
+    "encoding": "text"
+   },
+   "maps": {
+    "Key": {
+     "toggle": "toggle",
+     "on": "on",
+     "off": "off"
+    }
+   }
+  },
+  {
+   "id": "Preview",
+   "name": "Preview",
+   "options": [
+    {
+     "id": "Key",
+     "label": "State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Preview#{{option.Key|map}}$",
+    "encoding": "text"
+   },
+   "maps": {
+    "Key": {
+     "toggle": "toggle",
+     "on": "on",
+     "off": "off"
+    }
+   }
+  },
+  {
+   "id": "Presenter",
+   "name": "Presenter",
+   "options": [
+    {
+     "id": "Key",
+     "label": "State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "Presenter#{{option.Key|map}}$",
+    "encoding": "text"
+   },
+   "maps": {
+    "Key": {
+     "toggle": "toggle",
+     "on": "on",
+     "off": "off"
+    }
+   }
+  },
+  {
+   "id": "NDI",
+   "name": "NDI",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NDI#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "Message",
+   "name": "Message",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "Message#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "Clock",
+   "name": "Clock",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "Clock#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "STM",
+   "name": "Single Timer Mode",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "STM#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "MultitimerPreview",
+   "name": "Multitimer Preview",
+   "options": [
+    {
+     "id": "Key",
+     "label": "State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MultitimerPreview#{{option.Key|map}}$",
+    "encoding": "text"
+   },
+   "maps": {
+    "Key": {
+     "toggle": "toggle",
+     "on": "on",
+     "off": "off"
+    }
+   }
+  },
+  {
+   "id": "MultitimerFullscreen",
+   "name": "Multitimer Fullscreen",
+   "options": [
+    {
+     "id": "Key",
+     "label": "State",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MultitimerFullscreen#{{option.Key|map}}$",
+    "encoding": "text"
+   },
+   "maps": {
+    "Key": {
+     "toggle": "toggle",
+     "on": "on",
+     "off": "off"
+    }
+   }
+  },
+  {
+   "id": "MultitimerNDI",
+   "name": "Multitimer NDI",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MultitimerNDI#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "MoveNextUp",
+   "name": "Move Next Up",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MoveNextUp#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "MoveNextDown",
+   "name": "Move Next Down",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MoveNextDown#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FireTimerWithID",
+   "name": "Start timer with ID",
+   "options": [
+    {
+     "id": "Key",
+     "label": "ID",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FireTimerWithID#{{option.Key}}$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CueTimerWithID",
+   "name": "Cue Timer with ID",
+   "options": [
+    {
+     "id": "Key",
+     "label": "ID",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CueTimerWithID#{{option.Key}}$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SetDuration",
+   "name": "Set Duration",
+   "options": [
+    {
+     "id": "Key",
+     "label": "New duration (hh:mm:ss)",
+     "type": "text",
+     "default": "00:10:00"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SetDuration#{{option.Key}}$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "AddXMinutes",
+   "name": "Add X Minutes",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Time span to be added in minutes",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AddXMinutes#{{option.Key}}$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SubXMinutes",
+   "name": "Subtract X Minutes",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Time span to be subtracted in minutes",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SubXMinutes#{{option.Key}}$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "InitList",
+   "name": "Initialize List",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "InitList#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "InitEndTimeTimer",
+   "name": "Initialize and start a new EndTime timer",
+   "options": [
+    {
+     "id": "Key",
+     "label": "EndTime hh:mm:ss",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "InitEndTimeTimer#{{option.Key}}$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ActivateNextList",
+   "name": "Activate next list",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ActivateNextList#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ActivatePreviousList",
+   "name": "Activate previous list",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ActivatePreviousList#$",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ActivateThisList",
+   "name": "Activate this list",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ActivateListByGUID#1$$",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "FireNext",
+   "category": "Commands",
+   "name": "Start",
+   "text": "Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "FireNext",
+    "options": {}
+   }
+  },
+  {
+   "id": "CueNext",
+   "category": "Commands",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "CueNext",
+    "options": {}
+   }
+  },
+  {
+   "id": "Pause",
+   "category": "Commands",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "Restart",
+   "category": "Commands",
+   "name": "Restart",
+   "text": "Restart",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Restart",
+    "options": {}
+   }
+  },
+  {
+   "id": "Undo",
+   "category": "Commands",
+   "name": "Undo",
+   "text": "Undo",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Undo",
+    "options": {}
+   }
+  },
+  {
+   "id": "AddSpeed",
+   "category": "Commands",
+   "name": "Increase speed by 5%",
+   "text": "Speed",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AddSpeed",
+    "options": {}
+   }
+  },
+  {
+   "id": "SubSpeed",
+   "category": "Commands",
+   "name": "Decrease speed by 5%",
+   "text": "Speed",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SubSpeed",
+    "options": {}
+   }
+  },
+  {
+   "id": "AddMinute",
+   "category": "Commands",
+   "name": "Add 1 Minute",
+   "text": "Minute",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AddMinute",
+    "options": {}
+   }
+  },
+  {
+   "id": "SubMinute",
+   "category": "Commands",
+   "name": "Subtract 1 Minute",
+   "text": "Minute",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SubMinute",
+    "options": {}
+   }
+  },
+  {
+   "id": "Blackout",
+   "category": "Commands",
+   "name": "Blackout",
+   "text": "Blackout",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Blackout",
+    "options": {}
+   }
+  },
+  {
+   "id": "Clock",
+   "category": "Commands",
+   "name": "Clock",
+   "text": "Clock",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Clock",
+    "options": {}
+   }
+  },
+  {
+   "id": "Message",
+   "category": "Commands",
+   "name": "Message",
+   "text": "Message",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Message",
+    "options": {}
+   }
+  },
+  {
+   "id": "Fullscreen",
+   "category": "Commands",
+   "name": "Full Screen",
+   "text": "FullScreen",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Fullscreen",
+    "options": {
+     "Key": "toggle"
+    }
+   }
+  },
+  {
+   "id": "Preview",
+   "category": "Commands",
+   "name": "Preview",
+   "text": "Preview window",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Preview",
+    "options": {
+     "Key": "toggle"
+    }
+   }
+  },
+  {
+   "id": "Presenter",
+   "category": "Commands",
+   "name": "Presenter",
+   "text": "Presenter window",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Presenter",
+    "options": {
+     "Key": "toggle"
+    }
+   }
+  },
+  {
+   "id": "MultitimerPreview",
+   "category": "Commands",
+   "name": "Multitimer Preview",
+   "text": "Multitimer Preview",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "MultitimerPreview",
+    "options": {
+     "Key": "toggle"
+    }
+   }
+  },
+  {
+   "id": "MultitimerFullscreen",
+   "category": "Commands",
+   "name": "Multitimer Fullscreen",
+   "text": "Multitimer Fullscreen",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "MultitimerFullscreen",
+    "options": {
+     "Key": "toggle"
+    }
+   }
+  },
+  {
+   "id": "MultitimerNDI",
+   "category": "Commands",
+   "name": "Multitimer NDI",
+   "text": "Multitimer NDI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "MultitimerNDI",
+    "options": {}
+   }
+  },
+  {
+   "id": "NDI",
+   "category": "Commands",
+   "name": "NDI",
+   "text": "NDI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "NDI",
+    "options": {}
+   }
+  },
+  {
+   "id": "STM",
+   "category": "Commands",
+   "name": "Single Mode",
+   "text": "Single Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "STM",
+    "options": {}
+   }
+  },
+  {
+   "id": "MoveNextUp",
+   "category": "Commands",
+   "name": "Move Next Up",
+   "text": "Move Next Up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "MoveNextUp",
+    "options": {}
+   }
+  },
+  {
+   "id": "MoveNextDown",
+   "category": "Commands",
+   "name": "Move Next Down",
+   "text": "Move Next Down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "MoveNextDown",
+    "options": {}
+   }
+  },
+  {
+   "id": "FireTimerWithID",
+   "category": "Commands",
+   "name": "Start with ID",
+   "text": "Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "FireTimerWithID",
+    "options": {
+     "Key": "1"
+    }
+   }
+  },
+  {
+   "id": "CueTimerWithID",
+   "category": "Commands",
+   "name": "Cue with ID",
+   "text": "Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "CueTimerWithID",
+    "options": {
+     "Key": "1"
+    }
+   }
+  },
+  {
+   "id": "CueCurrent",
+   "category": "Commands",
+   "name": "Stop and go back",
+   "text": "Stop and go back",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "CueCurrent",
+    "options": {}
+   }
+  },
+  {
+   "id": "SetDuration",
+   "category": "Commands",
+   "name": "Set Duration",
+   "text": "Set Duration",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SetDuration",
+    "options": {
+     "Key": "00:10:00"
+    }
+   }
+  },
+  {
+   "id": "AddXMinutes",
+   "category": "Commands",
+   "name": "Add X Minutes",
+   "text": "Add X Minutes",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "AddXMinutes",
+    "options": {
+     "Key": "1"
+    }
+   }
+  },
+  {
+   "id": "SubXMinutes",
+   "category": "Commands",
+   "name": "Subtract X Minutes",
+   "text": "Subtract X Minutes",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SubXMinutes",
+    "options": {
+     "Key": "1"
+    }
+   }
+  },
+  {
+   "id": "InitList",
+   "category": "Commands",
+   "name": "Initialize List",
+   "text": "Initialize List",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "InitList",
+    "options": {}
+   }
+  },
+  {
+   "id": "PrevList",
+   "category": "List control",
+   "name": "Selects previous list",
+   "text": "Prev list",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ActivatePreviousList",
+    "options": {}
+   }
+  },
+  {
+   "id": "NextList",
+   "category": "List control",
+   "name": "Selects next list",
+   "text": "Next list",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ActivateNextList",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-presentationtools-cuetimer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：PresentationTools A/S"
+  }
+ ],
+ "source": {
+  "module": "presentationtools-cuetimer",
+  "version": "2.2.2",
+  "license": "MIT",
+  "maintainers": [
+   "PresentationTools A/S"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-presentationtools-cuetimer.git"
+ }
+}

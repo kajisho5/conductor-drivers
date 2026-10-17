@@ -158,7 +158,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "core-al-{{option.selectedActionList|map}}-{{option.selectedAction}}-execute={{option.targetArgument}}",
+    "data": "core-al-{{option.selectedActionList|map}}{{option.selectedAction|lin:-1:0}}-execute={{option.targetArgument}}",
     "encoding": "text"
    },
    "maps": {
@@ -280,7 +280,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "core-dmx-{{option.channel}}={{option.value}}",
+    "data": "core-dmx{{option.channel|lin:-1:0}}={{option.value}}",
     "encoding": "text"
    }
   },

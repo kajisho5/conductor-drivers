@@ -1,0 +1,81 @@
+{
+ "format": 1,
+ "id": "m-bmd-gpi-and-tally-interface",
+ "name": "Blackmagic Design GPI and Tally Interface",
+ "category": "Blackmagic Design",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9991,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "SetLatch",
+   "name": "Override mode",
+   "options": [
+    {
+     "id": "latch",
+     "label": "Override mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Momentary Hold Video"
+      },
+      {
+       "id": "1",
+       "label": "Latch mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SETTINGS:\\nLatch mode: {{option.latch|map}}\\n\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "latch": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bmd-gpi-and-tally-interface",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Balint Halla"
+  }
+ ],
+ "source": {
+  "module": "bmd-gpi-and-tally-interface",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Balint Halla"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bmd-gpi-and-tally-interface.git"
+ }
+}

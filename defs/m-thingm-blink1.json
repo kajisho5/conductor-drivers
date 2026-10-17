@@ -1,0 +1,123 @@
+{
+ "format": 1,
+ "id": "m-thingm-blink1",
+ "name": "ThingM Blink(1)",
+ "category": "ThingM",
+ "version": "2.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8934",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "deviceType",
+   "label": "Device Type",
+   "type": "select",
+   "default": "local",
+   "choices": [
+    {
+     "id": "local",
+     "label": "Local"
+    },
+    {
+     "id": "remote",
+     "label": "Remote"
+    }
+   ],
+   "help": "Whether the Blink(1) is connected locally, or is remote"
+  },
+  {
+   "id": "serial",
+   "label": "Serial of local control",
+   "type": "select",
+   "default": "",
+   "choices": [
+    {
+     "id": "",
+     "label": "None"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "color2",
+   "name": "Set color to Blink1",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/blink1/fadeToRGB?rgb=%23ff0000&time=0.5"
+   }
+  },
+  {
+   "id": "off",
+   "name": "Switch off Blink1",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/blink1/off"
+   }
+  },
+  {
+   "id": "pattern",
+   "name": "Set pattern for Blink1 (Remote only)",
+   "options": [
+    {
+     "id": "pattern",
+     "label": "Pattern name",
+     "type": "text",
+     "default": "redflash"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/blink1/pattern/play?pname={{option.pattern}}"
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Custom command for Blink1 (Remote only)",
+   "options": [
+    {
+     "id": "custom",
+     "label": "http://host:port/blink1/yourcommand (Only the bit after blink1/)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/blink1/{{option.custom}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-thingm-blink1",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz, Julian Waller"
+  }
+ ],
+ "source": {
+  "module": "thingm-blink1",
+  "version": "2.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz",
+   "Julian Waller"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-thingm-blink1.git"
+ }
+}

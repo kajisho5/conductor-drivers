@@ -1,0 +1,254 @@
+{
+ "format": 1,
+ "id": "m-softvelum-wmspanel",
+ "name": "Softvelum WMSPanel",
+ "category": "Softvelum",
+ "version": "1.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.wmspanel.com",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "client_id",
+   "label": "Client ID",
+   "type": "text"
+  },
+  {
+   "id": "api_key",
+   "label": "API-Key",
+   "type": "text"
+  },
+  {
+   "id": "api_url",
+   "label": "API Url",
+   "type": "text",
+   "default": "https://api.wmspanel.com",
+   "help": "Only change if you know what you are doing. Used for exampled if you need to set up an API Proxy"
+  },
+  {
+   "id": "refreshRate",
+   "label": "API Refresh Rate (s)",
+   "type": "number",
+   "default": 30,
+   "min": 0,
+   "max": 3600,
+   "help": "Attention: Can lead to massive API-Calls and hit the API Limit very fast. Default 30"
+  }
+ ],
+ "actions": [
+  {
+   "id": "CreateRepublishRoute",
+   "name": "Create Republish Route",
+   "options": [
+    {
+     "id": "server_id",
+     "label": "Select Server",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "src_app",
+     "label": "Source App Name",
+     "type": "text",
+     "default": "nimble-app"
+    },
+    {
+     "id": "src_strm",
+     "label": "Source Stream Name (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_addr",
+     "label": "Destination Address",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_port",
+     "label": "Destination Port (optional)",
+     "type": "number",
+     "default": 1935,
+     "min": 0,
+     "max": 65535
+    },
+    {
+     "id": "dest_app",
+     "label": "Destination App Name",
+     "type": "text",
+     "default": "live"
+    },
+    {
+     "id": "dest_strm",
+     "label": "Destination Stream Name (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_app_params",
+     "label": "Destination App Params (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_strm_params",
+     "label": "Destination Stream Params (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "description",
+     "label": "Description (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "tags",
+     "label": "Tags (comma separated)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "auth_schema",
+     "label": "Auth Schema (optional)",
+     "type": "select",
+     "default": "NONE",
+     "choices": [
+      {
+       "id": "NONE",
+       "label": "NONE"
+      },
+      {
+       "id": "NIMBLE",
+       "label": "NIMBLE"
+      },
+      {
+       "id": "AKAMAI",
+       "label": "AKAMAI"
+      },
+      {
+       "id": "LIMELIGHT",
+       "label": "LIMELIGHT"
+      },
+      {
+       "id": "PERISCOPE",
+       "label": "PERISCOPE"
+      },
+      {
+       "id": "TELEGRAM",
+       "label": "TELEGRAM"
+      },
+      {
+       "id": "RTMP",
+       "label": "RTMP"
+      },
+      {
+       "id": "TWITCH",
+       "label": "TWITCH"
+      }
+     ]
+    },
+    {
+     "id": "dest_login",
+     "label": "Destination Login (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_password",
+     "label": "Destination Password (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "akamai_stream_id",
+     "label": "Akamai Stream ID (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "paused",
+     "label": "Paused",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "keep_src_stream_params",
+     "label": "Keep Source Stream Params",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "ssl",
+     "label": "Use SSL",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "other_servers_to_apply",
+     "label": "Other Server IDs (comma separated, max 20)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/v1/server//rtmp/republish?client_id=&api_key=",
+    "body": "{\"src_app\":\"{{option.src_app}}\",\"dest_addr\":\"{{option.dest_addr}}\",\"dest_app\":\"{{option.dest_app}}\",\"src_strm\":\"{{option.src_strm}}\",\"dest_port\":{{option.dest_port}},\"dest_strm\":\"{{option.dest_strm}}\",\"dest_app_params\":\"{{option.dest_app_params}}\",\"dest_strm_params\":\"{{option.dest_strm_params}}\",\"description\":\"{{option.description}}\",\"tags\":[\"{{option.tags}}\"],\"{{option.auth_schema|map}}dest_login\":\"{{option.dest_login}}\",\"dest_password\":\"{{option.dest_password}}\",\"akamai_stream_id\":\"{{option.akamai_stream_id}}\",\"paused\":{{option.paused|map}}e,\"keep_src_stream_params\":{{option.keep_src_stream_params|map}}e,\"ssl\":{{option.ssl|map}}e,\"other_servers_to_apply\":[\"{{option.other_servers_to_apply}}\"]}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "auth_schema": {
+     "NONE": "",
+     "NIMBLE": "auth_schema\":\"NIMBLE\",\"",
+     "AKAMAI": "auth_schema\":\"AKAMAI\",\"",
+     "LIMELIGHT": "auth_schema\":\"LIMELIGHT\",\"",
+     "PERISCOPE": "auth_schema\":\"PERISCOPE\",\"",
+     "TELEGRAM": "auth_schema\":\"TELEGRAM\",\"",
+     "RTMP": "auth_schema\":\"RTMP\",\"",
+     "TWITCH": "auth_schema\":\"TWITCH\",\""
+    },
+    "paused": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "keep_src_stream_params": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "ssl": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-softvelum-wmspanel",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leopold Strobl"
+  }
+ ],
+ "source": {
+  "module": "softvelum-wmspanel",
+  "version": "1.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Leopold Strobl"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-softvelum-wmspanel.git"
+ }
+}

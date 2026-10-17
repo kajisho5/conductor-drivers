@@ -1,0 +1,262 @@
+{
+ "format": 1,
+ "id": "m-lgtv-prodisplay",
+ "name": "LG Pro Display",
+ "category": "LG",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9761,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "setId",
+   "label": "Set ID (0–99)",
+   "type": "number",
+   "default": 0,
+   "min": 0,
+   "max": 99
+  },
+  {
+   "id": "pollInterval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "max": 60000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "powerOn",
+   "name": "Power On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ka 00 01\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "powerOff",
+   "name": "Power Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ka 00 00\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "inputSelect",
+   "name": "Select Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "90",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Digital TV Tuner"
+      },
+      {
+       "id": "10",
+       "label": "Analog TV Tuner"
+      },
+      {
+       "id": "20",
+       "label": "AV Composite Input"
+      },
+      {
+       "id": "40",
+       "label": "Component YPbPr"
+      },
+      {
+       "id": "60",
+       "label": "RGB D-Sub / PC Input"
+      },
+      {
+       "id": "90",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "91",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "92",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "93",
+       "label": "HDMI 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "xb 00 {{option.input|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "10": "10",
+     "20": "20",
+     "40": "40",
+     "60": "60",
+     "90": "90",
+     "91": "91",
+     "92": "92",
+     "93": "93",
+     "00": "00"
+    }
+   }
+  },
+  {
+   "id": "screenMute",
+   "name": "Screen Mute On/Off",
+   "options": [
+    {
+     "id": "state",
+     "label": "Mute State",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Mute On"
+      },
+      {
+       "id": "01",
+       "label": "Mute Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "kd 00 0{{option.state|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "volumeMute",
+   "name": "Volume Mute On/Off",
+   "options": [
+    {
+     "id": "state",
+     "label": "Mute State",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Mute On"
+      },
+      {
+       "id": "01",
+       "label": "Mute Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "ke 00 0{{option.state|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "00": "0",
+     "01": "1"
+    }
+   }
+  },
+  {
+   "id": "volumeLevel",
+   "name": "Volume Set Level",
+   "options": [
+    {
+     "id": "level",
+     "label": "Volume Level",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "kf 00 {{option.level|hexu}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "volumeLevelDec",
+   "name": "Volume Decrease Level",
+   "options": [
+    {
+     "id": "level",
+     "label": "Amount",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "kf 00 00\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/josephdadams/companion-module-lgtv-prodisplay",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "lgtv-prodisplay",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/josephdadams/companion-module-lgtv-prodisplay.git"
+ }
+}

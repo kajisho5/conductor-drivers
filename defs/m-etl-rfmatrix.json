@@ -1,0 +1,102 @@
+{
+ "format": 1,
+ "id": "m-etl-rfmatrix",
+ "name": "ETL Systems ETL RF Matrix",
+ "category": "ETL Systems",
+ "version": "1.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 4000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "dstAddr",
+   "label": "Destination address char",
+   "type": "text",
+   "default": "A"
+  },
+  {
+   "id": "srcAddr",
+   "label": "Source address char",
+   "type": "text",
+   "default": "B"
+  },
+  {
+   "id": "inputsConfigured",
+   "label": "Inputs count",
+   "type": "number",
+   "default": 16,
+   "min": 1,
+   "max": 999
+  },
+  {
+   "id": "outputsConfigured",
+   "label": "Outputs count",
+   "type": "number",
+   "default": 16,
+   "min": 1,
+   "max": 999
+  },
+  {
+   "id": "aliasPollMs",
+   "label": "Alias poll interval ms",
+   "type": "number",
+   "default": 5000,
+   "min": 200,
+   "max": 60000
+  },
+  {
+   "id": "statusPollMs",
+   "label": "Status poll interval ms",
+   "type": "number",
+   "default": 750,
+   "min": 100,
+   "max": 5000
+  }
+ ],
+ "actions": [
+  {
+   "id": "read_quick_status",
+   "name": "Read Quick Status (Q)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{ABQ}/\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-etl-rfmatrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Daniel Vegter"
+  }
+ ],
+ "source": {
+  "module": "etl-rfmatrix",
+  "version": "1.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Daniel Vegter"
+  ],
+  "repository": "https://github.com/bitfocus/companion-module-etl-rfmatrix"
+ }
+}

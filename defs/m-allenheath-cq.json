@@ -1,0 +1,88 @@
+{
+ "format": 1,
+ "id": "m-allenheath-cq",
+ "name": "Allen Heath CQ-12T / CQ-18T / CQ-20B",
+ "category": "Allen Heath",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 51325,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "autoReconnect",
+   "label": "Auto Reconnect",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "scene",
+   "name": "Scene Change",
+   "options": [
+    {
+     "id": "scene",
+     "label": "Scene",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "b00000c0{{option.scene|lin:1:-1|u8}}",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "presetOne",
+   "category": "Scenes",
+   "name": "Load Scene 1",
+   "text": "Load Scene 1",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "scene",
+    "options": {
+     "scene": 1
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-allenheath-cq",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "allenheath-cq",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-allenheath-cq.git"
+ }
+}

@@ -1,0 +1,279 @@
+{
+ "format": 1,
+ "id": "m-pharos-designer",
+ "name": "Pharos Designer Controller",
+ "category": "Pharos",
+ "version": "1.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "user",
+   "label": "User",
+   "type": "text"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "controlTimeline",
+   "name": "Control Timeline",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "start",
+     "choices": [
+      {
+       "id": "start",
+       "label": "Start"
+      },
+      {
+       "id": "release",
+       "label": "Release"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      },
+      {
+       "id": "resume",
+       "label": "Resume"
+      },
+      {
+       "id": "set_rate",
+       "label": "Set rate"
+      },
+      {
+       "id": "set_position",
+       "label": "Set position"
+      }
+     ]
+    },
+    {
+     "id": "num",
+     "label": "Timeline",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No timelines found"
+      }
+     ]
+    },
+    {
+     "id": "rate",
+     "label": "Rate (0.1 to 1 is default timeline rate)",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "position",
+     "label": "Position (Fraction of timeline e.g. 0.5 or 10:100)",
+     "type": "text"
+    },
+    {
+     "id": "fade",
+     "label": "Fade (seconds)",
+     "type": "number",
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timeline",
+    "body": "{\"action\":\"{{option.action|map}}\",\"num\":0,\"rate\":\"{{option.rate}}\",\"position\":\"{{option.position}}\",\"fade\":{{option.fade}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "start": "start",
+     "release": "release",
+     "toggle": "toggle",
+     "pause": "pause",
+     "resume": "resume",
+     "set_rate": "set_rate",
+     "set_position": "set_position"
+    }
+   }
+  },
+  {
+   "id": "controlGroups",
+   "name": "Control Groups",
+   "options": [
+    {
+     "id": "num",
+     "label": "Groups",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No groups found"
+      }
+     ]
+    },
+    {
+     "id": "level",
+     "label": "Master Intensity  (0-1)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 1
+    },
+    {
+     "id": "fade",
+     "label": "Fade (seconds)",
+     "type": "number",
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/group",
+    "body": "{\"action\":\"master_intensity\",\"num\":0,\"level\":{{option.level}},\"fade\":{{option.fade}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "controlScenes",
+   "name": "Control Scenes",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "start",
+     "choices": [
+      {
+       "id": "start",
+       "label": "Start"
+      },
+      {
+       "id": "release",
+       "label": "Release"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    },
+    {
+     "id": "num",
+     "label": "Scenes",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No scenes found"
+      }
+     ]
+    },
+    {
+     "id": "fade",
+     "label": "Fade (seconds)",
+     "type": "number",
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/scene",
+    "body": "{\"action\":\"{{option.action|map}}\",\"num\":0,\"fade\":{{option.fade}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "action": {
+     "start": "start",
+     "release": "release",
+     "toggle": "toggle"
+    }
+   }
+  },
+  {
+   "id": "controlTriggers",
+   "name": "Control Triggers",
+   "options": [
+    {
+     "id": "num",
+     "label": "Trigger",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No triggers found"
+      }
+     ]
+    },
+    {
+     "id": "var",
+     "label": "String to pass to trigger",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "conditions",
+     "label": "Test conditions before firing",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/trigger",
+    "body": "{\"action\":\"fire\",\"num\":0,\"var\":\"{{option.var}}\",\"conditions\":{{option.conditions|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "conditions": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-pharos-designer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jonas Hartmann"
+  }
+ ],
+ "source": {
+  "module": "pharos-designer",
+  "version": "1.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jonas Hartmann"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-pharos-designer.git"
+ }
+}

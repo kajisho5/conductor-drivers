@@ -1,0 +1,2467 @@
+{
+ "format": 1,
+ "id": "m-panasonic-camera-controller",
+ "name": "Panasonic Remote Camera Controller",
+ "category": "Panasonic",
+ "version": "2.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "AW-RP50",
+   "choices": [
+    {
+     "id": "AW-RP50",
+     "label": "AW-RP50"
+    },
+    {
+     "id": "AW-RP60",
+     "label": "AW-RP60"
+    },
+    {
+     "id": "AW-RP120",
+     "label": "AW-RP120"
+    },
+    {
+     "id": "AW-RP150",
+     "label": "AW-RP150"
+    }
+   ]
+  },
+  {
+   "id": "polling",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "polldelay",
+   "label": "Delay (ms)",
+   "type": "number",
+   "default": 100,
+   "min": 25,
+   "max": 2500
+  }
+ ],
+ "actions": [
+  {
+   "id": "selectCamera",
+   "name": "Select Camera",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Camera",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Camera 1"
+      },
+      {
+       "id": "2",
+       "label": "Camera 2"
+      },
+      {
+       "id": "3",
+       "label": "Camera 3"
+      },
+      {
+       "id": "4",
+       "label": "Camera 4"
+      },
+      {
+       "id": "5",
+       "label": "Camera 5"
+      },
+      {
+       "id": "6",
+       "label": "Camera 6"
+      },
+      {
+       "id": "7",
+       "label": "Camera 7"
+      },
+      {
+       "id": "8",
+       "label": "Camera 8"
+      },
+      {
+       "id": "9",
+       "label": "Camera 9"
+      },
+      {
+       "id": "10",
+       "label": "Camera 10"
+      },
+      {
+       "id": "11",
+       "label": "Camera 11"
+      },
+      {
+       "id": "12",
+       "label": "Camera 12"
+      },
+      {
+       "id": "13",
+       "label": "Camera 13"
+      },
+      {
+       "id": "14",
+       "label": "Camera 14"
+      },
+      {
+       "id": "15",
+       "label": "Camera 15"
+      },
+      {
+       "id": "16",
+       "label": "Camera 16"
+      },
+      {
+       "id": "17",
+       "label": "Camera 17"
+      },
+      {
+       "id": "18",
+       "label": "Camera 18"
+      },
+      {
+       "id": "19",
+       "label": "Camera 19"
+      },
+      {
+       "id": "20",
+       "label": "Camera 20"
+      },
+      {
+       "id": "21",
+       "label": "Camera 21"
+      },
+      {
+       "id": "22",
+       "label": "Camera 22"
+      },
+      {
+       "id": "23",
+       "label": "Camera 23"
+      },
+      {
+       "id": "24",
+       "label": "Camera 24"
+      },
+      {
+       "id": "25",
+       "label": "Camera 25"
+      },
+      {
+       "id": "26",
+       "label": "Camera 26"
+      },
+      {
+       "id": "27",
+       "label": "Camera 27"
+      },
+      {
+       "id": "28",
+       "label": "Camera 28"
+      },
+      {
+       "id": "29",
+       "label": "Camera 29"
+      },
+      {
+       "id": "30",
+       "label": "Camera 30"
+      },
+      {
+       "id": "31",
+       "label": "Camera 31"
+      },
+      {
+       "id": "32",
+       "label": "Camera 32"
+      },
+      {
+       "id": "33",
+       "label": "Camera 33"
+      },
+      {
+       "id": "34",
+       "label": "Camera 34"
+      },
+      {
+       "id": "35",
+       "label": "Camera 35"
+      },
+      {
+       "id": "36",
+       "label": "Camera 36"
+      },
+      {
+       "id": "37",
+       "label": "Camera 37"
+      },
+      {
+       "id": "38",
+       "label": "Camera 38"
+      },
+      {
+       "id": "39",
+       "label": "Camera 39"
+      },
+      {
+       "id": "40",
+       "label": "Camera 40"
+      },
+      {
+       "id": "41",
+       "label": "Camera 41"
+      },
+      {
+       "id": "42",
+       "label": "Camera 42"
+      },
+      {
+       "id": "43",
+       "label": "Camera 43"
+      },
+      {
+       "id": "44",
+       "label": "Camera 44"
+      },
+      {
+       "id": "45",
+       "label": "Camera 45"
+      },
+      {
+       "id": "46",
+       "label": "Camera 46"
+      },
+      {
+       "id": "47",
+       "label": "Camera 47"
+      },
+      {
+       "id": "48",
+       "label": "Camera 48"
+      },
+      {
+       "id": "49",
+       "label": "Camera 49"
+      },
+      {
+       "id": "50",
+       "label": "Camera 50"
+      },
+      {
+       "id": "51",
+       "label": "Camera 51"
+      },
+      {
+       "id": "52",
+       "label": "Camera 52"
+      },
+      {
+       "id": "53",
+       "label": "Camera 53"
+      },
+      {
+       "id": "54",
+       "label": "Camera 54"
+      },
+      {
+       "id": "55",
+       "label": "Camera 55"
+      },
+      {
+       "id": "56",
+       "label": "Camera 56"
+      },
+      {
+       "id": "57",
+       "label": "Camera 57"
+      },
+      {
+       "id": "58",
+       "label": "Camera 58"
+      },
+      {
+       "id": "59",
+       "label": "Camera 59"
+      },
+      {
+       "id": "60",
+       "label": "Camera 60"
+      },
+      {
+       "id": "61",
+       "label": "Camera 61"
+      },
+      {
+       "id": "62",
+       "label": "Camera 62"
+      },
+      {
+       "id": "63",
+       "label": "Camera 63"
+      },
+      {
+       "id": "64",
+       "label": "Camera 64"
+      },
+      {
+       "id": "65",
+       "label": "Camera 65"
+      },
+      {
+       "id": "66",
+       "label": "Camera 66"
+      },
+      {
+       "id": "67",
+       "label": "Camera 67"
+      },
+      {
+       "id": "68",
+       "label": "Camera 68"
+      },
+      {
+       "id": "69",
+       "label": "Camera 69"
+      },
+      {
+       "id": "70",
+       "label": "Camera 70"
+      },
+      {
+       "id": "71",
+       "label": "Camera 71"
+      },
+      {
+       "id": "72",
+       "label": "Camera 72"
+      },
+      {
+       "id": "73",
+       "label": "Camera 73"
+      },
+      {
+       "id": "74",
+       "label": "Camera 74"
+      },
+      {
+       "id": "75",
+       "label": "Camera 75"
+      },
+      {
+       "id": "76",
+       "label": "Camera 76"
+      },
+      {
+       "id": "77",
+       "label": "Camera 77"
+      },
+      {
+       "id": "78",
+       "label": "Camera 78"
+      },
+      {
+       "id": "79",
+       "label": "Camera 79"
+      },
+      {
+       "id": "80",
+       "label": "Camera 80"
+      },
+      {
+       "id": "81",
+       "label": "Camera 81"
+      },
+      {
+       "id": "82",
+       "label": "Camera 82"
+      },
+      {
+       "id": "83",
+       "label": "Camera 83"
+      },
+      {
+       "id": "84",
+       "label": "Camera 84"
+      },
+      {
+       "id": "85",
+       "label": "Camera 85"
+      },
+      {
+       "id": "86",
+       "label": "Camera 86"
+      },
+      {
+       "id": "87",
+       "label": "Camera 87"
+      },
+      {
+       "id": "88",
+       "label": "Camera 88"
+      },
+      {
+       "id": "89",
+       "label": "Camera 89"
+      },
+      {
+       "id": "90",
+       "label": "Camera 90"
+      },
+      {
+       "id": "91",
+       "label": "Camera 91"
+      },
+      {
+       "id": "92",
+       "label": "Camera 92"
+      },
+      {
+       "id": "93",
+       "label": "Camera 93"
+      },
+      {
+       "id": "94",
+       "label": "Camera 94"
+      },
+      {
+       "id": "95",
+       "label": "Camera 95"
+      },
+      {
+       "id": "96",
+       "label": "Camera 96"
+      },
+      {
+       "id": "97",
+       "label": "Camera 97"
+      },
+      {
+       "id": "98",
+       "label": "Camera 98"
+      },
+      {
+       "id": "99",
+       "label": "Camera 99"
+      },
+      {
+       "id": "100",
+       "label": "Camera 100"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=XCN:01:{{option.camera}}&res=1"
+   }
+  },
+  {
+   "id": "selectGroup",
+   "name": "Select Group",
+   "options": [
+    {
+     "id": "group",
+     "label": "Group",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Group 1"
+      },
+      {
+       "id": "2",
+       "label": "Group 2"
+      },
+      {
+       "id": "3",
+       "label": "Group 3"
+      },
+      {
+       "id": "4",
+       "label": "Group 4"
+      },
+      {
+       "id": "5",
+       "label": "Group 5"
+      },
+      {
+       "id": "6",
+       "label": "Group 6"
+      },
+      {
+       "id": "7",
+       "label": "Group 7"
+      },
+      {
+       "id": "8",
+       "label": "Group 8"
+      },
+      {
+       "id": "9",
+       "label": "Group 9"
+      },
+      {
+       "id": "10",
+       "label": "Group 10"
+      },
+      {
+       "id": "11",
+       "label": "Group 11"
+      },
+      {
+       "id": "12",
+       "label": "Group 12"
+      },
+      {
+       "id": "13",
+       "label": "Group 13"
+      },
+      {
+       "id": "14",
+       "label": "Group 14"
+      },
+      {
+       "id": "15",
+       "label": "Group 15"
+      },
+      {
+       "id": "16",
+       "label": "Group 16"
+      },
+      {
+       "id": "17",
+       "label": "Group 17"
+      },
+      {
+       "id": "18",
+       "label": "Group 18"
+      },
+      {
+       "id": "19",
+       "label": "Group 19"
+      },
+      {
+       "id": "20",
+       "label": "Group 20"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=XGP:{{option.group|map}}&res=1"
+   },
+   "maps": {
+    "group": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20"
+    }
+   }
+  },
+  {
+   "id": "selectGroupPort",
+   "name": "Select Group + Port",
+   "options": [
+    {
+     "id": "group",
+     "label": "Group",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Group 1"
+      },
+      {
+       "id": "2",
+       "label": "Group 2"
+      },
+      {
+       "id": "3",
+       "label": "Group 3"
+      },
+      {
+       "id": "4",
+       "label": "Group 4"
+      },
+      {
+       "id": "5",
+       "label": "Group 5"
+      },
+      {
+       "id": "6",
+       "label": "Group 6"
+      },
+      {
+       "id": "7",
+       "label": "Group 7"
+      },
+      {
+       "id": "8",
+       "label": "Group 8"
+      },
+      {
+       "id": "9",
+       "label": "Group 9"
+      },
+      {
+       "id": "10",
+       "label": "Group 10"
+      },
+      {
+       "id": "11",
+       "label": "Group 11"
+      },
+      {
+       "id": "12",
+       "label": "Group 12"
+      },
+      {
+       "id": "13",
+       "label": "Group 13"
+      },
+      {
+       "id": "14",
+       "label": "Group 14"
+      },
+      {
+       "id": "15",
+       "label": "Group 15"
+      },
+      {
+       "id": "16",
+       "label": "Group 16"
+      },
+      {
+       "id": "17",
+       "label": "Group 17"
+      },
+      {
+       "id": "18",
+       "label": "Group 18"
+      },
+      {
+       "id": "19",
+       "label": "Group 19"
+      },
+      {
+       "id": "20",
+       "label": "Group 20"
+      }
+     ]
+    },
+    {
+     "id": "port",
+     "label": "Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Port 1"
+      },
+      {
+       "id": "2",
+       "label": "Port 2"
+      },
+      {
+       "id": "3",
+       "label": "Port 3"
+      },
+      {
+       "id": "4",
+       "label": "Port 4"
+      },
+      {
+       "id": "5",
+       "label": "Port 5"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=XCN:02:{{option.group|map}}:{{option.port|map}}&res=1"
+   },
+   "maps": {
+    "group": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20"
+    },
+    "port": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    }
+   }
+  },
+  {
+   "id": "selectPort",
+   "name": "Select Port",
+   "options": [
+    {
+     "id": "port",
+     "label": "Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Port 1"
+      },
+      {
+       "id": "2",
+       "label": "Port 2"
+      },
+      {
+       "id": "3",
+       "label": "Port 3"
+      },
+      {
+       "id": "4",
+       "label": "Port 4"
+      },
+      {
+       "id": "5",
+       "label": "Port 5"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_cam?cmd=XPT:{{option.port|map}}&res=1"
+   },
+   "maps": {
+    "port": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 1
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 2
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 3
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 4
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 5
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 6
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 7
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 8
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 9
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 10
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 11
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 12
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 13
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 14
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 15
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 16
+    }
+   }
+  },
+  {
+   "id": "16",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 17
+    }
+   }
+  },
+  {
+   "id": "17",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 18
+    }
+   }
+  },
+  {
+   "id": "18",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 19
+    }
+   }
+  },
+  {
+   "id": "19",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 20
+    }
+   }
+  },
+  {
+   "id": "20",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 21",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 21
+    }
+   }
+  },
+  {
+   "id": "21",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 22",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 22
+    }
+   }
+  },
+  {
+   "id": "22",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 23",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 23
+    }
+   }
+  },
+  {
+   "id": "23",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 24
+    }
+   }
+  },
+  {
+   "id": "24",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 25
+    }
+   }
+  },
+  {
+   "id": "25",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 26",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 26
+    }
+   }
+  },
+  {
+   "id": "26",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 27",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 27
+    }
+   }
+  },
+  {
+   "id": "27",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 28",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 28
+    }
+   }
+  },
+  {
+   "id": "28",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 29",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 29
+    }
+   }
+  },
+  {
+   "id": "29",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 30
+    }
+   }
+  },
+  {
+   "id": "30",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 31",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 31
+    }
+   }
+  },
+  {
+   "id": "31",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 32",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 32
+    }
+   }
+  },
+  {
+   "id": "32",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 33",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 33
+    }
+   }
+  },
+  {
+   "id": "33",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 34",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 34
+    }
+   }
+  },
+  {
+   "id": "34",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 35",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 35
+    }
+   }
+  },
+  {
+   "id": "35",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 36",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 36
+    }
+   }
+  },
+  {
+   "id": "36",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 37",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 37
+    }
+   }
+  },
+  {
+   "id": "37",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 38",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 38
+    }
+   }
+  },
+  {
+   "id": "38",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 39",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 39
+    }
+   }
+  },
+  {
+   "id": "39",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 40",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 40
+    }
+   }
+  },
+  {
+   "id": "40",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 41",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 41
+    }
+   }
+  },
+  {
+   "id": "41",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 42",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 42
+    }
+   }
+  },
+  {
+   "id": "42",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 43",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 43
+    }
+   }
+  },
+  {
+   "id": "43",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 44",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 44
+    }
+   }
+  },
+  {
+   "id": "44",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 45",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 45
+    }
+   }
+  },
+  {
+   "id": "45",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 46",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 46
+    }
+   }
+  },
+  {
+   "id": "46",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 47",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 47
+    }
+   }
+  },
+  {
+   "id": "47",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 48",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 48
+    }
+   }
+  },
+  {
+   "id": "48",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 49",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 49
+    }
+   }
+  },
+  {
+   "id": "49",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 50
+    }
+   }
+  },
+  {
+   "id": "50",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 51",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 51
+    }
+   }
+  },
+  {
+   "id": "51",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 52",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 52
+    }
+   }
+  },
+  {
+   "id": "52",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 53",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 53
+    }
+   }
+  },
+  {
+   "id": "53",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 54",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 54
+    }
+   }
+  },
+  {
+   "id": "54",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 55",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 55
+    }
+   }
+  },
+  {
+   "id": "55",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 56",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 56
+    }
+   }
+  },
+  {
+   "id": "56",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 57",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 57
+    }
+   }
+  },
+  {
+   "id": "57",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 58",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 58
+    }
+   }
+  },
+  {
+   "id": "58",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 59",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 59
+    }
+   }
+  },
+  {
+   "id": "59",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 60",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 60
+    }
+   }
+  },
+  {
+   "id": "60",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 61",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 61
+    }
+   }
+  },
+  {
+   "id": "61",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 62",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 62
+    }
+   }
+  },
+  {
+   "id": "62",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 63",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 63
+    }
+   }
+  },
+  {
+   "id": "63",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 64",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 64
+    }
+   }
+  },
+  {
+   "id": "64",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 65",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 65
+    }
+   }
+  },
+  {
+   "id": "65",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 66",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 66
+    }
+   }
+  },
+  {
+   "id": "66",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 67",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 67
+    }
+   }
+  },
+  {
+   "id": "67",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 68",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 68
+    }
+   }
+  },
+  {
+   "id": "68",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 69",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 69
+    }
+   }
+  },
+  {
+   "id": "69",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 70",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 70
+    }
+   }
+  },
+  {
+   "id": "70",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 71",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 71
+    }
+   }
+  },
+  {
+   "id": "71",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 72",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 72
+    }
+   }
+  },
+  {
+   "id": "72",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 73",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 73
+    }
+   }
+  },
+  {
+   "id": "73",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 74",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 74
+    }
+   }
+  },
+  {
+   "id": "74",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 75",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 75
+    }
+   }
+  },
+  {
+   "id": "75",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 76",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 76
+    }
+   }
+  },
+  {
+   "id": "76",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 77",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 77
+    }
+   }
+  },
+  {
+   "id": "77",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 78",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 78
+    }
+   }
+  },
+  {
+   "id": "78",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 79",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 79
+    }
+   }
+  },
+  {
+   "id": "79",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 80",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 80
+    }
+   }
+  },
+  {
+   "id": "80",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 81",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 81
+    }
+   }
+  },
+  {
+   "id": "81",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 82",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 82
+    }
+   }
+  },
+  {
+   "id": "82",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 83",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 83
+    }
+   }
+  },
+  {
+   "id": "83",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 84",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 84
+    }
+   }
+  },
+  {
+   "id": "84",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 85",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 85
+    }
+   }
+  },
+  {
+   "id": "85",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 86",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 86
+    }
+   }
+  },
+  {
+   "id": "86",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 87",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 87
+    }
+   }
+  },
+  {
+   "id": "87",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 88",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 88
+    }
+   }
+  },
+  {
+   "id": "88",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 89",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 89
+    }
+   }
+  },
+  {
+   "id": "89",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 90",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 90
+    }
+   }
+  },
+  {
+   "id": "90",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 91",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 91
+    }
+   }
+  },
+  {
+   "id": "91",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 92",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 92
+    }
+   }
+  },
+  {
+   "id": "92",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 93",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 93
+    }
+   }
+  },
+  {
+   "id": "93",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 94",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 94
+    }
+   }
+  },
+  {
+   "id": "94",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 95",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 95
+    }
+   }
+  },
+  {
+   "id": "95",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 96",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 96
+    }
+   }
+  },
+  {
+   "id": "96",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 97",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 97
+    }
+   }
+  },
+  {
+   "id": "97",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 98",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 98
+    }
+   }
+  },
+  {
+   "id": "98",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 99",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 99
+    }
+   }
+  },
+  {
+   "id": "99",
+   "category": "Select Camera",
+   "name": "Select camera by camera number",
+   "text": "Select\nCamera 100",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectCamera",
+    "options": {
+     "camera": 100
+    }
+   }
+  },
+  {
+   "id": "100",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 1",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 1
+    }
+   }
+  },
+  {
+   "id": "101",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 2",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 2
+    }
+   }
+  },
+  {
+   "id": "102",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 3",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 3
+    }
+   }
+  },
+  {
+   "id": "103",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 4",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 4
+    }
+   }
+  },
+  {
+   "id": "104",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 5",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 5
+    }
+   }
+  },
+  {
+   "id": "105",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 6",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 6
+    }
+   }
+  },
+  {
+   "id": "106",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 7",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 7
+    }
+   }
+  },
+  {
+   "id": "107",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 8",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 8
+    }
+   }
+  },
+  {
+   "id": "108",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 9",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 9
+    }
+   }
+  },
+  {
+   "id": "109",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 10",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 10
+    }
+   }
+  },
+  {
+   "id": "110",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 11",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 11
+    }
+   }
+  },
+  {
+   "id": "111",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 12",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 12
+    }
+   }
+  },
+  {
+   "id": "112",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 13",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 13
+    }
+   }
+  },
+  {
+   "id": "113",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 14",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 14
+    }
+   }
+  },
+  {
+   "id": "114",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 15",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 15
+    }
+   }
+  },
+  {
+   "id": "115",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 16",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 16
+    }
+   }
+  },
+  {
+   "id": "116",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 17",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 17
+    }
+   }
+  },
+  {
+   "id": "117",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 18",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 18
+    }
+   }
+  },
+  {
+   "id": "118",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 19",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 19
+    }
+   }
+  },
+  {
+   "id": "119",
+   "category": "Select Group",
+   "name": "Select camera group",
+   "text": "Select\nGroup 20",
+   "backgroundColor": "#0033cc",
+   "action": {
+    "definitionId": "selectGroup",
+    "options": {
+     "group": 20
+    }
+   }
+  },
+  {
+   "id": "120",
+   "category": "Select Port",
+   "name": "Select camera port (in a group)",
+   "text": "Select\nPort 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPort",
+    "options": {
+     "port": 1
+    }
+   }
+  },
+  {
+   "id": "121",
+   "category": "Select Port",
+   "name": "Select camera port (in a group)",
+   "text": "Select\nPort 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPort",
+    "options": {
+     "port": 2
+    }
+   }
+  },
+  {
+   "id": "122",
+   "category": "Select Port",
+   "name": "Select camera port (in a group)",
+   "text": "Select\nPort 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPort",
+    "options": {
+     "port": 3
+    }
+   }
+  },
+  {
+   "id": "123",
+   "category": "Select Port",
+   "name": "Select camera port (in a group)",
+   "text": "Select\nPort 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPort",
+    "options": {
+     "port": 4
+    }
+   }
+  },
+  {
+   "id": "124",
+   "category": "Select Port",
+   "name": "Select camera port (in a group)",
+   "text": "Select\nPort 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPort",
+    "options": {
+     "port": 5
+    }
+   }
+  },
+  {
+   "id": "125",
+   "category": "Select Camera by Group and Port",
+   "name": "Select camera by group and port",
+   "text": "Select\nGroup +\nPort",
+   "backgroundColor": "#ff00ff",
+   "action": {
+    "definitionId": "selectGroupPort",
+    "options": {
+     "group": "1",
+     "port": "1"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-panasonic-camera-controller",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：premultiply"
+  }
+ ],
+ "source": {
+  "module": "panasonic-camera-controller",
+  "version": "2.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "premultiply"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-panasonic-camera-controller.git"
+ }
+}

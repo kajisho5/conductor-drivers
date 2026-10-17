@@ -1,0 +1,346 @@
+{
+ "format": 1,
+ "id": "m-snapav-wattbox",
+ "name": "Snapav Wattbox",
+ "category": "Snapav",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "300",
+   "choices": [
+    {
+     "id": "250",
+     "label": "WB-250-IPW-2"
+    },
+    {
+     "id": "300",
+     "label": "WB-300-IP-3"
+    },
+    {
+     "id": "300vb",
+     "label": "WattBox WB-300VB-IP-5 300 Series IP Power Conditioner (VersaBox)"
+    },
+    {
+     "id": "700",
+     "label": "WB-700-IPV-12"
+    },
+    {
+     "id": "800vps",
+     "label": "WB-800VPS-IPVM-18"
+    },
+    {
+     "id": "other",
+     "label": "Other"
+    }
+   ]
+  },
+  {
+   "id": "protocol",
+   "label": "Protocol",
+   "type": "select",
+   "default": "http",
+   "choices": [
+    {
+     "id": "http",
+     "label": "HTTP"
+    },
+    {
+     "id": "telnet",
+     "label": "Telnet"
+    }
+   ]
+  },
+  {
+   "id": "outlets",
+   "label": "Number of outlets",
+   "type": "number",
+   "default": 2
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": "wattbox"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "wattbox"
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling?",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "interval",
+   "label": "Polling interval in milliseconds",
+   "type": "number",
+   "default": 500,
+   "min": 200
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "power",
+   "name": "Power",
+   "options": [
+    {
+     "id": "powerState",
+     "label": "Power on/off",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    },
+    {
+     "id": "outlet",
+     "label": "Outlet",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All"
+      },
+      {
+       "id": "1",
+       "label": "Outlet 1"
+      },
+      {
+       "id": "2",
+       "label": "Outlet 2"
+      },
+      {
+       "id": "3",
+       "label": "Outlet 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /control.cgi?outlet={{option.outlet|map}}&command={{option.powerState|map}} HTTP/1.1\\r\\nHost: 10.11.12.13\\r\\nAuthorization: Basic d2F0dGJveDp3YXR0Ym94\\r\\nConnection: close\\r\\n\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "outlet": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    },
+    "powerState": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "powercycle",
+   "name": "Power Cycle",
+   "options": [
+    {
+     "id": "outlet",
+     "label": "Outlet",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All"
+      },
+      {
+       "id": "1",
+       "label": "Outlet 1"
+      },
+      {
+       "id": "2",
+       "label": "Outlet 2"
+      },
+      {
+       "id": "3",
+       "label": "Outlet 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /control.cgi?outlet={{option.outlet|map}}&command=3 HTTP/1.1\\r\\nHost: 10.11.12.13\\r\\nAuthorization: Basic d2F0dGJveDp3YXR0Ym94\\r\\nConnection: close\\r\\n\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "outlet": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "autoRebootOn",
+   "name": "Auto Reboot On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /control.cgi?outlet=0&command=4 HTTP/1.1\\r\\nHost: 10.11.12.13\\r\\nAuthorization: Basic d2F0dGJveDp3YXR0Ym94\\r\\nConnection: close\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "autoRebootOff",
+   "name": "Auto Reboot Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "GET /control.cgi?outlet=0&command=4 HTTP/1.1\\r\\nHost: 10.11.12.13\\r\\nAuthorization: Basic d2F0dGJveDp3YXR0Ym94\\r\\nConnection: close\\r\\n\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "outlet1On",
+   "category": "Power",
+   "name": "Outlet On",
+   "text": "Outlet 1 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "powerState": "1",
+     "outlet": "1"
+    }
+   }
+  },
+  {
+   "id": "outlet1Off",
+   "category": "Power",
+   "name": "Outlet Off",
+   "text": "Outlet 1 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "powerState": "0",
+     "outlet": "1"
+    }
+   }
+  },
+  {
+   "id": "outlet2On",
+   "category": "Power",
+   "name": "Outlet On",
+   "text": "Outlet 2 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "powerState": "1",
+     "outlet": "2"
+    }
+   }
+  },
+  {
+   "id": "outlet2Off",
+   "category": "Power",
+   "name": "Outlet Off",
+   "text": "Outlet 2 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "powerState": "0",
+     "outlet": "2"
+    }
+   }
+  },
+  {
+   "id": "outlet3On",
+   "category": "Power",
+   "name": "Outlet On",
+   "text": "Outlet 3 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "powerState": "1",
+     "outlet": "3"
+    }
+   }
+  },
+  {
+   "id": "outlet3Off",
+   "category": "Power",
+   "name": "Outlet Off",
+   "text": "Outlet 3 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "powerState": "0",
+     "outlet": "3"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-snapav-wattbox",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, David Stevens"
+  }
+ ],
+ "source": {
+  "module": "snapav-wattbox",
+  "version": "2.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "David Stevens"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-snapav-wattbox.git"
+ }
+}

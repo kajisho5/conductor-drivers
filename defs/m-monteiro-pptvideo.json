@@ -1,0 +1,1562 @@
+{
+ "format": 1,
+ "id": "m-monteiro-pptvideo",
+ "name": "Monteiro PPT-VIDEO",
+ "category": "Monteiro",
+ "version": "1.3.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7800,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "ESC",
+   "name": "ESC",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "esc",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "NEXT",
+   "name": "NEXT",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "next",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PREVIOUS",
+   "name": "PREVIOUS",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "previous",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "EXIT_PPT",
+   "name": "EXIT_PPT",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "pptexit",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "EXIT_VIDEO",
+   "name": "EXIT_VIDEO",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "videoexit",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PLAY",
+   "name": "PLAY",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "play",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PAUSE",
+   "name": "PAUSE",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "pause",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "STOP",
+   "name": "STOP",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stop",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "TEST",
+   "name": "TEST",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "test",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "LINK",
+   "name": "LINK",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "link",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SAVE",
+   "name": "SAVE",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "save",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FREEZE_TOGGLE",
+   "name": "FREEZE_TOGGLE",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "freeze_toggle",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT01",
+   "name": "PPT01",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt01",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT02",
+   "name": "PPT02",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt02",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT03",
+   "name": "PPT03",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt03",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT04",
+   "name": "PPT04",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt04",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT05",
+   "name": "PPT05",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt05",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT06",
+   "name": "PPT06",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt06",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT07",
+   "name": "PPT07",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt07",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT08",
+   "name": "PPT08",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt08",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT09",
+   "name": "PPT09",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt09",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT10",
+   "name": "PPT10",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt10",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT11",
+   "name": "PPT11",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt11",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT12",
+   "name": "PPT12",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt12",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT13",
+   "name": "PPT13",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt13",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT14",
+   "name": "PPT14",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt14",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT15",
+   "name": "PPT15",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt15",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT16",
+   "name": "PPT16",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt16",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT17",
+   "name": "PPT17",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt17",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT18",
+   "name": "PPT18",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt18",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT19",
+   "name": "PPT19",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt19",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT20",
+   "name": "PPT20",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt20",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT21",
+   "name": "PPT21",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt21",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT22",
+   "name": "PPT22",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt22",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT23",
+   "name": "PPT23",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt23",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT24",
+   "name": "PPT24",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt24",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT25",
+   "name": "PPT25",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt25",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT26",
+   "name": "PPT26",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt26",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT27",
+   "name": "PPT27",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt27",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT28",
+   "name": "PPT28",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt28",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT29",
+   "name": "PPT29",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt29",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT30",
+   "name": "PPT30",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt30",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT31",
+   "name": "PPT31",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt31",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT32",
+   "name": "PPT32",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt32",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT33",
+   "name": "PPT33",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt33",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT34",
+   "name": "PPT34",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt34",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT35",
+   "name": "PPT35",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt35",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT36",
+   "name": "PPT36",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt36",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT37",
+   "name": "PPT37",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt37",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT38",
+   "name": "PPT38",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt38",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT39",
+   "name": "PPT39",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt39",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PPT40",
+   "name": "PPT40",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ppt40",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO01",
+   "name": "VIDEO01",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video01",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO02",
+   "name": "VIDEO02",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video02",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO03",
+   "name": "VIDEO03",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video03",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO04",
+   "name": "VIDEO04",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video04",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO05",
+   "name": "VIDEO05",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video05",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO06",
+   "name": "VIDEO06",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video06",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO07",
+   "name": "VIDEO07",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video07",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO08",
+   "name": "VIDEO08",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video08",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO09",
+   "name": "VIDEO09",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video09",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO10",
+   "name": "VIDEO10",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video10",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO11",
+   "name": "VIDEO11",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video11",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO12",
+   "name": "VIDEO12",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video12",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO13",
+   "name": "VIDEO13",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video13",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO14",
+   "name": "VIDEO14",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video14",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO15",
+   "name": "VIDEO15",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video15",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO16",
+   "name": "VIDEO16",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video16",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO17",
+   "name": "VIDEO17",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video17",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO18",
+   "name": "VIDEO18",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video18",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO19",
+   "name": "VIDEO19",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video19",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "VIDEO20",
+   "name": "VIDEO20",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "video20",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "preset_esc",
+   "category": "PPT",
+   "name": "Send ESC Command",
+   "text": "ESC",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ESC",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_next",
+   "category": "PPT",
+   "name": "Send NEXT Command",
+   "text": ">\nNext",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "NEXT",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_previous",
+   "category": "PPT",
+   "name": "Send PREVIOUS Command",
+   "text": "<\nPrev",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "PREVIOUS",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_exit_ppt",
+   "category": "PPT",
+   "name": "Send exit PPT Command",
+   "text": "PPT\nEXIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "EXIT_PPT",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_test",
+   "category": "PPT",
+   "name": "Send TEST Command",
+   "text": "TEST",
+   "backgroundColor": "#ffa500",
+   "action": {
+    "definitionId": "TEST",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_link",
+   "category": "PPT",
+   "name": "Send LINK Command",
+   "text": "LINK",
+   "backgroundColor": "#9400d3",
+   "action": {
+    "definitionId": "LINK",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_save",
+   "category": "PPT",
+   "name": "Send SAVE Command",
+   "text": "SAVE",
+   "backgroundColor": "#38ac38",
+   "action": {
+    "definitionId": "SAVE",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_freeze_toggle",
+   "category": "PPT",
+   "name": "Freeze / Unfreeze Screen",
+   "text": "Freeze / Unfreeze Screen",
+   "backgroundColor": "#3ee6db",
+   "action": {
+    "definitionId": "FREEZE_TOGGLE",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_pause",
+   "category": "VIDEO",
+   "name": "Pause Video",
+   "text": "PAUSE",
+   "backgroundColor": "#ffff10",
+   "action": {
+    "definitionId": "PAUSE",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_play",
+   "category": "VIDEO",
+   "name": "Play Video",
+   "text": "PLAY",
+   "backgroundColor": "#008000",
+   "action": {
+    "definitionId": "PLAY",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_stop",
+   "category": "VIDEO",
+   "name": "Stop Video",
+   "text": "STOP",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "STOP",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_exit_video",
+   "category": "VIDEO",
+   "name": "Exit Video",
+   "text": "VIDEO EXIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "EXIT_VIDEO",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt01",
+   "category": "PPT",
+   "name": "Send PPT 01 Command",
+   "text": "PPT\n01",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT01",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt02",
+   "category": "PPT",
+   "name": "Send PPT 02 Command",
+   "text": "PPT\n02",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT02",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt03",
+   "category": "PPT",
+   "name": "Send PPT 03 Command",
+   "text": "PPT\n03",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT03",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt04",
+   "category": "PPT",
+   "name": "Send PPT 04 Command",
+   "text": "PPT\n04",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT04",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt05",
+   "category": "PPT",
+   "name": "Send PPT 05 Command",
+   "text": "PPT\n05",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT05",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt06",
+   "category": "PPT",
+   "name": "Send PPT 06 Command",
+   "text": "PPT\n06",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT06",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt07",
+   "category": "PPT",
+   "name": "Send PPT 07 Command",
+   "text": "PPT\n07",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT07",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt08",
+   "category": "PPT",
+   "name": "Send PPT 08 Command",
+   "text": "PPT\n08",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT08",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt09",
+   "category": "PPT",
+   "name": "Send PPT 09 Command",
+   "text": "PPT\n09",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT09",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt10",
+   "category": "PPT",
+   "name": "Send PPT 10 Command",
+   "text": "PPT\n10",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT10",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt11",
+   "category": "PPT",
+   "name": "Send PPT 11 Command",
+   "text": "PPT\n11",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT11",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt12",
+   "category": "PPT",
+   "name": "Send PPT 12 Command",
+   "text": "PPT\n12",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT12",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt13",
+   "category": "PPT",
+   "name": "Send PPT 13 Command",
+   "text": "PPT\n13",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT13",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt14",
+   "category": "PPT",
+   "name": "Send PPT 14 Command",
+   "text": "PPT\n14",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT14",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt15",
+   "category": "PPT",
+   "name": "Send PPT 15 Command",
+   "text": "PPT\n15",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT15",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt16",
+   "category": "PPT",
+   "name": "Send PPT 16 Command",
+   "text": "PPT\n16",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT16",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt17",
+   "category": "PPT",
+   "name": "Send PPT 17 Command",
+   "text": "PPT\n17",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT17",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt18",
+   "category": "PPT",
+   "name": "Send PPT 18 Command",
+   "text": "PPT\n18",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT18",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt19",
+   "category": "PPT",
+   "name": "Send PPT 19 Command",
+   "text": "PPT\n19",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT19",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt20",
+   "category": "PPT",
+   "name": "Send PPT 20 Command",
+   "text": "PPT\n20",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT20",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt21",
+   "category": "PPT",
+   "name": "Send PPT 21 Command",
+   "text": "PPT\n21",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT21",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt22",
+   "category": "PPT",
+   "name": "Send PPT 22 Command",
+   "text": "PPT\n22",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT22",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt23",
+   "category": "PPT",
+   "name": "Send PPT 23 Command",
+   "text": "PPT\n23",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT23",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt24",
+   "category": "PPT",
+   "name": "Send PPT 24 Command",
+   "text": "PPT\n24",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT24",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt25",
+   "category": "PPT",
+   "name": "Send PPT 25 Command",
+   "text": "PPT\n25",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT25",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt26",
+   "category": "PPT",
+   "name": "Send PPT 26 Command",
+   "text": "PPT\n26",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT26",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt27",
+   "category": "PPT",
+   "name": "Send PPT 27 Command",
+   "text": "PPT\n27",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT27",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt28",
+   "category": "PPT",
+   "name": "Send PPT 28 Command",
+   "text": "PPT\n28",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT28",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt29",
+   "category": "PPT",
+   "name": "Send PPT 29 Command",
+   "text": "PPT\n29",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT29",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt30",
+   "category": "PPT",
+   "name": "Send PPT 30 Command",
+   "text": "PPT\n30",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT30",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt31",
+   "category": "PPT",
+   "name": "Send PPT 31 Command",
+   "text": "PPT\n31",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT31",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt32",
+   "category": "PPT",
+   "name": "Send PPT 32 Command",
+   "text": "PPT\n32",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT32",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt33",
+   "category": "PPT",
+   "name": "Send PPT 33 Command",
+   "text": "PPT\n33",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT33",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt34",
+   "category": "PPT",
+   "name": "Send PPT 34 Command",
+   "text": "PPT\n34",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT34",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt35",
+   "category": "PPT",
+   "name": "Send PPT 35 Command",
+   "text": "PPT\n35",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT35",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt36",
+   "category": "PPT",
+   "name": "Send PPT 36 Command",
+   "text": "PPT\n36",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT36",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt37",
+   "category": "PPT",
+   "name": "Send PPT 37 Command",
+   "text": "PPT\n37",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT37",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt38",
+   "category": "PPT",
+   "name": "Send PPT 38 Command",
+   "text": "PPT\n38",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT38",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt39",
+   "category": "PPT",
+   "name": "Send PPT 39 Command",
+   "text": "PPT\n39",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT39",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_ppt40",
+   "category": "PPT",
+   "name": "Send PPT 40 Command",
+   "text": "PPT\n40",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "PPT40",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video01",
+   "category": "VIDEO",
+   "name": "Send VIDEO 01 Command",
+   "text": "VIDEO\n01",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO01",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video02",
+   "category": "VIDEO",
+   "name": "Send VIDEO 02 Command",
+   "text": "VIDEO\n02",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO02",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video03",
+   "category": "VIDEO",
+   "name": "Send VIDEO 03 Command",
+   "text": "VIDEO\n03",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO03",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video04",
+   "category": "VIDEO",
+   "name": "Send VIDEO 04 Command",
+   "text": "VIDEO\n04",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO04",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video05",
+   "category": "VIDEO",
+   "name": "Send VIDEO 05 Command",
+   "text": "VIDEO\n05",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO05",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video06",
+   "category": "VIDEO",
+   "name": "Send VIDEO 06 Command",
+   "text": "VIDEO\n06",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO06",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video07",
+   "category": "VIDEO",
+   "name": "Send VIDEO 07 Command",
+   "text": "VIDEO\n07",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO07",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video08",
+   "category": "VIDEO",
+   "name": "Send VIDEO 08 Command",
+   "text": "VIDEO\n08",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO08",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video09",
+   "category": "VIDEO",
+   "name": "Send VIDEO 09 Command",
+   "text": "VIDEO\n09",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO09",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video10",
+   "category": "VIDEO",
+   "name": "Send VIDEO 10 Command",
+   "text": "VIDEO\n10",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO10",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video11",
+   "category": "VIDEO",
+   "name": "Send VIDEO 11 Command",
+   "text": "VIDEO\n11",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO11",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video12",
+   "category": "VIDEO",
+   "name": "Send VIDEO 12 Command",
+   "text": "VIDEO\n12",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO12",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video13",
+   "category": "VIDEO",
+   "name": "Send VIDEO 13 Command",
+   "text": "VIDEO\n13",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO13",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video14",
+   "category": "VIDEO",
+   "name": "Send VIDEO 14 Command",
+   "text": "VIDEO\n14",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO14",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video15",
+   "category": "VIDEO",
+   "name": "Send VIDEO 15 Command",
+   "text": "VIDEO\n15",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO15",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video16",
+   "category": "VIDEO",
+   "name": "Send VIDEO 16 Command",
+   "text": "VIDEO\n16",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO16",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video17",
+   "category": "VIDEO",
+   "name": "Send VIDEO 17 Command",
+   "text": "VIDEO\n17",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO17",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video18",
+   "category": "VIDEO",
+   "name": "Send VIDEO 18 Command",
+   "text": "VIDEO\n18",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO18",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video19",
+   "category": "VIDEO",
+   "name": "Send VIDEO 19 Command",
+   "text": "VIDEO\n19",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO19",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_video20",
+   "category": "VIDEO",
+   "name": "Send VIDEO 20 Command",
+   "text": "VIDEO\n20",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "VIDEO20",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-monteiro-pptvideo",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Bruno Monteiro"
+  }
+ ],
+ "source": {
+  "module": "monteiro-pptvideo",
+  "version": "1.3.1",
+  "license": "MIT",
+  "maintainers": [
+   "Bruno Monteiro"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-monteiro-pptvideo.git"
+ }
+}

@@ -5,23 +5,15 @@
  "category": "Here to Record",
  "version": "3.9.0",
  "minAppVersion": "0.6.0",
- "transport": "tcp",
+ "transport": "http",
  "configFields": [
   {
-   "id": "host",
-   "label": "IP アドレス",
+   "id": "baseUrl",
+   "label": "URL の先頭",
    "type": "text",
-   "placeholder": "192.168.0.10",
-   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "default": "http://192.168.0.10:4001",
+   "placeholder": "http://192.168.0.10",
    "mono": true
-  },
-  {
-   "id": "port",
-   "label": "ポート",
-   "type": "number",
-   "default": 36961,
-   "min": 1,
-   "max": 65535
   },
   {
    "id": "portV2",
@@ -130,9 +122,11 @@
    "name": "Run",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/run HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/run\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/run",
+    "body": "{}",
+    "contentType": "application/json"
    }
   },
   {
@@ -140,9 +134,11 @@
    "name": "Hide all",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/clear HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/clear\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/clear",
+    "body": "{}",
+    "contentType": "application/json"
    }
   },
   {
@@ -150,9 +146,11 @@
    "name": "Draw on screen - On",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/draw/on HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/on\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/draw/on",
+    "body": "{}",
+    "contentType": "application/json"
    }
   },
   {
@@ -160,9 +158,11 @@
    "name": "Draw on screen - Off",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/draw/off HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/off\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/draw/off",
+    "body": "{}",
+    "contentType": "application/json"
    }
   },
   {
@@ -199,17 +199,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/draw/size/{{option.size|map}}\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/draw/size/{{option.size|map}}",
+    "body": "{}",
+    "contentType": "application/json"
    },
    "maps": {
     "size": {
-     "1": "1 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/1",
-     "3": "3 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/3",
-     "6": "6 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/6",
-     "8": "8 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/8",
-     "10": "10 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/size/10"
+     "1": "1",
+     "3": "3",
+     "6": "6",
+     "8": "8",
+     "10": "10"
     }
    }
   },
@@ -218,9 +220,11 @@
    "name": "Draw on screen - Set color",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/draw/color/ff0000 HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/draw/color/ff0000\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/draw/color/ff0000",
+    "body": "{}",
+    "contentType": "application/json"
    }
   },
   {
@@ -268,19 +272,196 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: {{option.status|map}}\"}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{\"status\":\"{{option.status|map}}\"}",
+    "contentType": "application/json"
    },
    "maps": {
     "status": {
-     "coming": "19\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"coming",
-     "going": "18\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"going",
-     "toggle": "19\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"toggle",
-     "cued": "17\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"cued",
-     "cuedoff": "20\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"cuedoff",
-     "toggle-cued": "24\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"status\":\"toggle-cued"
+     "coming": "coming",
+     "going": "going",
+     "toggle": "toggle",
+     "cued": "cued",
+     "cuedoff": "cuedoff",
+     "toggle-cued": "toggle-cued"
     }
+   }
+  },
+  {
+   "id": "showHideGraphicWithVariable",
+   "name": "Show/Hide graphic (using Text or Variable)",
+   "options": [
+    {
+     "id": "status",
+     "label": "Show/Hide",
+     "type": "select",
+     "default": "coming",
+     "choices": [
+      {
+       "id": "coming",
+       "label": "Show"
+      },
+      {
+       "id": "going",
+       "label": "Hide"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle on/off air"
+      },
+      {
+       "id": "cued",
+       "label": "Cue on"
+      },
+      {
+       "id": "cuedoff",
+       "label": "Cue off"
+      },
+      {
+       "id": "toggle-cued",
+       "label": "Toggle Cued on/off"
+      }
+     ]
+    },
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/{{option.graphicId}}/update",
+    "body": "{\"status\":\"{{option.status|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "status": {
+     "coming": "coming",
+     "going": "going",
+     "toggle": "toggle",
+     "cued": "cued",
+     "cuedoff": "cuedoff",
+     "toggle-cued": "toggle-cued"
+    }
+   }
+  },
+  {
+   "id": "updateContentLowerThird",
+   "name": "Update content - Lower third",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "line_one",
+     "label": "Line one",
+     "type": "text"
+    },
+    {
+     "id": "line_two",
+     "label": "Line two",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"line_one\":\"{{option.line_one}}\",\"line_two\":\"{{option.line_two}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "updateContentLowerThirdAnimated",
+   "name": "Update content - Lower Third Animated",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "animationName",
+     "label": "Animation",
+     "type": "select",
+     "default": "reveal",
+     "choices": [
+      {
+       "id": "reveal",
+       "label": "Reveal"
+      },
+      {
+       "id": "unfold",
+       "label": "Unfold"
+      },
+      {
+       "id": "slide-out",
+       "label": "Slide out"
+      },
+      {
+       "id": "stretch",
+       "label": "Stretch"
+      }
+     ]
+    },
+    {
+     "id": "line_one",
+     "label": "Line one",
+     "type": "text"
+    },
+    {
+     "id": "line_two",
+     "label": "Line two",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"animationName\":\"{{option.animationName|map}}\",\"line_one\":\"{{option.line_one}}\",\"line_two\":\"{{option.line_two}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "animationName": {
+     "reveal": "reveal",
+     "unfold": "unfold",
+     "slide-out": "slide-out",
+     "stretch": "stretch"
+    }
+   }
+  },
+  {
+   "id": "updateContentMessage",
+   "name": "Update content - Message",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "body",
+     "label": "Message body",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"body\":\"{{option.body}}\"}",
+    "contentType": "application/json"
    }
   },
   {
@@ -306,9 +487,367 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/graphic/undefined/update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 24\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic/undefined/update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"filename\":\"undefined\"}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"filename\":\"undefined\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "updateContentTicker",
+   "name": "Update content - Ticker",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "title",
+     "label": "Title",
+     "type": "text"
+    },
+    {
+     "id": "items",
+     "label": "Items (Use | to split items)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"title\":\"{{option.title}}\",\"items\":[{\"title\":\"Item 1\",\"body\":\"{{option.items}}\"}]}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "updateContentWebpage",
+   "name": "Update content - Webpage",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text"
+    },
+    {
+     "id": "url",
+     "label": "URL",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"name\":\"{{option.name}}\",\"url\":\"{{option.url}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "refreshWebpage",
+   "name": "Refresh Webpage",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"refreshCount\":1792199296897}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "updateContentUtilityLargeText",
+   "name": "Update content - Large Text (Utility)",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "text",
+     "label": "Text",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"text\":\"{{option.text}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "speakerTimerRun",
+   "name": "Run/Resume - Timer",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/timer/run",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "speakerTimerReset",
+   "name": "Reset - Timer",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/timer/reset",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "speakerTimerPause",
+   "name": "Pause - Timer",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/timer/pause",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "speakerTimerSetMessage",
+   "name": "Speaker Timer - Set Message to speaker",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "body",
+     "label": "Message",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"speakerMessage\":\"{{option.body}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "speakerTimerToggleMessage",
+   "name": "Speaker Timer - Show/Hide message to speaker",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "status",
+     "label": "Show/Hide",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Show"
+      },
+      {
+       "id": "false",
+       "label": "Hide"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"showSpeakerMessage\":{{option.status|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "status": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "updateContentScoreTotal",
+   "name": "Update content - Score - Total",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "team",
+     "label": "Team number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "level",
+     "label": "Level number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      }
+     ]
+    },
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "set",
+     "choices": [
+      {
+       "id": "set",
+       "label": "Set score"
+      },
+      {
+       "id": "up",
+       "label": "Increment up"
+      },
+      {
+       "id": "down",
+       "label": "Decrement down"
+      }
+     ]
+    },
+    {
+     "id": "amount",
+     "label": "Amount",
+     "type": "number",
+     "default": 1,
+     "min": -1000,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/updateScore/{{option.team|map}}/{{option.level|map}}/{{option.type|map}}/{{option.amount}}",
+    "body": "{}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "team": {
+     "1": "1",
+     "2": "2"
+    },
+    "level": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    },
+    "type": {
+     "set": "set",
+     "up": "up",
+     "down": "down"
+    }
+   }
+  },
+  {
+   "id": "clearMapPins",
+   "name": "Clear pins on the Map graphic",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"removePinCount\":1792199301311}",
+    "contentType": "application/json"
    }
   },
   {
@@ -368,9 +907,11 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 17\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"position\":\"{{option.position|map}}\"}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{\"position\":\"{{option.position|map}}\"}",
+    "contentType": "application/json"
    },
    "maps": {
     "position": {
@@ -384,6 +925,98 @@
      "bc": "bc",
      "br": "br"
     }
+   }
+  },
+  {
+   "id": "updateGraphicX",
+   "name": "Update graphic offset X",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "x",
+     "label": "X (-100 to 100)",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{\"offsetX\":{{option.x}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "updateGraphicY",
+   "name": "Update graphic offset Y",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "y",
+     "label": "Y (-100 to 100)",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{\"offsetY\":{{option.y}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "updateGraphicXY",
+   "name": "Update graphic offset X & Y",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "x",
+     "label": "X (-100 to 100)",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100
+    },
+    {
+     "id": "y",
+     "label": "Y (-100 to 100)",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{\"offsetX\":{{option.x}},\"offsetY\":{{option.y}}}",
+    "contentType": "application/json"
    }
   },
   {
@@ -407,9 +1040,11 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 13\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{\"scale\":{{option.scale}}}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{\"scale\":{{option.scale}}}",
+    "contentType": "application/json"
    }
   },
   {
@@ -431,9 +1066,383 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "POST /api/ABCD/graphic//update HTTP/1.1\\r\\nuser-agent: got (https://github.com/sindresorhus/got)\\r\\ncontent-type: application/json\\r\\ncontent-length: 2\\r\\naccept-encoding: gzip, deflate, br\\r\\nx-capture-url: http://10.11.12.13:4001/api/ABCD/graphic//update\\r\\nHost: 127.0.0.1:36961\\r\\nConnection: keep-alive\\r\\n\\r\\n{}",
-    "encoding": "text"
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "setTextVariable",
+   "name": "Set text variable",
+   "options": [
+    {
+     "id": "variable",
+     "label": "Text variable",
+     "type": "select",
+     "default": "text.1",
+     "choices": [
+      {
+       "id": "text.1",
+       "label": "[text.1]"
+      },
+      {
+       "id": "text.2",
+       "label": "[text.2]"
+      },
+      {
+       "id": "text.3",
+       "label": "[text.3]"
+      },
+      {
+       "id": "text.4",
+       "label": "[text.4]"
+      },
+      {
+       "id": "text.5",
+       "label": "[text.5]"
+      },
+      {
+       "id": "text.6",
+       "label": "[text.6]"
+      }
+     ]
+    },
+    {
+     "id": "text",
+     "label": "Text",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/updateVariableText/text.{{option.variable|map}}",
+    "body": "{\"text\":\"{{option.text}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "variable": {
+     "text.1": "1",
+     "text.2": "2",
+     "text.3": "3",
+     "text.4": "4",
+     "text.5": "5",
+     "text.6": "6"
+    }
+   }
+  },
+  {
+   "id": "setTransitionOverride",
+   "name": "Set Transition Override",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "override",
+     "label": "Next/Previous/Number",
+     "type": "select",
+     "default": "use-theme",
+     "choices": [
+      {
+       "id": "use-theme",
+       "label": "Use theme transition (default)"
+      },
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "fade",
+       "label": "Fade"
+      },
+      {
+       "id": "slide",
+       "label": "Slide"
+      },
+      {
+       "id": "slide_fade",
+       "label": "Slide & Fade"
+      },
+      {
+       "id": "scale",
+       "label": "Scale"
+      },
+      {
+       "id": "scale_fade",
+       "label": "Scale & Fade"
+      },
+      {
+       "id": "blur_fade",
+       "label": "Blur & Fade"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{\"transition\":\"{{option.override|map}}e\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "override": {
+     "use-theme": "use-them",
+     "none": "non",
+     "fade": "fad",
+     "slide": "slid",
+     "slide_fade": "slide_fad",
+     "scale": "scal",
+     "scale_fade": "scale_fad",
+     "blur_fade": "blur_fad"
+    }
+   }
+  },
+  {
+   "id": "updateCustomHtmlTemplate",
+   "name": "Update content - Custom HTML",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic//update",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "telestratorSetTool",
+   "name": "Telestrator - Set tool",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "tool",
+     "label": "Tool",
+     "type": "select",
+     "default": "pen",
+     "choices": [
+      {
+       "id": "pen",
+       "label": "Pen"
+      },
+      {
+       "id": "highlighter",
+       "label": "Highlighter"
+      },
+      {
+       "id": "arrow",
+       "label": "Arrow"
+      },
+      {
+       "id": "circle",
+       "label": "Circle"
+      },
+      {
+       "id": "rectangle",
+       "label": "Rectangle"
+      },
+      {
+       "id": "line",
+       "label": "Line"
+      },
+      {
+       "id": "eraser",
+       "label": "Eraser"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"tool\":\"{{option.tool|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "tool": {
+     "pen": "pen",
+     "highlighter": "highlighter",
+     "arrow": "arrow",
+     "circle": "circle",
+     "rectangle": "rectangle",
+     "line": "line",
+     "eraser": "eraser"
+    }
+   }
+  },
+  {
+   "id": "telestratorSetColor",
+   "name": "Telestrator - Set color",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "color",
+     "label": "Color",
+     "type": "select",
+     "default": "#ff0000",
+     "choices": [
+      {
+       "id": "#ff0000",
+       "label": "Red"
+      },
+      {
+       "id": "#ffff00",
+       "label": "Yellow"
+      },
+      {
+       "id": "#00ff00",
+       "label": "Green"
+      },
+      {
+       "id": "#00bfff",
+       "label": "Light Blue"
+      },
+      {
+       "id": "#0000ff",
+       "label": "Blue"
+      },
+      {
+       "id": "#ff00ff",
+       "label": "Magenta"
+      },
+      {
+       "id": "#ffffff",
+       "label": "White"
+      },
+      {
+       "id": "#000000",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"brushColor\":\"#{{option.color|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "color": {
+     "#ff0000": "ff0000",
+     "#ffff00": "ffff00",
+     "#00ff00": "00ff00",
+     "#00bfff": "00bfff",
+     "#0000ff": "0000ff",
+     "#ff00ff": "ff00ff",
+     "#ffffff": "ffffff",
+     "#000000": "000000"
+    }
+   }
+  },
+  {
+   "id": "telestratorSetBrushSize",
+   "name": "Telestrator - Set brush size",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "brushSize",
+     "label": "Brush size (1-20)",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 20
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"brushSize\":{{option.brushSize}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "telestratorUndo",
+   "name": "Telestrator - Undo",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/telestrator/undo",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "telestratorDelete",
+   "name": "Telestrator - Delete all",
+   "options": [
+    {
+     "id": "graphicId",
+     "label": "Graphic",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/graphic/undefined/update",
+    "body": "{\"strokes\":[]}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "sendCustonHTTP",
+   "name": "Send custom HTTP",
+   "options": [
+    {
+     "id": "uri",
+     "label": "URI",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/ABCD/{{option.uri}}",
+    "body": "{}",
+    "contentType": "application/json"
    }
   }
  ],

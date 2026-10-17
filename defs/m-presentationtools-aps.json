@@ -1,0 +1,1701 @@
+{
+ "format": 1,
+ "id": "m-presentationtools-aps",
+ "name": "PresentationTools Auto Presentation Switcher",
+ "category": "PresentationTools",
+ "version": "2.9.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 31600,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "sort",
+   "label": "Presentation watched folder: Sorting method",
+   "type": "select",
+   "default": "normal",
+   "choices": [
+    {
+     "id": "normal",
+     "label": "Normal"
+    },
+    {
+     "id": "numberedonly",
+     "label": "Numbered only"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "Navigation_CurrentFS",
+   "name": "Presentation: Put current in fullscreen",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000227b22636f6d6d616e64223a224e617669676174696f6e5f43757272656e744653227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "Navigation_CloseOthers",
+   "name": "Presentation: Close all except current",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000247b22636f6d6d616e64223a224e617669676174696f6e5f436c6f73654f7468657273227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "SlideNext",
+   "name": "Slide: Next",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Application",
+     "type": "select",
+     "default": "Key_Right",
+     "choices": [
+      {
+       "id": "Key_Right",
+       "label": "All"
+      },
+      {
+       "id": "Powerpoint_Next",
+       "label": "Powerpoint"
+      },
+      {
+       "id": "Acrobat_Next",
+       "label": "Acrobat"
+      },
+      {
+       "id": "Keynote_Next",
+       "label": "Keynote"
+      }
+     ],
+     "help": "Application"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Key|map}}74227d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Key": {
+     "Key_Right": "177b22636f6d6d616e64223a224b65795f52696768",
+     "Powerpoint_Next": "1d7b22636f6d6d616e64223a22506f776572706f696e745f4e6578",
+     "Acrobat_Next": "1a7b22636f6d6d616e64223a224163726f6261745f4e6578",
+     "Keynote_Next": "1a7b22636f6d6d616e64223a224b65796e6f74655f4e6578"
+    }
+   }
+  },
+  {
+   "id": "SlidePrevious",
+   "name": "Slide: Previous",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Application",
+     "type": "select",
+     "default": "Key_Left",
+     "choices": [
+      {
+       "id": "Key_Left",
+       "label": "All"
+      },
+      {
+       "id": "Powerpoint_Previous",
+       "label": "Powerpoint"
+      },
+      {
+       "id": "Acrobat_Previous",
+       "label": "Acrobat"
+      },
+      {
+       "id": "Keynote_Previous",
+       "label": "Keynote"
+      }
+     ],
+     "help": "Application"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Key|map}}227d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Key": {
+     "Key_Left": "167b22636f6d6d616e64223a224b65795f4c656674",
+     "Powerpoint_Previous": "217b22636f6d6d616e64223a22506f776572706f696e745f50726576696f7573",
+     "Acrobat_Previous": "1e7b22636f6d6d616e64223a224163726f6261745f50726576696f7573",
+     "Keynote_Previous": "1e7b22636f6d6d616e64223a224b65796e6f74655f50726576696f7573"
+    }
+   }
+  },
+  {
+   "id": "Capture_Image",
+   "name": "Still Image: Capture",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Destination",
+     "type": "select",
+     "default": "Capture1",
+     "choices": [
+      {
+       "id": "selected",
+       "label": "Selected"
+      },
+      {
+       "id": "Capture1",
+       "label": "Image 1"
+      },
+      {
+       "id": "Capture2",
+       "label": "Image 2"
+      },
+      {
+       "id": "Capture3",
+       "label": "Image 3"
+      },
+      {
+       "id": "Capture4",
+       "label": "Image 4"
+      },
+      {
+       "id": "Capture5",
+       "label": "Image 5"
+      },
+      {
+       "id": "Capture6",
+       "label": "Image 6"
+      },
+      {
+       "id": "Capture7",
+       "label": "Image 7"
+      },
+      {
+       "id": "Capture8",
+       "label": "Image 8"
+      },
+      {
+       "id": "Capture9",
+       "label": "Image 9"
+      },
+      {
+       "id": "Capture10",
+       "label": "Image 10"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Key|map}}7d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Key": {
+     "Capture1": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223122",
+     "selected": "3a7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a31",
+     "Capture2": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223222",
+     "Capture3": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223322",
+     "Capture4": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223422",
+     "Capture5": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223522",
+     "Capture6": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223622",
+     "Capture7": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223722",
+     "Capture8": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223822",
+     "Capture9": "3c7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223922",
+     "Capture10": "3d7b22636f6d6d616e64223a22436170747572655f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313022"
+    }
+   }
+  },
+  {
+   "id": "Display_Image",
+   "name": "Still Image: Display",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Source",
+     "type": "select",
+     "default": "Display1",
+     "choices": [
+      {
+       "id": "selected",
+       "label": "Selected"
+      },
+      {
+       "id": "Display1",
+       "label": "Image 1"
+      },
+      {
+       "id": "Display2",
+       "label": "Image 2"
+      },
+      {
+       "id": "Display3",
+       "label": "Image 3"
+      },
+      {
+       "id": "Display4",
+       "label": "Image 4"
+      },
+      {
+       "id": "Display5",
+       "label": "Image 5"
+      },
+      {
+       "id": "Display6",
+       "label": "Image 6"
+      },
+      {
+       "id": "Display7",
+       "label": "Image 7"
+      },
+      {
+       "id": "Display8",
+       "label": "Image 8"
+      },
+      {
+       "id": "Display9",
+       "label": "Image 9"
+      },
+      {
+       "id": "Display10",
+       "label": "Image 10"
+      },
+      {
+       "id": "DisplayTest",
+       "label": "Test"
+      },
+      {
+       "id": "Freeze",
+       "label": "Freeze"
+      },
+      {
+       "id": "Blackout",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Key|map}}7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Key": {
+     "Display1": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2231227d",
+     "selected": "3a7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a317d",
+     "Display2": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2232227d",
+     "Display3": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2233227d",
+     "Display4": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2234227d",
+     "Display5": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2235227d",
+     "Display6": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2236227d",
+     "Display7": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2237227d",
+     "Display8": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2238227d",
+     "Display9": "3c7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2239227d",
+     "Display10": "3d7b22636f6d6d616e64223a22446973706c61795f496d616765222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223130227d",
+     "DisplayTest": "197b22636f6d6d616e64223a22446973706c61795465737422",
+     "Freeze": "147b22636f6d6d616e64223a22467265657a6522",
+     "Blackout": "167b22636f6d6d616e64223a22426c61636b6f757422"
+    }
+   }
+  },
+  {
+   "id": "ExitImages",
+   "name": "Still Image: Exit",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000187b22636f6d6d616e64223a2245786974496d61676573227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "SetSelected_PresentationFolder",
+   "name": "Presentation: Set watched folder",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Folder",
+     "type": "select",
+     "default": "Folder1",
+     "choices": [
+      {
+       "id": "Previous",
+       "label": "Previous"
+      },
+      {
+       "id": "Next",
+       "label": "Next"
+      },
+      {
+       "id": "Folder1",
+       "label": "1"
+      },
+      {
+       "id": "Folder2",
+       "label": "2"
+      },
+      {
+       "id": "Folder3",
+       "label": "3"
+      },
+      {
+       "id": "Folder4",
+       "label": "4"
+      },
+      {
+       "id": "Folder5",
+       "label": "5"
+      },
+      {
+       "id": "Folder6",
+       "label": "6"
+      },
+      {
+       "id": "Folder7",
+       "label": "7"
+      },
+      {
+       "id": "Folder8",
+       "label": "8"
+      },
+      {
+       "id": "Folder9",
+       "label": "9"
+      },
+      {
+       "id": "Folder10",
+       "label": "10"
+      },
+      {
+       "id": "Folder11",
+       "label": "11"
+      },
+      {
+       "id": "Folder12",
+       "label": "12"
+      },
+      {
+       "id": "Folder13",
+       "label": "13"
+      },
+      {
+       "id": "Folder14",
+       "label": "14"
+      },
+      {
+       "id": "Folder15",
+       "label": "15"
+      },
+      {
+       "id": "Folder16",
+       "label": "16"
+      },
+      {
+       "id": "Folder17",
+       "label": "17"
+      },
+      {
+       "id": "Folder18",
+       "label": "18"
+      },
+      {
+       "id": "Folder19",
+       "label": "19"
+      },
+      {
+       "id": "Folder20",
+       "label": "20"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Key|map}}227d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Key": {
+     "Folder1": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2231",
+     "Previous": "547b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2250726576696f7573",
+     "Next": "507b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a224e657874",
+     "Folder2": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2232",
+     "Folder3": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2233",
+     "Folder4": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2234",
+     "Folder5": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2235",
+     "Folder6": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2236",
+     "Folder7": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2237",
+     "Folder8": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2238",
+     "Folder9": "4d7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2239",
+     "Folder10": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223130",
+     "Folder11": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223131",
+     "Folder12": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223132",
+     "Folder13": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223133",
+     "Folder14": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223134",
+     "Folder15": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223135",
+     "Folder16": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223136",
+     "Folder17": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223137",
+     "Folder18": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223138",
+     "Folder19": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223139",
+     "Folder20": "4e7b22636f6d6d616e64223a2253657453656c65637465645f50726573656e746174696f6e466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223230"
+    }
+   }
+  },
+  {
+   "id": "SetSelected_MediaFolder",
+   "name": "Media Player: Set watched folder",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Folder",
+     "type": "select",
+     "default": "Folder1",
+     "choices": [
+      {
+       "id": "Previous",
+       "label": "Previous"
+      },
+      {
+       "id": "Next",
+       "label": "Next"
+      },
+      {
+       "id": "Folder1",
+       "label": "1"
+      },
+      {
+       "id": "Folder2",
+       "label": "2"
+      },
+      {
+       "id": "Folder3",
+       "label": "3"
+      },
+      {
+       "id": "Folder4",
+       "label": "4"
+      },
+      {
+       "id": "Folder5",
+       "label": "5"
+      },
+      {
+       "id": "Folder6",
+       "label": "6"
+      },
+      {
+       "id": "Folder7",
+       "label": "7"
+      },
+      {
+       "id": "Folder8",
+       "label": "8"
+      },
+      {
+       "id": "Folder9",
+       "label": "9"
+      },
+      {
+       "id": "Folder10",
+       "label": "10"
+      },
+      {
+       "id": "Folder11",
+       "label": "11"
+      },
+      {
+       "id": "Folder12",
+       "label": "12"
+      },
+      {
+       "id": "Folder13",
+       "label": "13"
+      },
+      {
+       "id": "Folder14",
+       "label": "14"
+      },
+      {
+       "id": "Folder15",
+       "label": "15"
+      },
+      {
+       "id": "Folder16",
+       "label": "16"
+      },
+      {
+       "id": "Folder17",
+       "label": "17"
+      },
+      {
+       "id": "Folder18",
+       "label": "18"
+      },
+      {
+       "id": "Folder19",
+       "label": "19"
+      },
+      {
+       "id": "Folder20",
+       "label": "20"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Key|map}}227d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Key": {
+     "Folder1": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2231",
+     "Previous": "4d7b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2250726576696f7573",
+     "Next": "497b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a224e657874",
+     "Folder2": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2232",
+     "Folder3": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2233",
+     "Folder4": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2234",
+     "Folder5": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2235",
+     "Folder6": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2236",
+     "Folder7": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2237",
+     "Folder8": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2238",
+     "Folder9": "467b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2239",
+     "Folder10": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223130",
+     "Folder11": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223131",
+     "Folder12": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223132",
+     "Folder13": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223133",
+     "Folder14": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223134",
+     "Folder15": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223135",
+     "Folder16": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223136",
+     "Folder17": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223137",
+     "Folder18": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223138",
+     "Folder19": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223139",
+     "Folder20": "477b22636f6d6d616e64223a2253657453656c65637465645f4d65646961466f6c646572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223230"
+    }
+   }
+  },
+  {
+   "id": "Play_MediaPlayer",
+   "name": "Media Player: Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0000001e7b22636f6d6d616e64223a22506c61795f4d65646961506c61796572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "Pause_MediaPlayer",
+   "name": "Media Player: Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0000001f7b22636f6d6d616e64223a2250617573655f4d65646961506c61796572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "Restart_MediaPlayer",
+   "name": "Media Player: Restart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000217b22636f6d6d616e64223a22526573746172745f4d65646961506c61796572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "Stop_MediaPlayer",
+   "name": "Media Player: Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0000001e7b22636f6d6d616e64223a2253746f705f4d65646961506c61796572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "Loop_MediaPlayer",
+   "name": "Media Player: Loop mode",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0000001e7b22636f6d6d616e64223a224c6f6f705f4d65646961506c61796572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "Fade_MediaPlayer",
+   "name": "Media Player: Fade mode",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0000001e7b22636f6d6d616e64223a22466164655f4d65646961506c61796572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "HoldAtEnd_MediaPlayer",
+   "name": "Media Player: hold at end",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000237b22636f6d6d616e64223a22486f6c644174456e645f4d65646961506c61796572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "Load_MediaPlayer",
+   "name": "Media Player: Load",
+   "options": [
+    {
+     "id": "Key",
+     "label": "Source",
+     "type": "select",
+     "default": "Load_MediaPlayer#1",
+     "choices": [
+      {
+       "id": "Load_MediaPlayer#Previous",
+       "label": "Previous"
+      },
+      {
+       "id": "Load_MediaPlayer#Next",
+       "label": "Next"
+      },
+      {
+       "id": "selected",
+       "label": "Selected"
+      },
+      {
+       "id": "Load_MediaPlayer#1",
+       "label": "Media 1"
+      },
+      {
+       "id": "Load_MediaPlayer#2",
+       "label": "Media 2"
+      },
+      {
+       "id": "Load_MediaPlayer#3",
+       "label": "Media 3"
+      },
+      {
+       "id": "Load_MediaPlayer#4",
+       "label": "Media 4"
+      },
+      {
+       "id": "Load_MediaPlayer#5",
+       "label": "Media 5"
+      },
+      {
+       "id": "Load_MediaPlayer#6",
+       "label": "Media 6"
+      },
+      {
+       "id": "Load_MediaPlayer#7",
+       "label": "Media 7"
+      },
+      {
+       "id": "Load_MediaPlayer#8",
+       "label": "Media 8"
+      },
+      {
+       "id": "Load_MediaPlayer#9",
+       "label": "Media 9"
+      },
+      {
+       "id": "Load_MediaPlayer#10",
+       "label": "Media 10"
+      },
+      {
+       "id": "Load_MediaPlayer#11",
+       "label": "Media 11"
+      },
+      {
+       "id": "Load_MediaPlayer#12",
+       "label": "Media 12"
+      },
+      {
+       "id": "Load_MediaPlayer#13",
+       "label": "Media 13"
+      },
+      {
+       "id": "Load_MediaPlayer#14",
+       "label": "Media 14"
+      },
+      {
+       "id": "Load_MediaPlayer#15",
+       "label": "Media 15"
+      },
+      {
+       "id": "Load_MediaPlayer#16",
+       "label": "Media 16"
+      },
+      {
+       "id": "Load_MediaPlayer#17",
+       "label": "Media 17"
+      },
+      {
+       "id": "Load_MediaPlayer#18",
+       "label": "Media 18"
+      },
+      {
+       "id": "Load_MediaPlayer#19",
+       "label": "Media 19"
+      },
+      {
+       "id": "Load_MediaPlayer#20",
+       "label": "Media 20"
+      },
+      {
+       "id": "Load_MediaPlayer#21",
+       "label": "Media 21"
+      },
+      {
+       "id": "Load_MediaPlayer#22",
+       "label": "Media 22"
+      },
+      {
+       "id": "Load_MediaPlayer#23",
+       "label": "Media 23"
+      },
+      {
+       "id": "Load_MediaPlayer#24",
+       "label": "Media 24"
+      },
+      {
+       "id": "Load_MediaPlayer#25",
+       "label": "Media 25"
+      },
+      {
+       "id": "Load_MediaPlayer#26",
+       "label": "Media 26"
+      },
+      {
+       "id": "Load_MediaPlayer#27",
+       "label": "Media 27"
+      },
+      {
+       "id": "Load_MediaPlayer#28",
+       "label": "Media 28"
+      },
+      {
+       "id": "Load_MediaPlayer#29",
+       "label": "Media 29"
+      },
+      {
+       "id": "Load_MediaPlayer#30",
+       "label": "Media 30"
+      },
+      {
+       "id": "Load_MediaPlayer#31",
+       "label": "Media 31"
+      },
+      {
+       "id": "Load_MediaPlayer#32",
+       "label": "Media 32"
+      },
+      {
+       "id": "Load_MediaPlayer#33",
+       "label": "Media 33"
+      },
+      {
+       "id": "Load_MediaPlayer#34",
+       "label": "Media 34"
+      },
+      {
+       "id": "Load_MediaPlayer#35",
+       "label": "Media 35"
+      },
+      {
+       "id": "Load_MediaPlayer#36",
+       "label": "Media 36"
+      },
+      {
+       "id": "Load_MediaPlayer#37",
+       "label": "Media 37"
+      },
+      {
+       "id": "Load_MediaPlayer#38",
+       "label": "Media 38"
+      },
+      {
+       "id": "Load_MediaPlayer#39",
+       "label": "Media 39"
+      },
+      {
+       "id": "Load_MediaPlayer#40",
+       "label": "Media 40"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Key|map}}7d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Key": {
+     "Load_MediaPlayer#1": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223122",
+     "Load_MediaPlayer#Previous": "467b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a2250726576696f757322",
+     "Load_MediaPlayer#Next": "427b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a224e65787422",
+     "selected": "3d7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a31",
+     "Load_MediaPlayer#2": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223222",
+     "Load_MediaPlayer#3": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223322",
+     "Load_MediaPlayer#4": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223422",
+     "Load_MediaPlayer#5": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223522",
+     "Load_MediaPlayer#6": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223622",
+     "Load_MediaPlayer#7": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223722",
+     "Load_MediaPlayer#8": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223822",
+     "Load_MediaPlayer#9": "3f7b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a223922",
+     "Load_MediaPlayer#10": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313022",
+     "Load_MediaPlayer#11": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313122",
+     "Load_MediaPlayer#12": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313222",
+     "Load_MediaPlayer#13": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313322",
+     "Load_MediaPlayer#14": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313422",
+     "Load_MediaPlayer#15": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313522",
+     "Load_MediaPlayer#16": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313622",
+     "Load_MediaPlayer#17": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313722",
+     "Load_MediaPlayer#18": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313822",
+     "Load_MediaPlayer#19": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22313922",
+     "Load_MediaPlayer#20": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323022",
+     "Load_MediaPlayer#21": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323122",
+     "Load_MediaPlayer#22": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323222",
+     "Load_MediaPlayer#23": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323322",
+     "Load_MediaPlayer#24": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323422",
+     "Load_MediaPlayer#25": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323522",
+     "Load_MediaPlayer#26": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323622",
+     "Load_MediaPlayer#27": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323722",
+     "Load_MediaPlayer#28": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323822",
+     "Load_MediaPlayer#29": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22323922",
+     "Load_MediaPlayer#30": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333022",
+     "Load_MediaPlayer#31": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333122",
+     "Load_MediaPlayer#32": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333222",
+     "Load_MediaPlayer#33": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333322",
+     "Load_MediaPlayer#34": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333422",
+     "Load_MediaPlayer#35": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333522",
+     "Load_MediaPlayer#36": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333622",
+     "Load_MediaPlayer#37": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333722",
+     "Load_MediaPlayer#38": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333822",
+     "Load_MediaPlayer#39": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22333922",
+     "Load_MediaPlayer#40": "407b22636f6d6d616e64223a224c6f61645f4d65646961506c61796572222c22706172616d6574657273223a7b2262616e6b5f6e756d626572223a22343022"
+    }
+   }
+  },
+  {
+   "id": "MediaPlayer_Forward",
+   "name": "Media Player: Move forward",
+   "options": [
+    {
+     "id": "Seconds",
+     "label": "Move forward (seconds)",
+     "type": "number",
+     "default": 10,
+     "min": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000437b22636f6d6d616e64223a224d65646961506c617965725f466f7277617264222c22706172616d6574657273223a7b22766964656f5f7365636f6e6473223a{{option.Seconds|hexstr}}7d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "MediaPlayer_Rewind",
+   "name": "Media Player: Move back",
+   "options": [
+    {
+     "id": "Seconds",
+     "label": "Move back (seconds)",
+     "type": "number",
+     "default": 10,
+     "min": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000427b22636f6d6d616e64223a224d65646961506c617965725f526577696e64222c22706172616d6574657273223a7b22766964656f5f7365636f6e6473223a{{option.Seconds|hexstr}}7d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "CloseWebBrowser",
+   "name": "Webpage: Close window",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0000001d7b22636f6d6d616e64223a22436c6f736557656242726f77736572227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "RefreshCurrentTab",
+   "name": "WebPage: Refresh current tab",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0000001f7b22636f6d6d616e64223a225265667265736843757272656e74546162227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "CloseBrowserAndClearAllData",
+   "name": "WebPage: Close and clear all data",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "000000297b22636f6d6d616e64223a22436c6f736542726f77736572416e64436c656172416c6c44617461227d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "ActivateApplication",
+   "name": "Activate application",
+   "options": [
+    {
+     "id": "Application",
+     "label": "Application",
+     "type": "select",
+     "default": "PowerPoint",
+     "choices": [
+      {
+       "id": "PowerPoint",
+       "label": "PowerPoint"
+      },
+      {
+       "id": "PDF",
+       "label": "PDF"
+      },
+      {
+       "id": "Webpage",
+       "label": "Webpage"
+      }
+     ],
+     "help": "Application"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.Application|map}}227d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Application": {
+     "PowerPoint": "4b7b22636f6d6d616e64223a2241637469766174654170706c69636174696f6e222c22706172616d6574657273223a7b226170706c69636174696f6e223a22506f776572506f696e74",
+     "PDF": "447b22636f6d6d616e64223a2241637469766174654170706c69636174696f6e222c22706172616d6574657273223a7b226170706c69636174696f6e223a22504446",
+     "Webpage": "487b22636f6d6d616e64223a2241637469766174654170706c69636174696f6e222c22706172616d6574657273223a7b226170706c69636174696f6e223a2257656270616765"
+    }
+   }
+  },
+  {
+   "id": "Presentation_Media_Control",
+   "name": "Presentation: PowerPoint Media Control",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "play",
+     "choices": [
+      {
+       "id": "play",
+       "label": "Play"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      },
+      {
+       "id": "stop",
+       "label": "Stop"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle (Play/Pause)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.action|map}}227d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "action": {
+     "play": "477b22636f6d6d616e64223a2250726573656e746174696f6e5f4d656469615f436f6e74726f6c222c22706172616d6574657273223a7b22616374696f6e223a22706c6179",
+     "pause": "487b22636f6d6d616e64223a2250726573656e746174696f6e5f4d656469615f436f6e74726f6c222c22706172616d6574657273223a7b22616374696f6e223a227061757365",
+     "stop": "477b22636f6d6d616e64223a2250726573656e746174696f6e5f4d656469615f436f6e74726f6c222c22706172616d6574657273223a7b22616374696f6e223a2273746f70",
+     "toggle": "497b22636f6d6d616e64223a2250726573656e746174696f6e5f4d656469615f436f6e74726f6c222c22706172616d6574657273223a7b22616374696f6e223a22746f67676c65"
+    }
+   }
+  },
+  {
+   "id": "Presentation_Media_Seek",
+   "name": "Presentation: PowerPoint Media Seek",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "forward",
+     "choices": [
+      {
+       "id": "forward",
+       "label": "Forward"
+      },
+      {
+       "id": "backward",
+       "label": "Backward"
+      }
+     ]
+    },
+    {
+     "id": "Milliseconds",
+     "label": "Milliseconds",
+     "type": "number",
+     "default": 1000,
+     "min": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "000000{{option.direction|map}}77617264222c226d696c6c697365636f6e6473223a{{option.Milliseconds|hexstr}}7d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "direction": {
+     "forward": "5e7b22636f6d6d616e64223a2250726573656e746174696f6e5f4d656469615f5365656b222c22706172616d6574657273223a7b22646972656374696f6e223a22666f72",
+     "backward": "5f7b22636f6d6d616e64223a2250726573656e746174696f6e5f4d656469615f5365656b222c22706172616d6574657273223a7b22646972656374696f6e223a226261636b"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Navigation_CurrentFS",
+   "category": "Presentation file control (active presentation)",
+   "name": "Put current in fullscreen",
+   "text": "Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Navigation_CurrentFS",
+    "options": {}
+   }
+  },
+  {
+   "id": "Navigation_CloseOthers",
+   "category": "Presentation file control (active presentation)",
+   "name": "Close all except current",
+   "text": "close others",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Navigation_CloseOthers",
+    "options": {}
+   }
+  },
+  {
+   "id": "PowerPointMediaPlayPause",
+   "category": "PowerPoint media control",
+   "name": "Play and pause PowerPoint media",
+   "text": "PPT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Presentation_Media_Control",
+    "options": {
+     "action": "toggle"
+    }
+   }
+  },
+  {
+   "id": "PowerPointMediaStop",
+   "category": "PowerPoint media control",
+   "name": "Stop PowerPoint media",
+   "text": "PPT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Presentation_Media_Control",
+    "options": {
+     "action": "stop"
+    }
+   }
+  },
+  {
+   "id": "PowerPointMediaBack",
+   "category": "PowerPoint media control",
+   "name": "Go back 10 seconds PowerPoint media",
+   "text": "PPT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Presentation_Media_Seek",
+    "options": {
+     "direction": "backward",
+     "Milliseconds": 10000
+    }
+   }
+  },
+  {
+   "id": "PowerPointMediaForward",
+   "category": "PowerPoint media control",
+   "name": "Advance 10 seconds PowerPoint media",
+   "text": "PPT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Presentation_Media_Seek",
+    "options": {
+     "direction": "forward",
+     "Milliseconds": 10000
+    }
+   }
+  },
+  {
+   "id": "Capture1",
+   "category": "Still Images",
+   "name": "Capture Image 1",
+   "text": "Captr 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture1"
+    }
+   }
+  },
+  {
+   "id": "Capture2",
+   "category": "Still Images",
+   "name": "Capture Image 2",
+   "text": "Captr 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture2"
+    }
+   }
+  },
+  {
+   "id": "Capture3",
+   "category": "Still Images",
+   "name": "Capture Image 3",
+   "text": "Captr 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture3"
+    }
+   }
+  },
+  {
+   "id": "Capture4",
+   "category": "Still Images",
+   "name": "Capture Image 4",
+   "text": "Captr 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture4"
+    }
+   }
+  },
+  {
+   "id": "Capture5",
+   "category": "Still Images",
+   "name": "Capture Image 5",
+   "text": "Captr 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture5"
+    }
+   }
+  },
+  {
+   "id": "Capture6",
+   "category": "Still Images",
+   "name": "Capture Image 6",
+   "text": "Captr 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture6"
+    }
+   }
+  },
+  {
+   "id": "Capture7",
+   "category": "Still Images",
+   "name": "Capture Image 7",
+   "text": "Captr 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture7"
+    }
+   }
+  },
+  {
+   "id": "Capture8",
+   "category": "Still Images",
+   "name": "Capture Image 8",
+   "text": "Captr 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture8"
+    }
+   }
+  },
+  {
+   "id": "Capture9",
+   "category": "Still Images",
+   "name": "Capture Image 9",
+   "text": "Captr 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture9"
+    }
+   }
+  },
+  {
+   "id": "Capture10",
+   "category": "Still Images",
+   "name": "Capture Image 10",
+   "text": "Captr 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Capture_Image",
+    "options": {
+     "Key": "Capture10"
+    }
+   }
+  },
+  {
+   "id": "ExitImages",
+   "category": "Still Images",
+   "name": "Exit Images",
+   "text": "Exit images",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ExitImages",
+    "options": {}
+   }
+  },
+  {
+   "id": "PresentationFolderPrev",
+   "category": "Presentation Select",
+   "name": "Previous",
+   "text": "Set folder",
+   "backgroundColor": "#660066",
+   "action": {
+    "definitionId": "SetSelected_PresentationFolder",
+    "options": {
+     "Key": "Previous"
+    }
+   }
+  },
+  {
+   "id": "PresentationFolderNext",
+   "category": "Presentation Select",
+   "name": "Next",
+   "text": "Set folder",
+   "backgroundColor": "#660066",
+   "action": {
+    "definitionId": "SetSelected_PresentationFolder",
+    "options": {
+     "Key": "Next"
+    }
+   }
+  },
+  {
+   "id": "MediaFolderPrev",
+   "category": "Media Player Select",
+   "name": "Previous",
+   "text": "Set folder",
+   "backgroundColor": "#660066",
+   "action": {
+    "definitionId": "SetSelected_MediaFolder",
+    "options": {
+     "Key": "Previous"
+    }
+   }
+  },
+  {
+   "id": "MediaFolderNext",
+   "category": "Media Player Select",
+   "name": "Next",
+   "text": "Set folder",
+   "backgroundColor": "#660066",
+   "action": {
+    "definitionId": "SetSelected_MediaFolder",
+    "options": {
+     "Key": "Next"
+    }
+   }
+  },
+  {
+   "id": "SlidePrevious",
+   "category": "Presentation slide  control",
+   "name": "Slide Previous",
+   "text": "Slide",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlidePrevious",
+    "options": {
+     "Key": "Key_Left"
+    }
+   }
+  },
+  {
+   "id": "SlideNext",
+   "category": "Presentation slide  control",
+   "name": "Slide Next",
+   "text": "Slide",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlideNext",
+    "options": {
+     "Key": "Key_Right"
+    }
+   }
+  },
+  {
+   "id": "PowerpointPrevious",
+   "category": "Presentation slide  control",
+   "name": "Powerpoint Previous",
+   "text": "PPT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlidePrevious",
+    "options": {
+     "Key": "Powerpoint_Previous"
+    }
+   }
+  },
+  {
+   "id": "PowerpointNext",
+   "category": "Presentation slide  control",
+   "name": "Powerpoint Next",
+   "text": "PPT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlideNext",
+    "options": {
+     "Key": "Powerpoint_Next"
+    }
+   }
+  },
+  {
+   "id": "KeynotePrevious",
+   "category": "Presentation slide  control",
+   "name": "Keynote Previous",
+   "text": "Key",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlidePrevious",
+    "options": {
+     "Key": "Keynote_Previous"
+    }
+   }
+  },
+  {
+   "id": "KeynoteNext",
+   "category": "Presentation slide  control",
+   "name": "Keynote Next",
+   "text": "Key",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlideNext",
+    "options": {
+     "Key": "Keynote_Next"
+    }
+   }
+  },
+  {
+   "id": "AdobeAcrobatPrevious",
+   "category": "Presentation slide  control",
+   "name": "Adobe Acrobat Previous",
+   "text": "PDF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlidePrevious",
+    "options": {
+     "Key": "Acrobat_Previous"
+    }
+   }
+  },
+  {
+   "id": "AdobeAcrobatNext",
+   "category": "Presentation slide  control",
+   "name": "Adobe Acrobat Next",
+   "text": "PDF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "SlideNext",
+    "options": {
+     "Key": "Acrobat_Next"
+    }
+   }
+  },
+  {
+   "id": "Play",
+   "category": "Media Player main commands",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Play_MediaPlayer",
+    "options": {}
+   }
+  },
+  {
+   "id": "Pause",
+   "category": "Media Player main commands",
+   "name": "Pause",
+   "text": "Pause",
+   "action": {
+    "definitionId": "Pause_MediaPlayer",
+    "options": {}
+   }
+  },
+  {
+   "id": "Restart",
+   "category": "Media Player main commands",
+   "name": "Restart",
+   "text": "Restart",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Restart_MediaPlayer",
+    "options": {}
+   }
+  },
+  {
+   "id": "Stop",
+   "category": "Media Player main commands",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Stop_MediaPlayer",
+    "options": {}
+   }
+  },
+  {
+   "id": "Previous",
+   "category": "Media Player main commands",
+   "name": "Previous",
+   "text": "Previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Load_MediaPlayer",
+    "options": {
+     "Key": "Load_MediaPlayer#Previous"
+    }
+   }
+  },
+  {
+   "id": "Next",
+   "category": "Media Player main commands",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Load_MediaPlayer",
+    "options": {
+     "Key": "Load_MediaPlayer#Next"
+    }
+   }
+  },
+  {
+   "id": "MediaPlayer_Rewind",
+   "category": "Media Player main commands",
+   "name": "Rewind 10s",
+   "text": "10s",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "MediaPlayer_Rewind",
+    "options": {
+     "Seconds": 10
+    }
+   }
+  },
+  {
+   "id": "MediaPlayer_Forward",
+   "category": "Media Player main commands",
+   "name": "Forward 10s",
+   "text": "10s",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "MediaPlayer_Forward",
+    "options": {
+     "Seconds": 10
+    }
+   }
+  },
+  {
+   "id": "Loop",
+   "category": "Media Player main commands",
+   "name": "Loop",
+   "text": "Loop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Loop_MediaPlayer",
+    "options": {}
+   }
+  },
+  {
+   "id": "Fade",
+   "category": "Media Player main commands",
+   "name": "Fade",
+   "text": "Fade",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Fade_MediaPlayer",
+    "options": {}
+   }
+  },
+  {
+   "id": "hold_at_end",
+   "category": "Media Player main commands",
+   "name": "Hold at end",
+   "text": "Hold",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "HoldAtEnd_MediaPlayer",
+    "options": {}
+   }
+  },
+  {
+   "id": "ActivatePowerPoint",
+   "category": "Activate application",
+   "name": "Activate PowerPoint",
+   "text": "Activate PowerPoint",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ActivateApplication",
+    "options": {
+     "Application": "PowerPoint"
+    }
+   }
+  },
+  {
+   "id": "ActivatePDF",
+   "category": "Activate application",
+   "name": "Activate PDF",
+   "text": "PDF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ActivateApplication",
+    "options": {
+     "Application": "PDF"
+    }
+   }
+  },
+  {
+   "id": "ActivateWebpage",
+   "category": "Activate application",
+   "name": "Activate Webpage",
+   "text": "Activate Webpage",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ActivateApplication",
+    "options": {
+     "Application": "Webpage"
+    }
+   }
+  },
+  {
+   "id": "CloseBrowser",
+   "category": "Webpage control",
+   "name": "Close Browser",
+   "text": "Close",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "CloseWebBrowser",
+    "options": {}
+   }
+  },
+  {
+   "id": "DisplayWebpage",
+   "category": "Webpage control",
+   "name": "Display Webpage",
+   "text": "Display",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Navigation_CurrentFS",
+    "options": {}
+   }
+  },
+  {
+   "id": "RefreshWebpage",
+   "category": "Webpage control",
+   "name": "Refresh current tab",
+   "text": "Refresh",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "RefreshCurrentTab",
+    "options": {}
+   }
+  },
+  {
+   "id": "DeleteAllBrowserData",
+   "category": "Webpage control",
+   "name": "Delete all browser data",
+   "text": "Delete",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "CloseBrowserAndClearAllData",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-presentationtools-aps",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：PresentationTools A/S"
+  }
+ ],
+ "source": {
+  "module": "presentationtools-aps",
+  "version": "2.9.1",
+  "license": "MIT",
+  "maintainers": [
+   "PresentationTools A/S"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-presentationtools-aps.git"
+ }
+}

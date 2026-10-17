@@ -116,9 +116,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d00002c690000000000{{option.zoom|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetZoom",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.zoom}}"
+     }
+    ]
    }
   },
   {
@@ -143,9 +148,18 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d5370656564002c696900000000{{option.zoomValue|u8}}000000{{option.zoomSpeed|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetZoomSpeed",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.zoomValue}}"
+     },
+     {
+      "type": "i",
+      "value": "{{option.zoomSpeed}}"
+     }
+    ]
    }
   },
   {
@@ -162,9 +176,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d4d61780000002c690000000000{{option.zoomLevel|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetZoomMax",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.zoomLevel}}"
+     }
+    ]
    }
   },
   {
@@ -181,9 +200,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365745a6f6f6d4d696e0000002c690000000000{{option.zoomLevel|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetZoomMin",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.zoomLevel}}"
+     }
+    ]
    }
   },
   {
@@ -191,9 +215,14 @@
    "name": "Gimbal | Reset Position",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f526573657447696d62616c00002c69000000000000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/ResetGimbal",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
    }
   },
   {
@@ -210,9 +239,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c557000002c690000000000{{option.moveSpeed|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalUp",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.moveSpeed}}"
+     }
+    ]
    }
   },
   {
@@ -220,9 +254,14 @@
    "name": "Gimbal | Stop Moving Up",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c557000002c69000000000000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalUp",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
    }
   },
   {
@@ -239,9 +278,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c446f776e000000002c690000000000{{option.moveSpeed|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalDown",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.moveSpeed}}"
+     }
+    ]
    }
   },
   {
@@ -249,9 +293,14 @@
    "name": "Gimbal | Stop Moving Down",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c446f776e000000002c69000000000000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalDown",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
    }
   },
   {
@@ -268,9 +317,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c4c656674000000002c690000000000{{option.moveSpeed|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalLeft",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.moveSpeed}}"
+     }
+    ]
    }
   },
   {
@@ -278,9 +332,14 @@
    "name": "Gimbal | Stop Moving Left",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c4c656674000000002c69000000000000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalLeft",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
    }
   },
   {
@@ -297,9 +356,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c52696768740000002c690000000000{{option.moveSpeed|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalRight",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.moveSpeed}}"
+     }
+    ]
    }
   },
   {
@@ -307,9 +371,14 @@
    "name": "Gimbal | Stop Moving Right",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d62616c52696768740000002c69000000000000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimbalRight",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
    }
   },
   {
@@ -342,9 +411,22 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657447696d4d6f746f72446567726565000000002c69696900000000000000{{option.speed|u8}}000000{{option.pan|u8}}000000{{option.pitch|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetGimMotorDegree",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.speed}}"
+     },
+     {
+      "type": "i",
+      "value": "{{option.pan}}"
+     },
+     {
+      "type": "i",
+      "value": "{{option.pitch}}"
+     }
+    ]
    }
   },
   {
@@ -369,14 +451,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744d6972726f72000000002c690000000000{{option.mirrorMode|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetMirror",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mirrorMode|map}}"
+     }
+    ]
    },
    "maps": {
     "mirrorMode": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -402,14 +489,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744175746f466f637573002c690000000000{{option.autoFocus|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetAutoFocus",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.autoFocus|map}}"
+     }
+    ]
    },
    "maps": {
     "autoFocus": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -427,9 +519,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744d616e75616c466f6375730000002c690000000000{{option.focusValue|u8}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetManualFocus",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.focusValue}}"
+     }
+    ]
    }
   },
   {
@@ -454,14 +551,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744175746f4578706f7375726500002c690000000000{{option.autoExposure|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetAutoExposure",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.autoExposure|map}}"
+     }
+    ]
    },
    "maps": {
     "autoExposure": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -555,31 +657,36 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744578706f73757265436f6d70656e73617465000000002c690000{{option.exposureCompensateValue|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetExposureCompensate",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.exposureCompensateValue|map}}"
+     }
+    ]
    },
    "maps": {
     "exposureCompensateValue": {
-     "0": "00000000",
-     "3": "00000003",
-     "7": "00000007",
-     "10": "0000000a",
-     "13": "0000000d",
-     "17": "00000011",
-     "20": "00000014",
-     "23": "00000017",
-     "27": "0000001b",
-     "30": "0000001e",
-     "-30": "ffffffe2",
-     "-27": "ffffffe5",
-     "-23": "ffffffe9",
-     "-20": "ffffffec",
-     "-17": "ffffffef",
-     "-13": "fffffff3",
-     "-10": "fffffff6",
-     "-7": "fffffff9",
-     "-3": "fffffffd"
+     "0": "0",
+     "3": "3",
+     "7": "7",
+     "10": "10",
+     "13": "13",
+     "17": "17",
+     "20": "20",
+     "23": "23",
+     "27": "27",
+     "30": "30",
+     "-30": "-30",
+     "-27": "-27",
+     "-23": "-23",
+     "-20": "-20",
+     "-17": "-17",
+     "-13": "-13",
+     "-10": "-10",
+     "-7": "-7",
+     "-3": "-3"
     }
    }
   },
@@ -733,46 +840,51 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657453687574746572537065656400002c6900000000{{option.shutterSpeedValue|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetShutterSpeed",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.shutterSpeedValue|map}}"
+     }
+    ]
    },
    "maps": {
     "shutterSpeedValue": {
-     "3": "0003",
-     "4": "0004",
-     "5": "0005",
-     "8": "0008",
-     "10": "000a",
-     "15": "000f",
-     "20": "0014",
-     "25": "0019",
-     "30": "001e",
-     "40": "0028",
-     "50": "0032",
-     "60": "003c",
-     "80": "0050",
-     "100": "0064",
-     "120": "0078",
-     "160": "00a0",
-     "200": "00c8",
-     "240": "00f0",
-     "320": "0140",
-     "400": "0190",
-     "500": "01f4",
-     "640": "0280",
-     "800": "0320",
-     "1000": "03e8",
-     "1250": "04e2",
-     "1600": "0640",
-     "2000": "07d0",
-     "2500": "09c4",
-     "3200": "0c80",
-     "5000": "1388",
-     "6400": "1900",
-     "12.5": "000c",
-     "6.25": "0006",
-     "2.5": "0002"
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "8": "8",
+     "10": "10",
+     "15": "15",
+     "20": "20",
+     "25": "25",
+     "30": "30",
+     "40": "40",
+     "50": "50",
+     "60": "60",
+     "80": "80",
+     "100": "100",
+     "120": "120",
+     "160": "160",
+     "200": "200",
+     "240": "240",
+     "320": "320",
+     "400": "400",
+     "500": "500",
+     "640": "640",
+     "800": "800",
+     "1000": "1000",
+     "1250": "1250",
+     "1600": "1600",
+     "2000": "2000",
+     "2500": "2500",
+     "3200": "3200",
+     "5000": "5000",
+     "6400": "6400",
+     "12.5": "12",
+     "6.25": "6",
+     "2.5": "2"
     }
    }
   },
@@ -818,19 +930,24 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f53657449534f0000002c6900000000{{option.isoValue|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetISO",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.isoValue|map}}"
+     }
+    ]
    },
    "maps": {
     "isoValue": {
-     "100": "0064",
-     "200": "00c8",
-     "400": "0190",
-     "800": "0320",
-     "1600": "0640",
-     "3200": "0c80",
-     "6400": "1900"
+     "100": "100",
+     "200": "200",
+     "400": "400",
+     "800": "800",
+     "1600": "1600",
+     "3200": "3200",
+     "6400": "6400"
     }
    }
   },
@@ -856,14 +973,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f5365744175746f576869746542616c616e636500002c690000000000{{option.autoWhiteBalance|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetAutoWhiteBalance",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.autoWhiteBalance|map}}"
+     }
+    ]
    },
    "maps": {
     "autoWhiteBalance": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -881,9 +1003,14 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f57656243616d2f47656e6572616c2f536574436f6c6f7254656d706572617475726500002c6900000000{{option.colorTemperature|u16be}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/WebCam/General/SetColorTemperature",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.colorTemperature}}"
+     }
+    ]
    }
   },
   {
@@ -908,14 +1035,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365744169456e61626c65000000002c690000000000{{option.aiMode|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/Camera/Tail2/SetAiEnable",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.aiMode|map}}"
+     }
+    ]
    },
    "maps": {
     "aiMode": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -941,14 +1073,19 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365744f6e6c794d6500002c690000000000{{option.onlyMe|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/Camera/Tail2/SetOnlyMe",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.onlyMe|map}}"
+     }
+    ]
    },
    "maps": {
     "onlyMe": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
    }
   },
@@ -957,9 +1094,14 @@
    "name": "Tail 2 | Start Recording",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365745265636f7264696e670000002c69000000000001",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/Camera/Tail2/SetRecording",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
    }
   },
   {
@@ -967,9 +1109,14 @@
    "name": "Tail 2 | Stop Recording",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f43616d6572612f5461696c322f5365745265636f7264696e670000002c69000000000000",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/Camera/Tail2/SetRecording",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
    }
   },
   {
@@ -977,9 +1124,38 @@
    "name": "Tail 2 | Take Snapshot",
    "options": [],
    "send": {
-    "kind": "bytes",
-    "data": "2f4f4253424f542f43616d6572612f5461696c322f536e617073686f740000002c69000000000001",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/OBSBOT/Camera/Tail2/Snapshot",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   }
+  },
+  {
+   "id": "OBSBOT_TAIL_2_triggerPreset",
+   "name": "Tail 2 | Trigger Preset",
+   "options": [
+    {
+     "id": "presetNumber",
+     "label": "Preset Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 3
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/OBSBOT/Camera/Tail2/TriggerPreset",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.presetNumber|lin:1:-1}}"
+     }
+    ]
    }
   }
  ],
@@ -1278,6 +1454,45 @@
    "action": {
     "definitionId": "OBSBOT_TAIL_2_takeSnapshot",
     "options": {}
+   }
+  },
+  {
+   "id": "tail2_preset_1",
+   "category": "Tail 2",
+   "name": "Preset 1",
+   "text": "Preset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_triggerPreset",
+    "options": {
+     "presetNumber": 1
+    }
+   }
+  },
+  {
+   "id": "tail2_preset_2",
+   "category": "Tail 2",
+   "name": "Preset 2",
+   "text": "Preset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_triggerPreset",
+    "options": {
+     "presetNumber": 2
+    }
+   }
+  },
+  {
+   "id": "tail2_preset_3",
+   "category": "Tail 2",
+   "name": "Preset 3",
+   "text": "Preset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "OBSBOT_TAIL_2_triggerPreset",
+    "options": {
+     "presetNumber": 3
+    }
    }
   }
  ],

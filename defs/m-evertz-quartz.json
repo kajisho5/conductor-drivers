@@ -1,0 +1,265 @@
+{
+ "format": 1,
+ "id": "m-evertz-quartz",
+ "name": "Evertz EQX Router / EQT Router",
+ "category": "Evertz",
+ "version": "3.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "max_destinations",
+   "label": "Max Destinations",
+   "type": "number",
+   "default": 16,
+   "min": 1,
+   "max": 4096
+  },
+  {
+   "id": "max_sources",
+   "label": "Max Sources",
+   "type": "number",
+   "default": 16,
+   "min": 1,
+   "max": 4096
+  },
+  {
+   "id": "pollInterval",
+   "label": "Polling Interval (seconds)",
+   "type": "number",
+   "default": 5,
+   "min": 1,
+   "max": 60
+  },
+  {
+   "id": "enable_xpt_variables",
+   "label": "Expose Crosspoint Variables",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "fire_salvo",
+   "name": "Fire Salvo",
+   "options": [
+    {
+     "id": "salvo",
+     "label": "Salvo ID",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": ".F{{option.salvo}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lock_destination",
+   "name": "Lock/Unlock Destination",
+   "options": [
+    {
+     "id": "dst",
+     "label": "Destination",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No Destinations Loaded"
+      }
+     ]
+    },
+    {
+     "id": "lock",
+     "label": "Lock/Unlock",
+     "type": "select",
+     "default": "L",
+     "choices": [
+      {
+       "id": "L",
+       "label": "Lock"
+      },
+      {
+       "id": "U",
+       "label": "Unlock"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": ".B{{option.lock|map}},0\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "lock": {
+     "L": "L",
+     "U": "U"
+    }
+   }
+  },
+  {
+   "id": "set_xpt",
+   "name": "Route Source to Destination",
+   "options": [
+    {
+     "id": "src",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No Sources Loaded"
+      }
+     ]
+    },
+    {
+     "id": "dst",
+     "label": "Destination",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No Destinations Loaded"
+      }
+     ]
+    },
+    {
+     "id": "levels",
+     "label": "Levels",
+     "type": "text",
+     "default": "V"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": ".S{{option.levels}}0,0\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_xpt_by_id",
+   "name": "Route Source to Destination (by ID)",
+   "options": [
+    {
+     "id": "src",
+     "label": "Source ID",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "dst",
+     "label": "Destination ID",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "levels",
+     "label": "Levels",
+     "type": "text",
+     "default": "V"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": ".S{{option.levels}}{{option.dst}},{{option.src}}\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "take",
+   "name": "Take",
+   "options": [
+    {
+     "id": "levels",
+     "label": "Levels:",
+     "type": "text",
+     "default": "VABCDEFGH"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": ".S{{option.levels}}0,0\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "route_source",
+   "name": "Route Source to Selected Destination",
+   "options": [
+    {
+     "id": "src",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No Sources Loaded"
+      }
+     ]
+    },
+    {
+     "id": "levels",
+     "label": "Levels",
+     "type": "text",
+     "default": "V"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": ".S{{option.levels}}0,0\\r",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-evertz-quartz",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Elliott C. Balsley, Carlos Emilio Puente, James Heliker"
+  }
+ ],
+ "source": {
+  "module": "evertz-quartz",
+  "version": "3.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Elliott C. Balsley",
+   "Carlos Emilio Puente",
+   "James Heliker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-evertz-quartz.git"
+ }
+}

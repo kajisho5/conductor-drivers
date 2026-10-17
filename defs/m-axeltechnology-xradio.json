@@ -1,0 +1,826 @@
+{
+ "format": 1,
+ "id": "m-axeltechnology-xradio",
+ "name": "AxelTech XRadio",
+ "category": "AxelTech",
+ "version": "1.0.5",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "HotKey_Press",
+   "name": "HotKey_Press",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    },
+    {
+     "id": "index",
+     "label": "Command Index",
+     "type": "text",
+     "default": "112"
+    },
+    {
+     "id": "secondIndex",
+     "label": "Command Index",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "5e5e4b4428{{option.index|hexstr}}2c{{option.secondIndex|hexstr}}29{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\r": "0d",
+     "": "",
+     "\n": "0a",
+     "\r\n": "0d0a",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  },
+  {
+   "id": "Start_Next",
+   "name": "Start Next",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "5e5e53544152544e455854{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\r": "0d",
+     "": "",
+     "\n": "0a",
+     "\r\n": "0d0a",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  },
+  {
+   "id": "Start_Spot",
+   "name": "Start Spot",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "5e5e4b442834382c3029{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\r": "0d",
+     "": "",
+     "\n": "0a",
+     "\r\n": "0d0a",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  },
+  {
+   "id": "Stop",
+   "name": "Stop",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "5e5e53544f50{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\r": "0d",
+     "": "",
+     "\n": "0a",
+     "\r\n": "0d0a",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  },
+  {
+   "id": "Auto_Man",
+   "name": "Auto Man",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "5e5e4b5028333229{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\r": "0d",
+     "": "",
+     "\n": "0a",
+     "\r\n": "0d0a",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  },
+  {
+   "id": "StartKeyB",
+   "name": "StartKeyB",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "5e5e4b442831332c3229{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\r": "0d",
+     "": "",
+     "\n": "0a",
+     "\r\n": "0d0a",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  },
+  {
+   "id": "StopKeyB",
+   "name": "StopKeyB",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "5e5e4b442834362c3029{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\r": "0d",
+     "": "",
+     "\n": "0a",
+     "\r\n": "0d0a",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "EME 1",
+   "category": "Actions",
+   "name": "EME 1",
+   "text": "EME 1",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 49,
+     "secondIndex": "4"
+    }
+   }
+  },
+  {
+   "id": "EME 2",
+   "category": "Actions",
+   "name": "EME 2",
+   "text": "EME 2",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 50,
+     "secondIndex": "4"
+    }
+   }
+  },
+  {
+   "id": "EME 3",
+   "category": "Actions",
+   "name": "EME 3",
+   "text": "EME 3",
+   "backgroundColor": "#0000ff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 51,
+     "secondIndex": "4"
+    }
+   }
+  },
+  {
+   "id": "Stop",
+   "category": "Actions",
+   "name": "Stop",
+   "text": "STOP",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "Stop",
+    "options": {
+     "id_end": "\r"
+    }
+   }
+  },
+  {
+   "id": "Auto_Man",
+   "category": "Actions",
+   "name": "Auto Man",
+   "text": "AUTO MAN",
+   "backgroundColor": "#ff8000",
+   "action": {
+    "definitionId": "Auto_Man",
+    "options": {
+     "id_end": "\r"
+    }
+   }
+  },
+  {
+   "id": "Start_Spot",
+   "category": "Actions",
+   "name": "Start Spot",
+   "text": "START SPOT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "Start_Spot",
+    "options": {
+     "id_end": "\r"
+    }
+   }
+  },
+  {
+   "id": "Start_Next",
+   "category": "Actions",
+   "name": "Start_Next",
+   "text": "START",
+   "backgroundColor": "#009900",
+   "action": {
+    "definitionId": "Start_Next",
+    "options": {
+     "id_end": "\r"
+    }
+   }
+  },
+  {
+   "id": "StartKeyB",
+   "category": "Actions",
+   "name": "StartKeyB",
+   "text": "START KEYB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "StartKeyB",
+    "options": {
+     "id_end": "\r"
+    }
+   }
+  },
+  {
+   "id": "StopKeyB",
+   "category": "Actions",
+   "name": "StopKeyB",
+   "text": "STOP KEYB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "StopKeyB",
+    "options": {
+     "id_end": "\r"
+    }
+   }
+  },
+  {
+   "id": "HotKey 1",
+   "category": "Hotkeys",
+   "name": "1",
+   "text": "1",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 112,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 2",
+   "category": "Hotkeys",
+   "name": "2",
+   "text": "2",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 113,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 3",
+   "category": "Hotkeys",
+   "name": "3",
+   "text": "3",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 114,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 4",
+   "category": "Hotkeys",
+   "name": "4",
+   "text": "4",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 115,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 5",
+   "category": "Hotkeys",
+   "name": "5",
+   "text": "5",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 116,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 6",
+   "category": "Hotkeys",
+   "name": "6",
+   "text": "6",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 117,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 7",
+   "category": "Hotkeys",
+   "name": "7",
+   "text": "7",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 118,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 8",
+   "category": "Hotkeys",
+   "name": "8",
+   "text": "8",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 119,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 9",
+   "category": "Hotkeys",
+   "name": "9",
+   "text": "9",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 120,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 10",
+   "category": "Hotkeys",
+   "name": "10",
+   "text": "10",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 121,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 11",
+   "category": "Hotkeys",
+   "name": "11",
+   "text": "11",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 122,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 12",
+   "category": "Hotkeys",
+   "name": "12",
+   "text": "12",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 123,
+     "secondIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "HotKey 13",
+   "category": "Hotkeys",
+   "name": "13",
+   "text": "13",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 112,
+     "secondIndex": "1"
+    }
+   }
+  },
+  {
+   "id": "HotKey 14",
+   "category": "Hotkeys",
+   "name": "14",
+   "text": "14",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 113,
+     "secondIndex": "1"
+    }
+   }
+  },
+  {
+   "id": "HotKey 15",
+   "category": "Hotkeys",
+   "name": "15",
+   "text": "15",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 114,
+     "secondIndex": "1"
+    }
+   }
+  },
+  {
+   "id": "HotKey 16",
+   "category": "Hotkeys",
+   "name": "16",
+   "text": "16",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 115,
+     "secondIndex": "1"
+    }
+   }
+  },
+  {
+   "id": "HotKey 17",
+   "category": "Hotkeys",
+   "name": "17",
+   "text": "17",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 116,
+     "secondIndex": "1"
+    }
+   }
+  },
+  {
+   "id": "HotKey 18",
+   "category": "Hotkeys",
+   "name": "18",
+   "text": "18",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "HotKey_Press",
+    "options": {
+     "id_end": "\r",
+     "index": 117,
+     "secondIndex": "1"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://https://github.com/bitfocus/companion-module-axeltechnology-xradio",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Ruslan Rolkin"
+  }
+ ],
+ "source": {
+  "module": "axeltechnology-xradio",
+  "version": "1.0.5",
+  "license": "MIT",
+  "maintainers": [
+   "Ruslan Rolkin"
+  ],
+  "repository": "git+https://https://github.com/bitfocus/companion-module-axeltechnology-xradio.git"
+ }
+}

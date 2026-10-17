@@ -1,0 +1,191 @@
+{
+ "format": 1,
+ "id": "m-dolby-cinemaprocessor",
+ "name": "Dolby Cinema Processor",
+ "category": "Dolby",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 61412,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "cp650",
+   "choices": [
+    {
+     "id": "cp650",
+     "label": "CP650"
+    },
+    {
+     "id": "cp750",
+     "label": "CP750"
+    },
+    {
+     "id": "cp850",
+     "label": "CP850"
+    },
+    {
+     "id": "cp950",
+     "label": "CP950"
+    }
+   ]
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "fader_increase_once",
+   "name": "Increase Fader Level 1 Point and Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "fader_level=86\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fader_decrease_once",
+   "name": "Decrease Fader Level 1 Point and Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "fader_level=84\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_format_button",
+   "name": "Set Format Button",
+   "options": [
+    {
+     "id": "format",
+     "label": "Format",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Format 01"
+      },
+      {
+       "id": "1",
+       "label": "Format 04"
+      },
+      {
+       "id": "2",
+       "label": "Format 05"
+      },
+      {
+       "id": "3",
+       "label": "Format 10"
+      },
+      {
+       "id": "4",
+       "label": "Format 11"
+      },
+      {
+       "id": "5",
+       "label": "User format 1"
+      },
+      {
+       "id": "6",
+       "label": "User format 2"
+      },
+      {
+       "id": "7",
+       "label": "Nonsync format"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "format_button={{option.format|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "format": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "mute_on",
+   "name": "Mute On",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "mute=1\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mute_off",
+   "name": "Mute Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "mute=0\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mute_toggle",
+   "name": "Toggle Mute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "mute=2\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-dolby-cinemaprocessor",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "dolby-cinemaprocessor",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-dolby-cinemaprocessor.git"
+ }
+}

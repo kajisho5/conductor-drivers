@@ -1,0 +1,2781 @@
+{
+ "format": 1,
+ "id": "m-nohassleav-videowallprocessor",
+ "name": "NoHassleAV HDP MXB44VW / Video Wall Processor 4x4",
+ "category": "NoHassleAV",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "autoReconnect",
+   "label": "Auto Reconnect",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "lock",
+   "name": "Device: Lock panel buttons",
+   "options": [
+    {
+     "id": "command",
+     "label": "Action",
+     "type": "select",
+     "default": "lock",
+     "choices": [
+      {
+       "id": "lock",
+       "label": "Lock"
+      },
+      {
+       "id": "unlock",
+       "label": "Unlock"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s lock {{option.command|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "command": {
+     "lock": "1",
+     "unlock": "0",
+     "toggle": "1"
+    }
+   }
+  },
+  {
+   "id": "device_power",
+   "name": "Device: Control power",
+   "options": [
+    {
+     "id": "power",
+     "label": "Action",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Power Off"
+      },
+      {
+       "id": "1",
+       "label": "Power On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s power {{option.power|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "power": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "device_beep",
+   "name": "Device: Control beep",
+   "options": [
+    {
+     "id": "beep",
+     "label": "Action",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Beep Off"
+      },
+      {
+       "id": "1",
+       "label": "Beep On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s beep {{option.beep|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "beep": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "reboot_device",
+   "name": "Device: Reboot",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "s reboot!\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reboot_network_modules",
+   "name": "Device: Reboot Network module",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "s net reboot!\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recall_preset",
+   "name": "Preset: Recall",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6"
+      },
+      {
+       "id": "7",
+       "label": "Preset 7"
+      },
+      {
+       "id": "8",
+       "label": "Preset 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s recall preset {{option.preset|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "save_preset",
+   "name": "Preset: Save",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6"
+      },
+      {
+       "id": "7",
+       "label": "Preset 7"
+      },
+      {
+       "id": "8",
+       "label": "Preset 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s save preset {{option.preset|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "clear_preset",
+   "name": "Preset: Clear",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6"
+      },
+      {
+       "id": "7",
+       "label": "Preset 7"
+      },
+      {
+       "id": "8",
+       "label": "Preset 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s clear preset {{option.preset|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "output_display_mode",
+   "name": "Output: Set display mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Display mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Matrix Mode"
+      },
+      {
+       "id": "1",
+       "label": "Video Wall Mode"
+      },
+      {
+       "id": "2",
+       "label": "Multi-Viewer Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s display mode {{option.mode|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "output_resolution",
+   "name": "Output: Set resolution",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "resolution",
+     "label": "Resolution",
+     "type": "select",
+     "default": "16",
+     "choices": [
+      {
+       "id": "1",
+       "label": "4096x2160p60"
+      },
+      {
+       "id": "2",
+       "label": "4096x2160p50"
+      },
+      {
+       "id": "3",
+       "label": "3840x2160p60"
+      },
+      {
+       "id": "4",
+       "label": "3840x2160p50"
+      },
+      {
+       "id": "5",
+       "label": "3840x2160p30"
+      },
+      {
+       "id": "6",
+       "label": "1920x1080p60"
+      },
+      {
+       "id": "7",
+       "label": "1920x1080p50"
+      },
+      {
+       "id": "8",
+       "label": "1920x1080i60"
+      },
+      {
+       "id": "9",
+       "label": "1920x1080i50"
+      },
+      {
+       "id": "10",
+       "label": "1920x1200p60rb"
+      },
+      {
+       "id": "11",
+       "label": "1360x768p60"
+      },
+      {
+       "id": "12",
+       "label": "1280x800p60"
+      },
+      {
+       "id": "13",
+       "label": "1280x720p60"
+      },
+      {
+       "id": "14",
+       "label": "1280x720p50"
+      },
+      {
+       "id": "15",
+       "label": "1024x768p60"
+      },
+      {
+       "id": "16",
+       "label": "Auto"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} res {{option.resolution|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "resolution": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "output_color_space",
+   "name": "Output: Set color space",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "csc",
+     "label": "Color space",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "rgb444"
+      },
+      {
+       "id": "2",
+       "label": "ycbcr444"
+      },
+      {
+       "id": "3",
+       "label": "ycbcr422"
+      },
+      {
+       "id": "4",
+       "label": "ycbcr420"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} csc {{option.csc|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "csc": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "output_hdcp",
+   "name": "Output: Set HDCP mode",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "hdcp",
+     "label": "HDCP",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "HDCP 1.4"
+      },
+      {
+       "id": "2",
+       "label": "HDCP 2.2"
+      },
+      {
+       "id": "3",
+       "label": "Follow Sink"
+      },
+      {
+       "id": "4",
+       "label": "Follow Source"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} hdcp {{option.hdcp|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "hdcp": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "output_mirror_v",
+   "name": "Output: Mirror vertical",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "mirror",
+     "label": "V-Mirror",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "V-Mirror Off"
+      },
+      {
+       "id": "1",
+       "label": "V-Mirror On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} vmirror {{option.mirror|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "mirror": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "output_mirror_h",
+   "name": "Output: Mirror horizontal",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "mirror",
+     "label": "H-Mirror",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "H-Mirror Off"
+      },
+      {
+       "id": "1",
+       "label": "H-Mirror On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} hmirror {{option.mirror|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "mirror": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "output_stream",
+   "name": "Output: Set stream mode",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "stream",
+     "label": "Stream",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stream Disable"
+      },
+      {
+       "id": "1",
+       "label": "Stream Enable"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} stream {{option.stream|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "stream": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "output_cec_commands",
+   "name": "Output: Send CEC command",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "cec",
+     "label": "CEC Command",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "Power On"
+      },
+      {
+       "id": "off",
+       "label": "Power Off"
+      },
+      {
+       "id": "mute",
+       "label": "Volume: Mute"
+      },
+      {
+       "id": "vol-",
+       "label": "Volume: Down"
+      },
+      {
+       "id": "vol+",
+       "label": "Volume: Up"
+      },
+      {
+       "id": "active",
+       "label": "Active Source"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s cec hdmi out {{option.output|map}} {{option.cec|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "cec": {
+     "on": "on",
+     "off": "off",
+     "mute": "mute",
+     "vol-": "vol-",
+     "vol+": "vol+",
+     "active": "active"
+    }
+   }
+  },
+  {
+   "id": "output_external_audio_state",
+   "name": "Output: Enable/Disable External Audio",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "audio",
+     "label": "External Audio State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable External Audio"
+      },
+      {
+       "id": "1",
+       "label": "Enable External Audio"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} exa {{option.audio|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "audio": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "output_external_audio_mode",
+   "name": "Output: Set External Audio Mode",
+   "options": [
+    {
+     "id": "audio",
+     "label": "External Audio Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Bind to Input"
+      },
+      {
+       "id": "1",
+       "label": "Bind to Output"
+      },
+      {
+       "id": "2",
+       "label": "Matrix"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output undefined exa {{option.audio|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "audio": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "output_background",
+   "name": "Output: Set background",
+   "options": [
+    {
+     "id": "background",
+     "label": "Background mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Black Screen"
+      },
+      {
+       "id": "2",
+       "label": "Blue Screen"
+      },
+      {
+       "id": "3",
+       "label": "Color Bar"
+      },
+      {
+       "id": "4",
+       "label": "Gray Scale"
+      },
+      {
+       "id": "5",
+       "label": "Cross"
+      },
+      {
+       "id": "6",
+       "label": "Cross Hatch"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output bg {{option.background|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "background": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    }
+   }
+  },
+  {
+   "id": "input_edid",
+   "name": "Input: Set EDID mode",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Inputs"
+      },
+      {
+       "id": "1",
+       "label": "Input 1"
+      },
+      {
+       "id": "2",
+       "label": "Input 2"
+      },
+      {
+       "id": "3",
+       "label": "Input 3"
+      },
+      {
+       "id": "4",
+       "label": "Input 4"
+      }
+     ]
+    },
+    {
+     "id": "edid",
+     "label": "EDID Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "4k60, 2.0ch"
+      },
+      {
+       "id": "2",
+       "label": "4k60, 5.1ch"
+      },
+      {
+       "id": "3",
+       "label": "4k60, 7.1ch"
+      },
+      {
+       "id": "4",
+       "label": "4k30, 2.0ch"
+      },
+      {
+       "id": "5",
+       "label": "4k30, 5.1ch"
+      },
+      {
+       "id": "6",
+       "label": "4k30, 7.1ch"
+      },
+      {
+       "id": "7",
+       "label": "1080p, 2.0ch"
+      },
+      {
+       "id": "8",
+       "label": "1080p, 5.1ch"
+      },
+      {
+       "id": "9",
+       "label": "1080p, 7.1ch"
+      },
+      {
+       "id": "10",
+       "label": "wuxga, 2.0ch"
+      },
+      {
+       "id": "11",
+       "label": "768p, 2.0ch"
+      },
+      {
+       "id": "12",
+       "label": "xga, 2.0ch"
+      },
+      {
+       "id": "13",
+       "label": "User 1"
+      },
+      {
+       "id": "14",
+       "label": "User 2"
+      },
+      {
+       "id": "15",
+       "label": "Copy Output 1"
+      },
+      {
+       "id": "16",
+       "label": "Copy Output 2"
+      },
+      {
+       "id": "17",
+       "label": "Copy Output 3"
+      },
+      {
+       "id": "18",
+       "label": "Copy Output 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s input {{option.input|map}} edid {{option.edid|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "edid": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18"
+    }
+   }
+  },
+  {
+   "id": "route_input_to_output",
+   "name": "Route: Input to Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Input 1"
+      },
+      {
+       "id": "2",
+       "label": "Input 2"
+      },
+      {
+       "id": "3",
+       "label": "Input 3"
+      },
+      {
+       "id": "4",
+       "label": "Input 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} in source {{option.input|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "input_cec_commands",
+   "name": "Input: Send CEC command",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Inputs"
+      },
+      {
+       "id": "1",
+       "label": "Input 1"
+      },
+      {
+       "id": "2",
+       "label": "Input 2"
+      },
+      {
+       "id": "3",
+       "label": "Input 3"
+      },
+      {
+       "id": "4",
+       "label": "Input 4"
+      }
+     ]
+    },
+    {
+     "id": "cec",
+     "label": "CEC Command",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "Power On"
+      },
+      {
+       "id": "off",
+       "label": "Power Off"
+      },
+      {
+       "id": "menu",
+       "label": "Menu"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "up",
+       "label": "Menu: Up"
+      },
+      {
+       "id": "down",
+       "label": "Menu: Down"
+      },
+      {
+       "id": "left",
+       "label": "Menu: Left"
+      },
+      {
+       "id": "right",
+       "label": "Menu: Right"
+      },
+      {
+       "id": "enter",
+       "label": "Menu: Enter"
+      },
+      {
+       "id": "play",
+       "label": "Play"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      },
+      {
+       "id": "stop",
+       "label": "Stop"
+      },
+      {
+       "id": "rew",
+       "label": "Rewind"
+      },
+      {
+       "id": "ff",
+       "label": "Fast Forward"
+      },
+      {
+       "id": "mute",
+       "label": "Volume: Mute"
+      },
+      {
+       "id": "vol-",
+       "label": "Volume: Down"
+      },
+      {
+       "id": "vol+",
+       "label": "Volume: Up"
+      },
+      {
+       "id": "previuos",
+       "label": "Previous"
+      },
+      {
+       "id": "next",
+       "label": " Next"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s cec in {{option.input|map}} {{option.cec|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "cec": {
+     "on": "on",
+     "off": "off",
+     "menu": "menu",
+     "back": "back",
+     "up": "up",
+     "down": "down",
+     "left": "left",
+     "right": "right",
+     "enter": "enter",
+     "play": "play",
+     "pause": "pause",
+     "stop": "stop",
+     "rew": "rew",
+     "ff": "ff",
+     "mute": "mute",
+     "vol-": "vol-",
+     "vol+": "vol+",
+     "previuos": "previuos",
+     "next": "next"
+    }
+   }
+  },
+  {
+   "id": "mv_display_mode",
+   "name": "MultiView: Set display mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Display mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Single"
+      },
+      {
+       "id": "2",
+       "label": "PiP"
+      },
+      {
+       "id": "3",
+       "label": "Dual"
+      },
+      {
+       "id": "4",
+       "label": "Triple"
+      },
+      {
+       "id": "5",
+       "label": "Quad"
+      },
+      {
+       "id": "6",
+       "label": "User"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s multiview {{option.mode|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    }
+   }
+  },
+  {
+   "id": "mv_window_input",
+   "name": "MultiView: Set window input",
+   "options": [
+    {
+     "id": "window",
+     "label": "Window",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Windows"
+      },
+      {
+       "id": "1",
+       "label": "Window 1"
+      },
+      {
+       "id": "2",
+       "label": "Window 2"
+      },
+      {
+       "id": "3",
+       "label": "Window 3"
+      },
+      {
+       "id": "4",
+       "label": "Window 4"
+      }
+     ]
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s window {{option.window|map}} in {{option.input|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "window": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "pip_position",
+   "name": "PiP: Set position",
+   "options": [
+    {
+     "id": "position",
+     "label": "Position",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Upper Left"
+      },
+      {
+       "id": "2",
+       "label": "Lower Left"
+      },
+      {
+       "id": "3",
+       "label": "Upper Right"
+      },
+      {
+       "id": "4",
+       "label": "Lower Right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s pip position {{option.position|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "position": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "pip_size",
+   "name": "PiP: Set size",
+   "options": [
+    {
+     "id": "size",
+     "label": "Size",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Small"
+      },
+      {
+       "id": "2",
+       "label": "Middle"
+      },
+      {
+       "id": "3",
+       "label": "Large"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s pip size {{option.size|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "size": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "tw_mode",
+   "name": "TV Wall: Set display mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "2x2 mode"
+      },
+      {
+       "id": "2",
+       "label": "2x1 mode"
+      },
+      {
+       "id": "3",
+       "label": "2x1-2 mode"
+      },
+      {
+       "id": "4",
+       "label": "1x2 mode"
+      },
+      {
+       "id": "5",
+       "label": "1x2-2 mode"
+      },
+      {
+       "id": "6",
+       "label": "3x1 mode"
+      },
+      {
+       "id": "7",
+       "label": "4x1 mode"
+      },
+      {
+       "id": "8",
+       "label": "1x3 mode"
+      },
+      {
+       "id": "9",
+       "label": "1x4 mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s tw mode {{option.mode|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "tw_group_input",
+   "name": "TV Wall: Set group input source",
+   "options": [
+    {
+     "id": "group",
+     "label": "TV Wall Group",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Group All"
+      },
+      {
+       "id": "1",
+       "label": "Group 1"
+      },
+      {
+       "id": "2",
+       "label": "Group 2"
+      },
+      {
+       "id": "3",
+       "label": "Group 3"
+      },
+      {
+       "id": "4",
+       "label": "Group 4"
+      }
+     ]
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "3",
+       "label": "HDMI 3"
+      },
+      {
+       "id": "4",
+       "label": "HDMI 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s tw group {{option.group|map}} input {{option.input|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "group": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "tw_resolution",
+   "name": "TV Wall: Set resolution",
+   "options": [
+    {
+     "id": "resolution",
+     "label": "Resolution",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "4096x2160p60"
+      },
+      {
+       "id": "2",
+       "label": "4096x2160p50"
+      },
+      {
+       "id": "3",
+       "label": "3840x2160p60"
+      },
+      {
+       "id": "4",
+       "label": "3840x2160p50"
+      },
+      {
+       "id": "5",
+       "label": "3840x2160p30"
+      },
+      {
+       "id": "6",
+       "label": "1920x1080p60"
+      },
+      {
+       "id": "7",
+       "label": "1920x1080p50"
+      },
+      {
+       "id": "8",
+       "label": "1920x1080i60"
+      },
+      {
+       "id": "9",
+       "label": "1920x1080i50"
+      },
+      {
+       "id": "10",
+       "label": "1920x1200p60rb"
+      },
+      {
+       "id": "11",
+       "label": "1360x768p60"
+      },
+      {
+       "id": "12",
+       "label": "1280x800p60"
+      },
+      {
+       "id": "13",
+       "label": "1280x720p60"
+      },
+      {
+       "id": "14",
+       "label": "1280x720p50"
+      },
+      {
+       "id": "15",
+       "label": "1024x768p60"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s tw res {{option.resolution|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "resolution": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15"
+    }
+   }
+  },
+  {
+   "id": "input_audio_embedded",
+   "name": "Input: Audio Setting",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Inputs"
+      },
+      {
+       "id": "1",
+       "label": "Input 1"
+      },
+      {
+       "id": "2",
+       "label": "Input 2"
+      },
+      {
+       "id": "3",
+       "label": "Input 3"
+      },
+      {
+       "id": "4",
+       "label": "Input 4"
+      }
+     ]
+    },
+    {
+     "id": "audio",
+     "label": "Audio setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "HDMI Original Audio"
+      },
+      {
+       "id": "1",
+       "label": "Embed Analog Audio"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s input {{option.input|map}} as {{option.audio|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "audio": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "route_input_audio_to_output_ext_audio",
+   "name": "Route input audio to output external audio",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Input 1"
+      },
+      {
+       "id": "2",
+       "label": "Input 2"
+      },
+      {
+       "id": "3",
+       "label": "Input 3"
+      },
+      {
+       "id": "4",
+       "label": "Input 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s output {{option.output|map}} exa in source {{option.input|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "mv_resolution",
+   "name": "MultiView: Set resolution",
+   "options": [
+    {
+     "id": "resolution",
+     "label": "Resolution",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "4096x2160p60"
+      },
+      {
+       "id": "2",
+       "label": "4096x2160p50"
+      },
+      {
+       "id": "3",
+       "label": "3840x2160p60"
+      },
+      {
+       "id": "4",
+       "label": "3840x2160p50"
+      },
+      {
+       "id": "5",
+       "label": "3840x2160p30"
+      },
+      {
+       "id": "6",
+       "label": "1920x1080p60"
+      },
+      {
+       "id": "7",
+       "label": "1920x1080p50"
+      },
+      {
+       "id": "8",
+       "label": "1920x1080i60"
+      },
+      {
+       "id": "9",
+       "label": "1920x1080i50"
+      },
+      {
+       "id": "10",
+       "label": "1920x1200p60rb"
+      },
+      {
+       "id": "11",
+       "label": "1360x768p60"
+      },
+      {
+       "id": "12",
+       "label": "1280x800p60"
+      },
+      {
+       "id": "13",
+       "label": "1280x720p60"
+      },
+      {
+       "id": "14",
+       "label": "1280x720p50"
+      },
+      {
+       "id": "15",
+       "label": "1024x768p60"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s mv res {{option.resolution|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "resolution": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15"
+    }
+   }
+  },
+  {
+   "id": "mv_audio_source",
+   "name": "MultiView: Set audio Source",
+   "options": [
+    {
+     "id": "audiosource",
+     "label": "Audio source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Follow Window 1 Selected Source"
+      },
+      {
+       "id": "1",
+       "label": "Input 1 Audio"
+      },
+      {
+       "id": "2",
+       "label": "Input 2 Audio"
+      },
+      {
+       "id": "3",
+       "label": "Input 3 Audio"
+      },
+      {
+       "id": "4",
+       "label": "Input 4 Audio"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "s mv output audio {{option.audiosource|map}}!\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "audiosource": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Video Routing",
+   "name": "Route 2 ",
+   "text": "Out 1: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "1",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Video Routing",
+   "name": "Route 3 ",
+   "text": "Out 1: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "2",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Video Routing",
+   "name": "Route 4 ",
+   "text": "Out 1: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "3",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Video Routing",
+   "name": "Route 5 ",
+   "text": "Out 1: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "4",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Video Routing",
+   "name": "Route 3 ",
+   "text": "Out 2: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "1",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Video Routing",
+   "name": "Route 4 ",
+   "text": "Out 2: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "2",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Video Routing",
+   "name": "Route 5 ",
+   "text": "Out 2: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "3",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Video Routing",
+   "name": "Route 6 ",
+   "text": "Out 2: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "4",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Video Routing",
+   "name": "Route 4 ",
+   "text": "Out 3: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "1",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Video Routing",
+   "name": "Route 5 ",
+   "text": "Out 3: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "2",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Video Routing",
+   "name": "Route 6 ",
+   "text": "Out 3: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "3",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Video Routing",
+   "name": "Route 7 ",
+   "text": "Out 3: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "4",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Video Routing",
+   "name": "Route 5 ",
+   "text": "Out 4: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "1",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Video Routing",
+   "name": "Route 6 ",
+   "text": "Out 4: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "2",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Video Routing",
+   "name": "Route 7 ",
+   "text": "Out 4: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "3",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Video Routing",
+   "name": "Route 8 ",
+   "text": "Out 4: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_to_output",
+    "options": {
+     "input": "4",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "16",
+   "category": "External Audio Routing",
+   "name": "Route 2 ",
+   "text": "Out 1: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "1",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "17",
+   "category": "External Audio Routing",
+   "name": "Route 3 ",
+   "text": "Out 1: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "2",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "18",
+   "category": "External Audio Routing",
+   "name": "Route 4 ",
+   "text": "Out 1: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "3",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "19",
+   "category": "External Audio Routing",
+   "name": "Route 5 ",
+   "text": "Out 1: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "4",
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "20",
+   "category": "External Audio Routing",
+   "name": "Route 3 ",
+   "text": "Out 2: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "1",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "21",
+   "category": "External Audio Routing",
+   "name": "Route 4 ",
+   "text": "Out 2: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "2",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "22",
+   "category": "External Audio Routing",
+   "name": "Route 5 ",
+   "text": "Out 2: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "3",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "23",
+   "category": "External Audio Routing",
+   "name": "Route 6 ",
+   "text": "Out 2: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "4",
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "24",
+   "category": "External Audio Routing",
+   "name": "Route 4 ",
+   "text": "Out 3: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "1",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "25",
+   "category": "External Audio Routing",
+   "name": "Route 5 ",
+   "text": "Out 3: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "2",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "26",
+   "category": "External Audio Routing",
+   "name": "Route 6 ",
+   "text": "Out 3: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "3",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "27",
+   "category": "External Audio Routing",
+   "name": "Route 7 ",
+   "text": "Out 3: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "4",
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "28",
+   "category": "External Audio Routing",
+   "name": "Route 5 ",
+   "text": "Out 4: IN 1",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "1",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "29",
+   "category": "External Audio Routing",
+   "name": "Route 6 ",
+   "text": "Out 4: IN 2",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "2",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "30",
+   "category": "External Audio Routing",
+   "name": "Route 7 ",
+   "text": "Out 4: IN 3",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "3",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "31",
+   "category": "External Audio Routing",
+   "name": "Route 8 ",
+   "text": "Out 4: IN 4",
+   "backgroundColor": "#242424",
+   "action": {
+    "definitionId": "route_input_audio_to_output_ext_audio",
+    "options": {
+     "input": "4",
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "32",
+   "category": "Device Controls",
+   "name": "Toggle Panel Lock",
+   "text": "Panel unlocked",
+   "backgroundColor": "#00ff00",
+   "action": {
+    "definitionId": "lock",
+    "options": {
+     "command": "toggle"
+    }
+   }
+  },
+  {
+   "id": "33",
+   "category": "Device Controls",
+   "name": "Toggle Power",
+   "text": "Device OFF",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "device_power",
+    "options": {
+     "power": "2"
+    }
+   }
+  },
+  {
+   "id": "34",
+   "category": "Device Controls",
+   "name": "Toggle Beep",
+   "text": "Beep OFF",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "device_beep",
+    "options": {
+     "beep": "2"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-nohassleav-videowallprocessor",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "nohassleav-videowallprocessor",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-nohassleav-videowallprocessor.git"
+ }
+}

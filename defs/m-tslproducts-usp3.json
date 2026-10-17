@@ -1,0 +1,965 @@
+{
+ "format": 1,
+ "id": "m-tslproducts-usp3",
+ "name": "TSL Products Universal Switch Panel",
+ "category": "TSL Products",
+ "version": "1.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 50001,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Model of USP Panel",
+   "type": "select",
+   "default": "usp3",
+   "choices": [
+    {
+     "id": "usp3",
+     "label": "TSL Products USP3 Panels"
+    },
+    {
+     "id": "usp_legacy",
+     "label": "DNF Controls USP-8 or USP-16 Panel"
+    }
+   ]
+  },
+  {
+   "id": "use_as_surface",
+   "label": "Use as a Satellite Surface in Companion",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "port_companion",
+   "label": "TCP Port configured for Companion Satellite (default: 16622)",
+   "type": "text",
+   "default": "16622"
+  },
+  {
+   "id": "auto_configure",
+   "label": "Auto-Configure USP Panel to work as a surface in Companion",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "already_configured",
+   "label": "Already Auto-Configured",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "rerun_configuration",
+   "label": "Re-run auto configuration of Panel upon saving module config",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "port_usp",
+   "label": "Remote Device Port as configured on USP3 Panel",
+   "type": "select",
+   "default": "50001",
+   "choices": [
+    {
+     "id": "50001",
+     "label": "Remote Device 1: 50001"
+    },
+    {
+     "id": "50002",
+     "label": "Remote Device 2: 50002"
+    },
+    {
+     "id": "50003",
+     "label": "Remote Device 3: 50003"
+    },
+    {
+     "id": "50004",
+     "label": "Remote Device 4: 50004"
+    },
+    {
+     "id": "50005",
+     "label": "Remote Device 5: 50005"
+    },
+    {
+     "id": "50006",
+     "label": "Remote Device 6: 50006"
+    },
+    {
+     "id": "50007",
+     "label": "Remote Device 7: 50007"
+    },
+    {
+     "id": "50008",
+     "label": "Remote Device 8: 50008"
+    }
+   ]
+  },
+  {
+   "id": "usp_device_id",
+   "label": "Device ID to use for Remote Device Assignment",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Device #1"
+    },
+    {
+     "id": "1",
+     "label": "Device #2"
+    },
+    {
+     "id": "2",
+     "label": "Device #3"
+    },
+    {
+     "id": "3",
+     "label": "Device #4"
+    },
+    {
+     "id": "4",
+     "label": "Device #5"
+    },
+    {
+     "id": "5",
+     "label": "Device #6"
+    },
+    {
+     "id": "6",
+     "label": "Device #7"
+    },
+    {
+     "id": "7",
+     "label": "Device #8"
+    },
+    {
+     "id": "8",
+     "label": "Device #9"
+    },
+    {
+     "id": "9",
+     "label": "Device #10"
+    },
+    {
+     "id": "10",
+     "label": "Device #11"
+    },
+    {
+     "id": "11",
+     "label": "Device #12"
+    },
+    {
+     "id": "12",
+     "label": "Device #13"
+    },
+    {
+     "id": "13",
+     "label": "Device #14"
+    },
+    {
+     "id": "14",
+     "label": "Device #15"
+    },
+    {
+     "id": "15",
+     "label": "Device #16"
+    },
+    {
+     "id": "16",
+     "label": "Device #17"
+    },
+    {
+     "id": "17",
+     "label": "Device #18"
+    },
+    {
+     "id": "18",
+     "label": "Device #19"
+    },
+    {
+     "id": "19",
+     "label": "Device #20"
+    }
+   ]
+  },
+  {
+   "id": "port_usp_legacy",
+   "label": "UDP Port (SNMP) as configured on Panel to send data back to Companion",
+   "type": "text",
+   "default": "1024"
+  },
+  {
+   "id": "font_size",
+   "label": "Preferred Font Size to use on Buttons. Remember that the amount of text that can",
+   "type": "select",
+   "default": "auto",
+   "choices": [
+    {
+     "id": "auto",
+     "label": "Auto Scale"
+    },
+    {
+     "id": "0",
+     "label": "Small"
+    },
+    {
+     "id": "1",
+     "label": "Medium"
+    },
+    {
+     "id": "2",
+     "label": "Large"
+    }
+   ]
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling - This will poll the USP panel for button states and update Compa",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "poll_interval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 50,
+   "max": 30000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging - This will log all commands sent to the USP panel and al",
+   "type": "boolean"
+  },
+  {
+   "id": "advanced_config",
+   "label": "Show Advanced Configuration Options",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "advanced_config_usp_legacy_panel_delay_time",
+   "label": "DNF Controls USP Panel Delay Time between Updates (ms)",
+   "type": "number",
+   "default": 3000,
+   "min": 100,
+   "max": 30000
+  },
+  {
+   "id": "advanced_usp_panel_default_unsupported_color",
+   "label": "USP Panel Default Unsupported Button Color",
+   "type": "select",
+   "default": "2",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Dark"
+    },
+    {
+     "id": "1",
+     "label": "Red"
+    },
+    {
+     "id": "2",
+     "label": "Green"
+    },
+    {
+     "id": "3",
+     "label": "Amber"
+    }
+   ]
+  },
+  {
+   "id": "advanced_usp_panel_default_dark_color",
+   "label": "USP Panel Replace Dark Button Color",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Leave Dark"
+    },
+    {
+     "id": "1",
+     "label": "Red"
+    },
+    {
+     "id": "2",
+     "label": "Green"
+    },
+    {
+     "id": "3",
+     "label": "Amber"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "setGPO",
+   "name": "Set GPO On/Off",
+   "options": [
+    {
+     "id": "gpo",
+     "label": "GPO Number",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "GPO 1"
+      },
+      {
+       "id": "02",
+       "label": "GPO 2"
+      },
+      {
+       "id": "03",
+       "label": "GPO 3"
+      },
+      {
+       "id": "04",
+       "label": "GPO 4"
+      },
+      {
+       "id": "05",
+       "label": "GPO 5"
+      },
+      {
+       "id": "06",
+       "label": "GPO 6"
+      },
+      {
+       "id": "07",
+       "label": "GPO 7"
+      },
+      {
+       "id": "08",
+       "label": "GPO 8"
+      },
+      {
+       "id": "09",
+       "label": "GPO 9"
+      },
+      {
+       "id": "10",
+       "label": "GPO 10"
+      },
+      {
+       "id": "11",
+       "label": "GPO 11"
+      },
+      {
+       "id": "12",
+       "label": "GPO 12"
+      },
+      {
+       "id": "13",
+       "label": "GPO 13"
+      },
+      {
+       "id": "14",
+       "label": "GPO 14"
+      },
+      {
+       "id": "15",
+       "label": "GPO 15"
+      },
+      {
+       "id": "16",
+       "label": "GPO 16"
+      }
+     ]
+    },
+    {
+     "id": "state",
+     "label": "GPO State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GPO_{{option.gpo|map}}:{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "gpo": {
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09"
+    },
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setGPOAll",
+   "name": "Set All GPO On/Off",
+   "options": [
+    {
+     "id": "state",
+     "label": "GPO State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GPO_00:{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "16",
+   "category": "GPO Control - ON",
+   "name": "GPO 1",
+   "text": "GPO 1 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "01",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "17",
+   "category": "GPO Control - ON",
+   "name": "GPO 2",
+   "text": "GPO 2 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "02",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "18",
+   "category": "GPO Control - ON",
+   "name": "GPO 3",
+   "text": "GPO 3 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "03",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "19",
+   "category": "GPO Control - ON",
+   "name": "GPO 4",
+   "text": "GPO 4 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "04",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "20",
+   "category": "GPO Control - ON",
+   "name": "GPO 5",
+   "text": "GPO 5 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "05",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "21",
+   "category": "GPO Control - ON",
+   "name": "GPO 6",
+   "text": "GPO 6 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "06",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "22",
+   "category": "GPO Control - ON",
+   "name": "GPO 7",
+   "text": "GPO 7 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "07",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "23",
+   "category": "GPO Control - ON",
+   "name": "GPO 8",
+   "text": "GPO 8 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "08",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "24",
+   "category": "GPO Control - ON",
+   "name": "GPO 9",
+   "text": "GPO 9 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "09",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "25",
+   "category": "GPO Control - ON",
+   "name": "GPO 10",
+   "text": "GPO 10 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "10",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "26",
+   "category": "GPO Control - ON",
+   "name": "GPO 11",
+   "text": "GPO 11 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "11",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "27",
+   "category": "GPO Control - ON",
+   "name": "GPO 12",
+   "text": "GPO 12 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "12",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "28",
+   "category": "GPO Control - ON",
+   "name": "GPO 13",
+   "text": "GPO 13 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "13",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "29",
+   "category": "GPO Control - ON",
+   "name": "GPO 14",
+   "text": "GPO 14 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "14",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "30",
+   "category": "GPO Control - ON",
+   "name": "GPO 15",
+   "text": "GPO 15 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "15",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "31",
+   "category": "GPO Control - ON",
+   "name": "GPO 16",
+   "text": "GPO 16 ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "16",
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "32",
+   "category": "GPO Control - ON",
+   "name": "All GPO ON",
+   "text": "All GPO ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPOAll",
+    "options": {
+     "state": "1"
+    }
+   }
+  },
+  {
+   "id": "33",
+   "category": "GPO Control - OFF",
+   "name": "GPO 1",
+   "text": "GPO 1 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "01",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "34",
+   "category": "GPO Control - OFF",
+   "name": "GPO 2",
+   "text": "GPO 2 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "02",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "35",
+   "category": "GPO Control - OFF",
+   "name": "GPO 3",
+   "text": "GPO 3 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "03",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "36",
+   "category": "GPO Control - OFF",
+   "name": "GPO 4",
+   "text": "GPO 4 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "04",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "37",
+   "category": "GPO Control - OFF",
+   "name": "GPO 5",
+   "text": "GPO 5 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "05",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "38",
+   "category": "GPO Control - OFF",
+   "name": "GPO 6",
+   "text": "GPO 6 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "06",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "39",
+   "category": "GPO Control - OFF",
+   "name": "GPO 7",
+   "text": "GPO 7 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "07",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "40",
+   "category": "GPO Control - OFF",
+   "name": "GPO 8",
+   "text": "GPO 8 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "08",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "41",
+   "category": "GPO Control - OFF",
+   "name": "GPO 9",
+   "text": "GPO 9 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "09",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "42",
+   "category": "GPO Control - OFF",
+   "name": "GPO 10",
+   "text": "GPO 10 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "10",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "43",
+   "category": "GPO Control - OFF",
+   "name": "GPO 11",
+   "text": "GPO 11 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "11",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "44",
+   "category": "GPO Control - OFF",
+   "name": "GPO 12",
+   "text": "GPO 12 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "12",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "45",
+   "category": "GPO Control - OFF",
+   "name": "GPO 13",
+   "text": "GPO 13 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "13",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "46",
+   "category": "GPO Control - OFF",
+   "name": "GPO 14",
+   "text": "GPO 14 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "14",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "47",
+   "category": "GPO Control - OFF",
+   "name": "GPO 15",
+   "text": "GPO 15 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "15",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "48",
+   "category": "GPO Control - OFF",
+   "name": "GPO 16",
+   "text": "GPO 16 OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPO",
+    "options": {
+     "gpo": "16",
+     "state": "0"
+    }
+   }
+  },
+  {
+   "id": "49",
+   "category": "GPO Control - OFF",
+   "name": "All GPO OFF",
+   "text": "All GPO OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setGPOAll",
+    "options": {
+     "state": "0"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-tslproducts-usp3",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "tslproducts-usp3",
+  "version": "1.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-tslproducts-usp3.git"
+ }
+}

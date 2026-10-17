@@ -1,0 +1,214 @@
+{
+ "format": 1,
+ "id": "m-softvelum-nimble-streamer",
+ "name": "Softvelum Nimble Streamer",
+ "category": "Softvelum",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8086",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "key",
+   "label": "Management-Token",
+   "type": "text",
+   "help": "Optional Management Token"
+  }
+ ],
+ "actions": [
+  {
+   "id": "SyncPanelSettings",
+   "name": "Sync Panel Settings",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/manage/sync_panel_settings",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "ReloadNimbleStreamerConfig",
+   "name": "Reload Nimble Streamer Config",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/manage/reload_config",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "ReloadSSLCertificates",
+   "name": "Reload Nimble Streamer SSL Certificates",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/manage/reload_ssl_certificates",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "createRTMPRepublishRule",
+   "name": "Create RTMP Re-publishing Rule",
+   "options": [
+    {
+     "id": "src_app",
+     "label": "Source App",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "src_stream",
+     "label": "Source Stream (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_addr",
+     "label": "Destination Address",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_port",
+     "label": "Destination Port",
+     "type": "number",
+     "default": 1935,
+     "min": 1,
+     "max": 65535
+    },
+    {
+     "id": "dest_app",
+     "label": "Destination App",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_stream",
+     "label": "Destination Stream",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_app_params",
+     "label": "Destination App Params",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_stream_params",
+     "label": "Destination Stream Params",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "auth_schema",
+     "label": "Auth Schema",
+     "type": "select",
+     "default": "NONE",
+     "choices": [
+      {
+       "id": "NONE",
+       "label": "None"
+      },
+      {
+       "id": "NIMBLE",
+       "label": "Nimble"
+      },
+      {
+       "id": "AKAMAI",
+       "label": "Akamai"
+      },
+      {
+       "id": "LIMELIGHT",
+       "label": "Limelight"
+      },
+      {
+       "id": "PERISCOPE",
+       "label": "Periscope"
+      }
+     ]
+    },
+    {
+     "id": "dest_login",
+     "label": "Destination Login",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "dest_password",
+     "label": "Destination Password",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "keep_src_stream_params",
+     "label": "Keep Source Stream Params",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "ssl",
+     "label": "Use SSL",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/manage/rtmp/republish",
+    "body": "{\"src_app\":\"{{option.src_app}}\",\"src_stream\":\"{{option.src_stream}}\",\"dest_addr\":\"{{option.dest_addr}}\",\"dest_port\":{{option.dest_port}},\"dest_app\":\"{{option.dest_app}}\",\"dest_stream\":\"{{option.dest_stream}}\",\"dest_app_params\":\"{{option.dest_app_params}}\",\"dest_stream_params\":\"{{option.dest_stream_params}}\",\"auth_schema\":\"{{option.auth_schema|map}}\",\"dest_login\":\"{{option.dest_login}}\",\"dest_password\":\"{{option.dest_password}}\",\"keep_src_stream_params\":{{option.keep_src_stream_params|map}}e,\"ssl\":{{option.ssl|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "auth_schema": {
+     "NONE": "NONE",
+     "NIMBLE": "NIMBLE",
+     "AKAMAI": "AKAMAI",
+     "LIMELIGHT": "LIMELIGHT",
+     "PERISCOPE": "PERISCOPE"
+    },
+    "keep_src_stream_params": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "ssl": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-softvelum-nimble-streamer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leopold Strobl"
+  }
+ ],
+ "source": {
+  "module": "softvelum-nimble-streamer",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Leopold Strobl"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-softvelum-nimble-streamer.git"
+ }
+}

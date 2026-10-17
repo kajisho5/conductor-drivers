@@ -1,0 +1,1743 @@
+{
+ "format": 1,
+ "id": "m-vicreo-hotkey",
+ "name": "VICREO Listener",
+ "category": "VICREO",
+ "version": "4.7.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 10001,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Password protected listeners",
+   "type": "text",
+   "default": ""
+  }
+ ],
+ "actions": [
+  {
+   "id": "singleKey",
+   "name": "Single key",
+   "options": [
+    {
+     "id": "singleKey",
+     "label": "Single key to send",
+     "type": "text",
+     "default": "z"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.singleKey}}\",\"type\":\"press\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "specialKey",
+   "name": "Special key",
+   "options": [
+    {
+     "id": "specialKey",
+     "label": "Special key to send",
+     "type": "select",
+     "default": "enter",
+     "choices": [
+      {
+       "id": "backspace",
+       "label": "Backspace"
+      },
+      {
+       "id": "delete",
+       "label": "Delete"
+      },
+      {
+       "id": "enter",
+       "label": "Enter"
+      },
+      {
+       "id": "tab",
+       "label": "Tab"
+      },
+      {
+       "id": "escape",
+       "label": "Esc"
+      },
+      {
+       "id": "up",
+       "label": "Arrow up"
+      },
+      {
+       "id": "down",
+       "label": "Arrow Down"
+      },
+      {
+       "id": "right",
+       "label": "Arrow Right"
+      },
+      {
+       "id": "left",
+       "label": "Arrow Left"
+      },
+      {
+       "id": "home",
+       "label": "Home"
+      },
+      {
+       "id": "end",
+       "label": "End"
+      },
+      {
+       "id": "page_up",
+       "label": "Page Up"
+      },
+      {
+       "id": "page_down",
+       "label": "Page Down"
+      },
+      {
+       "id": "F1",
+       "label": "F1"
+      },
+      {
+       "id": "F2",
+       "label": "F2"
+      },
+      {
+       "id": "F3",
+       "label": "F3"
+      },
+      {
+       "id": "F4",
+       "label": "F4"
+      },
+      {
+       "id": "F5",
+       "label": "F5"
+      },
+      {
+       "id": "F6",
+       "label": "F6"
+      },
+      {
+       "id": "F7",
+       "label": "F7"
+      },
+      {
+       "id": "F8",
+       "label": "F8"
+      },
+      {
+       "id": "F9",
+       "label": "F9"
+      },
+      {
+       "id": "F10",
+       "label": "F10"
+      },
+      {
+       "id": "F11",
+       "label": "F11"
+      },
+      {
+       "id": "F12",
+       "label": "F12"
+      },
+      {
+       "id": "F13",
+       "label": "F13"
+      },
+      {
+       "id": "F14",
+       "label": "F14"
+      },
+      {
+       "id": "F15",
+       "label": "F15"
+      },
+      {
+       "id": "F16",
+       "label": "F16"
+      },
+      {
+       "id": "F17",
+       "label": "F17"
+      },
+      {
+       "id": "F18",
+       "label": "F18"
+      },
+      {
+       "id": "F19",
+       "label": "F19"
+      },
+      {
+       "id": "F20",
+       "label": "F20"
+      },
+      {
+       "id": "F21",
+       "label": "F21"
+      },
+      {
+       "id": "F22",
+       "label": "F22"
+      },
+      {
+       "id": "F23",
+       "label": "F23"
+      },
+      {
+       "id": "F24",
+       "label": "F24"
+      },
+      {
+       "id": "command",
+       "label": "Command/Windows"
+      },
+      {
+       "id": "alt",
+       "label": "Option/alt"
+      },
+      {
+       "id": "control",
+       "label": "Ctrl"
+      },
+      {
+       "id": "shift",
+       "label": "Shift"
+      },
+      {
+       "id": "right_shift",
+       "label": "Right-Shift*"
+      },
+      {
+       "id": "space",
+       "label": "Space"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.specialKey|map}}\",\"type\":\"pressSpecial\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "specialKey": {
+     "enter": "enter",
+     "backspace": "backspace",
+     "delete": "delete",
+     "tab": "tab",
+     "escape": "escape",
+     "up": "up",
+     "down": "down",
+     "right": "right",
+     "left": "left",
+     "home": "home",
+     "end": "end",
+     "page_up": "page_up",
+     "page_down": "page_down",
+     "F1": "F1",
+     "F2": "F2",
+     "F3": "F3",
+     "F4": "F4",
+     "F5": "F5",
+     "F6": "F6",
+     "F7": "F7",
+     "F8": "F8",
+     "F9": "F9",
+     "F10": "F10",
+     "F11": "F11",
+     "F12": "F12",
+     "F13": "F13",
+     "F14": "F14",
+     "F15": "F15",
+     "F16": "F16",
+     "F17": "F17",
+     "F18": "F18",
+     "F19": "F19",
+     "F20": "F20",
+     "F21": "F21",
+     "F22": "F22",
+     "F23": "F23",
+     "F24": "F24",
+     "command": "command",
+     "alt": "alt",
+     "control": "control",
+     "shift": "shift",
+     "right_shift": "right_shift",
+     "space": "space"
+    }
+   }
+  },
+  {
+   "id": "combination",
+   "name": "Combination",
+   "options": [
+    {
+     "id": "key1",
+     "label": "Modifier",
+     "type": "select",
+     "default": "control",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "shift",
+       "label": "Shift"
+      },
+      {
+       "id": "fn",
+       "label": "fn"
+      },
+      {
+       "id": "control",
+       "label": "Ctrl"
+      },
+      {
+       "id": "command",
+       "label": "Command"
+      },
+      {
+       "id": "alt",
+       "label": "Option/alt"
+      },
+      {
+       "id": "right_shift",
+       "label": "Right Shift"
+      },
+      {
+       "id": "right_alt",
+       "label": "Right alt"
+      },
+      {
+       "id": "left_ctrl",
+       "label": "Left ctrl (Windows only)"
+      },
+      {
+       "id": "right_ctrl",
+       "label": "Right ctrl (Windows only)"
+      }
+     ]
+    },
+    {
+     "id": "key2",
+     "label": "(Special) Key",
+     "type": "text",
+     "default": "c"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.key2}}\",\"type\":\"combination\",\"modifiers\":[\"{{option.key1|map}}\"],\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "key1": {
+     "control": "control",
+     "none": "none",
+     "shift": "shift",
+     "fn": "fn",
+     "command": "command",
+     "alt": "alt",
+     "right_shift": "right_shift",
+     "right_alt": "right_alt",
+     "left_ctrl": "left_ctrl",
+     "right_ctrl": "right_ctrl"
+    }
+   }
+  },
+  {
+   "id": "trio",
+   "name": "Three keys (pro-action)",
+   "options": [
+    {
+     "id": "key1",
+     "label": "First modifier",
+     "type": "select",
+     "default": "control",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "shift",
+       "label": "Shift"
+      },
+      {
+       "id": "fn",
+       "label": "fn"
+      },
+      {
+       "id": "control",
+       "label": "Ctrl"
+      },
+      {
+       "id": "command",
+       "label": "Command"
+      },
+      {
+       "id": "alt",
+       "label": "Option/alt"
+      },
+      {
+       "id": "right_shift",
+       "label": "Right Shift"
+      },
+      {
+       "id": "right_alt",
+       "label": "Right alt"
+      },
+      {
+       "id": "left_ctrl",
+       "label": "Left ctrl (Windows only)"
+      },
+      {
+       "id": "right_ctrl",
+       "label": "Right ctrl (Windows only)"
+      }
+     ]
+    },
+    {
+     "id": "key2",
+     "label": "Second modifier",
+     "type": "select",
+     "default": "shift",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "shift",
+       "label": "Shift"
+      },
+      {
+       "id": "fn",
+       "label": "fn"
+      },
+      {
+       "id": "control",
+       "label": "Ctrl"
+      },
+      {
+       "id": "command",
+       "label": "Command"
+      },
+      {
+       "id": "alt",
+       "label": "Option/alt"
+      },
+      {
+       "id": "right_shift",
+       "label": "Right Shift"
+      },
+      {
+       "id": "right_alt",
+       "label": "Right alt"
+      },
+      {
+       "id": "left_ctrl",
+       "label": "Left ctrl (Windows only)"
+      },
+      {
+       "id": "right_ctrl",
+       "label": "Right ctrl (Windows only)"
+      }
+     ]
+    },
+    {
+     "id": "key3",
+     "label": "(Special) Key",
+     "type": "text",
+     "default": "a"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.key3}}\",\"type\":\"trio\",\"modifiers\":[\"{{option.key2|map}}\",\"{{option.key1|map}}\"],\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "key2": {
+     "shift": "shift",
+     "none": "none",
+     "fn": "fn",
+     "control": "control",
+     "command": "command",
+     "alt": "alt",
+     "right_shift": "right_shift",
+     "right_alt": "right_alt",
+     "left_ctrl": "left_ctrl",
+     "right_ctrl": "right_ctrl"
+    },
+    "key1": {
+     "control": "control",
+     "none": "none",
+     "shift": "shift",
+     "fn": "fn",
+     "command": "command",
+     "alt": "alt",
+     "right_shift": "right_shift",
+     "right_alt": "right_alt",
+     "left_ctrl": "left_ctrl",
+     "right_ctrl": "right_ctrl"
+    }
+   }
+  },
+  {
+   "id": "quartet",
+   "name": "Four keys (pro-action)",
+   "options": [
+    {
+     "id": "key1",
+     "label": "First modifier",
+     "type": "select",
+     "default": "control",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "shift",
+       "label": "Shift"
+      },
+      {
+       "id": "fn",
+       "label": "fn"
+      },
+      {
+       "id": "control",
+       "label": "Ctrl"
+      },
+      {
+       "id": "command",
+       "label": "Command"
+      },
+      {
+       "id": "alt",
+       "label": "Option/alt"
+      },
+      {
+       "id": "right_shift",
+       "label": "Right Shift"
+      },
+      {
+       "id": "right_alt",
+       "label": "Right alt"
+      },
+      {
+       "id": "left_ctrl",
+       "label": "Left ctrl (Windows only)"
+      },
+      {
+       "id": "right_ctrl",
+       "label": "Right ctrl (Windows only)"
+      }
+     ]
+    },
+    {
+     "id": "key2",
+     "label": "Second modifier",
+     "type": "select",
+     "default": "shift",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "shift",
+       "label": "Shift"
+      },
+      {
+       "id": "fn",
+       "label": "fn"
+      },
+      {
+       "id": "control",
+       "label": "Ctrl"
+      },
+      {
+       "id": "command",
+       "label": "Command"
+      },
+      {
+       "id": "alt",
+       "label": "Option/alt"
+      },
+      {
+       "id": "right_shift",
+       "label": "Right Shift"
+      },
+      {
+       "id": "right_alt",
+       "label": "Right alt"
+      },
+      {
+       "id": "left_ctrl",
+       "label": "Left ctrl (Windows only)"
+      },
+      {
+       "id": "right_ctrl",
+       "label": "Right ctrl (Windows only)"
+      }
+     ]
+    },
+    {
+     "id": "key3",
+     "label": "Third modifier",
+     "type": "select",
+     "default": "alt",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "shift",
+       "label": "Shift"
+      },
+      {
+       "id": "fn",
+       "label": "fn"
+      },
+      {
+       "id": "control",
+       "label": "Ctrl"
+      },
+      {
+       "id": "command",
+       "label": "Command"
+      },
+      {
+       "id": "alt",
+       "label": "Option/alt"
+      },
+      {
+       "id": "right_shift",
+       "label": "Right Shift"
+      },
+      {
+       "id": "right_alt",
+       "label": "Right alt"
+      },
+      {
+       "id": "left_ctrl",
+       "label": "Left ctrl (Windows only)"
+      },
+      {
+       "id": "right_ctrl",
+       "label": "Right ctrl (Windows only)"
+      }
+     ]
+    },
+    {
+     "id": "key4",
+     "label": "(Special) Key",
+     "type": "text",
+     "default": "a"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.key4}}\",\"type\":\"quartet\",\"modifiers\":[\"{{option.key3|map}}\",\"{{option.key2|map}}\",\"{{option.key1|map}}\"],\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "key3": {
+     "alt": "alt",
+     "none": "none",
+     "shift": "shift",
+     "fn": "fn",
+     "control": "control",
+     "command": "command",
+     "right_shift": "right_shift",
+     "right_alt": "right_alt",
+     "left_ctrl": "left_ctrl",
+     "right_ctrl": "right_ctrl"
+    },
+    "key2": {
+     "shift": "shift",
+     "none": "none",
+     "fn": "fn",
+     "control": "control",
+     "command": "command",
+     "alt": "alt",
+     "right_shift": "right_shift",
+     "right_alt": "right_alt",
+     "left_ctrl": "left_ctrl",
+     "right_ctrl": "right_ctrl"
+    },
+    "key1": {
+     "control": "control",
+     "none": "none",
+     "shift": "shift",
+     "fn": "fn",
+     "command": "command",
+     "alt": "alt",
+     "right_shift": "right_shift",
+     "right_alt": "right_alt",
+     "left_ctrl": "left_ctrl",
+     "right_ctrl": "right_ctrl"
+    }
+   }
+  },
+  {
+   "id": "press",
+   "name": "Key press, down (pro-action)",
+   "options": [
+    {
+     "id": "keyPress",
+     "label": "Key to press",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.keyPress}}\",\"type\":\"down\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "release",
+   "name": "Key release, up (pro-action)",
+   "options": [
+    {
+     "id": "keyRelease",
+     "label": "Key to release",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.keyRelease}}\",\"type\":\"up\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mousePosition",
+   "name": "Change mouse position (pro-action)",
+   "options": [
+    {
+     "id": "x",
+     "label": "X-coordinate",
+     "type": "text",
+     "default": 100
+    },
+    {
+     "id": "y",
+     "label": "Y-coordinate",
+     "type": "text",
+     "default": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mousePosition\",\"x\":\"{{option.x}}\",\"y\":\"{{option.y}}\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mouseClick",
+   "name": "Click the mouse (pro-action)",
+   "options": [
+    {
+     "id": "button",
+     "label": "Which button",
+     "type": "select",
+     "default": "left",
+     "choices": [
+      {
+       "id": "left",
+       "label": "Left"
+      },
+      {
+       "id": "right",
+       "label": "Right"
+      },
+      {
+       "id": "middle",
+       "label": "Middle"
+      }
+     ]
+    },
+    {
+     "id": "double",
+     "label": "Double click?",
+     "type": "select",
+     "default": "false",
+     "choices": [
+      {
+       "id": "false",
+       "label": "Single click"
+      },
+      {
+       "id": "true",
+       "label": "Double click"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mouseClick\",\"button\":\"{{option.button|map}}\",\"double\":\"{{option.double|map}}e\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "button": {
+     "left": "left",
+     "right": "right",
+     "middle": "middle"
+    },
+    "double": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "mouseClickHold",
+   "name": "Hold mouse button down (pro-action)",
+   "options": [
+    {
+     "id": "button",
+     "label": "Which button",
+     "type": "select",
+     "default": "left",
+     "choices": [
+      {
+       "id": "left",
+       "label": "Left"
+      },
+      {
+       "id": "right",
+       "label": "Right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mouseClickHold\",\"button\":\"{{option.button|map}}t\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "button": {
+     "left": "lef",
+     "right": "righ"
+    }
+   }
+  },
+  {
+   "id": "mouseClickRelease",
+   "name": "Release mouse button (pro-action)",
+   "options": [
+    {
+     "id": "button",
+     "label": "Which button",
+     "type": "select",
+     "default": "left",
+     "choices": [
+      {
+       "id": "left",
+       "label": "Left"
+      },
+      {
+       "id": "right",
+       "label": "Right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mouseClickRelease\",\"button\":\"{{option.button|map}}t\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "button": {
+     "left": "lef",
+     "right": "righ"
+    }
+   }
+  },
+  {
+   "id": "mouseScroll",
+   "name": "Scroll the mouse (pro-action)",
+   "options": [
+    {
+     "id": "x_axis",
+     "label": "x-axis",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100
+    },
+    {
+     "id": "y_axis",
+     "label": "y-axis",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mouseScroll\",\"x\":{{option.x_axis}},\"y\":{{option.y_axis}},\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "getMousePosition",
+   "name": "Get the position of the mouse on screen",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"getMousePosition\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "msg",
+   "name": "Send stringmessage",
+   "options": [
+    {
+     "id": "msg",
+     "label": "Type message (variables allowed)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"string\",\"msg\":\"{{option.msg}}\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setLicenseKey",
+   "name": "Set License Key",
+   "options": [
+    {
+     "id": "license",
+     "label": "Set License (variables allowed)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"license\",\"license\":\"{{option.license}}\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "shell",
+   "name": "Send shell command (pro-action)",
+   "options": [
+    {
+     "id": "shell",
+     "label": "Type command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"shell\",\"shell\":\"{{option.shell}}\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "file",
+   "name": "Open a file (pro-action)",
+   "options": [
+    {
+     "id": "file",
+     "label": "Complete file path, surround by \" (read help file)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"file\",\"path\":\"{{option.file}}\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "specialKeyOS",
+   "name": "special key OS dependent (pro-action)",
+   "options": [
+    {
+     "id": "specialKey",
+     "label": "Special key to send",
+     "type": "select",
+     "default": "audio_mute",
+     "choices": [
+      {
+       "id": "audio_mute",
+       "label": "Audio mute (toggle)"
+      },
+      {
+       "id": "audio_vol_down",
+       "label": "Audio volume down"
+      },
+      {
+       "id": "audio_vol_up",
+       "label": "Audio volume up"
+      },
+      {
+       "id": "audio_play",
+       "label": "Play"
+      },
+      {
+       "id": "audio_stop",
+       "label": "Stop"
+      },
+      {
+       "id": "audio_pause",
+       "label": "Pause"
+      },
+      {
+       "id": "audio_prev",
+       "label": "Previous track"
+      },
+      {
+       "id": "audio_next",
+       "label": "Next track"
+      },
+      {
+       "id": "numpad_0",
+       "label": "Numpad 0 (No Linux)"
+      },
+      {
+       "id": "numpad_1",
+       "label": "Numpad 1 (No Linux)"
+      },
+      {
+       "id": "numpad_2",
+       "label": "Numpad 2 (No Linux)"
+      },
+      {
+       "id": "numpad_3",
+       "label": "Numpad 3 (No Linux)"
+      },
+      {
+       "id": "numpad_4",
+       "label": "Numpad 4 (No Linux)"
+      },
+      {
+       "id": "numpad_5",
+       "label": "Numpad 5 (No Linux)"
+      },
+      {
+       "id": "numpad_6",
+       "label": "Numpad 6 (No Linux)"
+      },
+      {
+       "id": "numpad_7",
+       "label": "Numpad 7 (No Linux)"
+      },
+      {
+       "id": "numpad_8",
+       "label": "Numpad 8 (No Linux)"
+      },
+      {
+       "id": "numpad_9",
+       "label": "Numpad 9 (No Linux)"
+      },
+      {
+       "id": "lights_mon_up",
+       "label": "Monitor brightness up (Only Mac)"
+      },
+      {
+       "id": "lights_mon_down",
+       "label": "Monitor brightness down (Only Mac)"
+      },
+      {
+       "id": "printscreen",
+       "label": "Printscreen (No Mac)*"
+      },
+      {
+       "id": "insert",
+       "label": "Insert (no Mac)*"
+      },
+      {
+       "id": "lights_kbd_toggle",
+       "label": "Toggle keyboard light on/off (Only Mac)*"
+      },
+      {
+       "id": "lights_kbd_up",
+       "label": "Keyboard light up (Only Mac)"
+      },
+      {
+       "id": "leftmouse",
+       "label": "Left mouse click"
+      },
+      {
+       "id": "rightmouse",
+       "label": "Right mouse click"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"key\":\"{{option.specialKey|map}}\",\"type\":\"pressSpecial\",\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "specialKey": {
+     "audio_mute": "audio_mute",
+     "audio_vol_down": "audio_vol_down",
+     "audio_vol_up": "audio_vol_up",
+     "audio_play": "audio_play",
+     "audio_stop": "audio_stop",
+     "audio_pause": "audio_pause",
+     "audio_prev": "audio_prev",
+     "audio_next": "audio_next",
+     "numpad_0": "numpad_0",
+     "numpad_1": "numpad_1",
+     "numpad_2": "numpad_2",
+     "numpad_3": "numpad_3",
+     "numpad_4": "numpad_4",
+     "numpad_5": "numpad_5",
+     "numpad_6": "numpad_6",
+     "numpad_7": "numpad_7",
+     "numpad_8": "numpad_8",
+     "numpad_9": "numpad_9",
+     "lights_mon_up": "lights_mon_up",
+     "lights_mon_down": "lights_mon_down",
+     "printscreen": "printscreen",
+     "insert": "insert",
+     "lights_kbd_toggle": "lights_kbd_toggle",
+     "lights_kbd_up": "lights_kbd_up",
+     "leftmouse": "leftmouse",
+     "rightmouse": "rightmouse"
+    }
+   }
+  },
+  {
+   "id": "subscribe",
+   "name": "Subscribe to data (pro-action)",
+   "options": [
+    {
+     "id": "subscribe",
+     "label": "Subscribe",
+     "type": "select",
+     "default": "subscribe",
+     "choices": [
+      {
+       "id": "subscribe",
+       "label": "Subscribe"
+      },
+      {
+       "id": "unsubscribe",
+       "label": "Unsubscribe"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Object",
+     "type": "select",
+     "default": "mousePosition",
+     "choices": [
+      {
+       "id": "mousePosition",
+       "label": "mouse position"
+      }
+     ]
+    },
+    {
+     "id": "interval",
+     "label": "Interval",
+     "type": "number",
+     "default": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"{{option.subscribe|map}}subscribe\",\"name\":\"mousePosition\",\"interval\":{{option.interval}},\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "subscribe": {
+     "subscribe": "",
+     "unsubscribe": "un"
+    }
+   }
+  },
+  {
+   "id": "custom",
+   "name": "Custom action (pro-action)",
+   "options": [
+    {
+     "id": "custom",
+     "label": "Custom message",
+     "type": "text",
+     "default": "{\"type\":}"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"password\":\"d41d8cd98f00b204e9800998ecf8427e\"}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "CommandTab",
+   "category": "OSX",
+   "name": "CommandTab",
+   "text": "Command + Tab (MAC)",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "command",
+     "key2": "tab"
+    }
+   }
+  },
+  {
+   "id": "commandX",
+   "category": "OSX",
+   "name": "commandX",
+   "text": "Command + x",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "Command",
+     "key2": "x"
+    }
+   }
+  },
+  {
+   "id": "commandC",
+   "category": "OSX",
+   "name": "commandC",
+   "text": "Command + c",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "Command",
+     "key2": "c"
+    }
+   }
+  },
+  {
+   "id": "commandV",
+   "category": "OSX",
+   "name": "commandV",
+   "text": "Command + v",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "Command",
+     "key2": "v"
+    }
+   }
+  },
+  {
+   "id": "altTab",
+   "category": "Windows",
+   "name": "altTab",
+   "text": "Combination Example",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "alt",
+     "key2": "tab"
+    }
+   }
+  },
+  {
+   "id": "controlAltTab",
+   "category": "Windows",
+   "name": "controlAltTab",
+   "text": "Trio example",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "trio",
+    "options": {
+     "key1": "control",
+     "key2": "alt",
+     "key3": "tab"
+    }
+   }
+  },
+  {
+   "id": "controlX",
+   "category": "Windows",
+   "name": "controlX",
+   "text": "Ctrl + x",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "control",
+     "key2": "x"
+    }
+   }
+  },
+  {
+   "id": "controlC",
+   "category": "Windows",
+   "name": "controlC",
+   "text": "Ctrl + c",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "control",
+     "key2": "c"
+    }
+   }
+  },
+  {
+   "id": "controlV",
+   "category": "Windows",
+   "name": "controlV",
+   "text": "Ctrl + v",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "control",
+     "key2": "v"
+    }
+   }
+  },
+  {
+   "id": "openWordpad",
+   "category": "Windows",
+   "name": "openWordpad",
+   "text": "Open Wordpad",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "file",
+    "options": {
+     "file": "\"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Wordpad.lnk\""
+    }
+   }
+  },
+  {
+   "id": "openNotepad",
+   "category": "OSX",
+   "name": "openNotepad",
+   "text": "Open Notepad",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "file",
+    "options": {
+     "file": "\"/System/Applications/Notes.app\""
+    }
+   }
+  },
+  {
+   "id": "nextSlide",
+   "category": "Powerpoint for mac",
+   "name": "nextSlide",
+   "text": "Next\nSlide",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "specialKey",
+    "options": {
+     "specialKey": "space"
+    }
+   }
+  },
+  {
+   "id": "previousSlide",
+   "category": "Powerpoint for mac",
+   "name": "previousSlide",
+   "text": "Previous\nSlide",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "specialKey",
+    "options": {
+     "specialKey": "left"
+    }
+   }
+  },
+  {
+   "id": "startFromTop",
+   "category": "Powerpoint for mac",
+   "name": "startFromTop",
+   "text": "Start\nfrom top",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "trio",
+    "options": {
+     "key1": "shift",
+     "key2": "command",
+     "key3": "enter"
+    }
+   }
+  },
+  {
+   "id": "startFromCurrent",
+   "category": "Powerpoint for mac",
+   "name": "startFromCurrent",
+   "text": "Start\nfrom current",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "combination",
+    "options": {
+     "key1": "command",
+     "key2": "enter"
+    }
+   }
+  },
+  {
+   "id": "quitSlideshow",
+   "category": "Powerpoint for mac",
+   "name": "quitSlideshow",
+   "text": "Quit\nslideshow",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "specialKey",
+    "options": {
+     "specialKey": "escape"
+    }
+   }
+  },
+  {
+   "id": "startFromCurrentOSX",
+   "category": "Keynote",
+   "name": "startFromCurrentOSX",
+   "text": "Start\nfrom current",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "trio",
+    "options": {
+     "key1": "alt",
+     "key2": "command",
+     "key3": "p"
+    }
+   }
+  },
+  {
+   "id": "nextSlideOSX",
+   "category": "Keynote",
+   "name": "nextSlideOSX",
+   "text": "Next\nSlide",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "specialKey",
+    "options": {
+     "specialKey": "space"
+    }
+   }
+  },
+  {
+   "id": "previousSlideOSX",
+   "category": "Keynote",
+   "name": "previousSlideOSX",
+   "text": "Previous\nSlide",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "specialKey",
+    "options": {
+     "specialKey": "left"
+    }
+   }
+  },
+  {
+   "id": "quitSlideshowOSX",
+   "category": "Keynote",
+   "name": "quitSlideshowOSX",
+   "text": "Quit\nslideshow",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "specialKey",
+    "options": {
+     "specialKey": "escape"
+    }
+   }
+  },
+  {
+   "id": "shutdownWindows",
+   "category": "Windows",
+   "name": "shutdownWindows",
+   "text": "Shutdown",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "shell",
+    "options": {
+     "shell": "shutdown /sg"
+    }
+   }
+  },
+  {
+   "id": "rebootWindows",
+   "category": "Windows",
+   "name": "rebootWindows",
+   "text": "Reboot",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "shell",
+    "options": {
+     "shell": "shutdown /rg"
+    }
+   }
+  },
+  {
+   "id": "screenshotOSX5",
+   "category": "OSX",
+   "name": "screenshotOSX5",
+   "text": "Screenshot (full)",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "shell",
+    "options": {
+     "shell": "screencapture ~/Desktop/screenshot.png"
+    }
+   }
+  },
+  {
+   "id": "screenshotOSX4",
+   "category": "OSX",
+   "name": "screenshotOSX4",
+   "text": "Screenshot (part)",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "shell",
+    "options": {
+     "shell": "screencapture -i ~/Desktop/screenshot.png"
+    }
+   }
+  },
+  {
+   "id": "mute",
+   "category": "Audio",
+   "name": "mute",
+   "text": "Mute (toggle)",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "specialKeyOS",
+    "options": {
+     "specialKey": "audio_mute"
+    }
+   }
+  },
+  {
+   "id": "volumeUp",
+   "category": "Audio",
+   "name": "volumeUp",
+   "text": "Volume Up",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "specialKeyOS",
+    "options": {
+     "specialKey": "audio_vol_up"
+    }
+   }
+  },
+  {
+   "id": "volumeDown",
+   "category": "Audio",
+   "name": "volumeDown",
+   "text": "Volume Down",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "specialKeyOS",
+    "options": {
+     "specialKey": "audio_vol_down"
+    }
+   }
+  },
+  {
+   "id": "clickLeft",
+   "category": "Mouse",
+   "name": "clickLeft",
+   "text": "Click left",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "mouseClick",
+    "options": {
+     "button": "left",
+     "double": "false"
+    }
+   }
+  },
+  {
+   "id": "clickHold",
+   "category": "Mouse",
+   "name": "clickHold",
+   "text": "Click and Hold mouse",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "mouseClickHold",
+    "options": {
+     "button": "right"
+    }
+   }
+  },
+  {
+   "id": "clickRelease",
+   "category": "Mouse",
+   "name": "clickRelease",
+   "text": "Click and Release mouse",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "mouseClickRelease",
+    "options": {
+     "button": "right"
+    }
+   }
+  },
+  {
+   "id": "clickRight",
+   "category": "Mouse",
+   "name": "clickRight",
+   "text": "Click right",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "mouseClick",
+    "options": {
+     "button": "right",
+     "double": "false"
+    }
+   }
+  },
+  {
+   "id": "setMousePosition",
+   "category": "Mouse",
+   "name": "setMousePosition",
+   "text": "Set Mouse\nposition",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "mousePosition",
+    "options": {
+     "x": 500,
+     "y": 500
+    }
+   }
+  },
+  {
+   "id": "getMousePosition",
+   "category": "Mouse",
+   "name": "getMousePosition",
+   "text": "Get Mouse\nposition",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "getMousePosition",
+    "options": {}
+   }
+  },
+  {
+   "id": "mouseScroll_up",
+   "category": "Mouse",
+   "name": "mouseScroll",
+   "text": "Scroll up",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "mouseScroll",
+    "options": {
+     "x_axis": 0,
+     "y_axis": 50
+    }
+   }
+  },
+  {
+   "id": "mouseScroll_down",
+   "category": "Mouse",
+   "name": "mouseScroll",
+   "text": "Scroll down",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "mouseScroll",
+    "options": {
+     "x_axis": 0,
+     "y_axis": -50
+    }
+   }
+  },
+  {
+   "id": "subscribeToPosition",
+   "category": "Mouse",
+   "name": "subscribeToPosition",
+   "text": "Subscribe\nto position",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "subscribe",
+    "options": {
+     "subscribe": "subscribe",
+     "name": "mousePosition",
+     "interval": 1000
+    }
+   }
+  },
+  {
+   "id": "unsubscribe",
+   "category": "Mouse",
+   "name": "unsubscribe",
+   "text": "Unsubscribe\nto position",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "subscribe",
+    "options": {
+     "subscribe": "unsubscribe",
+     "name": "mousePosition",
+     "interval": 1000
+    }
+   }
+  },
+  {
+   "id": "license",
+   "category": "Misc",
+   "name": "license",
+   "text": "Set license key",
+   "backgroundColor": "#3333c8",
+   "action": {
+    "definitionId": "setLicenseKey",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-vicreo-hotkey",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "vicreo-hotkey",
+  "version": "4.7.3",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-vicreo-hotkey.git"
+ }
+}

@@ -1,0 +1,734 @@
+{
+ "format": 1,
+ "id": "m-shure-mxw",
+ "name": "Shure Microflex (MXW)",
+ "category": "Shure",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelID",
+   "label": "Model Type",
+   "type": "select",
+   "default": "mxwapt8",
+   "choices": [
+    {
+     "id": "mxwani4",
+     "label": "MXWANI4 Quad Receiver"
+    },
+    {
+     "id": "mxwani8",
+     "label": "MXWANI8 Octo Receiver"
+    },
+    {
+     "id": "mxwapt2",
+     "label": "MXWAPT2 Dual Access Point"
+    },
+    {
+     "id": "mxwapt4",
+     "label": "MXWAPT4 Quad Access Point"
+    },
+    {
+     "id": "mxwapt8",
+     "label": "MXWAPT8 Octo Access Point"
+    }
+   ]
+  },
+  {
+   "id": "meteringOn",
+   "label": "Enable Metering?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "meteringInterval",
+   "label": "Metering Interval (in ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 500,
+   "max": 99999
+  },
+  {
+   "id": "variableFormat",
+   "label": "Variable Format",
+   "type": "select",
+   "default": "units",
+   "choices": [
+    {
+     "id": "units",
+     "label": "Include Units"
+    },
+    {
+     "id": "numeric",
+     "label": "Numeric Only"
+    }
+   ],
+   "help": "Changing this setting will apply to new values received.  To refresh all variables with the new setting, disable and re-enable the connection after saving these settings."
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_channel_name",
+   "name": "Set channel name",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name (31 characters max)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} CHAN_NAME {{{option.name}}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "channel_setaudiogain",
+   "name": "Set audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Channels"
+      },
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -25,
+     "max": 15
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN {{option.gain|lin:1:25}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "channel_increasegain",
+   "name": "Increase audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Channels"
+      },
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 40
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN INC {{option.gain}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "channel_decreasegain",
+   "name": "Decrease audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Channels"
+      },
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 40
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN DEC {{option.gain}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "microphone_setaudiogain",
+   "name": "Set audio gain of microphone",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Channels"
+      },
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -25,
+     "max": 15
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET undefined AUDIO_GAIN {{option.gain|lin:1:25}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "microphone_increasegain",
+   "name": "Increase audio gain of microphone",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Channels"
+      },
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 40
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET undefined AUDIO_GAIN INC {{option.gain}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "microphone_decreasegain",
+   "name": "Decrease audio gain of microphone",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Channels"
+      },
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 40
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET undefined AUDIO_GAIN DEC {{option.gain}} >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "flash_lights",
+   "name": "Flash lights on receiver",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH ON >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "flash_channel",
+   "name": "Flash lights on receiver channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} FLASH ON >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "unlink_channel",
+   "name": "Unlink any mic in any charger from any APT",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Channels"
+      },
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} UNLINK >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-mwx",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "shure-mxw",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-mwx.git"
+ }
+}

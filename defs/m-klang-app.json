@@ -1,0 +1,264 @@
+{
+ "format": 1,
+ "id": "m-klang-app",
+ "name": "Klang App",
+ "category": "Klang",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9111,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "type",
+   "label": "Klang device",
+   "type": "select",
+   "default": "vokal",
+   "choices": [
+    {
+     "id": "vokal",
+     "label": "KLANG:vokal"
+    },
+    {
+     "id": "konductor",
+     "label": "KLANG:konductor"
+    },
+    {
+     "id": "dmi",
+     "label": "DMI-KLANG"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "Actions_ChangeUser",
+   "name": "Change User (Mix)",
+   "options": [
+    {
+     "id": "mix",
+     "label": "Mix number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mix 1"
+      },
+      {
+       "id": "2",
+       "label": "Mix 2"
+      },
+      {
+       "id": "3",
+       "label": "Mix 3"
+      },
+      {
+       "id": "4",
+       "label": "Mix 4"
+      },
+      {
+       "id": "5",
+       "label": "Mix 5"
+      },
+      {
+       "id": "6",
+       "label": "Mix 6"
+      },
+      {
+       "id": "7",
+       "label": "Mix 7"
+      },
+      {
+       "id": "8",
+       "label": "Mix 8"
+      },
+      {
+       "id": "9",
+       "label": "Mix 9"
+      },
+      {
+       "id": "10",
+       "label": "Mix 10"
+      },
+      {
+       "id": "11",
+       "label": "Mix 11"
+      },
+      {
+       "id": "12",
+       "label": "Mix 12"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/screen/user",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mix|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mix": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12"
+    }
+   }
+  },
+  {
+   "id": "Actions_FaderView",
+   "name": "Switch to Fader-View",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/screen/FADERS1",
+    "args": []
+   }
+  },
+  {
+   "id": "Actions_GroupView",
+   "name": "Switch to Group-View",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/screen/FADERS2",
+    "args": []
+   }
+  },
+  {
+   "id": "Actions_StageViewOrbit",
+   "name": "Switch to Stage-View (Orbit)",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/screen/STAGE1",
+    "args": []
+   }
+  },
+  {
+   "id": "Actions_StageViewLandscape",
+   "name": "Switch to Stage-View (Landscape)",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/screen/STAGE2",
+    "args": []
+   }
+  },
+  {
+   "id": "Actions_MetersView",
+   "name": "Switch to Meters-View",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/screen/METERS",
+    "args": []
+   }
+  },
+  {
+   "id": "Actions_ConfigView",
+   "name": "Switch to Config-View",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/screen/CONFIG",
+    "args": []
+   }
+  },
+  {
+   "id": "Actions_UserMode",
+   "name": "Change App User-Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "40",
+     "choices": [
+      {
+       "id": "10",
+       "label": "MUSICIAN"
+      },
+      {
+       "id": "20",
+       "label": "PMM"
+      },
+      {
+       "id": "30",
+       "label": "TECHNICIAN"
+      },
+      {
+       "id": "40",
+       "label": "ADMIN"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/Ka/control/mode",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mode|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mode": {
+     "10": "10",
+     "20": "20",
+     "30": "30",
+     "40": "40"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-klang-app",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Pål-Magnus Slåtto"
+  }
+ ],
+ "source": {
+  "module": "klang-app",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Pål-Magnus Slåtto"
+  ],
+  "repository": "https://github.com/bitfocus/companion-module-klang-app.git"
+ }
+}

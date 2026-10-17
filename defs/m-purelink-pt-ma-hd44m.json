@@ -1,0 +1,935 @@
+{
+ "format": 1,
+ "id": "m-purelink-pt-ma-hd44m",
+ "name": "purelink PT-MA-HD44M",
+ "category": "purelink",
+ "version": "1.0.4",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "timeout",
+   "label": "Send Command Timeout (in ms)",
+   "type": "number",
+   "default": 100,
+   "min": 5,
+   "max": 500
+  }
+ ],
+ "actions": [
+  {
+   "id": "setCrosspoint",
+   "name": "Set crosspoint",
+   "options": [
+    {
+     "id": "out",
+     "label": "OUTPUT",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Output #1"
+      },
+      {
+       "id": "2",
+       "label": "Output #2"
+      },
+      {
+       "id": "3",
+       "label": "Output #3"
+      },
+      {
+       "id": "4",
+       "label": "Output #4"
+      },
+      {
+       "id": "0",
+       "label": "All Outputs"
+      }
+     ]
+    },
+    {
+     "id": "ipt",
+     "label": "INPUT",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Input #1"
+      },
+      {
+       "id": "2",
+       "label": "Input #2"
+      },
+      {
+       "id": "3",
+       "label": "Input #3"
+      },
+      {
+       "id": "4",
+       "label": "Input #4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#video_d out{{option.out|map}} matrix={{option.ipt|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "out": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "ipt": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "recallPreset",
+   "name": "Preset - Recall",
+   "options": [
+    {
+     "id": "pst",
+     "label": "PRESET",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset #1"
+      },
+      {
+       "id": "2",
+       "label": "Preset #2"
+      },
+      {
+       "id": "3",
+       "label": "Preset #3"
+      },
+      {
+       "id": "4",
+       "label": "Preset #4"
+      },
+      {
+       "id": "5",
+       "label": "Preset #5"
+      },
+      {
+       "id": "6",
+       "label": "Preset #6"
+      },
+      {
+       "id": "7",
+       "label": "Preset #7"
+      },
+      {
+       "id": "8",
+       "label": "Preset #8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#preset:{{option.pst|map}} exe=0\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pst": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "savePreset",
+   "name": "Preset - Save",
+   "options": [
+    {
+     "id": "pst",
+     "label": "PRESET",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset #1"
+      },
+      {
+       "id": "2",
+       "label": "Preset #2"
+      },
+      {
+       "id": "3",
+       "label": "Preset #3"
+      },
+      {
+       "id": "4",
+       "label": "Preset #4"
+      },
+      {
+       "id": "5",
+       "label": "Preset #5"
+      },
+      {
+       "id": "6",
+       "label": "Preset #6"
+      },
+      {
+       "id": "7",
+       "label": "Preset #7"
+      },
+      {
+       "id": "8",
+       "label": "Preset #8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#preset:{{option.pst|map}} exe=1\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pst": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "clearPreset",
+   "name": "Preset - Clear",
+   "options": [
+    {
+     "id": "pst",
+     "label": "PRESET",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset #1"
+      },
+      {
+       "id": "2",
+       "label": "Preset #2"
+      },
+      {
+       "id": "3",
+       "label": "Preset #3"
+      },
+      {
+       "id": "4",
+       "label": "Preset #4"
+      },
+      {
+       "id": "5",
+       "label": "Preset #5"
+      },
+      {
+       "id": "6",
+       "label": "Preset #6"
+      },
+      {
+       "id": "7",
+       "label": "Preset #7"
+      },
+      {
+       "id": "8",
+       "label": "Preset #8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "#preset:{{option.pst|map}} exe=2\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "pst": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "sendCommand",
+   "name": "Send Command",
+   "options": [
+    {
+     "id": "cmd",
+     "label": "Command:",
+     "type": "text",
+     "default": "",
+     "help": "Use %hh to insert Hex codes\nObsolete, use Send HEX command instead"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.cmd}}\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "xpt_1_1",
+   "category": "Output #1 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "1",
+     "ipt": "1"
+    }
+   }
+  },
+  {
+   "id": "xpt_1_2",
+   "category": "Output #1 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "1",
+     "ipt": "2"
+    }
+   }
+  },
+  {
+   "id": "xpt_1_3",
+   "category": "Output #1 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "1",
+     "ipt": "3"
+    }
+   }
+  },
+  {
+   "id": "xpt_1_4",
+   "category": "Output #1 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "1",
+     "ipt": "4"
+    }
+   }
+  },
+  {
+   "id": "xpt_2_1",
+   "category": "Output #2 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "2",
+     "ipt": "1"
+    }
+   }
+  },
+  {
+   "id": "xpt_2_2",
+   "category": "Output #2 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "2",
+     "ipt": "2"
+    }
+   }
+  },
+  {
+   "id": "xpt_2_3",
+   "category": "Output #2 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "2",
+     "ipt": "3"
+    }
+   }
+  },
+  {
+   "id": "xpt_2_4",
+   "category": "Output #2 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "2",
+     "ipt": "4"
+    }
+   }
+  },
+  {
+   "id": "xpt_3_1",
+   "category": "Output #3 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "3",
+     "ipt": "1"
+    }
+   }
+  },
+  {
+   "id": "xpt_3_2",
+   "category": "Output #3 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "3",
+     "ipt": "2"
+    }
+   }
+  },
+  {
+   "id": "xpt_3_3",
+   "category": "Output #3 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "3",
+     "ipt": "3"
+    }
+   }
+  },
+  {
+   "id": "xpt_3_4",
+   "category": "Output #3 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "3",
+     "ipt": "4"
+    }
+   }
+  },
+  {
+   "id": "xpt_4_1",
+   "category": "Output #4 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "4",
+     "ipt": "1"
+    }
+   }
+  },
+  {
+   "id": "xpt_4_2",
+   "category": "Output #4 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "4",
+     "ipt": "2"
+    }
+   }
+  },
+  {
+   "id": "xpt_4_3",
+   "category": "Output #4 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "4",
+     "ipt": "3"
+    }
+   }
+  },
+  {
+   "id": "xpt_4_4",
+   "category": "Output #4 - XPT",
+   "name": "",
+   "text": "",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "4",
+     "ipt": "4"
+    }
+   }
+  },
+  {
+   "id": "xpt_all_1",
+   "category": "All Outputs - XPT",
+   "name": "ALL #1",
+   "text": "ALL #1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "0",
+     "ipt": "1"
+    }
+   }
+  },
+  {
+   "id": "xpt_all_2",
+   "category": "All Outputs - XPT",
+   "name": "ALL #2",
+   "text": "ALL #2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "0",
+     "ipt": "2"
+    }
+   }
+  },
+  {
+   "id": "xpt_all_3",
+   "category": "All Outputs - XPT",
+   "name": "ALL #3",
+   "text": "ALL #3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "0",
+     "ipt": "3"
+    }
+   }
+  },
+  {
+   "id": "xpt_all_4",
+   "category": "All Outputs - XPT",
+   "name": "ALL #4",
+   "text": "ALL #4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setCrosspoint",
+    "options": {
+     "out": "0",
+     "ipt": "4"
+    }
+   }
+  },
+  {
+   "id": "recall_pst1",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "1"
+    }
+   }
+  },
+  {
+   "id": "recall_pst2",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "2"
+    }
+   }
+  },
+  {
+   "id": "recall_pst3",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "3"
+    }
+   }
+  },
+  {
+   "id": "recall_pst4",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "4"
+    }
+   }
+  },
+  {
+   "id": "recall_pst5",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "5"
+    }
+   }
+  },
+  {
+   "id": "recall_pst6",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "6"
+    }
+   }
+  },
+  {
+   "id": "recall_pst7",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "7"
+    }
+   }
+  },
+  {
+   "id": "recall_pst8",
+   "category": "Preset - Recall",
+   "name": "Recall",
+   "text": "Recall",
+   "backgroundColor": "#80c6ff",
+   "action": {
+    "definitionId": "recallPreset",
+    "options": {
+     "pst": "8"
+    }
+   }
+  },
+  {
+   "id": "save_pst1",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "1"
+    }
+   }
+  },
+  {
+   "id": "save_pst2",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "2"
+    }
+   }
+  },
+  {
+   "id": "save_pst3",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "3"
+    }
+   }
+  },
+  {
+   "id": "save_pst4",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "4"
+    }
+   }
+  },
+  {
+   "id": "save_pst5",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "5"
+    }
+   }
+  },
+  {
+   "id": "save_pst6",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "6"
+    }
+   }
+  },
+  {
+   "id": "save_pst7",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "7"
+    }
+   }
+  },
+  {
+   "id": "save_pst8",
+   "category": "Preset - Save",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#f9b115",
+   "action": {
+    "definitionId": "savePreset",
+    "options": {
+     "pst": "8"
+    }
+   }
+  },
+  {
+   "id": "clear_pst1",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "1"
+    }
+   }
+  },
+  {
+   "id": "clear_pst2",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "2"
+    }
+   }
+  },
+  {
+   "id": "clear_pst3",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "3"
+    }
+   }
+  },
+  {
+   "id": "clear_pst4",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "4"
+    }
+   }
+  },
+  {
+   "id": "clear_pst5",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "5"
+    }
+   }
+  },
+  {
+   "id": "clear_pst6",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "6"
+    }
+   }
+  },
+  {
+   "id": "clear_pst7",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "7"
+    }
+   }
+  },
+  {
+   "id": "clear_pst8",
+   "category": "Preset - Clear",
+   "name": "Clear",
+   "text": "Clear",
+   "backgroundColor": "#d50202",
+   "action": {
+    "definitionId": "clearPreset",
+    "options": {
+     "pst": "8"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-purelink-pt-ma-hd44m",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Adrien RENARD"
+  }
+ ],
+ "source": {
+  "module": "purelink-pt-ma-hd44m",
+  "version": "1.0.4",
+  "license": "MIT",
+  "maintainers": [
+   "Adrien RENARD"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-purelink-pt-ma-hd44m.git"
+ }
+}

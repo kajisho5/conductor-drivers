@@ -1,0 +1,100 @@
+{
+ "format": 1,
+ "id": "m-creativeland-mediacontrolbridge",
+ "name": "Creativeland Media Control Bridge",
+ "category": "Creativeland",
+ "version": "1.0.7",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:6262",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/play",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/pause",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  },
+  {
+   "id": "toggle",
+   "name": "Toggle Play/Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/toggle",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  },
+  {
+   "id": "next",
+   "name": "Next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/next",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  },
+  {
+   "id": "previous",
+   "name": "Previous",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/previous",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-creativeland-mediacontrolbridge",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Tom Hillmeyer"
+  }
+ ],
+ "source": {
+  "module": "creativeland-mediacontrolbridge",
+  "version": "1.0.7",
+  "license": "MIT",
+  "maintainers": [
+   "Tom Hillmeyer"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-creativeland-mediacontrolbridge.git"
+ }
+}

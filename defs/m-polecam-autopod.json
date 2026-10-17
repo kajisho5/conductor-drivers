@@ -1,0 +1,225 @@
+{
+ "format": 1,
+ "id": "m-polecam-autopod",
+ "name": "Polecam Autopod+ / Panapod",
+ "category": "Polecam",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "debug",
+   "label": "Enable",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "down",
+   "name": "Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23PTS5025&res=1"
+   }
+  },
+  {
+   "id": "left",
+   "name": "Left",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23PTS7525&res=1"
+   }
+  },
+  {
+   "id": "stopud",
+   "name": "Stop Up/Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23PTS2550&res=1"
+   }
+  },
+  {
+   "id": "stoplr",
+   "name": "Stop Left/Right",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23PTS5050&res=1"
+   }
+  },
+  {
+   "id": "home",
+   "name": "Up/Down/Left/Right - Home",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23APC7FFF7FFF&res=1"
+   }
+  },
+  {
+   "id": "splitDualLeg",
+   "name": "Split Dual Leg",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R10&res=1"
+   }
+  },
+  {
+   "id": "singleLeg",
+   "name": "Single Leg",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R11&res=1"
+   }
+  },
+  {
+   "id": "dualLeg",
+   "name": "Dual Leg",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R12&res=1"
+   }
+  },
+  {
+   "id": "stopDemoMode",
+   "name": "Stop Demo Mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R15&res=1"
+   }
+  },
+  {
+   "id": "calib",
+   "name": "Perform calibration",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/aw_ptz?cmd=%23R18&res=1"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "pan-tilt-home",
+   "category": "Up/Down/Left/Right",
+   "name": "Home",
+   "text": "HOME",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "home",
+    "options": {}
+   }
+  },
+  {
+   "id": "singleLeg",
+   "category": "Options/Operations",
+   "name": "Single leg",
+   "text": "Single\nLeg",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "singleLeg",
+    "options": {}
+   }
+  },
+  {
+   "id": "dualLeg",
+   "category": "Options/Operations",
+   "name": "Dual leg",
+   "text": "Dual\nLeg",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "dualLeg",
+    "options": {}
+   }
+  },
+  {
+   "id": "splitLeg",
+   "category": "Options/Operations",
+   "name": "Split Dual leg",
+   "text": "Split\nLeg",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "splitDualLeg",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopDemoMode",
+   "category": "Options/Operations",
+   "name": "Stop demo mode",
+   "text": "Stop demo mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopDemoMode",
+    "options": {}
+   }
+  },
+  {
+   "id": "calib",
+   "category": "Options/Operations",
+   "name": "Perform calibration",
+   "text": "Calibrate",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "calib",
+    "options": {}
+   }
+  },
+  {
+   "id": "calibfeedback",
+   "category": "Options/Operations",
+   "name": "Perform calibration (With button feedback)",
+   "text": "Perform calibration (With button feedbac",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "calib",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-polecam-autopod",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Håkon Nessjøen"
+  }
+ ],
+ "source": {
+  "module": "polecam-autopod",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Håkon Nessjøen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-polecam-autopod.git"
+ }
+}

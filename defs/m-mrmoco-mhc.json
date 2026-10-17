@@ -1,0 +1,143 @@
+{
+ "format": 1,
+ "id": "m-mrmoco-mhc",
+ "name": "Mark Roberts Motion Control MHC",
+ "category": "Mark Roberts Motion Control",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "httpPort",
+   "label": "Server Port",
+   "type": "text"
+  },
+  {
+   "id": "username",
+   "label": "User Name",
+   "type": "text"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text"
+  },
+  {
+   "id": "debug",
+   "label": "Debug",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "recall_preset",
+   "name": "Recall Preset",
+   "options": [
+    {
+     "id": "robot",
+     "label": "Robot ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "num",
+     "label": "Preset ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/robots/{{option.robot}}/preset/{{option.num}}",
+    "body": "null",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "recall_move",
+   "name": "Recall Move",
+   "options": [
+    {
+     "id": "robot",
+     "label": "Robot ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "num",
+     "label": "Move ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/v1/robots/{{option.robot}}/moves/{{option.num}}/begin",
+    "body": "null",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "stop_all",
+   "name": "Stop All Robots",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/robots/stop",
+    "body": "null",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_move_option",
+   "name": "Set Move Option",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/v1/robots/0/moves/settings",
+    "body": "{\"oneClickStart\":true}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-mrmoco-mhc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：MRMC"
+  }
+ ],
+ "source": {
+  "module": "mrmoco-mhc",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "MRMC"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-mrmoco-mhc.git"
+ }
+}

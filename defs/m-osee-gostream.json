@@ -1,0 +1,3178 @@
+{
+ "format": 1,
+ "id": "m-osee-gostream",
+ "name": "OSEE GoStream",
+ "category": "OSEE",
+ "version": "1.5.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 19010,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelId",
+   "label": "Model",
+   "type": "select",
+   "default": "Unknown",
+   "choices": [
+    {
+     "id": "Unknown",
+     "label": "Auto Detect"
+    },
+    {
+     "id": "GOSECK",
+     "label": "Deck"
+    },
+    {
+     "id": "GOSUET",
+     "label": "Duet"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "pgmIndex",
+   "name": "MixEffect: Set PGM Source",
+   "options": [
+    {
+     "id": "Source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "In 1"
+      },
+      {
+       "id": "1",
+       "label": "In 2"
+      },
+      {
+       "id": "2",
+       "label": "In 3"
+      },
+      {
+       "id": "3",
+       "label": "In 4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "S/SRC"
+      },
+      {
+       "id": "6",
+       "label": "Still 1"
+      },
+      {
+       "id": "7",
+       "label": "Still 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002c007b226964223a2270676d496e646578222c2274797065223a22736574222c2276616c7565223a5b{{option.Source|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Source": {
+     "0": "305d7d6006",
+     "1": "315d7d31c6",
+     "2": "325d7dc1c6",
+     "3": "335d7d9006",
+     "4": "345d7d21c7",
+     "5": "355d7d7007",
+     "6": "365d7d8007",
+     "7": "375d7dd1c7"
+    }
+   }
+  },
+  {
+   "id": "pvwIndex",
+   "name": "MixEffect: Set PVW Source",
+   "options": [
+    {
+     "id": "Source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "In 1"
+      },
+      {
+       "id": "1",
+       "label": "In 2"
+      },
+      {
+       "id": "2",
+       "label": "In 3"
+      },
+      {
+       "id": "3",
+       "label": "In 4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "S/SRC"
+      },
+      {
+       "id": "6",
+       "label": "Still 1"
+      },
+      {
+       "id": "7",
+       "label": "Still 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002c007b226964223a22707677496e646578222c2274797065223a22736574222c2276616c7565223a5b{{option.Source|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Source": {
+     "0": "305d7d1fbe",
+     "1": "315d7d4e7e",
+     "2": "325d7dbe7e",
+     "3": "335d7defbe",
+     "4": "345d7d5e7f",
+     "5": "355d7d0fbf",
+     "6": "365d7dffbf",
+     "7": "375d7dae7f"
+    }
+   }
+  },
+  {
+   "id": "cutTransition",
+   "name": "MixEffect: Perform CUT transition",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60025007b226964223a226375745472616e736974696f6e222c2274797065223a22736574227dfcf3",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "autoTransition",
+   "name": "MixEffect: Perform AUTO transition",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60026007b226964223a226175746f5472616e736974696f6e222c2274797065223a22736574227db8d3",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "ftb",
+   "name": "MixEffect: Perform FTB Transition",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6001b007b226964223a22667462222c2274797065223a22736574227df140",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "ftbAudioAFV",
+   "name": "MixEffect: Perform FTB Transition,Audio follows video and pops in",
+   "options": [
+    {
+     "id": "FtbAudioAFV",
+     "label": "FTB Audio AFV",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002f007b226964223a22667462417564696f414656222c2274797065223a22736574222c2276616c7565223a5b{{option.FtbAudioAFV|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "FtbAudioAFV": {
+     "0": "305d7d77c9",
+     "1": "315d7d2609",
+     "2": "315d7d2609"
+    }
+   }
+  },
+  {
+   "id": "prev",
+   "name": "MixEffect: Preview Button",
+   "options": [
+    {
+     "id": "prevEnable",
+     "label": "PREV",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60028007b226964223a2270726576222c2274797065223a22736574222c2276616c7565223a5b{{option.prevEnable|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "prevEnable": {
+     "0": "305d7d6d5c",
+     "1": "315d7d3c9c",
+     "2": "315d7d3c9c"
+    }
+   }
+  },
+  {
+   "id": "transitionIndex",
+   "name": "MixEffect: Set transition style/pattern",
+   "options": [
+    {
+     "id": "TransitionStyle",
+     "label": "Transition Style",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "MIX"
+      },
+      {
+       "id": "1",
+       "label": "DIP"
+      },
+      {
+       "id": "2",
+       "label": "WIPE"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60033007b226964223a227472616e736974696f6e496e646578222c2274797065223a22736574222c2276616c7565223a5b{{option.TransitionStyle|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "TransitionStyle": {
+     "0": "305d7defa4",
+     "1": "315d7dbe64",
+     "2": "325d7d4e64"
+    }
+   }
+  },
+  {
+   "id": "transitionDipSource",
+   "name": "MixEffect: Change transition dip source",
+   "options": [
+    {
+     "id": "TransitionDipSource",
+     "label": "Change Dip Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input1"
+      },
+      {
+       "id": "1",
+       "label": "Input2"
+      },
+      {
+       "id": "2",
+       "label": "Input3"
+      },
+      {
+       "id": "3",
+       "label": "Input4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Black"
+      },
+      {
+       "id": "6",
+       "label": "Still1"
+      },
+      {
+       "id": "7",
+       "label": "Still2"
+      },
+      {
+       "id": "8",
+       "label": "Color1"
+      },
+      {
+       "id": "9",
+       "label": "Color2"
+      },
+      {
+       "id": "10",
+       "label": "Color Bar"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.TransitionDipSource|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "TransitionDipSource": {
+     "0": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b305d7da04e",
+     "1": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b315d7df18e",
+     "2": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b325d7d018e",
+     "3": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b335d7d504e",
+     "4": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b345d7de18f",
+     "5": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b355d7db04f",
+     "6": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b365d7d404f",
+     "7": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b375d7d118f",
+     "8": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b385d7d218c",
+     "9": "37007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b395d7d704c",
+     "10": "38007b226964223a227472616e736974696f6e446970536f75726365222c2274797065223a22736574222c2276616c7565223a5b31305d7d38b8"
+    }
+   }
+  },
+  {
+   "id": "transitionWipeDirection",
+   "name": "MixEffect: Change transition wipe style direction",
+   "options": [
+    {
+     "id": "WipeDirection",
+     "label": "Change Wipe Style Direction",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Normal"
+      },
+      {
+       "id": "1",
+       "label": "Inverse"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6003b007b226964223a227472616e736974696f6e57697065446972656374696f6e222c2274797065223a22736574222c2276616c7565223a5b{{option.WipeDirection|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "WipeDirection": {
+     "0": "305d7d74c1",
+     "1": "315d7d2501"
+    }
+   }
+  },
+  {
+   "id": "transitionWipeFillSource",
+   "name": "MixEffect: Change transition wipe style fill source",
+   "options": [
+    {
+     "id": "WipeFillSource",
+     "label": "Fill Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input1"
+      },
+      {
+       "id": "1",
+       "label": "Input2"
+      },
+      {
+       "id": "2",
+       "label": "Input3"
+      },
+      {
+       "id": "3",
+       "label": "Input4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Black"
+      },
+      {
+       "id": "6",
+       "label": "Still1"
+      },
+      {
+       "id": "7",
+       "label": "Still2"
+      },
+      {
+       "id": "8",
+       "label": "Color1"
+      },
+      {
+       "id": "9",
+       "label": "Color2"
+      },
+      {
+       "id": "10",
+       "label": "Color Bar"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.WipeFillSource|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "WipeFillSource": {
+     "0": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b305d7d7edf",
+     "1": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b315d7d2f1f",
+     "2": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b325d7ddf1f",
+     "3": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b335d7d8edf",
+     "4": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b345d7d3f1e",
+     "5": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b355d7d6ede",
+     "6": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b365d7d9ede",
+     "7": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b375d7dcf1e",
+     "8": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b385d7dff1d",
+     "9": "3c007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b395d7daedd",
+     "10": "3d007b226964223a227472616e736974696f6e5769706546696c6c536f75726365222c2274797065223a22736574222c2276616c7565223a5b31305d7deb20"
+    }
+   }
+  },
+  {
+   "id": "superSourceEnable",
+   "name": "Super Source:Super Source Enable",
+   "options": [
+    {
+     "id": "SuperSourceEnable",
+     "label": "Enable:",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60035007b226964223a227375706572536f75726365456e61626c65222c2274797065223a22736574222c2276616c7565223a5b{{option.SuperSourceEnable|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "SuperSourceEnable": {
+     "0": "305d7dbfed",
+     "1": "315d7dee2d",
+     "2": "315d7dee2d"
+    }
+   }
+  },
+  {
+   "id": "superSourceControlStyle",
+   "name": "Super Source:Super Source Style",
+   "options": [
+    {
+     "id": "SuperSourceStyle",
+     "label": "SuperSource Style:",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "zoom out"
+      },
+      {
+       "id": "1",
+       "label": "crop-zoom out"
+      },
+      {
+       "id": "2",
+       "label": "zoom out-crop"
+      },
+      {
+       "id": "3",
+       "label": "crop"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6003b007b226964223a227375706572536f75726365436f6e74726f6c5374796c65222c2274797065223a22736574222c2276616c7565223a5b{{option.SuperSourceStyle|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "SuperSourceStyle": {
+     "0": "305d7d76dd",
+     "1": "315d7d271d",
+     "2": "325d7dd71d",
+     "3": "335d7d86dd"
+    }
+   }
+  },
+  {
+   "id": "streamPlatform",
+   "name": "Streaming: Set platform",
+   "options": [
+    {
+     "id": "StreamID",
+     "label": "Stream",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stream1"
+      },
+      {
+       "id": "1",
+       "label": "Stream2"
+      },
+      {
+       "id": "2",
+       "label": "Stream3"
+      }
+     ]
+    },
+    {
+     "id": "PlatformId",
+     "label": "Platform",
+     "type": "select",
+     "default": "Loading",
+     "choices": [
+      {
+       "id": "Loading",
+       "label": "Loading"
+      }
+     ]
+    },
+    {
+     "id": "ServerId_Loading",
+     "label": "Server",
+     "type": "select",
+     "default": "Loading",
+     "choices": [
+      {
+       "id": "Loading",
+       "label": "Loading"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6003c007b226964223a2273747265616d506c6174666f726d222c2274797065223a22736574222c2276616c7565223a5b{{option.StreamID|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "StreamID": {
+     "0": "302c224c6f6164696e67225d7d5650eba6003a007b226964223a2273747265616d536572766572222c2274797065223a22736574222c2276616c7565223a5b302c224c6f6164696e67225d7d6afe",
+     "1": "312c224c6f6164696e67225d7d54d1eba6003a007b226964223a2273747265616d536572766572222c2274797065223a22736574222c2276616c7565223a5b312c224c6f6164696e67225d7d687f",
+     "2": "322c224c6f6164696e67225d7d5112eba6003a007b226964223a2273747265616d536572766572222c2274797065223a22736574222c2276616c7565223a5b322c224c6f6164696e67225d7d6dbc"
+    }
+   }
+  },
+  {
+   "id": "live",
+   "name": "Live:Set Start or Stop Live",
+   "options": [
+    {
+     "id": "LiveEnable",
+     "label": "Enable",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stop"
+      },
+      {
+       "id": "1",
+       "label": "Start"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60028007b226964223a226c697665222c2274797065223a22736574222c2276616c7565223a5b{{option.LiveEnable|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "LiveEnable": {
+     "0": "305d7dd53d",
+     "1": "315d7d84fd",
+     "2": "315d7d84fd"
+    }
+   }
+  },
+  {
+   "id": "streamQuality",
+   "name": "Set quality of the stream",
+   "options": [
+    {
+     "id": "Quality",
+     "label": "Quality",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "high"
+      },
+      {
+       "id": "1",
+       "label": "medium"
+      },
+      {
+       "id": "2",
+       "label": "low"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002d007b226964223a227175616c697479222c2274797065223a22736574222c2276616c7565223a5b312c{{option.Quality|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Quality": {
+     "0": "305d7df950",
+     "1": "315d7da890",
+     "2": "325d7d5890"
+    }
+   }
+  },
+  {
+   "id": "record",
+   "name": "Record:Start or Stop Recording",
+   "options": [
+    {
+     "id": "Record",
+     "label": "Record",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Stop"
+      },
+      {
+       "id": "1",
+       "label": "Start"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002a007b226964223a227265636f7264222c2274797065223a22736574222c2276616c7565223a5b{{option.Record|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Record": {
+     "0": "305d7d5824",
+     "1": "315d7d09e4",
+     "2": "315d7d09e4"
+    }
+   }
+  },
+  {
+   "id": "recordQuality",
+   "name": "Record:Set Quality",
+   "options": [
+    {
+     "id": "Quality",
+     "label": "Quality",
+     "type": "select",
+     "default": "high",
+     "choices": [
+      {
+       "id": "high",
+       "label": "high"
+      },
+      {
+       "id": "good",
+       "label": "good"
+      },
+      {
+       "id": "medium",
+       "label": "medium"
+      },
+      {
+       "id": "low",
+       "label": "low"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002d007b226964223a227175616c697479222c2274797065223a22736574222c2276616c7565223a5b302c{{option.Quality|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Quality": {
+     "high": "305d7dc490",
+     "good": "315d7d9550",
+     "medium": "325d7d6550",
+     "low": "335d7d3490"
+    }
+   }
+  },
+  {
+   "id": "playbackMode",
+   "name": "Playback:Set playback Mode",
+   "options": [
+    {
+     "id": "ModeID",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "play in one group"
+      },
+      {
+       "id": "1",
+       "label": "play cross groups"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60030007b226964223a22706c61796261636b4d6f6465222c2274797065223a22736574222c2276616c7565223a5b{{option.ModeID|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "ModeID": {
+     "0": "305d7d7525",
+     "1": "315d7d24e5"
+    }
+   }
+  },
+  {
+   "id": "playFile",
+   "name": "Playback:Set selected file",
+   "options": [
+    {
+     "id": "PlayFileID",
+     "label": "PlayFile",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002f007b226964223a22706c617946696c65222c2274797065223a22736574222c2276616c7565223a5b6e756c6c5d7db8c5",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "playbackRepeat",
+   "name": "Playback:Set playback Repeat",
+   "options": [
+    {
+     "id": "EnableID",
+     "label": "Enable",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60032007b226964223a22706c61796261636b526570656174222c2274797065223a22736574222c2276616c7565223a5b{{option.EnableID|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "EnableID": {
+     "0": "305d7d9d06",
+     "1": "315d7dccc6",
+     "2": "315d7dccc6"
+    }
+   }
+  },
+  {
+   "id": "playbackPause",
+   "name": "Playback:Set playback Pause",
+   "options": [
+    {
+     "id": "EnableID",
+     "label": "Enable",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "stop"
+      },
+      {
+       "id": "1",
+       "label": "start"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60031007b226964223a22706c61796261636b5061757365222c2274797065223a22736574222c2276616c7565223a5b{{option.EnableID|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "EnableID": {
+     "0": "305d7d341b",
+     "1": "315d7d65db",
+     "2": "315d7d65db"
+    }
+   }
+  },
+  {
+   "id": "playbackBar",
+   "name": "Playback:Set playback Bar",
+   "options": [
+    {
+     "id": "EnableID",
+     "label": "Enable",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002f007b226964223a22706c61796261636b426172222c2274797065223a22736574222c2276616c7565223a5b{{option.EnableID|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "EnableID": {
+     "0": "305d7df561",
+     "1": "315d7da4a1",
+     "2": "315d7da4a1"
+    }
+   }
+  },
+  {
+   "id": "audioTransition",
+   "name": "Audio Mixer:Set audio fade in and out switch",
+   "options": [
+    {
+     "id": "AudioTrans",
+     "label": "Enable",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60033007b226964223a22617564696f5472616e736974696f6e222c2274797065223a22736574222c2276616c7565223a5b{{option.AudioTrans|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "AudioTrans": {
+     "0": "305d7da9fd",
+     "1": "315d7df83d",
+     "2": "315d7df83d"
+    }
+   }
+  },
+  {
+   "id": "audioMonitorSource",
+   "name": "Audio Mixer:Set Monitor Source",
+   "options": [
+    {
+     "id": "AudioSource",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "5",
+       "label": "mic1"
+      },
+      {
+       "id": "6",
+       "label": "mic2"
+      },
+      {
+       "id": "0",
+       "label": "in1"
+      },
+      {
+       "id": "1",
+       "label": "in2"
+      },
+      {
+       "id": "2",
+       "label": "in3"
+      },
+      {
+       "id": "3",
+       "label": "in4"
+      },
+      {
+       "id": "4",
+       "label": "aux"
+      },
+      {
+       "id": "7",
+       "label": "pgm"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60036007b226964223a22617564696f4d6f6e69746f72536f75726365222c2274797065223a22736574222c2276616c7565223a5b{{option.AudioSource|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "AudioSource": {
+     "0": "305d7d02d5",
+     "1": "315d7d5315",
+     "2": "325d7da315",
+     "3": "335d7df2d5",
+     "4": "345d7d4314",
+     "5": "355d7d12d4",
+     "6": "365d7de2d4",
+     "7": "375d7db314"
+    }
+   }
+  },
+  {
+   "id": "dskSourceFill",
+   "name": "DownstreamKeyer: Set fill source",
+   "options": [
+    {
+     "id": "DSKFill",
+     "label": "DSK Fill",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "In 1"
+      },
+      {
+       "id": "1",
+       "label": "In 2"
+      },
+      {
+       "id": "2",
+       "label": "In 3"
+      },
+      {
+       "id": "3",
+       "label": "In 4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Still 1"
+      },
+      {
+       "id": "6",
+       "label": "Still 1 Key"
+      },
+      {
+       "id": "7",
+       "label": "Still 2"
+      },
+      {
+       "id": "8",
+       "label": "Still 2 Key"
+      },
+      {
+       "id": "9",
+       "label": "Color 1"
+      },
+      {
+       "id": "10",
+       "label": "Color 2"
+      },
+      {
+       "id": "11",
+       "label": "Color Bar"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.DSKFill|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "DSKFill": {
+     "0": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b305d7d0bd1",
+     "1": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b315d7d5a11",
+     "2": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b325d7daa11",
+     "3": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b335d7dfbd1",
+     "4": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b345d7d4a10",
+     "5": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b355d7d1bd0",
+     "6": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b365d7debd0",
+     "7": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b375d7dba10",
+     "8": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b385d7d8a13",
+     "9": "31007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b395d7ddbd3",
+     "10": "32007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31305d7dee21",
+     "11": "32007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31315d7dbfe1",
+     "12": "32007b226964223a2264736b536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31325d7d4fe1"
+    }
+   }
+  },
+  {
+   "id": "dskSourceKey",
+   "name": "DownstreamKeyer: Set key",
+   "options": [
+    {
+     "id": "DSKKey",
+     "label": "DSK Key",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "In 1"
+      },
+      {
+       "id": "1",
+       "label": "In 2"
+      },
+      {
+       "id": "2",
+       "label": "In 3"
+      },
+      {
+       "id": "3",
+       "label": "In 4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Still 1"
+      },
+      {
+       "id": "6",
+       "label": "Still 1 Key"
+      },
+      {
+       "id": "7",
+       "label": "Still 2"
+      },
+      {
+       "id": "8",
+       "label": "Still 2 Key"
+      },
+      {
+       "id": "9",
+       "label": "Color 1"
+      },
+      {
+       "id": "10",
+       "label": "Color 2"
+      },
+      {
+       "id": "11",
+       "label": "Color Bar"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.DSKKey|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "DSKKey": {
+     "0": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b305d7df825",
+     "1": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b315d7da9e5",
+     "2": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b325d7d59e5",
+     "3": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b335d7d0825",
+     "4": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b345d7db9e4",
+     "5": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b355d7de824",
+     "6": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b365d7d1824",
+     "7": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b375d7d49e4",
+     "8": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b385d7d79e7",
+     "9": "30007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b395d7d2827",
+     "10": "31007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b31305d7d41af",
+     "11": "31007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b31315d7d106f",
+     "12": "31007b226964223a2264736b536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b31325d7de06f"
+    }
+   }
+  },
+  {
+   "id": "dskControlShapedKey",
+   "name": "DownstreamKeyer: Set shaped key",
+   "options": [
+    {
+     "id": "ShapedKey",
+     "label": "Shaped Key",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60037007b226964223a2264736b436f6e74726f6c5368617065644b6579222c2274797065223a22736574222c2276616c7565223a5b{{option.ShapedKey|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "ShapedKey": {
+     "0": "305d7d4ce6",
+     "1": "315d7d1d26",
+     "2": "315d7d1d26"
+    }
+   }
+  },
+  {
+   "id": "dskControlInvert",
+   "name": "DownstreamKeyer: Set invert",
+   "options": [
+    {
+     "id": "Invert",
+     "label": "Invert",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60034007b226964223a2264736b436f6e74726f6c496e76657274222c2274797065223a22736574222c2276616c7565223a5b{{option.Invert|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Invert": {
+     "0": "305d7d1135",
+     "1": "315d7d40f5",
+     "2": "315d7d40f5"
+    }
+   }
+  },
+  {
+   "id": "mvLayout",
+   "name": "Settings:Set Mv Layout",
+   "options": [
+    {
+     "id": "MvLayout",
+     "label": "Layout",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "PVW|PGM"
+      },
+      {
+       "id": "1",
+       "label": "PGM|PVW"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002c007b226964223a226d764c61796f7574222c2274797065223a22736574222c2276616c7565223a5b{{option.MvLayout|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "MvLayout": {
+     "0": "305d7d5cf3",
+     "1": "315d7d0d33"
+    }
+   }
+  },
+  {
+   "id": "inputWindowLayout",
+   "name": " Settings: Set Input Window Mv Layout",
+   "options": [
+    {
+     "id": "StyleId",
+     "label": "style",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Style 1"
+      },
+      {
+       "id": "1",
+       "label": "Style 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60035007b226964223a22696e70757457696e646f774c61796f7574222c2274797065223a22736574222c2276616c7565223a5b{{option.StyleId|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "StyleId": {
+     "0": "305d7db64d",
+     "1": "315d7de78d"
+    }
+   }
+  },
+  {
+   "id": "marker",
+   "name": "Settings: Set Marker",
+   "options": [
+    {
+     "id": "Marker",
+     "label": "marker",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002a007b226964223a226d61726b6572222c2274797065223a22736574222c2276616c7565223a5b{{option.Marker|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Marker": {
+     "0": "305d7d0980",
+     "1": "315d7d5840",
+     "2": "325d7da840"
+    }
+   }
+  },
+  {
+   "id": "srcSelection",
+   "name": "Settings: Src Selection",
+   "options": [
+    {
+     "id": "Srcid",
+     "label": "Src",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input 1"
+      },
+      {
+       "id": "1",
+       "label": "Input 2"
+      },
+      {
+       "id": "2",
+       "label": "Input 3"
+      },
+      {
+       "id": "3",
+       "label": "Input 4"
+      }
+     ]
+    },
+    {
+     "id": "SrcSelection",
+     "label": "Selection",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Loading"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60032007b226964223a2273726353656c656374696f6e222c2274797065223a22736574222c2276616c7565223a5b{{option.Srcid|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "Srcid": {
+     "0": "302c305d7db399",
+     "1": "312c305d7d8e59",
+     "2": "322c305d7dca59",
+     "3": "332c305d7df799"
+    }
+   }
+  },
+  {
+   "id": "auxSource",
+   "name": "Settings: Aux Source",
+   "options": [
+    {
+     "id": "auxSourceID",
+     "label": "Aux Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Player"
+      },
+      {
+       "id": "1",
+       "label": "USB Camera"
+      },
+      {
+       "id": "2",
+       "label": "NDI"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002d007b226964223a22617578536f75726365222c2274797065223a22736574222c2276616c7565223a5b{{option.auxSourceID|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auxSourceID": {
+     "0": "305d7de6d0",
+     "1": "315d7db710",
+     "2": "325d7d4710"
+    }
+   }
+  },
+  {
+   "id": "outFormat",
+   "name": "Settings: Out Format",
+   "options": [
+    {
+     "id": "OutFormat",
+     "label": "OutFormat",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1080p23.98"
+      },
+      {
+       "id": "1",
+       "label": "1080p24"
+      },
+      {
+       "id": "2",
+       "label": "1080p25"
+      },
+      {
+       "id": "3",
+       "label": "1080p29.97"
+      },
+      {
+       "id": "4",
+       "label": "1080p30"
+      },
+      {
+       "id": "5",
+       "label": "1080p50"
+      },
+      {
+       "id": "6",
+       "label": "1080p59.94"
+      },
+      {
+       "id": "7",
+       "label": "1080p60"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002d007b226964223a226f7574466f726d6174222c2274797065223a22736574222c2276616c7565223a5b{{option.OutFormat|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "OutFormat": {
+     "0": "305d7d33d9",
+     "1": "315d7d6219",
+     "2": "325d7d9219",
+     "3": "335d7dc3d9",
+     "4": "345d7d7218",
+     "5": "355d7d23d8",
+     "6": "365d7dd3d8",
+     "7": "375d7d8218"
+    }
+   }
+  },
+  {
+   "id": "upStreamKeyType",
+   "name": "UpStream Key:Set Key Type",
+   "options": [
+    {
+     "id": "USKType",
+     "label": "Key Type:",
+     "type": "select",
+     "default": "Luma Key",
+     "choices": [
+      {
+       "id": "Luma Key",
+       "label": "Luma Key"
+      },
+      {
+       "id": "Chroma Key",
+       "label": "Chroma Key"
+      },
+      {
+       "id": "Key Pattern",
+       "label": "Key Pattern"
+      },
+      {
+       "id": "PIP",
+       "label": "PIP"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60033007b226964223a22757053747265616d4b657954797065222c2274797065223a22736574222c2276616c7565223a5b{{option.USKType|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "USKType": {
+     "Luma Key": "305d7d39ea",
+     "Chroma Key": "315d7d682a",
+     "Key Pattern": "325d7d982a",
+     "PIP": "335d7dc9ea"
+    }
+   }
+  },
+  {
+   "id": "lumaKeySourceFill",
+   "name": "UpStream Key:Set Luma Key Source Fill",
+   "options": [
+    {
+     "id": "KeyFill",
+     "label": "Source Fill",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input1"
+      },
+      {
+       "id": "1",
+       "label": "Input2"
+      },
+      {
+       "id": "2",
+       "label": "Input3"
+      },
+      {
+       "id": "3",
+       "label": "Input4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Still1"
+      },
+      {
+       "id": "6",
+       "label": "Still1 Key"
+      },
+      {
+       "id": "7",
+       "label": "Still2"
+      },
+      {
+       "id": "8",
+       "label": "Still2 Key"
+      },
+      {
+       "id": "9",
+       "label": "Color1"
+      },
+      {
+       "id": "10",
+       "label": "Color2"
+      },
+      {
+       "id": "11",
+       "label": "Color Bar"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.KeyFill|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "KeyFill": {
+     "0": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b305d7dba55",
+     "1": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b315d7deb95",
+     "2": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b325d7d1b95",
+     "3": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b335d7d4a55",
+     "4": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b345d7dfb94",
+     "5": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b355d7daa54",
+     "6": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b365d7d5a54",
+     "7": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b375d7d0b94",
+     "8": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b385d7d3b97",
+     "9": "35007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b395d7d6a57",
+     "10": "36007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31305d7d72cc",
+     "11": "36007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31315d7d230c",
+     "12": "36007b226964223a226c756d614b6579536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31325d7dd30c"
+    }
+   }
+  },
+  {
+   "id": "lumaKeySourceKey",
+   "name": "UpStream Key:Set Luma Key Source Key",
+   "options": [
+    {
+     "id": "LumaKeySourceKey",
+     "label": "Key",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input1"
+      },
+      {
+       "id": "1",
+       "label": "Input2"
+      },
+      {
+       "id": "2",
+       "label": "Input3"
+      },
+      {
+       "id": "3",
+       "label": "Input4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Still1"
+      },
+      {
+       "id": "6",
+       "label": "Still1 Key"
+      },
+      {
+       "id": "7",
+       "label": "Still2"
+      },
+      {
+       "id": "8",
+       "label": "Still2 Key"
+      },
+      {
+       "id": "9",
+       "label": "Color1"
+      },
+      {
+       "id": "10",
+       "label": "Color2"
+      },
+      {
+       "id": "11",
+       "label": "Color Bar"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.LumaKeySourceKey|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "LumaKeySourceKey": {
+     "0": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b305d7de821",
+     "1": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b315d7db9e1",
+     "2": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b325d7d49e1",
+     "3": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b335d7d1821",
+     "4": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b345d7da9e0",
+     "5": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b355d7df820",
+     "6": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b365d7d0820",
+     "7": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b375d7d59e0",
+     "8": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b385d7d69e3",
+     "9": "34007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b395d7d3823",
+     "10": "35007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b31305d7df02b",
+     "11": "35007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b31315d7da1eb",
+     "12": "35007b226964223a226c756d614b6579536f757263654b6579222c2274797065223a22736574222c2276616c7565223a5b31325d7d51eb"
+    }
+   }
+  },
+  {
+   "id": "lumaKeyControlShapedKey",
+   "name": "UpStream Key:Set Luma Key Control ShapedKey",
+   "options": [
+    {
+     "id": "LumaKeyControlShapedKey",
+     "label": "ShapedKey",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6003b007b226964223a226c756d614b6579436f6e74726f6c5368617065644b6579222c2274797065223a22736574222c2276616c7565223a5b{{option.LumaKeyControlShapedKey|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "LumaKeyControlShapedKey": {
+     "0": "305d7d384d",
+     "1": "315d7d698d",
+     "2": "325d7d998d"
+    }
+   }
+  },
+  {
+   "id": "lumaKeyControlInvert",
+   "name": "UpStream Key:Set Luma Key Control Invert",
+   "options": [
+    {
+     "id": "LumaKeyControlInvert",
+     "label": "Invert",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60038007b226964223a226c756d614b6579436f6e74726f6c496e76657274222c2274797065223a22736574222c2276616c7565223a5b{{option.LumaKeyControlInvert|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "LumaKeyControlInvert": {
+     "0": "305d7d5052",
+     "1": "315d7d0192",
+     "2": "325d7df192"
+    }
+   }
+  },
+  {
+   "id": "lumaKeyResizeEnable",
+   "name": "UpStream Key:Set Luma Key Resize Enable",
+   "options": [
+    {
+     "id": "LumaKeyResizeEnable",
+     "label": "Enable",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60037007b226964223a226c756d614b6579526573697a65456e61626c65222c2274797065223a22736574222c2276616c7565223a5b{{option.LumaKeyResizeEnable|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "LumaKeyResizeEnable": {
+     "0": "305d7d9447",
+     "1": "315d7dc587",
+     "2": "325d7d3587"
+    }
+   }
+  },
+  {
+   "id": "lumaKeyResizeSize",
+   "name": "UpStream Key:Set Luma Key Resize Size",
+   "options": [
+    {
+     "id": "LumaKeyResizeSize",
+     "label": "Size",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0.25"
+      },
+      {
+       "id": "1",
+       "label": "0.33"
+      },
+      {
+       "id": "2",
+       "label": "0.50"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60035007b226964223a226c756d614b6579526573697a6553697a65222c2274797065223a22736574222c2276616c7565223a5b{{option.LumaKeyResizeSize|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "LumaKeyResizeSize": {
+     "0": "305d7d45c9",
+     "1": "315d7d1409",
+     "2": "325d7de409"
+    }
+   }
+  },
+  {
+   "id": "chromaKeyFill",
+   "name": "UpStream Key:Set Chroma Key Source Fill",
+   "options": [
+    {
+     "id": "KeyFill",
+     "label": "Source Fill",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input1"
+      },
+      {
+       "id": "1",
+       "label": "Input2"
+      },
+      {
+       "id": "2",
+       "label": "Input3"
+      },
+      {
+       "id": "3",
+       "label": "Input4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Still1"
+      },
+      {
+       "id": "6",
+       "label": "Still1 Key"
+      },
+      {
+       "id": "7",
+       "label": "Still2"
+      },
+      {
+       "id": "8",
+       "label": "Still2 Key"
+      },
+      {
+       "id": "9",
+       "label": "Color1"
+      },
+      {
+       "id": "10",
+       "label": "Color2"
+      },
+      {
+       "id": "11",
+       "label": "Color Bar"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.KeyFill|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "KeyFill": {
+     "0": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b305d7de797",
+     "1": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b315d7db657",
+     "2": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b325d7d4657",
+     "3": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b335d7d1797",
+     "4": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b345d7da656",
+     "5": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b355d7df796",
+     "6": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b365d7d0796",
+     "7": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b375d7d5656",
+     "8": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b385d7d6655",
+     "9": "31007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b395d7d3795",
+     "10": "32007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b31305d7da9ac",
+     "11": "32007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b31315d7df86c",
+     "12": "32007b226964223a226368726f6d614b657946696c6c222c2274797065223a22736574222c2276616c7565223a5b31325d7d086c"
+    }
+   }
+  },
+  {
+   "id": "chromaKeyResizeEnable",
+   "name": "UpStream Key:Set Chroma Key Resize Enable",
+   "options": [
+    {
+     "id": "ChromaKeyResizeEnable",
+     "label": "Enable",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60039007b226964223a226368726f6d614b6579526573697a65456e61626c65222c2274797065223a22736574222c2276616c7565223a5b{{option.ChromaKeyResizeEnable|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "ChromaKeyResizeEnable": {
+     "0": "305d7d4de1",
+     "1": "315d7d1c21",
+     "2": "325d7dec21"
+    }
+   }
+  },
+  {
+   "id": "chromaKeyResizeSize",
+   "name": "UpStream Key:Set Chroma Key Resize Size",
+   "options": [
+    {
+     "id": "ChromaKeyResizeSize",
+     "label": "Size",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0.25"
+      },
+      {
+       "id": "1",
+       "label": "0.33"
+      },
+      {
+       "id": "2",
+       "label": "0.50"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60037007b226964223a226368726f6d614b6579526573697a6553697a65222c2274797065223a22736574222c2276616c7565223a5b{{option.ChromaKeyResizeSize|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "ChromaKeyResizeSize": {
+     "0": "305d7dfc0f",
+     "1": "315d7dadcf",
+     "2": "325d7d5dcf"
+    }
+   }
+  },
+  {
+   "id": "chromaKeyControlSample",
+   "name": "UpStream Key:Set Chroma Key Control Sample Enable",
+   "options": [
+    {
+     "id": "ChromaKeyControlSample",
+     "label": "Sample Enable",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6003a007b226964223a226368726f6d614b6579436f6e74726f6c53616d706c65222c2274797065223a22736574222c2276616c7565223a5b{{option.ChromaKeyControlSample|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "ChromaKeyControlSample": {
+     "0": "305d7df593",
+     "1": "315d7da453",
+     "2": "325d7d5453"
+    }
+   }
+  },
+  {
+   "id": "keyPatternSourceFill",
+   "name": "UpStream Key:Set Key Pattern Source Fill",
+   "options": [
+    {
+     "id": "KeyFill",
+     "label": "Source Fill",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input1"
+      },
+      {
+       "id": "1",
+       "label": "Input2"
+      },
+      {
+       "id": "2",
+       "label": "Input3"
+      },
+      {
+       "id": "3",
+       "label": "Input4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Still1"
+      },
+      {
+       "id": "6",
+       "label": "Still1 Key"
+      },
+      {
+       "id": "7",
+       "label": "Still2"
+      },
+      {
+       "id": "8",
+       "label": "Still2 Key"
+      },
+      {
+       "id": "9",
+       "label": "Color1"
+      },
+      {
+       "id": "10",
+       "label": "Color2"
+      },
+      {
+       "id": "11",
+       "label": "Color Bar"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.KeyFill|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "KeyFill": {
+     "0": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b305d7dfa4e",
+     "1": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b315d7dab8e",
+     "2": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b325d7d5b8e",
+     "3": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b335d7d0a4e",
+     "4": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b345d7dbb8f",
+     "5": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b355d7dea4f",
+     "6": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b365d7d1a4f",
+     "7": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b375d7d4b8f",
+     "8": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b385d7d7b8c",
+     "9": "38007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b395d7d2a4c",
+     "10": "39007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31305d7db8c0",
+     "11": "39007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31315d7de900",
+     "12": "39007b226964223a226b65795061747465726e536f7572636546696c6c222c2274797065223a22736574222c2276616c7565223a5b31325d7d1900"
+    }
+   }
+  },
+  {
+   "id": "keyPatternResizeEnable",
+   "name": "UpStream Key:Set Key Pattern Resize Enable",
+   "options": [
+    {
+     "id": "KeyPatternResizeEnable",
+     "label": "Enable",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6003a007b226964223a226b65795061747465726e526573697a65456e61626c65222c2274797065223a22736574222c2276616c7565223a5b{{option.KeyPatternResizeEnable|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "KeyPatternResizeEnable": {
+     "0": "305d7db69b",
+     "1": "315d7de75b",
+     "2": "325d7d175b"
+    }
+   }
+  },
+  {
+   "id": "keyPatternResizeSize",
+   "name": "UpStream Key:Set Key Pattern Resize Size",
+   "options": [
+    {
+     "id": "KeyPatternResizeSize",
+     "label": "Size",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0.25"
+      },
+      {
+       "id": "1",
+       "label": "0.33"
+      },
+      {
+       "id": "2",
+       "label": "0.50"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60038007b226964223a226b65795061747465726e526573697a6553697a65222c2274797065223a22736574222c2276616c7565223a5b{{option.KeyPatternResizeSize|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "KeyPatternResizeSize": {
+     "0": "305d7d05d2",
+     "1": "315d7d5412",
+     "2": "325d7da412"
+    }
+   }
+  },
+  {
+   "id": "pipSource",
+   "name": "UpStream Key:Set Pip Source",
+   "options": [
+    {
+     "id": "KeyFill",
+     "label": "PIP Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Input1"
+      },
+      {
+       "id": "1",
+       "label": "Input2"
+      },
+      {
+       "id": "2",
+       "label": "Input3"
+      },
+      {
+       "id": "3",
+       "label": "Input4"
+      },
+      {
+       "id": "4",
+       "label": "Aux"
+      },
+      {
+       "id": "5",
+       "label": "Still1"
+      },
+      {
+       "id": "6",
+       "label": "Still1 Key"
+      },
+      {
+       "id": "7",
+       "label": "Still2"
+      },
+      {
+       "id": "8",
+       "label": "Still2 Key"
+      },
+      {
+       "id": "9",
+       "label": "Color1"
+      },
+      {
+       "id": "10",
+       "label": "Color2"
+      },
+      {
+       "id": "11",
+       "label": "Color Bar"
+      },
+      {
+       "id": "12",
+       "label": "Black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba600{{option.KeyFill|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "KeyFill": {
+     "0": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b305d7d2a7a",
+     "1": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b315d7d7bba",
+     "2": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b325d7d8bba",
+     "3": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b335d7dda7a",
+     "4": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b345d7d6bbb",
+     "5": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b355d7d3a7b",
+     "6": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b365d7dca7b",
+     "7": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b375d7d9bbb",
+     "8": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b385d7dabb8",
+     "9": "2d007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b395d7dfa78",
+     "10": "2e007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b31305d7d02aa",
+     "11": "2e007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b31315d7d536a",
+     "12": "2e007b226964223a22706970536f75726365222c2274797065223a22736574222c2276616c7565223a5b31325d7da36a"
+    }
+   }
+  },
+  {
+   "id": "pipSize",
+   "name": "UpStream Key:Set PIP Size",
+   "options": [
+    {
+     "id": "PipSize",
+     "label": "Size",
+     "type": "select",
+     "default": "0.25",
+     "choices": [
+      {
+       "id": "0.25",
+       "label": "0.25"
+      },
+      {
+       "id": "0.33",
+       "label": "0.33"
+      },
+      {
+       "id": "0.5",
+       "label": "0.5"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba6002b007b226964223a2270697053697a65222c2274797065223a22736574222c2276616c7565223a5b{{option.PipSize|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "PipSize": {
+     "0.25": "305d7de00e",
+     "0.33": "315d7db1ce",
+     "0.5": "325d7d41ce"
+    }
+   }
+  },
+  {
+   "id": "pipBorderEnable",
+   "name": "UpStream Key:Set Pip Border Enable",
+   "options": [
+    {
+     "id": "PipBorderEnable",
+     "label": "Enable",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "eba60033007b226964223a22706970426f72646572456e61626c65222c2274797065223a22736574222c2276616c7565223a5b{{option.PipBorderEnable|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "PipBorderEnable": {
+     "0": "305d7db531",
+     "1": "315d7de4f1",
+     "2": "325d7d14f1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Preview_0",
+   "category": "Preview",
+   "name": "Preview button for In 1",
+   "text": "In 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 0
+    }
+   }
+  },
+  {
+   "id": "Program_0",
+   "category": "Program",
+   "name": "Program button for In 1",
+   "text": "In 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 0
+    }
+   }
+  },
+  {
+   "id": "Preview_1",
+   "category": "Preview",
+   "name": "Preview button for In 2",
+   "text": "In 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 1
+    }
+   }
+  },
+  {
+   "id": "Program_1",
+   "category": "Program",
+   "name": "Program button for In 2",
+   "text": "In 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 1
+    }
+   }
+  },
+  {
+   "id": "Preview_2",
+   "category": "Preview",
+   "name": "Preview button for In 3",
+   "text": "In 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 2
+    }
+   }
+  },
+  {
+   "id": "Program_2",
+   "category": "Program",
+   "name": "Program button for In 3",
+   "text": "In 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 2
+    }
+   }
+  },
+  {
+   "id": "Preview_3",
+   "category": "Preview",
+   "name": "Preview button for In 4",
+   "text": "In 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 3
+    }
+   }
+  },
+  {
+   "id": "Program_3",
+   "category": "Program",
+   "name": "Program button for In 4",
+   "text": "In 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 3
+    }
+   }
+  },
+  {
+   "id": "Preview_4",
+   "category": "Preview",
+   "name": "Preview button for Aux",
+   "text": "Aux",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 4
+    }
+   }
+  },
+  {
+   "id": "Program_4",
+   "category": "Program",
+   "name": "Program button for Aux",
+   "text": "Aux",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 4
+    }
+   }
+  },
+  {
+   "id": "Preview_5",
+   "category": "Preview",
+   "name": "Preview button for S/SRC",
+   "text": "S/SRC",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 5
+    }
+   }
+  },
+  {
+   "id": "Program_5",
+   "category": "Program",
+   "name": "Program button for S/SRC",
+   "text": "S/SRC",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 5
+    }
+   }
+  },
+  {
+   "id": "Preview_6",
+   "category": "Preview",
+   "name": "Preview button for Still 1",
+   "text": "Still 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 6
+    }
+   }
+  },
+  {
+   "id": "Program_6",
+   "category": "Program",
+   "name": "Program button for Still 1",
+   "text": "Still 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 6
+    }
+   }
+  },
+  {
+   "id": "Preview_7",
+   "category": "Preview",
+   "name": "Preview button for Still 2",
+   "text": "Still 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwIndex",
+    "options": {
+     "Source": 7
+    }
+   }
+  },
+  {
+   "id": "Program_7",
+   "category": "Program",
+   "name": "Program button for Still 2",
+   "text": "Still 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmIndex",
+    "options": {
+     "Source": 7
+    }
+   }
+  },
+  {
+   "id": "transition_cut",
+   "category": "Transitions",
+   "name": "CUT",
+   "text": "CUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cutTransition",
+    "options": {}
+   }
+  },
+  {
+   "id": "transition_auto",
+   "category": "Transitions",
+   "name": "AUTO",
+   "text": "AUTO",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "autoTransition",
+    "options": {}
+   }
+  },
+  {
+   "id": "transition_style_0",
+   "category": "Transitions",
+   "name": "Transition: Change Transition style to MIX",
+   "text": "Transition\n style to \nMIX",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transitionIndex",
+    "options": {
+     "TransitionStyle": 0
+    }
+   }
+  },
+  {
+   "id": "transition_style_1",
+   "category": "Transitions",
+   "name": "Transition: Change Transition style to DIP",
+   "text": "Transition\n style to \nDIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transitionIndex",
+    "options": {
+     "TransitionStyle": 1
+    }
+   }
+  },
+  {
+   "id": "transition_style_2",
+   "category": "Transitions",
+   "name": "Transition: Change Transition style to WIPE",
+   "text": "Transition\n style to \nWIPE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transitionIndex",
+    "options": {
+     "TransitionStyle": 2
+    }
+   }
+  },
+  {
+   "id": "transition_Prev",
+   "category": "Transitions",
+   "name": "Transition:PREV",
+   "text": "PREV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "prev",
+    "options": {
+     "prevEnable": 2
+    }
+   }
+  },
+  {
+   "id": "ftb_AFV",
+   "category": "Fade to black",
+   "name": "FTB:Audio Follow Video Enable",
+   "text": "AFV",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ftbAudioAFV",
+    "options": {
+     "FtbAudioAFV": 2
+    }
+   }
+  },
+  {
+   "id": "ftb_auto",
+   "category": "Fade to black",
+   "name": "Autofade",
+   "text": "FTB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ftb",
+    "options": {}
+   }
+  },
+  {
+   "id": "Live_0",
+   "category": "Live",
+   "name": "Live",
+   "text": "Live",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "live",
+    "options": {
+     "LiveEnable": 2
+    }
+   }
+  },
+  {
+   "id": "AudioMixer_Trans",
+   "category": "AudioMixer",
+   "name": "Audio Mixer: Set AudioTransition Enable",
+   "text": "AudioFade",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audioTransition",
+    "options": {
+     "AudioTrans": 2
+    }
+   }
+  },
+  {
+   "id": "SuperSource_Enable",
+   "category": "SuperSource",
+   "name": "SuperSource Enable",
+   "text": "SS Enable",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "superSourceEnable",
+    "options": {
+     "SuperSourceEnable": 2
+    }
+   }
+  },
+  {
+   "id": "SuperSource_style_0",
+   "category": "SuperSource",
+   "name": "SuperSource style zoom out",
+   "text": "SuperSource style zoom out",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "superSourceControlStyle",
+    "options": {
+     "SuperSourceStyle": 0
+    }
+   }
+  },
+  {
+   "id": "SuperSource_style_1",
+   "category": "SuperSource",
+   "name": "SuperSource style crop-zoom out",
+   "text": "SuperSource style crop-zoom out",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "superSourceControlStyle",
+    "options": {
+     "SuperSourceStyle": 1
+    }
+   }
+  },
+  {
+   "id": "SuperSource_style_2",
+   "category": "SuperSource",
+   "name": "SuperSource style zoom out-crop",
+   "text": "SuperSource style zoom out-crop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "superSourceControlStyle",
+    "options": {
+     "SuperSourceStyle": 2
+    }
+   }
+  },
+  {
+   "id": "SuperSource_style_3",
+   "category": "SuperSource",
+   "name": "SuperSource style crop",
+   "text": "SuperSource style crop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "superSourceControlStyle",
+    "options": {
+     "SuperSourceStyle": 3
+    }
+   }
+  },
+  {
+   "id": "PlayMode_0",
+   "category": "Playback",
+   "name": "Set Playback mode",
+   "text": "Play in one group",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playbackMode",
+    "options": {
+     "ModeID": 0
+    }
+   }
+  },
+  {
+   "id": "PlayMode_1",
+   "category": "Playback",
+   "name": "Set Playback mode",
+   "text": "Play cross group",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playbackMode",
+    "options": {
+     "ModeID": 1
+    }
+   }
+  },
+  {
+   "id": "PlayMode_Repeat_1",
+   "category": "Playback",
+   "name": "Set Playback Repeat",
+   "text": "Repeat",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playbackRepeat",
+    "options": {
+     "EnableID": 2
+    }
+   }
+  },
+  {
+   "id": "PlayMode_Play_Pause_Toggle",
+   "category": "Playback",
+   "name": "Play/Pause video",
+   "text": "Play",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playbackPause",
+    "options": {
+     "EnableID": 2
+    }
+   }
+  },
+  {
+   "id": "PlayMode_Bar_1",
+   "category": "Playback",
+   "name": "Set Playback Bar",
+   "text": "Bar",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playbackBar",
+    "options": {
+     "EnableID": 2
+    }
+   }
+  },
+  {
+   "id": "Record_0",
+   "category": "Record",
+   "name": "Start/Stop Recording",
+   "text": "Record",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "record",
+    "options": {
+     "Record": 2
+    }
+   }
+  },
+  {
+   "id": "Record_Quality_high",
+   "category": "Record",
+   "name": "Set recording quality to high",
+   "text": "Rec Quality high",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recordQuality",
+    "options": {
+     "Quality": "high"
+    }
+   }
+  },
+  {
+   "id": "Record_Quality_good",
+   "category": "Record",
+   "name": "Set recording quality to good",
+   "text": "Rec Quality good",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recordQuality",
+    "options": {
+     "Quality": "good"
+    }
+   }
+  },
+  {
+   "id": "Record_Quality_medium",
+   "category": "Record",
+   "name": "Set recording quality to medium",
+   "text": "Rec Quality medium",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recordQuality",
+    "options": {
+     "Quality": "medium"
+    }
+   }
+  },
+  {
+   "id": "Record_Quality_low",
+   "category": "Record",
+   "name": "Set recording quality to low",
+   "text": "Rec Quality low",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recordQuality",
+    "options": {
+     "Quality": "low"
+    }
+   }
+  },
+  {
+   "id": "aux_0",
+   "category": "AUX Sources",
+   "name": "AUX 0 button for Player",
+   "text": "Player",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auxSource",
+    "options": {
+     "auxSourceID": 0
+    }
+   }
+  },
+  {
+   "id": "aux_1",
+   "category": "AUX Sources",
+   "name": "AUX 1 button for USB Camera",
+   "text": "USB Camera",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auxSource",
+    "options": {
+     "auxSourceID": 1
+    }
+   }
+  },
+  {
+   "id": "aux_2",
+   "category": "AUX Sources",
+   "name": "AUX 2 button for NDI",
+   "text": "NDI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auxSource",
+    "options": {
+     "auxSourceID": 2
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p23.98",
+   "category": "Settings",
+   "name": "Output Format 1080p23.98",
+   "text": "Output 1080p23.98",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 0
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p24",
+   "category": "Settings",
+   "name": "Output Format 1080p24",
+   "text": "Output 1080p24",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 1
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p25",
+   "category": "Settings",
+   "name": "Output Format 1080p25",
+   "text": "Output 1080p25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 2
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p29.97",
+   "category": "Settings",
+   "name": "Output Format 1080p29.97",
+   "text": "Output 1080p29.97",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 3
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p30",
+   "category": "Settings",
+   "name": "Output Format 1080p30",
+   "text": "Output 1080p30",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 4
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p50",
+   "category": "Settings",
+   "name": "Output Format 1080p50",
+   "text": "Output 1080p50",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 5
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p59.94",
+   "category": "Settings",
+   "name": "Output Format 1080p59.94",
+   "text": "Output 1080p59.94",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 6
+    }
+   }
+  },
+  {
+   "id": "OutPutFormat_1080p60",
+   "category": "Settings",
+   "name": "Output Format 1080p60",
+   "text": "Output 1080p60",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "outFormat",
+    "options": {
+     "OutFormat": 7
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-osee-gostream",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Johan Falkenström"
+  }
+ ],
+ "source": {
+  "module": "osee-gostream",
+  "version": "1.5.2",
+  "license": "MIT",
+  "maintainers": [
+   "Johan Falkenström"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-osee-gostream.git"
+ }
+}

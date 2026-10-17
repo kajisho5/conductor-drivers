@@ -1,0 +1,157 @@
+{
+ "format": 1,
+ "id": "m-shure-chargers",
+ "name": "Shure SBRC / SB-220 / SB-240",
+ "category": "Shure",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelID",
+   "label": "Model Type",
+   "type": "select",
+   "default": "sbrc",
+   "choices": [
+    {
+     "id": "sbc220",
+     "label": "SBC220 AD"
+    },
+    {
+     "id": "sbc240",
+     "label": "SBC240 ADX"
+    },
+    {
+     "id": "sbrc",
+     "label": "SBRC Rack Charger"
+    }
+   ]
+  },
+  {
+   "id": "moduleCount",
+   "label": "Number of Modules",
+   "type": "select",
+   "default": "1",
+   "choices": [
+    {
+     "id": "1",
+     "label": "1"
+    },
+    {
+     "id": "2",
+     "label": "2"
+    },
+    {
+     "id": "3",
+     "label": "3"
+    },
+    {
+     "id": "4",
+     "label": "4"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_storage_mode",
+   "name": "Set Storage Mode",
+   "options": [
+    {
+     "id": "storage_mode",
+     "label": "Storage Mode",
+     "type": "select",
+     "default": "OFF",
+     "choices": [
+      {
+       "id": "OFF",
+       "label": "Off"
+      },
+      {
+       "id": "ON",
+       "label": "On"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET STORAGE_MODE {{option.storage_mode|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "storage_mode": {
+     "OFF": "OFF",
+     "ON": "ON",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "set_flash",
+   "name": "Flash Device",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH ON >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_device_name",
+   "name": "Set Device Name",
+   "options": [
+    {
+     "id": "device_name",
+     "label": "Device Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DEVICE_ID {{{option.device_name}}} >",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-chargers",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Alexander Kettner"
+  }
+ ],
+ "source": {
+  "module": "shure-chargers",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Alexander Kettner"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-chargers.git"
+ }
+}

@@ -1,0 +1,155 @@
+{
+ "format": 1,
+ "id": "m-ibm-watson",
+ "name": "IBM Watson",
+ "category": "IBM",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://example.com:8000",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "url",
+   "label": "Watson server address",
+   "type": "text",
+   "default": "http://example.com:8000"
+  },
+  {
+   "id": "pollInterval",
+   "label": "Status Poll Interval (seconds)",
+   "type": "number",
+   "default": 2,
+   "min": 1,
+   "max": 3600
+  },
+  {
+   "id": "rejectUnauthorized",
+   "label": "Unauthorized Certificates",
+   "type": "select",
+   "default": "true",
+   "choices": [
+    {
+     "id": "true",
+     "label": "Reject"
+    },
+    {
+     "id": "false",
+     "label": "Accept - Use at your own risk!"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "start_captioning",
+   "name": "Start Captioning",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/begin_transcript"
+   }
+  },
+  {
+   "id": "end_captioning",
+   "name": "End Captioning",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/session_close"
+   }
+  },
+  {
+   "id": "disable_captions",
+   "name": "Mute Captions",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/disable_captions"
+   }
+  },
+  {
+   "id": "enable_captions",
+   "name": "Unmute Captions",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/enable_captions"
+   }
+  },
+  {
+   "id": "toggle_captioning_state",
+   "name": "Toggle Captioning State",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/begin_transcript"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "startCaptioning",
+   "category": "Control",
+   "name": "Start Captioning",
+   "text": "Start CC",
+   "backgroundColor": "#003700",
+   "action": {
+    "definitionId": "toggle_captioning_state",
+    "options": {}
+   }
+  },
+  {
+   "id": "stopCaptioning",
+   "category": "Control",
+   "name": "Stop Captioning",
+   "text": "Stop CC",
+   "backgroundColor": "#640000",
+   "action": {
+    "definitionId": "toggle_captioning_state",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggleCaptioning",
+   "category": "Control",
+   "name": "Toggle Captioning",
+   "text": "Toggle",
+   "backgroundColor": "#f50000",
+   "action": {
+    "definitionId": "toggle_captioning_state",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-ibm-watson",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：InertiaImpact"
+  }
+ ],
+ "source": {
+  "module": "ibm-watson",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "InertiaImpact"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-ibm-watson.git"
+ }
+}

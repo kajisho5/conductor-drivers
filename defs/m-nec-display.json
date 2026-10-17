@@ -1,0 +1,120 @@
+{
+ "format": 1,
+ "id": "m-nec-display",
+ "name": "NEC Display",
+ "category": "NEC",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7142,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "protocol",
+   "label": "Protocol",
+   "type": "select",
+   "default": "hex",
+   "choices": [
+    {
+     "id": "ascii",
+     "label": "ASCII"
+    },
+    {
+     "id": "hex",
+     "label": "HEX"
+    }
+   ]
+  },
+  {
+   "id": "enablePolling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "rate",
+   "label": "Polling Rate (ms)",
+   "type": "text",
+   "default": 20000
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "setPower",
+   "name": "Power",
+   "options": [
+    {
+     "id": "power",
+     "label": "Power",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0130413041304302433230334436303030{{option.power|map}}0d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "power": {
+     "on": "310373",
+     "off": "340376",
+     "toggle": "310373"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-nec-display",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "nec-display",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-nec-display.git"
+ }
+}

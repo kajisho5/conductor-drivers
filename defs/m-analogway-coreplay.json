@@ -1,0 +1,547 @@
+{
+ "format": 1,
+ "id": "m-analogway-coreplay",
+ "name": "Analog Way CorePlay Solo",
+ "category": "Analog Way",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://api",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "transport",
+   "name": "Player: Transport",
+   "options": [
+    {
+     "id": "playback",
+     "label": "Playback",
+     "type": "select",
+     "default": "program",
+     "choices": [
+      {
+       "id": "program",
+       "label": "Program"
+      },
+      {
+       "id": "preview",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "stop",
+     "choices": [
+      {
+       "id": "stop",
+       "label": "Stop"
+      },
+      {
+       "id": "play",
+       "label": "Play"
+      },
+      {
+       "id": "pause",
+       "label": "Pause"
+      },
+      {
+       "id": "tglstop",
+       "label": "Toggle Play/Stop"
+      },
+      {
+       "id": "tglpause",
+       "label": "Toggle Play/Pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/core/v1/players/1/pr{{option.playback|map}}/{{option.action}}",
+    "body": ""
+   },
+   "maps": {
+    "playback": {
+     "program": "ogram",
+     "preview": "eview"
+    }
+   }
+  },
+  {
+   "id": "take",
+   "name": "Player: Take",
+   "options": [
+    {
+     "id": "transitionDuration",
+     "label": "Take Duration",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 600
+    },
+    {
+     "id": "transitionType",
+     "label": "Transition Type",
+     "type": "select",
+     "default": "crossfade",
+     "choices": [
+      {
+       "id": "directCut",
+       "label": "Direct Cut"
+      },
+      {
+       "id": "crossfade",
+       "label": "Crossfade"
+      },
+      {
+       "id": "dipToColor",
+       "label": "Dip to Color"
+      }
+     ]
+    },
+    {
+     "id": "startPoint",
+     "label": "Playhead Option",
+     "type": "select",
+     "default": "inpoint",
+     "choices": [
+      {
+       "id": "inpoint",
+       "label": "From inpoint"
+      },
+      {
+       "id": "position",
+       "label": "From current position in preview"
+      }
+     ]
+    },
+    {
+     "id": "mode",
+     "label": "Preset Toggle",
+     "type": "select",
+     "default": "copy",
+     "choices": [
+      {
+       "id": "swap",
+       "label": "Swap"
+      },
+      {
+       "id": "copy",
+       "label": "Copy"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/core/v1/players/1/take",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "selectItem",
+   "name": "Playlist: Select Item",
+   "options": [
+    {
+     "id": "playback",
+     "label": "Playback",
+     "type": "select",
+     "default": "program",
+     "choices": [
+      {
+       "id": "program",
+       "label": "Program"
+      },
+      {
+       "id": "preview",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "next",
+     "choices": [
+      {
+       "id": "previous",
+       "label": "Previous Item"
+      },
+      {
+       "id": "next",
+       "label": "Next Item"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/core/v1/players/1/pr{{option.playback|map}}/{{option.action|map}}",
+    "body": ""
+   },
+   "maps": {
+    "playback": {
+     "program": "ogram",
+     "preview": "eview"
+    },
+    "action": {
+     "next": "next",
+     "previous": "previous"
+    }
+   }
+  },
+  {
+   "id": "setMedia",
+   "name": "Player: Set Media by index",
+   "options": [
+    {
+     "id": "playback",
+     "label": "Playback",
+     "type": "select",
+     "default": "program",
+     "choices": [
+      {
+       "id": "program",
+       "label": "Program"
+      },
+      {
+       "id": "preview",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "collections",
+     "choices": [
+      {
+       "id": "collections",
+       "label": "Single Media"
+      },
+      {
+       "id": "playlists",
+       "label": "Playlist"
+      }
+     ]
+    },
+    {
+     "id": "number",
+     "label": "Number",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 999999999,
+     "help": "Number of Collection or Playlist"
+    },
+    {
+     "id": "slot",
+     "label": "Slot",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 255,
+     "help": "Number of Slot"
+    },
+    {
+     "id": "cue",
+     "label": "Cue",
+     "type": "text",
+     "default": "first",
+     "help": "Number of Cue, type 'first' to reference the first cue, regardles of its number"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/core/v1/players/1/pr{{option.playback|map}}/media",
+    "body": "{\"mediaUrl\":\"core://collections/{{option.number}}/slots/{{option.slot}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "playback": {
+     "program": "ogram",
+     "preview": "eview"
+    }
+   }
+  },
+  {
+   "id": "volume",
+   "name": "Audio: Volume",
+   "options": [
+    {
+     "id": "playback",
+     "label": "Playback",
+     "type": "select",
+     "default": "program",
+     "choices": [
+      {
+       "id": "program",
+       "label": "Program"
+      },
+      {
+       "id": "preview",
+       "label": "Preview"
+      }
+     ]
+    },
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "number",
+     "default": 0,
+     "min": -200,
+     "max": 12,
+     "help": "Range is from +12dB to -200dB, -200dB is like -infinity"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/core/v1/players/1/pr{{option.playback|map}}/setVolume?volume={{option.volume}}.00",
+    "body": ""
+   },
+   "maps": {
+    "playback": {
+     "program": "ogram",
+     "preview": "eview"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "take",
+   "category": "Transition",
+   "name": "Take",
+   "text": "TAKE",
+   "backgroundColor": "#660000",
+   "action": {
+    "definitionId": "take",
+    "options": {
+     "properties": [],
+     "transitionDuration": 0.7,
+     "transitionType": "crossfade",
+     "mode": "swap",
+     "startPoint": "inpoint"
+    }
+   }
+  },
+  {
+   "id": "trans07",
+   "category": "Transition",
+   "name": "Take",
+   "text": "TRANS 0.7",
+   "backgroundColor": "#660000",
+   "action": {
+    "definitionId": "take",
+    "options": {
+     "properties": [
+      "transitionDuration",
+      "transitionType"
+     ],
+     "transitionDuration": 0.7,
+     "transitionType": "crossfade",
+     "mode": "swap",
+     "startPoint": "inpoint"
+    }
+   }
+  },
+  {
+   "id": "cut",
+   "category": "Transition",
+   "name": "Cut",
+   "text": "CUT",
+   "backgroundColor": "#660000",
+   "action": {
+    "definitionId": "take",
+    "options": {
+     "properties": [
+      "transitionDuration",
+      "transitionType"
+     ],
+     "transitionDuration": 0,
+     "transitionType": "directCut",
+     "mode": "swap",
+     "startPoint": "inpoint"
+    }
+   }
+  },
+  {
+   "id": "Programplay",
+   "category": "Transport",
+   "name": "Play Program",
+   "text": "▶️\nProgram",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "program",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "Programpause",
+   "category": "Transport",
+   "name": "Pause Program",
+   "text": "⏸️\nProgram",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "program",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "Programstop",
+   "category": "Transport",
+   "name": "Stop Program",
+   "text": "⏹️\nProgram",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "program",
+     "action": "stop"
+    }
+   }
+  },
+  {
+   "id": "Programtglpause",
+   "category": "Transport",
+   "name": "Toggle Play/Pause Program",
+   "text": "⏯️\nProgram",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "program",
+     "action": "tglpause"
+    }
+   }
+  },
+  {
+   "id": "Programtglstop",
+   "category": "Transport",
+   "name": "Toggle Play/Stop Program",
+   "text": "▶️/⏹️\nProgram",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "program",
+     "action": "tglstop"
+    }
+   }
+  },
+  {
+   "id": "Previewplay",
+   "category": "Transport",
+   "name": "Play Preview",
+   "text": "▶️\nPreview",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "preview",
+     "action": "play"
+    }
+   }
+  },
+  {
+   "id": "Previewpause",
+   "category": "Transport",
+   "name": "Pause Preview",
+   "text": "⏸️\nPreview",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "preview",
+     "action": "pause"
+    }
+   }
+  },
+  {
+   "id": "Previewstop",
+   "category": "Transport",
+   "name": "Stop Preview",
+   "text": "⏹️\nPreview",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "preview",
+     "action": "stop"
+    }
+   }
+  },
+  {
+   "id": "Previewtglpause",
+   "category": "Transport",
+   "name": "Toggle Play/Pause Preview",
+   "text": "⏯️\nPreview",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "preview",
+     "action": "tglpause"
+    }
+   }
+  },
+  {
+   "id": "Previewtglstop",
+   "category": "Transport",
+   "name": "Toggle Play/Stop Preview",
+   "text": "▶️/⏹️\nPreview",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "transport",
+    "options": {
+     "playback": "preview",
+     "action": "tglstop"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-analogway-coreplay",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dorian Meid"
+  }
+ ],
+ "source": {
+  "module": "analogway-coreplay",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Dorian Meid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-analogway-coreplay.git"
+ }
+}

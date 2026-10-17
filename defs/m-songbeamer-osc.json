@@ -1,0 +1,514 @@
+{
+ "format": 1,
+ "id": "m-songbeamer-osc",
+ "name": "Songbeamer OSC",
+ "category": "Songbeamer",
+ "version": "2.3.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 0,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "remote_port",
+   "label": "Target Port",
+   "type": "text",
+   "help": "OSC Port used in Songbeamer default is 10023"
+  },
+  {
+   "id": "local_port",
+   "label": "Local Port",
+   "type": "text",
+   "help": "OSC Port used to send messages - should be different from target port to avoid mistakes when running on same machine"
+  },
+  {
+   "id": "reconnect_time",
+   "label": "reconnect time",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "help": "ms after which reconnect should be attempted"
+  }
+ ],
+ "actions": [
+  {
+   "id": "send_blank",
+   "name": "Send message without arguments",
+   "options": [
+    {
+     "id": "path",
+     "label": "OSC Path",
+     "type": "text",
+     "default": "/osc/path"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/osc/path",
+    "args": []
+   }
+  },
+  {
+   "id": "presentation_state",
+   "name": "Change presentation state",
+   "options": [
+    {
+     "id": "should_change",
+     "label": "Execute change",
+     "type": "boolean",
+     "default": "true",
+     "help": "disable in order to request state instead of changing it"
+    },
+    {
+     "id": "presentation_state",
+     "label": "State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "black"
+      },
+      {
+       "id": "1",
+       "label": "background"
+      },
+      {
+       "id": "2",
+       "label": "page"
+      },
+      {
+       "id": "3",
+       "label": "logo"
+      }
+     ],
+     "help": "Choose presentation state"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/presentation/state",
+    "args": []
+   }
+  },
+  {
+   "id": "presentation_permanentblack",
+   "name": "Change presentation state to permanent black",
+   "options": [
+    {
+     "id": "presentation_permanentblack",
+     "label": "Presentation should be permanent black",
+     "type": "boolean",
+     "default": "true",
+     "help": "Choose to enable permanent black"
+    },
+    {
+     "id": "should_change",
+     "label": "Execute change",
+     "type": "boolean",
+     "default": "true",
+     "help": "disable in order to request state instead of changing it"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/presentation/permanentblack",
+    "args": []
+   }
+  },
+  {
+   "id": "presentation_pagecount",
+   "name": "Get presentation page total",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/presentation/pagecount",
+    "args": []
+   }
+  },
+  {
+   "id": "stage_message_text",
+   "name": "Change stage message text",
+   "options": [
+    {
+     "id": "stage_message_text",
+     "label": "Message",
+     "type": "text",
+     "default": "",
+     "help": "Type any message to display"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/stage/message/text",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.stage_message_text}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stage_layoutname",
+   "name": "Change stage layout by name",
+   "options": [
+    {
+     "id": "stage_layoutname",
+     "label": "Message",
+     "type": "text",
+     "default": "Default",
+     "help": "Type name of layout without extension to be used for stage display"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/stage/layoutname",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.stage_layoutname}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stage_timerinit",
+   "name": "Set stagetimer initial value",
+   "options": [
+    {
+     "id": "use_timeframe",
+     "label": "use timeframe instead of target time",
+     "type": "boolean",
+     "default": "true",
+     "help": "disable in order to send target time instead of timeframe"
+    },
+    {
+     "id": "stage_timerinit_time",
+     "label": "Set Timer target time",
+     "type": "text",
+     "default": "11:45:00",
+     "help": "Chose any 24h time"
+    },
+    {
+     "id": "stage_timerinit_seconds",
+     "label": "Set length of timer in seconds",
+     "type": "text",
+     "default": 60,
+     "help": "The length of the timer to set as seconds"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/stage/timerinit",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.stage_timerinit_time}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "playlist_count",
+   "name": "Get playlist page total",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/playlist/count",
+    "args": []
+   }
+  },
+  {
+   "id": "video_state",
+   "name": "Change video state",
+   "options": [
+    {
+     "id": "video_state",
+     "label": "State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "play"
+      },
+      {
+       "id": "1",
+       "label": "pause"
+      },
+      {
+       "id": "2",
+       "label": "stop"
+      }
+     ],
+     "help": "Choose video state"
+    },
+    {
+     "id": "should_change",
+     "label": "Execute change",
+     "type": "boolean",
+     "default": "true",
+     "help": "disable in order to request state instead of changing it"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/video/state",
+    "args": []
+   }
+  },
+  {
+   "id": "livevideo_state",
+   "name": "Change livevideo state",
+   "options": [
+    {
+     "id": "should_change",
+     "label": "Execute change",
+     "type": "boolean",
+     "default": true,
+     "help": "disable in order to request state instead of changing it"
+    },
+    {
+     "id": "livevideo_state",
+     "label": "Play",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/livevideo/state",
+    "args": []
+   }
+  },
+  {
+   "id": "send_string",
+   "name": "Send string",
+   "options": [
+    {
+     "id": "path",
+     "label": "OSC Path",
+     "type": "text",
+     "default": "/osc/path"
+    },
+    {
+     "id": "string",
+     "label": "Value",
+     "type": "text",
+     "default": "text"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/osc/path",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.string}}"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "state_current",
+   "category": "Presentation state",
+   "name": "get current state",
+   "text": "?",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "presentation_state",
+    "options": {
+     "should_change": false
+    }
+   }
+  },
+  {
+   "id": "state_black",
+   "category": "Presentation state",
+   "name": "presentation_state -> black ",
+   "text": "presentation_state -> black ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "presentation_state",
+    "options": {
+     "presentation_state": "0",
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "state_background",
+   "category": "Presentation state",
+   "name": "presentation_state -> background ",
+   "text": "presentation_state -> background ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "presentation_state",
+    "options": {
+     "presentation_state": "1",
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "state_page",
+   "category": "Presentation state",
+   "name": "presentation_state -> page ",
+   "text": "page",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "presentation_state",
+    "options": {
+     "presentation_state": "2",
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "state_logo",
+   "category": "Presentation state",
+   "name": "presentation_state -> logo ",
+   "text": "presentation_state -> logo ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "presentation_state",
+    "options": {
+     "presentation_state": "3",
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "video_state_current",
+   "category": "Video state",
+   "name": "get current video playback state",
+   "text": "?",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_state",
+    "options": {
+     "should_change": false
+    }
+   }
+  },
+  {
+   "id": "video_state_play",
+   "category": "Video state",
+   "name": "video_state -> play ",
+   "text": "video_state -> play ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_state",
+    "options": {
+     "video_state": "0",
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "video_state_pause",
+   "category": "Video state",
+   "name": "video_state -> pause ",
+   "text": "video_state -> pause ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_state",
+    "options": {
+     "video_state": "1",
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "video_state_stop",
+   "category": "Video state",
+   "name": "video_state -> stop ",
+   "text": "video_state -> stop ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_state",
+    "options": {
+     "video_state": "2",
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "livevideo_state_current",
+   "category": "livevideo state",
+   "name": "get current live video playback state",
+   "text": "?",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "livevideo_state",
+    "options": {
+     "should_change": false
+    }
+   }
+  },
+  {
+   "id": "livevideo_state_play",
+   "category": "livevideo state",
+   "name": "livevideo_state -> play ",
+   "text": "livevideo_state -> play ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "livevideo_state",
+    "options": {
+     "livevideo_state": true,
+     "should_change": true
+    }
+   }
+  },
+  {
+   "id": "livevideo_state_stop",
+   "category": "livevideo state",
+   "name": "livevideo_state -> stop ",
+   "text": "livevideo_state -> stop ",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "livevideo_state",
+    "options": {
+     "livevideo_state": false,
+     "should_change": true
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-songbeamer-osc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Benedict Stein"
+  }
+ ],
+ "source": {
+  "module": "songbeamer-osc",
+  "version": "2.3.2",
+  "license": "MIT",
+  "maintainers": [
+   "Benedict Stein"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-songbeamer-osc.git"
+ }
+}

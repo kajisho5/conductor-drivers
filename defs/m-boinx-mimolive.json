@@ -1,0 +1,108 @@
+{
+ "format": 1,
+ "id": "m-boinx-mimolive",
+ "name": "Boinx mimoLive",
+ "category": "Boinx",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8989",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "document",
+   "name": "Document Actions",
+   "options": [
+    {
+     "id": "document",
+     "label": "Document (index or API endpoint)",
+     "type": "text",
+     "default": "1",
+     "help": "Enter an index number, document ID or API endpoint"
+    },
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "setLive",
+     "choices": [
+      {
+       "id": "setLive",
+       "label": "Set Live"
+      },
+      {
+       "id": "setOff",
+       "label": "Set Off"
+      },
+      {
+       "id": "toggleLive",
+       "label": "Toggle Live"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/documents/undefined/setLive"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "documentToggle",
+   "category": "Document",
+   "name": "Toggle Document",
+   "text": "Start Show",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "document",
+    "options": {
+     "document": "1",
+     "action": "toggleLive"
+    }
+   }
+  },
+  {
+   "id": "documentState",
+   "category": "Document",
+   "name": "Document State",
+   "text": "Document State",
+   "backgroundColor": "#444444",
+   "action": {
+    "definitionId": "document",
+    "options": {
+     "document": "1",
+     "action": "toggleLive"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-boinx-mimolive",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Stephen Harrison"
+  }
+ ],
+ "source": {
+  "module": "boinx-mimolive",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Stephen Harrison"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-boinx-mimolive.git"
+ }
+}

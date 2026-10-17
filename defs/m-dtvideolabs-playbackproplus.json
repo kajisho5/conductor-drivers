@@ -1,0 +1,771 @@
+{
+ "format": 1,
+ "id": "m-dtvideolabs-playbackproplus",
+ "name": "DT Videolabs PlaybackPro Plus",
+ "category": "DT Videolabs",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 4647,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "prot",
+   "label": "Connect with TCP / UDP",
+   "type": "select",
+   "default": "tcp",
+   "choices": [
+    {
+     "id": "tcp",
+     "label": "TCP"
+    },
+    {
+     "id": "udp",
+     "label": "UDP"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "take",
+   "name": "Take clip to Program",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "TA",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "play",
+   "name": "Play from current location (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "PL",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause/Resume (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "OP",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pausePgm",
+   "name": "Pause playback (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "PA",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "resumePgm",
+   "name": "Resume playback from current location (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "PL",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "kill",
+   "name": "Stop Program playback (Kill)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "KL",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "link",
+   "name": "Link Temp (Toggle)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "IT",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "freeze",
+   "name": "Freeze Temp (Toggle)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FT",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loop",
+   "name": "Loop Temp (Toggle)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "LT",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loopTempEnable",
+   "name": "Loop Temp (Enable)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SL",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loopTempDisable",
+   "name": "Loop Temp (Disable)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "EL",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "previous",
+   "name": "Previous Clip (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "PR",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "next",
+   "name": "Next Clip (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NX",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "last10",
+   "name": "Goto last 10 seconds",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "10",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "last20",
+   "name": "Goto last 20 seconds",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "20",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "last30",
+   "name": "Goto last 30 seconds",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "30",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pgmFR",
+   "name": "Fast Reverse (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "OR",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pgmFF",
+   "name": "Fast Forward (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "OF",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pgmStepBack",
+   "name": "Step Backward (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "O-",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pgmStepFwd",
+   "name": "Step Forward (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "O+",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pgmGotoIn",
+   "name": "Goto In (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "OI",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pgmGotoOut",
+   "name": "Goto Out (Program)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "OO",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "markIn",
+   "name": "Mark In (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ES",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "markOut",
+   "name": "Mark Out (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "EE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pvwGotoIn",
+   "name": "Goto In (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "EI",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pvwGotoOut",
+   "name": "Goto Out (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "EO",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pvwPause",
+   "name": "Play/Pause (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "EP",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pvwFR",
+   "name": "Fast Reverse (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ER",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pvwFF",
+   "name": "Fast Forward (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "EF",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pvwStepRev",
+   "name": "Step Backward (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "E-",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pvwStepFwd",
+   "name": "Step Forward (Preview)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "E+",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadClip",
+   "name": "Load clip (id) into Preview",
+   "options": [
+    {
+     "id": "clip",
+     "label": "clip ID",
+     "type": "number"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GO{{option.clip}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadAndTakeClip",
+   "name": "Load clip (id) and Take to Program",
+   "options": [
+    {
+     "id": "clip",
+     "label": "Clip ID",
+     "type": "number"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GT{{option.clip}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearPreviewClip",
+   "name": "Clear Preview clip",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CL",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "decreaseFadeOut",
+   "name": "Decrease End All fade out duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "K-",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "increaseFadeOut",
+   "name": "Increase End All fade out duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "K+",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "decreaseLinkTempDuration",
+   "name": "Decrease Link Temp duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "I-",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "increaseLinkTempDuration",
+   "name": "Increase Link Temp duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "I+",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "decreaseLoopTempDuration",
+   "name": "Decrease Loop Temp duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "L-",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "increaseLoopTempDuration",
+   "name": "Increase Loop Temp duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "L+",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "decreaseFadeOnTake",
+   "name": "Decrease Fade On Take duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "F-",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "increaseFadeOnTake",
+   "name": "Increase Fade On Take duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "F+",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "decreaseTakeDuration",
+   "name": "Decrease Take duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "T-",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "increaseTakeDuration",
+   "name": "Increase Take duration",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "T+",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "saveShow",
+   "name": "Save Show file",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "SA",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "program-take",
+   "category": "Program",
+   "name": "Take",
+   "text": "Take",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "take",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-kill",
+   "category": "Program",
+   "name": "End Playback (kill)",
+   "text": "End Playback (kill)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "kill",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-pause",
+   "category": "Program",
+   "name": "Pause/Play (Program)",
+   "text": "Pause/Play (Program)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-link",
+   "category": "Program",
+   "name": "Link Temp (Toggle)",
+   "text": "Link",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "link",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-freeze",
+   "category": "Program",
+   "name": "Freeze Temp (Toggle)",
+   "text": "Freeze",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-loop",
+   "category": "Program",
+   "name": "Loop Temp (Toggle)",
+   "text": "Loop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-last30",
+   "category": "Program",
+   "name": "Goto last 30 seconds (Program)",
+   "text": "Last\n30 Sec",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "last30",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-last20",
+   "category": "Program",
+   "name": "Goto last 20 seconds (Program)",
+   "text": "Last\n20 Sec",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "last20",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-last10",
+   "category": "Program",
+   "name": "Goto last 10 seconds (Program)",
+   "text": "Last\n10 Sec",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "last10",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-fast-reverse",
+   "category": "Program",
+   "name": "Fast Reverse (Program)",
+   "text": "Rew\nPGM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmFR",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-fast-fwd",
+   "category": "Program",
+   "name": "Fast Forward (Program)",
+   "text": "FF\nPGM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmFF",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-step-back",
+   "category": "Program",
+   "name": "Step Backward (Program)",
+   "text": "<Step\nPGM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmStepBack",
+    "options": {}
+   }
+  },
+  {
+   "id": "program-step-fwd",
+   "category": "Program",
+   "name": "Step Forward (Program)",
+   "text": "Step>\nPGM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pgmStepFwd",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-prev",
+   "category": "Preview",
+   "name": "Previous (Preview)",
+   "text": "Previous (Preview)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-next",
+   "category": "Preview",
+   "name": "Next (Preview)",
+   "text": "Next (Preview)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-pause",
+   "category": "Preview",
+   "name": "Play/Pause (Preview)",
+   "text": "Play\nPause\nPVW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwPause",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-rewind",
+   "category": "Preview",
+   "name": "Fast Reverse (Preview)",
+   "text": "Rev\nPVW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwFR",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-fast-fwd",
+   "category": "Preview",
+   "name": "Fast Forward (Preview)",
+   "text": "FF\nPVW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwFF",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-step-back",
+   "category": "Preview",
+   "name": "Step Back (Preview)",
+   "text": "Step\nBack\nPVW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwStepRev",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-step-fwd",
+   "category": "Preview",
+   "name": "Step FWD (Preview)",
+   "text": "Step\nFWD\nPVW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pvwStepFwd",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-mark-in",
+   "category": "Preview",
+   "name": "Mark In (Preview)",
+   "text": "Mark\nIn\nPVW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "markIn",
+    "options": {}
+   }
+  },
+  {
+   "id": "preview-mark-out",
+   "category": "Preview",
+   "name": "Mark Out (Preview)",
+   "text": "Mark\nOut\nPVW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "markOut",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-dtvideolabs-playbackproplus",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Røine, Greg Oseid"
+  }
+ ],
+ "source": {
+  "module": "dtvideolabs-playbackproplus",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Per Røine",
+   "Greg Oseid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-dtvideolabs-playbackproplus.git"
+ }
+}

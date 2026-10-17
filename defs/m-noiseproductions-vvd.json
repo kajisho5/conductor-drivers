@@ -1,0 +1,344 @@
+{
+ "format": 1,
+ "id": "m-noiseproductions-vvd",
+ "name": "Noise Productions Virtual Video Director",
+ "category": "Noise Productions",
+ "version": "1.0.0-beta.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "power",
+   "name": "Power",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      },
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/state/setpower/o{{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "toggle": "n",
+     "on": "n",
+     "off": "ff"
+    }
+   }
+  },
+  {
+   "id": "mute_channel",
+   "name": "Mute Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 135
+    },
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      },
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v2/channels/{{option.channel}}/{{option.mode|map}}mute",
+    "body": "",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "mode": {
+     "toggle": "",
+     "on": "",
+     "off": "un"
+    }
+   }
+  },
+  {
+   "id": "trigger_channel",
+   "name": "Trigger Channel Manually",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 135
+    },
+    {
+     "id": "slot",
+     "label": "Trigger Slot",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v2/channels/{{option.channel}}/triggers/{{option.slot}}/execute",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "load_scene_by_slot",
+   "name": "Load Scene by Slot",
+   "options": [
+    {
+     "id": "slot",
+     "label": "Scene Slot",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v2/show/scenes/{{option.slot}}/load",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "load_scene_by_name",
+   "name": "Load Scene by Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Scene Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/v2/show/scenes/load?name={{option.name}}",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "trigger_broadcast",
+   "name": "Broadcast Trigger",
+   "options": [
+    {
+     "id": "broadcastTrigger",
+     "label": "Broadcast Trigger",
+     "type": "select",
+     "default": "onair",
+     "choices": [
+      {
+       "id": "onair",
+       "label": "On Air"
+      },
+      {
+       "id": "offair",
+       "label": "Off Air"
+      },
+      {
+       "id": "musicbreak",
+       "label": "Music Break"
+      },
+      {
+       "id": "adbreak",
+       "label": "Ad Break"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v2/broadcast/{{option.broadcastTrigger|map}}"
+   },
+   "maps": {
+    "broadcastTrigger": {
+     "onair": "onair",
+     "offair": "offair",
+     "musicbreak": "musicbreak",
+     "adbreak": "adbreak"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "power_status",
+   "category": "Power",
+   "name": "Power Status",
+   "text": "POWER STATUS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "mode": "toggle"
+    }
+   }
+  },
+  {
+   "id": "power_toggle",
+   "category": "Power",
+   "name": "Power Toggle",
+   "text": "TOGGLE POWER",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "mode": "toggle"
+    }
+   }
+  },
+  {
+   "id": "power_on",
+   "category": "Power",
+   "name": "Power On",
+   "text": "POWER\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "mode": "on"
+    }
+   }
+  },
+  {
+   "id": "power_off",
+   "category": "Power",
+   "name": "Power Off",
+   "text": "POWER\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "power",
+    "options": {
+     "mode": "off"
+    }
+   }
+  },
+  {
+   "id": "broadcast_trigger_onair",
+   "category": "Broadcast",
+   "name": "Broadcast Trigger On Air",
+   "text": "TRIGGER\nOn Air",
+   "backgroundColor": "#dc7800",
+   "action": {
+    "definitionId": "trigger_broadcast",
+    "options": {
+     "broadcastTrigger": "onair"
+    }
+   }
+  },
+  {
+   "id": "broadcast_trigger_offair",
+   "category": "Broadcast",
+   "name": "Broadcast Trigger Off Air",
+   "text": "TRIGGER\nOff Air",
+   "backgroundColor": "#dc7800",
+   "action": {
+    "definitionId": "trigger_broadcast",
+    "options": {
+     "broadcastTrigger": "offair"
+    }
+   }
+  },
+  {
+   "id": "broadcast_trigger_musicbreak",
+   "category": "Broadcast",
+   "name": "Broadcast Trigger Music Break",
+   "text": "TRIGGER\nMusic Break",
+   "backgroundColor": "#dc7800",
+   "action": {
+    "definitionId": "trigger_broadcast",
+    "options": {
+     "broadcastTrigger": "musicbreak"
+    }
+   }
+  },
+  {
+   "id": "broadcast_trigger_adbreak",
+   "category": "Broadcast",
+   "name": "Broadcast Trigger Ad Break",
+   "text": "TRIGGER\nAd Break",
+   "backgroundColor": "#dc7800",
+   "action": {
+    "definitionId": "trigger_broadcast",
+    "options": {
+     "broadcastTrigger": "adbreak"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-noiseproductions-vvd",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Bryce Seifert"
+  }
+ ],
+ "source": {
+  "module": "noiseproductions-vvd",
+  "version": "1.0.0-beta.1",
+  "license": "MIT",
+  "maintainers": [
+   "Bryce Seifert"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-noiseproductions-vvd.git"
+ }
+}

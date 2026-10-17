@@ -1,0 +1,208 @@
+{
+ "format": 1,
+ "id": "m-novastar-switcher",
+ "name": "NovaStar N10 / N20 / D12 / D32",
+ "category": "NovaStar",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5400,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelId",
+   "label": "Model",
+   "type": "select",
+   "default": "d12",
+   "choices": [
+    {
+     "id": "d12",
+     "label": "D12"
+    },
+    {
+     "id": "d32",
+     "label": "D32"
+    },
+    {
+     "id": "n10",
+     "label": "N10"
+    },
+    {
+     "id": "n20",
+     "label": "N20"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "take",
+   "name": "Execute Take on the selected screen",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa006afe0004000000013000000000b50000000201000000000000000e1300000000005b7b2273637265656e4964223a3235352c2273637265656e54797065223a322c22737769746368456666656374223a7b2274696d65223a312c22646972656374696f6e223a302c2274797065223a317d7d2c7b2273637265656e4964223a3235352c2273637265656e54797065223a342c22737769746368456666656374223a7b2274696d65223a312c22646972656374696f6e223a302c2274797065223a317d7d5d598d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "cut",
+   "name": "Execute Cut on the selected screen",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa0071fe0004000000013000000000b50000000201000000000000000e1300000000005b7b2273637265656e4964223a3235352c2273637265656e54797065223a322c22737769746368456666656374223a7b2274696d65223a312c22646972656374696f6e223a302c2274797065223a307d7d2c7b2273637265656e4964223a3235352c2273637265656e54797065223a342c22737769746368456666656374223a7b2274696d65223a312c22646972656374696f6e223a302c2274797065223a307d7d5d5e8d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "ftb",
+   "name": "Execute FTB on the selected screen",
+   "options": [
+    {
+     "id": "ftb",
+     "label": "ftb",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No fade to black"
+      },
+      {
+       "id": "1",
+       "label": "Fade to black"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa00{{option.ftb|map}}7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "ftb": {
+     "0": "affe00040000000130000000008b0000000201000000000000000a1300000000005b7b2273637265656e4964223a3235352c2273637265656e54797065223a322c22465442223a7b22656e61626c65223a302c2274696d65223a307d7d2c7b2273637265656e4964223a3235352c2273637265656e54797065223a342c22465442223a7b22656e61626c65223a302c2274696d65223a307d7d5d7a",
+     "1": "92fe00040000000130000000008b0000000201000000000000000a1300000000005b7b2273637265656e4964223a3235352c2273637265656e54797065223a322c22465442223a7b22656e61626c65223a312c2274696d65223a307d7d2c7b2273637265656e4964223a3235352c2273637265656e54797065223a342c22465442223a7b22656e61626c65223a312c2274696d65223a307d7d5d5f"
+    }
+   }
+  },
+  {
+   "id": "freeze",
+   "name": "Execute Freeze on the selected screen ",
+   "options": [
+    {
+     "id": "freeze",
+     "label": "freeze",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unfreeze"
+      },
+      {
+       "id": "1",
+       "label": "Freeze"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "55aa00{{option.freeze|map}}73",
+    "encoding": "hex"
+   },
+   "maps": {
+    "freeze": {
+     "0": "e5fe000400000001300000000069000000020100000000000000091300000000005b7b2273637265656e4964223a3235352c2273637265656e54797065223a322c22667265657a65223a307d2c7b2273637265656e4964223a3235352c2273637265656e54797065223a342c22667265657a65223a307d5dae",
+     "1": "cafe000400000001300000000069000000020100000000000000091300000000005b7b2273637265656e4964223a3235352c2273637265656e54797065223a322c22667265657a65223a317d2c7b2273637265656e4964223a3235352c2273637265656e54797065223a342c22667265657a65223a317d5df2"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "take",
+   "category": "Display",
+   "name": "TAKE",
+   "text": "TAKE",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "take",
+    "options": {}
+   }
+  },
+  {
+   "id": "cut",
+   "category": "Display",
+   "name": "CUT",
+   "text": "CUT",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "cut",
+    "options": {}
+   }
+  },
+  {
+   "id": "ftb",
+   "category": "Display",
+   "name": "FTB",
+   "text": "FTB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ftb",
+    "options": {
+     "ftb": "1"
+    }
+   }
+  },
+  {
+   "id": "freeze",
+   "category": "Display",
+   "name": "Freeze",
+   "text": "Freeze",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze",
+    "options": {
+     "freeze": "1"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-novastar-switcher",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：NovaStar"
+  }
+ ],
+ "source": {
+  "module": "novastar-switcher",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "NovaStar"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-novastar-switcher.git"
+ }
+}

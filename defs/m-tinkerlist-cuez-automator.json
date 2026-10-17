@@ -1,0 +1,370 @@
+{
+ "format": 1,
+ "id": "m-tinkerlist-cuez-automator",
+ "name": "TinkerList Cuez - Automator",
+ "category": "TinkerList",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:7070",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "next",
+   "name": "Next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/next"
+   }
+  },
+  {
+   "id": "previous",
+   "name": "Previous",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/previous"
+   }
+  },
+  {
+   "id": "next_trigger",
+   "name": "Next Trigger",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/nextTrigger"
+   }
+  },
+  {
+   "id": "previous_trigger",
+   "name": "Previous Trigger",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/previousTrigger"
+   }
+  },
+  {
+   "id": "trigger_deck_button",
+   "name": "Trigger Deck Button",
+   "options": [
+    {
+     "id": "button",
+     "label": "Button",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/button"
+   }
+  },
+  {
+   "id": "trigger_deck_switch_on",
+   "name": "Trigger Deck Switch On",
+   "options": [
+    {
+     "id": "switch",
+     "label": "Switch",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/button"
+   }
+  },
+  {
+   "id": "trigger_deck_switch_off",
+   "name": "Trigger Deck Switch Off",
+   "options": [
+    {
+     "id": "switch",
+     "label": "Switch",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/button"
+   }
+  },
+  {
+   "id": "trigger_deck_switch_click",
+   "name": "Trigger Deck Switch Click",
+   "options": [
+    {
+     "id": "switch",
+     "label": "Switch",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/button"
+   }
+  },
+  {
+   "id": "trigger_shortcut",
+   "name": "Trigger Shortcut",
+   "options": [
+    {
+     "id": "shortcut",
+     "label": "Shortcut",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/shortcut"
+   }
+  },
+  {
+   "id": "start_timer",
+   "name": "Start Timer",
+   "options": [
+    {
+     "id": "timer",
+     "label": "Timer",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/timer/start"
+   }
+  },
+  {
+   "id": "stop_timer",
+   "name": "Stop Timer",
+   "options": [
+    {
+     "id": "timer",
+     "label": "Timer",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/timer/stop"
+   }
+  },
+  {
+   "id": "stop_all_timers",
+   "name": "Stop All Timers",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/timer/stop"
+   }
+  },
+  {
+   "id": "select_project",
+   "name": "Select Project",
+   "options": [
+    {
+     "id": "project",
+     "label": "Project",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/project//select",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "unload_episode",
+   "name": "Unload Episode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "DELETE",
+    "path": "/api/episode/undefined",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "select_episode",
+   "name": "Select Episode",
+   "options": [
+    {
+     "id": "episode",
+     "label": "Episode",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/api/episode//select",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "trigger_block",
+   "name": "Trigger Item",
+   "options": [
+    {
+     "id": "block",
+     "label": "Item",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/block"
+   }
+  },
+  {
+   "id": "trigger_first_block",
+   "name": "Trigger First Item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/trigger/block"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "next",
+   "category": "Navigation",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {}
+   }
+  },
+  {
+   "id": "previous",
+   "category": "Navigation",
+   "name": "Previous",
+   "text": "Previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous",
+    "options": {}
+   }
+  },
+  {
+   "id": "next_trigger",
+   "category": "Navigation",
+   "name": "Next Trigger",
+   "text": "Next Trigger",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next_trigger",
+    "options": {}
+   }
+  },
+  {
+   "id": "previous_trigger",
+   "category": "Navigation",
+   "name": "Previous Trigger",
+   "text": "Previous Trigger",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous_trigger",
+    "options": {}
+   }
+  },
+  {
+   "id": "unload_episode",
+   "category": "Episodes",
+   "name": "Unload Episode",
+   "text": "Unload Episode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unload_episode",
+    "options": {}
+   }
+  },
+  {
+   "id": "stop_all_timers",
+   "category": "Timers",
+   "name": "Stop All Timers",
+   "text": "Stop All Timers",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_all_timers",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-tinkerlist-cuez-automator",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Newman"
+  }
+ ],
+ "source": {
+  "module": "tinkerlist-cuez-automator",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Newman"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-tinkerlist-cuez-automator.git"
+ }
+}

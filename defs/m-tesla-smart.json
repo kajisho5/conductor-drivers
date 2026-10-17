@@ -1,0 +1,127 @@
+{
+ "format": 1,
+ "id": "m-tesla-smart",
+ "name": "Tesla smart 8>1",
+ "category": "Tesla",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "sources",
+   "label": "# of sources",
+   "type": "number",
+   "default": 8,
+   "min": 1,
+   "max": 16
+  },
+  {
+   "id": "poll",
+   "label": "Feedback poll interval (ms) - 0 to disable, max 60000",
+   "type": "number",
+   "default": 5000,
+   "min": 0,
+   "max": 60000
+  }
+ ],
+ "actions": [
+  {
+   "id": "switch",
+   "name": "Switch source",
+   "options": [
+    {
+     "id": "id_send",
+     "label": "Source:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Source 1"
+      },
+      {
+       "id": "2",
+       "label": "Source 2"
+      },
+      {
+       "id": "3",
+       "label": "Source 3"
+      },
+      {
+       "id": "4",
+       "label": "Source 4"
+      },
+      {
+       "id": "5",
+       "label": "Source 5"
+      },
+      {
+       "id": "6",
+       "label": "Source 6"
+      },
+      {
+       "id": "7",
+       "label": "Source 7"
+      },
+      {
+       "id": "8",
+       "label": "Source 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "aabb0301{{option.id_send|map}}ee",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_send": {
+     "1": "01",
+     "2": "02",
+     "3": "03",
+     "4": "04",
+     "5": "05",
+     "6": "06",
+     "7": "07",
+     "8": "08"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-tesla-smart",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "tesla-smart",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-tesla-smart.git"
+ }
+}

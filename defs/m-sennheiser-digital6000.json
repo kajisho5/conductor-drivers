@@ -1,0 +1,310 @@
+{
+ "format": 1,
+ "id": "m-sennheiser-digital6000",
+ "name": "Sennheiser EM 6000 / EM 6000 Dante / L 6000",
+ "category": "Sennheiser",
+ "version": "1.0.7",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 6970,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "device",
+   "label": "Device",
+   "type": "select",
+   "default": "EM6000",
+   "choices": [
+    {
+     "id": "EM6000",
+     "label": "EM 6000"
+    },
+    {
+     "id": "EM6000-Dante",
+     "label": "EM 6000 Dante"
+    },
+    {
+     "id": "L6000",
+     "label": "L 6000"
+    }
+   ]
+  },
+  {
+   "id": "interval",
+   "label": "Metering Interval (mS)",
+   "type": "number",
+   "default": 250,
+   "min": 30,
+   "max": 5000
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "rxIdentify",
+   "name": "Identify",
+   "options": [
+    {
+     "id": "reciever",
+     "label": "Reciever",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Rx Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Rx Channel 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.reciever|map}}\":{\"identify\":null},\"osc\":{\"xid\":\"conn1\"}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "reciever": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "booster",
+   "name": "Antenna Booster",
+   "options": [
+    {
+     "id": "booster",
+     "label": "Booster",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"sys\":{\"booster\":{{option.booster|map}}e},\"osc\":{\"xid\":\"conn1\"}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "booster": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "brightness",
+   "name": "Display Brightness",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Brightness (%)",
+     "type": "text",
+     "default": "100",
+     "help": "Min: 0 Max: 100 Step: 1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"sys\":{\"brightness\":{{option.brightness}}},\"osc\":{\"xid\":\"conn1\"}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "rxMute",
+   "name": "Reciever Mute",
+   "options": [
+    {
+     "id": "reciever",
+     "label": "Reciever",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Rx Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Rx Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.reciever|map}}\":{\"audio_mute\":{{option.mute|map}}e},\"osc\":{\"xid\":\"conn1\"}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "reciever": {
+     "1": "1",
+     "2": "2"
+    },
+    "mute": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "rxEncryption",
+   "name": "Reciever Encryption",
+   "options": [
+    {
+     "id": "reciever",
+     "label": "Reciever",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Rx Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Rx Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "encrypt",
+     "label": "Encryption",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.reciever|map}}\":{\"encryption\":{{option.encrypt|map}}e},\"osc\":{\"xid\":\"conn1\"}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "reciever": {
+     "1": "1",
+     "2": "2"
+    },
+    "encrypt": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "rxName",
+   "name": "Reciever Name",
+   "options": [
+    {
+     "id": "reciever",
+     "label": "Reciever",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Rx Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Rx Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": "",
+     "help": "Max Length: 8 Chars. Forbidden Characters: {}[]()~`!@$%^&_\\:'\".?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"rx{{option.reciever|map}}\":{\"name\":\"{{option.name}}\"},\"osc\":{\"xid\":\"conn1\"}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "reciever": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Reciever_1_Status",
+   "category": "Reciever Status",
+   "name": "Reciever 1 Status",
+   "text": "Reciever 1 Status",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rxIdentify",
+    "options": {
+     "reciever": 1
+    }
+   }
+  },
+  {
+   "id": "Reciever_2_Status",
+   "category": "Reciever Status",
+   "name": "Reciever 2 Status",
+   "text": "Reciever 2 Status",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rxIdentify",
+    "options": {
+     "reciever": 2
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-sennheiser-digital6000",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "sennheiser-digital6000",
+  "version": "1.0.7",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-sennheiser-digital6000.git"
+ }
+}

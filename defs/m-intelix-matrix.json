@@ -1,0 +1,142 @@
+{
+ "format": 1,
+ "id": "m-intelix-matrix",
+ "name": "Intelix INT-44HDX / INT-66HDX / INT-88HDX",
+ "category": "Intelix",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 4001,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "4",
+   "choices": [
+    {
+     "id": "4",
+     "label": "INT-44HDX"
+    },
+    {
+     "id": "6",
+     "label": "INT-66HDX"
+    },
+    {
+     "id": "8",
+     "label": "INT-88HDX"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "routeAll",
+   "name": "Route input x to all video outputs",
+   "options": [
+    {
+     "id": "id_inputALL",
+     "label": "Input",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Input 1"
+      },
+      {
+       "id": "2",
+       "label": "Input 2"
+      },
+      {
+       "id": "3",
+       "label": "Input 3"
+      },
+      {
+       "id": "4",
+       "label": "Input 4"
+      }
+     ],
+     "help": "Which input would you like sent to All outputs?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_inputALL|map}}All.\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_inputALL": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "routeThrough",
+   "name": "Route inputs to corresponding video outputs",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "All#.\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lockPanel",
+   "name": "Lock the front panel keys",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "/%Lock;\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unlockPanel",
+   "name": "Unlock the front panel keys",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "/%Unlock;\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-intelix-matrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Brent Zerbe"
+  }
+ ],
+ "source": {
+  "module": "intelix-matrix",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Brent Zerbe"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-intelix-matrix.git"
+ }
+}

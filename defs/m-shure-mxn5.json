@@ -1,0 +1,473 @@
+{
+ "format": 1,
+ "id": "m-shure-mxn5",
+ "name": "Shure MXN-5",
+ "category": "Shure",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "device_mute",
+   "name": "Mute or Unmute Device",
+   "options": [
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET DEVICE_AUDIO_MUTE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "channel_mute",
+   "name": "Mute or Unmute Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Dante 1"
+      },
+      {
+       "id": "2",
+       "label": "Dante 2"
+      },
+      {
+       "id": "3",
+       "label": "Inputs Summed"
+      },
+      {
+       "id": "4",
+       "label": "Dante Output"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_MUTE {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "channel_incrementgain",
+   "name": "Incremental change of Audio Gain of Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Dante 1"
+      },
+      {
+       "id": "2",
+       "label": "Dante 2"
+      },
+      {
+       "id": "3",
+       "label": "Inputs Summed"
+      },
+      {
+       "id": "4",
+       "label": "Dante Output"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Increment",
+     "type": "number",
+     "default": 0,
+     "min": -18,
+     "max": 18
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES INC {{option.gain|lin:10:0}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "channel_setgain",
+   "name": "Set Audio Gain of Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Dante 1"
+      },
+      {
+       "id": "2",
+       "label": "Dante 2"
+      },
+      {
+       "id": "3",
+       "label": "Inputs Summed"
+      },
+      {
+       "id": "4",
+       "label": "Dante Output"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -110,
+     "max": 30,
+     "help": "Value in dB, Range is -110dB to +30dB, Steps of 0.1dB"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES {{option.gain|lin:10:1100}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "preset_recall",
+   "name": "Preset Recall",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6"
+      },
+      {
+       "id": "7",
+       "label": "Preset 7"
+      },
+      {
+       "id": "8",
+       "label": "Preset 8"
+      },
+      {
+       "id": "9",
+       "label": "Preset 9"
+      },
+      {
+       "id": "10",
+       "label": "Preset 10"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET PRESET {{option.preset|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10"
+    }
+   }
+  },
+  {
+   "id": "flash_lights",
+   "name": "Flash Lights on Device",
+   "options": [
+    {
+     "id": "onoff",
+     "label": "On/Off",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "OFF",
+       "label": "Off"
+      },
+      {
+       "id": "ON",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH O{{option.onoff|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "onoff": {
+     "ON": "N",
+     "OFF": "FF"
+    }
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot the Device",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET REBOOT >",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "signal_generator_on",
+   "name": "Signal Generator on/off",
+   "options": [
+    {
+     "id": "choice",
+     "label": "On/Off/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle On/Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 3 SIG_GEN {{option.choice|map}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "signal_generator_setting",
+   "name": "Signal Generator Settings",
+   "options": [
+    {
+     "id": "type",
+     "label": "Type",
+     "type": "select",
+     "default": "PINK",
+     "choices": [
+      {
+       "id": "PINK",
+       "label": "Pink noise"
+      },
+      {
+       "id": "WHITE",
+       "label": "White noise"
+      },
+      {
+       "id": "TONE",
+       "label": "Sine wave"
+      },
+      {
+       "id": "SWEEP",
+       "label": "Sweep"
+      }
+     ]
+    },
+    {
+     "id": "freq",
+     "label": "Frequency",
+     "type": "number",
+     "default": 1000,
+     "min": 125,
+     "max": 20000,
+     "help": "Value in Hz, Range is 125Hz to 20kHz, Steps of 1 Hz"
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -110,
+     "max": 21,
+     "help": "Value in dB, Range is -110dB to +21dB, Steps of 0.1dB"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET 3 SIG_GEN_TYPE {{option.type|map}} > < SET 3 SIG_GEN_FREQ {{option.freq}} > < SET 3 SIG_GEN_GAIN {{option.gain|lin:10:1100}} >",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "PINK": "PINK",
+     "WHITE": "WHITE",
+     "TONE": "TONE",
+     "SWEEP": "SWEEP"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-mn5",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Dorian Meid"
+  }
+ ],
+ "source": {
+  "module": "shure-mxn5",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Dorian Meid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-mn5.git"
+ }
+}

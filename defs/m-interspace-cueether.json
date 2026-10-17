@@ -1,0 +1,166 @@
+{
+ "format": 1,
+ "id": "m-interspace-cueether",
+ "name": "Interspace Industries CueEther",
+ "category": "Interspace Industries",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 36710,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "protocol",
+   "label": "Connect with TCP / UDP",
+   "type": "select",
+   "default": "udp",
+   "choices": [
+    {
+     "id": "tcp",
+     "label": "TCP"
+    },
+    {
+     "id": "udp",
+     "label": "UDP"
+    }
+   ]
+  },
+  {
+   "id": "broadcastIP",
+   "label": "Broadcast Address (default: 255.255.255.255)",
+   "type": "text",
+   "default": "255.255.255.255"
+  }
+ ],
+ "actions": [
+  {
+   "id": "send_cue_action",
+   "name": "Send Cue",
+   "options": [
+    {
+     "id": "cueType",
+     "label": "Cue Type",
+     "type": "select",
+     "default": "next",
+     "choices": [
+      {
+       "id": "next",
+       "label": "Next"
+      },
+      {
+       "id": "back",
+       "label": "Back"
+      },
+      {
+       "id": "black",
+       "label": "Blackout"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "*U00{{option.cueType|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "cueType": {
+     "next": "4F",
+     "back": "50",
+     "black": "05"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Back",
+   "category": "CueEther",
+   "name": "Send Back Cue",
+   "text": "Send Back Cue",
+   "action": {
+    "definitionId": "send_cue_action",
+    "options": {
+     "cueType": "back",
+     "channel": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    }
+   }
+  },
+  {
+   "id": "Blackout",
+   "category": "CueEther",
+   "name": "Send Blackout Cue",
+   "text": "Send Blackout Cue",
+   "action": {
+    "definitionId": "send_cue_action",
+    "options": {
+     "cueType": "black",
+     "channel": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    }
+   }
+  },
+  {
+   "id": "Next",
+   "category": "CueEther",
+   "name": "Send Next Cue",
+   "text": "Send Next Cue",
+   "action": {
+    "definitionId": "send_cue_action",
+    "options": {
+     "cueType": "next",
+     "channel": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-interspace-cueether",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Luc Heaton, Interspace Industries, Will Dean"
+  }
+ ],
+ "source": {
+  "module": "interspace-cueether",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Luc Heaton",
+   "Interspace Industries",
+   "Will Dean"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-interspace-cueether"
+ }
+}

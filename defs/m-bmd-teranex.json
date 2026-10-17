@@ -1,0 +1,2078 @@
+{
+ "format": 1,
+ "id": "m-bmd-teranex",
+ "name": "Blackmagic Design Teranex",
+ "category": "Blackmagic Design",
+ "version": "2.3.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9800,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "debug",
+   "label": "Enable Debug",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_input",
+   "name": "Set video input",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "SDI1",
+     "choices": [
+      {
+       "id": "SDI",
+       "label": "SDI (2D, 3D, Express)"
+      },
+      {
+       "id": "SDI1",
+       "label": "SDI 1 (AV)"
+      },
+      {
+       "id": "SDI2",
+       "label": "SDI 2 (AV)"
+      },
+      {
+       "id": "HDMI",
+       "label": "HDMI (2D, 3D, AV)"
+      },
+      {
+       "id": "Composite",
+       "label": "Composite (2D, 3D)"
+      },
+      {
+       "id": "Component",
+       "label": "Component (2D, 3D)"
+      },
+      {
+       "id": "Optical",
+       "label": "Optical (Express, AV)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO INPUT:\\nVideo source:{{option.source|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "SDI1": "SDI1",
+     "SDI": "SDI",
+     "SDI2": "SDI2",
+     "HDMI": "HDMI",
+     "Composite": "Composite",
+     "Component": "Component",
+     "Optical": "Optical"
+    }
+   }
+  },
+  {
+   "id": "set_audio",
+   "name": "Set audio input",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "Embedded",
+     "choices": [
+      {
+       "id": "Embedded",
+       "label": "Embedded (2D, 3D, Express, AV)"
+      },
+      {
+       "id": "AES",
+       "label": "AES (2D, 3D, AV)"
+      },
+      {
+       "id": "RCA",
+       "label": "RCA (2D, 3D, AV)"
+      },
+      {
+       "id": "DB25",
+       "label": "DB25 (2D, 3D, AV))"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO INPUT:\\nAudio source: {{option.source|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "Embedded": "Embedded",
+     "AES": "AES",
+     "RCA": "RCA",
+     "DB25": "DB25"
+    }
+   }
+  },
+  {
+   "id": "noisereduction_enabled",
+   "name": "Noise Reduction - Enable Noise Reduction",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nEnabled: ON\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_disabled",
+   "name": "Noise Reduction - Disable Noise Reduction",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nEnabled: OFF\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_bias_set",
+   "name": "Noise Reduction - Set Noise Reduction Bias",
+   "options": [
+    {
+     "id": "bias",
+     "label": "Bias",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -3 to +3"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nBias: {{option.bias}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_bias_increase",
+   "name": "Noise Reduction - Increase Noise Reduction Bias",
+   "options": [
+    {
+     "id": "bias",
+     "label": "Bias Increase Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -3 to +3"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nBias: {{option.bias}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_bias_decrease",
+   "name": "Noise Reduction - Decrease Noise Reduction Bias",
+   "options": [
+    {
+     "id": "bias",
+     "label": "Bias Decrease Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -3 to +3"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nBias: {{option.bias|lin:-1:0}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_splitscreen_enable",
+   "name": "Noise Reduction - Enable Split Screen",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nSplit screen: ON\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_splitscreen_disable",
+   "name": "Noise Reduction - Disable Split Screen",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nSplit screen: OFF\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_redoverlay_enable",
+   "name": "Noise Reduction - Enable Red Overlay",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nRed overlay: ON\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "noisereduction_redoverlay_disable",
+   "name": "Noise Reduction - Disable Red Overlay",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "NOISE REDUCTION:\\nRed overlay: OFF\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadvanced_cleancadence_enable",
+   "name": "Video Advanced - Enable Clean Cadence",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADVANCED:\\nClean cadence: ON\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadvanced_cleancadence_disable",
+   "name": "Video Advanced - Disable Clean Cadence",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADVANCED:\\nClean cadence: OFF\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadvanced_scenecutdetect_enable",
+   "name": "Video Advanced - Enable Scene Cut Detection",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADVANCED:\\nScenecut detect: ON\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadvanced_scenecutdetect_disable",
+   "name": "Video Advanced - Disable Scene Cut Detection",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADVANCED:\\nScenecut detect: OFF\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadvanced_sourcetype",
+   "name": "Video Advanced - Set Source Type",
+   "options": [
+    {
+     "id": "sourceType",
+     "label": "Source Type",
+     "type": "select",
+     "default": "Auto",
+     "choices": [
+      {
+       "id": "Auto",
+       "label": "Auto"
+      },
+      {
+       "id": "Video",
+       "label": "Video"
+      },
+      {
+       "id": "Film",
+       "label": "Film"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADVANCED:\\nSource type: {{option.sourceType|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "sourceType": {
+     "Auto": "Auto",
+     "Video": "Video",
+     "Film": "Film"
+    }
+   }
+  },
+  {
+   "id": "videoadvanced_frcaperture",
+   "name": "Video Advanced - Set FRC Aperture",
+   "options": [
+    {
+     "id": "aperture",
+     "label": "Aperture",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADVANCED:\\nFRC aperture: {{option.aperture|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "aperture": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "videoadvanced_processing",
+   "name": "Video Advanced - Set Processing",
+   "options": [
+    {
+     "id": "processing",
+     "label": "Processing",
+     "type": "select",
+     "default": "Lowest Latency",
+     "choices": [
+      {
+       "id": "Lowest Latency",
+       "label": "Lowest Latency"
+      },
+      {
+       "id": "Highest Quality",
+       "label": "Highest Quality"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADVANCED:\\nProcessing: {{option.processing|map}}y\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "processing": {
+     "Lowest Latency": "Lowest Latenc",
+     "Highest Quality": "Highest Qualit"
+    }
+   }
+  },
+  {
+   "id": "recall_preset",
+   "name": "Recall preset",
+   "options": [
+    {
+     "id": "source",
+     "label": "Preset",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "PRESET:\\nRecall:{{option.source|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    }
+   }
+  },
+  {
+   "id": "save_preset",
+   "name": "Save preset",
+   "options": [
+    {
+     "id": "source",
+     "label": "Preset",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "PRESET:\\nSave:{{option.source|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    }
+   }
+  },
+  {
+   "id": "test_pattern",
+   "name": "Test pattern",
+   "options": [
+    {
+     "id": "testPattern",
+     "label": "Test Pattern",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "Off"
+      },
+      {
+       "id": "SMPTEBars",
+       "label": "SMPTE 75%"
+      },
+      {
+       "id": "Bars",
+       "label": "Colorbar 75%"
+      },
+      {
+       "id": "Black",
+       "label": "Black"
+      },
+      {
+       "id": "Grid",
+       "label": "Grid"
+      },
+      {
+       "id": "Multiburst",
+       "label": "Res Chart"
+      }
+     ]
+    },
+    {
+     "id": "noSignal",
+     "label": "No Signal",
+     "type": "select",
+     "default": "Black",
+     "choices": [
+      {
+       "id": "Black",
+       "label": "Black"
+      },
+      {
+       "id": "Bars",
+       "label": "Colorbars"
+      }
+     ]
+    },
+    {
+     "id": "testTone",
+     "label": "Test Tone",
+     "type": "select",
+     "default": "None",
+     "choices": [
+      {
+       "id": "None",
+       "label": "None"
+      },
+      {
+       "id": "Tone750Hz",
+       "label": "Tone .75KHz"
+      },
+      {
+       "id": "Tone1500Hz",
+       "label": "Tone 1.5KHz"
+      },
+      {
+       "id": "Tone3KHz",
+       "label": "Tone 3KHz"
+      },
+      {
+       "id": "Tone6KHz",
+       "label": "Tone 6KHz"
+      }
+     ]
+    },
+    {
+     "id": "testPatternMotion",
+     "label": "Motion",
+     "type": "select",
+     "default": "false",
+     "choices": [
+      {
+       "id": "true",
+       "label": "On"
+      },
+      {
+       "id": "false",
+       "label": "Off"
+      }
+     ]
+    },
+    {
+     "id": "horizontalRate",
+     "label": "Horizontal rate",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "-3",
+       "label": "-3"
+      },
+      {
+       "id": "-2",
+       "label": "-2"
+      },
+      {
+       "id": "-1",
+       "label": "-1"
+      },
+      {
+       "id": "0",
+       "label": "0"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "TEST PATTERN:\\nOutput:{{option.testPattern|map}}\\nNo Signal:B{{option.noSignal|map}}\\nTest Tone:{{option.testTone|map}}\\nMotion:{{option.testPatternMotion|map}}e\\nHorizontal rate:{{option.horizontalRate|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "testPattern": {
+     "None": "None",
+     "SMPTEBars": "SMPTEBars",
+     "Bars": "Bars",
+     "Black": "Black",
+     "Grid": "Grid",
+     "Multiburst": "Multiburst"
+    },
+    "noSignal": {
+     "Black": "lack",
+     "Bars": "ars"
+    },
+    "testTone": {
+     "None": "None",
+     "Tone750Hz": "Tone750Hz",
+     "Tone1500Hz": "Tone1500Hz",
+     "Tone3KHz": "Tone3KHz",
+     "Tone6KHz": "Tone6KHz"
+    },
+    "testPatternMotion": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "horizontalRate": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "-3": "-3",
+     "-2": "-2",
+     "-1": "-1"
+    }
+   }
+  },
+  {
+   "id": "output_display",
+   "name": "Video Output - Output display",
+   "options": [
+    {
+     "id": "outputDisplay",
+     "label": "Output display",
+     "type": "select",
+     "default": "Input",
+     "choices": [
+      {
+       "id": "Input",
+       "label": "Input"
+      },
+      {
+       "id": "Black",
+       "label": "Black"
+      },
+      {
+       "id": "Still",
+       "label": "Still"
+      },
+      {
+       "id": "Freeze",
+       "label": "Freeze"
+      }
+     ]
+    },
+    {
+     "id": "transitionSetting",
+     "label": "Transition Settings",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 50,
+     "help": "Enter 0 to 50. Example: 1.5 seconds, enter 15. Example: 5 seconds, enter 50. No decimals."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO OUTPUT:\\nOutput option:{{option.outputDisplay|map}}\\nTransition setting:{{option.transitionSetting}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "outputDisplay": {
+     "Input": "Input",
+     "Black": "Black",
+     "Still": "Still",
+     "Freeze": "Freeze"
+    }
+   }
+  },
+  {
+   "id": "output_format",
+   "name": "Video Output - Output format",
+   "options": [
+    {
+     "id": "outputFormats",
+     "label": "Output Format",
+     "type": "select",
+     "default": "1080i5994",
+     "choices": [
+      {
+       "id": "525i59.94 NTSC",
+       "label": "525i 59.94hz NTSC"
+      },
+      {
+       "id": "625i50 PAL",
+       "label": "625i 50hz PAL"
+      },
+      {
+       "id": "720p50",
+       "label": "720p 50hz"
+      },
+      {
+       "id": "720p59.94",
+       "label": "720p 59.94hz"
+      },
+      {
+       "id": "720p60",
+       "label": "720p 60hz"
+      },
+      {
+       "id": "1080p23.98",
+       "label": "1080p 23.98hz"
+      },
+      {
+       "id": "1080PsF23.98",
+       "label": "1080PsF 23.98hz"
+      },
+      {
+       "id": "1080p24",
+       "label": "1080p 24hz"
+      },
+      {
+       "id": "1080PsF24",
+       "label": "1080PsF 24hz"
+      },
+      {
+       "id": "1080p25",
+       "label": "1080p 25hz"
+      },
+      {
+       "id": "1080PsF25",
+       "label": "1080PsF 25hz"
+      },
+      {
+       "id": "1080p29.97",
+       "label": "1080p 29.97hz"
+      },
+      {
+       "id": "1080PsF29.97",
+       "label": "1080PsF 29.97hz"
+      },
+      {
+       "id": "1080p30",
+       "label": "1080p 30hz"
+      },
+      {
+       "id": "1080PsF30",
+       "label": "1080PsF 30hz"
+      },
+      {
+       "id": "1080i50",
+       "label": "1080i 50hz"
+      },
+      {
+       "id": "1080p50",
+       "label": "1080p 50hz"
+      },
+      {
+       "id": "1080i59.94",
+       "label": "1080i 59.94hz"
+      },
+      {
+       "id": "1080p59.94",
+       "label": "1080p 59.94hz"
+      },
+      {
+       "id": "1080i60",
+       "label": "1080i 60hz"
+      },
+      {
+       "id": "1080p60",
+       "label": "1080p 60hz"
+      },
+      {
+       "id": "2K DCI 23.98p",
+       "label": "2K DCI 23.98hz"
+      },
+      {
+       "id": "2K DCI 23.98PsF",
+       "label": "2K DCI PsF 23.98hz"
+      },
+      {
+       "id": "2K DCI 24p",
+       "label": "2K DCI 24hz"
+      },
+      {
+       "id": "2K DCI 24PsF",
+       "label": "2K DCI PsF 24hz"
+      },
+      {
+       "id": "2160p23.98",
+       "label": "2160p 23.98hz (AV/Express)"
+      },
+      {
+       "id": "2160p24",
+       "label": "2160p 24hz (AV/Express)"
+      },
+      {
+       "id": "2160p25",
+       "label": "2160p 25hz (AV/Express)"
+      },
+      {
+       "id": "2160p29.97",
+       "label": "2160p 29.97hz (AV/Express)"
+      },
+      {
+       "id": "2160p30",
+       "label": "2160p 30hz (AV/Express)"
+      },
+      {
+       "id": "2160p50",
+       "label": "2160p 50hz (AV/Express)"
+      },
+      {
+       "id": "2160p59.94",
+       "label": "2160p 59.94hz (AV/Express)"
+      },
+      {
+       "id": "2160p60",
+       "label": "2160p 60hz (AV/Express)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO OUTPUT:\\nVideo mode:{{option.outputFormats|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "outputFormats": {
+     "1080i5994": "1080i5994",
+     "525i59.94 NTSC": "525i59.94 NTSC",
+     "625i50 PAL": "625i50 PAL",
+     "720p50": "720p50",
+     "720p59.94": "720p59.94",
+     "720p60": "720p60",
+     "1080p23.98": "1080p23.98",
+     "1080PsF23.98": "1080PsF23.98",
+     "1080p24": "1080p24",
+     "1080PsF24": "1080PsF24",
+     "1080p25": "1080p25",
+     "1080PsF25": "1080PsF25",
+     "1080p29.97": "1080p29.97",
+     "1080PsF29.97": "1080PsF29.97",
+     "1080p30": "1080p30",
+     "1080PsF30": "1080PsF30",
+     "1080i50": "1080i50",
+     "1080p50": "1080p50",
+     "1080i59.94": "1080i59.94",
+     "1080p59.94": "1080p59.94",
+     "1080i60": "1080i60",
+     "1080p60": "1080p60",
+     "2K DCI 23.98p": "2K DCI 23.98p",
+     "2K DCI 23.98PsF": "2K DCI 23.98PsF",
+     "2K DCI 24p": "2K DCI 24p",
+     "2K DCI 24PsF": "2K DCI 24PsF",
+     "2160p23.98": "2160p23.98",
+     "2160p24": "2160p24",
+     "2160p25": "2160p25",
+     "2160p29.97": "2160p29.97",
+     "2160p30": "2160p30",
+     "2160p50": "2160p50",
+     "2160p59.94": "2160p59.94",
+     "2160p60": "2160p60"
+    }
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_size",
+   "name": "Variable Aspect Ratio - Set Horizontal Size",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio size X left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_size_increase",
+   "name": "Variable Aspect Ratio - Increase Horizontal Size by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio size X left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_size_decrease",
+   "name": "Variable Aspect Ratio - Decrease Horizontal Size by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio size X left:{{option.value|lin:-1:0}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_size",
+   "name": "Variable Aspect Ratio - Set Vertical Size",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio size Y left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_size_increase",
+   "name": "Variable Aspect Ratio - Increase Vertical Size by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio size Y left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_size_decrease",
+   "name": "Variable Aspect Ratio - Decrease Vertical Size by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio size Y left:{{option.value|lin:-1:0}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_position",
+   "name": "Variable Aspect Ratio - Set Horizontal Position",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio pos X left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_position_increase",
+   "name": "Variable Aspect Ratio - Increase Horizontal Position by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio pos X left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_position_decrease",
+   "name": "Variable Aspect Ratio - Decrease Horizontal Position by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio pos X left:{{option.value|lin:-1:0}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_position",
+   "name": "Variable Aspect Ratio - Set Vertical Position",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio pos Y left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_position_increase",
+   "name": "Variable Aspect Ratio - Increase Vertical Position by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio pos Y left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_position_decrease",
+   "name": "Variable Aspect Ratio - Decrease Vertical Position by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio pos Y left:{{option.value|lin:-1:0}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_trim",
+   "name": "Variable Aspect Ratio - Set Horizontal Trim",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio trim X left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_trim_increase",
+   "name": "Variable Aspect Ratio - Increase Horizontal Trim by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio trim X left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_horizontal_trim_decrease",
+   "name": "Variable Aspect Ratio - Decrease Horizontal Trim by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio trim X left:{{option.value|lin:-1:0}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_trim",
+   "name": "Variable Aspect Ratio - Set Vertical Trim",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio trim Y left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_trim_increase",
+   "name": "Variable Aspect Ratio - Increase Vertical Trim by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio trim Y left:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_vertical_trim_decrease",
+   "name": "Variable Aspect Ratio - Decrease Vertical Trim by X",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -9999 to 9999"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio trim Y left:{{option.value|lin:-1:0}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "variableaspectratio_zoomcrop",
+   "name": "Variable Aspect Ratio - Set Zoom/Crop",
+   "options": [
+    {
+     "id": "zoomCrop",
+     "label": "Zoom/Crop",
+     "type": "select",
+     "default": "false",
+     "choices": [
+      {
+       "id": "true",
+       "label": "On"
+      },
+      {
+       "id": "false",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VARIABLE ASPECT RATIO:\\nVariable Aspect Ratio zoom/crop:{{option.zoomCrop|map}}e\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "zoomCrop": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoadjust_red",
+   "name": "Video Adjust - Set Red Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -200 to +200"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nRed:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_red_increase",
+   "name": "Video Adjust - Increase Red Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nRed:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_red_decrease",
+   "name": "Video Adjust - Decrease Red Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nRed:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_green",
+   "name": "Video Adjust - Set Green Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -200 to +200"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nGreen:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_green_increase",
+   "name": "Video Adjust - Increase Green Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nGreen:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_green_decrease",
+   "name": "Video Adjust - Decrease Green Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nGreen:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_blue",
+   "name": "Video Adjust - Set Blue Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -200 to +200"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nBlue:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_blue_increase",
+   "name": "Video Adjust - Increase Blue Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nBlue:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_blue_decrease",
+   "name": "Video Adjust - Decrease Blue Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nBlue:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_lumalow",
+   "name": "Video Adjust - Set Luma Low Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "4",
+     "help": "Value between 4 - 1018"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nLuma low:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_lumalow_increase",
+   "name": "Video Adjust - Increase Luma Low Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nLuma low:5\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_lumalow_decrease",
+   "name": "Video Adjust - Decrease Luma Low Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nLuma low:4\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_lumahigh",
+   "name": "Video Adjust - Set Luma High Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "1019",
+     "help": "Value between 5 - 1019"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nLuma high:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_lumahigh_increase",
+   "name": "Video Adjust - Increase Luma High Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nLuma high:1019\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_lumahigh_decrease",
+   "name": "Video Adjust - Decrease Luma High Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nLuma high:1018\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_chromalow",
+   "name": "Video Adjust - Set Chroma Low Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "4",
+     "help": "Value between 4 - 1018"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nChroma low:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_chromalow_increase",
+   "name": "Video Adjust - Increase Chroma Low Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nChroma low:5\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_chromalow_decrease",
+   "name": "Video Adjust - Decrease Chroma Low Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nChroma low:4\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_chromahigh",
+   "name": "Video Adjust - Set Chroma High Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "1019",
+     "help": "Value between 5 - 1019"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nChroma high:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_chromahigh_increase",
+   "name": "Video Adjust - Increase Chroma High Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nChroma high:1019\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_chromahigh_decrease",
+   "name": "Video Adjust - Decrease Chroma High Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nChroma high:1018\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_aspect_fill_luma",
+   "name": "Video Adjust - Set Aspect Fill Luma Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "64",
+     "help": "Value between 64 - 940"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nAspect fill luma:64\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_aspect_fill_luma_increase",
+   "name": "Video Adjust - Increase Aspect Fill Luma Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nAspect fill luma:65\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_aspect_fill_luma_decrease",
+   "name": "Video Adjust - Decrease Aspect Fill Luma Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nAspect fill luma:64\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_aspect_fill_cb_increase",
+   "name": "Video Adjust - Increase Aspect Fill Cb Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nAspect fill Cb:513\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_aspect_fill_cb_decrease",
+   "name": "Video Adjust - Decrease Aspect Fill Cb Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nAspect fill Cb:511\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_aspect_fill_cr_increase",
+   "name": "Video Adjust - Increase Aspect Fill Cr Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nAspect fill Cr:513\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoadjust_aspect_fill_cr_decrease",
+   "name": "Video Adjust - Decrease Aspect Fill Cr Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO ADJUST:\\nAspect fill Cr:511\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_gain",
+   "name": "Video Proc Amp - Set Gain Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -60 to +60"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nGain:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_gain_increase",
+   "name": "Video Proc Amp - Increase Gain Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nGain:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_gain_decrease",
+   "name": "Video Proc Amp - Decrease Gain Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nGain:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_black_increase",
+   "name": "Video Proc Amp - Increase Black Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nBlack:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_black_decrease",
+   "name": "Video Proc Amp - Decrease Black Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nBlack:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_saturation",
+   "name": "Video Proc Amp - Set Saturation Gain Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -60 to +60"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nSaturation:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_saturation_increase",
+   "name": "Video Proc Amp - Increase Saturation Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nSaturation:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_saturation_decrease",
+   "name": "Video Proc Amp - Decrease Saturation Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nSaturation:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_hue",
+   "name": "Video Proc Amp - Set Hue Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -179 to +180"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nHue:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_hue_increase",
+   "name": "Video Proc Amp - Increase Hue Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nHue:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_hue_decrease",
+   "name": "Video Proc Amp - Decrease Hue Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nHue:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_ry",
+   "name": "Video Proc Amp - Set RY Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -200 to +200"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nRY:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_ry_increase",
+   "name": "Video Proc Amp - Increase RY Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nRY:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_ry_decrease",
+   "name": "Video Proc Amp - Decrease RY Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nRY:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_by",
+   "name": "Video Proc Amp - Set Amp BY Value",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between -200 to +200"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nBY:{{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_by_increase",
+   "name": "Video Proc Amp - Increase BY Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nBY:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_by_decrease",
+   "name": "Video Proc Amp - Decrease BY Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nBY:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_sharp_increase",
+   "name": "Video Proc Amp - Increase Sharp Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nSharp:1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoprocamp_sharp_decrease",
+   "name": "Video Proc Amp - Decrease Sharp Value by 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO PROC AMP:\\nSharp:-1\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "genlock_reference",
+   "name": "Genlock - Select Reference Output Signal (AV Only)",
+   "options": [
+    {
+     "id": "reference",
+     "label": "reference",
+     "type": "select",
+     "default": "Blackburst",
+     "choices": [
+      {
+       "id": "Blackburst",
+       "label": "Blackburst"
+      },
+      {
+       "id": "TriLevel",
+       "label": "TriLevel"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GENLOCK:\\nGen reference: \\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "genlock_type",
+   "name": "Genlock - Select Reference Source",
+   "options": [
+    {
+     "id": "source",
+     "label": "source",
+     "type": "select",
+     "default": "Internal",
+     "choices": [
+      {
+       "id": "Input",
+       "label": "Input (AV Only)"
+      },
+      {
+       "id": "Internal",
+       "label": "Internal"
+      },
+      {
+       "id": "External",
+       "label": "External"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "GENLOCK:\\nType: undefined\\n\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Video",
+   "name": "Change video input to SDI",
+   "text": "SDI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "source": "SDI"
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Video",
+   "name": "Change video input to SDI1",
+   "text": "SDI1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "source": "SDI1"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Video",
+   "name": "Change video input to SDI2",
+   "text": "SDI2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "source": "SDI2"
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Video",
+   "name": "Change video input to HDMI",
+   "text": "HDMI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "source": "HDMI"
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Video",
+   "name": "Change video input to Composite",
+   "text": "Composite",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "source": "Composite"
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Video",
+   "name": "Change video input to Component",
+   "text": "Component",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "source": "Component"
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Video",
+   "name": "Change video input to Optical",
+   "text": "Optical",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_input",
+    "options": {
+     "source": "Optical"
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Audio",
+   "name": "Change audio input to Embedded",
+   "text": "Embedded",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_audio",
+    "options": {
+     "source": "Embedded"
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Audio",
+   "name": "Change audio input to AES",
+   "text": "AES",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_audio",
+    "options": {
+     "source": "AES"
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Audio",
+   "name": "Change audio input to RCA",
+   "text": "RCA",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_audio",
+    "options": {
+     "source": "RCA"
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Audio",
+   "name": "Change audio input to DB25",
+   "text": "DB25",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_audio",
+    "options": {
+     "source": "DB25"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bmd-teranex",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Håkon Nessjøen"
+  }
+ ],
+ "source": {
+  "module": "bmd-teranex",
+  "version": "2.3.2",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Håkon Nessjøen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bmd-teranex.git"
+ }
+}

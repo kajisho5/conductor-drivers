@@ -1,0 +1,801 @@
+{
+ "format": 1,
+ "id": "m-magewell-proconvert-decoder",
+ "name": "Magewell Pro Convert Decoder",
+ "category": "Magewell",
+ "version": "3.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": "Admin"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "Admin"
+  },
+  {
+   "id": "polling",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingrate",
+   "label": "Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 1000,
+   "max": 10000
+  }
+ ],
+ "actions": [
+  {
+   "id": "videoConfigShowTitle",
+   "name": "Video Config - Show Source Name and Resolution",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Source Name and Resolution",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&show-title={{option.show|map}}e"
+   },
+   "maps": {
+    "show": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoConfigShowTally",
+   "name": "Video Config - Show Tally",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Tally",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&show-tally={{option.show|map}}e"
+   },
+   "maps": {
+    "show": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoConfigShowVUMeter",
+   "name": "Video Config - Show VU Meter",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show VU Meter",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&show-vu-meter={{option.show|map}}e"
+   },
+   "maps": {
+    "show": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoConfigVUMeterMode",
+   "name": "Video Config - VU Meter Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "VU Meter Mode",
+     "type": "select",
+     "default": "none",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "db",
+       "label": "dBVU/dBu scale"
+      },
+      {
+       "id": "post-gain-db",
+       "label": "Post gain dBVU/dBu scale"
+      },
+      {
+       "id": "post-gain-dbfs",
+       "label": "Post gain dBFS scale"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&vu-meter-mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "none": "none",
+     "db": "db",
+     "post-gain-db": "post-gain-db",
+     "post-gain-dbfs": "post-gain-dbfs"
+    }
+   }
+  },
+  {
+   "id": "videoConfigShowCenterCross",
+   "name": "Video Config - Show Center Cross",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Center Cross",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&show-center-cross={{option.show|map}}e"
+   },
+   "maps": {
+    "show": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoConfigSafeAreaMode",
+   "name": "Video Config - Safe Area Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Safe Area Mode",
+     "type": "select",
+     "default": "none",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "4:3",
+       "label": "Show 4:3 aspect ratio area"
+      },
+      {
+       "id": "80%",
+       "label": "Show 80% center view area"
+      },
+      {
+       "id": "square",
+       "label": "Show Square aspect ratio area"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&safe-area-mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "none": "none",
+     "4:3": "4:3",
+     "80%": "80%",
+     "square": "square"
+    }
+   }
+  },
+  {
+   "id": "videoConfigIdentMode",
+   "name": "Video Config - Ident Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Ident Mode",
+     "type": "select",
+     "default": "none",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "ident-text",
+       "label": "Ident Text"
+      },
+      {
+       "id": "device-name",
+       "label": "Device Name"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&ident-mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "none": "none",
+     "ident-text": "ident-text",
+     "device-name": "device-name"
+    }
+   }
+  },
+  {
+   "id": "videoConfigIdentText",
+   "name": "Video Config - Ident Text",
+   "options": [
+    {
+     "id": "text",
+     "label": "Ident Text",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&ident-text={{option.text}}"
+   }
+  },
+  {
+   "id": "videoConfigHFlip",
+   "name": "Video Config - Horizontal Flip",
+   "options": [
+    {
+     "id": "flip",
+     "label": "Flip",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&h-flip={{option.flip|map}}e"
+   },
+   "maps": {
+    "flip": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoConfigVFlip",
+   "name": "Video Config - Vertical Flip",
+   "options": [
+    {
+     "id": "flip",
+     "label": "Flip",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&v-flip={{option.flip|map}}e"
+   },
+   "maps": {
+    "flip": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoConfigDeinterlaceMode",
+   "name": "Video Config - Deinterlace Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Deinterlace Mode",
+     "type": "select",
+     "default": "bob",
+     "choices": [
+      {
+       "id": "bob",
+       "label": "Bob"
+      },
+      {
+       "id": "weave",
+       "label": "Weave"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&deinterlace-mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "bob": "bob",
+     "weave": "weave"
+    }
+   }
+  },
+  {
+   "id": "videoConfigARConvertMode",
+   "name": "Video Config - Aspect Ratio Convert Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Aspect Ratio Convert Mode",
+     "type": "select",
+     "default": "full",
+     "choices": [
+      {
+       "id": "windowbox",
+       "label": "Letterbox/Pillarbox"
+      },
+      {
+       "id": "full",
+       "label": "Full Screen"
+      },
+      {
+       "id": "zoom",
+       "label": "Zoom/Crop"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&ar-convert-mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "full": "full",
+     "windowbox": "windowbox",
+     "zoom": "zoom"
+    }
+   }
+  },
+  {
+   "id": "videoConfigAutoColorFmt",
+   "name": "Video Config - Auto Color Format",
+   "options": [
+    {
+     "id": "auto",
+     "label": "Auto Color Format",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&in-auto-color-fmt={{option.auto|map}}e"
+   },
+   "maps": {
+    "auto": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "videoConfigColorFmt",
+   "name": "Video Config - Color Format",
+   "options": [
+    {
+     "id": "fmt",
+     "label": "Color Format",
+     "type": "select",
+     "default": "bt.709",
+     "choices": [
+      {
+       "id": "bt.601",
+       "label": "BT.601"
+      },
+      {
+       "id": "bt.709",
+       "label": "BT.709"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&in-color-fmt=bt.{{option.fmt|map}}"
+   },
+   "maps": {
+    "fmt": {
+     "bt.709": "709",
+     "bt.601": "601"
+    }
+   }
+  },
+  {
+   "id": "videoConfigSwitchMode",
+   "name": "Video Config - Switch Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Switch Mode",
+     "type": "select",
+     "default": "blank",
+     "choices": [
+      {
+       "id": "blank",
+       "label": "Black Screen"
+      },
+      {
+       "id": "keep-last",
+       "label": "Keep Last Picture"
+      }
+     ],
+     "help": "Image to show when source is changed"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&switch-mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "blank": "blank",
+     "keep-last": "keep-last"
+    }
+   }
+  },
+  {
+   "id": "videoConfigFollowInputMode",
+   "name": "Video Config - Follow Input Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Follow input",
+     "type": "boolean",
+     "default": false,
+     "help": "Output resolution keeps consistent with that of the input source"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-video-config&follow-input-mode={{option.mode|map}}e"
+   },
+   "maps": {
+    "mode": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "audioConfigConvertMode",
+   "name": "Audio Config - Convert Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Convert Mode",
+     "type": "select",
+     "default": "smpte",
+     "choices": [
+      {
+       "id": "smpte",
+       "label": "SMPTE"
+      },
+      {
+       "id": "ebu",
+       "label": "EBU"
+      }
+     ],
+     "help": "Audio scale for the measurement of the volume"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-audio-config&convert-mode={{option.mode|map}}"
+   },
+   "maps": {
+    "mode": {
+     "smpte": "smpte",
+     "ebu": "ebu"
+    }
+   }
+  },
+  {
+   "id": "audioConfigGain",
+   "name": "Audio Config - Gain",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 20,
+     "min": -100,
+     "max": 20,
+     "help": "Sets the gain level (-100.00dB - 20.00 dB)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-audio-config&gain={{option.gain}}"
+   }
+  },
+  {
+   "id": "audioConfigSamplerate",
+   "name": "Audio Config - Samplerate",
+   "options": [
+    {
+     "id": "samplerate",
+     "label": "Samplerate",
+     "type": "select",
+     "default": "48000",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Follow Input"
+      },
+      {
+       "id": "32000",
+       "label": "32000 Hz"
+      },
+      {
+       "id": "44100",
+       "label": "44100 Hz"
+      },
+      {
+       "id": "48000",
+       "label": "48000 Hz"
+      },
+      {
+       "id": "88200",
+       "label": "88200 Hz"
+      },
+      {
+       "id": "96000",
+       "label": "96000 Hz"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-audio-config&sample-rate={{option.samplerate|map}}0"
+   },
+   "maps": {
+    "samplerate": {
+     "0": "",
+     "32000": "3200",
+     "44100": "4410",
+     "48000": "4800",
+     "88200": "8820",
+     "96000": "9600"
+    }
+   }
+  },
+  {
+   "id": "audioConfigChannelCount",
+   "name": "Audio Config - Channel count",
+   "options": [
+    {
+     "id": "channels",
+     "label": "Channels",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Follow Input"
+      },
+      {
+       "id": "2",
+       "label": "2 Channels"
+      },
+      {
+       "id": "4",
+       "label": "4 Channels"
+      },
+      {
+       "id": "8",
+       "label": "8 Channels"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-audio-config&channels={{option.channels|map}}"
+   },
+   "maps": {
+    "channels": {
+     "0": "0",
+     "2": "2",
+     "4": "4",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "selectPresetName",
+   "name": "Select Source Preset by Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Preset Name",
+     "type": "select",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-channel&ndi-name=true&name="
+   }
+  },
+  {
+   "id": "selectPresetIndex",
+   "name": "Select Source Preset by Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Preset #",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-channel&ndi-name=true&name="
+   }
+  },
+  {
+   "id": "selectSourceName",
+   "name": "Select Source",
+   "options": [
+    {
+     "id": "isNameNDI",
+     "label": "NDI Source",
+     "type": "boolean",
+     "default": false,
+     "help": "Enable to select an available NDI source, otherwise select a source from the preset list"
+    },
+    {
+     "id": "nameSource",
+     "label": "Preset Name",
+     "type": "select",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      }
+     ],
+     "help": "Select a Source Preset name for decoding. Source Presets can be created, edited and removed in the device web interface.You can also enter another preset name manually or by using variables."
+    },
+    {
+     "id": "nameNDI",
+     "label": "Source",
+     "type": "select",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      }
+     ],
+     "help": "List of NDI sources currently available for decoding. The list is updated automatically.You can also enter another NDI source name manually or by using variables."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=set-channel&ndi-name=true&name="
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "Reboot",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/mwapi?method=reboot"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "presetName0",
+   "category": "Source Presets by Name",
+   "name": "Select SOURCE \"\"",
+   "text": "SELECT\nSOURCE PRESET",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "selectPresetName",
+    "options": {
+     "name": ""
+    }
+   }
+  },
+  {
+   "id": "presetIndex0",
+   "category": "Source Presets by Index",
+   "name": "Select Source Preset #0",
+   "text": "SELECT\nSOURCE PRESET\nINDEX #0",
+   "backgroundColor": "#ffffff",
+   "action": {
+    "definitionId": "selectPresetIndex",
+    "options": {
+     "index": 0
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-magewell-proconvert-decoder",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, premultiply"
+  }
+ ],
+ "source": {
+  "module": "magewell-proconvert-decoder",
+  "version": "3.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "premultiply"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-magewell-proconvert-decoder.git"
+ }
+}

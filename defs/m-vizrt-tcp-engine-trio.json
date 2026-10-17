@@ -1,0 +1,82 @@
+{
+ "format": 1,
+ "id": "m-vizrt-tcp-engine-trio",
+ "name": "vizRT Send Command Line",
+ "category": "vizRT",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 6100,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "type",
+   "label": "Connect with",
+   "type": "select",
+   "default": "engine",
+   "choices": [
+    {
+     "id": "engine",
+     "label": "ENGINE"
+    },
+    {
+     "id": "trio",
+     "label": "TRIO"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "send",
+   "name": "Send Command",
+   "options": [
+    {
+     "id": "id_send",
+     "label": "Command",
+     "type": "text",
+     "default": "",
+     "help": "Type your command here"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "76697a73656e6420{{option.id_send|hexstr}}00",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-vizrt-tcp-engine-trio",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Christian Da Cruz"
+  }
+ ],
+ "source": {
+  "module": "vizrt-tcp-engine-trio",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Christian Da Cruz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-vizrt-tcp-engine-trio.git"
+ }
+}

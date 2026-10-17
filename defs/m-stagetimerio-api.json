@@ -1,0 +1,709 @@
+{
+ "format": 1,
+ "id": "m-stagetimerio-api",
+ "name": "stagetimer.io Stagetimer API",
+ "category": "stagetimer.io",
+ "version": "2.3.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.stagetimer.io",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "roomId",
+   "label": "Room ID",
+   "type": "text",
+   "default": "YOUR-ID"
+  },
+  {
+   "id": "apiKey",
+   "label": "API Key",
+   "type": "text",
+   "default": "YOUR-KEY"
+  },
+  {
+   "id": "apiUrl",
+   "label": "API URL",
+   "type": "text",
+   "default": "https://api.stagetimer.io/v1/"
+  }
+ ],
+ "actions": [
+  {
+   "id": "start",
+   "name": "Transport: Start",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/start?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Transport: Stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/stop?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "start_or_stop",
+   "name": "Transport: Start/stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/start_or_stop?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "reset",
+   "name": "Transport: Reset",
+   "options": [
+    {
+     "id": "autostart",
+     "label": "Autostart",
+     "type": "boolean",
+     "default": false,
+     "help": "Set to `true` to automatically start the timer after the action is triggered."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/reset?room_id=YOUR-ID&api_key=YOUR-KEY{{option.autostart|map}}"
+   },
+   "maps": {
+    "autostart": {
+     "false": "",
+     "true": "&autostart=true"
+    }
+   }
+  },
+  {
+   "id": "next",
+   "name": "Transport: Next",
+   "options": [
+    {
+     "id": "autostart",
+     "label": "Autostart",
+     "type": "boolean",
+     "default": false,
+     "help": "Set to `true` to automatically start the timer after the action is triggered."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/next?room_id=YOUR-ID&api_key=YOUR-KEY{{option.autostart|map}}"
+   },
+   "maps": {
+    "autostart": {
+     "false": "",
+     "true": "&autostart=true"
+    }
+   }
+  },
+  {
+   "id": "add_time",
+   "name": "Transport: Add time",
+   "options": [
+    {
+     "id": "amount",
+     "label": "Amount",
+     "type": "text",
+     "default": "1m",
+     "help": "An amount of time specified by a number followed by a divison of time. Eg. `5s` for 5 seconds, `10m` for 10 minutes, etc."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/add_time?room_id=YOUR-ID&api_key=YOUR-KEY&amount={{option.amount}}"
+   }
+  },
+  {
+   "id": "subtract_time",
+   "name": "Transport: Subtract time",
+   "options": [
+    {
+     "id": "amount",
+     "label": "Amount",
+     "type": "text",
+     "default": "1m",
+     "help": "An amount of time specified by a number followed by a divison of time. Eg. `5s` for 5 seconds, `10m` for 10 minutes, etc."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/subtract_time?room_id=YOUR-ID&api_key=YOUR-KEY&amount={{option.amount}}"
+   }
+  },
+  {
+   "id": "start_flashing",
+   "name": "Viewer: Flash the screen",
+   "options": [
+    {
+     "id": "count",
+     "label": "Count",
+     "type": "number",
+     "default": 3,
+     "min": 1,
+     "max": 999,
+     "help": "Number of times to repeat the action. Accepted numbers: 1 - 999."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/start_flashing?room_id=YOUR-ID&api_key=YOUR-KEY&count={{option.count}}"
+   }
+  },
+  {
+   "id": "stop_flashing",
+   "name": "Viewer: Stop flashing",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/stop_flashing?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "enable_blackout",
+   "name": "Viewer: Enable blackout mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/enable_blackout?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "disable_blackout",
+   "name": "Viewer: Disable blackout mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/disable_blackout?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "toggle_blackout",
+   "name": "Viewer: Toggle blackout mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/toggle_blackout?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "enable_focus",
+   "name": "Viewer: Enable focus mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/enable_focus?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "disable_focus",
+   "name": "Viewer: Disable focus mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/disable_focus?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "toggle_focus",
+   "name": "Viewer: Toggle focus mode",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/toggle_focus?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "enable_on_air",
+   "name": "Viewer: Enable ON AIR",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/enable_on_air?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "disable_on_air",
+   "name": "Viewer: Disable ON AIR",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/disable_on_air?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "toggle_on_air",
+   "name": "Viewer: Toggle ON AIR",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/toggle_on_air?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "start_timer",
+   "name": "Timer: Start",
+   "options": [
+    {
+     "id": "index",
+     "label": "Timer index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99,
+     "help": "Index of a timer to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second timer from the top, set `index=2`."
+    },
+    {
+     "id": "timer_id",
+     "label": "Timer ID",
+     "type": "text",
+     "help": "The ID of the timer you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/start_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
+   }
+  },
+  {
+   "id": "stop_timer",
+   "name": "Timer: Stop",
+   "options": [
+    {
+     "id": "index",
+     "label": "Timer index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99,
+     "help": "Index of a timer to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second timer from the top, set `index=2`."
+    },
+    {
+     "id": "timer_id",
+     "label": "Timer ID",
+     "type": "text",
+     "help": "The ID of the timer you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/stop_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
+   }
+  },
+  {
+   "id": "reset_timer",
+   "name": "Timer: Reset",
+   "options": [
+    {
+     "id": "index",
+     "label": "Timer index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99,
+     "help": "Index of a timer to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second timer from the top, set `index=2`."
+    },
+    {
+     "id": "timer_id",
+     "label": "Timer ID",
+     "type": "text",
+     "help": "The ID of the timer you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/reset_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
+   }
+  },
+  {
+   "id": "hide_message",
+   "name": "Message: Hide",
+   "options": [
+    {
+     "id": "index",
+     "label": "Message index",
+     "type": "number",
+     "default": "",
+     "min": 1,
+     "max": 99,
+     "help": "Index of a message to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second message from the top, set `index=2`. Leave blank to target active or first message."
+    },
+    {
+     "id": "message_id",
+     "label": "Message ID",
+     "type": "text",
+     "help": "The ID of the message you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/hide_message?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&message_id={{option.message_id}}"
+   }
+  },
+  {
+   "id": "show_or_hide_message",
+   "name": "Message: Toggle visibility",
+   "options": [
+    {
+     "id": "index",
+     "label": "Message index",
+     "type": "number",
+     "default": "",
+     "min": 1,
+     "max": 99,
+     "help": "Index of a message to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second message from the top, set `index=2`. Leave blank to target active or first message."
+    },
+    {
+     "id": "message_id",
+     "label": "Message ID",
+     "type": "text",
+     "help": "The ID of the message you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/show_or_hide_message?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&message_id={{option.message_id}}"
+   }
+  },
+  {
+   "id": "test_auth",
+   "name": "Utility: Test auth",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/test_auth?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "get_status",
+   "name": "Utility: Get status",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/get_status?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  },
+  {
+   "id": "get_room",
+   "name": "Utility: Get room",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/get_room?room_id=YOUR-ID&api_key=YOUR-KEY"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Start/stop toggle",
+   "category": "Transport",
+   "name": "Start/stop toggle",
+   "text": "Start/stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "start_or_stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "Start",
+   "category": "Transport",
+   "name": "Start",
+   "text": "Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "start",
+    "options": {}
+   }
+  },
+  {
+   "id": "Stop",
+   "category": "Transport",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "Reset",
+   "category": "Transport",
+   "name": "Reset",
+   "text": "Reset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "reset",
+    "options": {}
+   }
+  },
+  {
+   "id": "Next",
+   "category": "Transport",
+   "name": "Next",
+   "text": "Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {}
+   }
+  },
+  {
+   "id": "+1min",
+   "category": "Transport",
+   "name": "+1min",
+   "text": "+1min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "add_time",
+    "options": {
+     "amount": "1m"
+    }
+   }
+  },
+  {
+   "id": "-1m",
+   "category": "Transport",
+   "name": "-1m",
+   "text": "-1m",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "subtract_time",
+    "options": {
+     "amount": "1m"
+    }
+   }
+  },
+  {
+   "id": "+30s",
+   "category": "Transport",
+   "name": "+30s",
+   "text": "+30s",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "add_time",
+    "options": {
+     "amount": "30s"
+    }
+   }
+  },
+  {
+   "id": "-30s",
+   "category": "Transport",
+   "name": "-30s",
+   "text": "-30s",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "subtract_time",
+    "options": {
+     "amount": "30s"
+    }
+   }
+  },
+  {
+   "id": "+5min",
+   "category": "Transport",
+   "name": "+5min",
+   "text": "+5min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "add_time",
+    "options": {
+     "amount": "5m"
+    }
+   }
+  },
+  {
+   "id": "-5m",
+   "category": "Transport",
+   "name": "-5m",
+   "text": "-5m",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "subtract_time",
+    "options": {
+     "amount": "5m"
+    }
+   }
+  },
+  {
+   "id": "Start flashing",
+   "category": "Viewer",
+   "name": "Start flashing",
+   "text": "Flash x3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "start_flashing",
+    "options": {
+     "count": 3
+    }
+   }
+  },
+  {
+   "id": "Stop flashing",
+   "category": "Viewer",
+   "name": "Stop flashing",
+   "text": "Flash off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_flashing",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle blackout mode",
+   "category": "Viewer",
+   "name": "Toggle blackout mode",
+   "text": "Blackout",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggle_blackout",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle focus mode",
+   "category": "Viewer",
+   "name": "Toggle focus mode",
+   "text": "Focus",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggle_focus",
+    "options": {}
+   }
+  },
+  {
+   "id": "Toggle ON AIR mode",
+   "category": "Viewer",
+   "name": "Toggle ON AIR mode",
+   "text": "ON AIR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggle_on_air",
+    "options": {}
+   }
+  },
+  {
+   "id": "Reset a timer",
+   "category": "Timer",
+   "name": "Reset a timer",
+   "text": "Reset",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "reset_timer",
+    "options": {
+     "index": 1
+    }
+   }
+  },
+  {
+   "id": "Start a timer",
+   "category": "Timer",
+   "name": "Start a timer",
+   "text": "Start #2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "start_timer",
+    "options": {
+     "index": 2
+    }
+   }
+  },
+  {
+   "id": "Stop a timer",
+   "category": "Timer",
+   "name": "Stop a timer",
+   "text": "Stop #2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop_timer",
+    "options": {
+     "index": 2
+    }
+   }
+  },
+  {
+   "id": "Show/hide message",
+   "category": "Message",
+   "name": "Show/hide message",
+   "text": "Toggle",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "show_or_hide_message",
+    "options": {
+     "index": ""
+    }
+   }
+  },
+  {
+   "id": "Hide message",
+   "category": "Message",
+   "name": "Hide message",
+   "text": "Hide",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "hide_message",
+    "options": {
+     "index": ""
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-stagetimerio-api",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Lukas Hermann"
+  }
+ ],
+ "source": {
+  "module": "stagetimerio-api",
+  "version": "2.3.1",
+  "license": "MIT",
+  "maintainers": [
+   "Lukas Hermann"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-stagetimerio-api.git"
+ }
+}

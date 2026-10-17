@@ -1,0 +1,983 @@
+{
+ "format": 1,
+ "id": "m-softron-mreplay",
+ "name": "Softron M|Replay",
+ "category": "Softron",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8090",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "password",
+   "label": "Password (optional)",
+   "type": "text",
+   "default": ""
+  }
+ ],
+ "actions": [
+  {
+   "id": "selectOutput",
+   "name": "Select Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/outputs/",
+    "body": "{\"selected\":true}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "assignInputToOutput",
+   "name": "Assign Input to Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/outputs/",
+    "body": "{\"input_unique_id\":\"\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "createMarker",
+   "name": "Create Marker",
+   "options": [
+    {
+     "id": "markerName",
+     "label": "Marker Name",
+     "type": "text",
+     "default": "New Marker"
+    },
+    {
+     "id": "reference",
+     "label": "Reference",
+     "type": "select",
+     "default": "live",
+     "choices": [
+      {
+       "id": "live",
+       "label": "Live"
+      },
+      {
+       "id": "playhead",
+       "label": "Playhead"
+      },
+      {
+       "id": "absolute",
+       "label": "Absolute"
+      }
+     ]
+    },
+    {
+     "id": "time",
+     "label": "Time/Offset (timecode or seconds)",
+     "type": "text",
+     "default": "0"
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/markers",
+    "body": "{\"name\":\"{{option.markerName}}\",\"reference\":\"{{option.reference|map}}\":\"{{option.time}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "reference": {
+     "live": "live\",\"offset",
+     "playhead": "playhead\",\"offset",
+     "absolute": "absolute\",\"time"
+    }
+   }
+  },
+  {
+   "id": "setPlaybackRate",
+   "name": "Set Playback Rate",
+   "options": [
+    {
+     "id": "rate",
+     "label": "Playback Rate",
+     "type": "number",
+     "default": 1,
+     "min": -32,
+     "max": 32,
+     "help": "Range: -32 to 32. Use decimals for speeds between -1 and 1 (e.g., 0.33, 0.5). 0 = stop, 1 = normal, -1 = reverse"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/set_playback_rate?rate={{option.rate}}"
+   }
+  },
+  {
+   "id": "setPosition",
+   "name": "Go to Position",
+   "options": [
+    {
+     "id": "reference",
+     "label": "Reference",
+     "type": "select",
+     "default": "live",
+     "choices": [
+      {
+       "id": "live",
+       "label": "Live"
+      },
+      {
+       "id": "playhead",
+       "label": "Playhead"
+      },
+      {
+       "id": "absolute",
+       "label": "Absolute"
+      },
+      {
+       "id": "in_point",
+       "label": "In Point"
+      },
+      {
+       "id": "out_point",
+       "label": "Out Point"
+      }
+     ]
+    },
+    {
+     "id": "position",
+     "label": "Position (timecode or seconds)",
+     "type": "text",
+     "default": "0",
+     "help": "Use positive/negative numbers for offset, or timecode (e.g., 01:00:00:00)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/set_position?position={{option.position}}&reference={{option.reference|map}}"
+   },
+   "maps": {
+    "reference": {
+     "live": "live",
+     "playhead": "playhead",
+     "absolute": "absolute",
+     "in_point": "in_point",
+     "out_point": "out_point"
+    }
+   }
+  },
+  {
+   "id": "playlistPlay",
+   "name": "Playlist - Play",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists//play"
+   }
+  },
+  {
+   "id": "playlistPause",
+   "name": "Playlist - Pause",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists//pause"
+   }
+  },
+  {
+   "id": "playlistStop",
+   "name": "Playlist - Stop",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists//stop"
+   }
+  },
+  {
+   "id": "playlistSkipPrevious",
+   "name": "Playlist - Skip Previous",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists//skip_previous"
+   }
+  },
+  {
+   "id": "playlistSkipNext",
+   "name": "Playlist - Skip Next",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "select",
+     "default": "",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists//skip_next"
+   }
+  },
+  {
+   "id": "playlistPlayItem",
+   "name": "Playlist - Play Specific Clip",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "item",
+     "label": "Clip Index/ID/Name",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists//items/{{option.item}}/play"
+   }
+  },
+  {
+   "id": "playlistPauseItem",
+   "name": "Playlist - Pause Specific Clip",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "item",
+     "label": "Clip Index/ID/Name",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists//items/{{option.item}}/pause"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "playback_reverse_32x",
+   "category": "Playback Control",
+   "name": "Play Reverse 32x",
+   "text": "◀\n32x",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -32
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_16x",
+   "category": "Playback Control",
+   "name": "Play Reverse 16x",
+   "text": "◀\n16x",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -16
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_8x",
+   "category": "Playback Control",
+   "name": "Play Reverse 8x",
+   "text": "◀\n8x",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -8
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_4x",
+   "category": "Playback Control",
+   "name": "Play Reverse 4x",
+   "text": "◀\n4x",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -4
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_2x",
+   "category": "Playback Control",
+   "name": "Play Reverse 2x",
+   "text": "◀\n2x",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -2
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_1x",
+   "category": "Playback Control",
+   "name": "Play Reverse 1x",
+   "text": "◀\n1x",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -1
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_75%",
+   "category": "Playback Control",
+   "name": "Play Reverse 75%",
+   "text": "◀\n75%",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -0.75
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_66%",
+   "category": "Playback Control",
+   "name": "Play Reverse 66%",
+   "text": "◀\n66%",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -0.66
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_50%",
+   "category": "Playback Control",
+   "name": "Play Reverse 50%",
+   "text": "◀\n50%",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -0.5
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_33%",
+   "category": "Playback Control",
+   "name": "Play Reverse 33%",
+   "text": "◀\n33%",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -0.33
+    }
+   }
+  },
+  {
+   "id": "playback_reverse_25%",
+   "category": "Playback Control",
+   "name": "Play Reverse 25%",
+   "text": "◀\n25%",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": -0.25
+    }
+   }
+  },
+  {
+   "id": "playback_pause",
+   "category": "Playback Control",
+   "name": "Pause Playback",
+   "text": "⏸\nPAUSE",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 0
+    }
+   }
+  },
+  {
+   "id": "playback_forward_25%",
+   "category": "Playback Control",
+   "name": "Play Forward 25%",
+   "text": "▶\n25%",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 0.25
+    }
+   }
+  },
+  {
+   "id": "playback_forward_33%",
+   "category": "Playback Control",
+   "name": "Play Forward 33%",
+   "text": "▶\n33%",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 0.33
+    }
+   }
+  },
+  {
+   "id": "playback_forward_50%",
+   "category": "Playback Control",
+   "name": "Play Forward 50%",
+   "text": "▶\n50%",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 0.5
+    }
+   }
+  },
+  {
+   "id": "playback_forward_66%",
+   "category": "Playback Control",
+   "name": "Play Forward 66%",
+   "text": "▶\n66%",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 0.66
+    }
+   }
+  },
+  {
+   "id": "playback_forward_75%",
+   "category": "Playback Control",
+   "name": "Play Forward 75%",
+   "text": "▶\n75%",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 0.75
+    }
+   }
+  },
+  {
+   "id": "playback_forward_1x",
+   "category": "Playback Control",
+   "name": "Play Forward 1x",
+   "text": "▶\n1x",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 1
+    }
+   }
+  },
+  {
+   "id": "playback_forward_2x",
+   "category": "Playback Control",
+   "name": "Play Forward 2x",
+   "text": "▶\n2x",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 2
+    }
+   }
+  },
+  {
+   "id": "playback_forward_4x",
+   "category": "Playback Control",
+   "name": "Play Forward 4x",
+   "text": "▶\n4x",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 4
+    }
+   }
+  },
+  {
+   "id": "playback_forward_8x",
+   "category": "Playback Control",
+   "name": "Play Forward 8x",
+   "text": "▶\n8x",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 8
+    }
+   }
+  },
+  {
+   "id": "playback_forward_16x",
+   "category": "Playback Control",
+   "name": "Play Forward 16x",
+   "text": "▶\n16x",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 16
+    }
+   }
+  },
+  {
+   "id": "playback_forward_32x",
+   "category": "Playback Control",
+   "name": "Play Forward 32x",
+   "text": "▶\n32x",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "setPlaybackRate",
+    "options": {
+     "rate": 32
+    }
+   }
+  },
+  {
+   "id": "goto_live",
+   "category": "Navigation",
+   "name": "Go to Live",
+   "text": "LIVE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "live",
+     "position": "0"
+    }
+   }
+  },
+  {
+   "id": "jump_back_live_10s",
+   "category": "Navigation",
+   "name": "Jump Back 10s (Live)",
+   "text": "◀◀\n-10s\nLIVE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "live",
+     "position": "-10"
+    }
+   }
+  },
+  {
+   "id": "jump_back_live_30s",
+   "category": "Navigation",
+   "name": "Jump Back 30s (Live)",
+   "text": "◀◀\n-30s\nLIVE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "live",
+     "position": "-30"
+    }
+   }
+  },
+  {
+   "id": "jump_back_live_1m",
+   "category": "Navigation",
+   "name": "Jump Back 1m (Live)",
+   "text": "◀◀\n-1m\nLIVE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "live",
+     "position": "-60"
+    }
+   }
+  },
+  {
+   "id": "jump_back_live_5m",
+   "category": "Navigation",
+   "name": "Jump Back 5m (Live)",
+   "text": "◀◀\n-5m\nLIVE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "live",
+     "position": "-300"
+    }
+   }
+  },
+  {
+   "id": "jump_back_playhead_10s",
+   "category": "Navigation",
+   "name": "Jump Back 10s (Playhead)",
+   "text": "◀◀\n-10s",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "-10"
+    }
+   }
+  },
+  {
+   "id": "jump_back_playhead_30s",
+   "category": "Navigation",
+   "name": "Jump Back 30s (Playhead)",
+   "text": "◀◀\n-30s",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "-30"
+    }
+   }
+  },
+  {
+   "id": "jump_back_playhead_1m",
+   "category": "Navigation",
+   "name": "Jump Back 1m (Playhead)",
+   "text": "◀◀\n-1m",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "-60"
+    }
+   }
+  },
+  {
+   "id": "jump_back_playhead_5m",
+   "category": "Navigation",
+   "name": "Jump Back 5m (Playhead)",
+   "text": "◀◀\n-5m",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "-300"
+    }
+   }
+  },
+  {
+   "id": "jump_forward_playhead_10s",
+   "category": "Navigation",
+   "name": "Jump Forward 10s (Playhead)",
+   "text": "▶▶\n+10s",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "10"
+    }
+   }
+  },
+  {
+   "id": "jump_forward_playhead_30s",
+   "category": "Navigation",
+   "name": "Jump Forward 30s (Playhead)",
+   "text": "▶▶\n+30s",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "30"
+    }
+   }
+  },
+  {
+   "id": "jump_forward_playhead_1m",
+   "category": "Navigation",
+   "name": "Jump Forward 1m (Playhead)",
+   "text": "▶▶\n+1m",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "60"
+    }
+   }
+  },
+  {
+   "id": "jump_forward_playhead_5m",
+   "category": "Navigation",
+   "name": "Jump Forward 5m (Playhead)",
+   "text": "▶▶\n+5m",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "setPosition",
+    "options": {
+     "reference": "playhead",
+     "position": "300"
+    }
+   }
+  },
+  {
+   "id": "create_marker_live",
+   "category": "Markers",
+   "name": "Create Marker at Live",
+   "text": "MARK\nLIVE",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Marker",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "create_marker_playhead",
+   "category": "Markers",
+   "name": "Create Marker at Playhead",
+   "text": "MARK\nPLAY",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Marker",
+     "reference": "playhead",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "marker_goal",
+   "category": "Markers",
+   "name": "Marker: Goal",
+   "text": "Goal",
+   "backgroundColor": "#00c800",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Goal",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "marker_penalty",
+   "category": "Markers",
+   "name": "Marker: Penalty",
+   "text": "Penalty",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Penalty",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "marker_foul",
+   "category": "Markers",
+   "name": "Marker: Foul",
+   "text": "Foul",
+   "backgroundColor": "#ff8c00",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Foul",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "marker_red_card",
+   "category": "Markers",
+   "name": "Marker: Red Card",
+   "text": "Red Card",
+   "backgroundColor": "#960000",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Red Card",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "marker_yellow_card",
+   "category": "Markers",
+   "name": "Marker: Yellow Card",
+   "text": "Yellow Card",
+   "backgroundColor": "#c8c800",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Yellow Card",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "marker_reacts",
+   "category": "Markers",
+   "name": "Marker: Reacts",
+   "text": "Reacts",
+   "backgroundColor": "#0064c8",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Reacts",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  },
+  {
+   "id": "marker_crowd",
+   "category": "Markers",
+   "name": "Marker: Crowd",
+   "text": "Crowd",
+   "backgroundColor": "#6464c8",
+   "action": {
+    "definitionId": "createMarker",
+    "options": {
+     "markerName": "Crowd",
+     "reference": "live",
+     "time": "0"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-softron-mreplay",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Douglas Fish"
+  }
+ ],
+ "source": {
+  "module": "softron-mreplay",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Douglas Fish"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-softron-mreplay.git"
+ }
+}

@@ -1,0 +1,878 @@
+{
+ "format": 1,
+ "id": "m-idk-msd",
+ "name": "IDK MSD-V4 / MSD-V6",
+ "category": "IDK",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 1100,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "msd-v4",
+   "choices": [
+    {
+     "id": "msd-v4",
+     "label": "MSD-V4"
+    },
+    {
+     "id": "msd-v6",
+     "label": "MSD-V6"
+    }
+   ]
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollInterval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 100,
+   "max": 10000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "SSW",
+   "name": "Switch Video and Audio Channel Simultaneously",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "IN 1"
+      },
+      {
+       "id": "2",
+       "label": "IN 2"
+      },
+      {
+       "id": "3",
+       "label": "IN 3"
+      },
+      {
+       "id": "4",
+       "label": "IN 4"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output Window",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Windows"
+      },
+      {
+       "id": "1",
+       "label": "Out 1 Main Window"
+      },
+      {
+       "id": "2",
+       "label": "Out 2 Main Window"
+      },
+      {
+       "id": "201",
+       "label": "Out 1 PinP Window"
+      },
+      {
+       "id": "202",
+       "label": "Out 2 PinP Window"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SSW,{{option.input|map}},{{option.output|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "201": "201",
+     "202": "202"
+    }
+   }
+  },
+  {
+   "id": "SSV",
+   "name": "Switch Video Channel",
+   "options": [
+    {
+     "id": "input",
+     "label": "Video Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "IN 1"
+      },
+      {
+       "id": "2",
+       "label": "IN 2"
+      },
+      {
+       "id": "3",
+       "label": "IN 3"
+      },
+      {
+       "id": "4",
+       "label": "IN 4"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output Window",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Windows"
+      },
+      {
+       "id": "1",
+       "label": "Out 1 Main Window"
+      },
+      {
+       "id": "2",
+       "label": "Out 2 Main Window"
+      },
+      {
+       "id": "201",
+       "label": "Out 1 PinP Window"
+      },
+      {
+       "id": "202",
+       "label": "Out 2 PinP Window"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SSV,{{option.input|map}},{{option.output|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "201": "201",
+     "202": "202"
+    }
+   }
+  },
+  {
+   "id": "SSA",
+   "name": "Switch Audio Channel",
+   "options": [
+    {
+     "id": "input",
+     "label": "Audio Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "IN 1"
+      },
+      {
+       "id": "2",
+       "label": "IN 2"
+      },
+      {
+       "id": "3",
+       "label": "IN 3"
+      },
+      {
+       "id": "4",
+       "label": "IN 4"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Audio Output Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "OUT 1"
+      },
+      {
+       "id": "2",
+       "label": "OUT 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SSA,0,0,1,{{option.input|map}},{{option.output|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "SPI",
+   "name": "PinP On/Off",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "OUT 1"
+      },
+      {
+       "id": "2",
+       "label": "OUT 2"
+      }
+     ]
+    },
+    {
+     "id": "pinp_display",
+     "label": "PinP Display",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SPI,{{option.output|map}},{{option.pinp_display|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    },
+    "pinp_display": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "SUC",
+   "name": "Output Audio - On/Off",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Connector",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Out 1A"
+      },
+      {
+       "id": "2",
+       "label": "Out 2A"
+      },
+      {
+       "id": "201",
+       "label": "Out 1B"
+      },
+      {
+       "id": "202",
+       "label": "Out 2B"
+      }
+     ]
+    },
+    {
+     "id": "audio_output",
+     "label": "Audio Output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SUC,{{option.output|map}},{{option.audio_output|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "201": "201",
+     "202": "202"
+    },
+    "audio_output": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "SAV",
+   "name": "Output Audio - Set Level",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Out 1"
+      },
+      {
+       "id": "2",
+       "label": "Out 2"
+      },
+      {
+       "id": "401",
+       "label": "Analog Out 1"
+      }
+     ]
+    },
+    {
+     "id": "volume",
+     "label": "Volume Level",
+     "type": "number",
+     "default": 10,
+     "min": -100,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SAV,{{option.output|map}},{{option.volume}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "401": "401"
+    }
+   }
+  },
+  {
+   "id": "SOL",
+   "name": "Output Audio - Increase/Decrease Level",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Out 1"
+      },
+      {
+       "id": "2",
+       "label": "Out 2"
+      },
+      {
+       "id": "401",
+       "label": "Analog Out 1"
+      }
+     ]
+    },
+    {
+     "id": "volume",
+     "label": "Volume Level",
+     "type": "number",
+     "default": 10,
+     "min": -100,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SOL,{{option.output|map}},{{option.volume}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "401": "401"
+    }
+   }
+  },
+  {
+   "id": "SAM",
+   "name": "Output Audio - Mute/Unmute",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Outputs"
+      },
+      {
+       "id": "1",
+       "label": "Out 1"
+      },
+      {
+       "id": "2",
+       "label": "Out 2"
+      },
+      {
+       "id": "401",
+       "label": "Analog Out 1"
+      }
+     ]
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unmute"
+      },
+      {
+       "id": "1",
+       "label": "Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SAM,{{option.output|map}},{{option.mute|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "401": "401"
+    },
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "SAS",
+   "name": "Input Audio - Set Source",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Inputs"
+      },
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      }
+     ]
+    },
+    {
+     "id": "audio_source",
+     "label": "Audio Source",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Digital"
+      },
+      {
+       "id": "1",
+       "label": "Analog In 1"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SAS,{{option.input|map}},{{option.audio_source|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "audio_source": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "SSO",
+   "name": "Input Audio - Set Level",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Inputs"
+      },
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      },
+      {
+       "id": "201",
+       "label": "Analog In 1"
+      }
+     ]
+    },
+    {
+     "id": "volume",
+     "label": "Volume Level",
+     "type": "number",
+     "default": 10,
+     "min": -100,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SSO,{{option.input|map}},{{option.volume}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "201": "201"
+    }
+   }
+  },
+  {
+   "id": "SDZ",
+   "name": "Input Audio - Increase/Decrease Level",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Inputs"
+      },
+      {
+       "id": "1",
+       "label": "In 1"
+      },
+      {
+       "id": "2",
+       "label": "In 2"
+      },
+      {
+       "id": "3",
+       "label": "In 3"
+      },
+      {
+       "id": "4",
+       "label": "In 4"
+      },
+      {
+       "id": "201",
+       "label": "Analog In 1"
+      }
+     ]
+    },
+    {
+     "id": "volume",
+     "label": "Volume Level",
+     "type": "number",
+     "default": 10,
+     "min": -100,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@SDZ,{{option.input|map}},{{option.volume}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "input": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "201": "201"
+    }
+   }
+  },
+  {
+   "id": "EXC",
+   "name": "Execute Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@EXC,{{option.command}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "RCM",
+   "name": "Load Crosspoint Preset",
+   "options": [
+    {
+     "id": "crosspoint",
+     "label": "Crosspoint Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 9
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@RCM,{{option.crosspoint}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "RPM",
+   "name": "Recall Preset Memory",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 9
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@RPM,{{option.preset}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "sendCustomCommand",
+   "name": "Send Custom Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.command}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-idk-msd",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "idk-msd",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-idk-msd.git"
+ }
+}

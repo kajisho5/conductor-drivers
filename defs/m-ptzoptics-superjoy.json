@@ -1,0 +1,3479 @@
+{
+ "format": 1,
+ "id": "m-ptzoptics-superjoy",
+ "name": "PTZ Optics SuperJoy",
+ "category": "PTZ Optics",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "hdmiout",
+   "name": "HDMI Output Control",
+   "options": [
+    {
+     "id": "hdmicontrol",
+     "label": "Choose Control Behavior",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "on",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/joyctrl.cgi?f=hdmiout&action={{option.hdmicontrol|map}}"
+   },
+   "maps": {
+    "hdmicontrol": {
+     "toggle": "toggle",
+     "off": "off",
+     "on": "on"
+    }
+   }
+  },
+  {
+   "id": "camselect",
+   "name": "Select Group and Camera",
+   "options": [
+    {
+     "id": "group",
+     "label": "Group (1 - 5)",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "id",
+     "label": "Camera ID",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/joyctrl.cgi?f=custom&action=trigger&buttonid=1"
+   }
+  },
+  {
+   "id": "directpresets",
+   "name": "Select Group, Camera, and Preset",
+   "options": [
+    {
+     "id": "group",
+     "label": "Group (1 - 5)",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "id",
+     "label": "Camera ID",
+     "type": "text",
+     "default": 1
+    },
+    {
+     "id": "preset",
+     "label": "Preset (1 - 255",
+     "type": "text",
+     "default": 0
+    },
+    {
+     "id": "speed",
+     "label": "Preset Speed (1 - 24)",
+     "type": "text",
+     "default": 24
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/joyctrl.cgi?f=directpresets&action=recall&group=1&camid=1&preset={{option.preset}}&presetspeed=24"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "cameraPreset1_1",
+   "category": "Group 1 Camera 1",
+   "name": "group1",
+   "text": "Group 1\nCamera 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 1,
+     "id": 1
+    }
+   }
+  },
+  {
+   "id": "directpresets1_1_0",
+   "category": "Group 1 Camera 1",
+   "name": "group1",
+   "text": "Group 1\nCamera 1\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 1,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_1_1",
+   "category": "Group 1 Camera 1",
+   "name": "group1",
+   "text": "Group 1\nCamera 1\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 1,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_1_2",
+   "category": "Group 1 Camera 1",
+   "name": "group1",
+   "text": "Group 1\nCamera 1\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 1,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_1_3",
+   "category": "Group 1 Camera 1",
+   "name": "group1",
+   "text": "Group 1\nCamera 1\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 1,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_1_4",
+   "category": "Group 1 Camera 1",
+   "name": "group1",
+   "text": "Group 1\nCamera 1\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 1,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_1_5",
+   "category": "Group 1 Camera 1",
+   "name": "group1",
+   "text": "Group 1\nCamera 1\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 1,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset1_2",
+   "category": "Group 1 Camera 2",
+   "name": "group1",
+   "text": "Group 1\nCamera 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 1,
+     "id": 2
+    }
+   }
+  },
+  {
+   "id": "directpresets1_2_0",
+   "category": "Group 1 Camera 2",
+   "name": "group1",
+   "text": "Group 1\nCamera 2\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 2,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_2_1",
+   "category": "Group 1 Camera 2",
+   "name": "group1",
+   "text": "Group 1\nCamera 2\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 2,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_2_2",
+   "category": "Group 1 Camera 2",
+   "name": "group1",
+   "text": "Group 1\nCamera 2\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 2,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_2_3",
+   "category": "Group 1 Camera 2",
+   "name": "group1",
+   "text": "Group 1\nCamera 2\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 2,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_2_4",
+   "category": "Group 1 Camera 2",
+   "name": "group1",
+   "text": "Group 1\nCamera 2\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 2,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_2_5",
+   "category": "Group 1 Camera 2",
+   "name": "group1",
+   "text": "Group 1\nCamera 2\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 2,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset1_3",
+   "category": "Group 1 Camera 3",
+   "name": "group1",
+   "text": "Group 1\nCamera 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 1,
+     "id": 3
+    }
+   }
+  },
+  {
+   "id": "directpresets1_3_0",
+   "category": "Group 1 Camera 3",
+   "name": "group1",
+   "text": "Group 1\nCamera 3\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 3,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_3_1",
+   "category": "Group 1 Camera 3",
+   "name": "group1",
+   "text": "Group 1\nCamera 3\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 3,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_3_2",
+   "category": "Group 1 Camera 3",
+   "name": "group1",
+   "text": "Group 1\nCamera 3\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 3,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_3_3",
+   "category": "Group 1 Camera 3",
+   "name": "group1",
+   "text": "Group 1\nCamera 3\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 3,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_3_4",
+   "category": "Group 1 Camera 3",
+   "name": "group1",
+   "text": "Group 1\nCamera 3\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 3,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_3_5",
+   "category": "Group 1 Camera 3",
+   "name": "group1",
+   "text": "Group 1\nCamera 3\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 3,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset1_4",
+   "category": "Group 1 Camera 4",
+   "name": "group1",
+   "text": "Group 1\nCamera 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 1,
+     "id": 4
+    }
+   }
+  },
+  {
+   "id": "directpresets1_4_0",
+   "category": "Group 1 Camera 4",
+   "name": "group1",
+   "text": "Group 1\nCamera 4\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 4,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_4_1",
+   "category": "Group 1 Camera 4",
+   "name": "group1",
+   "text": "Group 1\nCamera 4\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 4,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_4_2",
+   "category": "Group 1 Camera 4",
+   "name": "group1",
+   "text": "Group 1\nCamera 4\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 4,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_4_3",
+   "category": "Group 1 Camera 4",
+   "name": "group1",
+   "text": "Group 1\nCamera 4\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 4,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_4_4",
+   "category": "Group 1 Camera 4",
+   "name": "group1",
+   "text": "Group 1\nCamera 4\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 4,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_4_5",
+   "category": "Group 1 Camera 4",
+   "name": "group1",
+   "text": "Group 1\nCamera 4\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 4,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset1_5",
+   "category": "Group 1 Camera 5",
+   "name": "group1",
+   "text": "Group 1\nCamera 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 1,
+     "id": 5
+    }
+   }
+  },
+  {
+   "id": "directpresets1_5_0",
+   "category": "Group 1 Camera 5",
+   "name": "group1",
+   "text": "Group 1\nCamera 5\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 5,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_5_1",
+   "category": "Group 1 Camera 5",
+   "name": "group1",
+   "text": "Group 1\nCamera 5\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 5,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_5_2",
+   "category": "Group 1 Camera 5",
+   "name": "group1",
+   "text": "Group 1\nCamera 5\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 5,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_5_3",
+   "category": "Group 1 Camera 5",
+   "name": "group1",
+   "text": "Group 1\nCamera 5\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 5,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_5_4",
+   "category": "Group 1 Camera 5",
+   "name": "group1",
+   "text": "Group 1\nCamera 5\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 5,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_5_5",
+   "category": "Group 1 Camera 5",
+   "name": "group1",
+   "text": "Group 1\nCamera 5\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 5,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset1_6",
+   "category": "Group 1 Camera 6",
+   "name": "group1",
+   "text": "Group 1\nCamera 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 1,
+     "id": 6
+    }
+   }
+  },
+  {
+   "id": "directpresets1_6_0",
+   "category": "Group 1 Camera 6",
+   "name": "group1",
+   "text": "Group 1\nCamera 6\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 6,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_6_1",
+   "category": "Group 1 Camera 6",
+   "name": "group1",
+   "text": "Group 1\nCamera 6\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 6,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_6_2",
+   "category": "Group 1 Camera 6",
+   "name": "group1",
+   "text": "Group 1\nCamera 6\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 6,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_6_3",
+   "category": "Group 1 Camera 6",
+   "name": "group1",
+   "text": "Group 1\nCamera 6\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 6,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_6_4",
+   "category": "Group 1 Camera 6",
+   "name": "group1",
+   "text": "Group 1\nCamera 6\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 6,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets1_6_5",
+   "category": "Group 1 Camera 6",
+   "name": "group1",
+   "text": "Group 1\nCamera 6\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 1,
+     "id": 6,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset2_1",
+   "category": "Group 2 Camera 1",
+   "name": "group2",
+   "text": "Group 2\nCamera 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 2,
+     "id": 1
+    }
+   }
+  },
+  {
+   "id": "directpresets2_1_0",
+   "category": "Group 2 Camera 1",
+   "name": "group2",
+   "text": "Group 2\nCamera 1\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 1,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_1_1",
+   "category": "Group 2 Camera 1",
+   "name": "group2",
+   "text": "Group 2\nCamera 1\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 1,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_1_2",
+   "category": "Group 2 Camera 1",
+   "name": "group2",
+   "text": "Group 2\nCamera 1\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 1,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_1_3",
+   "category": "Group 2 Camera 1",
+   "name": "group2",
+   "text": "Group 2\nCamera 1\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 1,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_1_4",
+   "category": "Group 2 Camera 1",
+   "name": "group2",
+   "text": "Group 2\nCamera 1\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 1,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_1_5",
+   "category": "Group 2 Camera 1",
+   "name": "group2",
+   "text": "Group 2\nCamera 1\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 1,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset2_2",
+   "category": "Group 2 Camera 2",
+   "name": "group2",
+   "text": "Group 2\nCamera 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 2,
+     "id": 2
+    }
+   }
+  },
+  {
+   "id": "directpresets2_2_0",
+   "category": "Group 2 Camera 2",
+   "name": "group2",
+   "text": "Group 2\nCamera 2\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 2,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_2_1",
+   "category": "Group 2 Camera 2",
+   "name": "group2",
+   "text": "Group 2\nCamera 2\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 2,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_2_2",
+   "category": "Group 2 Camera 2",
+   "name": "group2",
+   "text": "Group 2\nCamera 2\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 2,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_2_3",
+   "category": "Group 2 Camera 2",
+   "name": "group2",
+   "text": "Group 2\nCamera 2\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 2,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_2_4",
+   "category": "Group 2 Camera 2",
+   "name": "group2",
+   "text": "Group 2\nCamera 2\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 2,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_2_5",
+   "category": "Group 2 Camera 2",
+   "name": "group2",
+   "text": "Group 2\nCamera 2\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 2,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset2_3",
+   "category": "Group 2 Camera 3",
+   "name": "group2",
+   "text": "Group 2\nCamera 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 2,
+     "id": 3
+    }
+   }
+  },
+  {
+   "id": "directpresets2_3_0",
+   "category": "Group 2 Camera 3",
+   "name": "group2",
+   "text": "Group 2\nCamera 3\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 3,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_3_1",
+   "category": "Group 2 Camera 3",
+   "name": "group2",
+   "text": "Group 2\nCamera 3\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 3,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_3_2",
+   "category": "Group 2 Camera 3",
+   "name": "group2",
+   "text": "Group 2\nCamera 3\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 3,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_3_3",
+   "category": "Group 2 Camera 3",
+   "name": "group2",
+   "text": "Group 2\nCamera 3\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 3,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_3_4",
+   "category": "Group 2 Camera 3",
+   "name": "group2",
+   "text": "Group 2\nCamera 3\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 3,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_3_5",
+   "category": "Group 2 Camera 3",
+   "name": "group2",
+   "text": "Group 2\nCamera 3\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 3,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset2_4",
+   "category": "Group 2 Camera 4",
+   "name": "group2",
+   "text": "Group 2\nCamera 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 2,
+     "id": 4
+    }
+   }
+  },
+  {
+   "id": "directpresets2_4_0",
+   "category": "Group 2 Camera 4",
+   "name": "group2",
+   "text": "Group 2\nCamera 4\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 4,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_4_1",
+   "category": "Group 2 Camera 4",
+   "name": "group2",
+   "text": "Group 2\nCamera 4\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 4,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_4_2",
+   "category": "Group 2 Camera 4",
+   "name": "group2",
+   "text": "Group 2\nCamera 4\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 4,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_4_3",
+   "category": "Group 2 Camera 4",
+   "name": "group2",
+   "text": "Group 2\nCamera 4\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 4,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_4_4",
+   "category": "Group 2 Camera 4",
+   "name": "group2",
+   "text": "Group 2\nCamera 4\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 4,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_4_5",
+   "category": "Group 2 Camera 4",
+   "name": "group2",
+   "text": "Group 2\nCamera 4\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 4,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset2_5",
+   "category": "Group 2 Camera 5",
+   "name": "group2",
+   "text": "Group 2\nCamera 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 2,
+     "id": 5
+    }
+   }
+  },
+  {
+   "id": "directpresets2_5_0",
+   "category": "Group 2 Camera 5",
+   "name": "group2",
+   "text": "Group 2\nCamera 5\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 5,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_5_1",
+   "category": "Group 2 Camera 5",
+   "name": "group2",
+   "text": "Group 2\nCamera 5\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 5,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_5_2",
+   "category": "Group 2 Camera 5",
+   "name": "group2",
+   "text": "Group 2\nCamera 5\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 5,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_5_3",
+   "category": "Group 2 Camera 5",
+   "name": "group2",
+   "text": "Group 2\nCamera 5\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 5,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_5_4",
+   "category": "Group 2 Camera 5",
+   "name": "group2",
+   "text": "Group 2\nCamera 5\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 5,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_5_5",
+   "category": "Group 2 Camera 5",
+   "name": "group2",
+   "text": "Group 2\nCamera 5\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 5,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset2_6",
+   "category": "Group 2 Camera 6",
+   "name": "group2",
+   "text": "Group 2\nCamera 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 2,
+     "id": 6
+    }
+   }
+  },
+  {
+   "id": "directpresets2_6_0",
+   "category": "Group 2 Camera 6",
+   "name": "group2",
+   "text": "Group 2\nCamera 6\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 6,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_6_1",
+   "category": "Group 2 Camera 6",
+   "name": "group2",
+   "text": "Group 2\nCamera 6\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 6,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_6_2",
+   "category": "Group 2 Camera 6",
+   "name": "group2",
+   "text": "Group 2\nCamera 6\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 6,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_6_3",
+   "category": "Group 2 Camera 6",
+   "name": "group2",
+   "text": "Group 2\nCamera 6\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 6,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_6_4",
+   "category": "Group 2 Camera 6",
+   "name": "group2",
+   "text": "Group 2\nCamera 6\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 6,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets2_6_5",
+   "category": "Group 2 Camera 6",
+   "name": "group2",
+   "text": "Group 2\nCamera 6\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 2,
+     "id": 6,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset3_1",
+   "category": "Group 3 Camera 1",
+   "name": "group3",
+   "text": "Group 3\nCamera 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 3,
+     "id": 1
+    }
+   }
+  },
+  {
+   "id": "directpresets3_1_0",
+   "category": "Group 3 Camera 1",
+   "name": "group3",
+   "text": "Group 3\nCamera 1\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 1,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_1_1",
+   "category": "Group 3 Camera 1",
+   "name": "group3",
+   "text": "Group 3\nCamera 1\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 1,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_1_2",
+   "category": "Group 3 Camera 1",
+   "name": "group3",
+   "text": "Group 3\nCamera 1\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 1,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_1_3",
+   "category": "Group 3 Camera 1",
+   "name": "group3",
+   "text": "Group 3\nCamera 1\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 1,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_1_4",
+   "category": "Group 3 Camera 1",
+   "name": "group3",
+   "text": "Group 3\nCamera 1\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 1,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_1_5",
+   "category": "Group 3 Camera 1",
+   "name": "group3",
+   "text": "Group 3\nCamera 1\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 1,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset3_2",
+   "category": "Group 3 Camera 2",
+   "name": "group3",
+   "text": "Group 3\nCamera 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 3,
+     "id": 2
+    }
+   }
+  },
+  {
+   "id": "directpresets3_2_0",
+   "category": "Group 3 Camera 2",
+   "name": "group3",
+   "text": "Group 3\nCamera 2\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 2,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_2_1",
+   "category": "Group 3 Camera 2",
+   "name": "group3",
+   "text": "Group 3\nCamera 2\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 2,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_2_2",
+   "category": "Group 3 Camera 2",
+   "name": "group3",
+   "text": "Group 3\nCamera 2\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 2,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_2_3",
+   "category": "Group 3 Camera 2",
+   "name": "group3",
+   "text": "Group 3\nCamera 2\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 2,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_2_4",
+   "category": "Group 3 Camera 2",
+   "name": "group3",
+   "text": "Group 3\nCamera 2\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 2,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_2_5",
+   "category": "Group 3 Camera 2",
+   "name": "group3",
+   "text": "Group 3\nCamera 2\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 2,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset3_3",
+   "category": "Group 3 Camera 3",
+   "name": "group3",
+   "text": "Group 3\nCamera 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 3,
+     "id": 3
+    }
+   }
+  },
+  {
+   "id": "directpresets3_3_0",
+   "category": "Group 3 Camera 3",
+   "name": "group3",
+   "text": "Group 3\nCamera 3\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 3,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_3_1",
+   "category": "Group 3 Camera 3",
+   "name": "group3",
+   "text": "Group 3\nCamera 3\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 3,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_3_2",
+   "category": "Group 3 Camera 3",
+   "name": "group3",
+   "text": "Group 3\nCamera 3\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 3,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_3_3",
+   "category": "Group 3 Camera 3",
+   "name": "group3",
+   "text": "Group 3\nCamera 3\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 3,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_3_4",
+   "category": "Group 3 Camera 3",
+   "name": "group3",
+   "text": "Group 3\nCamera 3\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 3,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_3_5",
+   "category": "Group 3 Camera 3",
+   "name": "group3",
+   "text": "Group 3\nCamera 3\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 3,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset3_4",
+   "category": "Group 3 Camera 4",
+   "name": "group3",
+   "text": "Group 3\nCamera 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 3,
+     "id": 4
+    }
+   }
+  },
+  {
+   "id": "directpresets3_4_0",
+   "category": "Group 3 Camera 4",
+   "name": "group3",
+   "text": "Group 3\nCamera 4\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 4,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_4_1",
+   "category": "Group 3 Camera 4",
+   "name": "group3",
+   "text": "Group 3\nCamera 4\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 4,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_4_2",
+   "category": "Group 3 Camera 4",
+   "name": "group3",
+   "text": "Group 3\nCamera 4\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 4,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_4_3",
+   "category": "Group 3 Camera 4",
+   "name": "group3",
+   "text": "Group 3\nCamera 4\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 4,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_4_4",
+   "category": "Group 3 Camera 4",
+   "name": "group3",
+   "text": "Group 3\nCamera 4\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 4,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_4_5",
+   "category": "Group 3 Camera 4",
+   "name": "group3",
+   "text": "Group 3\nCamera 4\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 4,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset3_5",
+   "category": "Group 3 Camera 5",
+   "name": "group3",
+   "text": "Group 3\nCamera 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 3,
+     "id": 5
+    }
+   }
+  },
+  {
+   "id": "directpresets3_5_0",
+   "category": "Group 3 Camera 5",
+   "name": "group3",
+   "text": "Group 3\nCamera 5\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 5,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_5_1",
+   "category": "Group 3 Camera 5",
+   "name": "group3",
+   "text": "Group 3\nCamera 5\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 5,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_5_2",
+   "category": "Group 3 Camera 5",
+   "name": "group3",
+   "text": "Group 3\nCamera 5\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 5,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_5_3",
+   "category": "Group 3 Camera 5",
+   "name": "group3",
+   "text": "Group 3\nCamera 5\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 5,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_5_4",
+   "category": "Group 3 Camera 5",
+   "name": "group3",
+   "text": "Group 3\nCamera 5\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 5,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_5_5",
+   "category": "Group 3 Camera 5",
+   "name": "group3",
+   "text": "Group 3\nCamera 5\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 5,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset3_6",
+   "category": "Group 3 Camera 6",
+   "name": "group3",
+   "text": "Group 3\nCamera 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 3,
+     "id": 6
+    }
+   }
+  },
+  {
+   "id": "directpresets3_6_0",
+   "category": "Group 3 Camera 6",
+   "name": "group3",
+   "text": "Group 3\nCamera 6\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 6,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_6_1",
+   "category": "Group 3 Camera 6",
+   "name": "group3",
+   "text": "Group 3\nCamera 6\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 6,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_6_2",
+   "category": "Group 3 Camera 6",
+   "name": "group3",
+   "text": "Group 3\nCamera 6\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 6,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_6_3",
+   "category": "Group 3 Camera 6",
+   "name": "group3",
+   "text": "Group 3\nCamera 6\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 6,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_6_4",
+   "category": "Group 3 Camera 6",
+   "name": "group3",
+   "text": "Group 3\nCamera 6\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 6,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets3_6_5",
+   "category": "Group 3 Camera 6",
+   "name": "group3",
+   "text": "Group 3\nCamera 6\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 3,
+     "id": 6,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset4_1",
+   "category": "Group 4 Camera 1",
+   "name": "group4",
+   "text": "Group 4\nCamera 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 4,
+     "id": 1
+    }
+   }
+  },
+  {
+   "id": "directpresets4_1_0",
+   "category": "Group 4 Camera 1",
+   "name": "group4",
+   "text": "Group 4\nCamera 1\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 1,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_1_1",
+   "category": "Group 4 Camera 1",
+   "name": "group4",
+   "text": "Group 4\nCamera 1\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 1,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_1_2",
+   "category": "Group 4 Camera 1",
+   "name": "group4",
+   "text": "Group 4\nCamera 1\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 1,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_1_3",
+   "category": "Group 4 Camera 1",
+   "name": "group4",
+   "text": "Group 4\nCamera 1\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 1,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_1_4",
+   "category": "Group 4 Camera 1",
+   "name": "group4",
+   "text": "Group 4\nCamera 1\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 1,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_1_5",
+   "category": "Group 4 Camera 1",
+   "name": "group4",
+   "text": "Group 4\nCamera 1\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 1,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset4_2",
+   "category": "Group 4 Camera 2",
+   "name": "group4",
+   "text": "Group 4\nCamera 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 4,
+     "id": 2
+    }
+   }
+  },
+  {
+   "id": "directpresets4_2_0",
+   "category": "Group 4 Camera 2",
+   "name": "group4",
+   "text": "Group 4\nCamera 2\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 2,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_2_1",
+   "category": "Group 4 Camera 2",
+   "name": "group4",
+   "text": "Group 4\nCamera 2\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 2,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_2_2",
+   "category": "Group 4 Camera 2",
+   "name": "group4",
+   "text": "Group 4\nCamera 2\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 2,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_2_3",
+   "category": "Group 4 Camera 2",
+   "name": "group4",
+   "text": "Group 4\nCamera 2\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 2,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_2_4",
+   "category": "Group 4 Camera 2",
+   "name": "group4",
+   "text": "Group 4\nCamera 2\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 2,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_2_5",
+   "category": "Group 4 Camera 2",
+   "name": "group4",
+   "text": "Group 4\nCamera 2\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 2,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset4_3",
+   "category": "Group 4 Camera 3",
+   "name": "group4",
+   "text": "Group 4\nCamera 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 4,
+     "id": 3
+    }
+   }
+  },
+  {
+   "id": "directpresets4_3_0",
+   "category": "Group 4 Camera 3",
+   "name": "group4",
+   "text": "Group 4\nCamera 3\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 3,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_3_1",
+   "category": "Group 4 Camera 3",
+   "name": "group4",
+   "text": "Group 4\nCamera 3\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 3,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_3_2",
+   "category": "Group 4 Camera 3",
+   "name": "group4",
+   "text": "Group 4\nCamera 3\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 3,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_3_3",
+   "category": "Group 4 Camera 3",
+   "name": "group4",
+   "text": "Group 4\nCamera 3\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 3,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_3_4",
+   "category": "Group 4 Camera 3",
+   "name": "group4",
+   "text": "Group 4\nCamera 3\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 3,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_3_5",
+   "category": "Group 4 Camera 3",
+   "name": "group4",
+   "text": "Group 4\nCamera 3\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 3,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset4_4",
+   "category": "Group 4 Camera 4",
+   "name": "group4",
+   "text": "Group 4\nCamera 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 4,
+     "id": 4
+    }
+   }
+  },
+  {
+   "id": "directpresets4_4_0",
+   "category": "Group 4 Camera 4",
+   "name": "group4",
+   "text": "Group 4\nCamera 4\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 4,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_4_1",
+   "category": "Group 4 Camera 4",
+   "name": "group4",
+   "text": "Group 4\nCamera 4\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 4,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_4_2",
+   "category": "Group 4 Camera 4",
+   "name": "group4",
+   "text": "Group 4\nCamera 4\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 4,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_4_3",
+   "category": "Group 4 Camera 4",
+   "name": "group4",
+   "text": "Group 4\nCamera 4\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 4,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_4_4",
+   "category": "Group 4 Camera 4",
+   "name": "group4",
+   "text": "Group 4\nCamera 4\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 4,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_4_5",
+   "category": "Group 4 Camera 4",
+   "name": "group4",
+   "text": "Group 4\nCamera 4\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 4,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset4_5",
+   "category": "Group 4 Camera 5",
+   "name": "group4",
+   "text": "Group 4\nCamera 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 4,
+     "id": 5
+    }
+   }
+  },
+  {
+   "id": "directpresets4_5_0",
+   "category": "Group 4 Camera 5",
+   "name": "group4",
+   "text": "Group 4\nCamera 5\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 5,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_5_1",
+   "category": "Group 4 Camera 5",
+   "name": "group4",
+   "text": "Group 4\nCamera 5\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 5,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_5_2",
+   "category": "Group 4 Camera 5",
+   "name": "group4",
+   "text": "Group 4\nCamera 5\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 5,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_5_3",
+   "category": "Group 4 Camera 5",
+   "name": "group4",
+   "text": "Group 4\nCamera 5\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 5,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_5_4",
+   "category": "Group 4 Camera 5",
+   "name": "group4",
+   "text": "Group 4\nCamera 5\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 5,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_5_5",
+   "category": "Group 4 Camera 5",
+   "name": "group4",
+   "text": "Group 4\nCamera 5\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 5,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset4_6",
+   "category": "Group 4 Camera 6",
+   "name": "group4",
+   "text": "Group 4\nCamera 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 4,
+     "id": 6
+    }
+   }
+  },
+  {
+   "id": "directpresets4_6_0",
+   "category": "Group 4 Camera 6",
+   "name": "group4",
+   "text": "Group 4\nCamera 6\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 6,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_6_1",
+   "category": "Group 4 Camera 6",
+   "name": "group4",
+   "text": "Group 4\nCamera 6\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 6,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_6_2",
+   "category": "Group 4 Camera 6",
+   "name": "group4",
+   "text": "Group 4\nCamera 6\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 6,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_6_3",
+   "category": "Group 4 Camera 6",
+   "name": "group4",
+   "text": "Group 4\nCamera 6\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 6,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_6_4",
+   "category": "Group 4 Camera 6",
+   "name": "group4",
+   "text": "Group 4\nCamera 6\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 6,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets4_6_5",
+   "category": "Group 4 Camera 6",
+   "name": "group4",
+   "text": "Group 4\nCamera 6\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 4,
+     "id": 6,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset5_1",
+   "category": "Group 5 Camera 1",
+   "name": "group5",
+   "text": "Group 5\nCamera 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 5,
+     "id": 1
+    }
+   }
+  },
+  {
+   "id": "directpresets5_1_0",
+   "category": "Group 5 Camera 1",
+   "name": "group5",
+   "text": "Group 5\nCamera 1\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 1,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_1_1",
+   "category": "Group 5 Camera 1",
+   "name": "group5",
+   "text": "Group 5\nCamera 1\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 1,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_1_2",
+   "category": "Group 5 Camera 1",
+   "name": "group5",
+   "text": "Group 5\nCamera 1\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 1,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_1_3",
+   "category": "Group 5 Camera 1",
+   "name": "group5",
+   "text": "Group 5\nCamera 1\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 1,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_1_4",
+   "category": "Group 5 Camera 1",
+   "name": "group5",
+   "text": "Group 5\nCamera 1\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 1,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_1_5",
+   "category": "Group 5 Camera 1",
+   "name": "group5",
+   "text": "Group 5\nCamera 1\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 1,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset5_2",
+   "category": "Group 5 Camera 2",
+   "name": "group5",
+   "text": "Group 5\nCamera 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 5,
+     "id": 2
+    }
+   }
+  },
+  {
+   "id": "directpresets5_2_0",
+   "category": "Group 5 Camera 2",
+   "name": "group5",
+   "text": "Group 5\nCamera 2\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 2,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_2_1",
+   "category": "Group 5 Camera 2",
+   "name": "group5",
+   "text": "Group 5\nCamera 2\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 2,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_2_2",
+   "category": "Group 5 Camera 2",
+   "name": "group5",
+   "text": "Group 5\nCamera 2\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 2,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_2_3",
+   "category": "Group 5 Camera 2",
+   "name": "group5",
+   "text": "Group 5\nCamera 2\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 2,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_2_4",
+   "category": "Group 5 Camera 2",
+   "name": "group5",
+   "text": "Group 5\nCamera 2\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 2,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_2_5",
+   "category": "Group 5 Camera 2",
+   "name": "group5",
+   "text": "Group 5\nCamera 2\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 2,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset5_3",
+   "category": "Group 5 Camera 3",
+   "name": "group5",
+   "text": "Group 5\nCamera 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 5,
+     "id": 3
+    }
+   }
+  },
+  {
+   "id": "directpresets5_3_0",
+   "category": "Group 5 Camera 3",
+   "name": "group5",
+   "text": "Group 5\nCamera 3\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 3,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_3_1",
+   "category": "Group 5 Camera 3",
+   "name": "group5",
+   "text": "Group 5\nCamera 3\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 3,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_3_2",
+   "category": "Group 5 Camera 3",
+   "name": "group5",
+   "text": "Group 5\nCamera 3\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 3,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_3_3",
+   "category": "Group 5 Camera 3",
+   "name": "group5",
+   "text": "Group 5\nCamera 3\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 3,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_3_4",
+   "category": "Group 5 Camera 3",
+   "name": "group5",
+   "text": "Group 5\nCamera 3\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 3,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_3_5",
+   "category": "Group 5 Camera 3",
+   "name": "group5",
+   "text": "Group 5\nCamera 3\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 3,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset5_4",
+   "category": "Group 5 Camera 4",
+   "name": "group5",
+   "text": "Group 5\nCamera 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 5,
+     "id": 4
+    }
+   }
+  },
+  {
+   "id": "directpresets5_4_0",
+   "category": "Group 5 Camera 4",
+   "name": "group5",
+   "text": "Group 5\nCamera 4\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 4,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_4_1",
+   "category": "Group 5 Camera 4",
+   "name": "group5",
+   "text": "Group 5\nCamera 4\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 4,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_4_2",
+   "category": "Group 5 Camera 4",
+   "name": "group5",
+   "text": "Group 5\nCamera 4\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 4,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_4_3",
+   "category": "Group 5 Camera 4",
+   "name": "group5",
+   "text": "Group 5\nCamera 4\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 4,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_4_4",
+   "category": "Group 5 Camera 4",
+   "name": "group5",
+   "text": "Group 5\nCamera 4\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 4,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_4_5",
+   "category": "Group 5 Camera 4",
+   "name": "group5",
+   "text": "Group 5\nCamera 4\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 4,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset5_5",
+   "category": "Group 5 Camera 5",
+   "name": "group5",
+   "text": "Group 5\nCamera 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 5,
+     "id": 5
+    }
+   }
+  },
+  {
+   "id": "directpresets5_5_0",
+   "category": "Group 5 Camera 5",
+   "name": "group5",
+   "text": "Group 5\nCamera 5\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 5,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_5_1",
+   "category": "Group 5 Camera 5",
+   "name": "group5",
+   "text": "Group 5\nCamera 5\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 5,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_5_2",
+   "category": "Group 5 Camera 5",
+   "name": "group5",
+   "text": "Group 5\nCamera 5\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 5,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_5_3",
+   "category": "Group 5 Camera 5",
+   "name": "group5",
+   "text": "Group 5\nCamera 5\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 5,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_5_4",
+   "category": "Group 5 Camera 5",
+   "name": "group5",
+   "text": "Group 5\nCamera 5\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 5,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_5_5",
+   "category": "Group 5 Camera 5",
+   "name": "group5",
+   "text": "Group 5\nCamera 5\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 5,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "cameraPreset5_6",
+   "category": "Group 5 Camera 6",
+   "name": "group5",
+   "text": "Group 5\nCamera 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "camselect",
+    "options": {
+     "group": 5,
+     "id": 6
+    }
+   }
+  },
+  {
+   "id": "directpresets5_6_0",
+   "category": "Group 5 Camera 6",
+   "name": "group5",
+   "text": "Group 5\nCamera 6\nPreset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 6,
+     "preset": 0,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_6_1",
+   "category": "Group 5 Camera 6",
+   "name": "group5",
+   "text": "Group 5\nCamera 6\nPreset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 6,
+     "preset": 1,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_6_2",
+   "category": "Group 5 Camera 6",
+   "name": "group5",
+   "text": "Group 5\nCamera 6\nPreset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 6,
+     "preset": 2,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_6_3",
+   "category": "Group 5 Camera 6",
+   "name": "group5",
+   "text": "Group 5\nCamera 6\nPreset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 6,
+     "preset": 3,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_6_4",
+   "category": "Group 5 Camera 6",
+   "name": "group5",
+   "text": "Group 5\nCamera 6\nPreset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 6,
+     "preset": 4,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "directpresets5_6_5",
+   "category": "Group 5 Camera 6",
+   "name": "group5",
+   "text": "Group 5\nCamera 6\nPreset 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "directpresets",
+    "options": {
+     "group": 5,
+     "id": 6,
+     "preset": 5,
+     "speed": 24
+    }
+   }
+  },
+  {
+   "id": "hdmiPresettoggle",
+   "category": "Control HDMI Output",
+   "name": "HDMIControl",
+   "text": "HDMI\ntoggle",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "hdmiout",
+    "options": {
+     "hdmicontrol": "toggle"
+    }
+   }
+  },
+  {
+   "id": "hdmiPreseton",
+   "category": "Control HDMI Output",
+   "name": "HDMIControl",
+   "text": "HDMI\non",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "hdmiout",
+    "options": {
+     "hdmicontrol": "on"
+    }
+   }
+  },
+  {
+   "id": "hdmiPresetoff",
+   "category": "Control HDMI Output",
+   "name": "HDMIControl",
+   "text": "HDMI\noff",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "hdmiout",
+    "options": {
+     "hdmicontrol": "off"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-ptzoptics-superjoy",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Tim St. Pierre, Bryce Seifert, Jay Lawrence"
+  }
+ ],
+ "source": {
+  "module": "ptzoptics-superjoy",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Tim St. Pierre",
+   "Bryce Seifert",
+   "Jay Lawrence"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-ptzoptics-superjoy.git"
+ }
+}

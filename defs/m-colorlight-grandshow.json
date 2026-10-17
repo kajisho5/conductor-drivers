@@ -1,0 +1,318 @@
+{
+ "format": 1,
+ "id": "m-colorlight-grandshow",
+ "name": "Colorlight GrandShow",
+ "category": "Colorlight",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 30303,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "send",
+   "name": "Send Custom Command",
+   "options": [
+    {
+     "id": "id_send",
+     "label": "Command:",
+     "type": "text",
+     "default": "",
+     "help": "Use %hh to insert Hex codes"
+    },
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\n",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_send|hexstr}}{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\n": "0a",
+     "": "",
+     "\r\n": "0d0a",
+     "\r": "0d",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  },
+  {
+   "id": "ShutDown",
+   "name": "Shut Down",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"shutdown\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "SwitchProject",
+   "name": "Switch Project",
+   "options": [
+    {
+     "id": "projectOrder",
+     "label": "Target Value",
+     "type": "number",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"switchProject\",\"param\":{{option.projectOrder}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "OpenProject",
+   "name": "Open Project",
+   "options": [
+    {
+     "id": "projectPath",
+     "label": "Absolute Project Path",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"openProject\",\"param\":\"{{option.projectPath}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CloseSoftware",
+   "name": "Close The Software",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"CloseSoftware\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "OpenAllScreen",
+   "name": "Open All Screen",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"OpenAllScreen\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "CloseAllScreen",
+   "name": "Close All Screens",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"CloseAllScreen\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "AdjustGlobalBrightness",
+   "name": "Adjust Global Brightness",
+   "options": [
+    {
+     "id": "BrightValue",
+     "label": "Target Value",
+     "type": "number",
+     "default": 50,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"globalBrightness\",\"param\":{{option.BrightValue}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "GetCurrentBright",
+   "name": "Get Current Global Brightness",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"getGlobalBrightness\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "GetScreenBlackState",
+   "name": "Get Screen Black State",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"getBlackAll\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PlayNext",
+   "name": "Play Next Scene",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"PlayNext\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PlayLast",
+   "name": "Play Previews Scene",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"PlayLast\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PlayScene",
+   "name": "Play Scene Number",
+   "options": [
+    {
+     "id": "sceneNumber",
+     "label": "Scene Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"play\",\"param\":{{option.sceneNumber}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PauseScene",
+   "name": "Pause Scene",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"pauseAll\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "StopScene",
+   "name": "Stop Scene",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"stop\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "EnableHDR",
+   "name": "HDR Enable",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"openHDR\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "DisableHDR",
+   "name": "HDR Disable",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"closeHDR\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "GlobalVolume",
+   "name": "Adjust Global Volume",
+   "options": [
+    {
+     "id": "globalVolume",
+     "label": "Global Volume",
+     "type": "number",
+     "default": 80,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"cmd\":\"globalVolume\",\"param\":{{option.globalVolume}}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-colorlight-grandshow",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：wuwei"
+  }
+ ],
+ "source": {
+  "module": "colorlight-grandshow",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "wuwei"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-colorlight-grandshow.git"
+ }
+}

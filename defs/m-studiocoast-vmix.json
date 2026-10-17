@@ -1,0 +1,6221 @@
+{
+ "format": 1,
+ "id": "m-studiocoast-vmix",
+ "name": "StudioCoast vMix",
+ "category": "StudioCoast",
+ "version": "4.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8099,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "connectionErrorLog",
+   "label": "Enable",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "apiPollInterval",
+   "label": "API Polling interval (ms) (default: 250, min: 100, 0 for disabled)",
+   "type": "number",
+   "default": 250,
+   "min": 0,
+   "max": 60000
+  },
+  {
+   "id": "volumeLinear",
+   "label": "Linear vol scale",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "shiftDelimiter",
+   "label": "Shift Separator",
+   "type": "text",
+   "default": "|"
+  },
+  {
+   "id": "shiftBlinkPrvPrgm",
+   "label": "Prv/Prgm Blink",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "shiftBlinkLayerRouting",
+   "label": "Layer Routing Blink",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "variablesShowInputs",
+   "label": "Input Variables by Name (eg \"input_vt1_remaining\").",
+   "type": "boolean",
+   "default": true,
+   "help": "Note: Variable names don't support some characters/symbols, these will be omitted from any input names in variables"
+  },
+  {
+   "id": "variablesShowInputsLowercase",
+   "label": "Enable to set input names in Variables to lowercase",
+   "type": "boolean",
+   "default": true,
+   "help": "eg an Input named VT1 in vMix would be \"input_vt1_remaining\""
+  },
+  {
+   "id": "variablesShowInputNumbers",
+   "label": "Input Variables by Number (eg \"input_5_remaining\")",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "variablesShowInputGUID",
+   "label": "Input Variables by GUID (eg \"input_89b3994b-c010-4c9b-a743-01193d63620e_remainin",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputPosition",
+   "label": "Input Position Variables (eg \"input_logo_position_panx\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputCC",
+   "label": "Input Color Correction Variables (eg \"input_logo_cc_hue)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputLayers",
+   "label": "Input Layer Name/Number/GUID (eg \"input_groupshot_layer_1_name\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputLayerPosition",
+   "label": "Input Layer Position Variables (eg \"input_groupshot_layer_1_panx\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputList",
+   "label": "Input List Variables (eg \"input_photos_list_1_name\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputTitleIndex",
+   "label": "Input Title Variables by index (eg \"input_scores_layer_1_titletext\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputTitleName",
+   "label": "Input Title Variables by name (eg \"input_scores_layer_team1_titletext\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowInputVolume",
+   "label": "Input Volume Variables (eg \"input_music_volume_db\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowAudio",
+   "label": "Bus Audio Variables (eg \"bus_master_volume_db\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowDynamicInputs",
+   "label": "Dynamic Input Variables (eg \"dynamic_input_1_name\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowDynamicValues",
+   "label": "Dynamic Value Variables (eg \"dynamic_value_1\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowMix",
+   "label": "Mix input Variables (eg \"mix_1_preview_name\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowOutputs",
+   "label": "Output Variables (eg \"output_1_source\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowOverlays",
+   "label": "Overlay Variables (eg \"overlay_1_input_name\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowReplay",
+   "label": "Replay Variables (eg \"replay_recording\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "variablesShowTransitions",
+   "label": "Transition Variables (eg \"transition_1_effect\")",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "debugSettings",
+   "label": "Enable Debug Options",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "debugVariableDefinitionDelay",
+   "label": "Variable Definition update frequency (ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 0,
+   "max": 60000
+  },
+  {
+   "id": "debugVersionUpdateNotifications",
+   "label": "Log entries with new version information/warnings on startup",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "audio",
+   "name": "Audio - Input Mute",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "functionID",
+     "label": "Option",
+     "type": "select",
+     "default": "Audio",
+     "choices": [
+      {
+       "id": "Audio",
+       "label": "Toggle input Audio"
+      },
+      {
+       "id": "AudioOn",
+       "label": "Set input Audio ON"
+      },
+      {
+       "id": "AudioOff",
+       "label": "Set input Audio OFF"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION Audio{{option.functionID|map}} input={{option.input}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "Audio": "",
+     "AudioOn": "On",
+     "AudioOff": "Off"
+    }
+   }
+  },
+  {
+   "id": "solo",
+   "name": "Audio - Input Solo",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "functionID",
+     "label": "Option",
+     "type": "select",
+     "default": "Solo",
+     "choices": [
+      {
+       "id": "Solo",
+       "label": "Toggle"
+      },
+      {
+       "id": "SoloOn",
+       "label": "On"
+      },
+      {
+       "id": "SoloOff",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION Solo{{option.functionID|map}} input={{option.input}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "Solo": "",
+     "SoloOn": "On",
+     "SoloOff": "Off"
+    }
+   }
+  },
+  {
+   "id": "audioPlugin",
+   "name": "Audio - Audio Plugin On/Off/Toggle/Show On Input",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "value",
+     "label": "Plugin Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000
+    },
+    {
+     "id": "functionID",
+     "label": "Option",
+     "type": "select",
+     "default": "AudioPluginOnOff",
+     "choices": [
+      {
+       "id": "AudioPluginOnOff",
+       "label": "Toggle"
+      },
+      {
+       "id": "AudioPluginOn",
+       "label": "On"
+      },
+      {
+       "id": "AudioPluginOff",
+       "label": "Off"
+      },
+      {
+       "id": "AudioPluginShow",
+       "label": "Show"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION AudioPlugin{{option.functionID|map}} input={{option.input}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "AudioPluginOnOff": "OnOff",
+     "AudioPluginOn": "On",
+     "AudioPluginOff": "Off",
+     "AudioPluginShow": "Show"
+    }
+   }
+  },
+  {
+   "id": "soloAllOff",
+   "name": "Audio - Solo All Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION soloAllOff \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "audioMixerShowHide",
+   "name": "Audio - Show / Hide Audio Mixer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION audioMixerShowHide \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "browser",
+   "name": "Browser - Functions",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "functionID",
+     "label": "Function",
+     "type": "select",
+     "default": "BrowserReload",
+     "choices": [
+      {
+       "id": "BrowserReload",
+       "label": "Reload"
+      },
+      {
+       "id": "BrowserBack",
+       "label": "Back"
+      },
+      {
+       "id": "BrowserForward",
+       "label": "Forward"
+      },
+      {
+       "id": "BrowserKeyboardDisabled",
+       "label": "Keyboard Disabled"
+      },
+      {
+       "id": "BrowserKeyboardEnabled",
+       "label": "Keyboard Enabled"
+      },
+      {
+       "id": "BrowserMouseDisabled",
+       "label": "Mouse Disabled"
+      },
+      {
+       "id": "BrowserMouseEnabled",
+       "label": "Mouse Enabled"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION Browser{{option.functionID|map}} input={{option.input}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "BrowserReload": "Reload",
+     "BrowserBack": "Back",
+     "BrowserForward": "Forward",
+     "BrowserKeyboardDisabled": "KeyboardDisabled",
+     "BrowserKeyboardEnabled": "KeyboardEnabled",
+     "BrowserMouseDisabled": "MouseDisabled",
+     "BrowserMouseEnabled": "MouseEnabled"
+    }
+   }
+  },
+  {
+   "id": "dataSourceAutoNext",
+   "name": "DataSource - AutoNext",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "AutoNext State",
+     "type": "select",
+     "default": "DataSourceAutoNextOn",
+     "choices": [
+      {
+       "id": "DataSourceAutoNextOn",
+       "label": "On"
+      },
+      {
+       "id": "DataSourceAutoNextOff",
+       "label": "Off"
+      },
+      {
+       "id": "DataSourceAutoNextOnOff",
+       "label": "On/Off"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Name,Table",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION DataSourceAutoNextO{{option.functionID|map}} value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "DataSourceAutoNextOn": "n",
+     "DataSourceAutoNextOff": "ff",
+     "DataSourceAutoNextOnOff": "nOff"
+    }
+   }
+  },
+  {
+   "id": "dataSourceNextRow",
+   "name": "DataSource - Next Row",
+   "options": [
+    {
+     "id": "value",
+     "label": "Name,Table",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION dataSourceNextRow value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dataSourcePreviousRow",
+   "name": "DataSource - Previous Row",
+   "options": [
+    {
+     "id": "value",
+     "label": "Name,Table",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION dataSourcePreviousRow value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dataSourceSelectRow",
+   "name": "DataSource - Select Row",
+   "options": [
+    {
+     "id": "value",
+     "label": "Name,Table,Index",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION dataSourceSelectRow value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "tbar",
+   "name": "General - Set t-bar position",
+   "options": [
+    {
+     "id": "value",
+     "label": "postion 0-255",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION SetFader Value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dynamic",
+   "name": "General - Set Dynamic Inputs and Values",
+   "options": [
+    {
+     "id": "type",
+     "label": "Select Type",
+     "type": "select",
+     "default": "Input",
+     "choices": [
+      {
+       "id": "Input",
+       "label": "Dynamic Input"
+      },
+      {
+       "id": "Value",
+       "label": "Dynamic Value"
+      }
+     ]
+    },
+    {
+     "id": "number",
+     "label": "Select Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION SetDynamic{{option.type|map}}{{option.number|map}} Value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "Input": "Input",
+     "Value": "Value"
+    },
+    "number": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "previewInput",
+   "name": "Input - Send Input to Preview",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "mix",
+     "label": "Mix",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      },
+      {
+       "id": "4",
+       "label": "5"
+      },
+      {
+       "id": "5",
+       "label": "6"
+      },
+      {
+       "id": "6",
+       "label": "7"
+      },
+      {
+       "id": "7",
+       "label": "8"
+      },
+      {
+       "id": "8",
+       "label": "9"
+      },
+      {
+       "id": "9",
+       "label": "10"
+      },
+      {
+       "id": "10",
+       "label": "11"
+      },
+      {
+       "id": "11",
+       "label": "12"
+      },
+      {
+       "id": "12",
+       "label": "13"
+      },
+      {
+       "id": "13",
+       "label": "14"
+      },
+      {
+       "id": "14",
+       "label": "15"
+      },
+      {
+       "id": "15",
+       "label": "16"
+      },
+      {
+       "id": "-1",
+       "label": "Selected"
+      },
+      {
+       "id": "-2",
+       "label": "Variable"
+      }
+     ]
+    },
+    {
+     "id": "mixVariable",
+     "label": "Mix Variable",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION previewInput input={{option.input}}&mix={{option.mix|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "mix": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4\\r\\nPING\\r\\nPING",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "-1": "0",
+     "-2": "0"
+    }
+   }
+  },
+  {
+   "id": "previewInputNext",
+   "name": "Input - Send Next input to Preview",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION previewInputNext \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "previewInputPrevious",
+   "name": "Input - Send Previous input to Preview",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION previewInputPrevious \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "resetInput",
+   "name": "Input - Reset",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION resetInput input={{option.input}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "undo",
+   "name": "Input - Undo",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION undo \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "multiViewOverlay",
+   "name": "Layer - Toggle/On/Off Multiview Layer on Input",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "MultiViewOverlay Function",
+     "type": "select",
+     "default": "MultiViewOverlay",
+     "choices": [
+      {
+       "id": "MultiViewOverlay",
+       "label": "Toggle Overlay Layer on Input"
+      },
+      {
+       "id": "MultiViewOverlayOff",
+       "label": "Set Overlay Layer Off"
+      },
+      {
+       "id": "MultiViewOverlayOn",
+       "label": "Set Overlay Layer On"
+      }
+     ]
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "value",
+     "label": "Layer",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION MultiViewOverlay{{option.functionID|map}} input={{option.input}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "MultiViewOverlay": "",
+     "MultiViewOverlayOff": "Off",
+     "MultiViewOverlayOn": "On"
+    }
+   }
+  },
+  {
+   "id": "setMultiViewOverlayOnPreview",
+   "name": "Layer - Set Input as Multiview Overlay Layer on active Preview input",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    },
+    {
+     "id": "layerInput",
+     "label": "Input to use on Layer",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "mix",
+     "label": "Mix",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      },
+      {
+       "id": "4",
+       "label": "5"
+      },
+      {
+       "id": "5",
+       "label": "6"
+      },
+      {
+       "id": "6",
+       "label": "7"
+      },
+      {
+       "id": "7",
+       "label": "8"
+      },
+      {
+       "id": "8",
+       "label": "9"
+      },
+      {
+       "id": "9",
+       "label": "10"
+      },
+      {
+       "id": "10",
+       "label": "11"
+      },
+      {
+       "id": "11",
+       "label": "12"
+      },
+      {
+       "id": "12",
+       "label": "13"
+      },
+      {
+       "id": "13",
+       "label": "14"
+      },
+      {
+       "id": "14",
+       "label": "15"
+      },
+      {
+       "id": "15",
+       "label": "16"
+      },
+      {
+       "id": "-1",
+       "label": "Selected"
+      },
+      {
+       "id": "-2",
+       "label": "Variable"
+      }
+     ]
+    },
+    {
+     "id": "mixVariable",
+     "label": "Mix Variable",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION SetMultiViewOverlay Input=0&Value={{option.layer}},{{option.layerInput}}\\r\\n{{option.mix|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mix": {
+     "0": "",
+     "1": "",
+     "2": "",
+     "3": "",
+     "4": "",
+     "5": "",
+     "6": "",
+     "7": "",
+     "8": "",
+     "9": "",
+     "10": "PING\\r\\nPING\\r\\n",
+     "11": "",
+     "12": "",
+     "13": "",
+     "14": "",
+     "15": "",
+     "-1": "",
+     "-2": ""
+    }
+   }
+  },
+  {
+   "id": "setMultiViewOverlayOnProgram",
+   "name": "Layer - Set Input as Multiview Overlay Layer on active Program input",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    },
+    {
+     "id": "layerInput",
+     "label": "Input to use on Layer",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "mix",
+     "label": "Mix",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      },
+      {
+       "id": "4",
+       "label": "5"
+      },
+      {
+       "id": "5",
+       "label": "6"
+      },
+      {
+       "id": "6",
+       "label": "7"
+      },
+      {
+       "id": "7",
+       "label": "8"
+      },
+      {
+       "id": "8",
+       "label": "9"
+      },
+      {
+       "id": "9",
+       "label": "10"
+      },
+      {
+       "id": "10",
+       "label": "11"
+      },
+      {
+       "id": "11",
+       "label": "12"
+      },
+      {
+       "id": "12",
+       "label": "13"
+      },
+      {
+       "id": "13",
+       "label": "14"
+      },
+      {
+       "id": "14",
+       "label": "15"
+      },
+      {
+       "id": "15",
+       "label": "16"
+      },
+      {
+       "id": "-1",
+       "label": "Selected"
+      },
+      {
+       "id": "-2",
+       "label": "Variable"
+      }
+     ]
+    },
+    {
+     "id": "mixVariable",
+     "label": "Mix Variable",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION SetMultiViewOverlay Input=0&Value={{option.layer}},{{option.layerInput}}\\r\\n{{option.mix|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mix": {
+     "0": "",
+     "1": "",
+     "2": "",
+     "3": "",
+     "4": "",
+     "5": "",
+     "6": "PING\\r\\nPING\\r\\n",
+     "7": "",
+     "8": "",
+     "9": "",
+     "10": "",
+     "11": "",
+     "12": "",
+     "13": "",
+     "14": "",
+     "15": "",
+     "-1": "",
+     "-2": ""
+    }
+   }
+  },
+  {
+   "id": "previousPicture",
+   "name": "Lists - Previous Picture/Slide/Index",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION previousPicture input={{option.input}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "selectIndex",
+   "name": "Lists - Select Specific Picture/Slide/Index",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "value",
+     "label": "Select Index",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION selectIndex input={{option.input}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "autoPlayFirst",
+   "name": "Lists - Auto Play First",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "functionID",
+     "label": "Options",
+     "type": "select",
+     "default": "AutoPlayFirst",
+     "choices": [
+      {
+       "id": "AutoPlayFirst",
+       "label": "Toggle"
+      },
+      {
+       "id": "AutoPlayFirstOn",
+       "label": "On"
+      },
+      {
+       "id": "AutoPlayFirstOff",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION AutoPlayFirst{{option.functionID|map}} input={{option.input}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "AutoPlayFirst": "",
+     "AutoPlayFirstOn": "On",
+     "AutoPlayFirstOff": "Off"
+    }
+   }
+  },
+  {
+   "id": "autoPlayNext",
+   "name": "Lists - Auto Play Next",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "functionID",
+     "label": "Options",
+     "type": "select",
+     "default": "AutoPlayNext",
+     "choices": [
+      {
+       "id": "AutoPlayNext",
+       "label": "Toggle"
+      },
+      {
+       "id": "AutoPlayNextOn",
+       "label": "On"
+      },
+      {
+       "id": "AutoPlayNextOff",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION AutoPlayNext{{option.functionID|map}} input={{option.input}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "AutoPlayNext": "",
+     "AutoPlayNextOn": "On",
+     "AutoPlayNextOff": "Off"
+    }
+   }
+  },
+  {
+   "id": "listShuffle",
+   "name": "Lists - Shuffle List",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION listShuffle input={{option.input}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "playListFunctions",
+   "name": "Playlist - Functions",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Playlist Function",
+     "type": "select",
+     "default": "StartPlayList",
+     "choices": [
+      {
+       "id": "StartPlayList",
+       "label": "Start Play List"
+      },
+      {
+       "id": "StopPlayList",
+       "label": "Stop Play List"
+      },
+      {
+       "id": "NextPlayListEntry",
+       "label": "Next Item in Play List"
+      },
+      {
+       "id": "PreviousPlayListEntry",
+       "label": "Previous Item in Play List"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION {{option.functionID|map}} \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "StartPlayList": "StartPlayList",
+     "StopPlayList": "StopPlayList",
+     "NextPlayListEntry": "NextPlayListEntry",
+     "PreviousPlayListEntry": "PreviousPlayListEntry"
+    }
+   }
+  },
+  {
+   "id": "selectPlayList",
+   "name": "Playlist - Open Playlist",
+   "options": [
+    {
+     "id": "value",
+     "label": "Playlist name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION selectPlayList value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "ptzVirtualInput",
+   "name": "PTZ - Virtual Input Create/Update",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "functionID",
+     "label": "Create / Update",
+     "type": "select",
+     "default": "PTZCreateVirtualInput",
+     "choices": [
+      {
+       "id": "PTZCreateVirtualInput",
+       "label": "Create"
+      },
+      {
+       "id": "PTZUpdateVirtualInput",
+       "label": "Update"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION PTZ{{option.functionID|map}}ateVirtualInput input={{option.input}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "PTZCreateVirtualInput": "Cre",
+     "PTZUpdateVirtualInput": "Upd"
+    }
+   }
+  },
+  {
+   "id": "replayACamera",
+   "name": "Replay - A Camera",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Camera",
+     "type": "select",
+     "default": "ReplayACamera1",
+     "choices": [
+      {
+       "id": "ReplayACamera1",
+       "label": "Camera 1"
+      },
+      {
+       "id": "ReplayACamera2",
+       "label": "Camera 2"
+      },
+      {
+       "id": "ReplayACamera3",
+       "label": "Camera 3"
+      },
+      {
+       "id": "ReplayACamera4",
+       "label": "Camera 4"
+      },
+      {
+       "id": "ReplayACamera5",
+       "label": "Camera 5"
+      },
+      {
+       "id": "ReplayACamera6",
+       "label": "Camera 6"
+      },
+      {
+       "id": "ReplayACamera7",
+       "label": "Camera 7"
+      },
+      {
+       "id": "ReplayACamera8",
+       "label": "Camera 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayACamera{{option.functionID|map}} \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayACamera1": "1",
+     "ReplayACamera2": "2",
+     "ReplayACamera3": "3",
+     "ReplayACamera4": "4",
+     "ReplayACamera5": "5",
+     "ReplayACamera6": "6",
+     "ReplayACamera7": "7",
+     "ReplayACamera8": "8"
+    }
+   }
+  },
+  {
+   "id": "replayBCamera",
+   "name": "Replay - B Camera",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Camera",
+     "type": "select",
+     "default": "ReplayBCamera1",
+     "choices": [
+      {
+       "id": "ReplayBCamera1",
+       "label": "Camera 1"
+      },
+      {
+       "id": "ReplayBCamera2",
+       "label": "Camera 2"
+      },
+      {
+       "id": "ReplayBCamera3",
+       "label": "Camera 3"
+      },
+      {
+       "id": "ReplayBCamera4",
+       "label": "Camera 4"
+      },
+      {
+       "id": "ReplayBCamera5",
+       "label": "Camera 5"
+      },
+      {
+       "id": "ReplayBCamera6",
+       "label": "Camera 6"
+      },
+      {
+       "id": "ReplayBCamera7",
+       "label": "Camera 7"
+      },
+      {
+       "id": "ReplayBCamera8",
+       "label": "Camera 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayBCamera{{option.functionID|map}} \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayBCamera1": "1",
+     "ReplayBCamera2": "2",
+     "ReplayBCamera3": "3",
+     "ReplayBCamera4": "4",
+     "ReplayBCamera5": "5",
+     "ReplayBCamera6": "6",
+     "ReplayBCamera7": "7",
+     "ReplayBCamera8": "8"
+    }
+   }
+  },
+  {
+   "id": "replayCamera",
+   "name": "Replay - Selected Channel Camera",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Camera",
+     "type": "select",
+     "default": "ReplayCamera1",
+     "choices": [
+      {
+       "id": "ReplayCamera1",
+       "label": "Camera 1"
+      },
+      {
+       "id": "ReplayCamera2",
+       "label": "Camera 2"
+      },
+      {
+       "id": "ReplayCamera3",
+       "label": "Camera 3"
+      },
+      {
+       "id": "ReplayCamera4",
+       "label": "Camera 4"
+      },
+      {
+       "id": "ReplayCamera5",
+       "label": "Camera 5"
+      },
+      {
+       "id": "ReplayCamera6",
+       "label": "Camera 6"
+      },
+      {
+       "id": "ReplayCamera7",
+       "label": "Camera 7"
+      },
+      {
+       "id": "ReplayCamera8",
+       "label": "Camera 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayCamera{{option.functionID|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayCamera1": "1 \\r\\nPING\\r\\nPING",
+     "ReplayCamera2": "2 ",
+     "ReplayCamera3": "3 ",
+     "ReplayCamera4": "4 ",
+     "ReplayCamera5": "5 ",
+     "ReplayCamera6": "6 ",
+     "ReplayCamera7": "7 ",
+     "ReplayCamera8": "8 "
+    }
+   }
+  },
+  {
+   "id": "replaySelectChannel",
+   "name": "Replay - Select Channel",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Channel",
+     "type": "select",
+     "default": "replaySelectChannelAB",
+     "choices": [
+      {
+       "id": "replaySelectChannelAB",
+       "label": "AB"
+      },
+      {
+       "id": "replaySelectChannelA",
+       "label": "A"
+      },
+      {
+       "id": "replaySelectChannelB",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replaySelectChannel{{option.functionID|map}} \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "replaySelectChannelAB": "AB",
+     "replaySelectChannelA": "A",
+     "replaySelectChannelB": "B"
+    }
+   }
+  },
+  {
+   "id": "replaySwapChannels",
+   "name": "Replay - Swap A and B channels",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replaySwapChannels \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "replayMoveInOut",
+   "name": "Replay - Move Selected Event In/Out",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "In / Out",
+     "type": "select",
+     "default": "ReplayMoveSelectedInPoint",
+     "choices": [
+      {
+       "id": "ReplayMoveSelectedInPoint",
+       "label": "Move In Point"
+      },
+      {
+       "id": "ReplayMoveSelectedOutPoint",
+       "label": "Move Out Point"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Frames",
+     "type": "text",
+     "default": "30"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayMoveSelected{{option.functionID|map}}Point value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayMoveSelectedInPoint": "In",
+     "ReplayMoveSelectedOutPoint": "Out"
+    }
+   }
+  },
+  {
+   "id": "replayUpdateInOut",
+   "name": "Replay - Move Selected Event In/Out to Now",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "In / Out",
+     "type": "select",
+     "default": "ReplayUpdateSelectedInPoint",
+     "choices": [
+      {
+       "id": "ReplayUpdateSelectedInPoint",
+       "label": "Move In Point"
+      },
+      {
+       "id": "ReplayUpdateSelectedOutPoint",
+       "label": "Move Out Point"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayUpdateSelected{{option.functionID|map}}Point \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayUpdateSelectedInPoint": "In",
+     "ReplayUpdateSelectedOutPoint": "Out"
+    }
+   }
+  },
+  {
+   "id": "replayChangeDirection",
+   "name": "Replay - Change Direction",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayChangeDirection channel={{option.channel|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayMoveEventUpDown",
+   "name": "Replay - Move Selected Event Up/Down",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Direction",
+     "type": "select",
+     "default": "ReplayMoveSelectedEventUp",
+     "choices": [
+      {
+       "id": "ReplayMoveSelectedEventUp",
+       "label": "Move Up"
+      },
+      {
+       "id": "ReplayMoveSelectedEventDown",
+       "label": "Move Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayMoveSelectedEvent{{option.functionID|map}} \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayMoveSelectedEventUp": "Up",
+     "ReplayMoveSelectedEventDown": "Down"
+    }
+   }
+  },
+  {
+   "id": "replayFastForwardBackward",
+   "name": "Replay - Fast Forward/Backward",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Direction",
+     "type": "select",
+     "default": "ReplayFastForward",
+     "choices": [
+      {
+       "id": "ReplayFastForward",
+       "label": "Forward"
+      },
+      {
+       "id": "ReplayFastBackward",
+       "label": "Backward"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Speed",
+     "type": "number",
+     "default": 10,
+     "min": 0,
+     "max": 30
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayFast{{option.functionID|map}}ward channel={{option.channel|map}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayFastForward": "For",
+     "ReplayFastBackward": "Back"
+    },
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayRecording",
+   "name": "Replay - Recording Start/Stop/Toggle",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Recording",
+     "type": "select",
+     "default": "ReplayStartStopRecording",
+     "choices": [
+      {
+       "id": "ReplayStartRecording",
+       "label": "Start"
+      },
+      {
+       "id": "ReplayStopRecording",
+       "label": "Stop"
+      },
+      {
+       "id": "ReplayStartStopRecording",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplaySt{{option.functionID|map}}Recording \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayStartStopRecording": "artStop",
+     "ReplayStartRecording": "art",
+     "ReplayStopRecording": "op"
+    }
+   }
+  },
+  {
+   "id": "replayJumpToNow",
+   "name": "Replay - Jump To Now",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayJumpToNow channel={{option.channel|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayLiveToggle",
+   "name": "Replay - Toggle Live",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayLiveToggle \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "replayPlay",
+   "name": "Replay - Play",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayPlay channel={{option.channel|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayPause",
+   "name": "Replay - Pause",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayPause channel={{option.channel|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayPlaySelectedEventToOutput",
+   "name": "Replay - Play Selected Event To Output",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayPlaySelectedEventToOutput channel={{option.channel|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayPlayEventsByID",
+   "name": "Replay - Play Events by ID",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Event IDs",
+     "type": "text",
+     "default": "0000",
+     "help": "Comma separated list of Event IDs"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayPlayEventsByID channel={{option.channel|map}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayPlayEventsByIDToOutput",
+   "name": "Replay - Play Events By ID To Output",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Event ID",
+     "type": "text",
+     "default": "0000",
+     "help": "Comma separated list of Event IDs"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayPlayEventsByIDToOutput channel={{option.channel|map}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayPlayLastEventToOutput",
+   "name": "Replay - Play Last Event to Output",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayPlayLastEventToOutput channel={{option.channel|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B\\r\\nPING\\r\\nPING"
+    }
+   }
+  },
+  {
+   "id": "replayPlayAllEventsToOutput",
+   "name": "Replay - Play all Events to Output",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Replay Channel",
+     "type": "select",
+     "default": "Current",
+     "choices": [
+      {
+       "id": "Current",
+       "label": "Current"
+      },
+      {
+       "id": "A",
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "label": "B"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayPlayAllEventsToOutput channel={{option.channel|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "Current": "Current",
+     "A": "A",
+     "B": "B"
+    }
+   }
+  },
+  {
+   "id": "replayStopEvents",
+   "name": "Replay - Stop Events",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayStopEvents \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "replayToggleCamera",
+   "name": "Replay - Toggle Selected Event Camera",
+   "options": [
+    {
+     "id": "camera",
+     "label": "Destination",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Camera 1"
+      },
+      {
+       "id": "2",
+       "label": "Camera 2"
+      },
+      {
+       "id": "3",
+       "label": "Camera 3"
+      },
+      {
+       "id": "4",
+       "label": "Camera 4"
+      },
+      {
+       "id": "5",
+       "label": "Camera 5"
+      },
+      {
+       "id": "6",
+       "label": "Camera 6"
+      },
+      {
+       "id": "7",
+       "label": "Camera 7"
+      },
+      {
+       "id": "8",
+       "label": "Camera 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplayToggleSelectedEventCamera{{option.camera|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "camera": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "replayShowHide",
+   "name": "Replay - Show / Hide Replay",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION replayShowHide \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "replayQuadMode",
+   "name": "Replay - Quad View",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Option",
+     "type": "select",
+     "default": "ReplayToggleQuadMode",
+     "choices": [
+      {
+       "id": "ReplayQuadModeOn",
+       "label": "On"
+      },
+      {
+       "id": "ReplayQuadModeOff",
+       "label": "Off"
+      },
+      {
+       "id": "ReplayToggleQuadMode",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION Replay{{option.functionID|map}} \\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "ReplayToggleQuadMode": "ToggleQuadMode",
+     "ReplayQuadModeOn": "QuadModeOn",
+     "ReplayQuadModeOff": "QuadModeOff"
+    }
+   }
+  },
+  {
+   "id": "replayEventTextClear",
+   "name": "Replay - Clear Event Text",
+   "options": [
+    {
+     "id": "target",
+     "label": "Last Event / Selected Event",
+     "type": "select",
+     "default": "Last",
+     "choices": [
+      {
+       "id": "Last",
+       "label": "Last"
+      },
+      {
+       "id": "Selected",
+       "label": "Selected"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION ReplaySet{{option.target|map}}EventTextCamera Value=8,-\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "target": {
+     "Last": "LastEventTextCamera Value=1,-\\r\\nFUNCTION ReplaySetLastEventTextCamera Value=2,-\\r\\nFUNCTION ReplaySetLastEventTextCamera Value=3,-\\r\\nFUNCTION ReplaySetLastEventTextCamera Value=4,-\\r\\nFUNCTION ReplaySetLastEventTextCamera Value=5,-\\r\\nFUNCTION ReplaySetLastEventTextCamera Value=6,-\\r\\nFUNCTION ReplaySetLastEventTextCamera Value=7,-\\r\\nFUNCTION ReplaySetLast",
+     "Selected": "SelectedEventTextCamera Value=1,-\\r\\nFUNCTION ReplaySetSelectedEventTextCamera Value=2,-\\r\\nFUNCTION ReplaySetSelectedEventTextCamera Value=3,-\\r\\nFUNCTION ReplaySetSelectedEventTextCamera Value=4,-\\r\\nFUNCTION ReplaySetSelectedEventTextCamera Value=5,-\\r\\nFUNCTION ReplaySetSelectedEventTextCamera Value=6,-\\r\\nFUNCTION ReplaySetSelectedEventTextCamera Value=7,-\\r\\nFUNCTION ReplaySetSelected"
+    }
+   }
+  },
+  {
+   "id": "scriptStart",
+   "name": "Scripting - Script start",
+   "options": [
+    {
+     "id": "value",
+     "label": "Script name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION scriptStart value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "scriptStop",
+   "name": "Scripting - Script stop",
+   "options": [
+    {
+     "id": "value",
+     "label": "Script name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION scriptStop value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "scriptStopAll",
+   "name": "Scripting - Script stop all",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION scriptStopAll \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setImageVisible",
+   "name": "Title - Set title Image Visibility",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "selectedIndex",
+     "label": "Layer",
+     "type": "text",
+     "default": "0",
+     "help": "Index starting from 0, or layer name"
+    },
+    {
+     "id": "adjustment",
+     "label": "Adjustment",
+     "type": "select",
+     "default": "Toggle",
+     "choices": [
+      {
+       "id": "Toggle",
+       "label": "Toggle"
+      },
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION SetImageVisible{{option.adjustment|map}} Input={{option.input}}&SelectedIndex={{option.selectedIndex}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "adjustment": {
+     "Toggle": "",
+     "On": "On",
+     "Off": "Off"
+    }
+   }
+  },
+  {
+   "id": "selectTitlePreset",
+   "name": "Title - Select Title Preset",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "value",
+     "label": "Preset Index",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION selectTitlePreset input={{option.input}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setTransitionEffect",
+   "name": "Transition - Set Auto Transition Effect",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Select transition",
+     "type": "select",
+     "default": "SetTransitionEffect1",
+     "choices": [
+      {
+       "id": "SetTransitionEffect1",
+       "label": "Transition 1"
+      },
+      {
+       "id": "SetTransitionEffect2",
+       "label": "Transition 2"
+      },
+      {
+       "id": "SetTransitionEffect3",
+       "label": "Transition 3"
+      },
+      {
+       "id": "SetTransitionEffect4",
+       "label": "Transition 4"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Select transition type",
+     "type": "select",
+     "default": "Cut",
+     "choices": [
+      {
+       "id": "Cut",
+       "label": "Cut"
+      },
+      {
+       "id": "Fade",
+       "label": "Fade"
+      },
+      {
+       "id": "Zoom",
+       "label": "Zoom"
+      },
+      {
+       "id": "Wipe",
+       "label": "Wipe"
+      },
+      {
+       "id": "Slide",
+       "label": "Slide"
+      },
+      {
+       "id": "Fly",
+       "label": "Fly"
+      },
+      {
+       "id": "CrossZoom",
+       "label": "CrossZoom"
+      },
+      {
+       "id": "FlyRotate",
+       "label": "FlyRotate"
+      },
+      {
+       "id": "Cube",
+       "label": "Cube"
+      },
+      {
+       "id": "CubeZoom",
+       "label": "CubeZoom"
+      },
+      {
+       "id": "VerticalWipe",
+       "label": "VerticalWipe"
+      },
+      {
+       "id": "VerticalSlide",
+       "label": "VerticalSlide"
+      },
+      {
+       "id": "Merge",
+       "label": "Merge"
+      },
+      {
+       "id": "WipeReverse",
+       "label": "WipeReverse"
+      },
+      {
+       "id": "SlideReverse",
+       "label": "SlideReverse"
+      },
+      {
+       "id": "VerticalWipeReverse",
+       "label": "VerticalWipeReverse"
+      },
+      {
+       "id": "VerticalSlideReverse",
+       "label": "VerticalSlideReverse"
+      },
+      {
+       "id": "BarnDoor",
+       "label": "BarnDoor"
+      },
+      {
+       "id": "RollerDoor",
+       "label": "RollerDoor"
+      },
+      {
+       "id": "AlphaFade",
+       "label": "AlphaFade"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION SetTransitionEffect{{option.functionID|map}} value={{option.value|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "SetTransitionEffect1": "1",
+     "SetTransitionEffect2": "2",
+     "SetTransitionEffect3": "3",
+     "SetTransitionEffect4": "4"
+    },
+    "value": {
+     "Cut": "Cut",
+     "Fade": "Fade",
+     "Zoom": "Zoom",
+     "Wipe": "Wipe",
+     "Slide": "Slide\\r\\nPING\\r\\nPING",
+     "Fly": "Fly",
+     "CrossZoom": "CrossZoom",
+     "FlyRotate": "FlyRotate",
+     "Cube": "Cube",
+     "CubeZoom": "CubeZoom",
+     "VerticalWipe": "VerticalWipe",
+     "VerticalSlide": "VerticalSlide",
+     "Merge": "Merge",
+     "WipeReverse": "WipeReverse",
+     "SlideReverse": "SlideReverse",
+     "VerticalWipeReverse": "VerticalWipeReverse",
+     "VerticalSlideReverse": "VerticalSlideReverse",
+     "BarnDoor": "BarnDoor",
+     "RollerDoor": "RollerDoor",
+     "AlphaFade": "AlphaFade"
+    }
+   }
+  },
+  {
+   "id": "quickPlay",
+   "name": "Transition - Quick Play input to Program",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION quickPlay input={{option.input}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "videoCallAudioSource",
+   "name": "VideoCall - Select Audio Source",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "value",
+     "label": "Bus",
+     "type": "select",
+     "default": "BusA",
+     "choices": [
+      {
+       "id": "Master",
+       "label": "Master"
+      },
+      {
+       "id": "Headphones",
+       "label": "Headphones"
+      },
+      {
+       "id": "BusA",
+       "label": "A"
+      },
+      {
+       "id": "BusB",
+       "label": "B"
+      },
+      {
+       "id": "BusC",
+       "label": "C"
+      },
+      {
+       "id": "BusD",
+       "label": "D"
+      },
+      {
+       "id": "BusE",
+       "label": "E"
+      },
+      {
+       "id": "BusF",
+       "label": "F"
+      },
+      {
+       "id": "BusG",
+       "label": "G"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION videoCallAudioSource input={{option.input}}&value={{option.value|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "value": {
+     "BusA": "BusA",
+     "Master": "Master",
+     "Headphones": "Headphones",
+     "BusB": "BusB",
+     "BusC": "BusC",
+     "BusD": "BusD",
+     "BusE": "BusE",
+     "BusF": "BusF",
+     "BusG": "BusG"
+    }
+   }
+  },
+  {
+   "id": "videoCallConnect",
+   "name": "VideoCall - Connect / Reconnect",
+   "options": [
+    {
+     "id": "functionID",
+     "label": "Select Output",
+     "type": "select",
+     "default": "VideoCallConnect",
+     "choices": [
+      {
+       "id": "VideoCallConnect",
+       "label": "Connect"
+      },
+      {
+       "id": "VideoCallReconnect",
+       "label": "Reconnect"
+      }
+     ]
+    },
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "password",
+     "label": "Password",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VideoCall{{option.functionID|map}}undefined\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "VideoCallConnect": "ConnectInput=",
+     "VideoCallReconnect": "ReconnectInput=undefined&Value=undefined,"
+    }
+   }
+  },
+  {
+   "id": "zoomMuteSelf",
+   "name": "Zoom - Mute Self",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "functionID",
+     "label": "Mute / Unmute",
+     "type": "select",
+     "default": "zoomMuteSelf",
+     "choices": [
+      {
+       "id": "zoomMuteSelf",
+       "label": "Mute"
+      },
+      {
+       "id": "zoomUnMuteSelf",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION zoom{{option.functionID|map}}MuteSelf input={{option.input}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "functionID": {
+     "zoomMuteSelf": "",
+     "zoomUnMuteSelf": "Un"
+    }
+   }
+  },
+  {
+   "id": "zoomSelectParticipantByName",
+   "name": "Zoom - Select Participant by Name",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "value",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION zoomSelectParticipantByName input={{option.input}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "1",
+   "category": "Audio",
+   "name": "Toggle Audio",
+   "text": "Toggle Audio",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio",
+    "options": {
+     "input": "1",
+     "functionID": "Audio"
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Audio",
+   "name": "Set Audio On",
+   "text": "Set Audio On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio",
+    "options": {
+     "input": "1",
+     "functionID": "AudioOn"
+    }
+   }
+  },
+  {
+   "id": "3",
+   "category": "Audio",
+   "name": "Set Audio Off",
+   "text": "Set Audio Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio",
+    "options": {
+     "input": "1",
+     "functionID": "AudioOff"
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Audio",
+   "name": "Input Solo",
+   "text": "Input Solo",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "solo",
+    "options": {
+     "input": "1",
+     "functionID": "Solo"
+    }
+   }
+  },
+  {
+   "id": "103",
+   "category": "Button Shift",
+   "name": "PRV 1 / 5",
+   "text": "PRV 1 / 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "1|5"
+    }
+   }
+  },
+  {
+   "id": "104",
+   "category": "Button Shift",
+   "name": "PRV 2 / 6",
+   "text": "PRV 2 / 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "2|6"
+    }
+   }
+  },
+  {
+   "id": "105",
+   "category": "Button Shift",
+   "name": "PRV 3 / 7",
+   "text": "PRV 3 / 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "3|7"
+    }
+   }
+  },
+  {
+   "id": "106",
+   "category": "Button Shift",
+   "name": "PRV 4 / 8",
+   "text": "PRV 4 / 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "4|8"
+    }
+   }
+  },
+  {
+   "id": "114",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nMaster",
+   "text": "Audio\nSource\nMaster",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "Master"
+    }
+   }
+  },
+  {
+   "id": "115",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nHeadphones",
+   "text": "Audio\nSource\nHeadphones",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "Headphones"
+    }
+   }
+  },
+  {
+   "id": "116",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus A",
+   "text": "Audio\nSource\nBus A",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusA"
+    }
+   }
+  },
+  {
+   "id": "117",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus B",
+   "text": "Audio\nSource\nBus B",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusB"
+    }
+   }
+  },
+  {
+   "id": "118",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus C",
+   "text": "Audio\nSource\nBus C",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusC"
+    }
+   }
+  },
+  {
+   "id": "119",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus D",
+   "text": "Audio\nSource\nBus D",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusD"
+    }
+   }
+  },
+  {
+   "id": "120",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus E",
+   "text": "Audio\nSource\nBus E",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusE"
+    }
+   }
+  },
+  {
+   "id": "121",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus F",
+   "text": "Audio\nSource\nBus F",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusF"
+    }
+   }
+  },
+  {
+   "id": "122",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus G",
+   "text": "Audio\nSource\nBus G",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusG"
+    }
+   }
+  },
+  {
+   "id": "130",
+   "category": "Scripting & Commands",
+   "name": "Script Start",
+   "text": "Script Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "scriptStart",
+    "options": {
+     "value": ""
+    }
+   }
+  },
+  {
+   "id": "131",
+   "category": "Scripting & Commands",
+   "name": "Script Stop",
+   "text": "Script Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "scriptStop",
+    "options": {
+     "value": ""
+    }
+   }
+  },
+  {
+   "id": "132",
+   "category": "Scripting & Commands",
+   "name": "Script Stop All",
+   "text": "Script Stop All",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "scriptStopAll",
+    "options": {}
+   }
+  },
+  {
+   "id": "171",
+   "category": "Slides & Lists",
+   "name": "Prev Photo",
+   "text": "Prev Photo",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previousPicture",
+    "options": {
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "172",
+   "category": "Slides & Lists",
+   "name": "Select Index",
+   "text": "Select Index",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectIndex",
+    "options": {
+     "input": "1",
+     "value": "1"
+    }
+   }
+  },
+  {
+   "id": "174",
+   "category": "Mix 1",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "175",
+   "category": "Mix 1",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "176",
+   "category": "Mix 1",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "177",
+   "category": "Mix 1",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "178",
+   "category": "Mix 1",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "179",
+   "category": "Mix 1",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "180",
+   "category": "Mix 1",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "181",
+   "category": "Mix 1",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 0,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "196",
+   "category": "Mix 2",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "197",
+   "category": "Mix 2",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "198",
+   "category": "Mix 2",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "199",
+   "category": "Mix 2",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "200",
+   "category": "Mix 2",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "201",
+   "category": "Mix 2",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "202",
+   "category": "Mix 2",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "203",
+   "category": "Mix 2",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 1,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "218",
+   "category": "Mix 3",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "219",
+   "category": "Mix 3",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "220",
+   "category": "Mix 3",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "221",
+   "category": "Mix 3",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "222",
+   "category": "Mix 3",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "223",
+   "category": "Mix 3",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "224",
+   "category": "Mix 3",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "225",
+   "category": "Mix 3",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 2,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "240",
+   "category": "Mix 4",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "241",
+   "category": "Mix 4",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "242",
+   "category": "Mix 4",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "243",
+   "category": "Mix 4",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "244",
+   "category": "Mix 4",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "245",
+   "category": "Mix 4",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "246",
+   "category": "Mix 4",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "247",
+   "category": "Mix 4",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 3,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "262",
+   "category": "Mix 5",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "263",
+   "category": "Mix 5",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "264",
+   "category": "Mix 5",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "265",
+   "category": "Mix 5",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "266",
+   "category": "Mix 5",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "267",
+   "category": "Mix 5",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "268",
+   "category": "Mix 5",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "269",
+   "category": "Mix 5",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 4,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "284",
+   "category": "Mix 6",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "285",
+   "category": "Mix 6",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "286",
+   "category": "Mix 6",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "287",
+   "category": "Mix 6",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "288",
+   "category": "Mix 6",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "289",
+   "category": "Mix 6",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "290",
+   "category": "Mix 6",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "291",
+   "category": "Mix 6",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 5,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "306",
+   "category": "Mix 7",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "307",
+   "category": "Mix 7",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "308",
+   "category": "Mix 7",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "309",
+   "category": "Mix 7",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "310",
+   "category": "Mix 7",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "311",
+   "category": "Mix 7",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "312",
+   "category": "Mix 7",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "313",
+   "category": "Mix 7",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 6,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "328",
+   "category": "Mix 8",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "329",
+   "category": "Mix 8",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "330",
+   "category": "Mix 8",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "331",
+   "category": "Mix 8",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "332",
+   "category": "Mix 8",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "333",
+   "category": "Mix 8",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "334",
+   "category": "Mix 8",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "335",
+   "category": "Mix 8",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 7,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "350",
+   "category": "Mix 9",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "351",
+   "category": "Mix 9",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "352",
+   "category": "Mix 9",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "353",
+   "category": "Mix 9",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "354",
+   "category": "Mix 9",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "355",
+   "category": "Mix 9",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "356",
+   "category": "Mix 9",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "357",
+   "category": "Mix 9",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 8,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "372",
+   "category": "Mix 10",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "373",
+   "category": "Mix 10",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "374",
+   "category": "Mix 10",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "375",
+   "category": "Mix 10",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "376",
+   "category": "Mix 10",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "377",
+   "category": "Mix 10",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "378",
+   "category": "Mix 10",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "379",
+   "category": "Mix 10",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 9,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "394",
+   "category": "Mix 11",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "395",
+   "category": "Mix 11",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "396",
+   "category": "Mix 11",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "397",
+   "category": "Mix 11",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "398",
+   "category": "Mix 11",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "399",
+   "category": "Mix 11",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "400",
+   "category": "Mix 11",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "401",
+   "category": "Mix 11",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 10,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "416",
+   "category": "Mix 12",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "417",
+   "category": "Mix 12",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "418",
+   "category": "Mix 12",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "419",
+   "category": "Mix 12",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "420",
+   "category": "Mix 12",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "421",
+   "category": "Mix 12",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "422",
+   "category": "Mix 12",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "423",
+   "category": "Mix 12",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 11,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "438",
+   "category": "Mix 13",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "439",
+   "category": "Mix 13",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "440",
+   "category": "Mix 13",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "441",
+   "category": "Mix 13",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "442",
+   "category": "Mix 13",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "443",
+   "category": "Mix 13",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "444",
+   "category": "Mix 13",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "445",
+   "category": "Mix 13",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 12,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "460",
+   "category": "Mix 14",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "461",
+   "category": "Mix 14",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "462",
+   "category": "Mix 14",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "463",
+   "category": "Mix 14",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "464",
+   "category": "Mix 14",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "465",
+   "category": "Mix 14",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "466",
+   "category": "Mix 14",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "467",
+   "category": "Mix 14",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 13,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "482",
+   "category": "Mix 15",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "483",
+   "category": "Mix 15",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "484",
+   "category": "Mix 15",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "485",
+   "category": "Mix 15",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "486",
+   "category": "Mix 15",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "487",
+   "category": "Mix 15",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "488",
+   "category": "Mix 15",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "489",
+   "category": "Mix 15",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 14,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "504",
+   "category": "Mix 16",
+   "name": "PRV 1",
+   "text": "PRV 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "1"
+    }
+   }
+  },
+  {
+   "id": "505",
+   "category": "Mix 16",
+   "name": "PRV 2",
+   "text": "PRV 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "2"
+    }
+   }
+  },
+  {
+   "id": "506",
+   "category": "Mix 16",
+   "name": "PRV 3",
+   "text": "PRV 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "3"
+    }
+   }
+  },
+  {
+   "id": "507",
+   "category": "Mix 16",
+   "name": "PRV 4",
+   "text": "PRV 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "4"
+    }
+   }
+  },
+  {
+   "id": "508",
+   "category": "Mix 16",
+   "name": "PRV 5",
+   "text": "PRV 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "5"
+    }
+   }
+  },
+  {
+   "id": "509",
+   "category": "Mix 16",
+   "name": "PRV 6",
+   "text": "PRV 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "6"
+    }
+   }
+  },
+  {
+   "id": "510",
+   "category": "Mix 16",
+   "name": "PRV 7",
+   "text": "PRV 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "7"
+    }
+   }
+  },
+  {
+   "id": "511",
+   "category": "Mix 16",
+   "name": "PRV 8",
+   "text": "PRV 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previewInput",
+    "options": {
+     "mix": 15,
+     "mixVariable": "",
+     "input": "8"
+    }
+   }
+  },
+  {
+   "id": "527",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 1",
+   "text": "Toggle Layer 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 1
+    }
+   }
+  },
+  {
+   "id": "528",
+   "category": "MultiView Layers",
+   "name": "Set Layer 1 On",
+   "text": "Set Layer 1 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 1
+    }
+   }
+  },
+  {
+   "id": "529",
+   "category": "MultiView Layers",
+   "name": "Set Layer 1 Off",
+   "text": "Set Layer 1 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 1
+    }
+   }
+  },
+  {
+   "id": "530",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 2",
+   "text": "Toggle Layer 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 2
+    }
+   }
+  },
+  {
+   "id": "531",
+   "category": "MultiView Layers",
+   "name": "Set Layer 2 On",
+   "text": "Set Layer 2 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 2
+    }
+   }
+  },
+  {
+   "id": "532",
+   "category": "MultiView Layers",
+   "name": "Set Layer 2 Off",
+   "text": "Set Layer 2 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 2
+    }
+   }
+  },
+  {
+   "id": "533",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 3",
+   "text": "Toggle Layer 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 3
+    }
+   }
+  },
+  {
+   "id": "534",
+   "category": "MultiView Layers",
+   "name": "Set Layer 3 On",
+   "text": "Set Layer 3 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 3
+    }
+   }
+  },
+  {
+   "id": "535",
+   "category": "MultiView Layers",
+   "name": "Set Layer 3 Off",
+   "text": "Set Layer 3 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 3
+    }
+   }
+  },
+  {
+   "id": "536",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 4",
+   "text": "Toggle Layer 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 4
+    }
+   }
+  },
+  {
+   "id": "537",
+   "category": "MultiView Layers",
+   "name": "Set Layer 4 On",
+   "text": "Set Layer 4 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 4
+    }
+   }
+  },
+  {
+   "id": "538",
+   "category": "MultiView Layers",
+   "name": "Set Layer 4 Off",
+   "text": "Set Layer 4 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 4
+    }
+   }
+  },
+  {
+   "id": "539",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 5",
+   "text": "Toggle Layer 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 5
+    }
+   }
+  },
+  {
+   "id": "540",
+   "category": "MultiView Layers",
+   "name": "Set Layer 5 On",
+   "text": "Set Layer 5 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 5
+    }
+   }
+  },
+  {
+   "id": "541",
+   "category": "MultiView Layers",
+   "name": "Set Layer 5 Off",
+   "text": "Set Layer 5 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 5
+    }
+   }
+  },
+  {
+   "id": "542",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 6",
+   "text": "Toggle Layer 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 6
+    }
+   }
+  },
+  {
+   "id": "543",
+   "category": "MultiView Layers",
+   "name": "Set Layer 6 On",
+   "text": "Set Layer 6 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 6
+    }
+   }
+  },
+  {
+   "id": "544",
+   "category": "MultiView Layers",
+   "name": "Set Layer 6 Off",
+   "text": "Set Layer 6 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 6
+    }
+   }
+  },
+  {
+   "id": "545",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 7",
+   "text": "Toggle Layer 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 7
+    }
+   }
+  },
+  {
+   "id": "546",
+   "category": "MultiView Layers",
+   "name": "Set Layer 7 On",
+   "text": "Set Layer 7 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 7
+    }
+   }
+  },
+  {
+   "id": "547",
+   "category": "MultiView Layers",
+   "name": "Set Layer 7 Off",
+   "text": "Set Layer 7 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 7
+    }
+   }
+  },
+  {
+   "id": "548",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 8",
+   "text": "Toggle Layer 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 8
+    }
+   }
+  },
+  {
+   "id": "549",
+   "category": "MultiView Layers",
+   "name": "Set Layer 8 On",
+   "text": "Set Layer 8 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 8
+    }
+   }
+  },
+  {
+   "id": "550",
+   "category": "MultiView Layers",
+   "name": "Set Layer 8 Off",
+   "text": "Set Layer 8 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 8
+    }
+   }
+  },
+  {
+   "id": "551",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 9",
+   "text": "Toggle Layer 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 9
+    }
+   }
+  },
+  {
+   "id": "552",
+   "category": "MultiView Layers",
+   "name": "Set Layer 9 On",
+   "text": "Set Layer 9 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 9
+    }
+   }
+  },
+  {
+   "id": "553",
+   "category": "MultiView Layers",
+   "name": "Set Layer 9 Off",
+   "text": "Set Layer 9 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 9
+    }
+   }
+  },
+  {
+   "id": "554",
+   "category": "MultiView Layers",
+   "name": "Toggle Layer 10",
+   "text": "Toggle Layer 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlay",
+     "input": "",
+     "layer": 10
+    }
+   }
+  },
+  {
+   "id": "555",
+   "category": "MultiView Layers",
+   "name": "Set Layer 10 On",
+   "text": "Set Layer 10 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOn",
+     "input": "",
+     "layer": 10
+    }
+   }
+  },
+  {
+   "id": "556",
+   "category": "MultiView Layers",
+   "name": "Set Layer 10 Off",
+   "text": "Set Layer 10 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multiViewOverlay",
+    "options": {
+     "functionID": "MultiViewOverlayOff",
+     "input": "",
+     "layer": 10
+    }
+   }
+  },
+  {
+   "id": "673",
+   "category": "PlayList",
+   "name": "PlayList Start",
+   "text": "PlayList Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playListFunctions",
+    "options": {
+     "functionID": "StartPlayList"
+    }
+   }
+  },
+  {
+   "id": "674",
+   "category": "PlayList",
+   "name": "PlayList Stop",
+   "text": "PlayList Stop",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playListFunctions",
+    "options": {
+     "functionID": "StopPlayList"
+    }
+   }
+  },
+  {
+   "id": "675",
+   "category": "PlayList",
+   "name": "PlayList Next",
+   "text": "PlayList Next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playListFunctions",
+    "options": {
+     "functionID": "NextPlayListEntry"
+    }
+   }
+  },
+  {
+   "id": "676",
+   "category": "PlayList",
+   "name": "PlayList Prev",
+   "text": "PlayList Prev",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playListFunctions",
+    "options": {
+     "functionID": "PreviousPlayListEntry"
+    }
+   }
+  },
+  {
+   "id": "678",
+   "category": "Replay",
+   "name": "A Cam 1",
+   "text": "A Cam 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera1"
+    }
+   }
+  },
+  {
+   "id": "679",
+   "category": "Replay",
+   "name": "A Cam 2",
+   "text": "A Cam 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera2"
+    }
+   }
+  },
+  {
+   "id": "680",
+   "category": "Replay",
+   "name": "A Cam 3",
+   "text": "A Cam 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera3"
+    }
+   }
+  },
+  {
+   "id": "681",
+   "category": "Replay",
+   "name": "A Cam 4",
+   "text": "A Cam 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera4"
+    }
+   }
+  },
+  {
+   "id": "682",
+   "category": "Replay",
+   "name": "A Cam 5",
+   "text": "A Cam 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera5"
+    }
+   }
+  },
+  {
+   "id": "683",
+   "category": "Replay",
+   "name": "A Cam 6",
+   "text": "A Cam 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera6"
+    }
+   }
+  },
+  {
+   "id": "684",
+   "category": "Replay",
+   "name": "A Cam 7",
+   "text": "A Cam 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera7"
+    }
+   }
+  },
+  {
+   "id": "685",
+   "category": "Replay",
+   "name": "A Cam 8",
+   "text": "A Cam 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayACamera8"
+    }
+   }
+  },
+  {
+   "id": "687",
+   "category": "Replay",
+   "name": "B Cam 1",
+   "text": "B Cam 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera1"
+    }
+   }
+  },
+  {
+   "id": "688",
+   "category": "Replay",
+   "name": "B Cam 2",
+   "text": "B Cam 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera2"
+    }
+   }
+  },
+  {
+   "id": "689",
+   "category": "Replay",
+   "name": "B Cam 3",
+   "text": "B Cam 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera3"
+    }
+   }
+  },
+  {
+   "id": "690",
+   "category": "Replay",
+   "name": "B Cam 4",
+   "text": "B Cam 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera4"
+    }
+   }
+  },
+  {
+   "id": "691",
+   "category": "Replay",
+   "name": "B Cam 5",
+   "text": "B Cam 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera5"
+    }
+   }
+  },
+  {
+   "id": "692",
+   "category": "Replay",
+   "name": "B Cam 6",
+   "text": "B Cam 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera6"
+    }
+   }
+  },
+  {
+   "id": "693",
+   "category": "Replay",
+   "name": "B Cam 7",
+   "text": "B Cam 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera7"
+    }
+   }
+  },
+  {
+   "id": "694",
+   "category": "Replay",
+   "name": "B Cam 8",
+   "text": "B Cam 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayACamera",
+    "options": {
+     "functionID": "ReplayBCamera8"
+    }
+   }
+  },
+  {
+   "id": "696",
+   "category": "Replay",
+   "name": "ChannelAB",
+   "text": "ChannelAB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replaySelectChannel",
+    "options": {
+     "functionID": "replaySelectChannelAB"
+    }
+   }
+  },
+  {
+   "id": "697",
+   "category": "Replay",
+   "name": "ChannelA",
+   "text": "ChannelA",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replaySelectChannel",
+    "options": {
+     "functionID": "replaySelectChannelA"
+    }
+   }
+  },
+  {
+   "id": "698",
+   "category": "Replay",
+   "name": "ChannelB",
+   "text": "ChannelB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replaySelectChannel",
+    "options": {
+     "functionID": "replaySelectChannelB"
+    }
+   }
+  },
+  {
+   "id": "700",
+   "category": "Replay",
+   "name": "Rec",
+   "text": "Rec",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayRecording",
+    "options": {
+     "functionID": "ReplayStartStopRecording"
+    }
+   }
+  },
+  {
+   "id": "701",
+   "category": "Replay",
+   "name": "Live",
+   "text": "Live",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayLiveToggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "702",
+   "category": "Replay",
+   "name": "Jump to Now",
+   "text": "Jump to Now",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayJumpToNow",
+    "options": {
+     "channel": "Current"
+    }
+   }
+  },
+  {
+   "id": "703",
+   "category": "Replay",
+   "name": "Play Events",
+   "text": "Play Events",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayPlay",
+    "options": {
+     "channel": "Current"
+    }
+   }
+  },
+  {
+   "id": "704",
+   "category": "Replay",
+   "name": "Pause Events",
+   "text": "Pause Events",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayPause",
+    "options": {
+     "channel": "Current"
+    }
+   }
+  },
+  {
+   "id": "705",
+   "category": "Replay",
+   "name": "Play Selected Event",
+   "text": "Play Selected Event",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayPlaySelectedEventToOutput",
+    "options": {
+     "channel": "Current"
+    }
+   }
+  },
+  {
+   "id": "706",
+   "category": "Replay",
+   "name": "Play Events by ID",
+   "text": "Play Events by ID",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayPlayEventsByIDToOutput",
+    "options": {
+     "channel": "Current",
+     "value": "0000"
+    }
+   }
+  },
+  {
+   "id": "712",
+   "category": "Replay",
+   "name": "Update In",
+   "text": "Update In",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayUpdateInOut",
+    "options": {
+     "functionID": "ReplayUpdateSelectedInPoint"
+    }
+   }
+  },
+  {
+   "id": "713",
+   "category": "Replay",
+   "name": "Update Out",
+   "text": "Update Out",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "replayUpdateInOut",
+    "options": {
+     "functionID": "ReplayUpdateSelectedOutPoint"
+    }
+   }
+  },
+  {
+   "id": "720",
+   "category": "Titles & Graphics",
+   "name": "Title Preset 0",
+   "text": "Title Preset 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectTitlePreset",
+    "options": {
+     "input": "",
+     "value": "0"
+    }
+   }
+  },
+  {
+   "id": "721",
+   "category": "Titles & Graphics",
+   "name": "Title Preset 1",
+   "text": "Title Preset 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectTitlePreset",
+    "options": {
+     "input": "",
+     "value": "1"
+    }
+   }
+  },
+  {
+   "id": "722",
+   "category": "Titles & Graphics",
+   "name": "Title Preset 2",
+   "text": "Title Preset 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectTitlePreset",
+    "options": {
+     "input": "",
+     "value": "2"
+    }
+   }
+  },
+  {
+   "id": "723",
+   "category": "Titles & Graphics",
+   "name": "Title Preset 3",
+   "text": "Title Preset 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectTitlePreset",
+    "options": {
+     "input": "",
+     "value": "3"
+    }
+   }
+  },
+  {
+   "id": "724",
+   "category": "Titles & Graphics",
+   "name": "Title Preset 4",
+   "text": "Title Preset 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectTitlePreset",
+    "options": {
+     "input": "",
+     "value": "4"
+    }
+   }
+  },
+  {
+   "id": "761",
+   "category": "Transitions",
+   "name": "T1 Set Cut",
+   "text": "T1 Set Cut",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect1",
+     "value": "Cut"
+    }
+   }
+  },
+  {
+   "id": "762",
+   "category": "Transitions",
+   "name": "T1 Set Fade",
+   "text": "T1 Set Fade",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect1",
+     "value": "Fade"
+    }
+   }
+  },
+  {
+   "id": "763",
+   "category": "Transitions",
+   "name": "T1 Set Zoom",
+   "text": "T1 Set Zoom",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect1",
+     "value": "Zoom"
+    }
+   }
+  },
+  {
+   "id": "764",
+   "category": "Transitions",
+   "name": "T1 Set Merge",
+   "text": "T1 Set Merge",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect1",
+     "value": "Merge"
+    }
+   }
+  },
+  {
+   "id": "770",
+   "category": "Transitions",
+   "name": "T2 Set Cut",
+   "text": "T2 Set Cut",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect2",
+     "value": "Cut"
+    }
+   }
+  },
+  {
+   "id": "771",
+   "category": "Transitions",
+   "name": "T2 Set Fade",
+   "text": "T2 Set Fade",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect2",
+     "value": "Fade"
+    }
+   }
+  },
+  {
+   "id": "772",
+   "category": "Transitions",
+   "name": "T2 Set Zoom",
+   "text": "T2 Set Zoom",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect2",
+     "value": "Zoom"
+    }
+   }
+  },
+  {
+   "id": "773",
+   "category": "Transitions",
+   "name": "T2 Set Merge",
+   "text": "T2 Set Merge",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect2",
+     "value": "Merge"
+    }
+   }
+  },
+  {
+   "id": "779",
+   "category": "Transitions",
+   "name": "T3 Set Cut",
+   "text": "T3 Set Cut",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect3",
+     "value": "Cut"
+    }
+   }
+  },
+  {
+   "id": "780",
+   "category": "Transitions",
+   "name": "T3 Set Fade",
+   "text": "T3 Set Fade",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect3",
+     "value": "Fade"
+    }
+   }
+  },
+  {
+   "id": "781",
+   "category": "Transitions",
+   "name": "T3 Set Zoom",
+   "text": "T3 Set Zoom",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect3",
+     "value": "Zoom"
+    }
+   }
+  },
+  {
+   "id": "782",
+   "category": "Transitions",
+   "name": "T3 Set Merge",
+   "text": "T3 Set Merge",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect3",
+     "value": "Merge"
+    }
+   }
+  },
+  {
+   "id": "788",
+   "category": "Transitions",
+   "name": "T4 Set Cut",
+   "text": "T4 Set Cut",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect4",
+     "value": "Cut"
+    }
+   }
+  },
+  {
+   "id": "789",
+   "category": "Transitions",
+   "name": "T4 Set Fade",
+   "text": "T4 Set Fade",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect4",
+     "value": "Fade"
+    }
+   }
+  },
+  {
+   "id": "790",
+   "category": "Transitions",
+   "name": "T4 Set Zoom",
+   "text": "T4 Set Zoom",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect4",
+     "value": "Zoom"
+    }
+   }
+  },
+  {
+   "id": "791",
+   "category": "Transitions",
+   "name": "T4 Set Merge",
+   "text": "T4 Set Merge",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "setTransitionEffect",
+    "options": {
+     "functionID": "SetTransitionEffect4",
+     "value": "Merge"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-studiocoast-vmix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeff Martin, Per Røine, Andreas H. Thomsen, Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "studiocoast-vmix",
+  "version": "4.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeff Martin",
+   "Per Røine",
+   "Andreas H. Thomsen",
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-studiocoast-vmix.git"
+ }
+}

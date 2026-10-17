@@ -1,0 +1,1049 @@
+{
+ "format": 1,
+ "id": "m-bmd-ultimatte",
+ "name": "Blackmagic Design Ultimatte",
+ "category": "Blackmagic Design",
+ "version": "2.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9998,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "ly_fade_mix",
+   "name": "LY Fade Mix",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nLY Fade Mix: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "backing_clr",
+   "name": "Backing Color",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Color",
+     "type": "select",
+     "default": "Red",
+     "choices": [
+      {
+       "id": "Red",
+       "label": "Red"
+      },
+      {
+       "id": "Green",
+       "label": "Green"
+      },
+      {
+       "id": "Blue",
+       "label": "Blue"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nBacking Color: {{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "Red": "Red",
+     "Green": "Green",
+     "Blue": "Blue"
+    }
+   }
+  },
+  {
+   "id": "mon_out",
+   "name": "Monitor Out",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Monitor Out",
+     "type": "select",
+     "default": "Program",
+     "choices": [
+      {
+       "id": "Program",
+       "label": "Program"
+      },
+      {
+       "id": "FG",
+       "label": "FG"
+      },
+      {
+       "id": "BG",
+       "label": "BG"
+      },
+      {
+       "id": "Combined Matte",
+       "label": "Combined Matte"
+      },
+      {
+       "id": "Internal Matte",
+       "label": "Internal Matte"
+      },
+      {
+       "id": "Fill",
+       "label": "Fill"
+      },
+      {
+       "id": "Layer In",
+       "label": "Layer In"
+      },
+      {
+       "id": "Background Matte In",
+       "label": "Background Matte In"
+      },
+      {
+       "id": "Garbage Matte In",
+       "label": "Garbage Matte In"
+      },
+      {
+       "id": "Holdout Matte In",
+       "label": "Holdout Matte In"
+      },
+      {
+       "id": "Layer Matte In",
+       "label": "Layer Matte In"
+      },
+      {
+       "id": "Processed LM",
+       "label": "Processed LM"
+      },
+      {
+       "id": "Processed HM",
+       "label": "Processed HM"
+      },
+      {
+       "id": "Processed GM",
+       "label": "Processed GM"
+      },
+      {
+       "id": "Processed BM",
+       "label": "Processed BM"
+      },
+      {
+       "id": "Screen Correction",
+       "label": "Screen Correction"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nMonitor Out: {{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "Program": "Program",
+     "FG": "FG",
+     "BG": "BG",
+     "Combined Matte": "Combined Matte",
+     "Internal Matte": "Internal Matte",
+     "Fill": "Fill",
+     "Layer In": "Layer In",
+     "Background Matte In": "Background Matte In",
+     "Garbage Matte In": "Garbage Matte In",
+     "Holdout Matte In": "Holdout Matte In",
+     "Layer Matte In": "Layer Matte In",
+     "Processed LM": "Processed LM",
+     "Processed HM": "Processed HM",
+     "Processed GM": "Processed GM",
+     "Processed BM": "Processed BM",
+     "Screen Correction": "Screen Correction"
+    }
+   }
+  },
+  {
+   "id": "vid_format",
+   "name": "Video Format",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Video Format",
+     "type": "select",
+     "default": "Auto Detect",
+     "choices": [
+      {
+       "id": "Auto Detect",
+       "label": "Auto Detect"
+      },
+      {
+       "id": "525i59.94 NTSC 4:3",
+       "label": "525i59.94 NTSC 4:3"
+      },
+      {
+       "id": "625i50 PAL 4:3",
+       "label": "625i50 PAL 4:3"
+      },
+      {
+       "id": "720p60",
+       "label": "720p60"
+      },
+      {
+       "id": "720p59.94",
+       "label": "720p59.94"
+      },
+      {
+       "id": "720p50",
+       "label": "720p50"
+      },
+      {
+       "id": "1080i60",
+       "label": "1080i60"
+      },
+      {
+       "id": "1080i59.94",
+       "label": "1080i59.94"
+      },
+      {
+       "id": "1080i50",
+       "label": "1080i50"
+      },
+      {
+       "id": "1080p60",
+       "label": "1080p60"
+      },
+      {
+       "id": "1080p59.94",
+       "label": "1080p59.94"
+      },
+      {
+       "id": "1080p50",
+       "label": "1080p50"
+      },
+      {
+       "id": "1080p30",
+       "label": "1080p30"
+      },
+      {
+       "id": "1080p29.97",
+       "label": "1080p29.97"
+      },
+      {
+       "id": "1080p25",
+       "label": "1080p25"
+      },
+      {
+       "id": "1080p24",
+       "label": "1080p24"
+      },
+      {
+       "id": "1080p23.98",
+       "label": "1080p23.98"
+      },
+      {
+       "id": "1080PsF30",
+       "label": "1080PsF30"
+      },
+      {
+       "id": "1080PsF29.97",
+       "label": "1080PsF29.97"
+      },
+      {
+       "id": "1080PsF25",
+       "label": "1080PsF25"
+      },
+      {
+       "id": "1080PsF24",
+       "label": "1080PsF24"
+      },
+      {
+       "id": "1080PsF23.98",
+       "label": "1080PsF23.98"
+      },
+      {
+       "id": "2160p60",
+       "label": "2160p60"
+      },
+      {
+       "id": "2160p59.94",
+       "label": "2160p59.94"
+      },
+      {
+       "id": "2160p50",
+       "label": "2160p50"
+      },
+      {
+       "id": "2160p30",
+       "label": "2160p30"
+      },
+      {
+       "id": "2160p29.97",
+       "label": "2160p29.97"
+      },
+      {
+       "id": "2160p25",
+       "label": "2160p25"
+      },
+      {
+       "id": "2160p24",
+       "label": "2160p24"
+      },
+      {
+       "id": "2160p23.98",
+       "label": "2160p23.98"
+      },
+      {
+       "id": "4320p60",
+       "label": "4320p60"
+      },
+      {
+       "id": "4320p59.94",
+       "label": "4320p59.94"
+      },
+      {
+       "id": "4320p50",
+       "label": "4320p50"
+      },
+      {
+       "id": "4320p30",
+       "label": "4320p30"
+      },
+      {
+       "id": "4320p29.97",
+       "label": "4320p29.97"
+      },
+      {
+       "id": "4320p25",
+       "label": "4320p25"
+      },
+      {
+       "id": "4320p24",
+       "label": "4320p24"
+      },
+      {
+       "id": "4320p23.98",
+       "label": "4320p23.98"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nVideo Format: {{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "Auto Detect": "Auto Detect",
+     "525i59.94 NTSC 4:3": "525i59.94 NTSC 4:3",
+     "625i50 PAL 4:3": "625i50 PAL 4:3",
+     "720p60": "720p60",
+     "720p59.94": "720p59.94",
+     "720p50": "720p50",
+     "1080i60": "1080i60",
+     "1080i59.94": "1080i59.94",
+     "1080i50": "1080i50",
+     "1080p60": "1080p60",
+     "1080p59.94": "1080p59.94",
+     "1080p50": "1080p50",
+     "1080p30": "1080p30",
+     "1080p29.97": "1080p29.97",
+     "1080p25": "1080p25",
+     "1080p24": "1080p24",
+     "1080p23.98": "1080p23.98",
+     "1080PsF30": "1080PsF30",
+     "1080PsF29.97": "1080PsF29.97",
+     "1080PsF25": "1080PsF25",
+     "1080PsF24": "1080PsF24",
+     "1080PsF23.98": "1080PsF23.98",
+     "2160p60": "2160p60",
+     "2160p59.94": "2160p59.94",
+     "2160p50": "2160p50",
+     "2160p30": "2160p30",
+     "2160p29.97": "2160p29.97",
+     "2160p25": "2160p25",
+     "2160p24": "2160p24",
+     "2160p23.98": "2160p23.98",
+     "4320p60": "4320p60",
+     "4320p59.94": "4320p59.94",
+     "4320p50": "4320p50",
+     "4320p30": "4320p30",
+     "4320p29.97": "4320p29.97",
+     "4320p25": "4320p25",
+     "4320p24": "4320p24",
+     "4320p23.98": "4320p23.98"
+    }
+   }
+  },
+  {
+   "id": "talent_mir",
+   "name": "Talent Mirror",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nTalent Mirror: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "dual_cur",
+   "name": "Dual Cursor",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nDual Cursor: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "wall_cur_enable",
+   "name": "Wall Cursor Position Enable",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nWall Cursor Position Enable: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "floor_cur_enable",
+   "name": "Floor Cursor Position Enable",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nFloor Cursor Position Enable: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "cur_x",
+   "name": "Cursor X",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nCursor X: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cur_y",
+   "name": "Cursor Y",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nCursor Y: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cur_2_x",
+   "name": "Cursor 2 X",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nCursor 2 X: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cur_2_y",
+   "name": "Cursor 2 Y",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nCursor 2 Y: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "matte_den",
+   "name": "Matte Density",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nMatte Density: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "black_gloss",
+   "name": "Black Gloss",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nBlack Gloss: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "shadow_lvl",
+   "name": "Shadow Level",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nShadow Level: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "shadow_thr",
+   "name": "Shadow Threshold",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nShadow Threshold: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "veil_mas",
+   "name": "Veil Master",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nVeil Master: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clean_lvl",
+   "name": "Cleanup Level",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "Value",
+     "type": "text",
+     "default": "0",
+     "help": "Value between 0-10000."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nCleanup Level: {{option.controlValue}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "matte_enable",
+   "name": "Matte Enable",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nMatte Enable: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "quickload",
+   "name": "QuickLoad",
+   "options": [
+    {
+     "id": "controlSel",
+     "label": "Selection",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      }
+     ]
+    },
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nQuick Load {{option.controlSel|map}}: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlSel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    },
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "quicksave",
+   "name": "QuickSave",
+   "options": [
+    {
+     "id": "controlSel",
+     "label": "Selection",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      }
+     ]
+    },
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nQuick Save {{option.controlSel|map}}: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlSel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    },
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "gm_enable",
+   "name": "GM Enable",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nGM Enable: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "samp_wall",
+   "name": "Sample Wall",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nSample Wall: Yes\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "samp_floor",
+   "name": "Sample Floor",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nSample Floor: Yes\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "auto_scn_sample",
+   "name": "Auto Screen Sample",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nAuto Screen Sample: Yes\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "advanced_flare_enable",
+   "name": "Advanced Flare Enable",
+   "options": [
+    {
+     "id": "controlValue",
+     "label": "On/Off",
+     "type": "select",
+     "default": "On",
+     "choices": [
+      {
+       "id": "On",
+       "label": "On"
+      },
+      {
+       "id": "Off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CONTROL:\\nAdvanced Flare Enable: O{{option.controlValue|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "controlValue": {
+     "On": "n",
+     "Off": "ff"
+    }
+   }
+  },
+  {
+   "id": "file_load",
+   "name": "Load File",
+   "options": [
+    {
+     "id": "value",
+     "label": "Filename",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FILE:\\nLoad: {{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "file_save",
+   "name": "Save File",
+   "options": [
+    {
+     "id": "value",
+     "label": "Filename",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FILE:\\nSave: {{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "file_delete",
+   "name": "Delete File",
+   "options": [
+    {
+     "id": "value",
+     "label": "Filename",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FILE:\\nDelete: {{option.value}}\\n\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bmd-ultimatte",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Skyler Ehly"
+  }
+ ],
+ "source": {
+  "module": "bmd-ultimatte",
+  "version": "2.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Skyler Ehly"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bmd-ultimatte.git"
+ }
+}

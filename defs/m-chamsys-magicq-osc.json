@@ -79,15 +79,20 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f64626f000000002c690000000000{{option.dboId|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/dbo",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.dboId|map}}"
+     }
+    ]
    },
    "maps": {
     "dboId": {
-     "0": "00",
-     "1": "01",
-     "2": "01"
+     "0": "0",
+     "1": "1",
+     "2": "1"
     }
    }
   },
@@ -113,15 +118,42 @@
     }
    ],
    "send": {
-    "kind": "bytes",
-    "data": "2f737761700000002c690000000000{{option.swapId|map}}",
-    "encoding": "hex"
+    "kind": "osc",
+    "address": "/swap",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.swapId|map}}"
+     }
+    ]
    },
    "maps": {
     "swapId": {
-     "0": "00",
-     "1": "01"
+     "0": "0",
+     "1": "1"
     }
+   }
+  },
+  {
+   "id": "rpc",
+   "name": "RPC Command",
+   "options": [
+    {
+     "id": "rpcCmd",
+     "label": "RPC Command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/rpc",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.rpcCmd}}"
+     }
+    ]
    }
   }
  ],

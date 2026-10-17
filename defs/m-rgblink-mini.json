@@ -1,0 +1,1269 @@
+{
+ "format": 1,
+ "id": "m-rgblink-mini",
+ "name": "RGBlink mini/mini+",
+ "category": "RGBlink",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 1000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Status polling (requests status every second)",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingEdge",
+   "label": "EXPERIMENTAL: Status polling – extra for mini-edge (requests status every second",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "logEveryCommand",
+   "label": "Debug logging of every sent/received command (may slow down your computer)",
+   "type": "boolean",
+   "default": false,
+   "help": "test toolitp"
+  }
+ ],
+ "actions": [
+  {
+   "id": "switch_to_source",
+   "name": "Switch signal source",
+   "options": [
+    {
+     "id": "sourceNumber",
+     "label": "Source number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5 (BETA - if the hardware has)"
+      }
+     ],
+     "help": "Choose source number, which should be selected"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T009{{option.sourceNumber|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "sourceNumber": {
+     "1": "675020000000D",
+     "2": "775020001000F",
+     "3": "8750200020011",
+     "4": "9750200030013",
+     "5": "A750200040015"
+    }
+   }
+  },
+  {
+   "id": "switch_mode",
+   "name": "Switch mode (T-BAR/Auto)",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Quick/Auto (Live output)"
+      },
+      {
+       "id": "1",
+       "label": "T-BAR (Preview)"
+      }
+     ],
+     "help": "Choose mode"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T009{{option.mode|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "B781200000025",
+     "1": "C781201000027"
+    }
+   }
+  },
+  {
+   "id": "pip_layer",
+   "name": "Select PIP layer (A or B)",
+   "options": [
+    {
+     "id": "layer",
+     "label": "Layer",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "A (main/first)"
+      },
+      {
+       "id": "1",
+       "label": "B (additional/second)"
+      }
+     ],
+     "help": "Choose layer"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00B{{option.layer|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "layer": {
+     "0": "8751A00000047",
+     "1": "9751A00010049"
+    }
+   }
+  },
+  {
+   "id": "switch_tbar_position",
+   "name": "BETA: Set T-BAR position",
+   "options": [
+    {
+     "id": "position",
+     "label": "Position",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "MIN"
+      },
+      {
+       "id": "65535",
+       "label": "MAX"
+      }
+     ],
+     "help": "Choose position"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00D{{option.position|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "position": {
+     "0": "A78080000005A",
+     "65535": "B7808FFFF0059"
+    }
+   }
+  },
+  {
+   "id": "perform_transition",
+   "name": "BETA: Performs a transition between Program and Preview",
+   "options": [
+    {
+     "id": "transitionType",
+     "label": "Transition type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "TAKE / Scene take"
+      },
+      {
+       "id": "1",
+       "label": "CUT / Black take"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00D{{option.transitionType|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "transitionType": {
+     "0": "C780000000054",
+     "1": "D780000010056"
+    }
+   }
+  },
+  {
+   "id": "line_in_status",
+   "name": "EXPERIMENTAL: Set LINE IN on/off",
+   "options": [
+    {
+     "id": "onOff",
+     "label": "LINE IN status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "OFF"
+      },
+      {
+       "id": "1",
+       "label": "ON"
+      }
+     ],
+     "help": "Choose status"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00D{{option.onOff|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "onOff": {
+     "0": "E81000000005F",
+     "1": "F810000010061"
+    }
+   }
+  },
+  {
+   "id": "line_in_volume",
+   "name": "EXPERIMENTAL: Set LINE IN volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "12.0 dB"
+      },
+      {
+       "id": "1",
+       "label": "13.5 dB"
+      },
+      {
+       "id": "2",
+       "label": "15.0 dB"
+      },
+      {
+       "id": "3",
+       "label": "16.5 dB"
+      },
+      {
+       "id": "4",
+       "label": "18.0 dB"
+      },
+      {
+       "id": "5",
+       "label": "19.5 dB"
+      },
+      {
+       "id": "6",
+       "label": "21.0 dB"
+      },
+      {
+       "id": "7",
+       "label": "22.5 dB"
+      },
+      {
+       "id": "8",
+       "label": "24.0 dB"
+      },
+      {
+       "id": "9",
+       "label": "25.5 dB"
+      },
+      {
+       "id": "10",
+       "label": "27.0 dB"
+      },
+      {
+       "id": "11",
+       "label": "28.5 dB"
+      },
+      {
+       "id": "12",
+       "label": "30.0 dB"
+      },
+      {
+       "id": "13",
+       "label": "31.5 dB"
+      },
+      {
+       "id": "14",
+       "label": "33.0 dB"
+      },
+      {
+       "id": "15",
+       "label": "34.5 dB"
+      },
+      {
+       "id": "16",
+       "label": "36.0 dB"
+      },
+      {
+       "id": "17",
+       "label": "37.5 dB"
+      },
+      {
+       "id": "18",
+       "label": "39.0 dB"
+      },
+      {
+       "id": "19",
+       "label": "40.5 dB"
+      },
+      {
+       "id": "20",
+       "label": "42.0 dB"
+      },
+      {
+       "id": "21",
+       "label": "43.5 dB"
+      },
+      {
+       "id": "22",
+       "label": "45.0 dB"
+      },
+      {
+       "id": "23",
+       "label": "46.5 dB"
+      },
+      {
+       "id": "24",
+       "label": "48.0 dB"
+      },
+      {
+       "id": "25",
+       "label": "49.5 dB"
+      },
+      {
+       "id": "26",
+       "label": "51.0 dB"
+      },
+      {
+       "id": "27",
+       "label": "52.5 dB"
+      },
+      {
+       "id": "28",
+       "label": "54.0 dB"
+      },
+      {
+       "id": "29",
+       "label": "55.5 dB"
+      },
+      {
+       "id": "30",
+       "label": "57.0 dB"
+      },
+      {
+       "id": "31",
+       "label": "58.5 dB"
+      }
+     ],
+     "help": "Choose input or output"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00{{option.volume|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "volume": {
+     "0": "FA811600000091",
+     "1": "FB811600010093",
+     "2": "FC811600020095",
+     "3": "FD811600030097",
+     "4": "FE811600040099",
+     "5": "FF81160005009B",
+     "6": "0081160006009D",
+     "7": "0181160007009F",
+     "8": "028116000800A1",
+     "9": "038116000900A3",
+     "10": "048116000A00A5",
+     "11": "058116000B00A7",
+     "12": "068116000C00A9",
+     "13": "078116000D00AB",
+     "14": "088116000E00AD",
+     "15": "098116000F00AF",
+     "16": "0A8116001000B1",
+     "17": "0B8116001100B3",
+     "18": "0C8116001200B5",
+     "19": "0D8116001300B7",
+     "20": "0E8116001400B9",
+     "21": "0F8116001500BB",
+     "22": "108116001600BD",
+     "23": "118116001700BF",
+     "24": "128116001800C1",
+     "25": "138116001900C3",
+     "26": "148116001A00C5",
+     "27": "158116001B00C7",
+     "28": "168116001C00C9",
+     "29": "178116001D00CB",
+     "30": "188116001E00CD",
+     "31": "198116001F00CF"
+    }
+   }
+  },
+  {
+   "id": "mic_in_volume",
+   "name": "EXPERIMENTAL: Set MIC IN volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 dB"
+      },
+      {
+       "id": "1",
+       "label": "5 dB"
+      },
+      {
+       "id": "2",
+       "label": "10 dB"
+      },
+      {
+       "id": "3",
+       "label": "15 dB"
+      },
+      {
+       "id": "4",
+       "label": "20 dB"
+      },
+      {
+       "id": "5",
+       "label": "25 dB"
+      },
+      {
+       "id": "6",
+       "label": "30 dB"
+      },
+      {
+       "id": "7",
+       "label": "35 dB"
+      },
+      {
+       "id": "8",
+       "label": "40 dB"
+      }
+     ],
+     "help": "Choose input or output"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<T00{{option.volume|map}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "volume": {
+     "0": "1A8116010000B2",
+     "1": "1B8116010100B4",
+     "2": "1C8116010200B6",
+     "3": "1D8116010300B8",
+     "4": "1E8116010400BA",
+     "5": "1F8116010500BC",
+     "6": "208116010600BE",
+     "7": "218116010700C0",
+     "8": "228116010800C2"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "10",
+   "category": "Select source",
+   "name": "Source\\n1",
+   "text": "Source\n1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_to_source",
+    "options": {
+     "sourceNumber": "1"
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Select source",
+   "name": "Source\\n2",
+   "text": "Source\n2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_to_source",
+    "options": {
+     "sourceNumber": "2"
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Select source",
+   "name": "Source\\n3",
+   "text": "Source\n3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_to_source",
+    "options": {
+     "sourceNumber": "3"
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Select source",
+   "name": "Source\\n4",
+   "text": "Source\n4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_to_source",
+    "options": {
+     "sourceNumber": "4"
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Select source",
+   "name": "Source\\n5 (BETA - if the hardware has)",
+   "text": "Source\n5 (BETA - if the hardware has)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_to_source",
+    "options": {
+     "sourceNumber": "5"
+    }
+   }
+  },
+  {
+   "id": "28",
+   "category": "PIP layer",
+   "name": "PIP layer\\nA",
+   "text": "PIP layer\nA",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pip_layer",
+    "options": {
+     "layer": 0
+    }
+   }
+  },
+  {
+   "id": "29",
+   "category": "PIP layer",
+   "name": "PIP layer\\nB",
+   "text": "PIP layer\nB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pip_layer",
+    "options": {
+     "layer": 1
+    }
+   }
+  },
+  {
+   "id": "30",
+   "category": "Select switch mode (Auto / T-BAR)",
+   "name": "Switch mode\\nAuto",
+   "text": "Switch mode\nAuto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_mode",
+    "options": {
+     "mode": 0
+    }
+   }
+  },
+  {
+   "id": "31",
+   "category": "Select switch mode (Auto / T-BAR)",
+   "name": "Switch mode\\nT-BAR",
+   "text": "Switch mode\nT-BAR",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_mode",
+    "options": {
+     "mode": 1
+    }
+   }
+  },
+  {
+   "id": "66",
+   "category": "BETA: T-BAR position",
+   "name": "BETA: T-BAR position MIN",
+   "text": "BETA: T-BAR position MIN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_tbar_position",
+    "options": {
+     "position": 0
+    }
+   }
+  },
+  {
+   "id": "67",
+   "category": "BETA: T-BAR position",
+   "name": "BETA: T-BAR position MAX",
+   "text": "BETA: T-BAR position MAX",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_tbar_position",
+    "options": {
+     "position": 65535
+    }
+   }
+  },
+  {
+   "id": "76",
+   "category": "EXPERIMENTAL: Set LINE IN status",
+   "name": "EXPERIMENTAL: LINE IN is OFF",
+   "text": "EXPERIMENTAL: LINE IN is OFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_status",
+    "options": {
+     "onOff": 0
+    }
+   }
+  },
+  {
+   "id": "77",
+   "category": "EXPERIMENTAL: Set LINE IN status",
+   "name": "EXPERIMENTAL: LINE IN is ON",
+   "text": "EXPERIMENTAL: LINE IN is ON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_status",
+    "options": {
+     "onOff": 1
+    }
+   }
+  },
+  {
+   "id": "107",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 12.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 12.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 0
+    }
+   }
+  },
+  {
+   "id": "108",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 13.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 13.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 1
+    }
+   }
+  },
+  {
+   "id": "109",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 15.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 15.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 2
+    }
+   }
+  },
+  {
+   "id": "110",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 16.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 16.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 3
+    }
+   }
+  },
+  {
+   "id": "111",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 18.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 18.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 4
+    }
+   }
+  },
+  {
+   "id": "112",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 19.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 19.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 5
+    }
+   }
+  },
+  {
+   "id": "113",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 21.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 21.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 6
+    }
+   }
+  },
+  {
+   "id": "114",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 22.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 22.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 7
+    }
+   }
+  },
+  {
+   "id": "115",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 24.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 24.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 8
+    }
+   }
+  },
+  {
+   "id": "116",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 25.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 25.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 9
+    }
+   }
+  },
+  {
+   "id": "117",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 27.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 27.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 10
+    }
+   }
+  },
+  {
+   "id": "118",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 28.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 28.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 11
+    }
+   }
+  },
+  {
+   "id": "119",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 30.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 30.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 12
+    }
+   }
+  },
+  {
+   "id": "120",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 31.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 31.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 13
+    }
+   }
+  },
+  {
+   "id": "121",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 33.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 33.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 14
+    }
+   }
+  },
+  {
+   "id": "122",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 34.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 34.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 15
+    }
+   }
+  },
+  {
+   "id": "123",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 36.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 36.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 16
+    }
+   }
+  },
+  {
+   "id": "124",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 37.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 37.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 17
+    }
+   }
+  },
+  {
+   "id": "125",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 39.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 39.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 18
+    }
+   }
+  },
+  {
+   "id": "126",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 40.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 40.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 19
+    }
+   }
+  },
+  {
+   "id": "127",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 42.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 42.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 20
+    }
+   }
+  },
+  {
+   "id": "128",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 43.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 43.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 21
+    }
+   }
+  },
+  {
+   "id": "129",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 45.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 45.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 22
+    }
+   }
+  },
+  {
+   "id": "130",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 46.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 46.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 23
+    }
+   }
+  },
+  {
+   "id": "131",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 48.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 48.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 24
+    }
+   }
+  },
+  {
+   "id": "132",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 49.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 49.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 25
+    }
+   }
+  },
+  {
+   "id": "133",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 51.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 51.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 26
+    }
+   }
+  },
+  {
+   "id": "134",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 52.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 52.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 27
+    }
+   }
+  },
+  {
+   "id": "135",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 54.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 54.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 28
+    }
+   }
+  },
+  {
+   "id": "136",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 55.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 55.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 29
+    }
+   }
+  },
+  {
+   "id": "137",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 57.0 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 57.0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 30
+    }
+   }
+  },
+  {
+   "id": "138",
+   "category": "EXPERIMENTAL: Set LINE IN volume",
+   "name": "EXPERIMENTAL: Set LINE IN 58.5 dB",
+   "text": "EXPERIMENTAL: Set LINE IN 58.5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "line_in_volume",
+    "options": {
+     "volume": 31
+    }
+   }
+  },
+  {
+   "id": "139",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 0 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 0 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 0
+    }
+   }
+  },
+  {
+   "id": "140",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 5 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 5 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 1
+    }
+   }
+  },
+  {
+   "id": "141",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 10 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 10 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 2
+    }
+   }
+  },
+  {
+   "id": "142",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 15 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 15 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 3
+    }
+   }
+  },
+  {
+   "id": "143",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 20 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 20 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 4
+    }
+   }
+  },
+  {
+   "id": "144",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 25 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 25 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 5
+    }
+   }
+  },
+  {
+   "id": "145",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 30 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 30 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 6
+    }
+   }
+  },
+  {
+   "id": "146",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 35 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 35 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 7
+    }
+   }
+  },
+  {
+   "id": "147",
+   "category": "EXPERIMENTAL: Set MIC IN volume",
+   "name": "EXPERIMENTAL: Set MIC IN 40 dB",
+   "text": "EXPERIMENTAL: Set MIC IN 40 dB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mic_in_volume",
+    "options": {
+     "volume": 8
+    }
+   }
+  },
+  {
+   "id": "164",
+   "category": "BETA: Performs transition",
+   "name": "BETA: Performs transition\nTAKE / Scene take",
+   "text": "BETA: Performs transition\nTAKE / Scene t",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "perform_transition",
+    "options": {
+     "transitionType": 0
+    }
+   }
+  },
+  {
+   "id": "165",
+   "category": "BETA: Performs transition",
+   "name": "BETA: Performs transition\nCUT / Black take",
+   "text": "BETA: Performs transition\nCUT / Black ta",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "perform_transition",
+    "options": {
+     "transitionType": 1
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-rgblink-mini",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Marcin Gumułka, Krzysztof Foszcz"
+  }
+ ],
+ "source": {
+  "module": "rgblink-mini",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Marcin Gumułka",
+   "Krzysztof Foszcz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-rgblink-mini.git"
+ }
+}

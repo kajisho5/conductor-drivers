@@ -1,0 +1,299 @@
+{
+ "format": 1,
+ "id": "m-radiodj-rest",
+ "name": "RadioDJ REST API",
+ "category": "RadioDJ",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "changeme"
+  }
+ ],
+ "actions": [
+  {
+   "id": "PlayPlaylistTrack",
+   "name": "Play playlist track",
+   "options": [
+    {
+     "id": "arg",
+     "label": "Track number (zero based)",
+     "type": "text",
+     "default": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=PlayPlaylistTrack&arg={{option.arg}}"
+   }
+  },
+  {
+   "id": "RemovePlaylistTrack",
+   "name": "Remove playlist track",
+   "options": [
+    {
+     "id": "arg",
+     "label": "Track number (zero based)",
+     "type": "text",
+     "default": 0
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=RemovePlaylistTrack&arg={{option.arg}}"
+   }
+  },
+  {
+   "id": "StopPlayer",
+   "name": "Stop player",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=StopPlayer"
+   }
+  },
+  {
+   "id": "PausePlayer",
+   "name": "Set pause state",
+   "options": [
+    {
+     "id": "arg",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unpause"
+      },
+      {
+       "id": "1",
+       "label": "Pause"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=PausePlayer"
+   }
+  },
+  {
+   "id": "RestartPlayer",
+   "name": "Restart player",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=RestartPlayer"
+   }
+  },
+  {
+   "id": "PlayFromIntro",
+   "name": "Play from intro",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=PlayFromIntro"
+   }
+  },
+  {
+   "id": "ClearPlaylist",
+   "name": "Clear playlist",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=ClearPlaylist"
+   }
+  },
+  {
+   "id": "EnableAutoDJ",
+   "name": "Set Auto DJ state",
+   "options": [
+    {
+     "id": "arg",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=EnableAutoDJ"
+   }
+  },
+  {
+   "id": "EnableAssisted",
+   "name": "Set Assisted state",
+   "options": [
+    {
+     "id": "arg",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=EnableAssisted"
+   }
+  },
+  {
+   "id": "EnableEvents",
+   "name": "Set event run state",
+   "options": [
+    {
+     "id": "arg",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=EnableEvents"
+   }
+  },
+  {
+   "id": "RefreshEvents",
+   "name": "Refresh events",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=RefreshEvents"
+   }
+  },
+  {
+   "id": "EnableInput",
+   "name": "Set input state",
+   "options": [
+    {
+     "id": "arg",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=EnableInput"
+   }
+  },
+  {
+   "id": "PlaycartByNumber",
+   "name": "Play cart by number",
+   "options": [
+    {
+     "id": "arg",
+     "label": "Cart #",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=PlaycartByNumber&arg={{option.arg}}"
+   }
+  },
+  {
+   "id": "ShowMessage",
+   "name": "Display message in RadioDJ",
+   "options": [
+    {
+     "id": "arg",
+     "label": "Message Text",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/opt?auth=changeme&command=ShowMessage&arg={{option.arg}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-radiodj-rest",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "radiodj-rest",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-radiodj-rest.git"
+ }
+}

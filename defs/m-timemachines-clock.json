@@ -1,0 +1,824 @@
+{
+ "format": 1,
+ "id": "m-timemachines-clock",
+ "name": "TimeMachines Clock",
+ "category": "TimeMachines",
+ "version": "2.1.1",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7372,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Polling (Required for Variables/Feedback)",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "showTimeOfDay",
+   "name": "Show Time Of Day",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "a80100",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "countUpTimerMode",
+   "name": "Show Count-Up Timer",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Display Mode",
+     "type": "select",
+     "default": "sec",
+     "choices": [
+      {
+       "id": "sec",
+       "label": "Hours, Minutes, & Seconds"
+      },
+      {
+       "id": "tsec",
+       "label": "Minutes, Seconds, & Tenths of Seconds"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "a2{{option.mode|map}}00",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mode": {
+     "sec": "01",
+     "tsec": "00"
+    }
+   }
+  },
+  {
+   "id": "startCountUpTimer",
+   "name": "Start Count-Up Timer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "a30100",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "pauseCountUpTimer",
+   "name": "Pause Count-Up Timer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "a30000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "resetCountUpTimer",
+   "name": "Reset Count-Up Timer",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Display Mode",
+     "type": "select",
+     "default": "sec",
+     "choices": [
+      {
+       "id": "sec",
+       "label": "Hours, Minutes, & Seconds"
+      },
+      {
+       "id": "tsec",
+       "label": "Minutes, Seconds, & Tenths of Seconds"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "a4{{option.mode|map}}00",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mode": {
+     "sec": "01",
+     "tsec": "00"
+    }
+   }
+  },
+  {
+   "id": "setUpTimerWhileRunning",
+   "name": "Set Count-Up Timer While Running",
+   "options": [
+    {
+     "id": "hours",
+     "label": "Hours",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    },
+    {
+     "id": "minutes",
+     "label": "Minutes",
+     "type": "number",
+     "default": 30,
+     "min": 0,
+     "max": 59
+    },
+    {
+     "id": "seconds",
+     "label": "Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 59
+    },
+    {
+     "id": "tseconds",
+     "label": "Tenths Of Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    },
+    {
+     "id": "hseconds",
+     "label": "Hundredths Of Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "aa{{option.hours|u8}}{{option.minutes|u8}}{{option.seconds|u8}}{{option.tseconds|u8}}{{option.hseconds|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "startCountDownTimer",
+   "name": "Start Countdown Timer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "a60100",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "pauseCountDownTimer",
+   "name": "Pause Countdown Timer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "a60000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "setDownTimerWhileRunning",
+   "name": "Set Countdown Timer While Running",
+   "options": [
+    {
+     "id": "hours",
+     "label": "Hours",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    },
+    {
+     "id": "minutes",
+     "label": "Minutes",
+     "type": "number",
+     "default": 30,
+     "min": 0,
+     "max": 59
+    },
+    {
+     "id": "seconds",
+     "label": "Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 59
+    },
+    {
+     "id": "tseconds",
+     "label": "Tenths Of Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    },
+    {
+     "id": "hseconds",
+     "label": "Hundredths Of Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "ab{{option.hours|u8}}{{option.minutes|u8}}{{option.seconds|u8}}{{option.tseconds|u8}}{{option.hseconds|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "increaseTimerWhileRunning",
+   "name": "Increase Timer While Running",
+   "options": [
+    {
+     "id": "hours",
+     "label": "Hours",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    },
+    {
+     "id": "minutes",
+     "label": "Minutes",
+     "type": "number",
+     "default": 30,
+     "min": 0,
+     "max": 59
+    },
+    {
+     "id": "seconds",
+     "label": "Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 59
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "ab{{option.hours|u8}}{{option.minutes|u8}}{{option.seconds|u8}}0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "decreaseTimerWhileRunning",
+   "name": "Decrease Timer While Running",
+   "options": [
+    {
+     "id": "hours",
+     "label": "Hours",
+     "type": "number",
+     "default": 0,
+     "min": 0
+    },
+    {
+     "id": "minutes",
+     "label": "Minutes",
+     "type": "number",
+     "default": 30,
+     "min": 0,
+     "max": 59
+    },
+    {
+     "id": "seconds",
+     "label": "Seconds",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 59
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "ab",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "executeStoredProgram",
+   "name": "Execute Stored Program",
+   "options": [
+    {
+     "id": "program",
+     "label": "Program Number (0 to 9)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 9
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "b8{{option.program|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "relayControl",
+   "name": "Close Relay",
+   "options": [
+    {
+     "id": "seconds",
+     "label": "Seconds to stay Closed",
+     "type": "number",
+     "default": 1,
+     "min": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "b4{{option.seconds|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "displayBrightness",
+   "name": "Set Display Brightness",
+   "options": [
+    {
+     "id": "digit",
+     "label": "Digit Brightness (0 - 100)",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    },
+    {
+     "id": "dot",
+     "label": "Dot/Colon Brightness (0 - 100)",
+     "type": "number",
+     "default": 100,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "b5{{option.digit|u8}}{{option.dot|u8}}",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "showTimeOfDay",
+   "category": "Clock Mode",
+   "name": "Show Time of Day",
+   "text": "Show Time of Day",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "showTimeOfDay",
+    "options": {}
+   }
+  },
+  {
+   "id": "countUpTimerMode",
+   "category": "Clock Mode",
+   "name": "Show Count-Up Timer",
+   "text": "Show Count-Up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "countUpTimerMode",
+    "options": {
+     "mode": "sec"
+    }
+   }
+  },
+  {
+   "id": "startCountUpTimer",
+   "category": "Count-Up Timer",
+   "name": "Start Count-Up Timer",
+   "text": "Start Count-Up Timer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startCountUpTimer",
+    "options": {}
+   }
+  },
+  {
+   "id": "pauseCountUpTimer",
+   "category": "Count-Up Timer",
+   "name": "Pause Count-Up Timer",
+   "text": "Pause Count-Up Timer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pauseCountUpTimer",
+    "options": {}
+   }
+  },
+  {
+   "id": "resetCountUpTimer",
+   "category": "Count-Up Timer",
+   "name": "Reset Count-Up Timer",
+   "text": "Reset Count-Up Timer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetCountUpTimer",
+    "options": {
+     "mode": "sec"
+    }
+   }
+  },
+  {
+   "id": "startCountDownTimer",
+   "category": "Countdown Timer",
+   "name": "Start Countdown Timer",
+   "text": "Start Count Down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startCountDownTimer",
+    "options": {}
+   }
+  },
+  {
+   "id": "pauseCountDownTimer",
+   "category": "Countdown Timer",
+   "name": "Pause Countdown Timer",
+   "text": "Pause Count Down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pauseCountDownTimer",
+    "options": {}
+   }
+  },
+  {
+   "id": "add30sToTimer",
+   "category": "Countdown Timer",
+   "name": "Add 30s to Timer",
+   "text": "Add 30s to Timer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "increaseTimerWhileRunning",
+    "options": {
+     "hours": 0,
+     "minutes": 0,
+     "seconds": 30
+    }
+   }
+  },
+  {
+   "id": "add1mToTimer",
+   "category": "Countdown Timer",
+   "name": "Add 1m to Timer",
+   "text": "Add 1m to Timer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "increaseTimerWhileRunning",
+    "options": {
+     "hours": 0,
+     "minutes": 1,
+     "seconds": 0
+    }
+   }
+  },
+  {
+   "id": "add5mToTimer",
+   "category": "Countdown Timer",
+   "name": "Add 5m to Timer",
+   "text": "Add 5m to Timer",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "increaseTimerWhileRunning",
+    "options": {
+     "hours": 0,
+     "minutes": 5,
+     "seconds": 0
+    }
+   }
+  },
+  {
+   "id": "executeProgram0",
+   "category": "Stored Programs",
+   "name": "Execute Program 0",
+   "text": "EXEC PROG\n0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 0
+    }
+   }
+  },
+  {
+   "id": "executeProgram1",
+   "category": "Stored Programs",
+   "name": "Execute Program 1",
+   "text": "EXEC PROG\n1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 1
+    }
+   }
+  },
+  {
+   "id": "executeProgram2",
+   "category": "Stored Programs",
+   "name": "Execute Program 2",
+   "text": "EXEC PROG\n2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 2
+    }
+   }
+  },
+  {
+   "id": "executeProgram3",
+   "category": "Stored Programs",
+   "name": "Execute Program 3",
+   "text": "EXEC PROG\n3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 3
+    }
+   }
+  },
+  {
+   "id": "executeProgram4",
+   "category": "Stored Programs",
+   "name": "Execute Program 4",
+   "text": "EXEC PROG\n4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 4
+    }
+   }
+  },
+  {
+   "id": "executeProgram5",
+   "category": "Stored Programs",
+   "name": "Execute Program 5",
+   "text": "EXEC PROG\n5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 5
+    }
+   }
+  },
+  {
+   "id": "executeProgram6",
+   "category": "Stored Programs",
+   "name": "Execute Program 6",
+   "text": "EXEC PROG\n6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 6
+    }
+   }
+  },
+  {
+   "id": "executeProgram7",
+   "category": "Stored Programs",
+   "name": "Execute Program 7",
+   "text": "EXEC PROG\n7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 7
+    }
+   }
+  },
+  {
+   "id": "executeProgram8",
+   "category": "Stored Programs",
+   "name": "Execute Program 8",
+   "text": "EXEC PROG\n8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 8
+    }
+   }
+  },
+  {
+   "id": "executeProgram9",
+   "category": "Stored Programs",
+   "name": "Execute Program 9",
+   "text": "EXEC PROG\n9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "executeStoredProgram",
+    "options": {
+     "program": 9
+    }
+   }
+  },
+  {
+   "id": "relayControl",
+   "category": "Relay Control",
+   "name": "Close Relay for 1 second",
+   "text": "Close Relay\n1 sec",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "relayControl",
+    "options": {
+     "seconds": "1"
+    }
+   }
+  },
+  {
+   "id": "displayBrightness0",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 0%",
+   "text": "0%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 0,
+     "dot": 0
+    }
+   }
+  },
+  {
+   "id": "displayBrightness10",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 10%",
+   "text": "10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 10,
+     "dot": 10
+    }
+   }
+  },
+  {
+   "id": "displayBrightness20",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 20%",
+   "text": "20%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 20,
+     "dot": 20
+    }
+   }
+  },
+  {
+   "id": "displayBrightness30",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 30%",
+   "text": "30%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 30,
+     "dot": 30
+    }
+   }
+  },
+  {
+   "id": "displayBrightness40",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 40%",
+   "text": "40%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 40,
+     "dot": 40
+    }
+   }
+  },
+  {
+   "id": "displayBrightness50",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 50%",
+   "text": "50%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 50,
+     "dot": 50
+    }
+   }
+  },
+  {
+   "id": "displayBrightness60",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 60%",
+   "text": "60%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 60,
+     "dot": 60
+    }
+   }
+  },
+  {
+   "id": "displayBrightness70",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 70%",
+   "text": "70%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 70,
+     "dot": 70
+    }
+   }
+  },
+  {
+   "id": "displayBrightness80",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 80%",
+   "text": "80%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 80,
+     "dot": 80
+    }
+   }
+  },
+  {
+   "id": "displayBrightness90",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 90%",
+   "text": "90%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 90,
+     "dot": 90
+    }
+   }
+  },
+  {
+   "id": "displayBrightness100",
+   "category": "Display Brightness",
+   "name": "Set Display Brightness to 100%",
+   "text": "100%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "displayBrightness",
+    "options": {
+     "digit": 100,
+     "dot": 100
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-timemachines-clock",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams, Bryce Seifert"
+  }
+ ],
+ "source": {
+  "module": "timemachines-clock",
+  "version": "2.1.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams",
+   "Bryce Seifert"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-timemachines-clock.git"
+ }
+}

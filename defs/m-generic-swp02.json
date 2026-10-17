@@ -1,0 +1,96 @@
+{
+ "format": 1,
+ "id": "m-generic-swp02",
+ "name": "SW-P-02 / Probel Router SW P 02 / Snell Router SW P 02",
+ "category": "Generic",
+ "version": "1.2.4",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "interrogate",
+   "label": "Interrogate on connect",
+   "type": "boolean",
+   "default": true,
+   "help": "Interrogate all destinations on connect"
+  },
+  {
+   "id": "waitOnAck",
+   "label": "Wait for ACK",
+   "type": "boolean",
+   "default": true,
+   "help": "Wait for device ACK/NACK before sending subsequent messages"
+  },
+  {
+   "id": "src",
+   "label": "Source Count",
+   "type": "number",
+   "default": 128,
+   "min": 1,
+   "max": 1024
+  },
+  {
+   "id": "dst",
+   "label": "Destination Count",
+   "type": "number",
+   "default": 128,
+   "min": 1,
+   "max": 1024
+  }
+ ],
+ "actions": [
+  {
+   "id": "goSetClear",
+   "name": "Go",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "ff06007a",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-generic-swp02",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "generic-swp02",
+  "version": "1.2.4",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-generic-swp02.git"
+ }
+}

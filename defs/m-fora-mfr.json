@@ -1,0 +1,402 @@
+{
+ "format": 1,
+ "id": "m-fora-mfr",
+ "name": "For.A MFR",
+ "category": "For.A",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "switchXpt",
+   "name": "Cut selected source to selected destination",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "@ X:/,\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "presetXpt",
+   "name": "Preset selected source to selected destination",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "@ P:/,\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "switchPresetXpts",
+   "name": "Switch preset crosspoint(s)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "@ B:E\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setVideoFormat",
+   "name": "Preset video format",
+   "options": [
+    {
+     "id": "format",
+     "label": "Set video format :",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "1080/59.94i"
+      },
+      {
+       "id": "01",
+       "label": "1080/59.94p"
+      },
+      {
+       "id": "02",
+       "label": "1080/60i"
+      },
+      {
+       "id": "03",
+       "label": "1080/60p"
+      },
+      {
+       "id": "04",
+       "label": "1080/50i"
+      },
+      {
+       "id": "05",
+       "label": "1080/50p"
+      },
+      {
+       "id": "06",
+       "label": "720/60p"
+      },
+      {
+       "id": "07",
+       "label": "720/60i"
+      },
+      {
+       "id": "08",
+       "label": "720/50p"
+      },
+      {
+       "id": "09",
+       "label": "1080/30p"
+      },
+      {
+       "id": "0A",
+       "label": "1080/29.97p"
+      },
+      {
+       "id": "0B",
+       "label": "1080/25p"
+      },
+      {
+       "id": "0C",
+       "label": "1080/24p"
+      },
+      {
+       "id": "0D",
+       "label": "1080/23.98p"
+      },
+      {
+       "id": "0E",
+       "label": "1080/30PsF"
+      },
+      {
+       "id": "0F",
+       "label": "1080/29.97PsF"
+      },
+      {
+       "id": "10",
+       "label": "1080/25PsF"
+      },
+      {
+       "id": "11",
+       "label": "1080/24PsF"
+      },
+      {
+       "id": "12",
+       "label": "1080/23.98PsF"
+      },
+      {
+       "id": "13",
+       "label": "525/59.94i"
+      },
+      {
+       "id": "14",
+       "label": "625/50i"
+      }
+     ]
+    },
+    {
+     "id": "ref",
+     "label": "Set reference type :",
+     "type": "select",
+     "default": "RA",
+     "choices": [
+      {
+       "id": "RA",
+       "label": "Auto"
+      },
+      {
+       "id": "RB",
+       "label": "B.B"
+      },
+      {
+       "id": "RT",
+       "label": "Tri-Sync"
+      }
+     ]
+    },
+    {
+     "id": "point",
+     "label": "Set switching point :",
+     "type": "select",
+     "default": "SF",
+     "choices": [
+      {
+       "id": "SF",
+       "label": "Field"
+      },
+      {
+       "id": "SO",
+       "label": "Odd"
+      },
+      {
+       "id": "SE",
+       "label": "Even"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@ UF:{{option.format|map}}/R{{option.ref|map}},S{{option.point|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "format": {
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "00": "00",
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07",
+     "08": "08",
+     "09": "09",
+     "0A": "0A",
+     "0B": "0B",
+     "0C": "0C",
+     "0D": "0D",
+     "0E": "0E",
+     "0F": "0F"
+    },
+    "ref": {
+     "RA": "A",
+     "RB": "B",
+     "RT": "T"
+    },
+    "point": {
+     "SF": "F",
+     "SO": "O",
+     "SE": "E"
+    }
+   }
+  },
+  {
+   "id": "applyVideoFormat",
+   "name": "Apply preset video format",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "@ UE:A\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cancelVideoFormat",
+   "name": "Cancel preset video format",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "@ UE:C\\r",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lockDst",
+   "name": "Lock/Unlock a destination",
+   "options": [
+    {
+     "id": "dst",
+     "label": "Destination :",
+     "type": "select",
+     "default": "00",
+     "choices": []
+    },
+    {
+     "id": "mode",
+     "label": "Lock mode :",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unlock"
+      },
+      {
+       "id": "1",
+       "label": "Lock"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "@ W:/00,,{{option.mode|map}}\\r",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "CutXpt",
+   "category": "Control",
+   "name": "Cut selected source to selected destination",
+   "text": "CUT\n\n>",
+   "backgroundColor": "#dadada",
+   "action": {
+    "definitionId": "switchXpt",
+    "options": {}
+   }
+  },
+  {
+   "id": "PresetXpt",
+   "category": "Control",
+   "name": "Preset routing of selected source to selected destination",
+   "text": "PRESET\n\n>",
+   "backgroundColor": "#dadada",
+   "action": {
+    "definitionId": "presetXpt",
+    "options": {}
+   }
+  },
+  {
+   "id": "SwitchPresetXpt",
+   "category": "Control",
+   "name": "Salvo switch preset routes",
+   "text": "CUT\nPRESET\nXPTs",
+   "backgroundColor": "#dadada",
+   "action": {
+    "definitionId": "switchPresetXpts",
+    "options": {}
+   }
+  },
+  {
+   "id": "PresetVideoFormat",
+   "category": "Control",
+   "name": "Set the router video format",
+   "text": "PRESET\nVIDEO\nFORMAT",
+   "backgroundColor": "#dadada",
+   "action": {
+    "definitionId": "setVideoFormat",
+    "options": {
+     "format": "04",
+     "ref": "RA",
+     "point": "SO"
+    }
+   }
+  },
+  {
+   "id": "ApplyVideoFormat",
+   "category": "Control",
+   "name": "Apply the preset Video Format",
+   "text": "APPLY\nPRESET\nVIDEO\nFORMAT",
+   "backgroundColor": "#dadada",
+   "action": {
+    "definitionId": "applyVideoFormat",
+    "options": {}
+   }
+  },
+  {
+   "id": "CancelVideoFormat",
+   "category": "Control",
+   "name": "Cancel the preset Video Format",
+   "text": "CANCEL\nPRESET\nVIDEO\nFORMAT",
+   "backgroundColor": "#dadada",
+   "action": {
+    "definitionId": "cancelVideoFormat",
+    "options": {}
+   }
+  },
+  {
+   "id": "LockDst",
+   "category": "Control",
+   "name": "Lock / unlock a destination",
+   "text": "(UN)LOCK\nDST",
+   "backgroundColor": "#dadada",
+   "action": {
+    "definitionId": "lockDst",
+    "options": {
+     "dst": "00",
+     "mode": "0"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-fora-mfr",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dan Hall"
+  }
+ ],
+ "source": {
+  "module": "fora-mfr",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Dan Hall"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-fora-mfr.git"
+ }
+}

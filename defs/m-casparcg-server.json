@@ -1,0 +1,65 @@
+{
+ "format": 1,
+ "id": "m-casparcg-server",
+ "name": "CasparCG Server",
+ "category": "CasparCG",
+ "version": "2.1.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5250,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "COMMAND",
+   "name": "Manually specify AMCP command",
+   "options": [
+    {
+     "id": "cmd",
+     "label": "Command",
+     "type": "text",
+     "default": "CLEAR 1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.cmd}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（ISC）",
+   "url": "https://github.com/bitfocus/companion-module-casparcg-server",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Håkon Nessjøen"
+  }
+ ],
+ "source": {
+  "module": "casparcg-server",
+  "version": "2.1.2",
+  "license": "ISC",
+  "maintainers": [
+   "Håkon Nessjøen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-casparcg-server.git"
+ }
+}

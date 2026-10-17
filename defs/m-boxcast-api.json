@@ -1,0 +1,116 @@
+{
+ "format": 1,
+ "id": "m-boxcast-api",
+ "name": "Boxcast API",
+ "category": "Boxcast",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://rest.boxcast.com",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "apiKey",
+   "label": "API Key",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "apiSecret",
+   "label": "API Secret",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "numBroadcasts",
+   "label": "Number of Broadcasts to Retrieve",
+   "type": "number",
+   "default": 5,
+   "min": 1,
+   "max": 100
+  },
+  {
+   "id": "autoSelectBroadcastAfterStop",
+   "label": "Auto-select next Broadcast after stopping the current one.",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling (necessary for feedbacks and variables)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollingrate",
+   "label": "Polling Rate for Current State (in ms)",
+   "type": "text",
+   "default": 1000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "filterBroadcastsByChannel",
+   "name": "Filter Broadcasts by Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "choices": [
+      {
+       "id": "undefined",
+       "label": "No Channels Available"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/account/channels/undefined/broadcasts"
+   }
+  },
+  {
+   "id": "filterBroadcastsByChannelOff",
+   "name": "Filter Broadcasts by Channel - Turn Off",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/account/broadcasts?s=starts_at&l=5&q=timeframe:current%20timeframe:preroll%20timeframe:future"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-boxcast-api",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "boxcast-api",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-boxcast-api.git"
+ }
+}

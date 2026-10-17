@@ -1,0 +1,814 @@
+{
+ "format": 1,
+ "id": "m-roland-v600uhd",
+ "name": "Roland V-600UHD",
+ "category": "Roland",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8023,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "0000"
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "select_pgm",
+   "name": "Select PGM Channel",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Cross-Point 1"
+      },
+      {
+       "id": "1",
+       "label": "Cross-Point 2"
+      },
+      {
+       "id": "2",
+       "label": "Cross-Point 3"
+      },
+      {
+       "id": "3",
+       "label": "Cross-Point 4"
+      },
+      {
+       "id": "4",
+       "label": "Cross-Point 5"
+      },
+      {
+       "id": "5",
+       "label": "Cross-Point 6"
+      },
+      {
+       "id": "6",
+       "label": "Cross-Point 7"
+      },
+      {
+       "id": "7",
+       "label": "Cross-Point 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "PGM:{{option.source|map}};\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "select_pst",
+   "name": "Select PST Channel",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Cross-Point 1"
+      },
+      {
+       "id": "1",
+       "label": "Cross-Point 2"
+      },
+      {
+       "id": "2",
+       "label": "Cross-Point 3"
+      },
+      {
+       "id": "3",
+       "label": "Cross-Point 4"
+      },
+      {
+       "id": "4",
+       "label": "Cross-Point 5"
+      },
+      {
+       "id": "5",
+       "label": "Cross-Point 6"
+      },
+      {
+       "id": "6",
+       "label": "Cross-Point 7"
+      },
+      {
+       "id": "7",
+       "label": "Cross-Point 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "PST:{{option.source|map}};\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "select_aux",
+   "name": "Select AUX Channel",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Cross-Point 1"
+      },
+      {
+       "id": "1",
+       "label": "Cross-Point 2"
+      },
+      {
+       "id": "2",
+       "label": "Cross-Point 3"
+      },
+      {
+       "id": "3",
+       "label": "Cross-Point 4"
+      },
+      {
+       "id": "4",
+       "label": "Cross-Point 5"
+      },
+      {
+       "id": "5",
+       "label": "Cross-Point 6"
+      },
+      {
+       "id": "6",
+       "label": "Cross-Point 7"
+      },
+      {
+       "id": "7",
+       "label": "Cross-Point 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AUX:{{option.source|map}};\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  },
+  {
+   "id": "select_transition_pattern",
+   "name": "Select transition pattern",
+   "options": [
+    {
+     "id": "transitionpattern",
+     "label": "Transition Pattern",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Wipe 1"
+      },
+      {
+       "id": "1",
+       "label": "Wipe 2"
+      },
+      {
+       "id": "2",
+       "label": "Wipe 3"
+      },
+      {
+       "id": "3",
+       "label": "Mix"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "TRS:{{option.transitionpattern|map}};\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "transitionpattern": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_transition_time",
+   "name": "Set Video Transition Time",
+   "options": [
+    {
+     "id": "transitiontime",
+     "label": "Time between 0 (0.0 sec) and 40 (4.0 sec)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "TIM:{{option.transitiontime}};\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "auto",
+   "name": "Press the [AUTO] button",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ATO;\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cut",
+   "name": "Press the [CUT] button",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CUT;\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "select_composition_type",
+   "name": "Select Composition Type",
+   "options": [
+    {
+     "id": "compositiontype",
+     "label": "Composition Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "None"
+      },
+      {
+       "id": "1",
+       "label": "PinP 1-1"
+      },
+      {
+       "id": "2",
+       "label": "PinP 1-2"
+      },
+      {
+       "id": "3",
+       "label": "Key 1"
+      },
+      {
+       "id": "4",
+       "label": "PinP 1-1 + Key 1"
+      },
+      {
+       "id": "5",
+       "label": "PinP 1-2 + Key 1"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CTY:{{option.compositiontype|map}};\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "compositiontype": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    }
+   }
+  },
+  {
+   "id": "select_dsk_type",
+   "name": "Select DSK Type",
+   "options": [
+    {
+     "id": "dsktype",
+     "label": "DSK Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "None"
+      },
+      {
+       "id": "1",
+       "label": "PinP 2-1"
+      },
+      {
+       "id": "2",
+       "label": "PinP 2-2"
+      },
+      {
+       "id": "3",
+       "label": "Key 2"
+      },
+      {
+       "id": "4",
+       "label": "PinP 2-1 + Key 2"
+      },
+      {
+       "id": "5",
+       "label": "PinP 2-2 + Key 2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "DTY:{{option.dsktype|map}};\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "dsktype": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    }
+   }
+  },
+  {
+   "id": "composition",
+   "name": "Press the [COMPOSITION] button",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CMP;\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dsk",
+   "name": "Press the [DSK] button",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "DSK;\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_outputfade_onoff",
+   "name": "Set Output Fade On/Off",
+   "options": [
+    {
+     "id": "setting",
+     "label": "Setting",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FDE:{{option.setting|map}};\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "setting": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "set_outputfade_time",
+   "name": "Set Output Fade Time",
+   "options": [
+    {
+     "id": "transitiontime",
+     "label": "Time between 0 (0.0 sec) and 100 (10.0 sec)",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FDT:{{option.transitiontime}};\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "audio_master_level",
+   "name": "Adjust Volume Level for Master Out",
+   "options": [
+    {
+     "id": "level",
+     "label": "-801 (-INF dB), -800 (-80.0 dB) – 0 (0.0 dB) –100 (10.0 dB)",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "OAX:{{option.level}};\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "audio_aux_level",
+   "name": "Adjust Volume Level for Aux Bus",
+   "options": [
+    {
+     "id": "level",
+     "label": "-801 (-INF dB), -800 (-80.0 dB) – 0 (0.0 dB) –100 (10.0 dB)",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "OAX:{{option.level}};\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "memory",
+   "name": "Call Up Memory",
+   "options": [
+    {
+     "id": "memory",
+     "label": "Memory",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1-1"
+      },
+      {
+       "id": "1",
+       "label": "1-2"
+      },
+      {
+       "id": "2",
+       "label": "1-3"
+      },
+      {
+       "id": "3",
+       "label": "1-4"
+      },
+      {
+       "id": "4",
+       "label": "1-5"
+      },
+      {
+       "id": "5",
+       "label": "1-6"
+      },
+      {
+       "id": "6",
+       "label": "1-7"
+      },
+      {
+       "id": "7",
+       "label": "1-8"
+      },
+      {
+       "id": "8",
+       "label": "2-1"
+      },
+      {
+       "id": "9",
+       "label": "2-2"
+      },
+      {
+       "id": "10",
+       "label": "2-3"
+      },
+      {
+       "id": "11",
+       "label": "2-4"
+      },
+      {
+       "id": "12",
+       "label": "2-5"
+      },
+      {
+       "id": "13",
+       "label": "2-6"
+      },
+      {
+       "id": "14",
+       "label": "2-7"
+      },
+      {
+       "id": "15",
+       "label": "2-8"
+      },
+      {
+       "id": "16",
+       "label": "3-1"
+      },
+      {
+       "id": "17",
+       "label": "3-2"
+      },
+      {
+       "id": "18",
+       "label": "3-3"
+      },
+      {
+       "id": "19",
+       "label": "3-4"
+      },
+      {
+       "id": "20",
+       "label": "3-5"
+      },
+      {
+       "id": "21",
+       "label": "3-6"
+      },
+      {
+       "id": "22",
+       "label": "3-7"
+      },
+      {
+       "id": "23",
+       "label": "3-8"
+      },
+      {
+       "id": "24",
+       "label": "4-1"
+      },
+      {
+       "id": "25",
+       "label": "4-2"
+      },
+      {
+       "id": "26",
+       "label": "4-3"
+      },
+      {
+       "id": "27",
+       "label": "4-4"
+      },
+      {
+       "id": "28",
+       "label": "4-5"
+      },
+      {
+       "id": "29",
+       "label": "4-6"
+      },
+      {
+       "id": "30",
+       "label": "4-7"
+      },
+      {
+       "id": "31",
+       "label": "4-8"
+      },
+      {
+       "id": "32",
+       "label": "5-1"
+      },
+      {
+       "id": "33",
+       "label": "5-2"
+      },
+      {
+       "id": "34",
+       "label": "5-3"
+      },
+      {
+       "id": "35",
+       "label": "5-4"
+      },
+      {
+       "id": "36",
+       "label": "5-5"
+      },
+      {
+       "id": "37",
+       "label": "5-6"
+      },
+      {
+       "id": "38",
+       "label": "5-7"
+      },
+      {
+       "id": "39",
+       "label": "5-8"
+      },
+      {
+       "id": "40",
+       "label": "6-1"
+      },
+      {
+       "id": "41",
+       "label": "6-2"
+      },
+      {
+       "id": "42",
+       "label": "6-3"
+      },
+      {
+       "id": "43",
+       "label": "6-4"
+      },
+      {
+       "id": "44",
+       "label": "6-5"
+      },
+      {
+       "id": "45",
+       "label": "6-6"
+      },
+      {
+       "id": "46",
+       "label": "6-7"
+      },
+      {
+       "id": "47",
+       "label": "6-8"
+      },
+      {
+       "id": "48",
+       "label": "7-1"
+      },
+      {
+       "id": "49",
+       "label": "7-2"
+      },
+      {
+       "id": "50",
+       "label": "7-3"
+      },
+      {
+       "id": "51",
+       "label": "7-4"
+      },
+      {
+       "id": "52",
+       "label": "7-5"
+      },
+      {
+       "id": "53",
+       "label": "7-6"
+      },
+      {
+       "id": "54",
+       "label": "7-7"
+      },
+      {
+       "id": "55",
+       "label": "7-8"
+      },
+      {
+       "id": "56",
+       "label": "8-1"
+      },
+      {
+       "id": "57",
+       "label": "8-2"
+      },
+      {
+       "id": "58",
+       "label": "8-3"
+      },
+      {
+       "id": "59",
+       "label": "8-4"
+      },
+      {
+       "id": "60",
+       "label": "8-5"
+      },
+      {
+       "id": "61",
+       "label": "8-6"
+      },
+      {
+       "id": "62",
+       "label": "8-7"
+      },
+      {
+       "id": "63",
+       "label": "8-8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MEM:{{option.memory}};\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-roland-v600uhd",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "roland-v600uhd",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-roland-v600uhd.git"
+ }
+}

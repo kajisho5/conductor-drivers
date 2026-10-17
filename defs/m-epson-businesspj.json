@@ -1,0 +1,584 @@
+{
+ "format": 1,
+ "id": "m-epson-businesspj",
+ "name": "Epson Business Projectors",
+ "category": "Epson",
+ "version": "2.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "https",
+   "label": "HTTPS Connection",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling",
+   "type": "boolean"
+  },
+  {
+   "id": "interval",
+   "label": "Update Interval",
+   "type": "text",
+   "default": 3000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "power",
+   "name": "Power",
+   "options": [
+    {
+     "id": "powerAction",
+     "label": "state",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Power On"
+      },
+      {
+       "id": "OFF",
+       "label": "Power Off (Press twice to power off)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?{{option.powerAction|map}}"
+   },
+   "maps": {
+    "powerAction": {
+     "ON": "IMPWR=ON&_=1792199251531",
+     "OFF": "KEY=6C&_=1792199251655"
+    }
+   }
+  },
+  {
+   "id": "source",
+   "name": "Source Select",
+   "options": [
+    {
+     "id": "sourceId",
+     "label": "source",
+     "type": "select",
+     "default": "30",
+     "choices": [
+      {
+       "id": "30",
+       "label": "HDMI"
+      },
+      {
+       "id": "80",
+       "label": "HDBaseT"
+      },
+      {
+       "id": "A0",
+       "label": "DVI-D"
+      },
+      {
+       "id": "60",
+       "label": "SDI"
+      },
+      {
+       "id": "10",
+       "label": "VGA"
+      },
+      {
+       "id": "B0",
+       "label": "BNC"
+      },
+      {
+       "id": "53",
+       "label": "Wireless"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?SOURCE={{option.sourceId|map}}"
+   },
+   "maps": {
+    "sourceId": {
+     "10": "10&_=1792199252268",
+     "30": "30&_=1792199251777",
+     "53": "53&_=1792199252514",
+     "60": "60&_=1792199252145",
+     "80": "80&_=1792199251900",
+     "A0": "A0&_=1792199252022",
+     "B0": "B0&_=1792199252390"
+    }
+   }
+  },
+  {
+   "id": "audioVideoMute",
+   "name": "Audio/Video Mute (Shutter)",
+   "options": [
+    {
+     "id": "avMuteAction",
+     "label": "av mute",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Execute A/V Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Cancel A/V Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?MUTE=O{{option.avMuteAction|map}}"
+   },
+   "maps": {
+    "avMuteAction": {
+     "ON": "N&_=1792199252638",
+     "OFF": "FF&_=1792199252760"
+    }
+   }
+  },
+  {
+   "id": "freeze",
+   "name": "Freeze",
+   "options": [
+    {
+     "id": "freezeAction",
+     "label": "freeze",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Execute Freeze"
+      },
+      {
+       "id": "OFF",
+       "label": "Cancel Freeze"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?FREEZE=O{{option.freezeAction|map}}"
+   },
+   "maps": {
+    "freezeAction": {
+     "ON": "N&_=1792199252881",
+     "OFF": "FF&_=1792199253004"
+    }
+   }
+  },
+  {
+   "id": "testPattern",
+   "name": "Show Test Pattern",
+   "options": [
+    {
+     "id": "patternId",
+     "label": "test pattern",
+     "type": "select",
+     "default": "2002",
+     "choices": [
+      {
+       "id": "2002",
+       "label": "Standard"
+      },
+      {
+       "id": "2003",
+       "label": "Cross-hatching"
+      },
+      {
+       "id": "200D",
+       "label": "Cross-hatching R"
+      },
+      {
+       "id": "200E",
+       "label": "Cross-hatching G"
+      },
+      {
+       "id": "200F",
+       "label": "Cross-hatching B"
+      },
+      {
+       "id": "2004",
+       "label": "Color Bars V"
+      },
+      {
+       "id": "2010",
+       "label": "Color Bars H"
+      },
+      {
+       "id": "2005",
+       "label": "Grayscale"
+      },
+      {
+       "id": "2012",
+       "label": "Gray Bars V"
+      },
+      {
+       "id": "2013",
+       "label": "Gray Bars H"
+      },
+      {
+       "id": "200B",
+       "label": "Checkerboard 1"
+      },
+      {
+       "id": "200C",
+       "label": "Checkerboard 2"
+      },
+      {
+       "id": "2006",
+       "label": "White"
+      },
+      {
+       "id": "2011",
+       "label": "Black"
+      },
+      {
+       "id": "2014",
+       "label": "Aspect Frame"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?TESTPATTERN=01%20{{option.patternId|map}}"
+   },
+   "maps": {
+    "patternId": {
+     "2002": "02&_=1792199253614",
+     "2003": "03&_=1792199253736",
+     "2004": "04&_=1792199254224",
+     "2005": "05&_=1792199254469",
+     "2006": "06&_=1792199255077",
+     "2010": "10&_=1792199254346",
+     "2011": "11&_=1792199255200",
+     "2012": "12&_=1792199254591",
+     "2013": "13&_=1792199254713",
+     "2014": "14&_=1792199255322",
+     "200D": "0D&_=1792199253858",
+     "200E": "0E&_=1792199253980",
+     "200F": "0F&_=1792199254102",
+     "200B": "0B&_=1792199254834",
+     "200C": "0C&_=1792199254956"
+    }
+   }
+  },
+  {
+   "id": "hideTestPattern",
+   "name": "Hide Test Pattern",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?TESTPATTERN=00&_=1792199255444"
+   }
+  },
+  {
+   "id": "loadLensPosition",
+   "name": "Load Lens Position",
+   "options": [
+    {
+     "id": "loadSlot",
+     "label": "slot",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "1"
+      },
+      {
+       "id": "02",
+       "label": "2"
+      },
+      {
+       "id": "03",
+       "label": "3"
+      },
+      {
+       "id": "04",
+       "label": "4"
+      },
+      {
+       "id": "05",
+       "label": "5"
+      },
+      {
+       "id": "06",
+       "label": "6"
+      },
+      {
+       "id": "07",
+       "label": "7"
+      },
+      {
+       "id": "08",
+       "label": "8"
+      },
+      {
+       "id": "09",
+       "label": "9"
+      },
+      {
+       "id": "0A",
+       "label": "10"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?POPLP=0{{option.loadSlot|map}}"
+   },
+   "maps": {
+    "loadSlot": {
+     "01": "1&_=1792199255567",
+     "02": "2&_=1792199255689",
+     "03": "3&_=1792199255811",
+     "04": "4&_=1792199255932",
+     "05": "5&_=1792199256055",
+     "06": "6&_=1792199256176",
+     "07": "7&_=1792199256298",
+     "08": "8&_=1792199256420",
+     "09": "9&_=1792199256541",
+     "0A": "A&_=1792199256663"
+    }
+   }
+  },
+  {
+   "id": "saveLensPosition",
+   "name": "Save Lens Position",
+   "options": [
+    {
+     "id": "loadSlot",
+     "label": "slot",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "1"
+      },
+      {
+       "id": "02",
+       "label": "2"
+      },
+      {
+       "id": "03",
+       "label": "3"
+      },
+      {
+       "id": "04",
+       "label": "4"
+      },
+      {
+       "id": "05",
+       "label": "5"
+      },
+      {
+       "id": "06",
+       "label": "6"
+      },
+      {
+       "id": "07",
+       "label": "7"
+      },
+      {
+       "id": "08",
+       "label": "8"
+      },
+      {
+       "id": "09",
+       "label": "9"
+      },
+      {
+       "id": "0A",
+       "label": "10"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?PUSHLP=0{{option.loadSlot|map}}"
+   },
+   "maps": {
+    "loadSlot": {
+     "01": "1&_=1792199256785",
+     "02": "2&_=1792199256907",
+     "03": "3&_=1792199257030",
+     "04": "4&_=1792199257152",
+     "05": "5&_=1792199257275",
+     "06": "6&_=1792199257396",
+     "07": "7&_=1792199257518",
+     "08": "8&_=1792199257640",
+     "09": "9&_=1792199257762",
+     "0A": "A&_=1792199257884"
+    }
+   }
+  },
+  {
+   "id": "focusAction",
+   "name": "Focus the Lens",
+   "options": [
+    {
+     "id": "focusAction",
+     "label": "focus",
+     "type": "select",
+     "default": "DEC",
+     "choices": [
+      {
+       "id": "DEC",
+       "label": "Near - Minus"
+      },
+      {
+       "id": "INC",
+       "label": "Far - Plus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?FOCUS={{option.focusAction|map}}"
+   },
+   "maps": {
+    "focusAction": {
+     "DEC": "DEC&_=1792199258006",
+     "INC": "INC&_=1792199258128"
+    }
+   }
+  },
+  {
+   "id": "zoomAction",
+   "name": "Zoom the Lens",
+   "options": [
+    {
+     "id": "zoomAction",
+     "label": "zoom",
+     "type": "select",
+     "default": "INC",
+     "choices": [
+      {
+       "id": "INC",
+       "label": "Zoom in"
+      },
+      {
+       "id": "DEC",
+       "label": "Zoom out"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?ZOOM={{option.zoomAction|map}}"
+   },
+   "maps": {
+    "zoomAction": {
+     "INC": "INC&_=1792199258253",
+     "DEC": "DEC&_=1792199258375"
+    }
+   }
+  },
+  {
+   "id": "shiftAction",
+   "name": "Shift the Lens",
+   "options": [
+    {
+     "id": "shiftAction",
+     "label": "shift",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Up"
+      },
+      {
+       "id": "1",
+       "label": "Down"
+      },
+      {
+       "id": "2",
+       "label": "Left"
+      },
+      {
+       "id": "3",
+       "label": "Right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cgi-bin/directsend?{{option.shiftAction|map}}"
+   },
+   "maps": {
+    "shiftAction": {
+     "0": "LENS=INC&_=1792199258497",
+     "1": "LENS=DEC&_=1792199258619",
+     "2": "HLENS=DEC&_=1792199258741",
+     "3": "HLENS=INC&_=1792199258863"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-epson-businesspj",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Arthur Penner, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "epson-businesspj",
+  "version": "2.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Arthur Penner",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-epson-businesspj.git"
+ }
+}

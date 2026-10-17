@@ -1,0 +1,3465 @@
+{
+ "format": 1,
+ "id": "m-dbaudiotechnik-dsp",
+ "name": "D&B Audiotechnik DS100",
+ "category": "D&B Audiotechnik",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 50010,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "remotePort",
+   "label": "OSC Port to Send To",
+   "type": "text",
+   "default": "50010"
+  },
+  {
+   "id": "localPort",
+   "label": "OSC Port to Listen To",
+   "type": "text",
+   "default": "50011"
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollInterval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 500,
+   "min": 100,
+   "max": 60000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "setMatrixInputMute",
+   "name": "Matrix Input - Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/mute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputMuteAll",
+   "name": "Matrix Input - Mute All",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/mute/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputGain",
+   "name": "Matrix Input - Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/gain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputGainAll",
+   "name": "Matrix Input - Gain All",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/gain/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixInputGain",
+   "name": "Matrix Input - Increase Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/gain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixInputGain",
+   "name": "Matrix Input - Decrease Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/gain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputDelay",
+   "name": "Matrix Input - Delay",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/delay/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputDelayAll",
+   "name": "Matrix Input - Delay All",
+   "options": [
+    {
+     "id": "delay",
+     "label": "Delay (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/delay/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixInputDelay",
+   "name": "Matrix Input - Increase Delay",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/delay/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixInputDelay",
+   "name": "Matrix Input - Decrease Delay",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/delay/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputDelayEnable",
+   "name": "Matrix Input - Delay Enable",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delayenable",
+     "label": "Delay Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/delayenable/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.delayenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "delayenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputDelayEnableAll",
+   "name": "Matrix Input - Delay Enable All",
+   "options": [
+    {
+     "id": "delayenable",
+     "label": "Delay Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/delayenable/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.delayenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "delayenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputEqEnable",
+   "name": "Matrix Input - EQ Enable",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "eqenable",
+     "label": "EQ Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/eqenable/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.eqenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "eqenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputEqEnableAll",
+   "name": "Matrix Input - EQ Enable All",
+   "options": [
+    {
+     "id": "eqenable",
+     "label": "EQ Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/eqenable/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.eqenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "eqenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputPolarity",
+   "name": "Matrix Input - Polarity",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "polarity",
+     "label": "Polarity",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Reversed"
+      },
+      {
+       "id": "0",
+       "label": "Normal"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/polarity/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.polarity|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "polarity": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputPolarityAll",
+   "name": "Matrix Input - Polarity All",
+   "options": [
+    {
+     "id": "polarity",
+     "label": "Polarity",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Reversed"
+      },
+      {
+       "id": "0",
+       "label": "Normal"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/polarity/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.polarity|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "polarity": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixInputChannelName",
+   "name": "Matrix Input - Channel Name",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "channelname",
+     "label": "Channel Name",
+     "type": "text",
+     "default": "Channel"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/channelname/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.channelname}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputLevelMeterPreMute",
+   "name": "Matrix Input - Level Meter Pre Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpremute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputLevelMeterPreMuteAll",
+   "name": "Matrix Input - Level Meter Pre Mute All",
+   "options": [
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpremute/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixInputLevelMeterPreMute",
+   "name": "Matrix Input - Increase Level Meter Pre Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpremute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixInputLevelMeterPreMute",
+   "name": "Matrix Input - Decrease Level Meter Pre Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpremute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputLevelMeterPostMute",
+   "name": "Matrix Input - Level Meter Post Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpostmute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputLevelMeterPostMuteAll",
+   "name": "Matrix Input - Level Meter Post Mute All",
+   "options": [
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpostmute/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixInputLevelMeterPostMute",
+   "name": "Matrix Input - Increase Level Meter Post Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpostmute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixInputLevelMeterPostMute",
+   "name": "Matrix Input - Decrease Level Meter Post Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/levelmeterpostmute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixNodeEnable",
+   "name": "Matrix Node - Enable",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "enable",
+     "label": "Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/enable/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.enable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "enable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixNodeGain",
+   "name": "Matrix Node - Gain",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/gain/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixNodeGainAll",
+   "name": "Matrix Node - Gain All",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/gain/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixNodeGain",
+   "name": "Matrix Node - Increase Gain",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/gain/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixNodeGain",
+   "name": "Matrix Node - Decrease Gain",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/gain/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixNodeDelayEnable",
+   "name": "Matrix Node - Delay Enable",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delayenable",
+     "label": "Delay Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/delayenable/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.delayenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "delayenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixNodeDelayEnableAll",
+   "name": "Matrix Node - Delay Enable All",
+   "options": [
+    {
+     "id": "delayenable",
+     "label": "Delay Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/delayenable/*/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.delayenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "delayenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixNodeDelay",
+   "name": "Matrix Node - Delay",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/delay/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixNodeDelayAll",
+   "name": "Matrix Node - Delay All",
+   "options": [
+    {
+     "id": "delay",
+     "label": "Delay (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/delay/*/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixNodeDelay",
+   "name": "Matrix Node - Increase Delay",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/delay/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixNodeDelay",
+   "name": "Matrix Node - Decrease Delay",
+   "options": [
+    {
+     "id": "input",
+     "label": "Matrix Node Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "output",
+     "label": "Matrix Node Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixnode/delay/{{option.input}}/{{option.output}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputMute",
+   "name": "Matrix Output - Mute",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/mute/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputMuteAll",
+   "name": "Matrix Output - Mute All",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/mute/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputGain",
+   "name": "Matrix Output - Gain",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/gain/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputGainAll",
+   "name": "Matrix Output - Gain All",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/gain/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixOutputGain",
+   "name": "Matrix Output - Increase Gain",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/gain/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixOutputGain",
+   "name": "Matrix Output - Decrease Gain",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/gain/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputDelay",
+   "name": "Matrix Output - Delay",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/delay/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputDelayAll",
+   "name": "Matrix Output - Delay All",
+   "options": [
+    {
+     "id": "delay",
+     "label": "Delay (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/delay/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixOutputDelay",
+   "name": "Matrix Output - Increase Delay",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/delay/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixOutputDelay",
+   "name": "Matrix Output - Decrease Delay",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delay",
+     "label": "Delay Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/delay/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputDelayEnable",
+   "name": "Matrix Output - Delay Enable",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "delayenable",
+     "label": "Delay Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/delayenable/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.delayenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "delayenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputDelayEnableAll",
+   "name": "Matrix Output - Delay Enable All",
+   "options": [
+    {
+     "id": "delayenable",
+     "label": "Delay Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/delayenable/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.delayenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "delayenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputEqEnable",
+   "name": "Matrix Output - EQ Enable",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "eqenable",
+     "label": "EQ Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/eqenable/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.eqenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "eqenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputEqEnableAll",
+   "name": "Matrix Output - EQ Enable All",
+   "options": [
+    {
+     "id": "eqenable",
+     "label": "EQ Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/eqenable/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.eqenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "eqenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputPolarity",
+   "name": "Matrix Output - Polarity",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "polarity",
+     "label": "Polarity",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Reversed"
+      },
+      {
+       "id": "0",
+       "label": "Normal"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/polarity/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.polarity|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "polarity": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputPolarityAll",
+   "name": "Matrix Output - Polarity All",
+   "options": [
+    {
+     "id": "polarity",
+     "label": "Polarity",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Reversed"
+      },
+      {
+       "id": "0",
+       "label": "Normal"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/polarity/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.polarity|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "polarity": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMatrixOutputChannelName",
+   "name": "Matrix Output - Channel Name",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "channelname",
+     "label": "Channel Name",
+     "type": "text",
+     "default": "Channel"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/channelname/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.channelname}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputLevelMeterPreMute",
+   "name": "Matrix Output - Level Meter Pre Mute",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpremute/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputLevelMeterPreMuteAll",
+   "name": "Matrix Output - Level Meter Pre Mute All",
+   "options": [
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpremute/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixOutputLevelMeterPreMute",
+   "name": "Matrix Output - Increase Level Meter Pre Mute",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpremute/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixOutputLevelMeterPreMute",
+   "name": "Matrix Output - Decrease Level Meter Pre Mute",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpremute",
+     "label": "Level Meter Pre Mute Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpremute/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpremute|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputLevelMeterPostMute",
+   "name": "Matrix Output - Level Meter Post Mute",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpostmute/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixOutputLevelMeterPostMuteAll",
+   "name": "Matrix Output - Level Meter Post Mute All",
+   "options": [
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpostmute/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixOutputLevelMeterPostMute",
+   "name": "Matrix Output - Increase Level Meter Post Mute",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute Increase Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpostmute/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixOutputLevelMeterPostMute",
+   "name": "Matrix Output - Decrease Level Meter Post Mute",
+   "options": [
+    {
+     "id": "matrixoutput",
+     "label": "Matrix Output",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "levelmeterpostmute",
+     "label": "Level Meter Post Mute Decrease Amount",
+     "type": "number",
+     "default": 1,
+     "min": 0.1,
+     "max": 6
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixoutput/levelmeterpostmute/{{option.matrixoutput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeterpostmute|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setPositioningSourceSpread",
+   "name": "Positioning - Source Spread",
+   "options": [
+    {
+     "id": "soundobject",
+     "label": "Sound Object",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "sourcespread",
+     "label": "Source Spread",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/positioning/source_spread/{{option.soundobject}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.sourcespread}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setPositioningSourceDelayMode",
+   "name": "Positioning - Source Delay Mode",
+   "options": [
+    {
+     "id": "soundobject",
+     "label": "Sound Object",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "sourcedelaymode",
+     "label": "Source Delay Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Tight"
+      },
+      {
+       "id": "2",
+       "label": "Full"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/positioning/source_delaymode/{{option.soundobject}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.sourcedelaymode|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "sourcedelaymode": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "increaseCoordinateMappingSourcePositionX",
+   "name": "Coordinate Mapping - Increase Source Position X",
+   "options": [
+    {
+     "id": "coordinatemappingarea",
+     "label": "Coordinate Mapping Area",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "soundobject",
+     "label": "Sound Object",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "sourceposition",
+     "label": "Source Position X Increase Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/coordinatemapping/source_position_x/{{option.coordinatemappingarea}}/{{option.soundobject}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.sourceposition}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseCoordinateMappingSourcePositionX",
+   "name": "Coordinate Mapping - Decrease Source Position X",
+   "options": [
+    {
+     "id": "coordinatemappingarea",
+     "label": "Coordinate Mapping Area",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "soundobject",
+     "label": "Sound Object",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "sourceposition",
+     "label": "Source Position X Decrease Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/coordinatemapping/source_position_x/{{option.coordinatemappingarea}}/{{option.soundobject}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.sourceposition|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseCoordinateMappingSourcePositionY",
+   "name": "Coordinate Mapping - Decrease Source Position Y",
+   "options": [
+    {
+     "id": "coordinatemappingarea",
+     "label": "Coordinate Mapping Area",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "soundobject",
+     "label": "Sound Object",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "sourceposition",
+     "label": "Source Position Y Decrease Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/coordinatemapping/source_position_y/{{option.coordinatemappingarea}}/{{option.soundobject}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.sourceposition|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixSettingsReverbRoomId",
+   "name": "Matrix Settings - Reverb Room ID",
+   "options": [
+    {
+     "id": "reverbroomid",
+     "label": "Room Number",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Modern - small / Blaibach Concert Hall"
+      },
+      {
+       "id": "2",
+       "label": "Classic - small / Schubert-Saal, Vienna Concert Hall"
+      },
+      {
+       "id": "3",
+       "label": "Modern - medium / Angelika-Kauffmann-Saal, Schwarzenberg Congress Center"
+      },
+      {
+       "id": "4",
+       "label": "Classic - medium / Mozart-Saal, Vienna Concert Hall"
+      },
+      {
+       "id": "5",
+       "label": "Modern - large / KKL Luzern"
+      },
+      {
+       "id": "6",
+       "label": "Classic - large / Großer Saal, Vienna Concert Hall"
+      },
+      {
+       "id": "7",
+       "label": "Modern - medium / Bing Concert Hall, Stanford"
+      },
+      {
+       "id": "8",
+       "label": "Theatre - small / Alighieri Theatre, Ravenna"
+      },
+      {
+       "id": "9",
+       "label": "Cathedral / San Vitale, Ravenna"
+      },
+      {
+       "id": "101",
+       "label": "Custom room 1"
+      },
+      {
+       "id": "102",
+       "label": "Custom room 2"
+      },
+      {
+       "id": "103",
+       "label": "Custom room 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixsettings/reverbroomid",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.reverbroomid|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "reverbroomid": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "101": "101",
+     "102": "102",
+     "103": "103"
+    }
+   }
+  },
+  {
+   "id": "setMatrixSettingsReverbPreDelayFactor",
+   "name": "Matrix Settings - Reverb Pre Delay Factor",
+   "options": [
+    {
+     "id": "reverbpredelayfactor",
+     "label": "Pre Delay Factor",
+     "type": "number",
+     "default": 0,
+     "min": 0.2,
+     "max": 2
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixsettings/reverbpredelayfactor",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbpredelayfactor}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixSettingsReverbPreDelayFactor",
+   "name": "Matrix Settings - Increase Reverb Pre Delay Factor",
+   "options": [
+    {
+     "id": "reverbpredelayfactor",
+     "label": "Pre Delay Factor Increase Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixsettings/reverbpredelayfactor",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbpredelayfactor}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixSettingsReverbPreDelayFactor",
+   "name": "Matrix Settings - Decrease Reverb Pre Delay Factor",
+   "options": [
+    {
+     "id": "reverbpredelayfactor",
+     "label": "Pre Delay Factor Decrease Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixsettings/reverbpredelayfactor",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbpredelayfactor|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixSettingsReverbRearLevel",
+   "name": "Matrix Settings - Reverb Rear Level",
+   "options": [
+    {
+     "id": "reverbrearlevel",
+     "label": "Rear Level",
+     "type": "number",
+     "default": 0,
+     "min": -24,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixsettings/reverbrearlevel",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbrearlevel}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixSettingsReverbRearLevel",
+   "name": "Matrix Settings - Increase Reverb Rear Level",
+   "options": [
+    {
+     "id": "reverbrearlevel",
+     "label": "Rear Level Increase Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixsettings/reverbrearlevel",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbrearlevel}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixSettingsReverbRearLevel",
+   "name": "Matrix Settings - Decrease Reverb Rear Level",
+   "options": [
+    {
+     "id": "reverbrearlevel",
+     "label": "Rear Level Decrease Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixsettings/reverbrearlevel",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbrearlevel|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputReverbSendGain",
+   "name": "Matrix Input - Reverb Send Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "reverbsendgain",
+     "label": "Reverb Send Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/reverbsendgain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbsendgain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setMatrixInputReverbSendGainAll",
+   "name": "Matrix Input - Reverb Send Gain (All)",
+   "options": [
+    {
+     "id": "reverbsendgain",
+     "label": "Reverb Send Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/reverbsendgain/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbsendgain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseMatrixInputReverbSendGain",
+   "name": "Matrix Input - Increase Reverb Send Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "reverbsendgain",
+     "label": "Reverb Send Gain Increase Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/reverbsendgain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbsendgain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseMatrixInputReverbSendGain",
+   "name": "Matrix Input - Decrease Reverb Send Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "reverbsendgain",
+     "label": "Reverb Send Gain Decrease Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/matrixinput/reverbsendgain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.reverbsendgain|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setReverbInputGain",
+   "name": "Reverb Input - Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Matrix Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinput/gain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setReverbInputGainAll",
+   "name": "Reverb Input - Gain (All)",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinput/gain/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setReverbInputProcessingMute",
+   "name": "Reverb Input Processing - Mute",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/mute/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setReverbInputProcessingMuteAll",
+   "name": "Reverb Input Processing - Mute (All)",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/mute/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setReverbInputProcessingGain",
+   "name": "Reverb Input Processing - Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/gain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setReverbInputProcessingGainAll",
+   "name": "Reverb Input Processing - Gain (All)",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/gain/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseReverbInputProcessingGain",
+   "name": "Reverb Input Processing - Increase Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "gain",
+     "label": "Gain Increase Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/gain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseReverbInputProcessingGain",
+   "name": "Reverb Input Processing - Decrease Gain",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "gain",
+     "label": "Gain Decrease Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/gain/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setReverbInputProcessingLevelMeter",
+   "name": "Reverb Input Processing - Level Meter",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "levelmeter",
+     "label": "Level Meter",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/levelmeter/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeter}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setReverbInputProcessingLevelMeterAll",
+   "name": "Reverb Input Processing - Level Meter (All)",
+   "options": [
+    {
+     "id": "levelmeter",
+     "label": "Level Meter",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/levelmeter/*",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeter}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "increaseReverbInputProcessingLevelMeter",
+   "name": "Reverb Input Processing - Increase Level Meter",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "levelmeter",
+     "label": "Level Meter Increase Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/levelmeter/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeter}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "decreaseReverbInputProcessingLevelMeter",
+   "name": "Reverb Input Processing - Decrease Level Meter",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "levelmeter",
+     "label": "Level Meter Decrease Amount",
+     "type": "number",
+     "default": 0.1,
+     "min": 0.1
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/levelmeter/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.levelmeter|lin:-1:0}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setReverbInputProcessingEqEnable",
+   "name": "Reverb Input Processing - EQ Enable",
+   "options": [
+    {
+     "id": "matrixinput",
+     "label": "Zone",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    },
+    {
+     "id": "eqenable",
+     "label": "EQ Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/eqenable/{{option.matrixinput}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.eqenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "eqenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setReverbInputProcessingEqEnableAll",
+   "name": "Reverb Input Processing - EQ Enable (All)",
+   "options": [
+    {
+     "id": "eqenable",
+     "label": "EQ Enable",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Enable"
+      },
+      {
+       "id": "0",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/reverbinputprocessing/eqenable/*",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.eqenable|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "eqenable": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setDeviceClear",
+   "name": "Device - Clear",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/device/clear",
+    "args": []
+   }
+  },
+  {
+   "id": "recallScenePrevious",
+   "name": "Recall Scene - Previous",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/scene/previous",
+    "args": []
+   }
+  },
+  {
+   "id": "recallSceneNext",
+   "name": "Recall Scene - Next",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/scene/next",
+    "args": []
+   }
+  },
+  {
+   "id": "recallSceneMajor",
+   "name": "Recall Scene (Major)",
+   "options": [
+    {
+     "id": "scenenumber",
+     "label": "Scene Number",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/scene/recall",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.scenenumber}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "recallSceneMajorMinor",
+   "name": "Recall Scene (Major/Minor)",
+   "options": [
+    {
+     "id": "majorscenenumber",
+     "label": "Major Scene Number",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999
+    },
+    {
+     "id": "minorscenenumber",
+     "label": "Minor Scene Number",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/scene/recall",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.majorscenenumber}}"
+     },
+     {
+      "type": "i",
+      "value": "{{option.minorscenenumber}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setSoundObjectRoutingMute",
+   "name": "Sound Object Routing - Mute",
+   "options": [
+    {
+     "id": "functiongroup",
+     "label": "Function Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    },
+    {
+     "id": "soundobject",
+     "label": "Sound Object",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/soundobjectrouting/mute/{{option.functiongroup}}/{{option.soundobject}}",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.mute|map}}"
+     }
+    ]
+   },
+   "maps": {
+    "mute": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setSoundObjectRoutingGain",
+   "name": "Sound Object Routing - Gain",
+   "options": [
+    {
+     "id": "functiongroup",
+     "label": "Function Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    },
+    {
+     "id": "soundobject",
+     "label": "Sound Object",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 64
+    },
+    {
+     "id": "gain",
+     "label": "Gain",
+     "type": "number",
+     "default": 0,
+     "min": -120,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/soundobjectrouting/gain/{{option.functiongroup}}/{{option.soundobject}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.gain}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setFunctionGroupSpreadFactor",
+   "name": "Function Group - Spread Factor",
+   "options": [
+    {
+     "id": "functiongroup",
+     "label": "Function Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    },
+    {
+     "id": "spreadfactor",
+     "label": "Spread Factor",
+     "type": "number",
+     "default": 0,
+     "min": 0.5,
+     "max": 2
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/functiongroup/spreadfactor/{{option.functiongroup}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.spreadfactor}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "setFunctionGroupDelay",
+   "name": "Function Group - Delay",
+   "options": [
+    {
+     "id": "functiongroup",
+     "label": "Function Group",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 16
+    },
+    {
+     "id": "delay",
+     "label": "Delay",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 500
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/dbaudio1/functiongroup/delay/{{option.functiongroup}}",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.delay}}"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-dbaudiotechnik-dsp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "dbaudiotechnik-dsp",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-dbaudiotechnik-dsp.git"
+ }
+}

@@ -1,0 +1,2845 @@
+{
+ "format": 1,
+ "id": "m-bmd-videohub",
+ "name": "Blackmagic Design Videohub",
+ "category": "Blackmagic Design",
+ "version": "2.6.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9990,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "take",
+   "label": "Enable Take? (XY only)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "inputCount",
+   "label": "Input Count",
+   "type": "number",
+   "default": 12,
+   "min": 0,
+   "max": 288
+  },
+  {
+   "id": "outputCount",
+   "label": "Output Count",
+   "type": "number",
+   "default": 12,
+   "min": 0,
+   "max": 288
+  },
+  {
+   "id": "monitoringCount",
+   "label": "Monitoring Output Count (when present)",
+   "type": "number",
+   "default": 0,
+   "min": 0,
+   "max": 288
+  },
+  {
+   "id": "serialCount",
+   "label": "Serial Port Count (when present)",
+   "type": "number",
+   "default": 0,
+   "min": 0,
+   "max": 288
+  }
+ ],
+ "actions": [
+  {
+   "id": "rename_destination",
+   "name": "Video: Rename destination",
+   "options": [
+    {
+     "id": "destination",
+     "label": "Destination",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1: Output 1"
+      },
+      {
+       "id": "1",
+       "label": "2: Output 2"
+      },
+      {
+       "id": "2",
+       "label": "3: Output 3"
+      },
+      {
+       "id": "3",
+       "label": "4: Output 4"
+      },
+      {
+       "id": "4",
+       "label": "5: Output 5"
+      },
+      {
+       "id": "5",
+       "label": "6: Output 6"
+      },
+      {
+       "id": "6",
+       "label": "7: Output 7"
+      },
+      {
+       "id": "7",
+       "label": "8: Output 8"
+      },
+      {
+       "id": "8",
+       "label": "9: Output 9"
+      },
+      {
+       "id": "9",
+       "label": "10: Output 10"
+      },
+      {
+       "id": "10",
+       "label": "11: Output 11"
+      },
+      {
+       "id": "11",
+       "label": "12: Output 12"
+      }
+     ]
+    },
+    {
+     "id": "label",
+     "label": "New label",
+     "type": "text",
+     "default": "Dest name"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "OUTPUT LABELS:\\n{{option.destination|map}} {{option.label}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "destination": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11"
+    }
+   }
+  },
+  {
+   "id": "rename_source",
+   "name": "Video: Rename source",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1: Input 1"
+      },
+      {
+       "id": "1",
+       "label": "2: Input 2"
+      },
+      {
+       "id": "2",
+       "label": "3: Input 3"
+      },
+      {
+       "id": "3",
+       "label": "4: Input 4"
+      },
+      {
+       "id": "4",
+       "label": "5: Input 5"
+      },
+      {
+       "id": "5",
+       "label": "6: Input 6"
+      },
+      {
+       "id": "6",
+       "label": "7: Input 7"
+      },
+      {
+       "id": "7",
+       "label": "8: Input 8"
+      },
+      {
+       "id": "8",
+       "label": "9: Input 9"
+      },
+      {
+       "id": "9",
+       "label": "10: Input 10"
+      },
+      {
+       "id": "10",
+       "label": "11: Input 11"
+      },
+      {
+       "id": "11",
+       "label": "12: Input 12"
+      }
+     ]
+    },
+    {
+     "id": "label",
+     "label": "New label",
+     "type": "text",
+     "default": "Src name"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "INPUT LABELS:\\n{{option.source|map}} {{option.label}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11"
+    }
+   }
+  },
+  {
+   "id": "route",
+   "name": "Video: Route source to destination",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1: Input 1"
+      },
+      {
+       "id": "1",
+       "label": "2: Input 2"
+      },
+      {
+       "id": "2",
+       "label": "3: Input 3"
+      },
+      {
+       "id": "3",
+       "label": "4: Input 4"
+      },
+      {
+       "id": "4",
+       "label": "5: Input 5"
+      },
+      {
+       "id": "5",
+       "label": "6: Input 6"
+      },
+      {
+       "id": "6",
+       "label": "7: Input 7"
+      },
+      {
+       "id": "7",
+       "label": "8: Input 8"
+      },
+      {
+       "id": "8",
+       "label": "9: Input 9"
+      },
+      {
+       "id": "9",
+       "label": "10: Input 10"
+      },
+      {
+       "id": "10",
+       "label": "11: Input 11"
+      },
+      {
+       "id": "11",
+       "label": "12: Input 12"
+      }
+     ]
+    },
+    {
+     "id": "destination",
+     "label": "Destination",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1: Output 1"
+      },
+      {
+       "id": "1",
+       "label": "2: Output 2"
+      },
+      {
+       "id": "2",
+       "label": "3: Output 3"
+      },
+      {
+       "id": "3",
+       "label": "4: Output 4"
+      },
+      {
+       "id": "4",
+       "label": "5: Output 5"
+      },
+      {
+       "id": "5",
+       "label": "6: Output 6"
+      },
+      {
+       "id": "6",
+       "label": "7: Output 7"
+      },
+      {
+       "id": "7",
+       "label": "8: Output 8"
+      },
+      {
+       "id": "8",
+       "label": "9: Output 9"
+      },
+      {
+       "id": "9",
+       "label": "10: Output 10"
+      },
+      {
+       "id": "10",
+       "label": "11: Output 11"
+      },
+      {
+       "id": "11",
+       "label": "12: Output 12"
+      }
+     ]
+    },
+    {
+     "id": "ignore_lock",
+     "label": "Ignore Lock",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO OUTPUT ROUTING:\\n{{option.destination|map}} {{option.source|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "destination": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11"
+    },
+    "source": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11"
+    }
+   }
+  },
+  {
+   "id": "route_routed",
+   "name": "Video: Route source to destination, based on another destination",
+   "options": [
+    {
+     "id": "source_routed_to_destination",
+     "label": "Destination to take routed source from",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1: Output 1"
+      },
+      {
+       "id": "1",
+       "label": "2: Output 2"
+      },
+      {
+       "id": "2",
+       "label": "3: Output 3"
+      },
+      {
+       "id": "3",
+       "label": "4: Output 4"
+      },
+      {
+       "id": "4",
+       "label": "5: Output 5"
+      },
+      {
+       "id": "5",
+       "label": "6: Output 6"
+      },
+      {
+       "id": "6",
+       "label": "7: Output 7"
+      },
+      {
+       "id": "7",
+       "label": "8: Output 8"
+      },
+      {
+       "id": "8",
+       "label": "9: Output 9"
+      },
+      {
+       "id": "9",
+       "label": "10: Output 10"
+      },
+      {
+       "id": "10",
+       "label": "11: Output 11"
+      },
+      {
+       "id": "11",
+       "label": "12: Output 12"
+      }
+     ]
+    },
+    {
+     "id": "destination",
+     "label": "Destination",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1: Output 1"
+      },
+      {
+       "id": "1",
+       "label": "2: Output 2"
+      },
+      {
+       "id": "2",
+       "label": "3: Output 3"
+      },
+      {
+       "id": "3",
+       "label": "4: Output 4"
+      },
+      {
+       "id": "4",
+       "label": "5: Output 5"
+      },
+      {
+       "id": "5",
+       "label": "6: Output 6"
+      },
+      {
+       "id": "6",
+       "label": "7: Output 7"
+      },
+      {
+       "id": "7",
+       "label": "8: Output 8"
+      },
+      {
+       "id": "8",
+       "label": "9: Output 9"
+      },
+      {
+       "id": "9",
+       "label": "10: Output 10"
+      },
+      {
+       "id": "10",
+       "label": "11: Output 11"
+      },
+      {
+       "id": "11",
+       "label": "12: Output 12"
+      }
+     ]
+    },
+    {
+     "id": "ignore_lock",
+     "label": "Ignore Lock",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO OUTPUT ROUTING:\\n{{option.destination|map}} {{option.source_routed_to_destination|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "destination": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11"
+    },
+    "source_routed_to_destination": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11"
+    }
+   }
+  },
+  {
+   "id": "route_source",
+   "name": "Video: Route source to selected destination",
+   "options": [
+    {
+     "id": "source",
+     "label": "Source",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1: Input 1"
+      },
+      {
+       "id": "1",
+       "label": "2: Input 2"
+      },
+      {
+       "id": "2",
+       "label": "3: Input 3"
+      },
+      {
+       "id": "3",
+       "label": "4: Input 4"
+      },
+      {
+       "id": "4",
+       "label": "5: Input 5"
+      },
+      {
+       "id": "5",
+       "label": "6: Input 6"
+      },
+      {
+       "id": "6",
+       "label": "7: Input 7"
+      },
+      {
+       "id": "7",
+       "label": "8: Input 8"
+      },
+      {
+       "id": "8",
+       "label": "9: Input 9"
+      },
+      {
+       "id": "9",
+       "label": "10: Input 10"
+      },
+      {
+       "id": "10",
+       "label": "11: Input 11"
+      },
+      {
+       "id": "11",
+       "label": "12: Input 12"
+      }
+     ]
+    },
+    {
+     "id": "ignore_lock",
+     "label": "Ignore Lock",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "VIDEO OUTPUT ROUTING:\\n0 {{option.source|map}}\\n\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "source": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11\\n\\nPING:"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "route_source_0",
+   "category": "Route Source (Y)",
+   "name": "Route Input 1 to selected destination",
+   "text": "Route Input 1 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 0
+    }
+   }
+  },
+  {
+   "id": "route_source_1",
+   "category": "Route Source (Y)",
+   "name": "Route Input 2 to selected destination",
+   "text": "Route Input 2 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 1
+    }
+   }
+  },
+  {
+   "id": "route_source_2",
+   "category": "Route Source (Y)",
+   "name": "Route Input 3 to selected destination",
+   "text": "Route Input 3 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 2
+    }
+   }
+  },
+  {
+   "id": "route_source_3",
+   "category": "Route Source (Y)",
+   "name": "Route Input 4 to selected destination",
+   "text": "Route Input 4 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 3
+    }
+   }
+  },
+  {
+   "id": "route_source_4",
+   "category": "Route Source (Y)",
+   "name": "Route Input 5 to selected destination",
+   "text": "Route Input 5 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 4
+    }
+   }
+  },
+  {
+   "id": "route_source_5",
+   "category": "Route Source (Y)",
+   "name": "Route Input 6 to selected destination",
+   "text": "Route Input 6 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 5
+    }
+   }
+  },
+  {
+   "id": "route_source_6",
+   "category": "Route Source (Y)",
+   "name": "Route Input 7 to selected destination",
+   "text": "Route Input 7 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 6
+    }
+   }
+  },
+  {
+   "id": "route_source_7",
+   "category": "Route Source (Y)",
+   "name": "Route Input 8 to selected destination",
+   "text": "Route Input 8 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 7
+    }
+   }
+  },
+  {
+   "id": "route_source_8",
+   "category": "Route Source (Y)",
+   "name": "Route Input 9 to selected destination",
+   "text": "Route Input 9 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 8
+    }
+   }
+  },
+  {
+   "id": "route_source_9",
+   "category": "Route Source (Y)",
+   "name": "Route Input 10 to selected destination",
+   "text": "Route Input 10 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 9
+    }
+   }
+  },
+  {
+   "id": "route_source_10",
+   "category": "Route Source (Y)",
+   "name": "Route Input 11 to selected destination",
+   "text": "Route Input 11 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 10
+    }
+   }
+  },
+  {
+   "id": "route_source_11",
+   "category": "Route Source (Y)",
+   "name": "Route Input 12 to selected destination",
+   "text": "Route Input 12 to selected destination",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route_source",
+    "options": {
+     "source": 11
+    }
+   }
+  },
+  {
+   "id": "output_0_0",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 1",
+   "text": "Output 1 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_1",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 2",
+   "text": "Output 1 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_2",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 3",
+   "text": "Output 1 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_3",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 4",
+   "text": "Output 1 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_4",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 5",
+   "text": "Output 1 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_5",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 6",
+   "text": "Output 1 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_6",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 7",
+   "text": "Output 1 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_7",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 8",
+   "text": "Output 1 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_8",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 9",
+   "text": "Output 1 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_9",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 10",
+   "text": "Output 1 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_10",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 11",
+   "text": "Output 1 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_0_11",
+   "category": "Output 1",
+   "name": "Output 1 button for Input 12",
+   "text": "Output 1 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 0
+    }
+   }
+  },
+  {
+   "id": "output_1_0",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 1",
+   "text": "Output 2 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_1",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 2",
+   "text": "Output 2 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_2",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 3",
+   "text": "Output 2 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_3",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 4",
+   "text": "Output 2 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_4",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 5",
+   "text": "Output 2 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_5",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 6",
+   "text": "Output 2 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_6",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 7",
+   "text": "Output 2 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_7",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 8",
+   "text": "Output 2 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_8",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 9",
+   "text": "Output 2 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_9",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 10",
+   "text": "Output 2 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_10",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 11",
+   "text": "Output 2 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_1_11",
+   "category": "Output 2",
+   "name": "Output 2 button for Input 12",
+   "text": "Output 2 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 1
+    }
+   }
+  },
+  {
+   "id": "output_2_0",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 1",
+   "text": "Output 3 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_1",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 2",
+   "text": "Output 3 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_2",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 3",
+   "text": "Output 3 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_3",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 4",
+   "text": "Output 3 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_4",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 5",
+   "text": "Output 3 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_5",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 6",
+   "text": "Output 3 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_6",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 7",
+   "text": "Output 3 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_7",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 8",
+   "text": "Output 3 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_8",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 9",
+   "text": "Output 3 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_9",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 10",
+   "text": "Output 3 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_10",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 11",
+   "text": "Output 3 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_2_11",
+   "category": "Output 3",
+   "name": "Output 3 button for Input 12",
+   "text": "Output 3 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 2
+    }
+   }
+  },
+  {
+   "id": "output_3_0",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 1",
+   "text": "Output 4 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_1",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 2",
+   "text": "Output 4 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_2",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 3",
+   "text": "Output 4 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_3",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 4",
+   "text": "Output 4 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_4",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 5",
+   "text": "Output 4 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_5",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 6",
+   "text": "Output 4 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_6",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 7",
+   "text": "Output 4 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_7",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 8",
+   "text": "Output 4 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_8",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 9",
+   "text": "Output 4 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_9",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 10",
+   "text": "Output 4 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_10",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 11",
+   "text": "Output 4 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_3_11",
+   "category": "Output 4",
+   "name": "Output 4 button for Input 12",
+   "text": "Output 4 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 3
+    }
+   }
+  },
+  {
+   "id": "output_4_0",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 1",
+   "text": "Output 5 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_1",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 2",
+   "text": "Output 5 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_2",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 3",
+   "text": "Output 5 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_3",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 4",
+   "text": "Output 5 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_4",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 5",
+   "text": "Output 5 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_5",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 6",
+   "text": "Output 5 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_6",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 7",
+   "text": "Output 5 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_7",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 8",
+   "text": "Output 5 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_8",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 9",
+   "text": "Output 5 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_9",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 10",
+   "text": "Output 5 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_10",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 11",
+   "text": "Output 5 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_4_11",
+   "category": "Output 5",
+   "name": "Output 5 button for Input 12",
+   "text": "Output 5 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 4
+    }
+   }
+  },
+  {
+   "id": "output_5_0",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 1",
+   "text": "Output 6 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_1",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 2",
+   "text": "Output 6 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_2",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 3",
+   "text": "Output 6 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_3",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 4",
+   "text": "Output 6 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_4",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 5",
+   "text": "Output 6 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_5",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 6",
+   "text": "Output 6 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_6",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 7",
+   "text": "Output 6 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_7",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 8",
+   "text": "Output 6 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_8",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 9",
+   "text": "Output 6 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_9",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 10",
+   "text": "Output 6 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_10",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 11",
+   "text": "Output 6 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_5_11",
+   "category": "Output 6",
+   "name": "Output 6 button for Input 12",
+   "text": "Output 6 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 5
+    }
+   }
+  },
+  {
+   "id": "output_6_0",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 1",
+   "text": "Output 7 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_1",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 2",
+   "text": "Output 7 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_2",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 3",
+   "text": "Output 7 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_3",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 4",
+   "text": "Output 7 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_4",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 5",
+   "text": "Output 7 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_5",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 6",
+   "text": "Output 7 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_6",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 7",
+   "text": "Output 7 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_7",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 8",
+   "text": "Output 7 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_8",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 9",
+   "text": "Output 7 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_9",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 10",
+   "text": "Output 7 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_10",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 11",
+   "text": "Output 7 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_6_11",
+   "category": "Output 7",
+   "name": "Output 7 button for Input 12",
+   "text": "Output 7 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 6
+    }
+   }
+  },
+  {
+   "id": "output_7_0",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 1",
+   "text": "Output 8 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_1",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 2",
+   "text": "Output 8 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_2",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 3",
+   "text": "Output 8 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_3",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 4",
+   "text": "Output 8 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_4",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 5",
+   "text": "Output 8 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_5",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 6",
+   "text": "Output 8 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_6",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 7",
+   "text": "Output 8 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_7",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 8",
+   "text": "Output 8 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_8",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 9",
+   "text": "Output 8 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_9",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 10",
+   "text": "Output 8 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_10",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 11",
+   "text": "Output 8 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_7_11",
+   "category": "Output 8",
+   "name": "Output 8 button for Input 12",
+   "text": "Output 8 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 7
+    }
+   }
+  },
+  {
+   "id": "output_8_0",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 1",
+   "text": "Output 9 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_1",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 2",
+   "text": "Output 9 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_2",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 3",
+   "text": "Output 9 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_3",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 4",
+   "text": "Output 9 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_4",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 5",
+   "text": "Output 9 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_5",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 6",
+   "text": "Output 9 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_6",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 7",
+   "text": "Output 9 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_7",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 8",
+   "text": "Output 9 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_8",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 9",
+   "text": "Output 9 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_9",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 10",
+   "text": "Output 9 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_10",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 11",
+   "text": "Output 9 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_8_11",
+   "category": "Output 9",
+   "name": "Output 9 button for Input 12",
+   "text": "Output 9 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 8
+    }
+   }
+  },
+  {
+   "id": "output_9_0",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 1",
+   "text": "Output 10 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_1",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 2",
+   "text": "Output 10 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_2",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 3",
+   "text": "Output 10 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_3",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 4",
+   "text": "Output 10 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_4",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 5",
+   "text": "Output 10 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_5",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 6",
+   "text": "Output 10 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_6",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 7",
+   "text": "Output 10 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_7",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 8",
+   "text": "Output 10 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_8",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 9",
+   "text": "Output 10 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_9",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 10",
+   "text": "Output 10 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_10",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 11",
+   "text": "Output 10 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_9_11",
+   "category": "Output 10",
+   "name": "Output 10 button for Input 12",
+   "text": "Output 10 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 9
+    }
+   }
+  },
+  {
+   "id": "output_10_0",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 1",
+   "text": "Output 11 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_1",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 2",
+   "text": "Output 11 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_2",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 3",
+   "text": "Output 11 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_3",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 4",
+   "text": "Output 11 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_4",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 5",
+   "text": "Output 11 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_5",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 6",
+   "text": "Output 11 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_6",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 7",
+   "text": "Output 11 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_7",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 8",
+   "text": "Output 11 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_8",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 9",
+   "text": "Output 11 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_9",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 10",
+   "text": "Output 11 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_10",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 11",
+   "text": "Output 11 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_10_11",
+   "category": "Output 11",
+   "name": "Output 11 button for Input 12",
+   "text": "Output 11 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 10
+    }
+   }
+  },
+  {
+   "id": "output_11_0",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 1",
+   "text": "Output 12 button for Input 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 0,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_1",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 2",
+   "text": "Output 12 button for Input 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 1,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_2",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 3",
+   "text": "Output 12 button for Input 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 2,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_3",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 4",
+   "text": "Output 12 button for Input 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 3,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_4",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 5",
+   "text": "Output 12 button for Input 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 4,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_5",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 6",
+   "text": "Output 12 button for Input 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 5,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_6",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 7",
+   "text": "Output 12 button for Input 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 6,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_7",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 8",
+   "text": "Output 12 button for Input 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 7,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_8",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 9",
+   "text": "Output 12 button for Input 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 8,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_9",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 10",
+   "text": "Output 12 button for Input 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 9,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_10",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 11",
+   "text": "Output 12 button for Input 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 10,
+     "destination": 11
+    }
+   }
+  },
+  {
+   "id": "output_11_11",
+   "category": "Output 12",
+   "name": "Output 12 button for Input 12",
+   "text": "Output 12 button for Input 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "route",
+    "options": {
+     "source": 11,
+     "destination": 11
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bmd-videohub",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：William Viker"
+  }
+ ],
+ "source": {
+  "module": "bmd-videohub",
+  "version": "2.6.0",
+  "license": "MIT",
+  "maintainers": [
+   "William Viker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bmd-videohub.git"
+ }
+}

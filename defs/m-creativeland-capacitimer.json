@@ -1,0 +1,467 @@
+{
+ "format": 1,
+ "id": "m-creativeland-capacitimer",
+ "name": "Creativeland Capacitimer",
+ "category": "Creativeland",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "discovered",
+   "label": "Discovered Capacitimers",
+   "type": "select",
+   "default": "",
+   "choices": [
+    {
+     "id": "",
+     "label": " "
+    }
+   ],
+   "help": "Select a discovered Capacitimer instance from the network"
+  }
+ ],
+ "actions": [
+  {
+   "id": "start_timer",
+   "name": "Start Timer",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/start",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "pause_timer",
+   "name": "Pause Timer",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/pause",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "reset_timer",
+   "name": "Reset Timer",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/reset",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "adjust_timer",
+   "name": "Adjust Timer",
+   "options": [
+    {
+     "id": "seconds",
+     "label": "Seconds (positive to add, negative to subtract)",
+     "type": "text",
+     "default": "30"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/adjust",
+    "body": "{\"seconds\":{{option.seconds}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "toggle_timer",
+   "name": "Toggle Timer (Start/Pause)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/start",
+    "body": "",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "update_settings",
+   "name": "Update Settings",
+   "options": [
+    {
+     "id": "showHours",
+     "label": "Show Hours",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "showMinutes",
+     "label": "Show Minutes",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "showSeconds",
+     "label": "Show Seconds",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "showMilliseconds",
+     "label": "Show Milliseconds",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "countUpAfterZero",
+     "label": "Count Up After Zero",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"showHours\":{{option.showHours|map}}e,\"showMinutes\":{{option.showMinutes|map}}e,\"showSeconds\":{{option.showSeconds|map}}e,\"showMilliseconds\":{{option.showMilliseconds|map}}e,\"countUpAfterZero\":{{option.countUpAfterZero|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "showHours": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "showMinutes": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "showSeconds": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "showMilliseconds": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "countUpAfterZero": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "toggle_timer_visibility",
+   "name": "Toggle Timer Visibility",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"showTimer\":false}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "toggle_time_of_day",
+   "name": "Toggle Time of Day",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"showTimeOfDay\":false}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_timer_font_size",
+   "name": "Set Timer Font Size",
+   "options": [
+    {
+     "id": "fontSize",
+     "label": "Font Size (%)",
+     "type": "text",
+     "default": "100"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"timerFontSize\":{{option.fontSize}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_time_of_day_font_size",
+   "name": "Set Time of Day Font Size",
+   "options": [
+    {
+     "id": "fontSize",
+     "label": "Font Size (%)",
+     "type": "text",
+     "default": "100"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"timeOfDayFontSize\":{{option.fontSize}}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_timer_font",
+   "name": "Set Timer Font",
+   "options": [
+    {
+     "id": "font",
+     "label": "Font Family",
+     "type": "select",
+     "default": "Roboto Mono",
+     "choices": [
+      {
+       "id": "Roboto Mono",
+       "label": "Roboto Mono"
+      },
+      {
+       "id": "Kode Mono",
+       "label": "Kode Mono"
+      },
+      {
+       "id": "PT Mono",
+       "label": "PT Mono"
+      },
+      {
+       "id": "Share Tech Mono",
+       "label": "Share Tech Mono"
+      },
+      {
+       "id": "Courier Prime",
+       "label": "Courier Prime"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"timerFont\":\"{{option.font|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "font": {
+     "Roboto Mono": "Roboto Mono",
+     "Kode Mono": "Kode Mono",
+     "PT Mono": "PT Mono",
+     "Share Tech Mono": "Share Tech Mono",
+     "Courier Prime": "Courier Prime"
+    }
+   }
+  },
+  {
+   "id": "set_timer_colors",
+   "name": "Set Timer Colors",
+   "options": [
+    {
+     "id": "colorNormal",
+     "label": "Normal Color (hex)",
+     "type": "text",
+     "default": "#44ff44"
+    },
+    {
+     "id": "colorWarning",
+     "label": "Warning Color (hex)",
+     "type": "text",
+     "default": "#ffaa00"
+    },
+    {
+     "id": "colorCritical",
+     "label": "Critical Color (hex)",
+     "type": "text",
+     "default": "#ff4444"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"colorNormal\":\"{{option.colorNormal}}\",\"colorWarning\":\"{{option.colorWarning}}\",\"colorCritical\":\"{{option.colorCritical}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "set_time_of_day_color",
+   "name": "Set Time of Day Color",
+   "options": [
+    {
+     "id": "color",
+     "label": "Color (hex)",
+     "type": "text",
+     "default": "#ffffff"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/settings",
+    "body": "{\"timeOfDayColor\":\"{{option.color}}\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "start_timer",
+   "category": "Timer Control",
+   "name": "Start Timer",
+   "text": "START",
+   "backgroundColor": "#323232",
+   "action": {
+    "definitionId": "start_timer",
+    "options": {}
+   }
+  },
+  {
+   "id": "pause_timer",
+   "category": "Timer Control",
+   "name": "Pause Timer",
+   "text": "PAUSE",
+   "backgroundColor": "#323232",
+   "action": {
+    "definitionId": "pause_timer",
+    "options": {}
+   }
+  },
+  {
+   "id": "reset_timer",
+   "category": "Timer Control",
+   "name": "Reset Timer",
+   "text": "RESET",
+   "backgroundColor": "#323232",
+   "action": {
+    "definitionId": "reset_timer",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle_timer",
+   "category": "Timer Control",
+   "name": "Toggle Timer (Start/Pause)",
+   "text": "START\nPAUSE",
+   "backgroundColor": "#004080",
+   "action": {
+    "definitionId": "toggle_timer",
+    "options": {}
+   }
+  },
+  {
+   "id": "add_1min",
+   "category": "Adjust Timer",
+   "name": "Add 1 Minute",
+   "text": "+1 min",
+   "backgroundColor": "#888888",
+   "action": {
+    "definitionId": "adjust_timer",
+    "options": {
+     "seconds": 60
+    }
+   }
+  },
+  {
+   "id": "subtract_1min",
+   "category": "Adjust Timer",
+   "name": "Subtract 1 Minute",
+   "text": "-1 min",
+   "backgroundColor": "#888888",
+   "action": {
+    "definitionId": "adjust_timer",
+    "options": {
+     "seconds": -60
+    }
+   }
+  },
+  {
+   "id": "add_5min",
+   "category": "Adjust Timer",
+   "name": "Add 5 Minutes",
+   "text": "+5 min",
+   "backgroundColor": "#888888",
+   "action": {
+    "definitionId": "adjust_timer",
+    "options": {
+     "seconds": 300
+    }
+   }
+  },
+  {
+   "id": "subtract_5min",
+   "category": "Adjust Timer",
+   "name": "Subtract 5 Minute",
+   "text": "-5 min",
+   "backgroundColor": "#888888",
+   "action": {
+    "definitionId": "adjust_timer",
+    "options": {
+     "seconds": -300
+    }
+   }
+  },
+  {
+   "id": "toggle_timer_visibility",
+   "category": "Display Control",
+   "name": "Toggle Timer Visibility",
+   "text": "SHOW\nTIMER",
+   "backgroundColor": "#323232",
+   "action": {
+    "definitionId": "toggle_timer_visibility",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle_time_of_day",
+   "category": "Display Control",
+   "name": "Toggle Time of Day",
+   "text": "SHOW\nTIME OF DAY",
+   "backgroundColor": "#323232",
+   "action": {
+    "definitionId": "toggle_time_of_day",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-creativeland-capacitimer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Tom Hillmeyer"
+  }
+ ],
+ "source": {
+  "module": "creativeland-capacitimer",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Tom Hillmeyer"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-creativeland-capacitimer.git"
+ }
+}

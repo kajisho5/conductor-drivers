@@ -1,0 +1,4417 @@
+{
+ "format": 1,
+ "id": "m-emotimo-st4",
+ "name": "eMotimo ST4 / ST4.3 / SA2.6",
+ "category": "eMotimo",
+ "version": "1.0.5",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "prot",
+   "label": "Connect with TCP / UDP",
+   "type": "select",
+   "default": "tcp",
+   "choices": [
+    {
+     "id": "tcp",
+     "label": "TCP"
+    },
+    {
+     "id": "udp",
+     "label": "UDP"
+    }
+   ]
+  },
+  {
+   "id": "model",
+   "label": "Select Your Camera Model",
+   "type": "select",
+   "default": "Spectrum ST4",
+   "choices": [
+    {
+     "id": "Spectrum ST4",
+     "label": "Spectrum ST4"
+    },
+    {
+     "id": "Spectrum ST4.3",
+     "label": "Spectrum ST4.3"
+    },
+    {
+     "id": "SA2.6 Conductor",
+     "label": "SA2.6 Conductor"
+    },
+    {
+     "id": "Other",
+     "label": "Other Cameras"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "jogMotor",
+   "name": "Motor Jog",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    },
+    {
+     "id": "id_speed",
+     "label": "Motor Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "-100000",
+       "label": "Neg Fastest"
+      },
+      {
+       "id": "-50000",
+       "label": "Neg Fast"
+      },
+      {
+       "id": "-25000",
+       "label": "Neg Medium"
+      },
+      {
+       "id": "-5000",
+       "label": "Neg Slow"
+      },
+      {
+       "id": "0",
+       "label": "Stopped"
+      },
+      {
+       "id": "5000",
+       "label": "Slow"
+      },
+      {
+       "id": "25000",
+       "label": "Medium"
+      },
+      {
+       "id": "50000",
+       "label": "Fast"
+      },
+      {
+       "id": "100000",
+       "label": "Fastest"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G300 M{{option.id_mot|map}} V{{option.id_speed|map}}0\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    },
+    "id_speed": {
+     "0": "",
+     "5000": "500",
+     "25000": "2500",
+     "50000": "5000",
+     "100000": "10000",
+     "-100000": "-10000",
+     "-50000": "-5000",
+     "-25000": "-2500",
+     "-5000": "-500"
+    }
+   }
+  },
+  {
+   "id": "tnpositionDrive",
+   "name": "Send TN Motor Position",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      }
+     ]
+    },
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G302 M{{option.id_mot|map}} P50{{option.direction|map}}0\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    },
+    "direction": {
+     "1": "5",
+     "-1": "0"
+    }
+   }
+  },
+  {
+   "id": "resetCruiseSpeed",
+   "name": "Reset Motor Cruise Speed",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G301 M{{option.id_mot|map}} V0\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "stopMotors",
+   "name": "Stop All Motors",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G911\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recallPset",
+   "name": "Recall Preset",
+   "options": [
+    {
+     "id": "num",
+     "label": "Preset Number",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 127
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G20 P{{option.num}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setPresetRunTime",
+   "name": "Set Preset Run Time",
+   "options": [
+    {
+     "id": "id_pst",
+     "label": "Preset ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Pst0"
+      },
+      {
+       "id": "1",
+       "label": "Pst1"
+      },
+      {
+       "id": "2",
+       "label": "Pst2"
+      },
+      {
+       "id": "3",
+       "label": "Pst3"
+      },
+      {
+       "id": "4",
+       "label": "Pst4"
+      },
+      {
+       "id": "5",
+       "label": "Pst5"
+      },
+      {
+       "id": "6",
+       "label": "Pst6"
+      },
+      {
+       "id": "7",
+       "label": "Pst7"
+      },
+      {
+       "id": "8",
+       "label": "Pst8"
+      },
+      {
+       "id": "9",
+       "label": "Pst9"
+      },
+      {
+       "id": "10",
+       "label": "Pst10"
+      },
+      {
+       "id": "11",
+       "label": "Pst11"
+      },
+      {
+       "id": "12",
+       "label": "Pst12"
+      },
+      {
+       "id": "13",
+       "label": "Pst13"
+      },
+      {
+       "id": "14",
+       "label": "Pst14"
+      },
+      {
+       "id": "15",
+       "label": "Pst15"
+      },
+      {
+       "id": "16",
+       "label": "Pst16"
+      },
+      {
+       "id": "17",
+       "label": "Pst17"
+      },
+      {
+       "id": "18",
+       "label": "Pst18"
+      },
+      {
+       "id": "19",
+       "label": "Pst19"
+      },
+      {
+       "id": "20",
+       "label": "Pst20"
+      },
+      {
+       "id": "21",
+       "label": "Pst21"
+      },
+      {
+       "id": "22",
+       "label": "Pst22"
+      },
+      {
+       "id": "23",
+       "label": "Pst23"
+      },
+      {
+       "id": "24",
+       "label": "Pst24"
+      },
+      {
+       "id": "25",
+       "label": "Pst25"
+      },
+      {
+       "id": "26",
+       "label": "Pst26"
+      },
+      {
+       "id": "27",
+       "label": "Pst27"
+      },
+      {
+       "id": "28",
+       "label": "Pst28"
+      },
+      {
+       "id": "29",
+       "label": "Pst29"
+      }
+     ]
+    },
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 N1 P{{option.id_pst|map}} T5{{option.direction|map}} A1\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_pst": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "24": "24",
+     "25": "25",
+     "26": "26",
+     "27": "27",
+     "28": "28",
+     "29": "29"
+    },
+    "direction": {
+     "1": ".1",
+     "-1": ""
+    }
+   }
+  },
+  {
+   "id": "resetPresetRunTime",
+   "name": "Reset Preset Run Time",
+   "options": [
+    {
+     "id": "id_pst",
+     "label": "Preset ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Pst0"
+      },
+      {
+       "id": "1",
+       "label": "Pst1"
+      },
+      {
+       "id": "2",
+       "label": "Pst2"
+      },
+      {
+       "id": "3",
+       "label": "Pst3"
+      },
+      {
+       "id": "4",
+       "label": "Pst4"
+      },
+      {
+       "id": "5",
+       "label": "Pst5"
+      },
+      {
+       "id": "6",
+       "label": "Pst6"
+      },
+      {
+       "id": "7",
+       "label": "Pst7"
+      },
+      {
+       "id": "8",
+       "label": "Pst8"
+      },
+      {
+       "id": "9",
+       "label": "Pst9"
+      },
+      {
+       "id": "10",
+       "label": "Pst10"
+      },
+      {
+       "id": "11",
+       "label": "Pst11"
+      },
+      {
+       "id": "12",
+       "label": "Pst12"
+      },
+      {
+       "id": "13",
+       "label": "Pst13"
+      },
+      {
+       "id": "14",
+       "label": "Pst14"
+      },
+      {
+       "id": "15",
+       "label": "Pst15"
+      },
+      {
+       "id": "16",
+       "label": "Pst16"
+      },
+      {
+       "id": "17",
+       "label": "Pst17"
+      },
+      {
+       "id": "18",
+       "label": "Pst18"
+      },
+      {
+       "id": "19",
+       "label": "Pst19"
+      },
+      {
+       "id": "20",
+       "label": "Pst20"
+      },
+      {
+       "id": "21",
+       "label": "Pst21"
+      },
+      {
+       "id": "22",
+       "label": "Pst22"
+      },
+      {
+       "id": "23",
+       "label": "Pst23"
+      },
+      {
+       "id": "24",
+       "label": "Pst24"
+      },
+      {
+       "id": "25",
+       "label": "Pst25"
+      },
+      {
+       "id": "26",
+       "label": "Pst26"
+      },
+      {
+       "id": "27",
+       "label": "Pst27"
+      },
+      {
+       "id": "28",
+       "label": "Pst28"
+      },
+      {
+       "id": "29",
+       "label": "Pst29"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 N1 P{{option.id_pst|map}}1\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_pst": {
+     "0": "0 T5 A1.",
+     "1": "1 T5 A",
+     "2": "2 T5 A1.",
+     "3": "3 T5 A1.",
+     "4": "4 T5 A1.",
+     "5": "5 T5 A1.",
+     "6": "6 T5 A1.",
+     "7": "7 T5 A1.",
+     "8": "8 T5 A1.",
+     "9": "9 T5 A1.",
+     "10": "10 T5 A1.",
+     "11": "11 T5 A1.",
+     "12": "12 T5 A1.",
+     "13": "13 T5 A1.",
+     "14": "14 T5 A",
+     "15": "15 T5 A1.",
+     "16": "16 T5 A1.",
+     "17": "17 T5 A1.",
+     "18": "18 T5 A1.",
+     "19": "19 T5 A1.",
+     "20": "20 T5 A1.",
+     "21": "21 T5 A",
+     "22": "22 T5 A1.",
+     "23": "23 T5 A1.",
+     "24": "24 T5 A1.",
+     "25": "25 T5 A1.",
+     "26": "26 T5 A1.",
+     "27": "27 T5 A1.",
+     "28": "28 T5 A1.",
+     "29": "29 T5 A1."
+    }
+   }
+  },
+  {
+   "id": "resetPresetRampTime",
+   "name": "Reset Preset Ramp Time",
+   "options": [
+    {
+     "id": "id_pst",
+     "label": "Preset ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Pst0"
+      },
+      {
+       "id": "1",
+       "label": "Pst1"
+      },
+      {
+       "id": "2",
+       "label": "Pst2"
+      },
+      {
+       "id": "3",
+       "label": "Pst3"
+      },
+      {
+       "id": "4",
+       "label": "Pst4"
+      },
+      {
+       "id": "5",
+       "label": "Pst5"
+      },
+      {
+       "id": "6",
+       "label": "Pst6"
+      },
+      {
+       "id": "7",
+       "label": "Pst7"
+      },
+      {
+       "id": "8",
+       "label": "Pst8"
+      },
+      {
+       "id": "9",
+       "label": "Pst9"
+      },
+      {
+       "id": "10",
+       "label": "Pst10"
+      },
+      {
+       "id": "11",
+       "label": "Pst11"
+      },
+      {
+       "id": "12",
+       "label": "Pst12"
+      },
+      {
+       "id": "13",
+       "label": "Pst13"
+      },
+      {
+       "id": "14",
+       "label": "Pst14"
+      },
+      {
+       "id": "15",
+       "label": "Pst15"
+      },
+      {
+       "id": "16",
+       "label": "Pst16"
+      },
+      {
+       "id": "17",
+       "label": "Pst17"
+      },
+      {
+       "id": "18",
+       "label": "Pst18"
+      },
+      {
+       "id": "19",
+       "label": "Pst19"
+      },
+      {
+       "id": "20",
+       "label": "Pst20"
+      },
+      {
+       "id": "21",
+       "label": "Pst21"
+      },
+      {
+       "id": "22",
+       "label": "Pst22"
+      },
+      {
+       "id": "23",
+       "label": "Pst23"
+      },
+      {
+       "id": "24",
+       "label": "Pst24"
+      },
+      {
+       "id": "25",
+       "label": "Pst25"
+      },
+      {
+       "id": "26",
+       "label": "Pst26"
+      },
+      {
+       "id": "27",
+       "label": "Pst27"
+      },
+      {
+       "id": "28",
+       "label": "Pst28"
+      },
+      {
+       "id": "29",
+       "label": "Pst29"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 N1 P{{option.id_pst|map}} T5 A1\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_pst": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "24": "24",
+     "25": "25",
+     "26": "26",
+     "27": "27",
+     "28": "28",
+     "29": "29"
+    }
+   }
+  },
+  {
+   "id": "setPresetRunTimeSmart",
+   "name": "Smart Set Preset Run Time",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 N1 P0 T5{{option.direction|map}} A1\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": ".1",
+     "-1": ""
+    }
+   }
+  },
+  {
+   "id": "setPresetRampTimeSmart",
+   "name": "Smart Set Preset Ramp Time",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 N1 P0 T5 A1{{option.direction|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": ".1",
+     "-1": ""
+    }
+   }
+  },
+  {
+   "id": "resetPresetRunTimeSmart",
+   "name": "Reset Preset Run Time Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 N1 P0 T5 A1\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "resetPresetRampTimeSmart",
+   "name": "Reset Preset Ramp Time Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 N1 P0 T5 A1\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "savePsetSmart",
+   "name": "Save Preset Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G21 P1 T5 A1\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recallPsetSmart",
+   "name": "Recall Preset Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G20 P1\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recallAPoint",
+   "name": "Recall Loop A Point",
+   "options": [
+    {
+     "id": "id_loop",
+     "label": "Loop ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Lp0"
+      },
+      {
+       "id": "1",
+       "label": "Lp1"
+      },
+      {
+       "id": "2",
+       "label": "Lp2"
+      },
+      {
+       "id": "3",
+       "label": "Lp3"
+      },
+      {
+       "id": "4",
+       "label": "Lp4"
+      },
+      {
+       "id": "5",
+       "label": "Lp5"
+      },
+      {
+       "id": "6",
+       "label": "Lp6"
+      },
+      {
+       "id": "7",
+       "label": "Lp7"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G20 P{{option.id_loop|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_loop": {
+     "0": "0",
+     "1": "1",
+     "2": "0",
+     "3": "0",
+     "4": "0\\nG500",
+     "5": "0",
+     "6": "0",
+     "7": "0"
+    }
+   }
+  },
+  {
+   "id": "recallBPoint",
+   "name": "Recall Loop B Point",
+   "options": [
+    {
+     "id": "id_loop",
+     "label": "Loop ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Lp0"
+      },
+      {
+       "id": "1",
+       "label": "Lp1"
+      },
+      {
+       "id": "2",
+       "label": "Lp2"
+      },
+      {
+       "id": "3",
+       "label": "Lp3"
+      },
+      {
+       "id": "4",
+       "label": "Lp4"
+      },
+      {
+       "id": "5",
+       "label": "Lp5"
+      },
+      {
+       "id": "6",
+       "label": "Lp6"
+      },
+      {
+       "id": "7",
+       "label": "Lp7"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G20 P{{option.id_loop|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_loop": {
+     "0": "0",
+     "1": "1",
+     "2": "0",
+     "3": "0",
+     "4": "0",
+     "5": "0",
+     "6": "0",
+     "7": "0"
+    }
+   }
+  },
+  {
+   "id": "setLoopRunTimeSmart",
+   "name": "Smart Set Loop Run Time",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G25 L0 A0 B0 T5{{option.direction|map}} R1 C500 D500\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": ".1",
+     "-1": ""
+    }
+   }
+  },
+  {
+   "id": "setLoopRampTimeSmart",
+   "name": "Smart Set Loop Ramp Time",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G25 L0 A0 B0 T5 R1{{option.direction|map}} C500 D500\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": ".1",
+     "-1": ""
+    }
+   }
+  },
+  {
+   "id": "setLoopAPointSmart",
+   "name": "Smart Set Loop A Point",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G25 L0 A{{option.direction|map}} B0 T5 R1 C500 D500\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": "1",
+     "-1": "0"
+    }
+   }
+  },
+  {
+   "id": "setLoopBPointSmart",
+   "name": "Smart Set Loop B Point",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G25 L0 A0 B{{option.direction|map}} T5 R1 C500 D500\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": "1",
+     "-1": "0"
+    }
+   }
+  },
+  {
+   "id": "recallAPointSmart",
+   "name": "Recall Loop A Point Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G20 P0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recallBPointSmart",
+   "name": "Recall Loop B Point Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G20 P0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "saveLpSmart",
+   "name": "Save Loop Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G25 L1 A1 B1 T5 R1 C500 D500\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recallLpSmart",
+   "name": "Recall Loop Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G24\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "homeRS",
+   "name": "Center RS",
+   "options": [
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\n",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G202\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "calibrateAllTN",
+   "name": "Calibrate All TN",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G812 C0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "calibrateTNMotor",
+   "name": "Calibrate TN Motor",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G812 C0 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "5": "1",
+     "6": "2",
+     "7": "3"
+    }
+   }
+  },
+  {
+   "id": "setStopA",
+   "name": "Set Stop A",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G213 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "setStopB",
+   "name": "Set Stop B",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G214 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "recallStopA",
+   "name": "Recall Stop A",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unset"
+      },
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G217 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "0": "1",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "recallStopB",
+   "name": "Recall Stop B",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unset"
+      },
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G218 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "0": "1",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "clearStopA",
+   "name": "Clear Stop A",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G211 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6\\nG500",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "clearStopB",
+   "name": "Clear Stop B",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G212 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "clearStopByAxis",
+   "name": "Clear Stops by Axis",
+   "options": [
+    {
+     "id": "id_mot",
+     "label": "Motor ID",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Pan"
+      },
+      {
+       "id": "2",
+       "label": "Tilt"
+      },
+      {
+       "id": "3",
+       "label": "Slide"
+      },
+      {
+       "id": "4",
+       "label": "TurnTable"
+      },
+      {
+       "id": "5",
+       "label": "TN 1"
+      },
+      {
+       "id": "6",
+       "label": "TN 2"
+      },
+      {
+       "id": "7",
+       "label": "TN 3"
+      },
+      {
+       "id": "8",
+       "label": "Roll"
+      },
+      {
+       "id": "9",
+       "label": "Focus"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G219 M{{option.id_mot|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_mot": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    }
+   }
+  },
+  {
+   "id": "zeroMotors",
+   "name": "Zero Motors",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G201\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setStopASmart",
+   "name": "Set Stop A Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G213 M2\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setStopBSmart",
+   "name": "Set Stop B Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G214 M2\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearStopASmart",
+   "name": "Clear Stop A Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G211 M2\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearStopBSmart",
+   "name": "Clear Stop B Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G212 M2\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearStopByAxisSmart",
+   "name": "Clear Stops by Axis Smart",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G219 M2\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "jogMotorSmarter",
+   "name": "Motor Jog Smarter",
+   "options": [
+    {
+     "id": "direction",
+     "label": "Direction",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Positive"
+      },
+      {
+       "id": "-1",
+       "label": "Negative"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G301 M2 V{{option.direction|map}}500\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "direction": {
+     "1": "",
+     "-1": "-"
+    }
+   }
+  },
+  {
+   "id": "stopCurrentMotor",
+   "name": "Stop Current Motor",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "G301 M2 V0\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "virtualInput",
+   "name": "Virtual Button Input",
+   "options": [
+    {
+     "id": "vbutton",
+     "label": "Button Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Enter"
+      },
+      {
+       "id": "1",
+       "label": "Up"
+      },
+      {
+       "id": "2",
+       "label": "Right"
+      },
+      {
+       "id": "3",
+       "label": "Down"
+      },
+      {
+       "id": "4",
+       "label": "Left"
+      },
+      {
+       "id": "5",
+       "label": "Back"
+      },
+      {
+       "id": "6",
+       "label": "Enter Held"
+      },
+      {
+       "id": "7",
+       "label": "Empty"
+      },
+      {
+       "id": "8",
+       "label": "Empty"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "G600 C{{option.vbutton|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "vbutton": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  },
+  {
+   "id": "send",
+   "name": "Send Command",
+   "options": [
+    {
+     "id": "id_send",
+     "label": "Command:",
+     "type": "text",
+     "default": "",
+     "help": "Use %hh to insert Hex codes"
+    },
+    {
+     "id": "id_end",
+     "label": "Command End Character:",
+     "type": "select",
+     "default": "\n",
+     "choices": [
+      {
+       "id": "",
+       "label": "None"
+      },
+      {
+       "id": "\n",
+       "label": "LF - \\n (Common UNIX/Mac)"
+      },
+      {
+       "id": "\r\n",
+       "label": "CRLF - \\r\\n (Common Windows)"
+      },
+      {
+       "id": "\r",
+       "label": "CR - \\r (Old MacOS)"
+      },
+      {
+       "id": "\u0000",
+       "label": "NULL - \\x00 (Can happen)"
+      },
+      {
+       "id": "\n\r",
+       "label": "LFCR - \\n\\r (Just stupid)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_send|hexstr}}{{option.id_end|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "id_end": {
+     "\n": "0a",
+     "": "",
+     "\r\n": "0d0a",
+     "\r": "0d",
+     "\u0000": "00",
+     "\n\r": "0a0d"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "VirtUp",
+   "category": "UI Navigation",
+   "name": "Nav Up",
+   "text": "Up",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "virtualInput",
+    "options": {
+     "vbutton": 1
+    }
+   }
+  },
+  {
+   "id": "VirtRight",
+   "category": "UI Navigation",
+   "name": "Nav Right",
+   "text": "Right",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "virtualInput",
+    "options": {
+     "vbutton": 2
+    }
+   }
+  },
+  {
+   "id": "VirtDown",
+   "category": "UI Navigation",
+   "name": "Nav Down",
+   "text": "Down",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "virtualInput",
+    "options": {
+     "vbutton": 3
+    }
+   }
+  },
+  {
+   "id": "VirtLeft",
+   "category": "UI Navigation",
+   "name": "Nav Left",
+   "text": "Left",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "virtualInput",
+    "options": {
+     "vbutton": 4
+    }
+   }
+  },
+  {
+   "id": "VirtBack",
+   "category": "UI Navigation",
+   "name": "Nav Back",
+   "text": "Escape",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "virtualInput",
+    "options": {
+     "vbutton": 5
+    }
+   }
+  },
+  {
+   "id": "PanCruiseSpeed",
+   "category": "Motors",
+   "name": "Pan Velocity Control",
+   "text": "Pan Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 1
+    }
+   }
+  },
+  {
+   "id": "TiltCruiseSpeed",
+   "category": "Motors",
+   "name": "Tilt Velocity Control",
+   "text": "Tilt Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 2
+    }
+   }
+  },
+  {
+   "id": "SlideCruiseSpeed",
+   "category": "Motors",
+   "name": "Slide Velocity Control",
+   "text": "Slide Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 3
+    }
+   }
+  },
+  {
+   "id": "M4CruiseSpeed",
+   "category": "Motors",
+   "name": "M4 Velocity Control",
+   "text": "M4 Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 4
+    }
+   }
+  },
+  {
+   "id": "TN FocusCruiseSpeed",
+   "category": "Motors",
+   "name": "TN Focus Velocity Control",
+   "text": "TN Focus Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 5
+    }
+   }
+  },
+  {
+   "id": "TN IrisCruiseSpeed",
+   "category": "Motors",
+   "name": "TN Iris Velocity Control",
+   "text": "TN Iris Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 6
+    }
+   }
+  },
+  {
+   "id": "TN ZoomCruiseSpeed",
+   "category": "Motors",
+   "name": "TN Zoom Velocity Control",
+   "text": "TN Zoom Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 7
+    }
+   }
+  },
+  {
+   "id": "RollCruiseSpeed",
+   "category": "Motors",
+   "name": "Roll Velocity Control",
+   "text": "Roll Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 8
+    }
+   }
+  },
+  {
+   "id": "RS FocusCruiseSpeed",
+   "category": "Motors",
+   "name": "RS Focus Velocity Control",
+   "text": "RS Focus Vel. Rotary",
+   "backgroundColor": "#000032",
+   "action": {
+    "definitionId": "resetCruiseSpeed",
+    "options": {
+     "id_mot": 9
+    }
+   }
+  },
+  {
+   "id": "smartIncreaseRun",
+   "category": "Presets",
+   "name": "Increase RunTime",
+   "text": "⬆️",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "setPresetRunTimeSmart",
+    "options": {
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "smartIncreaseRamp",
+   "category": "Presets",
+   "name": "Increase RampTime",
+   "text": "⬆️",
+   "backgroundColor": "#320064",
+   "action": {
+    "definitionId": "setPresetRampTimeSmart",
+    "options": {
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "curpstRunsetup",
+   "category": "Presets",
+   "name": "Selected Preset Run",
+   "text": "Run:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTimeSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "curpstRampsetup",
+   "category": "Presets",
+   "name": "Selected Preset Ramp",
+   "text": "Ramp:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTimeSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "smartDecreaseRun",
+   "category": "Presets",
+   "name": "Decrease RunTime",
+   "text": "⬇️",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "setPresetRunTimeSmart",
+    "options": {
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "smartDecreaseRamp",
+   "category": "Presets",
+   "name": "Decrease RampTime",
+   "text": "⬇️",
+   "backgroundColor": "#320064",
+   "action": {
+    "definitionId": "setPresetRampTimeSmart",
+    "options": {
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "PresetRunTimeRotary",
+   "category": "Presets",
+   "name": "Preset Run Time Rotary",
+   "text": "Preset Run Time Rotary",
+   "backgroundColor": "#003232",
+   "action": {
+    "definitionId": "resetPresetRunTimeSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "PresetRampTimeRotary",
+   "category": "Presets",
+   "name": "Preset Ramp Time Rotary",
+   "text": "Preset Ramp Time Rotary",
+   "backgroundColor": "#003232",
+   "action": {
+    "definitionId": "resetPresetRampTimeSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "increaseRunTime0",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 0",
+   "text": "⬆️ 0",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 0,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset0RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 0",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 0
+    }
+   }
+  },
+  {
+   "id": "Preset0RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 0",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 0
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime0",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 0",
+   "text": "⬇️ 0",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 0,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime1",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 1",
+   "text": "⬆️ 1",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 1,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset1RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 1",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 1
+    }
+   }
+  },
+  {
+   "id": "Preset1RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 1",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 1
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime1",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 1",
+   "text": "⬇️ 1",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 1,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime2",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 2",
+   "text": "⬆️ 2",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 2,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset2RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 2",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 2
+    }
+   }
+  },
+  {
+   "id": "Preset2RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 2",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 2
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime2",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 2",
+   "text": "⬇️ 2",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 2,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime3",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 3",
+   "text": "⬆️ 3",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 3,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset3RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 3",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 3
+    }
+   }
+  },
+  {
+   "id": "Preset3RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 3",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 3
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime3",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 3",
+   "text": "⬇️ 3",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 3,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime4",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 4",
+   "text": "⬆️ 4",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 4,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset4RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 4",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 4
+    }
+   }
+  },
+  {
+   "id": "Preset4RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 4",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 4
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime4",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 4",
+   "text": "⬇️ 4",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 4,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime5",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 5",
+   "text": "⬆️ 5",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 5,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset5RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 5",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 5
+    }
+   }
+  },
+  {
+   "id": "Preset5RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 5",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 5
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime5",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 5",
+   "text": "⬇️ 5",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 5,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime6",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 6",
+   "text": "⬆️ 6",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 6,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset6RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 6",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 6
+    }
+   }
+  },
+  {
+   "id": "Preset6RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 6",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 6
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime6",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 6",
+   "text": "⬇️ 6",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 6,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime7",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 7",
+   "text": "⬆️ 7",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 7,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset7RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 7",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 7
+    }
+   }
+  },
+  {
+   "id": "Preset7RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 7",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 7
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime7",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 7",
+   "text": "⬇️ 7",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 7,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime8",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 8",
+   "text": "⬆️ 8",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 8,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset8RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 8",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 8
+    }
+   }
+  },
+  {
+   "id": "Preset8RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 8",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 8
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime8",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 8",
+   "text": "⬇️ 8",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 8,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime9",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 9",
+   "text": "⬆️ 9",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 9,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset9RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 9",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 9
+    }
+   }
+  },
+  {
+   "id": "Preset9RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 9",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 9
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime9",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 9",
+   "text": "⬇️ 9",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 9,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime10",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 10",
+   "text": "⬆️ 10",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 10,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset10RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 10",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 10
+    }
+   }
+  },
+  {
+   "id": "Preset10RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 10",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 10
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime10",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 10",
+   "text": "⬇️ 10",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 10,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime11",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 11",
+   "text": "⬆️ 11",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 11,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset11RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 11",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 11
+    }
+   }
+  },
+  {
+   "id": "Preset11RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 11",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 11
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime11",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 11",
+   "text": "⬇️ 11",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 11,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime12",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 12",
+   "text": "⬆️ 12",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 12,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset12RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 12",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 12
+    }
+   }
+  },
+  {
+   "id": "Preset12RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 12",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 12
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime12",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 12",
+   "text": "⬇️ 12",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 12,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime13",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 13",
+   "text": "⬆️ 13",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 13,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset13RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 13",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 13
+    }
+   }
+  },
+  {
+   "id": "Preset13RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 13",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 13
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime13",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 13",
+   "text": "⬇️ 13",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 13,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime14",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 14",
+   "text": "⬆️ 14",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 14,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset14RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 14",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 14
+    }
+   }
+  },
+  {
+   "id": "Preset14RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 14",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 14
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime14",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 14",
+   "text": "⬇️ 14",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 14,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime15",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 15",
+   "text": "⬆️ 15",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 15,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset15RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 15",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 15
+    }
+   }
+  },
+  {
+   "id": "Preset15RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 15",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 15
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime15",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 15",
+   "text": "⬇️ 15",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 15,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime16",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 16",
+   "text": "⬆️ 16",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 16,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset16RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 16",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 16
+    }
+   }
+  },
+  {
+   "id": "Preset16RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 16",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 16
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime16",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 16",
+   "text": "⬇️ 16",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 16,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime17",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 17",
+   "text": "⬆️ 17",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 17,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset17RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 17",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 17
+    }
+   }
+  },
+  {
+   "id": "Preset17RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 17",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 17
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime17",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 17",
+   "text": "⬇️ 17",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 17,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime18",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 18",
+   "text": "⬆️ 18",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 18,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset18RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 18",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 18
+    }
+   }
+  },
+  {
+   "id": "Preset18RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 18",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 18
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime18",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 18",
+   "text": "⬇️ 18",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 18,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime19",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 19",
+   "text": "⬆️ 19",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 19,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset19RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 19",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 19
+    }
+   }
+  },
+  {
+   "id": "Preset19RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 19",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 19
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime19",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 19",
+   "text": "⬇️ 19",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 19,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime20",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 20",
+   "text": "⬆️ 20",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 20,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset20RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 20",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 20
+    }
+   }
+  },
+  {
+   "id": "Preset20RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 20",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 20
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime20",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 20",
+   "text": "⬇️ 20",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 20,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime21",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 21",
+   "text": "⬆️ 21",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 21,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset21RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 21",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 21
+    }
+   }
+  },
+  {
+   "id": "Preset21RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 21",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 21
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime21",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 21",
+   "text": "⬇️ 21",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 21,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime22",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 22",
+   "text": "⬆️ 22",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 22,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset22RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 22",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 22
+    }
+   }
+  },
+  {
+   "id": "Preset22RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 22",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 22
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime22",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 22",
+   "text": "⬇️ 22",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 22,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime23",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 23",
+   "text": "⬆️ 23",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 23,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset23RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 23",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 23
+    }
+   }
+  },
+  {
+   "id": "Preset23RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 23",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 23
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime23",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 23",
+   "text": "⬇️ 23",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 23,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime24",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 24",
+   "text": "⬆️ 24",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 24,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset24RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 24",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 24
+    }
+   }
+  },
+  {
+   "id": "Preset24RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 24",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 24
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime24",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 24",
+   "text": "⬇️ 24",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 24,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime25",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 25",
+   "text": "⬆️ 25",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 25,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset25RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 25",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 25
+    }
+   }
+  },
+  {
+   "id": "Preset25RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 25",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 25
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime25",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 25",
+   "text": "⬇️ 25",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 25,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime26",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 26",
+   "text": "⬆️ 26",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 26,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset26RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 26",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 26
+    }
+   }
+  },
+  {
+   "id": "Preset26RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 26",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 26
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime26",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 26",
+   "text": "⬇️ 26",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 26,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime27",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 27",
+   "text": "⬆️ 27",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 27,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset27RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 27",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 27
+    }
+   }
+  },
+  {
+   "id": "Preset27RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 27",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 27
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime27",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 27",
+   "text": "⬇️ 27",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 27,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime28",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 28",
+   "text": "⬆️ 28",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 28,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset28RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 28",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 28
+    }
+   }
+  },
+  {
+   "id": "Preset28RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 28",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 28
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime28",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 28",
+   "text": "⬇️ 28",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 28,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "increaseRunTime29",
+   "category": "Presets",
+   "name": "Increase RunTime Preset 29",
+   "text": "⬆️ 29",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 29,
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "Preset29RunTime",
+   "category": "Presets",
+   "name": "Preset Run Time 29",
+   "text": "Pst\nRunT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRunTime",
+    "options": {
+     "id_pst": 29
+    }
+   }
+  },
+  {
+   "id": "Preset29RampTime",
+   "category": "Presets",
+   "name": "Preset Ramp Time 29",
+   "text": "Pst\nRampT:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resetPresetRampTime",
+    "options": {
+     "id_pst": 29
+    }
+   }
+  },
+  {
+   "id": "decreaseRunTime29",
+   "category": "Presets",
+   "name": "Decrease RunTime Preset 29",
+   "text": "⬇️ 29",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "setPresetRunTime",
+    "options": {
+     "id_pst": 29,
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "smartIncreaseAPoint",
+   "category": "Loops",
+   "name": "Increase Loop A Point",
+   "text": "⬆️",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "setLoopAPointSmart",
+    "options": {
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "smartIncreaseBPoint",
+   "category": "Loops",
+   "name": "Increase Loop B Point",
+   "text": "⬆️",
+   "backgroundColor": "#005a64",
+   "action": {
+    "definitionId": "setLoopBPointSmart",
+    "options": {
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "smartIncreaseRunLp",
+   "category": "Loops",
+   "name": "Increase Loop RunTime",
+   "text": "⬆️",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "setLoopRunTimeSmart",
+    "options": {
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "smartIncreaseRampLp",
+   "category": "Loops",
+   "name": "Increase Loop RampTime",
+   "text": "⬆️",
+   "backgroundColor": "#320064",
+   "action": {
+    "definitionId": "setLoopRampTimeSmart",
+    "options": {
+     "direction": 1
+    }
+   }
+  },
+  {
+   "id": "curLpAPointsetup",
+   "category": "Loops",
+   "name": "Selected Loop A Point",
+   "text": "Loop A Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPointSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "curLpBPointsetup",
+   "category": "Loops",
+   "name": "Selected Loop B Point",
+   "text": "Loop B Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPointSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "smartDecreaseAPoint",
+   "category": "Loops",
+   "name": "Decrease Loop A Point",
+   "text": "⬇️",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "setLoopAPointSmart",
+    "options": {
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "smartDecreaseBPoint",
+   "category": "Loops",
+   "name": "Decrease Loop B Point",
+   "text": "⬇️",
+   "backgroundColor": "#005a64",
+   "action": {
+    "definitionId": "setLoopBPointSmart",
+    "options": {
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "smartDecreaseRunLp",
+   "category": "Loops",
+   "name": "Decrease Loop RunTime",
+   "text": "⬇️",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "setLoopRunTimeSmart",
+    "options": {
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "smartDecreaseRampLp",
+   "category": "Loops",
+   "name": "Decrease Loop RampTime",
+   "text": "⬇️",
+   "backgroundColor": "#320064",
+   "action": {
+    "definitionId": "setLoopRampTimeSmart",
+    "options": {
+     "direction": -1
+    }
+   }
+  },
+  {
+   "id": "LoopAPointRotary",
+   "category": "Loops",
+   "name": "Loop A Point Rotary",
+   "text": "Loop A Point Rotary",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "recallAPointSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "LoopBPointRotary",
+   "category": "Loops",
+   "name": "Loop B Point Rotary",
+   "text": "Loop B Point Rotary",
+   "backgroundColor": "#003264",
+   "action": {
+    "definitionId": "recallBPointSmart",
+    "options": {}
+   }
+  },
+  {
+   "id": "Loop0APoint",
+   "category": "Loops",
+   "name": "Loop A Point 0",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 0
+    }
+   }
+  },
+  {
+   "id": "Loop0BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 0",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 0
+    }
+   }
+  },
+  {
+   "id": "Loop1APoint",
+   "category": "Loops",
+   "name": "Loop A Point 1",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 1
+    }
+   }
+  },
+  {
+   "id": "Loop1BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 1",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 1
+    }
+   }
+  },
+  {
+   "id": "Loop2APoint",
+   "category": "Loops",
+   "name": "Loop A Point 2",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 2
+    }
+   }
+  },
+  {
+   "id": "Loop2BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 2",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 2
+    }
+   }
+  },
+  {
+   "id": "Loop3APoint",
+   "category": "Loops",
+   "name": "Loop A Point 3",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 3
+    }
+   }
+  },
+  {
+   "id": "Loop3BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 3",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 3
+    }
+   }
+  },
+  {
+   "id": "Loop4APoint",
+   "category": "Loops",
+   "name": "Loop A Point 4",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 4
+    }
+   }
+  },
+  {
+   "id": "Loop4BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 4",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 4
+    }
+   }
+  },
+  {
+   "id": "Loop5APoint",
+   "category": "Loops",
+   "name": "Loop A Point 5",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 5
+    }
+   }
+  },
+  {
+   "id": "Loop5BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 5",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 5
+    }
+   }
+  },
+  {
+   "id": "Loop6APoint",
+   "category": "Loops",
+   "name": "Loop A Point 6",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 6
+    }
+   }
+  },
+  {
+   "id": "Loop6BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 6",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 6
+    }
+   }
+  },
+  {
+   "id": "Loop7APoint",
+   "category": "Loops",
+   "name": "Loop A Point 7",
+   "text": "Loop\nA Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallAPoint",
+    "options": {
+     "id_loop": 7
+    }
+   }
+  },
+  {
+   "id": "Loop7BPoint",
+   "category": "Loops",
+   "name": "Loop B Point 7",
+   "text": "Loop\nB Point:",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallBPoint",
+    "options": {
+     "id_loop": 7
+    }
+   }
+  },
+  {
+   "id": "rsHome",
+   "category": "Other",
+   "name": "Center RS",
+   "text": "Center RS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "homeRS",
+    "options": {}
+   }
+  },
+  {
+   "id": "calibrateTN",
+   "category": "Other",
+   "name": "Calibrate TN Motor",
+   "text": "Cal. TN Motor",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "calibrateTNMotor",
+    "options": {}
+   }
+  },
+  {
+   "id": "calibrateAllTN",
+   "category": "Other",
+   "name": "Calibrate All TN",
+   "text": "Cal. All TN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "calibrateAllTN",
+    "options": {}
+   }
+  },
+  {
+   "id": "zeroMotor",
+   "category": "Other",
+   "name": "Zero Motors",
+   "text": "Zero Motors",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "zeroMotors",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-emotimo-st4",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jacob"
+  }
+ ],
+ "source": {
+  "module": "emotimo-st4",
+  "version": "1.0.5",
+  "license": "MIT",
+  "maintainers": [
+   "Jacob"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-emotimo-st4.git"
+ }
+}

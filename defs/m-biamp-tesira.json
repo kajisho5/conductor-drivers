@@ -1,0 +1,144 @@
+{
+ "format": 1,
+ "id": "m-biamp-tesira",
+ "name": "Biamp TesiraFORTE",
+ "category": "Biamp",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "pollinginterval",
+   "label": "Polling interval in ms (for GET requests)",
+   "type": "text",
+   "default": "500"
+  }
+ ],
+ "actions": [
+  {
+   "id": "setFaderLevel",
+   "name": "Set Fader Level",
+   "options": [
+    {
+     "id": "instanceID",
+     "label": "Instance ID",
+     "type": "text",
+     "default": "Level1",
+     "help": "Insert instance ID"
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "text",
+     "default": "1",
+     "help": "Insert Channel"
+    },
+    {
+     "id": "level",
+     "label": "Level",
+     "type": "number",
+     "default": 0,
+     "min": -100,
+     "max": 12
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.instanceID}} set level {{option.channel}} {{option.level}}\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "incFaderLevel",
+   "name": "Increment/Decrement Fader Level",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "select",
+     "default": "increment",
+     "choices": [
+      {
+       "id": "increment",
+       "label": "Increment"
+      },
+      {
+       "id": "decrement",
+       "label": "Decrement"
+      }
+     ]
+    },
+    {
+     "id": "instanceID",
+     "label": "Instance ID",
+     "type": "text",
+     "default": "Level1",
+     "help": "Insert instance ID"
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "text",
+     "default": "1",
+     "help": "Insert Channel"
+    },
+    {
+     "id": "amount",
+     "label": "Increment/Decrement Amount",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.instanceID}} {{option.command|map}}crement level {{option.channel}} {{option.amount}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "command": {
+     "increment": "in",
+     "decrement": "de"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-biamp-tesira",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Adrian Davis, Joseph Adams, David Stevens, Tim Terry, Bjorn Peterson"
+  }
+ ],
+ "source": {
+  "module": "biamp-tesira",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Adrian Davis",
+   "Joseph Adams",
+   "David Stevens",
+   "Tim Terry",
+   "Bjorn Peterson"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-biamp-tesira.git"
+ }
+}

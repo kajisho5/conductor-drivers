@@ -1,0 +1,115 @@
+{
+ "format": 1,
+ "id": "m-disguise-mtc",
+ "name": "Disguise - Multi Transport Control",
+ "category": "Disguise",
+ "version": "2.2.2",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 54321,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "pollInterval",
+   "label": "Data Polling Interval (ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 0,
+   "max": 60000,
+   "help": "How often to refresh player and track lists from the device. Set to 0 to disable automatic polling."
+  }
+ ],
+ "actions": [
+  {
+   "id": "TransportCommand",
+   "name": "Transport Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "select",
+     "default": "playSection",
+     "choices": [
+      {
+       "id": "play",
+       "label": "Play"
+      },
+      {
+       "id": "playSection",
+       "label": "Play Section"
+      },
+      {
+       "id": "loop",
+       "label": "Loop Section"
+      },
+      {
+       "id": "stop",
+       "label": "Stop"
+      }
+     ]
+    },
+    {
+     "id": "player",
+     "label": "Transport (Player)",
+     "type": "select",
+     "default": "default",
+     "choices": [
+      {
+       "id": "default",
+       "label": "default (no data from device)"
+      }
+     ],
+     "help": "Transport to target"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"track_command\":{\"player\":\"default\",\"command\":\"{{option.command|map}}\"}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "command": {
+     "playSection": "playSection",
+     "play": "play",
+     "loop": "loop",
+     "stop": "stop"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-disguise-mtc",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Aleksei Vlasov, Ted Charles Brown, William Viker"
+  }
+ ],
+ "source": {
+  "module": "disguise-mtc",
+  "version": "2.2.2",
+  "license": "MIT",
+  "maintainers": [
+   "Aleksei Vlasov",
+   "Ted Charles Brown",
+   "William Viker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-disguise-mtc.git"
+ }
+}

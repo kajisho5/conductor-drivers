@@ -1,0 +1,90 @@
+{
+ "format": 1,
+ "id": "m-blackbox-boxilla",
+ "name": "Blackbox Boxilla",
+ "category": "Blackbox",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": "REST_BbAdminUser"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "Boxill@2020"
+  },
+  {
+   "id": "apiPollInterval",
+   "label": "Polling interval",
+   "type": "text",
+   "default": "1000"
+  }
+ ],
+ "actions": [
+  {
+   "id": "active_connection",
+   "name": "Connect user to connection",
+   "options": [
+    {
+     "id": "username",
+     "label": "Username",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "connection_name",
+     "label": "Connection name",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "receiver_name",
+     "label": "Receiver name",
+     "type": "select",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/bxa-api/connections/kvm/active",
+    "body": "{}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-blackbox-boxilla",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz, Håkon Nessjøen"
+  }
+ ],
+ "source": {
+  "module": "blackbox-boxilla",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz",
+   "Håkon Nessjøen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-blackbox-boxilla.git"
+ }
+}

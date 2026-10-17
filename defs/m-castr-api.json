@@ -1,0 +1,115 @@
+{
+ "format": 1,
+ "id": "m-castr-api",
+ "name": "castr.io API v2",
+ "category": "castr.io",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.castr.com",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "accessToken",
+   "label": "Access Token ID",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "secretKey",
+   "label": "Secret Key",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "pollInterval",
+   "label": "Polling Interval",
+   "type": "number",
+   "default": 10,
+   "min": 0,
+   "max": 3600,
+   "help": "how often to poll the API for new data, in seconds. 0=never"
+  },
+  {
+   "id": "apiUrl",
+   "label": "Base API URL",
+   "type": "text",
+   "default": "https://api.castr.com/v2/",
+   "help": "Leave blank to use the default API URL"
+  }
+ ],
+ "actions": [
+  {
+   "id": "enableStream",
+   "name": "Enable Stream",
+   "options": [
+    {
+     "id": "stream",
+     "label": "Stream",
+     "type": "select",
+     "choices": [],
+     "help": "use either the stream name or the stream id, variables are expanded"
+    },
+    {
+     "id": "onoff",
+     "label": "Action",
+     "type": "select",
+     "choices": [
+      {
+       "id": "enable",
+       "label": "enable"
+      },
+      {
+       "id": "disable",
+       "label": "disable"
+      },
+      {
+       "id": "toggle",
+       "label": "toggle"
+      }
+     ],
+     "help": "select if you want to enable, disable or toggle"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PATCH",
+    "path": "/v2/live_streams",
+    "body": "{\"enabled\":{{option.onoff|map}}e}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "onoff": {
+     "enable": "tru",
+     "disable": "fals",
+     "toggle": "fals"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/m1tk4/companion-module-castr-api",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dimitri Tarassenko"
+  }
+ ],
+ "source": {
+  "module": "castr-api",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Dimitri Tarassenko"
+  ],
+  "repository": "git+https://github.com/m1tk4/companion-module-castr-api.git"
+ }
+}

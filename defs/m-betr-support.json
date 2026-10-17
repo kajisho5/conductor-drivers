@@ -1,0 +1,75 @@
+{
+ "format": 1,
+ "id": "m-betr-support",
+ "name": "Betr Production Betr Support",
+ "category": "Betr Production",
+ "version": "2.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://34.238.206.176:3001",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "api_key",
+   "label": "API key",
+   "type": "text"
+  },
+  {
+   "id": "group_id",
+   "label": "Group id",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "help_trigger",
+   "name": "Trigger Better Webhook 1",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/data",
+    "body": "{\"api_key\":\"\",\"group_id\":\"\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "help_trigger",
+   "category": "Help",
+   "name": "Help",
+   "text": "Help",
+   "backgroundColor": "#f53123",
+   "action": {
+    "definitionId": "help_trigger",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-betr-support",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Vishnu CR"
+  }
+ ],
+ "source": {
+  "module": "betr-support",
+  "version": "2.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Vishnu CR"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-betr-support.git"
+ }
+}

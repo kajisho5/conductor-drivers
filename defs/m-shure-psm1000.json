@@ -1,0 +1,364 @@
+{
+ "format": 1,
+ "id": "m-shure-psm1000",
+ "name": "Shure PSM1000",
+ "category": "Shure",
+ "version": "2.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "meteringOn",
+   "label": "Enable Metering?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "meteringInterval",
+   "label": "Metering Interval (in ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "max": 99999
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_channel_name",
+   "name": "Set channel name",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name (8 characters max)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} CHAN_NAME {{option.name}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set_audio_in_level",
+   "name": "Set audio input level of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Value (dB)",
+     "type": "number",
+     "default": -16,
+     "min": -67,
+     "max": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_IN_LVL {{option.value}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "set_rf_tx_level",
+   "name": "Set RF TX level",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Level (mW)",
+     "type": "select",
+     "default": "10",
+     "choices": [
+      {
+       "id": "10",
+       "label": "10 mW"
+      },
+      {
+       "id": "50",
+       "label": "50 mW"
+      },
+      {
+       "id": "100",
+       "label": "100 mW"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} RF_TX_LVL {{option.value|map}}0 >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    },
+    "value": {
+     "10": "1",
+     "50": "5",
+     "100": "10"
+    }
+   }
+  },
+  {
+   "id": "set_rf_mute",
+   "name": "Set RF mute",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unmute"
+      },
+      {
+       "id": "1",
+       "label": "Mute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} RF_MUTE {{option.value|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    },
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "set_audio_tx_mode",
+   "name": "Set audio TX mode",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Mono"
+      },
+      {
+       "id": "2",
+       "label": "Point to point"
+      },
+      {
+       "id": "3",
+       "label": "Stereo"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_TX_MODE {{option.value|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    },
+    "value": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_audio_in_line_level",
+   "name": "Set audio input line level",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel Number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Aux (-10 dB)"
+      },
+      {
+       "id": "1",
+       "label": "Line (+4 dB)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_IN_LINE_LVL {{option.value|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    },
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-psm1000",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Keith Rocheck"
+  }
+ ],
+ "source": {
+  "module": "shure-psm1000",
+  "version": "2.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Keith Rocheck"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-psm1000.git"
+ }
+}

@@ -1,0 +1,1041 @@
+{
+ "format": 1,
+ "id": "m-softron-ontheairvideo",
+ "name": "Softron OnTheAir Video",
+ "category": "Softron",
+ "version": "2.3.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8081",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist (optional, name/index)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name of a playlist"
+    },
+    {
+     "id": "clip",
+     "label": "Clip index/name (optional)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name for a clip"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/items/{{option.clip}}/play"
+   }
+  },
+  {
+   "id": "playPosition",
+   "name": "Play clip at position",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "text",
+     "default": "0",
+     "help": "Enter an index (zero based) or name of a playlist"
+    },
+    {
+     "id": "clip",
+     "label": "Clip index/name (optional)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name for a clip"
+    },
+    {
+     "id": "type",
+     "label": "Position type",
+     "type": "select",
+     "choices": [
+      {
+       "id": "relativeTimecode",
+       "label": "Relative Timecode"
+      },
+      {
+       "id": "mediaTimecode",
+       "label": "Media Timecode"
+      },
+      {
+       "id": "relativeSeconds",
+       "label": "Relative Seconds"
+      }
+     ]
+    },
+    {
+     "id": "position",
+     "label": "Time (timecode or seconds)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/items/{{option.clip}}/play?position_{{option.type|map}}={{option.position}}"
+   },
+   "maps": {
+    "type": {
+     "relativeTimecode": "relative_timecode",
+     "mediaTimecode": "media_timecode",
+     "relativeSeconds": "relative_seconds"
+    }
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist (optional, name/index)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name of a playlist"
+    },
+    {
+     "id": "clip",
+     "label": "Clip index/name (optional)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name for a clip"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/items/{{option.clip}}/pause"
+   }
+  },
+  {
+   "id": "pausePosition",
+   "name": "Pause clip at position",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "text",
+     "default": "0",
+     "help": "Enter an index (zero based) or name of a playlist"
+    },
+    {
+     "id": "clip",
+     "label": "Clip index/name (optional)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name for a clip"
+    },
+    {
+     "id": "type",
+     "label": "Position type",
+     "type": "select",
+     "choices": [
+      {
+       "id": "relativeTimecode",
+       "label": "Relative Timecode"
+      },
+      {
+       "id": "mediaTimecode",
+       "label": "Media Timecode"
+      },
+      {
+       "id": "relativeSeconds",
+       "label": "Relative Seconds"
+      }
+     ]
+    },
+    {
+     "id": "position",
+     "label": "Time (timecode or seconds)",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/items/{{option.clip}}/pause?position_{{option.type|map}}={{option.position}}"
+   },
+   "maps": {
+    "type": {
+     "relativeTimecode": "relative_timecode",
+     "mediaTimecode": "media_timecode",
+     "relativeSeconds": "relative_seconds"
+    }
+   }
+  },
+  {
+   "id": "resume",
+   "name": "Resume",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist (optional, name/index)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name of a playlist"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/resume"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist (optional, name/index)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name of a playlist"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/stop"
+   }
+  },
+  {
+   "id": "skipNext",
+   "name": "Skip to next clip",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist (optional, name/index)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name of a playlist"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/skip_next"
+   }
+  },
+  {
+   "id": "skipPrevious",
+   "name": "Skip to previous clip",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist (optional, name/index)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name of a playlist"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/previous"
+   }
+  },
+  {
+   "id": "joinInProgress",
+   "name": "Join In Progress",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist (optional, name/index)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or name of a playlist"
+    },
+    {
+     "id": "clip",
+     "label": "Clip (optional, index/UID)",
+     "type": "text",
+     "default": "",
+     "help": "Enter an index (zero based) or UID for a clip"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playlists/{{option.playlist}}/items/{{option.clip}}/join_in_progress"
+   }
+  },
+  {
+   "id": "gpiTrigger",
+   "name": "Toggle Virtual GPI",
+   "options": [
+    {
+     "id": "input",
+     "label": "GPI Input",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 25,
+     "help": "GPI input number (1-25)"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playback/gpi_trigger?input={{option.input}}"
+   }
+  },
+  {
+   "id": "cueTrigger",
+   "name": "Cue Trigger (Space Bar)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playback/cue_trigger"
+   }
+  },
+  {
+   "id": "cgPlay",
+   "name": "CG Project - Play",
+   "options": [
+    {
+     "id": "project",
+     "label": "CG Project",
+     "type": "select",
+     "default": "",
+     "choices": [],
+     "help": "Select a CG project"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playback/cg_projects//play"
+   }
+  },
+  {
+   "id": "cgPause",
+   "name": "CG Project - Pause",
+   "options": [
+    {
+     "id": "project",
+     "label": "CG Project",
+     "type": "select",
+     "default": "",
+     "choices": [],
+     "help": "Select a CG project"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playback/cg_projects//pause"
+   }
+  },
+  {
+   "id": "cgStop",
+   "name": "CG Project - Stop",
+   "options": [
+    {
+     "id": "project",
+     "label": "CG Project",
+     "type": "select",
+     "default": "",
+     "choices": [],
+     "help": "Select a CG project"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/playback/cg_projects//stop"
+   }
+  },
+  {
+   "id": "runAction",
+   "name": "Run Action (AppleScript)",
+   "options": [
+    {
+     "id": "action",
+     "label": "Action",
+     "type": "select",
+     "default": "",
+     "choices": [],
+     "help": "Select an available action to run"
+    },
+    {
+     "id": "parameter",
+     "label": "Parameter (optional)",
+     "type": "text",
+     "default": "",
+     "help": "Optional parameter to pass to the action"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/actions//run?parameter={{option.parameter}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "play",
+   "category": "Transport",
+   "name": "Play",
+   "text": "⏵",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "playlist": "",
+     "clip": ""
+    }
+   }
+  },
+  {
+   "id": "pause",
+   "category": "Transport",
+   "name": "Pause",
+   "text": "⏯",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "",
+     "clip": ""
+    }
+   }
+  },
+  {
+   "id": "stop",
+   "category": "Transport",
+   "name": "Stop",
+   "text": "⏹",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "playlist": ""
+    }
+   }
+  },
+  {
+   "id": "previous",
+   "category": "Transport",
+   "name": "Previous",
+   "text": "⏮",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "skipPrevious",
+    "options": {
+     "playlist": ""
+    }
+   }
+  },
+  {
+   "id": "next",
+   "category": "Transport",
+   "name": "Next",
+   "text": "⏭",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "skipNext",
+    "options": {
+     "playlist": ""
+    }
+   }
+  },
+  {
+   "id": "clip_0_0",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 0",
+   "text": "Clip 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "0"
+    }
+   }
+  },
+  {
+   "id": "clip_0_1",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 1",
+   "text": "Clip 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "1"
+    }
+   }
+  },
+  {
+   "id": "clip_0_2",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 2",
+   "text": "Clip 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "2"
+    }
+   }
+  },
+  {
+   "id": "clip_0_3",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 3",
+   "text": "Clip 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "3"
+    }
+   }
+  },
+  {
+   "id": "clip_0_4",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 4",
+   "text": "Clip 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "4"
+    }
+   }
+  },
+  {
+   "id": "clip_0_5",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 5",
+   "text": "Clip 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "5"
+    }
+   }
+  },
+  {
+   "id": "clip_0_6",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 6",
+   "text": "Clip 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "6"
+    }
+   }
+  },
+  {
+   "id": "clip_0_7",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 7",
+   "text": "Clip 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "7"
+    }
+   }
+  },
+  {
+   "id": "clip_0_8",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 8",
+   "text": "Clip 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "8"
+    }
+   }
+  },
+  {
+   "id": "clip_0_9",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 9",
+   "text": "Clip 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "9"
+    }
+   }
+  },
+  {
+   "id": "clip_0_10",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 10",
+   "text": "Clip 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "10"
+    }
+   }
+  },
+  {
+   "id": "clip_0_11",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 11",
+   "text": "Clip 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "11"
+    }
+   }
+  },
+  {
+   "id": "clip_0_12",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 12",
+   "text": "Clip 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "12"
+    }
+   }
+  },
+  {
+   "id": "clip_0_13",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 13",
+   "text": "Clip 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "13"
+    }
+   }
+  },
+  {
+   "id": "clip_0_14",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 14",
+   "text": "Clip 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "14"
+    }
+   }
+  },
+  {
+   "id": "clip_0_15",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 15",
+   "text": "Clip 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "15"
+    }
+   }
+  },
+  {
+   "id": "clip_0_16",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 16",
+   "text": "Clip 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "16"
+    }
+   }
+  },
+  {
+   "id": "clip_0_17",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 17",
+   "text": "Clip 17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "17"
+    }
+   }
+  },
+  {
+   "id": "clip_0_18",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 18",
+   "text": "Clip 18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "18"
+    }
+   }
+  },
+  {
+   "id": "clip_0_19",
+   "category": "Clips (playlist 0)",
+   "name": "Clip 19",
+   "text": "Clip 19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "0",
+     "clip": "19"
+    }
+   }
+  },
+  {
+   "id": "clip_1_0",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 0",
+   "text": "Clip 0",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "0"
+    }
+   }
+  },
+  {
+   "id": "clip_1_1",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 1",
+   "text": "Clip 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "1"
+    }
+   }
+  },
+  {
+   "id": "clip_1_2",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 2",
+   "text": "Clip 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "2"
+    }
+   }
+  },
+  {
+   "id": "clip_1_3",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 3",
+   "text": "Clip 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "3"
+    }
+   }
+  },
+  {
+   "id": "clip_1_4",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 4",
+   "text": "Clip 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "4"
+    }
+   }
+  },
+  {
+   "id": "clip_1_5",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 5",
+   "text": "Clip 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "5"
+    }
+   }
+  },
+  {
+   "id": "clip_1_6",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 6",
+   "text": "Clip 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "6"
+    }
+   }
+  },
+  {
+   "id": "clip_1_7",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 7",
+   "text": "Clip 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "7"
+    }
+   }
+  },
+  {
+   "id": "clip_1_8",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 8",
+   "text": "Clip 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "8"
+    }
+   }
+  },
+  {
+   "id": "clip_1_9",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 9",
+   "text": "Clip 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "9"
+    }
+   }
+  },
+  {
+   "id": "clip_1_10",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 10",
+   "text": "Clip 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "10"
+    }
+   }
+  },
+  {
+   "id": "clip_1_11",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 11",
+   "text": "Clip 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "11"
+    }
+   }
+  },
+  {
+   "id": "clip_1_12",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 12",
+   "text": "Clip 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "12"
+    }
+   }
+  },
+  {
+   "id": "clip_1_13",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 13",
+   "text": "Clip 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "13"
+    }
+   }
+  },
+  {
+   "id": "clip_1_14",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 14",
+   "text": "Clip 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "14"
+    }
+   }
+  },
+  {
+   "id": "clip_1_15",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 15",
+   "text": "Clip 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "15"
+    }
+   }
+  },
+  {
+   "id": "clip_1_16",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 16",
+   "text": "Clip 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "16"
+    }
+   }
+  },
+  {
+   "id": "clip_1_17",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 17",
+   "text": "Clip 17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "17"
+    }
+   }
+  },
+  {
+   "id": "clip_1_18",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 18",
+   "text": "Clip 18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "18"
+    }
+   }
+  },
+  {
+   "id": "clip_1_19",
+   "category": "Clips (playlist 1)",
+   "name": "Clip 19",
+   "text": "Clip 19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "playlist": "1",
+     "clip": "19"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-softron-ontheairvideo",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Stephen Harrison"
+  }
+ ],
+ "source": {
+  "module": "softron-ontheairvideo",
+  "version": "2.3.1",
+  "license": "MIT",
+  "maintainers": [
+   "Stephen Harrison"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-softron-ontheairvideo.git"
+ }
+}

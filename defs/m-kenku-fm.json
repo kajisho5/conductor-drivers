@@ -1,0 +1,78 @@
+{
+ "format": 1,
+ "id": "m-kenku-fm",
+ "name": "KenkuFM API Controller",
+ "category": "KenkuFM",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:3333",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "soundboard_play_sound",
+   "name": "Soundboard: Play Sound",
+   "options": [
+    {
+     "id": "id",
+     "label": "Sound ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/soundboard/play",
+    "body": "{\"id\":\"{{option.id}}\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "soundboard_stop_sound",
+   "name": "Soundboard: Stop Sound",
+   "options": [
+    {
+     "id": "id",
+     "label": "Sound ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "PUT",
+    "path": "/v1/soundboard/stop",
+    "body": "{\"id\":\"{{option.id}}\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-kenku-fm",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Schemen"
+  }
+ ],
+ "source": {
+  "module": "kenku-fm",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Schemen"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-kenku-fm.git"
+ }
+}

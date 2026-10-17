@@ -1,0 +1,91 @@
+{
+ "format": 1,
+ "id": "m-philips-wiz-bulbs",
+ "name": "Philips Wiz Bulbs",
+ "category": "Philips",
+ "version": "1.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 38899,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "pollMs",
+   "label": "Poll Interval (ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "max": 60000
+  },
+  {
+   "id": "enablePolling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "bulbOff",
+   "name": "Turn Bulb Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"id\":1,\"method\":\"setPilot\",\"params\":{\"state\":false}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setbrightness",
+   "name": "Set Brightness (Will NOT Turn On Bulb)",
+   "options": [
+    {
+     "id": "brightness",
+     "label": "Brightness (10-100)",
+     "type": "number",
+     "default": 85,
+     "min": 10,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"id\":1,\"method\":\"setPilot\",\"params\":{\"dimming\":{{option.brightness}}}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-philips-wiz-bulbs",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Justin James"
+  }
+ ],
+ "source": {
+  "module": "philips-wiz-bulbs",
+  "version": "1.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Justin James"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-philips-wiz-bulbs.git"
+ }
+}

@@ -1,0 +1,744 @@
+{
+ "format": 1,
+ "id": "m-analogway-midra",
+ "name": "Analog Way Midra / Eikos2 / Saphyr / Pulse2 / SmartMatriX2 / QuickMatriX / Qu…",
+ "category": "Analog Way",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 10500,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "variant",
+   "label": "Variant",
+   "type": "select",
+   "default": "259",
+   "choices": [
+    {
+     "id": "257",
+     "label": "Eikos2"
+    },
+    {
+     "id": "258",
+     "label": "Saphyr"
+    },
+    {
+     "id": "282",
+     "label": "Saphyr - H"
+    },
+    {
+     "id": "259",
+     "label": "Pulse2"
+    },
+    {
+     "id": "283",
+     "label": "Pulse2 - H"
+    },
+    {
+     "id": "260",
+     "label": "SmartMatriX2"
+    },
+    {
+     "id": "284",
+     "label": "SmartMatriX2 - H"
+    },
+    {
+     "id": "261",
+     "label": "QuickMatriX"
+    },
+    {
+     "id": "285",
+     "label": "QuickMatriX - H"
+    },
+    {
+     "id": "262",
+     "label": "QuickVu"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "1GCtal",
+   "name": "Take all",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "1GCtal",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "takescreen",
+   "name": "Take single screen",
+   "options": [
+    {
+     "id": "screen",
+     "label": "Screen",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "S1"
+      },
+      {
+       "id": "1",
+       "label": "S2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.screen|map}},1GCtak",
+    "encoding": "text"
+   },
+   "maps": {
+    "screen": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "1GCsba",
+   "name": "Reload last Preset",
+   "options": [
+    {
+     "id": "0",
+     "label": "Screen",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "S1"
+      },
+      {
+       "id": "1",
+       "label": "S2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.0|map}},1GCsba",
+    "encoding": "text"
+   },
+   "maps": {
+    "0": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "1GCrpr",
+   "name": "Reload Program to Preview",
+   "options": [
+    {
+     "id": "0",
+     "label": "Screen",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "S1"
+      },
+      {
+       "id": "1",
+       "label": "S2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.0|map}},1GCrpr",
+    "encoding": "text"
+   },
+   "maps": {
+    "0": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "GCfsc",
+   "name": "Freeze Screen (all layers)",
+   "options": [
+    {
+     "id": "0",
+     "label": "Screen",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "S1"
+      },
+      {
+       "id": "1",
+       "label": "S2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unfrozen"
+      },
+      {
+       "id": "1",
+       "label": "Frozen"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.0|map}},{{option.value|map}}GCfsc",
+    "encoding": "text"
+   },
+   "maps": {
+    "0": {
+     "0": "0",
+     "1": "1"
+    },
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "GCfra",
+   "name": "Freeze all screens (all layers)",
+   "options": [
+    {
+     "id": "value",
+     "label": "Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unfrozen"
+      },
+      {
+       "id": "1",
+       "label": "Frozen"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.value|map}}GCfra",
+    "encoding": "text"
+   },
+   "maps": {
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "INfrz",
+   "name": "Freeze Input",
+   "options": [
+    {
+     "id": "0",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      },
+      {
+       "id": "4",
+       "label": "5"
+      },
+      {
+       "id": "5",
+       "label": "6"
+      },
+      {
+       "id": "6",
+       "label": "7"
+      },
+      {
+       "id": "7",
+       "label": "8"
+      },
+      {
+       "id": "8",
+       "label": "9"
+      },
+      {
+       "id": "9",
+       "label": "10"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unfrozen"
+      },
+      {
+       "id": "1",
+       "label": "Frozen"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.0|map}},{{option.value|map}}INfrz",
+    "encoding": "text"
+   },
+   "maps": {
+    "0": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    },
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "GCfrl",
+   "name": "Freeze Layer",
+   "options": [
+    {
+     "id": "0",
+     "label": "Screen",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "S1"
+      },
+      {
+       "id": "1",
+       "label": "S2"
+      }
+     ]
+    },
+    {
+     "id": "1",
+     "label": "Layer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Background"
+      },
+      {
+       "id": "1",
+       "label": "PiP Layer 1"
+      },
+      {
+       "id": "2",
+       "label": "PiP Layer 2"
+      },
+      {
+       "id": "3",
+       "label": "PiP Layer 3"
+      },
+      {
+       "id": "4",
+       "label": "PiP Layer 4"
+      },
+      {
+       "id": "5",
+       "label": "Logo Layer 1"
+      },
+      {
+       "id": "6",
+       "label": "Logo Layer 2"
+      },
+      {
+       "id": "7",
+       "label": "Audio Layer"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Unfrozen"
+      },
+      {
+       "id": "1",
+       "label": "Frozen"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.0|map}},{{option.1|map}},{{option.value|map}}GCfrl",
+    "encoding": "text"
+   },
+   "maps": {
+    "0": {
+     "0": "0",
+     "1": "1"
+    },
+    "1": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    },
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "INplg",
+   "name": "Switch Input Plug",
+   "options": [
+    {
+     "id": "0",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      },
+      {
+       "id": "4",
+       "label": "5"
+      },
+      {
+       "id": "5",
+       "label": "6"
+      },
+      {
+       "id": "6",
+       "label": "7"
+      },
+      {
+       "id": "7",
+       "label": "8"
+      },
+      {
+       "id": "8",
+       "label": "9"
+      },
+      {
+       "id": "9",
+       "label": "10"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Plug",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Analog (HD-15)"
+      },
+      {
+       "id": "1",
+       "label": "DVI"
+      },
+      {
+       "id": "2",
+       "label": "SDI"
+      },
+      {
+       "id": "3",
+       "label": "HDMI"
+      },
+      {
+       "id": "4",
+       "label": "HDBaseT"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.0|map}},{{option.value|map}}INplg",
+    "encoding": "text"
+   },
+   "maps": {
+    "0": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9"
+    },
+    "value": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "CTqfa",
+   "name": "Quick Frame single screen",
+   "options": [
+    {
+     "id": "0",
+     "label": "Screen",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "S1"
+      },
+      {
+       "id": "1",
+       "label": "S2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Quick Frame Off"
+      },
+      {
+       "id": "1",
+       "label": "Quick Frame On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.0|map}},{{option.value|map}}CTqfa",
+    "encoding": "text"
+   },
+   "maps": {
+    "0": {
+     "0": "0",
+     "1": "1"
+    },
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "CTqfl",
+   "name": "Quick Frame all screens",
+   "options": [
+    {
+     "id": "value",
+     "label": "Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Quick Frame Off"
+      },
+      {
+       "id": "1",
+       "label": "Quick Frame On"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.value|map}}CTqfl",
+    "encoding": "text"
+   },
+   "maps": {
+    "value": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "GCply",
+   "name": "Preview Layer",
+   "options": [
+    {
+     "id": "value",
+     "label": "Layer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Background"
+      },
+      {
+       "id": "1",
+       "label": "PiP Layer 1"
+      },
+      {
+       "id": "2",
+       "label": "PiP Layer 2"
+      },
+      {
+       "id": "3",
+       "label": "PiP Layer 3"
+      },
+      {
+       "id": "4",
+       "label": "PiP Layer 4"
+      },
+      {
+       "id": "5",
+       "label": "Logo Layer 1"
+      },
+      {
+       "id": "6",
+       "label": "Logo Layer 2"
+      },
+      {
+       "id": "7",
+       "label": "Audio Layer"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.value|map}}GCply",
+    "encoding": "text"
+   },
+   "maps": {
+    "value": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-analogway-midra",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dorian Meid"
+  }
+ ],
+ "source": {
+  "module": "analogway-midra",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Dorian Meid"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-analogway-midra.git"
+ }
+}

@@ -1,0 +1,117 @@
+{
+ "format": 1,
+ "id": "m-globalcache-itac-sl",
+ "name": "Global Cache iTach IP2SL",
+ "category": "Global Cache",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 4999,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "convertresponse",
+   "label": "Convert TCP Response Format",
+   "type": "select",
+   "default": "none",
+   "choices": [
+    {
+     "id": "none",
+     "label": "No conversion"
+    },
+    {
+     "id": "hex",
+     "label": "To Hex"
+    },
+    {
+     "id": "string",
+     "label": "To String"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "command",
+   "name": "Command",
+   "options": [
+    {
+     "id": "sl",
+     "label": "Type Command",
+     "type": "text"
+    },
+    {
+     "id": "term",
+     "label": "Line Termination",
+     "type": "select",
+     "default": "\r",
+     "choices": [
+      {
+       "id": "",
+       "label": "No termination"
+      },
+      {
+       "id": "\r",
+       "label": "Carriage Return - \\r"
+      },
+      {
+       "id": "\n",
+       "label": "Line Feed - \\n"
+      },
+      {
+       "id": "\r\n",
+       "label": "Carriage Return/Line Feed - \\r\\n"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.sl}}{{option.term|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "term": {
+     "\r": "\\r",
+     "": "",
+     "\n": "\\n",
+     "\r\n": "\\r\\n"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-globalcache-itac-sl",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Casey Selph, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "globalcache-itac-sl",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Casey Selph",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-globalcache-itac-sl.git"
+ }
+}

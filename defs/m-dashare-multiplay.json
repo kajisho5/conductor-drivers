@@ -1,0 +1,244 @@
+{
+ "format": 1,
+ "id": "m-dashare-multiplay",
+ "name": "da-share MultiPlay",
+ "category": "da-share",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2000,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "go",
+   "name": "GO",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "go\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop_all",
+   "name": "Stop all cues",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stop_all\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fade_all",
+   "name": "Fade all cues",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "fade_all\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause_all",
+   "name": "Pause all cues",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "pause_all\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "resume_all",
+   "name": "Resume all cues",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "resume_all\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopwatch_start",
+   "name": "Stopwatch start",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stopwatch_start\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopwatch_stop",
+   "name": "Stopwatch stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stopwatch_stop\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopwatch_reset",
+   "name": "Stopwatch reset",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stopwatch_reset\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "advance",
+   "name": "Advance current GO position",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "advance\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause cue",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "pause\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "resume",
+   "name": "Resume cue",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "resume\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop cue",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "stop\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "jump",
+   "name": "Jump to near end of cue",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "jump\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "next_track",
+   "name": "Next track in playlist",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "next_track\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "previous_track",
+   "name": "Previous track in playlist",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "previous_track\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "go",
+   "category": "Basic control",
+   "name": "GO",
+   "text": "GO",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "go",
+    "options": {}
+   }
+  },
+  {
+   "id": "stop_all",
+   "category": "Basic control",
+   "name": "Stop All",
+   "text": "Stop All",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "stop_all",
+    "options": {}
+   }
+  },
+  {
+   "id": "pause",
+   "category": "Basic control",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "resume",
+   "category": "Basic control",
+   "name": "Resume",
+   "text": "Resume",
+   "backgroundColor": "#3333ff",
+   "action": {
+    "definitionId": "resume",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-dashare-multiplay",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "dashare-multiplay",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-dashare-multiplay.git"
+ }
+}

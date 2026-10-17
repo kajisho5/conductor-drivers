@@ -1,0 +1,132 @@
+{
+ "format": 1,
+ "id": "m-gudesystems-smartpdu",
+ "name": "Gude Systems Smart PDU",
+ "category": "Gude Systems",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "useAuthentication",
+   "label": "Use Authentication",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "username",
+   "label": "Username",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "enablePolling",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Polling Interval (milliseconds)",
+   "type": "number",
+   "default": 1000,
+   "min": 100,
+   "max": 10000
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "turn_on_outlet",
+   "name": "Turn ON Outlet",
+   "options": [
+    {
+     "id": "outlet",
+     "label": "Outlet",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/ov.html?cmd=1&p=1&s=1"
+   }
+  },
+  {
+   "id": "turn_off_outlet",
+   "name": "Turn OFF Outlet",
+   "options": [
+    {
+     "id": "outlet",
+     "label": "Outlet",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/ov.html?cmd=1&p=1&s=0"
+   }
+  },
+  {
+   "id": "reset_outlet",
+   "name": "Reset Outlet",
+   "options": [
+    {
+     "id": "outlet",
+     "label": "Outlet",
+     "type": "select",
+     "default": "1",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/?cmd=12&p=1"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-gudesystems-smartpdu",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "gudesystems-smartpdu",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-gudesystems-smartpdu.git"
+ }
+}

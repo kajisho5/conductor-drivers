@@ -1,0 +1,569 @@
+{
+ "format": 1,
+ "id": "m-aja-kumo",
+ "name": "AJA Kumo",
+ "category": "AJA",
+ "version": "2.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "help": "Password if authentication is enabled, leave blank if not"
+  },
+  {
+   "id": "src_count",
+   "label": "Source Count",
+   "type": "text",
+   "default": 16,
+   "help": "Number of inputs/sources the router has."
+  },
+  {
+   "id": "dest_count",
+   "label": "Destination Count",
+   "type": "text",
+   "default": 4,
+   "help": "Number of outputs/destinations the router has."
+  }
+ ],
+ "actions": [
+  {
+   "id": "route",
+   "name": "Route a source (input) to a destination (output)",
+   "options": [
+    {
+     "id": "destination",
+     "label": "destination",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1:  "
+      },
+      {
+       "id": "2",
+       "label": "2:  "
+      },
+      {
+       "id": "3",
+       "label": "3:  "
+      },
+      {
+       "id": "4",
+       "label": "4:  "
+      }
+     ]
+    },
+    {
+     "id": "source",
+     "label": "source",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1:  "
+      },
+      {
+       "id": "2",
+       "label": "2:  "
+      },
+      {
+       "id": "3",
+       "label": "3:  "
+      },
+      {
+       "id": "4",
+       "label": "4:  "
+      },
+      {
+       "id": "5",
+       "label": "5:  "
+      },
+      {
+       "id": "6",
+       "label": "6:  "
+      },
+      {
+       "id": "7",
+       "label": "7:  "
+      },
+      {
+       "id": "8",
+       "label": "8:  "
+      },
+      {
+       "id": "9",
+       "label": "9:  "
+      },
+      {
+       "id": "10",
+       "label": "10:  "
+      },
+      {
+       "id": "11",
+       "label": "11:  "
+      },
+      {
+       "id": "12",
+       "label": "12:  "
+      },
+      {
+       "id": "13",
+       "label": "13:  "
+      },
+      {
+       "id": "14",
+       "label": "14:  "
+      },
+      {
+       "id": "15",
+       "label": "15:  "
+      },
+      {
+       "id": "16",
+       "label": "16:  "
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&configid=0&paramid=eParamID_XPT_Destination{{option.destination|map}}_Status&value={{option.source|map}}"
+   },
+   "maps": {
+    "destination": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "source": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "source",
+   "name": "Send source to the pre-selected destination",
+   "options": [
+    {
+     "id": "source",
+     "label": "source number",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1:  "
+      },
+      {
+       "id": "2",
+       "label": "2:  "
+      },
+      {
+       "id": "3",
+       "label": "3:  "
+      },
+      {
+       "id": "4",
+       "label": "4:  "
+      },
+      {
+       "id": "5",
+       "label": "5:  "
+      },
+      {
+       "id": "6",
+       "label": "6:  "
+      },
+      {
+       "id": "7",
+       "label": "7:  "
+      },
+      {
+       "id": "8",
+       "label": "8:  "
+      },
+      {
+       "id": "9",
+       "label": "9:  "
+      },
+      {
+       "id": "10",
+       "label": "10:  "
+      },
+      {
+       "id": "11",
+       "label": "11:  "
+      },
+      {
+       "id": "12",
+       "label": "12:  "
+      },
+      {
+       "id": "13",
+       "label": "13:  "
+      },
+      {
+       "id": "14",
+       "label": "14:  "
+      },
+      {
+       "id": "15",
+       "label": "15:  "
+      },
+      {
+       "id": "16",
+       "label": "16:  "
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&configid=0&paramid=eParamID_XPT_Destination1_Status&value={{option.source|map}}"
+   },
+   "maps": {
+    "source": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    }
+   }
+  },
+  {
+   "id": "salvo",
+   "name": "Take (apply) a salvo",
+   "options": [
+    {
+     "id": "salvo",
+     "label": "salvo",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7"
+      },
+      {
+       "id": "8",
+       "label": "8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&configid=0&paramid=eParamID_TakeSalvo&value={{option.salvo|map}}"
+   },
+   "maps": {
+    "salvo": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "4",
+   "category": "Source buttons",
+   "name": "Source 1",
+   "text": "Source 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 1
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Source buttons",
+   "name": "Source 2",
+   "text": "Source 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 2
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Source buttons",
+   "name": "Source 3",
+   "text": "Source 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 3
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Source buttons",
+   "name": "Source 4",
+   "text": "Source 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 4
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Source buttons",
+   "name": "Source 5",
+   "text": "Source 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 5
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Source buttons",
+   "name": "Source 6",
+   "text": "Source 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 6
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Source buttons",
+   "name": "Source 7",
+   "text": "Source 7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 7
+    }
+   }
+  },
+  {
+   "id": "11",
+   "category": "Source buttons",
+   "name": "Source 8",
+   "text": "Source 8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 8
+    }
+   }
+  },
+  {
+   "id": "12",
+   "category": "Source buttons",
+   "name": "Source 9",
+   "text": "Source 9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 9
+    }
+   }
+  },
+  {
+   "id": "13",
+   "category": "Source buttons",
+   "name": "Source 10",
+   "text": "Source 10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 10
+    }
+   }
+  },
+  {
+   "id": "14",
+   "category": "Source buttons",
+   "name": "Source 11",
+   "text": "Source 11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 11
+    }
+   }
+  },
+  {
+   "id": "15",
+   "category": "Source buttons",
+   "name": "Source 12",
+   "text": "Source 12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 12
+    }
+   }
+  },
+  {
+   "id": "16",
+   "category": "Source buttons",
+   "name": "Source 13",
+   "text": "Source 13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 13
+    }
+   }
+  },
+  {
+   "id": "17",
+   "category": "Source buttons",
+   "name": "Source 14",
+   "text": "Source 14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 14
+    }
+   }
+  },
+  {
+   "id": "18",
+   "category": "Source buttons",
+   "name": "Source 15",
+   "text": "Source 15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 15
+    }
+   }
+  },
+  {
+   "id": "19",
+   "category": "Source buttons",
+   "name": "Source 16",
+   "text": "Source 16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "source",
+    "options": {
+     "source": 16
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aja-kumo",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "aja-kumo",
+  "version": "2.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aja-kumo.git"
+ }
+}

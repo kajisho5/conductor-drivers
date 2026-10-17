@@ -1,0 +1,1170 @@
+{
+ "format": 1,
+ "id": "m-powersoft-amplifiers",
+ "name": "Powersoft Amplifier",
+ "category": "Powersoft",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "mode",
+   "label": "Mode",
+   "type": "select",
+   "default": "single",
+   "choices": [
+    {
+     "id": "single",
+     "label": "Single device"
+    },
+    {
+     "id": "multi",
+     "label": "Multiple devices"
+    }
+   ],
+   "help": "Choose whether this instance controls a single device or multiple devices."
+  },
+  {
+   "id": "useHttps",
+   "label": "Use HTTPS",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "username",
+   "label": "Username (if required)",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 100,
+   "max": 10000
+  },
+  {
+   "id": "devicesCsv",
+   "label": "Devices IPs (comma or newline separated)",
+   "type": "text",
+   "default": "",
+   "help": "Optional: List of device IPs for multi-device control in a single instance. Leave empty to use the single Host/Port above."
+  },
+  {
+   "id": "maxChannels",
+   "label": "Maximum Number of Channels",
+   "type": "number",
+   "default": 8,
+   "min": 1,
+   "max": 32
+  },
+  {
+   "id": "decimalPlaces",
+   "label": "Decimal Places",
+   "type": "number",
+   "default": 3,
+   "min": 0,
+   "max": 3
+  },
+  {
+   "id": "powerPath",
+   "label": "Power/Standby Parameter Path (override)",
+   "type": "text",
+   "default": "",
+   "help": "Optional: Specify the exact parameter path for power/standby if discovery fails. Example: /Device/ReadOnly/Power/State"
+  },
+  {
+   "id": "enableUdpFeedback",
+   "label": "Enable UDP feedback polling (second API)",
+   "type": "boolean",
+   "default": false,
+   "help": "When enabled, the module will read power/mutes/alarms via UDP port 1234. Writes continue to use HTTP API."
+  },
+  {
+   "id": "udpPort",
+   "label": "UDP Device Port",
+   "type": "number",
+   "default": 1234,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "udpPollInterval",
+   "label": "UDP Poll Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 200,
+   "max": 10000
+  },
+  {
+   "id": "udpAnswerPortZero",
+   "label": "Force answer_port=0",
+   "type": "boolean",
+   "default": false,
+   "help": "Some firmware answers only when answer_port=0 is used (observed in tests)."
+  }
+ ],
+ "actions": [
+  {
+   "id": "powerOn",
+   "name": "Power On",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ],
+     "help": "Select target device. Defaults to first device if not set."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Generals/Standby/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "powerOff",
+   "name": "Power Off",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Generals/Standby/Value\",\"data\":{\"type\":40,\"boolValue\":true}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "togglePower",
+   "name": "Toggle Power",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Generals/Standby/Value\",\"data\":{\"type\":40,\"boolValue\":true}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "muteChannel",
+   "name": "Mute Channel",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/InputProcess/Channels/Channel-{{option.channel|map}}/Mute/Value\",\"data\":{\"type\":40,\"boolValue\":true}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "unmuteChannel",
+   "name": "Unmute Channel",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/InputProcess/Channels/Channel-{{option.channel|map}}/Mute/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "toggleMuteChannel",
+   "name": "Toggle Mute Channel",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/InputProcess/Channels/Channel-{{option.channel|map}}/Mute/Value\",\"data\":{\"type\":40,\"boolValue\":true}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "stopOutputToneGenerator",
+   "name": "Diagnostics: Stop Tone Generator",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "CH 1"
+      },
+      {
+       "id": "2",
+       "label": "CH 2"
+      },
+      {
+       "id": "3",
+       "label": "CH 3"
+      },
+      {
+       "id": "4",
+       "label": "CH 4"
+      },
+      {
+       "id": "5",
+       "label": "CH 5"
+      },
+      {
+       "id": "6",
+       "label": "CH 6"
+      },
+      {
+       "id": "7",
+       "label": "CH 7"
+      },
+      {
+       "id": "8",
+       "label": "CH 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/ToneGenerator/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "stopImpedanceMeasure",
+   "name": "Diagnostics: Stop Impedance Measure",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "CH 1"
+      },
+      {
+       "id": "2",
+       "label": "CH 2"
+      },
+      {
+       "id": "3",
+       "label": "CH 3"
+      },
+      {
+       "id": "4",
+       "label": "CH 4"
+      },
+      {
+       "id": "5",
+       "label": "CH 5"
+      },
+      {
+       "id": "6",
+       "label": "CH 6"
+      },
+      {
+       "id": "7",
+       "label": "CH 7"
+      },
+      {
+       "id": "8",
+       "label": "CH 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputImpedanceMeasure/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  },
+  {
+   "id": "disableToneDetection",
+   "name": "Diagnostics: Disable Tone Detection",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "10.11.12.13",
+     "choices": [
+      {
+       "id": "10.11.12.13",
+       "label": "10.11.12.13"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "CH 1"
+      },
+      {
+       "id": "2",
+       "label": "CH 2"
+      },
+      {
+       "id": "3",
+       "label": "CH 3"
+      },
+      {
+       "id": "4",
+       "label": "CH 4"
+      },
+      {
+       "id": "5",
+       "label": "CH 5"
+      },
+      {
+       "id": "6",
+       "label": "CH 6"
+      },
+      {
+       "id": "7",
+       "label": "CH 7"
+      },
+      {
+       "id": "8",
+       "label": "CH 8"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/am",
+    "body": "{\"version\":\"1.0.0\",\"clientId\":\"x8-panel\",\"payload\":{\"type\":100,\"action\":{\"type\":20,\"values\":[{\"id\":\"/Device/Audio/Presets/Live/Extra/OutputProcess/Channels/Channel-{{option.channel|map}}/AuxLineDiagnostic/OutputToneDetection/Enable/Value\",\"data\":{\"type\":40,\"boolValue\":false}}]}},\"tag\":1,\"updateId\":1}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "channel": {
+     "1": "0",
+     "2": "1",
+     "3": "2",
+     "4": "3",
+     "5": "4",
+     "6": "5",
+     "7": "6",
+     "8": "7"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "power_on",
+   "category": "Power",
+   "name": "Power On",
+   "text": "POWER\nON",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "powerOn",
+    "options": {
+     "device": "10.11.12.13"
+    }
+   }
+  },
+  {
+   "id": "power_off",
+   "category": "Power",
+   "name": "Power OFF",
+   "text": "POWER\nOFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "powerOff",
+    "options": {
+     "device": "10.11.12.13"
+    }
+   }
+  },
+  {
+   "id": "power_toggle",
+   "category": "Power",
+   "name": "Power TOGGLE",
+   "text": "POWER\nTOGGLE",
+   "backgroundColor": "#3c3c3c",
+   "action": {
+    "definitionId": "togglePower",
+    "options": {
+     "device": "10.11.12.13"
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch1",
+   "category": "CH1 Mute",
+   "name": "CH1 Mute Toggle",
+   "text": "CH1\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch1",
+   "category": "CH1 Diagnostics",
+   "name": "CH1 Tone Stop",
+   "text": "CH1\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch1",
+   "category": "CH1 Diagnostics",
+   "name": "CH1 Impedance Stop",
+   "text": "CH1\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch1",
+   "category": "CH1 Diagnostics",
+   "name": "CH1 Detection Disable",
+   "text": "CH1\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 1
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch2",
+   "category": "CH2 Mute",
+   "name": "CH2 Mute Toggle",
+   "text": "CH2\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch2",
+   "category": "CH2 Diagnostics",
+   "name": "CH2 Tone Stop",
+   "text": "CH2\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch2",
+   "category": "CH2 Diagnostics",
+   "name": "CH2 Impedance Stop",
+   "text": "CH2\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch2",
+   "category": "CH2 Diagnostics",
+   "name": "CH2 Detection Disable",
+   "text": "CH2\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 2
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch3",
+   "category": "CH3 Mute",
+   "name": "CH3 Mute Toggle",
+   "text": "CH3\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch3",
+   "category": "CH3 Diagnostics",
+   "name": "CH3 Tone Stop",
+   "text": "CH3\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch3",
+   "category": "CH3 Diagnostics",
+   "name": "CH3 Impedance Stop",
+   "text": "CH3\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch3",
+   "category": "CH3 Diagnostics",
+   "name": "CH3 Detection Disable",
+   "text": "CH3\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 3
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch4",
+   "category": "CH4 Mute",
+   "name": "CH4 Mute Toggle",
+   "text": "CH4\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch4",
+   "category": "CH4 Diagnostics",
+   "name": "CH4 Tone Stop",
+   "text": "CH4\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch4",
+   "category": "CH4 Diagnostics",
+   "name": "CH4 Impedance Stop",
+   "text": "CH4\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch4",
+   "category": "CH4 Diagnostics",
+   "name": "CH4 Detection Disable",
+   "text": "CH4\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 4
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch5",
+   "category": "CH5 Mute",
+   "name": "CH5 Mute Toggle",
+   "text": "CH5\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch5",
+   "category": "CH5 Diagnostics",
+   "name": "CH5 Tone Stop",
+   "text": "CH5\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch5",
+   "category": "CH5 Diagnostics",
+   "name": "CH5 Impedance Stop",
+   "text": "CH5\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch5",
+   "category": "CH5 Diagnostics",
+   "name": "CH5 Detection Disable",
+   "text": "CH5\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 5
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch6",
+   "category": "CH6 Mute",
+   "name": "CH6 Mute Toggle",
+   "text": "CH6\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch6",
+   "category": "CH6 Diagnostics",
+   "name": "CH6 Tone Stop",
+   "text": "CH6\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch6",
+   "category": "CH6 Diagnostics",
+   "name": "CH6 Impedance Stop",
+   "text": "CH6\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch6",
+   "category": "CH6 Diagnostics",
+   "name": "CH6 Detection Disable",
+   "text": "CH6\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 6
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch7",
+   "category": "CH7 Mute",
+   "name": "CH7 Mute Toggle",
+   "text": "CH7\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch7",
+   "category": "CH7 Diagnostics",
+   "name": "CH7 Tone Stop",
+   "text": "CH7\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch7",
+   "category": "CH7 Diagnostics",
+   "name": "CH7 Impedance Stop",
+   "text": "CH7\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch7",
+   "category": "CH7 Diagnostics",
+   "name": "CH7 Detection Disable",
+   "text": "CH7\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 7
+    }
+   }
+  },
+  {
+   "id": "mute_toggle_ch8",
+   "category": "CH8 Mute",
+   "name": "CH8 Mute Toggle",
+   "text": "CH8\nUNMUTED",
+   "backgroundColor": "#007800",
+   "action": {
+    "definitionId": "toggleMuteChannel",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8
+    }
+   }
+  },
+  {
+   "id": "diag_tone_stop_ch8",
+   "category": "CH8 Diagnostics",
+   "name": "CH8 Tone Stop",
+   "text": "CH8\nTONE OFF",
+   "backgroundColor": "#780000",
+   "action": {
+    "definitionId": "stopOutputToneGenerator",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8
+    }
+   }
+  },
+  {
+   "id": "diag_imp_stop_ch8",
+   "category": "CH8 Diagnostics",
+   "name": "CH8 Impedance Stop",
+   "text": "CH8\nIMP OFF",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "stopImpedanceMeasure",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8
+    }
+   }
+  },
+  {
+   "id": "diag_det_disable_ch8",
+   "category": "CH8 Diagnostics",
+   "name": "CH8 Detection Disable",
+   "text": "CH8\nDETECT OFF",
+   "backgroundColor": "#505050",
+   "action": {
+    "definitionId": "disableToneDetection",
+    "options": {
+     "device": "10.11.12.13",
+     "channel": 8
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-powersoft-amplifier",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：dewiweb"
+  }
+ ],
+ "source": {
+  "module": "powersoft-amplifiers",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "dewiweb"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-powersoft-amplifier.git"
+ }
+}

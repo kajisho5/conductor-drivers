@@ -1,0 +1,126 @@
+{
+ "format": 1,
+ "id": "m-cinegy-capture",
+ "name": "Cinegy Capture",
+ "category": "Cinegy",
+ "version": "1.1.5",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8001",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "engine",
+   "label": "Capture Engine Number",
+   "type": "number",
+   "default": 1,
+   "min": 1,
+   "max": 9
+  }
+ ],
+ "actions": [
+  {
+   "id": "StartStopSplit",
+   "name": "Start/Stop/Split",
+   "options": [
+    {
+     "id": "method",
+     "label": "Select Method",
+     "type": "select",
+     "default": "Start",
+     "choices": [
+      {
+       "id": "Start",
+       "label": "Start"
+      },
+      {
+       "id": "Stop",
+       "label": "Stop"
+      },
+      {
+       "id": "Split",
+       "label": "Split"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/REST/S{{option.method|map}}",
+    "body": "",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "method": {
+     "Start": "tart",
+     "Stop": "top",
+     "Split": "plit"
+    }
+   }
+  },
+  {
+   "id": "JobTemplateAction",
+   "name": "Start Job with Template",
+   "options": [
+    {
+     "id": "templateId",
+     "label": "Select Job Template",
+     "type": "select",
+     "default": "",
+     "choices": []
+    },
+    {
+     "id": "fileName",
+     "label": "File Name Pattern (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "clipName",
+     "label": "Clip Name (optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "tapeName",
+     "label": "Tape Name (optional)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/REST/StartByJobTemplateIdEx",
+    "body": "\"{\\\"CustomMetadata\\\":[{\\\"Name\\\":\\\"FileName\\\",\\\"Value\\\":\\\"{{option.fileName}}\\\"},{\\\"Name\\\":\\\"ClipName\\\",\\\"Value\\\":\\\"{{option.clipName}}\\\"},{\\\"Name\\\":\\\"TapeName\\\",\\\"Value\\\":\\\"{{option.tapeName}}\\\"}]}\"",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-cinegy-capture",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leopold Strobl"
+  }
+ ],
+ "source": {
+  "module": "cinegy-capture",
+  "version": "1.1.5",
+  "license": "MIT",
+  "maintainers": [
+   "Leopold Strobl"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-cinegy-capture.git"
+ }
+}

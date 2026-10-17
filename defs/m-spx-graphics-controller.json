@@ -1,0 +1,238 @@
+{
+ "format": 1,
+ "id": "m-spx-graphics-controller",
+ "name": "spx gc",
+ "category": "spx",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:5000",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Start focused item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/item/play"
+   }
+  },
+  {
+   "id": "play_ID",
+   "name": "Start item by ID",
+   "options": [
+    {
+     "id": "id",
+     "label": "ID",
+     "type": "text",
+     "default": "0123456789"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/item/play/{{option.id}}"
+   }
+  },
+  {
+   "id": "continue",
+   "name": "Continue focused item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/item/continue"
+   }
+  },
+  {
+   "id": "continue_ID",
+   "name": "Continue item by ID",
+   "options": [
+    {
+     "id": "id",
+     "label": "ID",
+     "type": "text",
+     "default": "0123456789"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/item/continue/{{option.id}}"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop focused item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/item/stop"
+   }
+  },
+  {
+   "id": "stop_ID",
+   "name": "Stop item by ID",
+   "options": [
+    {
+     "id": "id",
+     "label": "ID",
+     "type": "text",
+     "default": "0123456789"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/item/stop/{{option.id}}"
+   }
+  },
+  {
+   "id": "focusFirst",
+   "name": "Focus on the first item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/rundown/focusFirst"
+   }
+  },
+  {
+   "id": "focusNext",
+   "name": "Focus on the next item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/rundown/focusNext"
+   }
+  },
+  {
+   "id": "focusPrevious",
+   "name": "Focus on the previous item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/rundown/focusPrevious"
+   }
+  },
+  {
+   "id": "focusLast",
+   "name": "Focus on the last item",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/rundown/focusLast"
+   }
+  },
+  {
+   "id": "stopAllLayers",
+   "name": "Stop all layers",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/rundown/stopAllLayers"
+   }
+  },
+  {
+   "id": "openRundown",
+   "name": "Open rundown",
+   "options": [
+    {
+     "id": "rundown",
+     "label": "project/file",
+     "type": "text",
+     "default": "MyFirstProject/MyFirstRundown"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/rundown/load?file={{option.rundown}}"
+   }
+  },
+  {
+   "id": "controlRundownItem",
+   "name": "Play/Stop/Continue an item from a known rundown",
+   "options": [
+    {
+     "id": "file",
+     "label": "Project/file",
+     "type": "text",
+     "default": "MyFirstProject/MyFirstRundown"
+    },
+    {
+     "id": "id",
+     "label": "Id",
+     "type": "text",
+     "default": "0123456789"
+    },
+    {
+     "id": "command",
+     "label": "Action",
+     "type": "select",
+     "default": "play",
+     "choices": [
+      {
+       "id": "play",
+       "label": "Play"
+      },
+      {
+       "id": "stop",
+       "label": "Stop"
+      },
+      {
+       "id": "continue",
+       "label": "Continue"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/v1/controlRundownItemByID?file={{option.file}}&item={{option.id}}&command={{option.command|map}}"
+   },
+   "maps": {
+    "command": {
+     "play": "play",
+     "stop": "stop",
+     "continue": "continue"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-spx-graphics-controller",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Devidz"
+  }
+ ],
+ "source": {
+  "module": "spx-graphics-controller",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Devidz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-spx-graphics-controller.git"
+ }
+}

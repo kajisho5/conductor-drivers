@@ -1,0 +1,1775 @@
+{
+ "format": 1,
+ "id": "m-figure53-qlab-advance",
+ "name": "Figure 53 QLab with feedback",
+ "category": "Figure 53",
+ "version": "2.13.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 53000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "useTCP",
+   "label": "Use TCP?",
+   "type": "boolean",
+   "default": true,
+   "help": "Use TCP instead of UDP\nRequired for feedbacks and variables"
+  },
+  {
+   "id": "useTenths",
+   "label": "Use Tenths?",
+   "type": "boolean",
+   "default": false,
+   "help": "Show .1 second resolution for cue remaining timer?\nOtherwise offset countdown by +1 second\nRequires TCP"
+  },
+  {
+   "id": "exposeVariables",
+   "label": "Expose cue name variables?",
+   "type": "boolean",
+   "default": false,
+   "help": "Variables for the name of each cue number and cue ID are normally hidden\nin the Variable List. Enabling this will allow them to be searched in the\nlist but may also cause excessive clutter"
+  },
+  {
+   "id": "passcode",
+   "label": "OSC Passcode",
+   "type": "text",
+   "help": "The passcode to controll QLab.\nLeave blank if not needed\nThis is almost always required for QLab5"
+  },
+  {
+   "id": "workspace",
+   "label": "Workspace",
+   "type": "select",
+   "default": "default",
+   "choices": [
+    {
+     "id": "default",
+     "label": "Default Workspace"
+    }
+   ],
+   "help": "Select a target workspace\n(or Default/selected)"
+  },
+  {
+   "id": "cuelist",
+   "label": "Cue List",
+   "type": "select",
+   "default": "default",
+   "choices": [
+    {
+     "id": "default",
+     "label": "Default Cue List"
+    }
+   ],
+   "help": "Specific Cue List for Play Head control\n(or use Default/selected)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "go",
+   "name": "GO",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f676f002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "audition_go",
+   "name": "Audition GO",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6175646974696f6e476f002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f73746f700000002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "add_slice",
+   "name": "Add Slice",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f73656c65637465642f616464536c6963654d61726b6572000000002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "previous",
+   "name": "Previous Cue",
+   "options": [
+    {
+     "id": "seq",
+     "label": "Sequence?",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f706c6179686561642f70726576696f7573{{option.seq|map}}00002c000000c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "seq": {
+     "false": "",
+     "true": "53657175656e6365"
+    }
+   }
+  },
+  {
+   "id": "next",
+   "name": "Next Cue",
+   "options": [
+    {
+     "id": "seq",
+     "label": "Sequence?",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f706c6179686561642f6e657874{{option.seq|map}}00002c000000c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "seq": {
+     "false": "",
+     "true": "53657175656e6365"
+    }
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f706175736500002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "resume",
+   "name": "Resume",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f726573756d65002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "togglePause",
+   "name": "Toggle Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f6163746976652f746f67676c655061757365002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "stopSelected",
+   "name": "Stop selected",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f73656c65637465642f73746f7000002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "panic",
+   "name": "Panic (ALL)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f70616e696300002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "reset",
+   "name": "Reset",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f726573657400002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "load",
+   "name": "Load Cue",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f73656c65637465642f6c6f616400002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "preview",
+   "name": "Preview",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f73656c65637465642f707265766965770000002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "audition_preview",
+   "name": "Audition Preview",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f73656c65637465642f6175646974696f6e507265766965770000002c000000c0",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "liveFadePreview",
+   "name": "Live Fade Preview mode",
+   "options": [
+    {
+     "id": "onOff",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6c6976654661646550726576696577000000002c690000000000{{option.onOff|map}}c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "onOff": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "showMode",
+   "name": "Show mode",
+   "options": [
+    {
+     "id": "onOff",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f73686f774d6f64650000002c690000000000{{option.onOff|map}}c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "onOff": {
+     "0": "00",
+     "1": "01",
+     "2": "01"
+    }
+   }
+  },
+  {
+   "id": "auditMode",
+   "name": "Audition",
+   "options": [
+    {
+     "id": "onOff",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f616c776179734175646974696f6e002c690000000000{{option.onOff|map}}c0c02f616c776179734175646974696f6e002c000000c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "onOff": {
+     "0": "00",
+     "1": "01",
+     "2": "00"
+    }
+   }
+  },
+  {
+   "id": "auditWindows",
+   "name": "Audition Monitors",
+   "options": [
+    {
+     "id": "onOff",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6175646974696f6e4d6f6e69746f72730000002c690000000000{{option.onOff|map}}c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "onOff": {
+     "0": "00",
+     "1": "01",
+     "2": "00"
+    }
+   }
+  },
+  {
+   "id": "overrideWindow",
+   "name": "Override Controls Window",
+   "options": [
+    {
+     "id": "onOff",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6f7665727269646557696e646f77002c690000000000{{option.onOff|map}}c0c02f6f7665727269646557696e646f77002c000000c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "onOff": {
+     "0": "00",
+     "1": "01",
+     "2": "00"
+    }
+   }
+  },
+  {
+   "id": "overrides",
+   "name": "Master Override",
+   "options": [
+    {
+     "id": "which",
+     "label": "Override",
+     "type": "select",
+     "default": "midiInputEnabled",
+     "choices": [
+      {
+       "id": "midiInputEnabled",
+       "label": "Midi Input [4, 5]"
+      },
+      {
+       "id": "midiOutputEnabled",
+       "label": "Midi Output [4, 5]"
+      },
+      {
+       "id": "mscInputEnabled",
+       "label": "MSC Input [4, 5]"
+      },
+      {
+       "id": "mscOutputEnabled",
+       "label": "MSC Output [4, 5]"
+      },
+      {
+       "id": "sysexInputEnabled",
+       "label": "SysEx Input [4, 5]"
+      },
+      {
+       "id": "sysexOutputEnabled",
+       "label": "SysEx Output [4, 5]"
+      },
+      {
+       "id": "oscOutputEnabled",
+       "label": "OSC Output [4]"
+      },
+      {
+       "id": "timecodeInputEnabled",
+       "label": "Timecode Input [4, 5]"
+      },
+      {
+       "id": "timecodeOutputEnabled",
+       "label": "Timecode Output [4, 5]"
+      },
+      {
+       "id": "artNetEnabled",
+       "label": "Art-Net Enabled [4]"
+      },
+      {
+       "id": "dmxOutputEnabled",
+       "label": "DMX Output [5]"
+      },
+      {
+       "id": "networkExternalInputEnabled",
+       "label": "External Network Input [5]"
+      },
+      {
+       "id": "networkExternalOutputEnabled",
+       "label": "External Network Output [5]"
+      },
+      {
+       "id": "networkLocalInputEnabled",
+       "label": "Local Network Input [5]"
+      },
+      {
+       "id": "networkLocalOutputEnabled",
+       "label": "Local Network Output [5]"
+      }
+     ]
+    },
+    {
+     "id": "onOff",
+     "label": "Mode",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6f76657272696465732f{{option.which|map}}002c690000000000{{option.onOff|map}}c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "which": {
+     "midiInputEnabled": "6d696469496e707574456e61626c6564",
+     "midiOutputEnabled": "6d6964694f7574707574456e61626c6564000000",
+     "mscInputEnabled": "6d7363496e707574456e61626c656400",
+     "mscOutputEnabled": "6d73634f7574707574456e61626c6564",
+     "sysexInputEnabled": "7379736578496e707574456e61626c6564000000",
+     "sysexOutputEnabled": "73797365784f7574707574456e61626c65640000",
+     "oscOutputEnabled": "6f73634f7574707574456e61626c6564",
+     "timecodeInputEnabled": "74696d65636f6465496e707574456e61626c6564",
+     "timecodeOutputEnabled": "74696d65636f64654f7574707574456e61626c6564000000",
+     "artNetEnabled": "6172744e6574456e61626c6564000000",
+     "dmxOutputEnabled": "646d784f7574707574456e61626c6564",
+     "networkExternalInputEnabled": "6e6574776f726b45787465726e616c496e707574456e61626c656400",
+     "networkExternalOutputEnabled": "6e6574776f726b45787465726e616c4f7574707574456e61626c6564",
+     "networkLocalInputEnabled": "6e6574776f726b4c6f63616c496e707574456e61626c6564",
+     "networkLocalOutputEnabled": "6e6574776f726b4c6f63616c4f7574707574456e61626c6564000000"
+    },
+    "onOff": {
+     "0": "00",
+     "1": "01",
+     "2": "00"
+    }
+   }
+  },
+  {
+   "id": "continue",
+   "name": "Set Continue Mode",
+   "options": [
+    {
+     "id": "contId",
+     "label": "Continue Mode",
+     "type": "select",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Do Not Continue"
+      },
+      {
+       "id": "1",
+       "label": "Auto Continue"
+      },
+      {
+       "id": "2",
+       "label": "Auto Follow"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f73656c65637465642f636f6e74696e75654d6f646500002c690000000000{{option.contId|map}}c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "contId": {
+     "0": "00",
+     "1": "01",
+     "2": "02"
+    }
+   }
+  },
+  {
+   "id": "cueColor",
+   "name": "Set Selected Cue Color",
+   "options": [
+    {
+     "id": "colorId",
+     "label": "Color",
+     "type": "select",
+     "choices": [
+      {
+       "id": "none",
+       "label": "None"
+      },
+      {
+       "id": "red",
+       "label": "Red"
+      },
+      {
+       "id": "orange",
+       "label": "Orange"
+      },
+      {
+       "id": "yellow",
+       "label": "Yellow"
+      },
+      {
+       "id": "green",
+       "label": "Green"
+      },
+      {
+       "id": "cyan",
+       "label": "Cyan"
+      },
+      {
+       "id": "blue",
+       "label": "Blue"
+      },
+      {
+       "id": "purple",
+       "label": "Purple"
+      },
+      {
+       "id": "magenta",
+       "label": "Magenta"
+      },
+      {
+       "id": "berry",
+       "label": "Berry"
+      },
+      {
+       "id": "crimson",
+       "label": "Crimson"
+      },
+      {
+       "id": "forest",
+       "label": "Forest"
+      },
+      {
+       "id": "gray",
+       "label": "Gray"
+      },
+      {
+       "id": "Hot Pink",
+       "label": "Hot Pink"
+      },
+      {
+       "id": "indigo",
+       "label": "Indigo"
+      },
+      {
+       "id": "Lavender",
+       "label": "Lavender"
+      },
+      {
+       "id": "midnight",
+       "label": "Midnight"
+      },
+      {
+       "id": "olive",
+       "label": "Olive"
+      },
+      {
+       "id": "peach",
+       "label": "Peach"
+      },
+      {
+       "id": "plum",
+       "label": "Plum"
+      },
+      {
+       "id": "Sky Blue",
+       "label": "Sky Blue"
+      },
+      {
+       "id": "avocado",
+       "label": "Avocado"
+      },
+      {
+       "id": "bastardamber",
+       "label": "Bastard Amber"
+      },
+      {
+       "id": "bisque",
+       "label": "Bisque"
+      },
+      {
+       "id": "celadon",
+       "label": "Celadon"
+      },
+      {
+       "id": "cerulean",
+       "label": "Cerulean"
+      },
+      {
+       "id": "chartreuse",
+       "label": "Chartreuse"
+      },
+      {
+       "id": "coral",
+       "label": "Coral"
+      },
+      {
+       "id": "ecru",
+       "label": "Ecru"
+      },
+      {
+       "id": "edgecombgray",
+       "label": "Edgecomb Gray"
+      },
+      {
+       "id": "fuchsia",
+       "label": "Fuchsia"
+      },
+      {
+       "id": "fulvous",
+       "label": "Fulvous"
+      },
+      {
+       "id": "glaucous",
+       "label": "Glaucous"
+      },
+      {
+       "id": "grey",
+       "label": "Grey"
+      },
+      {
+       "id": "lilac",
+       "label": "Lilac"
+      },
+      {
+       "id": "maize",
+       "label": "Maize"
+      },
+      {
+       "id": "mauve",
+       "label": "Mauve"
+      },
+      {
+       "id": "ochre",
+       "label": "Ochre"
+      },
+      {
+       "id": "puce",
+       "label": "Puce"
+      },
+      {
+       "id": "rufous",
+       "label": "Rufous"
+      },
+      {
+       "id": "sage",
+       "label": "Sage"
+      },
+      {
+       "id": "scarlet",
+       "label": "Scarlet"
+      },
+      {
+       "id": "seafoamgreen",
+       "label": "Seafoam Green"
+      },
+      {
+       "id": "taupe",
+       "label": "Taupe"
+      },
+      {
+       "id": "verdigris",
+       "label": "Verdigris"
+      },
+      {
+       "id": "vermilion",
+       "label": "Vermilion"
+      },
+      {
+       "id": "viridian",
+       "label": "Viridian"
+      },
+      {
+       "id": "wenge",
+       "label": "Wenge"
+      },
+      {
+       "id": "zaffre",
+       "label": "Zaffre"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "c02f6375652f73656c65637465642f636f6c6f724e616d65002c730000{{option.colorId|map}}00c0",
+    "encoding": "hex"
+   },
+   "maps": {
+    "colorId": {
+     "none": "6e6f6e65000000",
+     "red": "726564",
+     "orange": "6f72616e676500",
+     "yellow": "79656c6c6f7700",
+     "green": "677265656e0000",
+     "cyan": "6379616e000000",
+     "blue": "626c7565000000",
+     "purple": "707572706c6500",
+     "magenta": "6d6167656e7461",
+     "berry": "62657272790000",
+     "crimson": "6372696d736f6e",
+     "forest": "666f7265737400",
+     "gray": "67726179000000",
+     "Hot Pink": "486f742050696e6b000000",
+     "indigo": "696e6469676f00",
+     "Lavender": "4c6176656e646572000000",
+     "midnight": "6d69646e69676874000000",
+     "olive": "6f6c6976650000",
+     "peach": "70656163680000",
+     "plum": "706c756d000000",
+     "Sky Blue": "536b7920426c7565000000",
+     "avocado": "61766f6361646f",
+     "bastardamber": "62617374617264616d626572000000",
+     "bisque": "62697371756500",
+     "celadon": "63656c61646f6e",
+     "cerulean": "636572756c65616e000000",
+     "chartreuse": "6368617274726575736500",
+     "coral": "636f72616c0000",
+     "ecru": "65637275000000",
+     "edgecombgray": "65646765636f6d6267726179000000",
+     "fuchsia": "66756368736961",
+     "fulvous": "66756c766f7573",
+     "glaucous": "676c6175636f7573000000",
+     "grey": "67726579000000",
+     "lilac": "6c696c61630000",
+     "maize": "6d61697a650000",
+     "mauve": "6d617576650000",
+     "ochre": "6f636872650000",
+     "puce": "70756365000000",
+     "rufous": "7275666f757300",
+     "sage": "73616765000000",
+     "scarlet": "736361726c6574",
+     "seafoamgreen": "736561666f616d677265656e000000",
+     "taupe": "74617570650000",
+     "verdigris": "7665726469677269730000",
+     "vermilion": "7665726d696c696f6e0000",
+     "viridian": "766972696469616e000000",
+     "wenge": "77656e67650000",
+     "zaffre": "7a616666726500"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "cuelist-go",
+   "category": "CueList",
+   "name": "GO Action. Includes double-GO feedback.",
+   "text": "GO Action. Includes double-GO feedback.",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "go",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-pause",
+   "category": "CueList",
+   "name": "Pause",
+   "text": "Pause",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-resume",
+   "category": "CueList",
+   "name": "Resume",
+   "text": "Resume",
+   "backgroundColor": "#00ff00",
+   "action": {
+    "definitionId": "resume",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-stop",
+   "category": "CueList",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-stop-selected",
+   "category": "CueList",
+   "name": "Stop selected",
+   "text": "Stop selected",
+   "backgroundColor": "#ff0000",
+   "action": {
+    "definitionId": "stopSelected",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-panic",
+   "category": "CueList",
+   "name": "Panic",
+   "text": "Panic",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "panic",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-reset",
+   "category": "CueList",
+   "name": "Reset",
+   "text": "Reset",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "reset",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-preview",
+   "category": "CueList",
+   "name": "Preview",
+   "text": "Preview",
+   "backgroundColor": "#008000",
+   "action": {
+    "definitionId": "preview",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-previous-cue",
+   "category": "CueList",
+   "name": "Previous Cue",
+   "text": "Previous Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous",
+    "options": {
+     "seq": false
+    }
+   }
+  },
+  {
+   "id": "cuelist-next-cue",
+   "category": "CueList",
+   "name": "Next Cue",
+   "text": "Next Cue",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {
+     "seq": false
+    }
+   }
+  },
+  {
+   "id": "cuelist-previous-sequence",
+   "category": "CueList",
+   "name": "Previous Sequence",
+   "text": "Previous Sequence",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous",
+    "options": {
+     "seq": true
+    }
+   }
+  },
+  {
+   "id": "cuelist-next-sequence",
+   "category": "CueList",
+   "name": "Next Sequence",
+   "text": "Next Sequence",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "next",
+    "options": {
+     "seq": true
+    }
+   }
+  },
+  {
+   "id": "cuelist-load-cue",
+   "category": "CueList",
+   "name": "Load Cue",
+   "text": "Load\nCue",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "load",
+    "options": {}
+   }
+  },
+  {
+   "id": "cuelist-show-mode",
+   "category": "CueList",
+   "name": "Show Mode",
+   "text": "Show\nMode",
+   "backgroundColor": "#008000",
+   "action": {
+    "definitionId": "showMode",
+    "options": {
+     "onOff": "1"
+    }
+   }
+  },
+  {
+   "id": "cuelist-edit-mode",
+   "category": "CueList",
+   "name": "Edit Mode",
+   "text": "Edit\nMode",
+   "backgroundColor": "#486060",
+   "action": {
+    "definitionId": "showMode",
+    "options": {
+     "onOff": "0"
+    }
+   }
+  },
+  {
+   "id": "cuelist-audition-on",
+   "category": "CueList",
+   "name": "Audition ON",
+   "text": "Audition\nON",
+   "backgroundColor": "#004080",
+   "action": {
+    "definitionId": "auditMode",
+    "options": {
+     "onOff": "1"
+    }
+   }
+  },
+  {
+   "id": "cuelist-audition-off",
+   "category": "CueList",
+   "name": "Audition OFF",
+   "text": "Audition\nOFF",
+   "backgroundColor": "#406060",
+   "action": {
+    "definitionId": "auditMode",
+    "options": {
+     "onOff": "0"
+    }
+   }
+  },
+  {
+   "id": "edit-continue-mode-dnc",
+   "category": "Edit",
+   "name": "Continue Mode DNC",
+   "text": "Do Not Continue",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "continue",
+    "options": {
+     "contId": "0"
+    }
+   }
+  },
+  {
+   "id": "edit-continue-mode-auto-continue",
+   "category": "Edit",
+   "name": "Continue mode Auto continue",
+   "text": "Auto Continue",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "continue",
+    "options": {
+     "contId": "1"
+    }
+   }
+  },
+  {
+   "id": "edit-continue-mode-auto-follow",
+   "category": "Edit",
+   "name": "Continue mode Auto Follow",
+   "text": "Auto Follow",
+   "backgroundColor": "#000064",
+   "action": {
+    "definitionId": "continue",
+    "options": {
+     "contId": "2"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-none",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color None",
+   "backgroundColor": "#101010",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "none"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-red",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Red",
+   "backgroundColor": "#a00000",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "red"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-orange",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Orange",
+   "backgroundColor": "#ff6400",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "orange"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-yellow",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Yellow",
+   "backgroundColor": "#a0a000",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "yellow"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-green",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Green",
+   "backgroundColor": "#00a000",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "green"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-cyan",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Cyan",
+   "backgroundColor": "#00a0a0",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "cyan"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-blue",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Blue",
+   "backgroundColor": "#0000a0",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "blue"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-purple",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Purple",
+   "backgroundColor": "#500050",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "purple"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-magenta",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Magenta",
+   "backgroundColor": "#a000a0",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "magenta"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-berry",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Berry",
+   "backgroundColor": "#5e1e4d",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "berry"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-crimson",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Crimson",
+   "backgroundColor": "#8c0028",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "crimson"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-forest",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Forest",
+   "backgroundColor": "#325523",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "forest"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-gray",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Gray",
+   "backgroundColor": "#8c8c8c",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "gray"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-Hot Pink",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Hot Pink",
+   "backgroundColor": "#dc0078",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "Hot Pink"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-indigo",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Indigo",
+   "backgroundColor": "#4b0082",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "indigo"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-Lavender",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Lavender",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "Lavender"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-midnight",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Midnight",
+   "backgroundColor": "#20247d",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "midnight"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-olive",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Olive",
+   "backgroundColor": "#808000",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "olive"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-peach",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Peach",
+   "backgroundColor": "#e48059",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "peach"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-plum",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Plum",
+   "backgroundColor": "#34003e",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "plum"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-Sky Blue",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Sky Blue",
+   "backgroundColor": "#87ceeb",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "Sky Blue"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-avocado",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Avocado",
+   "backgroundColor": "#568204",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "avocado"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-bastardamber",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Bastard Amber",
+   "backgroundColor": "#ffc8b4",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "bastardamber"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-bisque",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Bisque",
+   "backgroundColor": "#ffe5c4",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "bisque"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-celadon",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Celadon",
+   "backgroundColor": "#abe1af",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "celadon"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-cerulean",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Cerulean",
+   "backgroundColor": "#5e7fb2",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "cerulean"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-chartreuse",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Chartreuse",
+   "backgroundColor": "#7fff00",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "chartreuse"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-coral",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Coral",
+   "backgroundColor": "#ff7e4f",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "coral"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-ecru",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Ecru",
+   "backgroundColor": "#ceb280",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "ecru"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-edgecombgray",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Edgecomb Gray",
+   "backgroundColor": "#dad4c5",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "edgecombgray"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-fuchsia",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Fuchsia",
+   "backgroundColor": "#df00df",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "fuchsia"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-fulvous",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Fulvous",
+   "backgroundColor": "#e48600",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "fulvous"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-glaucous",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Glaucous",
+   "backgroundColor": "#88ceea",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "glaucous"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-grey",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Grey",
+   "backgroundColor": "#8c8c8c",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "grey"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-lilac",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Lilac",
+   "backgroundColor": "#cc8799",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "lilac"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-maize",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Maize",
+   "backgroundColor": "#f7e85c",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "maize"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-mauve",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Mauve",
+   "backgroundColor": "#993366",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "mauve"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-ochre",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Ochre",
+   "backgroundColor": "#cd7622",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "ochre"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-puce",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Puce",
+   "backgroundColor": "#dfb0ff",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "puce"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-rufous",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Rufous",
+   "backgroundColor": "#a91b07",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "rufous"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-sage",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Sage",
+   "backgroundColor": "#bdb88a",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "sage"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-scarlet",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Scarlet",
+   "backgroundColor": "#fd2500",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "scarlet"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-seafoamgreen",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Seafoam Green",
+   "backgroundColor": "#c3e2be",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "seafoamgreen"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-taupe",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Taupe",
+   "backgroundColor": "#b28a6c",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "taupe"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-verdigris",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Verdigris",
+   "backgroundColor": "#41816c",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "verdigris"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-vermilion",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Vermilion",
+   "backgroundColor": "#e44234",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "vermilion"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-viridian",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Viridian",
+   "backgroundColor": "#c3e2be",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "viridian"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-wenge",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Wenge",
+   "backgroundColor": "#645452",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "wenge"
+    }
+   }
+  },
+  {
+   "id": "edit-cue-color-zaffre",
+   "category": "Edit",
+   "name": "Cue Color",
+   "text": "Cue Color Zaffre",
+   "backgroundColor": "#0014a8",
+   "action": {
+    "definitionId": "cueColor",
+    "options": {
+     "colorId": "zaffre"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-figure53-qlab-advance",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John A Knight Jr, Per Røine"
+  }
+ ],
+ "source": {
+  "module": "figure53-qlab-advance",
+  "version": "2.13.0",
+  "license": "MIT",
+  "maintainers": [
+   "John A Knight Jr",
+   "Per Røine"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-figure53-qlab-advance.git"
+ }
+}

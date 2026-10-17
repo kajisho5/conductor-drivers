@@ -1,0 +1,1915 @@
+{
+ "format": 1,
+ "id": "m-aetaaudio-codecs",
+ "name": "AETA HIFISCOOP 3 / SCOOP 3 / SCOOP 4+ / SCOOPY+ / Scoop5 S / Scoop5 S-IP / Sc…",
+ "category": "AETA",
+ "version": "1.1.1-beta",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 6000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "AARC Password",
+   "type": "text",
+   "default": "",
+   "help": "Leave blank if no password is set (sends AT#PWD=)"
+  },
+  {
+   "id": "enablePolling",
+   "label": "Enable Status Polling",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "pollingInterval",
+   "label": "Status Poll Interval (ms)",
+   "type": "number",
+   "default": 5000,
+   "min": 1000,
+   "max": 60000
+  },
+  {
+   "id": "enableVUMeter",
+   "label": "Enable VU Meter",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "vuMeterInterval",
+   "label": "VU Meter Update Interval (ms)",
+   "type": "number",
+   "default": 150,
+   "min": 150,
+   "max": 1000,
+   "help": "Minimum 150ms, multiple of 50ms"
+  },
+  {
+   "id": "udpIp",
+   "label": "Companion IP (for UDP VU)",
+   "type": "text",
+   "help": "IP address of this computer, where the codec will send UDP packets"
+  },
+  {
+   "id": "udpPort",
+   "label": "UDP Port",
+   "type": "text",
+   "default": "30000"
+  }
+ ],
+ "actions": [
+  {
+   "id": "hangup",
+   "name": "Hang Up",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ATH1",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set5AS",
+   "name": "Set 5A System",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#5AS={{option.state|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setCodingAlgorithm",
+   "name": "Set Coding Algorithm",
+   "options": [
+    {
+     "id": "algorithm",
+     "label": "Algorithm",
+     "type": "select",
+     "default": "7",
+     "choices": [
+      {
+       "id": "0",
+       "label": "G722 - H242 (Mono)"
+      },
+      {
+       "id": "1",
+       "label": "G711 (Mono)"
+      },
+      {
+       "id": "7",
+       "label": "G722 - SRT"
+      },
+      {
+       "id": "2",
+       "label": "G722 - H221"
+      },
+      {
+       "id": "4",
+       "label": "MPEG Layer 2 (Mono)"
+      },
+      {
+       "id": "5",
+       "label": "MPEG Layer 2 (Dual Mono)"
+      },
+      {
+       "id": "17",
+       "label": "Opus (Mono)"
+      },
+      {
+       "id": "50",
+       "label": "Opus (Mono)"
+      },
+      {
+       "id": "51",
+       "label": "Opus (Stereo)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#COD1={{option.algorithm|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "algorithm": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "4": "4",
+     "5": "5",
+     "7": "7",
+     "17": "17",
+     "50": "50",
+     "51": "51"
+    }
+   }
+  },
+  {
+   "id": "setNetworkType",
+   "name": "Set Network Type",
+   "options": [
+    {
+     "id": "type",
+     "label": "Network Type",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "0",
+       "label": "ISDN"
+      },
+      {
+       "id": "1",
+       "label": "Leased Line"
+      },
+      {
+       "id": "2",
+       "label": "Analog (Codec)"
+      },
+      {
+       "id": "3",
+       "label": "Analog (Hybrid)"
+      },
+      {
+       "id": "4",
+       "label": "Mobile Voice"
+      },
+      {
+       "id": "5",
+       "label": "IP"
+      },
+      {
+       "id": "6",
+       "label": "Mobile IP"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#NET={{option.type|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "type": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6AT&VAT#SUPAT&VAT#SUP"
+    }
+   }
+  },
+  {
+   "id": "setIPQuality",
+   "name": "Set IP Quality",
+   "options": [
+    {
+     "id": "quality",
+     "label": "IP Quality",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Low"
+      },
+      {
+       "id": "1",
+       "label": "Medium"
+      },
+      {
+       "id": "2",
+       "label": "High"
+      },
+      {
+       "id": "3",
+       "label": "Bad"
+      },
+      {
+       "id": "4",
+       "label": "Very Bad"
+      },
+      {
+       "id": "5",
+       "label": "Very High"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#IPQ={{option.quality|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "quality": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5"
+    }
+   }
+  },
+  {
+   "id": "setPacketReplication",
+   "name": "Set Packet Replication",
+   "options": [
+    {
+     "id": "state",
+     "label": "Replication Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "2",
+       "label": "On (Interleaved)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#REP={{option.state|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "setCodingBitRate",
+   "name": "Set Coding Bit Rate",
+   "options": [
+    {
+     "id": "bitrate",
+     "label": "Bit Rate",
+     "type": "select",
+     "default": "7",
+     "choices": [
+      {
+       "id": "0",
+       "label": "16 kbps"
+      },
+      {
+       "id": "1",
+       "label": "32 kbps"
+      },
+      {
+       "id": "3",
+       "label": "64 kbps"
+      },
+      {
+       "id": "5",
+       "label": "96 kbps"
+      },
+      {
+       "id": "7",
+       "label": "128 kbps"
+      },
+      {
+       "id": "11",
+       "label": "192 kbps"
+      },
+      {
+       "id": "15",
+       "label": "256 kbps"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#CHD1={{option.bitrate|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "bitrate": {
+     "0": "0",
+     "1": "1",
+     "3": "3",
+     "5": "5",
+     "7": "7",
+     "11": "11",
+     "15": "15"
+    }
+   }
+  },
+  {
+   "id": "refreshData",
+   "name": "Refresh Data",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "AT&VAT#SUPAT&VAT#SUP",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "monitorAudio",
+   "name": "Monitor Audio Levels",
+   "options": [
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Start Monitoring"
+      },
+      {
+       "id": "0",
+       "label": "Stop Monitoring"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#VU={{option.state|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setMaxInputLevel",
+   "name": "Set Maximum Input Level",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Max Level (dBu)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 22
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#GIN={{option.gain}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadPreset",
+   "name": "Load Preset Configuration",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "high_quality",
+     "choices": [
+      {
+       "id": "high_quality",
+       "label": "High Quality (Opus)"
+      },
+      {
+       "id": "low_latency",
+       "label": "Low Latency (G722)"
+      },
+      {
+       "id": "mobile",
+       "label": "Mobile Network"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#COD1={{option.preset|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "high_quality": "51AT#CHD1=15AT#FRE=1",
+     "low_latency": "7AT#CHD1=3AT#FRE=0",
+     "mobile": "17AT#CHD1=1AT#FRE=0"
+    }
+   }
+  },
+  {
+   "id": "setMaxOutputLevel",
+   "name": "Set Maximum Output Level",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Max Level (dBu)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 22
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#GOUT={{option.gain}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setDHCPMode",
+   "name": "Set DHCP Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "DHCP Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "DHCP (Automatic)"
+      },
+      {
+       "id": "1",
+       "label": "Static"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#DHCP={{option.mode|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setIPAddress",
+   "name": "Set IP Address",
+   "options": [
+    {
+     "id": "ip",
+     "label": "IP Address",
+     "type": "text",
+     "default": "",
+     "help": "Enter IP address (e.g., 192.168.1.100)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#IP={{option.ip}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setDNSAddress",
+   "name": "Set DNS Address",
+   "options": [
+    {
+     "id": "dns",
+     "label": "DNS Address",
+     "type": "text",
+     "default": "",
+     "help": "Enter DNS address (e.g., 8.8.8.8)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#DNS={{option.dns}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setSubnetMask",
+   "name": "Set Subnet Mask",
+   "options": [
+    {
+     "id": "mask",
+     "label": "Subnet Mask",
+     "type": "text",
+     "default": "",
+     "help": "Enter subnet mask (e.g., 255.255.255.0)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#IPM={{option.mask}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setLocalEcho",
+   "name": "Set Local Echo",
+   "options": [
+    {
+     "id": "echo",
+     "label": "Local Echo",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Active (default)"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "ATE{{option.echo|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "echo": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setDialMethod",
+   "name": "Set Dial Method",
+   "options": [
+    {
+     "id": "method",
+     "label": "Dial Method",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Tone"
+      },
+      {
+       "id": "1",
+       "label": "Pulse"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#DIA={{option.method|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "method": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setDialTone",
+   "name": "Set Dial Tone",
+   "options": [
+    {
+     "id": "tone",
+     "label": "Dial Tone",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Detect"
+      },
+      {
+       "id": "1",
+       "label": "Do not wait for dial tone"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#TON={{option.tone|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "tone": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setIncomingCallFilter",
+   "name": "Set Incoming Call Filter",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Filtering Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Any call accepted"
+      },
+      {
+       "id": "1",
+       "label": "Only 'telephone' type calls"
+      },
+      {
+       "id": "2",
+       "label": "Only 'data' type calls"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#TAE={{option.mode|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "setProprietaryFilter",
+   "name": "Set Proprietary ISDN Filter",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Proprietary Filtering Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Standard mode"
+      },
+      {
+       "id": "1",
+       "label": "Proprietary filtering mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#TFS={{option.mode|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setHLC",
+   "name": "Set High Layer Capability (HLC)",
+   "options": [
+    {
+     "id": "hlc",
+     "label": "HLC Encoding",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No (default)"
+      },
+      {
+       "id": "1",
+       "label": "Yes"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#HLC={{option.hlc|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "hlc": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setInputGainStep",
+   "name": "Set Input Gain Step",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      }
+     ]
+    },
+    {
+     "id": "step",
+     "label": "Gain Step",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 dB"
+      },
+      {
+       "id": "1",
+       "label": "16 dB"
+      },
+      {
+       "id": "2",
+       "label": "32 dB"
+      },
+      {
+       "id": "3",
+       "label": "48 dB"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#GIS{{option.channel|map}}={{option.step|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    },
+    "step": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "setPhantomPower",
+   "name": "Set Phantom Power",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      }
+     ]
+    },
+    {
+     "id": "mode",
+     "label": "Power Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "1",
+       "label": "Phantom 48V"
+      },
+      {
+       "id": "2",
+       "label": "Phantom 12V"
+      },
+      {
+       "id": "3",
+       "label": "T12"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#PWR{{option.channel|map}}={{option.mode|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    },
+    "mode": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "setRedialRetries",
+   "name": "Set Redial Retries",
+   "options": [
+    {
+     "id": "retries",
+     "label": "Retries",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 20
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#NBR={{option.retries}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setRedialWaitTime",
+   "name": "Set Redial Wait Time",
+   "options": [
+    {
+     "id": "wait",
+     "label": "Wait Time (s)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 30
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#TTR={{option.wait}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setLoopControl",
+   "name": "Set Loop Control",
+   "options": [
+    {
+     "id": "state",
+     "label": "Loop Control",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disabled"
+      },
+      {
+       "id": "1",
+       "label": "Active (outgoing links controlled by loop)"
+      },
+      {
+       "id": "2",
+       "label": "Active, loop switches to backup mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#LCT={{option.state|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "setBackupNetwork",
+   "name": "Set Backup Network",
+   "options": [
+    {
+     "id": "network",
+     "label": "Backup Network",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "ISDN backup call"
+      },
+      {
+       "id": "5",
+       "label": "IP backup call"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#LLBC={{option.network|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "network": {
+     "0": "0",
+     "5": "5"
+    }
+   }
+  },
+  {
+   "id": "setPassiveBackupMode",
+   "name": "Set Passive Backup Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Passive Backup Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Inactive"
+      },
+      {
+       "id": "1",
+       "label": "Active"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#LLBR={{option.mode|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "resetDevice",
+   "name": "Reset Device",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "ATZ",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setOriginalCopy",
+   "name": "Set Original/Copy Field (MPEG only)",
+   "options": [
+    {
+     "id": "ori",
+     "label": "Original/Copy",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Original"
+      },
+      {
+       "id": "1",
+       "label": "Copy"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#ORI={{option.ori|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "ori": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setCopyright",
+   "name": "Set Copyright Field (MPEG only)",
+   "options": [
+    {
+     "id": "cop",
+     "label": "Copyright",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Active"
+      },
+      {
+       "id": "1",
+       "label": "Inactive"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#COP={{option.cop|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "cop": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setErrorCorrection",
+   "name": "Set Error Correction/Protected Mode",
+   "options": [
+    {
+     "id": "cor",
+     "label": "Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Mode 0"
+      },
+      {
+       "id": "1",
+       "label": "Mode 1"
+      },
+      {
+       "id": "2",
+       "label": "Mode 2"
+      },
+      {
+       "id": "3",
+       "label": "Mode 3 (not allowed in Analog/CELP)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#COR={{option.cor|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "cor": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "setClockMode",
+   "name": "Set Clock Mode (POTS)",
+   "options": [
+    {
+     "id": "clk",
+     "label": "Clock Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Standard"
+      },
+      {
+       "id": "1",
+       "label": "Free"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#CLK={{option.clk|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "clk": {
+     "0": "0AT&VAT#SUPAT&V",
+     "1": "1AT#SUP"
+    }
+   }
+  },
+  {
+   "id": "setLineLevel",
+   "name": "Set Line Level (POTS)",
+   "options": [
+    {
+     "id": "lev",
+     "label": "Line Level",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 dBm"
+      },
+      {
+       "id": "1",
+       "label": "-3 dBm"
+      },
+      {
+       "id": "2",
+       "label": "-6 dBm"
+      },
+      {
+       "id": "3",
+       "label": "-9 dBm"
+      },
+      {
+       "id": "4",
+       "label": "-10 dBm"
+      },
+      {
+       "id": "5",
+       "label": "-13 dBm"
+      },
+      {
+       "id": "6",
+       "label": "-16 dBm"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#LEV={{option.lev|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "lev": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6"
+    }
+   }
+  },
+  {
+   "id": "setSpeed",
+   "name": "Set Speed (POTS)",
+   "options": [
+    {
+     "id": "spd",
+     "label": "Speed",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Auto"
+      },
+      {
+       "id": "1",
+       "label": "Fixed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#SPD={{option.spd|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "spd": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setDataChannel",
+   "name": "Set Data Channel",
+   "options": [
+    {
+     "id": "cda",
+     "label": "Data Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disable"
+      },
+      {
+       "id": "1",
+       "label": "Enable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#CDA={{option.cda|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "cda": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setBaudRate",
+   "name": "Set Data Channel Baud Rate",
+   "options": [
+    {
+     "id": "bau",
+     "label": "Baud Rate",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "300"
+      },
+      {
+       "id": "1",
+       "label": "1200"
+      },
+      {
+       "id": "2",
+       "label": "2400"
+      },
+      {
+       "id": "3",
+       "label": "4800"
+      },
+      {
+       "id": "4",
+       "label": "9600"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#BAU={{option.bau|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "bau": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "setRelayTransmission",
+   "name": "Set Relay Transmission",
+   "options": [
+    {
+     "id": "rel",
+     "label": "Relay Transmission",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disabled"
+      },
+      {
+       "id": "1",
+       "label": "Active"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#REL={{option.rel|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "rel": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setGPO",
+   "name": "Set GPO State",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "state",
+     "label": "State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Open"
+      },
+      {
+       "id": "1",
+       "label": "Closed"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#GPO{{option.channel|map}}={{option.state|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    },
+    "state": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setAuxAudioChannel",
+   "name": "Set Auxiliary 3 kHz Audio Channel",
+   "options": [
+    {
+     "id": "vor",
+     "label": "Auxiliary Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Disabled"
+      },
+      {
+       "id": "1",
+       "label": "Enabled"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#VOR={{option.vor|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "vor": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setSMS",
+   "name": "Display Text Message",
+   "options": [
+    {
+     "id": "sms",
+     "label": "Text Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#SMS=\"{{option.sms}}\"",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setAudioInterfaceFormat",
+   "name": "Set Audio Interface Format",
+   "options": [
+    {
+     "id": "typ",
+     "label": "Audio Interface Format",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Analogue"
+      },
+      {
+       "id": "1",
+       "label": "AES/EBU async"
+      },
+      {
+       "id": "2",
+       "label": "AES/EBU 32kHz"
+      },
+      {
+       "id": "3",
+       "label": "AES/EBU 48kHz"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#TYP={{option.typ|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "typ": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3"
+    }
+   }
+  },
+  {
+   "id": "setAESSync",
+   "name": "Set AES Sync Mode",
+   "options": [
+    {
+     "id": "sync",
+     "label": "AES Sync Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Genlock"
+      },
+      {
+       "id": "1",
+       "label": "Master"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#SYNC={{option.sync|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "sync": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setAESSamplingRate",
+   "name": "Set AES Nominal Sampling Rate",
+   "options": [
+    {
+     "id": "aes",
+     "label": "AES Sampling Rate",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "32kHz"
+      },
+      {
+       "id": "1",
+       "label": "48kHz"
+      },
+      {
+       "id": "2",
+       "label": "96kHz"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#AES={{option.aes|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "aes": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "setInputImpedance",
+   "name": "Set Input Impedance",
+   "options": [
+    {
+     "id": "zin",
+     "label": "Input Impedance",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Low (600 Ohm)"
+      },
+      {
+       "id": "1",
+       "label": "High"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#ZIN={{option.zin|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "zin": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setOutputLoad",
+   "name": "Set Output Load",
+   "options": [
+    {
+     "id": "imp",
+     "label": "Output Load",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Low (600 Ohm)"
+      },
+      {
+       "id": "1",
+       "label": "High"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#IMP={{option.imp|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "imp": {
+     "0": "0AT&VAT#SUPAT&VAT#SUP",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setChannelPanning",
+   "name": "Set Channel Panning Mode",
+   "options": [
+    {
+     "id": "cpm",
+     "label": "Panning Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Full left/right"
+      },
+      {
+       "id": "1",
+       "label": "Half left/right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#CPM={{option.cpm|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "cpm": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setOutputSignal",
+   "name": "Set Output Signal Selection",
+   "options": [
+    {
+     "id": "osel",
+     "label": "Output Signal",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Send signal"
+      },
+      {
+       "id": "1",
+       "label": "Receive signal"
+      },
+      {
+       "id": "2",
+       "label": "Send/Receive mix"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#OSEL={{option.osel|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "osel": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "setInputPad",
+   "name": "Set Input Attenuation Pad",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "3",
+       "label": "3"
+      }
+     ]
+    },
+    {
+     "id": "pad",
+     "label": "Pad Status",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No pad"
+      },
+      {
+       "id": "1",
+       "label": "Pad active"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#PAD3={{option.pad|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "pad": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "setHeadphoneRouting",
+   "name": "Set Headphone Coordination Channel Routing",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Headphone Output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      }
+     ]
+    },
+    {
+     "id": "routing",
+     "label": "Routing Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Program only"
+      },
+      {
+       "id": "1",
+       "label": "Coordination only"
+      },
+      {
+       "id": "2",
+       "label": "Program left, Coordination right"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "AT#CCR{{option.channel|map}}={{option.routing|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2"
+    },
+    "routing": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aetaaudio-codecs",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Damien"
+  }
+ ],
+ "source": {
+  "module": "aetaaudio-codecs",
+  "version": "1.1.1-beta",
+  "license": "MIT",
+  "maintainers": [
+   "Damien"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aetaaudio-codecs.git"
+ }
+}

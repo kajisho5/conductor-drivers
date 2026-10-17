@@ -1,0 +1,532 @@
+{
+ "format": 1,
+ "id": "m-classx-mixboard",
+ "name": "ClassX MixBoard",
+ "category": "ClassX",
+ "version": "1.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 0,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "eventport",
+   "label": "MixBoard's event port",
+   "type": "text"
+  },
+  {
+   "id": "linkChannelSelection",
+   "label": "Link channel selection",
+   "type": "boolean"
+  },
+  {
+   "id": "protocollog",
+   "label": "Protocol log to console",
+   "type": "boolean"
+  }
+ ],
+ "actions": [
+  {
+   "id": "keyer_action",
+   "name": "Toggle Keyer",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "CH_0",
+     "choices": [
+      {
+       "id": "CH_0",
+       "label": "CH-0"
+      },
+      {
+       "id": "CH_1",
+       "label": "CH-1"
+      },
+      {
+       "id": "CH_2",
+       "label": "CH-2"
+      },
+      {
+       "id": "CH_3",
+       "label": "CH-3"
+      }
+     ]
+    },
+    {
+     "id": "keyer_id",
+     "label": "Keyer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "BKGD"
+      },
+      {
+       "id": "1",
+       "label": "KEY1"
+      },
+      {
+       "id": "2",
+       "label": "KEY2"
+      },
+      {
+       "id": "3",
+       "label": "KEY3"
+      },
+      {
+       "id": "4",
+       "label": "KEY4"
+      }
+     ]
+    },
+    {
+     "id": "play_to_prev",
+     "label": "Play to preview",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_PLAYKEYER CHANNEL=\"CH_{{option.channel|map}}\",KEYERID=\"{{option.keyer_id|map}}\",TARGET=\"PR{{option.play_to_prev|map}}\"\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "CH_0": "0",
+     "CH_1": "1",
+     "CH_2": "2",
+     "CH_3": "3"
+    },
+    "keyer_id": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "play_to_prev": {
+     "false": "OGRAM",
+     "true": "EVIEW"
+    }
+   }
+  },
+  {
+   "id": "keylink_tap_action",
+   "name": "Key link",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "CH_0",
+     "choices": [
+      {
+       "id": "CH_0",
+       "label": "CH-0"
+      },
+      {
+       "id": "CH_1",
+       "label": "CH-1"
+      },
+      {
+       "id": "CH_2",
+       "label": "CH-2"
+      },
+      {
+       "id": "CH_3",
+       "label": "CH-3"
+      }
+     ]
+    },
+    {
+     "id": "keyer_id",
+     "label": "Keyer",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "0",
+       "label": "BKGD"
+      },
+      {
+       "id": "1",
+       "label": "KEY1"
+      },
+      {
+       "id": "2",
+       "label": "KEY2"
+      },
+      {
+       "id": "3",
+       "label": "KEY3"
+      },
+      {
+       "id": "4",
+       "label": "KEY4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_SETLINKKEYERTOTRANSITION CHANNEL=\"CH_{{option.channel|map}}\",KEYERID=\"{{option.keyer_id|map}}\",LINK=true\\r\\nUPDATEGUI\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "CH_0": "0",
+     "CH_1": "1",
+     "CH_2": "2",
+     "CH_3": "3"
+    },
+    "keyer_id": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "autotake_action",
+   "name": "Auto Take",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "CH_0",
+     "choices": [
+      {
+       "id": "CH_0",
+       "label": "CH-0"
+      },
+      {
+       "id": "CH_1",
+       "label": "CH-1"
+      },
+      {
+       "id": "CH_2",
+       "label": "CH-2"
+      },
+      {
+       "id": "CH_3",
+       "label": "CH-3"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_TAKE CHANNEL=\"CH_{{option.channel|map}}\",TAKE_MODE=\"CUT\"\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "CH_0": "0",
+     "CH_1": "1",
+     "CH_2": "2",
+     "CH_3": "3"
+    }
+   }
+  },
+  {
+   "id": "take_action",
+   "name": "Take",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "CH_0",
+     "choices": [
+      {
+       "id": "CH_0",
+       "label": "CH-0"
+      },
+      {
+       "id": "CH_1",
+       "label": "CH-1"
+      },
+      {
+       "id": "CH_2",
+       "label": "CH-2"
+      },
+      {
+       "id": "CH_3",
+       "label": "CH-3"
+      }
+     ]
+    },
+    {
+     "id": "take_mode",
+     "label": "Take Mode",
+     "type": "select",
+     "default": "CUT",
+     "choices": [
+      {
+       "id": "CUT",
+       "label": "CUT"
+      },
+      {
+       "id": "FADE",
+       "label": "FADE"
+      },
+      {
+       "id": "TR1",
+       "label": "TR1"
+      },
+      {
+       "id": "TR2",
+       "label": "TR2"
+      },
+      {
+       "id": "TR3",
+       "label": "TR3"
+      },
+      {
+       "id": "TR4",
+       "label": "TR4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_TAKE CHANNEL=\"CH_{{option.channel|map}}\",TAKE_MODE=\"{{option.take_mode|map}}\"\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "CH_0": "0",
+     "CH_1": "1",
+     "CH_2": "2",
+     "CH_3": "3"
+    },
+    "take_mode": {
+     "CUT": "CUT",
+     "FADE": "FADE",
+     "TR1": "TR1",
+     "TR2": "TR2",
+     "TR3": "TR3",
+     "TR4": "TR4"
+    }
+   }
+  },
+  {
+   "id": "resume_action",
+   "name": "Resume transition",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "CH_0",
+     "choices": [
+      {
+       "id": "CH_0",
+       "label": "CH-0"
+      },
+      {
+       "id": "CH_1",
+       "label": "CH-1"
+      },
+      {
+       "id": "CH_2",
+       "label": "CH-2"
+      },
+      {
+       "id": "CH_3",
+       "label": "CH-3"
+      }
+     ]
+    },
+    {
+     "id": "play_direction",
+     "label": "Play direction",
+     "type": "text",
+     "default": "FORWARD"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_RESUMETRANSITION CHANNEL=\"CH_{{option.channel|map}}\",PLAY_DIRECTION=\"{{option.play_direction}}\"\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "CH_0": "0",
+     "CH_1": "1",
+     "CH_2": "2",
+     "CH_3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_preview_action",
+   "name": "Set Preview VideoInput",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "CH_0",
+     "choices": [
+      {
+       "id": "CH_0",
+       "label": "CH-0"
+      },
+      {
+       "id": "CH_1",
+       "label": "CH-1"
+      },
+      {
+       "id": "CH_2",
+       "label": "CH-2"
+      },
+      {
+       "id": "CH_3",
+       "label": "CH-3"
+      }
+     ]
+    },
+    {
+     "id": "videoinput_id",
+     "label": "VideoInput ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_SETPREVIEWVIDEOINPUTID CHANNEL=\"CH_{{option.channel|map}}\",VIDEOINPUTID=\"{{option.videoinput_id}}\"\\r\\nUPDATEGUI\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "CH_0": "0",
+     "CH_1": "1",
+     "CH_2": "2",
+     "CH_3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_program_action",
+   "name": "Set Program VideoInput",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "CH_0",
+     "choices": [
+      {
+       "id": "CH_0",
+       "label": "CH-0"
+      },
+      {
+       "id": "CH_1",
+       "label": "CH-1"
+      },
+      {
+       "id": "CH_2",
+       "label": "CH-2"
+      },
+      {
+       "id": "CH_3",
+       "label": "CH-3"
+      }
+     ]
+    },
+    {
+     "id": "videoinput_id",
+     "label": "VideoInput ID",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 24
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_SETPROGRAMVIDEOINPUTID CHANNEL=\"CH_{{option.channel|map}}\",VIDEOINPUTID=\"{{option.videoinput_id}}\"\\r\\nUPDATEGUI\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "CH_0": "0",
+     "CH_1": "1",
+     "CH_2": "2",
+     "CH_3": "3"
+    }
+   }
+  },
+  {
+   "id": "set_tbar_value_action",
+   "name": "Set T-Bar value",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "MBC_SETTBARVALUE CHANNEL=\"CH_0\",TAKE_MODE=\"undefined\", VALUE=\"$(custom:undefined)\"\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "command_action",
+   "name": "Execute command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.command}}\\r\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-classx-mixboard",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Dar-dev"
+  }
+ ],
+ "source": {
+  "module": "classx-mixboard",
+  "version": "1.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Dar-dev"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-classx-mixboard.git"
+ }
+}

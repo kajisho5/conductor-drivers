@@ -1,0 +1,138 @@
+{
+ "format": 1,
+ "id": "m-devantech-ds",
+ "name": "Devantech DSXXX",
+ "category": "Devantech",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 17123,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_relay_single",
+   "name": "Set Relay State",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 32
+    },
+    {
+     "id": "state",
+     "label": "Select State",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    },
+    {
+     "id": "period",
+     "label": "On time (ms)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 10000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SR {{option.index}} o{{option.state|map}} {{option.period}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "on": "n",
+     "off": "ff"
+    }
+   }
+  },
+  {
+   "id": "set_output_single",
+   "name": "Set Output State",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 32
+    },
+    {
+     "id": "state",
+     "label": "Select State",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "SO {{option.index}} o{{option.state|map}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "on": "n",
+     "off": "ff"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-devantech-ds",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jelle van Abbema"
+  }
+ ],
+ "source": {
+  "module": "devantech-ds",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jelle van Abbema"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-devantech-ds.git"
+ }
+}

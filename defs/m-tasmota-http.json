@@ -1,0 +1,124 @@
+{
+ "format": 1,
+ "id": "m-tasmota-http",
+ "name": "Tasmota HTTP",
+ "category": "Tasmota",
+ "version": "1.0.4",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "user",
+   "label": "User name (optional)",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "password",
+   "label": "Password (optional)",
+   "type": "text"
+  },
+  {
+   "id": "pollinterval",
+   "label": "Poll interval",
+   "type": "number",
+   "default": 500,
+   "min": 200
+  }
+ ],
+ "actions": [
+  {
+   "id": "raw_command",
+   "name": "Raw Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cm?cmnd={{option.command}}"
+   }
+  },
+  {
+   "id": "power",
+   "name": "Power",
+   "options": [
+    {
+     "id": "device",
+     "label": "Device",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "All Devices"
+      }
+     ]
+    },
+    {
+     "id": "state",
+     "label": "Command",
+     "type": "select",
+     "default": "TOGGLE",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "ON"
+      },
+      {
+       "id": "OFF",
+       "label": "OFF"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "TOGGLE"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/cm?cmnd=Power0%20{{option.state|map}}"
+   },
+   "maps": {
+    "state": {
+     "TOGGLE": "TOGGLE",
+     "ON": "ON",
+     "OFF": "OFF"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-tasmota-http",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：jens frank"
+  }
+ ],
+ "source": {
+  "module": "tasmota-http",
+  "version": "1.0.4",
+  "license": "MIT",
+  "maintainers": [
+   "jens frank"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-tasmota-http.git"
+ }
+}

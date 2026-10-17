@@ -1,0 +1,505 @@
+{
+ "format": 1,
+ "id": "m-middlethings-middlecontrol",
+ "name": "Middle Things Middle Control",
+ "category": "Middle Things",
+ "version": "3.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 11580,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "prot",
+   "label": "Middle Control Software Version",
+   "type": "select",
+   "default": "tcp",
+   "choices": [
+    {
+     "id": "tcp",
+     "label": "Latest"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "selectcameraID",
+   "name": "Select Camera ID",
+   "options": [
+    {
+     "id": "id_selectcameraID",
+     "label": "Camera ID :",
+     "type": "text",
+     "help": "Set the camera number you want to control (1 to 100)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "CAM{{option.id_selectcameraID}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "sendgimbalcommand",
+   "name": "Send Gimbal Action",
+   "options": [
+    {
+     "id": "id_sendgimbalcommand",
+     "label": "Action :",
+     "type": "select",
+     "default": "Pan Left",
+     "choices": [
+      {
+       "id": "PAN_L",
+       "label": "Pan Left"
+      },
+      {
+       "id": "PAN_R",
+       "label": "Pan Right"
+      },
+      {
+       "id": "PAN_IDLE",
+       "label": "Pan Idle (Required on release)"
+      },
+      {
+       "id": "TILT_U ",
+       "label": "Tilt Up"
+      },
+      {
+       "id": "TILT_D",
+       "label": "Tilt Down"
+      },
+      {
+       "id": "TILT_IDLE",
+       "label": "Tilt Idle (Required on release)"
+      },
+      {
+       "id": "ROLL_L",
+       "label": "Roll Left"
+      },
+      {
+       "id": "ROLL_R",
+       "label": "Roll Right"
+      },
+      {
+       "id": "ROLL_IDLE",
+       "label": "Roll Idle (Required on release)"
+      },
+      {
+       "id": "ZOOM+",
+       "label": "Zoom In"
+      },
+      {
+       "id": "ZOOM-",
+       "label": "Zoom Out"
+      },
+      {
+       "id": "Z0",
+       "label": "Zoom Idle (Required on release)"
+      },
+      {
+       "id": "SLIDER+",
+       "label": "Slider Move Right"
+      },
+      {
+       "id": "SLIDER-",
+       "label": "Slider Move Left"
+      },
+      {
+       "id": "S0",
+       "label": "Slider Idle (Required on release)"
+      },
+      {
+       "id": "ZSPEED+",
+       "label": "Zoom Speed Increase"
+      },
+      {
+       "id": "ZSPEED-",
+       "label": "Zoom Speed Decrease"
+      },
+      {
+       "id": "SPEED+",
+       "label": "Pan/Tilt Speed Increase"
+      },
+      {
+       "id": "SPEED-",
+       "label": "Pan/Tilt Speed Decrease"
+      },
+      {
+       "id": "SLIDERSPEED+",
+       "label": "Slider Speed Increase"
+      },
+      {
+       "id": "SLIDERSPEED-",
+       "label": "Slider Speed Decrease"
+      },
+      {
+       "id": "ACTIVETRACK",
+       "label": "Active Track Enable/Disable"
+      },
+      {
+       "id": "GIMBALAUTOCALIB",
+       "label": "Start a Gimbal Auto-Calibration (AutoTune)"
+      },
+      {
+       "id": "MOTORAUTOCALIB",
+       "label": "Start a Zoom Motor Auto-Calibration"
+      },
+      {
+       "id": "RECENTER",
+       "label": "Recenter Gimbal"
+      },
+      {
+       "id": "GIMBALSLEEP",
+       "label": "Turn Gimbal Off (Sleep)"
+      },
+      {
+       "id": "GIMBALWAKE",
+       "label": "Turn Gimbal On (Wake)"
+      },
+      {
+       "id": "CUSTOM_C1",
+       "label": "Custom Button C1"
+      },
+      {
+       "id": "CUSTOM_C2",
+       "label": "Custom Button C2"
+      },
+      {
+       "id": "CUSTOM_C3",
+       "label": "Custom Button C3"
+      },
+      {
+       "id": "CUSTOM_C4",
+       "label": "Custom Button C4"
+      },
+      {
+       "id": "CUSTOM_C5",
+       "label": "Custom Button C5"
+      },
+      {
+       "id": "CUSTOM_C6",
+       "label": "Custom Button C6"
+      },
+      {
+       "id": "BTN_LEFT",
+       "label": "Menu Left"
+      },
+      {
+       "id": "BTN_RIGHT",
+       "label": "Menu Right"
+      },
+      {
+       "id": "BTN_UP",
+       "label": "Menu Up"
+      },
+      {
+       "id": "BTN_DOWN",
+       "label": "Menu Down"
+      },
+      {
+       "id": "BTN_OK",
+       "label": "Menu OK / Enter"
+      },
+      {
+       "id": "BTN_MENU",
+       "label": "Menu Button"
+      },
+      {
+       "id": "MULTISEL_LEFT",
+       "label": "MultiSelector Left"
+      },
+      {
+       "id": "MULTISEL_RIGHT",
+       "label": "MultiSelector Right"
+      },
+      {
+       "id": "MULTISEL_UP",
+       "label": "MultiSelector Up"
+      },
+      {
+       "id": "MULTISEL_DOWN",
+       "label": "MultiSelector Down"
+      },
+      {
+       "id": "MULTISEL_PRESS",
+       "label": "MultiSelector Press"
+      },
+      {
+       "id": "DIGITAL_ZOOM+",
+       "label": "Digital Zoom In"
+      },
+      {
+       "id": "DIGITAL_ZOOM-",
+       "label": "Digital Zoom Out"
+      }
+     ],
+     "help": "Select the gimbal action you want to trigger"
+    },
+    {
+     "id": "id_sendgimbalcommand_camera",
+     "label": "Camera ID (optional):",
+     "type": "text",
+     "default": "",
+     "help": "If set, the command goes to that camera number no matter which camera is currently selected in Middle Control or Companion. If left empty, the command is sent to the currently selected (active) camera"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_sendgimbalcommand|map}}@C{{option.id_sendgimbalcommand_camera}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_sendgimbalcommand": {
+     "Pan Left": "Pan Left",
+     "PAN_L": "PAN_L",
+     "PAN_R": "PAN_R",
+     "PAN_IDLE": "PAN_IDLE",
+     "TILT_U ": "TILT_U ",
+     "TILT_D": "TILT_D",
+     "TILT_IDLE": "TILT_IDLE",
+     "ROLL_L": "ROLL_L",
+     "ROLL_R": "ROLL_R",
+     "ROLL_IDLE": "ROLL_IDLE",
+     "ZOOM+": "ZOOM+",
+     "ZOOM-": "ZOOM-",
+     "Z0": "Z0",
+     "SLIDER+": "SLIDER+",
+     "SLIDER-": "SLIDER-",
+     "S0": "S0",
+     "ZSPEED+": "ZSPEED+",
+     "ZSPEED-": "ZSPEED-",
+     "SPEED+": "SPEED+",
+     "SPEED-": "SPEED-",
+     "SLIDERSPEED+": "SLIDERSPEED+",
+     "SLIDERSPEED-": "SLIDERSPEED-",
+     "ACTIVETRACK": "ACTIVETRACK",
+     "GIMBALAUTOCALIB": "GIMBALAUTOCALIB",
+     "MOTORAUTOCALIB": "MOTORAUTOCALIB",
+     "RECENTER": "RECENTER",
+     "GIMBALSLEEP": "GIMBALSLEEP",
+     "GIMBALWAKE": "GIMBALWAKE",
+     "CUSTOM_C1": "CUSTOM_C1",
+     "CUSTOM_C2": "CUSTOM_C2",
+     "CUSTOM_C3": "CUSTOM_C3",
+     "CUSTOM_C4": "CUSTOM_C4",
+     "CUSTOM_C5": "CUSTOM_C5",
+     "CUSTOM_C6": "CUSTOM_C6",
+     "BTN_LEFT": "BTN_LEFT",
+     "BTN_RIGHT": "BTN_RIGHT",
+     "BTN_UP": "BTN_UP",
+     "BTN_DOWN": "BTN_DOWN",
+     "BTN_OK": "BTN_OK",
+     "BTN_MENU": "BTN_MENU",
+     "MULTISEL_LEFT": "MULTISEL_LEFT",
+     "MULTISEL_RIGHT": "MULTISEL_RIGHT",
+     "MULTISEL_UP": "MULTISEL_UP",
+     "MULTISEL_DOWN": "MULTISEL_DOWN",
+     "MULTISEL_PRESS": "MULTISEL_PRESS",
+     "DIGITAL_ZOOM+": "DIGITAL_ZOOM+",
+     "DIGITAL_ZOOM-": "DIGITAL_ZOOM-"
+    }
+   }
+  },
+  {
+   "id": "preset",
+   "name": "Recall/Save Preset",
+   "options": [
+    {
+     "id": "id_presetcameraID",
+     "label": "Camera ID :",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "id_presetnumber",
+     "label": "Preset Number :",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "id_presetmode",
+     "label": "Recall or Save Preset ? :",
+     "type": "select",
+     "default": "RECALL",
+     "choices": [
+      {
+       "id": "RECALL",
+       "label": "Recall"
+      },
+      {
+       "id": "SAVE",
+       "label": "Save"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_presetmode|map}}PRESET{{option.id_presetnumber}}C{{option.id_presetcameraID}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_presetmode": {
+     "RECALL": "",
+     "SAVE": "S"
+    }
+   }
+  },
+  {
+   "id": "preset_transition",
+   "name": "Set Preset Transition Duration",
+   "options": [
+    {
+     "id": "id_settransitionduration",
+     "label": "Duration (in s)",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "PRES_D{{option.id_settransitionduration}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setspeed",
+   "name": "Set Pan/Tilt/Zoom Speed",
+   "options": [
+    {
+     "id": "id_setspeedmode",
+     "label": "Select the setting you want to adjust :",
+     "type": "select",
+     "default": "PanTilt",
+     "choices": [
+      {
+       "id": "PanTilt",
+       "label": "Pan/Tilt Speed"
+      },
+      {
+       "id": "Zoom",
+       "label": "Zoom Speed"
+      }
+     ]
+    },
+    {
+     "id": "id_setspeed",
+     "label": "Value (0 to 100)",
+     "type": "text",
+     "default": 100
+    },
+    {
+     "id": "id_setspeed_camera",
+     "label": "Camera ID (optional):",
+     "type": "text",
+     "default": "",
+     "help": "If set, the command goes to that camera number no matter which camera is currently selected in Middle Control or Companion. If left empty, the command is sent to the currently selected (active) camera"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_setspeedmode|map}}S{{option.id_setspeed}}@C{{option.id_setspeed_camera}}\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "id_setspeedmode": {
+     "PanTilt": "PT",
+     "Zoom": "Z"
+    }
+   }
+  },
+  {
+   "id": "sendabs",
+   "name": "Send a Custom Gimbal PTZ Absolute Value",
+   "options": [
+    {
+     "id": "id_sendabspan",
+     "label": "Pan Value (-2048 to 2048)",
+     "type": "text",
+     "default": 0
+    },
+    {
+     "id": "id_sendabstilt",
+     "label": "Tilt Value (-2048 to 2048)",
+     "type": "text",
+     "default": 0
+    },
+    {
+     "id": "id_sendabsroll",
+     "label": "Roll Value (-2048 to 2048)",
+     "type": "text",
+     "default": 0
+    },
+    {
+     "id": "id_sendabszoom",
+     "label": "Zoom Value (0 to 4096)",
+     "type": "text",
+     "default": 0
+    },
+    {
+     "id": "id_sendabsduration",
+     "label": "Transition duration (s)",
+     "type": "text",
+     "default": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "aGLOB;aP{{option.id_sendabspan}};aT{{option.id_sendabstilt}};aR{{option.id_sendabsroll}};aZ{{option.id_sendabszoom}};{{option.id_sendabsduration}}\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "sendabscameracommand",
+   "name": "Send a Custom Command (SDK)",
+   "options": [
+    {
+     "id": "id_sendabscameracommand",
+     "label": "Command & Value",
+     "type": "text",
+     "default": "aISO32"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.id_sendabscameracommand}}\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-middlethings-middlecontrol",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jean T"
+  }
+ ],
+ "source": {
+  "module": "middlethings-middlecontrol",
+  "version": "3.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Jean T"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-middlethings-middlecontrol.git"
+ }
+}

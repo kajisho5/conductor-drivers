@@ -1,0 +1,630 @@
+{
+ "format": 1,
+ "id": "m-avstumpfl-pixera",
+ "name": "AVStumpfl Pixera",
+ "category": "AVStumpfl",
+ "version": "3.2.3",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 1400,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling feedbacks?",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "polling_rate",
+   "label": "Polling Rate",
+   "type": "select",
+   "default": "50",
+   "choices": [
+    {
+     "id": "50",
+     "label": "50ms"
+    },
+    {
+     "id": "100",
+     "label": "100ms"
+    },
+    {
+     "id": "200",
+     "label": "200ms"
+    },
+    {
+     "id": "500",
+     "label": "500ms"
+    },
+    {
+     "id": "1000",
+     "label": "1000ms"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "timeline_transport",
+   "name": "Timeline Transport",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Transport",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Play"
+      },
+      {
+       "id": "2",
+       "label": "Pause"
+      },
+      {
+       "id": "3",
+       "label": "Stop"
+      },
+      {
+       "id": "4",
+       "label": "Toggle"
+      }
+     ]
+    },
+    {
+     "id": "timelinename_state",
+     "label": "Timeline Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231{{option.mode|map}}7d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mode": {
+     "1": "6d0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e7365745472616e73706f72744d6f6465222c22706172616d73223a7b2268616e646c65223a302c226d6f6465223a31",
+     "2": "6d0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e7365745472616e73706f72744d6f6465222c22706172616d73223a7b2268616e646c65223a302c226d6f6465223a32",
+     "3": "6d0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e7365745472616e73706f72744d6f6465222c22706172616d73223a7b2268616e646c65223a302c226d6f6465223a33",
+     "4": "630000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e746f67676c655472616e73706f7274222c22706172616d73223a7b2268616e646c65223a30"
+    }
+   }
+  },
+  {
+   "id": "timeline_ignore_next_cue",
+   "name": "Ignore Next Cue",
+   "options": [
+    {
+     "id": "timelinename_ignore",
+     "label": "Timeline Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231610000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e69676e6f72654e657874437565222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "timeline_store",
+   "name": "Timeline Store",
+   "options": [
+    {
+     "id": "timelinename_store",
+     "label": "Timeline Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231590000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e73746f7265222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "livesystem_engine",
+   "name": "Live Systems Engine",
+   "options": [
+    {
+     "id": "livesystem_engine_all",
+     "label": "All Live Systems",
+     "type": "boolean",
+     "default": false
+    },
+    {
+     "id": "livesystem_engine_livesystem",
+     "label": "Live System",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "livesystem_engine_local",
+     "label": "Exclude Local",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "livesystem_engine_action",
+     "label": "Action",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Start"
+      },
+      {
+       "id": "2",
+       "label": "Close"
+      },
+      {
+       "id": "3",
+       "label": "Restart"
+      },
+      {
+       "id": "4",
+       "label": "Reset"
+      },
+      {
+       "id": "5",
+       "label": "Wake Up"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231{{option.livesystem_engine_action|map}}222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "livesystem_engine_action": {
+     "1": "630000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e4c69766553797374656d732e4c69766553797374656d2e7374617274456e67696e65",
+     "2": "630000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e4c69766553797374656d732e4c69766553797374656d2e636c6f7365456e67696e65",
+     "3": "650000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e4c69766553797374656d732e4c69766553797374656d2e72657374617274456e67696e65",
+     "4": "630000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e4c69766553797374656d732e4c69766553797374656d2e7265736574456e67696e65",
+     "5": "5e0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e4c69766553797374656d732e4c69766553797374656d2e77616b655570"
+    }
+   }
+  },
+  {
+   "id": "output_assignment",
+   "name": "Output Assignment",
+   "options": [
+    {
+     "id": "output_assignment_projector",
+     "label": "Projector",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "output_assignment_output",
+     "label": "Output",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231700000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e50726f6a6563746f72732e50726f6a6563746f722e7365744f7574707574222c22706172616d73223a7b2268616e646c65223a302c226f757470757448616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "screen_visible",
+   "name": "Visible Screen",
+   "options": [
+    {
+     "id": "visible_screen_name",
+     "label": "Screen Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "visible_screen_state",
+     "label": "Screen Visible",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231{{option.visible_screen_state|map}}657d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "visible_screen_state": {
+     "true": "6d0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e53637265656e732e53637265656e2e736574497356697369626c65222c22706172616d73223a7b2268616e646c65223a302c22697356697369626c65223a747275",
+     "false": "6e0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e53637265656e732e53637265656e2e736574497356697369626c65222c22706172616d73223a7b2268616e646c65223a302c22697356697369626c65223a66616c73"
+    }
+   }
+  },
+  {
+   "id": "screen_refresh_mapping",
+   "name": "Screen Refresh Mapping",
+   "options": [
+    {
+     "id": "refresh_screen_name",
+     "label": "Screen Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231650000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e53637265656e732e53637265656e2e74726967676572526566726573684d617070696e67222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "screen_projectable",
+   "name": "Screen is Projectable",
+   "options": [
+    {
+     "id": "visible_projectable_name",
+     "label": "Screen Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "visible_projectable_state",
+     "label": "Screen Is Projectable",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231{{option.visible_projectable_state|map}}657d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "visible_projectable_state": {
+     "true": "750000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e53637265656e732e53637265656e2e736574497350726f6a65637461626c65222c22706172616d73223a7b2268616e646c65223a302c22697350726f6a65637461626c65223a747275",
+     "false": "760000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e53637265656e732e53637265656e2e736574497350726f6a65637461626c65222c22706172616d73223a7b2268616e646c65223a302c22697350726f6a65637461626c65223a66616c73"
+    }
+   }
+  },
+  {
+   "id": "projector_blackout",
+   "name": "Projector Blackout Toggle",
+   "options": [
+    {
+     "id": "projector_blackout_projector",
+     "label": "Projector",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231620000007b226a736f6e727063223a22322e30222c226964223a33312c226d6574686f64223a225069786572612e50726f6a6563746f72732e50726f6a6563746f722e676574426c61636b6f7574222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "timeline_select",
+   "name": "Timeline Select",
+   "options": [
+    {
+     "id": "timeline_select_timeline",
+     "label": "Timeline",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "707872315e0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e73656c65637454686973222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "timeline_moverenderorder",
+   "name": "Timeline Move Render Order",
+   "options": [
+    {
+     "id": "timeline_moverenderorder_timeline",
+     "label": "Timeline",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "timeline_moverenderorder_state",
+     "label": "Move (On = Down, Off = Up)",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231{{option.timeline_moverenderorder_state|map}}657d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "timeline_moverenderorder_state": {
+     "true": "750000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e6d6f7665496e52656e6465724f72646572222c22706172616d73223a7b2268616e646c65223a302c226d6f7665446f776e223a747275",
+     "false": "760000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e6d6f7665496e52656e6465724f72646572222c22706172616d73223a7b2268616e646c65223a302c226d6f7665446f776e223a66616c73"
+    }
+   }
+  },
+  {
+   "id": "timeline_create_layer",
+   "name": "Timeline Create Layer",
+   "options": [
+    {
+     "id": "timeline_create_layer_timeline",
+     "label": "Timeline",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "timeline_create_layer_name",
+     "label": "Name",
+     "type": "text",
+     "default": "Layer 1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231600000007b226a736f6e727063223a22322e30222c226964223a33322c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e6372656174654c61796572222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "timeline_removecues",
+   "name": "Timeline Remove Cues",
+   "options": [
+    {
+     "id": "timeline_removecues_timeline",
+     "label": "Timeline",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "707872315e0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e72656d6f766543756573222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "timeline_reset",
+   "name": "Timeline Reset",
+   "options": [
+    {
+     "id": "timeline_reset_timeline",
+     "label": "Timeline",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231590000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e7265736574222c22706172616d73223a7b2268616e646c65223a307d7d",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "timeline_setsmpte",
+   "name": "Timeline Set SMPTE",
+   "options": [
+    {
+     "id": "timelinename_timelinesmpte",
+     "label": "Timeline Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "timeline_smpte_state",
+     "label": "State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "none"
+      },
+      {
+       "id": "1",
+       "label": "receive"
+      },
+      {
+       "id": "2",
+       "label": "send"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231690000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e736574536d7074654d6f6465222c22706172616d73223a7b2268616e646c65223a302c226d6f6465223a{{option.timeline_smpte_state|map}}7d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "timeline_smpte_state": {
+     "0": "30",
+     "1": "31",
+     "2": "32"
+    }
+   }
+  },
+  {
+   "id": "timeline_fadeopacity",
+   "name": "Timeline Fade Opacity",
+   "options": [
+    {
+     "id": "timelinename_timelineopacity",
+     "label": "Timeline Name",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": ""
+      }
+     ]
+    },
+    {
+     "id": "timeline_fadeIn",
+     "label": "FadeIn",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "timeline_fadeopacity_time",
+     "label": "Time in Frames",
+     "type": "text",
+     "default": "60"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "70787231{{option.timeline_fadeIn|map}}652c2266756c6c466164654475726174696f6e223a{{option.timeline_fadeopacity_time|hexstr}}7d7d",
+    "encoding": "hex"
+   },
+   "maps": {
+    "timeline_fadeIn": {
+     "true": "8d0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e73746172744f706163697479416e696d6174696f6e222c22706172616d73223a7b2268616e646c65223a302c2266616465496e223a747275",
+     "false": "8e0000007b226a736f6e727063223a22322e30222c226964223a302c226d6574686f64223a225069786572612e54696d656c696e65732e54696d656c696e652e73746172744f706163697479416e696d6174696f6e222c22706172616d73223a7b2268616e646c65223a302c2266616465496e223a66616c73"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-avstumpfl-pixera",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Benni M."
+  }
+ ],
+ "source": {
+  "module": "avstumpfl-pixera",
+  "version": "3.2.3",
+  "license": "MIT",
+  "maintainers": [
+   "Benni M."
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-avstumpfl-pixera.git"
+ }
+}

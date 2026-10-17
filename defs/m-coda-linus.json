@@ -1,0 +1,238 @@
+{
+ "format": 1,
+ "id": "m-coda-linus",
+ "name": "CODA Audio LINUS6.4",
+ "category": "CODA Audio",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 6791,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "polling",
+   "label": "Enable device polling",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "standby",
+   "name": "Standby",
+   "options": [
+    {
+     "id": "standbyState",
+     "label": "Set Standby State",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"set_standby\", \"enable\":{{option.standbyState|map}}e}",
+    "encoding": "text"
+   },
+   "maps": {
+    "standbyState": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "muteAll",
+   "name": "Mute All",
+   "options": [
+    {
+     "id": "muteState",
+     "label": "Set Mute All",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"set_mute_all\", \"enable\":{{option.muteState|map}}e}",
+    "encoding": "text"
+   },
+   "maps": {
+    "muteState": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "muteChannels",
+   "name": "Mute Single Channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      }
+     ]
+    },
+    {
+     "id": "muteState",
+     "label": "Mute",
+     "type": "select",
+     "default": "true",
+     "choices": [
+      {
+       "id": "true",
+       "label": "Enable"
+      },
+      {
+       "id": "false",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"set_channel_mute\", \"channel\":{{option.channel|map}}, \"enable\":{{option.muteState|map}}e}",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "muteState": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "getSnapshotFolders",
+   "name": "Get Snapshot Folders",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"get_snapshot_folders\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "getSnapshotFiles",
+   "name": "Get Snapshot Files",
+   "options": [
+    {
+     "id": "folder",
+     "label": "Folder",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"get_snapshot_files\", \"folder\":\"{{option.folder}}\"}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "standby",
+   "category": "Power",
+   "name": "Standby",
+   "text": "Standby",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "standby",
+    "options": {
+     "standbyState": true
+    }
+   }
+  },
+  {
+   "id": "muteAll",
+   "category": "Audio",
+   "name": "Mute All",
+   "text": "Mute All",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "muteAll",
+    "options": {
+     "muteState": true
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-coda-linus",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel"
+  }
+ ],
+ "source": {
+  "module": "coda-linus",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-coda-linus.git"
+ }
+}

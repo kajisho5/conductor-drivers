@@ -1,0 +1,610 @@
+{
+ "format": 1,
+ "id": "m-magnimage-mig-ec",
+ "name": "Magnimage MIG-EC90 / MIG-EC80",
+ "category": "Magnimage",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 61215,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "modelID",
+   "label": "Model",
+   "type": "select",
+   "default": "ec90",
+   "choices": [
+    {
+     "id": "ec90",
+     "label": "MIG-EC90"
+    },
+    {
+     "id": "ec80",
+     "label": "MIG-EC80"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "take_fade",
+   "name": "Take Fade",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "edcb2848000101000000000000000000000000000000000000000000000000000000000000002a",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "take_cut",
+   "name": "Take Cut",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "edcb28480001000000000000000000000000000000000000000000000000000000000000000029",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "load_preset",
+   "name": "Load Preset",
+   "options": [
+    {
+     "id": "preset_number",
+     "label": "Load Preset Number",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "1"
+      },
+      {
+       "id": "1",
+       "label": "2"
+      },
+      {
+       "id": "2",
+       "label": "3"
+      },
+      {
+       "id": "3",
+       "label": "4"
+      },
+      {
+       "id": "4",
+       "label": "5"
+      },
+      {
+       "id": "5",
+       "label": "6"
+      },
+      {
+       "id": "6",
+       "label": "7"
+      },
+      {
+       "id": "7",
+       "label": "8"
+      },
+      {
+       "id": "8",
+       "label": "9"
+      },
+      {
+       "id": "9",
+       "label": "10"
+      },
+      {
+       "id": "10",
+       "label": "11"
+      },
+      {
+       "id": "11",
+       "label": "12"
+      },
+      {
+       "id": "12",
+       "label": "13"
+      },
+      {
+       "id": "13",
+       "label": "14"
+      },
+      {
+       "id": "14",
+       "label": "15"
+      },
+      {
+       "id": "15",
+       "label": "16"
+      },
+      {
+       "id": "16",
+       "label": "17"
+      },
+      {
+       "id": "17",
+       "label": "18"
+      },
+      {
+       "id": "18",
+       "label": "19"
+      },
+      {
+       "id": "19",
+       "label": "20"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "edcb28480101{{option.preset_number|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "preset_number": {
+     "0": "00000000000000000000000000000000000000000000000000000000000000002a",
+     "1": "01000000000000000000000000000000000000000000000000000000000000002b",
+     "2": "02000000000000000000000000000000000000000000000000000000000000002c",
+     "3": "03000000000000000000000000000000000000000000000000000000000000002d",
+     "4": "04000000000000000000000000000000000000000000000000000000000000002e",
+     "5": "05000000000000000000000000000000000000000000000000000000000000002f",
+     "6": "060000000000000000000000000000000000000000000000000000000000000030",
+     "7": "070000000000000000000000000000000000000000000000000000000000000031",
+     "8": "080000000000000000000000000000000000000000000000000000000000000032",
+     "9": "090000000000000000000000000000000000000000000000000000000000000033",
+     "10": "0a0000000000000000000000000000000000000000000000000000000000000034",
+     "11": "0b0000000000000000000000000000000000000000000000000000000000000035",
+     "12": "0c0000000000000000000000000000000000000000000000000000000000000036",
+     "13": "0d0000000000000000000000000000000000000000000000000000000000000037",
+     "14": "0e0000000000000000000000000000000000000000000000000000000000000038",
+     "15": "0f0000000000000000000000000000000000000000000000000000000000000039",
+     "16": "10000000000000000000000000000000000000000000000000000000000000003a",
+     "17": "11000000000000000000000000000000000000000000000000000000000000003b",
+     "18": "12000000000000000000000000000000000000000000000000000000000000003c",
+     "19": "13000000000000000000000000000000000000000000000000000000000000003d"
+    }
+   }
+  },
+  {
+   "id": "freeze",
+   "name": "Freeze",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "edcb28480a0801000000000000000000000000000000000000000000000000000000000000003b",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "unfreeze",
+   "name": "unFreeze",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "edcb28480a0800000000000000000000000000000000000000000000000000000000000000003a",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "switch_mode",
+   "name": "Change Switch Mode",
+   "options": [
+    {
+     "id": "switch_mode",
+     "label": "Switch Mode",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Main & Aux Take"
+      },
+      {
+       "id": "1",
+       "label": "Main Take"
+      },
+      {
+       "id": "2",
+       "label": "Aux Take"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "edcb28481b085555{{option.switch_mode|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "switch_mode": {
+     "0": "010100000000000000000000000000000000000000000000000000000000f7",
+     "1": "010000000000000000000000000000000000000000000000000000000000f6",
+     "2": "000100000000000000000000000000000000000000000000000000000000f6"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Take_Cut",
+   "category": "Show Control",
+   "name": "Take Cut",
+   "text": "Take\nCut",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "take_cut",
+    "options": {}
+   }
+  },
+  {
+   "id": "Take_Fade",
+   "category": "Show Control",
+   "name": "Take Fade",
+   "text": "Take\nFade",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "take_fade",
+    "options": {}
+   }
+  },
+  {
+   "id": "load_preset_1",
+   "category": "Presets",
+   "name": "Load Preset 1",
+   "text": "1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 0
+    }
+   }
+  },
+  {
+   "id": "load_preset_2",
+   "category": "Presets",
+   "name": "Load Preset 2",
+   "text": "2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 1
+    }
+   }
+  },
+  {
+   "id": "load_preset_3",
+   "category": "Presets",
+   "name": "Load Preset 3",
+   "text": "3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 2
+    }
+   }
+  },
+  {
+   "id": "load_preset_4",
+   "category": "Presets",
+   "name": "Load Preset 4",
+   "text": "4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 3
+    }
+   }
+  },
+  {
+   "id": "load_preset_5",
+   "category": "Presets",
+   "name": "Load Preset 5",
+   "text": "5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 4
+    }
+   }
+  },
+  {
+   "id": "load_preset_6",
+   "category": "Presets",
+   "name": "Load Preset 6",
+   "text": "6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 5
+    }
+   }
+  },
+  {
+   "id": "load_preset_7",
+   "category": "Presets",
+   "name": "Load Preset 7",
+   "text": "7",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 6
+    }
+   }
+  },
+  {
+   "id": "load_preset_8",
+   "category": "Presets",
+   "name": "Load Preset 8",
+   "text": "8",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 7
+    }
+   }
+  },
+  {
+   "id": "load_preset_9",
+   "category": "Presets",
+   "name": "Load Preset 9",
+   "text": "9",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 8
+    }
+   }
+  },
+  {
+   "id": "load_preset_10",
+   "category": "Presets",
+   "name": "Load Preset 10",
+   "text": "10",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 9
+    }
+   }
+  },
+  {
+   "id": "load_preset_11",
+   "category": "Presets",
+   "name": "Load Preset 11",
+   "text": "11",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 10
+    }
+   }
+  },
+  {
+   "id": "load_preset_12",
+   "category": "Presets",
+   "name": "Load Preset 12",
+   "text": "12",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 11
+    }
+   }
+  },
+  {
+   "id": "load_preset_13",
+   "category": "Presets",
+   "name": "Load Preset 13",
+   "text": "13",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 12
+    }
+   }
+  },
+  {
+   "id": "load_preset_14",
+   "category": "Presets",
+   "name": "Load Preset 14",
+   "text": "14",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 13
+    }
+   }
+  },
+  {
+   "id": "load_preset_15",
+   "category": "Presets",
+   "name": "Load Preset 15",
+   "text": "15",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 14
+    }
+   }
+  },
+  {
+   "id": "load_preset_16",
+   "category": "Presets",
+   "name": "Load Preset 16",
+   "text": "16",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 15
+    }
+   }
+  },
+  {
+   "id": "load_preset_17",
+   "category": "Presets",
+   "name": "Load Preset 17",
+   "text": "17",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 16
+    }
+   }
+  },
+  {
+   "id": "load_preset_18",
+   "category": "Presets",
+   "name": "Load Preset 18",
+   "text": "18",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 17
+    }
+   }
+  },
+  {
+   "id": "load_preset_19",
+   "category": "Presets",
+   "name": "Load Preset 19",
+   "text": "19",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 18
+    }
+   }
+  },
+  {
+   "id": "load_preset_20",
+   "category": "Presets",
+   "name": "Load Preset 20",
+   "text": "20",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "load_preset",
+    "options": {
+     "preset_number": 19
+    }
+   }
+  },
+  {
+   "id": "Freeze",
+   "category": "Show Control",
+   "name": "Freeze",
+   "text": "Freeze",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze",
+    "options": {}
+   }
+  },
+  {
+   "id": "unFreeze",
+   "category": "Show Control",
+   "name": "unFreeze",
+   "text": "unFreeze",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unfreeze",
+    "options": {}
+   }
+  },
+  {
+   "id": "Main_Aux_Switch_Mode",
+   "category": "Show Control",
+   "name": "Main & Aux Take Switch Mode",
+   "text": "Main & Aux Take",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_mode",
+    "options": {
+     "switch_mode": 0
+    }
+   }
+  },
+  {
+   "id": "Main_Switch_Mode",
+   "category": "Show Control",
+   "name": "Main Take Switch Mode",
+   "text": "Main Take",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_mode",
+    "options": {
+     "switch_mode": 1
+    }
+   }
+  },
+  {
+   "id": "Aux_Switch_Mode",
+   "category": "Show Control",
+   "name": "Aux Take Switch Mode",
+   "text": "Aux Take",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_mode",
+    "options": {
+     "switch_mode": 2
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-magnimage-mig-ec",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Ockert Marais"
+  }
+ ],
+ "source": {
+  "module": "magnimage-mig-ec",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Ockert Marais"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-magnimage-mig-ec.git"
+ }
+}

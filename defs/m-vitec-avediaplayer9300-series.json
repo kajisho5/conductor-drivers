@@ -1,0 +1,204 @@
+{
+ "format": 1,
+ "id": "m-vitec-avediaplayer9300-series",
+ "name": "Vitec AvediaPlayer r9300 / AvediaPlayer r9310 / AvediaPlayer m9305 / AvediaPl…",
+ "category": "Vitec",
+ "version": "1.2.9",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "user",
+   "label": "Username",
+   "type": "text",
+   "default": "admin"
+  },
+  {
+   "id": "pass",
+   "label": "Password",
+   "type": "text",
+   "default": "labrador"
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Logging",
+   "type": "boolean",
+   "default": false,
+   "help": "Verbose logs written to the console"
+  }
+ ],
+ "actions": [
+  {
+   "id": "currentMode",
+   "name": "Mode",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "av",
+     "choices": [
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "av",
+       "label": "AV"
+      },
+      {
+       "id": "browser",
+       "label": "Browser"
+      },
+      {
+       "id": "splash",
+       "label": "Splash"
+      },
+      {
+       "id": "signage",
+       "label": "Signage"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/cgi-bin/json_xfer",
+    "body": "{\"params\":{\"currentMode\":\"{{option.mode|map}}\"}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "mode": {
+     "av": "av",
+     "off": "off",
+     "browser": "browser",
+     "splash": "splash",
+     "signage": "signage"
+    }
+   }
+  },
+  {
+   "id": "currentChannel",
+   "name": "Current Channel",
+   "options": [
+    {
+     "id": "uri",
+     "label": "URI",
+     "type": "select",
+     "default": "",
+     "choices": [],
+     "help": "Should be formatted similar to: udp://239.192.65.2:5000?hwchan=1"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/cgi-bin/json_xfer",
+    "body": "{\"params\":{\"currentChannel\":\"\"}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "volumeUp",
+   "name": "Volume Up",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/cgi-bin/json_xfer",
+    "body": "{\"params\":{\"volumeup\":\"volumeup\"}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "volumeDown",
+   "name": "Volume Down",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/cgi-bin/json_xfer",
+    "body": "{\"params\":{\"volumedown\":\"volumedown\"}}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "mute",
+   "name": "Mute",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/cgi-bin/json_xfer",
+    "body": "{\"params\":{\"mute\":{{option.mute|map}}e}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "mute": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "teletext",
+   "name": "Teletext",
+   "options": [
+    {
+     "id": "teletext",
+     "label": "Teletext",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/cgi-bin/json_xfer",
+    "body": "{\"params\":{\"teletext\":\"o{{option.teletext|map}}\"}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "teletext": {
+     "false": "ff",
+     "true": "n"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-vitec-avediaplayer9300-series",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "vitec-avediaplayer9300-series",
+  "version": "1.2.9",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-vitec-avediaplayer9300-series.git"
+ }
+}

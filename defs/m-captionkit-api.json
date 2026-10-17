@@ -1,0 +1,925 @@
+{
+ "format": 1,
+ "id": "m-captionkit-api",
+ "name": "CaptionKit API",
+ "category": "CaptionKit",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.captionkit.io",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "key",
+   "label": "CaptionKit API Key",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "send_signal",
+   "name": "Send Signal",
+   "options": [
+    {
+     "id": "signal",
+     "label": "Signal type",
+     "type": "select",
+     "default": "captions:stream:start",
+     "choices": [
+      {
+       "id": "captions:stream:start",
+       "label": "Start streaming captions"
+      },
+      {
+       "id": "captions:stream:stop",
+       "label": "Stop streaming captions"
+      },
+      {
+       "id": "captions:stream:clear",
+       "label": "Clear caption text"
+      },
+      {
+       "id": "captions:pending:on",
+       "label": "Turn on \"Starting soon\" message"
+      },
+      {
+       "id": "captions:pending:off",
+       "label": "Turn off \"Starting soon\" message"
+      },
+      {
+       "id": "captions:visibility:hide",
+       "label": "Temporarily hide captions"
+      },
+      {
+       "id": "captions:visibility:show",
+       "label": "Show captions"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/v2/signal?key=",
+    "body": "{\"event\":\"captions:{{option.signal|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "signal": {
+     "captions:stream:start": "stream:start",
+     "captions:stream:stop": "stream:stop",
+     "captions:stream:clear": "stream:clear",
+     "captions:pending:on": "pending:on",
+     "captions:pending:off": "pending:off",
+     "captions:visibility:hide": "visibility:hide",
+     "captions:visibility:show": "visibility:show"
+    }
+   }
+  },
+  {
+   "id": "language_select",
+   "name": "Set transcription language",
+   "options": [
+    {
+     "id": "language",
+     "label": "Language",
+     "type": "select",
+     "default": "en",
+     "choices": [
+      {
+       "id": "en",
+       "label": "English"
+      },
+      {
+       "id": "en-US",
+       "label": "English (US)"
+      },
+      {
+       "id": "en-AU",
+       "label": "English (AU)"
+      },
+      {
+       "id": "en-GB",
+       "label": "English (GB)"
+      },
+      {
+       "id": "en-NZ",
+       "label": "English (NZ)"
+      },
+      {
+       "id": "bg",
+       "label": "Bulgarian"
+      },
+      {
+       "id": "cs",
+       "label": "Czech"
+      },
+      {
+       "id": "da",
+       "label": "Danish"
+      },
+      {
+       "id": "nl",
+       "label": "Dutch"
+      },
+      {
+       "id": "fr",
+       "label": "French"
+      },
+      {
+       "id": "fr-CA",
+       "label": "French (Canada)"
+      },
+      {
+       "id": "de",
+       "label": "German"
+      },
+      {
+       "id": "de-CH",
+       "label": "German (Switzerland)"
+      },
+      {
+       "id": "el",
+       "label": "Greek"
+      },
+      {
+       "id": "hi",
+       "label": "Hindi"
+      },
+      {
+       "id": "hu",
+       "label": "Hungarian"
+      },
+      {
+       "id": "id",
+       "label": "Indonesian"
+      },
+      {
+       "id": "it",
+       "label": "Italian"
+      },
+      {
+       "id": "ko",
+       "label": "Korean"
+      },
+      {
+       "id": "ja",
+       "label": "Japanese"
+      },
+      {
+       "id": "lt",
+       "label": "Lithuanian"
+      },
+      {
+       "id": "ms",
+       "label": "Malay"
+      },
+      {
+       "id": "no",
+       "label": "Norwegian"
+      },
+      {
+       "id": "pl",
+       "label": "Polish"
+      },
+      {
+       "id": "pt",
+       "label": "Portuguese"
+      },
+      {
+       "id": "pt-BR",
+       "label": "Portuguese (Brazil)"
+      },
+      {
+       "id": "ro",
+       "label": "Romanian"
+      },
+      {
+       "id": "ru",
+       "label": "Russian"
+      },
+      {
+       "id": "es",
+       "label": "Spanish"
+      },
+      {
+       "id": "es-419",
+       "label": "Spanish (Latin America)"
+      },
+      {
+       "id": "sv",
+       "label": "Swedish"
+      },
+      {
+       "id": "th",
+       "label": "Thai"
+      },
+      {
+       "id": "tr",
+       "label": "Turkish"
+      },
+      {
+       "id": "uk",
+       "label": "Ukrainian"
+      },
+      {
+       "id": "vi",
+       "label": "Vietnamese"
+      },
+      {
+       "id": "zh",
+       "label": "Chinese (Mandarin, Simplified)"
+      },
+      {
+       "id": "zh-TW",
+       "label": "Chinese (Mandarin, Traditional)"
+      },
+      {
+       "id": "zh-HK",
+       "label": "Chinese (Cantonese, Traditional)"
+      },
+      {
+       "id": "multi",
+       "label": "English & Spanish (Bilingual)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/v2/signal?key=",
+    "body": "{\"event\":\"language:select\",\"value\":\"{{option.language|map}}\"}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "language": {
+     "en": "en",
+     "en-US": "en-US",
+     "en-AU": "en-AU",
+     "en-GB": "en-GB",
+     "en-NZ": "en-NZ",
+     "bg": "bg",
+     "cs": "cs",
+     "da": "da",
+     "nl": "nl",
+     "fr": "fr",
+     "fr-CA": "fr-CA",
+     "de": "de",
+     "de-CH": "de-CH",
+     "el": "el",
+     "hi": "hi",
+     "hu": "hu",
+     "id": "id",
+     "it": "it",
+     "ko": "ko",
+     "ja": "ja",
+     "lt": "lt",
+     "ms": "ms",
+     "no": "no",
+     "pl": "pl",
+     "pt": "pt",
+     "pt-BR": "pt-BR",
+     "ro": "ro",
+     "ru": "ru",
+     "es": "es",
+     "es-419": "es-419",
+     "sv": "sv",
+     "th": "th",
+     "tr": "tr",
+     "uk": "uk",
+     "vi": "vi",
+     "zh": "zh",
+     "zh-TW": "zh-TW",
+     "zh-HK": "zh-HK",
+     "multi": "multi"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "captions:stream:start",
+   "category": "Signals",
+   "name": "Start captions",
+   "text": "Start captions",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "send_signal",
+    "options": {
+     "signal": "captions:stream:start"
+    }
+   }
+  },
+  {
+   "id": "captions:stream:stop",
+   "category": "Signals",
+   "name": "Stop captions",
+   "text": "Stop captions",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "send_signal",
+    "options": {
+     "signal": "captions:stream:stop"
+    }
+   }
+  },
+  {
+   "id": "captions:stream:clear",
+   "category": "Signals",
+   "name": "Clear captions",
+   "text": "Clear captions",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "send_signal",
+    "options": {
+     "signal": "captions:stream:clear"
+    }
+   }
+  },
+  {
+   "id": "captions:pending:on",
+   "category": "Signals",
+   "name": "Starting soon",
+   "text": "Starting soon",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "send_signal",
+    "options": {
+     "signal": "captions:pending:on"
+    }
+   }
+  },
+  {
+   "id": "captions:pending:off",
+   "category": "Signals",
+   "name": "Clear starting soon",
+   "text": "Clear starting soon",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "send_signal",
+    "options": {
+     "signal": "captions:pending:off"
+    }
+   }
+  },
+  {
+   "id": "captions:visibility:hide",
+   "category": "Signals",
+   "name": "Hide captions",
+   "text": "Hide captions",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "send_signal",
+    "options": {
+     "signal": "captions:visibility:hide"
+    }
+   }
+  },
+  {
+   "id": "captions:visibility:show",
+   "category": "Signals",
+   "name": "Show captions",
+   "text": "Show captions",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "send_signal",
+    "options": {
+     "signal": "captions:visibility:show"
+    }
+   }
+  },
+  {
+   "id": "en",
+   "category": "Languages",
+   "name": "English",
+   "text": "English",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "en"
+    }
+   }
+  },
+  {
+   "id": "en-US",
+   "category": "Languages",
+   "name": "English (US)",
+   "text": "English (US)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "en-US"
+    }
+   }
+  },
+  {
+   "id": "en-AU",
+   "category": "Languages",
+   "name": "English (AU)",
+   "text": "English (AU)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "en-AU"
+    }
+   }
+  },
+  {
+   "id": "en-GB",
+   "category": "Languages",
+   "name": "English (GB)",
+   "text": "English (GB)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "en-GB"
+    }
+   }
+  },
+  {
+   "id": "en-NZ",
+   "category": "Languages",
+   "name": "English (NZ)",
+   "text": "English (NZ)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "en-NZ"
+    }
+   }
+  },
+  {
+   "id": "bg",
+   "category": "Languages",
+   "name": "Bulgarian",
+   "text": "Bulgarian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "bg"
+    }
+   }
+  },
+  {
+   "id": "cs",
+   "category": "Languages",
+   "name": "Czech",
+   "text": "Czech",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "cs"
+    }
+   }
+  },
+  {
+   "id": "da",
+   "category": "Languages",
+   "name": "Danish",
+   "text": "Danish",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "da"
+    }
+   }
+  },
+  {
+   "id": "nl",
+   "category": "Languages",
+   "name": "Dutch",
+   "text": "Dutch",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "nl"
+    }
+   }
+  },
+  {
+   "id": "fr",
+   "category": "Languages",
+   "name": "French",
+   "text": "French",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "fr"
+    }
+   }
+  },
+  {
+   "id": "fr-CA",
+   "category": "Languages",
+   "name": "French (Canada)",
+   "text": "French (Canada)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "fr-CA"
+    }
+   }
+  },
+  {
+   "id": "de",
+   "category": "Languages",
+   "name": "German",
+   "text": "German",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "de"
+    }
+   }
+  },
+  {
+   "id": "de-CH",
+   "category": "Languages",
+   "name": "German (Switzerland)",
+   "text": "German (Switzerland)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "de-CH"
+    }
+   }
+  },
+  {
+   "id": "el",
+   "category": "Languages",
+   "name": "Greek",
+   "text": "Greek",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "el"
+    }
+   }
+  },
+  {
+   "id": "hi",
+   "category": "Languages",
+   "name": "Hindi",
+   "text": "Hindi",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "hi"
+    }
+   }
+  },
+  {
+   "id": "hu",
+   "category": "Languages",
+   "name": "Hungarian",
+   "text": "Hungarian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "hu"
+    }
+   }
+  },
+  {
+   "id": "id",
+   "category": "Languages",
+   "name": "Indonesian",
+   "text": "Indonesian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "id"
+    }
+   }
+  },
+  {
+   "id": "it",
+   "category": "Languages",
+   "name": "Italian",
+   "text": "Italian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "it"
+    }
+   }
+  },
+  {
+   "id": "ko",
+   "category": "Languages",
+   "name": "Korean",
+   "text": "Korean",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "ko"
+    }
+   }
+  },
+  {
+   "id": "ja",
+   "category": "Languages",
+   "name": "Japanese",
+   "text": "Japanese",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "ja"
+    }
+   }
+  },
+  {
+   "id": "lt",
+   "category": "Languages",
+   "name": "Lithuanian",
+   "text": "Lithuanian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "lt"
+    }
+   }
+  },
+  {
+   "id": "ms",
+   "category": "Languages",
+   "name": "Malay",
+   "text": "Malay",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "ms"
+    }
+   }
+  },
+  {
+   "id": "no",
+   "category": "Languages",
+   "name": "Norwegian",
+   "text": "Norwegian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "no"
+    }
+   }
+  },
+  {
+   "id": "pl",
+   "category": "Languages",
+   "name": "Polish",
+   "text": "Polish",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "pl"
+    }
+   }
+  },
+  {
+   "id": "pt",
+   "category": "Languages",
+   "name": "Portuguese",
+   "text": "Portuguese",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "pt"
+    }
+   }
+  },
+  {
+   "id": "pt-BR",
+   "category": "Languages",
+   "name": "Portuguese (Brazil)",
+   "text": "Portuguese (Brazil)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "pt-BR"
+    }
+   }
+  },
+  {
+   "id": "ro",
+   "category": "Languages",
+   "name": "Romanian",
+   "text": "Romanian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "ro"
+    }
+   }
+  },
+  {
+   "id": "ru",
+   "category": "Languages",
+   "name": "Russian",
+   "text": "Russian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "ru"
+    }
+   }
+  },
+  {
+   "id": "es",
+   "category": "Languages",
+   "name": "Spanish",
+   "text": "Spanish",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "es"
+    }
+   }
+  },
+  {
+   "id": "es-419",
+   "category": "Languages",
+   "name": "Spanish (Latin America)",
+   "text": "Spanish (Latin America)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "es-419"
+    }
+   }
+  },
+  {
+   "id": "sv",
+   "category": "Languages",
+   "name": "Swedish",
+   "text": "Swedish",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "sv"
+    }
+   }
+  },
+  {
+   "id": "th",
+   "category": "Languages",
+   "name": "Thai",
+   "text": "Thai",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "th"
+    }
+   }
+  },
+  {
+   "id": "tr",
+   "category": "Languages",
+   "name": "Turkish",
+   "text": "Turkish",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "tr"
+    }
+   }
+  },
+  {
+   "id": "uk",
+   "category": "Languages",
+   "name": "Ukrainian",
+   "text": "Ukrainian",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "uk"
+    }
+   }
+  },
+  {
+   "id": "vi",
+   "category": "Languages",
+   "name": "Vietnamese",
+   "text": "Vietnamese",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "vi"
+    }
+   }
+  },
+  {
+   "id": "zh",
+   "category": "Languages",
+   "name": "Chinese (Mandarin, Simplified)",
+   "text": "Chinese (Mandarin, Simplified)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "zh"
+    }
+   }
+  },
+  {
+   "id": "zh-TW",
+   "category": "Languages",
+   "name": "Chinese (Mandarin, Traditional)",
+   "text": "Chinese (Mandarin, Traditional)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "zh-TW"
+    }
+   }
+  },
+  {
+   "id": "zh-HK",
+   "category": "Languages",
+   "name": "Chinese (Cantonese, Traditional)",
+   "text": "Chinese (Cantonese, Traditional)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "zh-HK"
+    }
+   }
+  },
+  {
+   "id": "multi",
+   "category": "Languages",
+   "name": "English & Spanish (Bilingual)",
+   "text": "English & Spanish (Bilingual)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "language_select",
+    "options": {
+     "language": "multi"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-captionkit-api",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Richard Huss"
+  }
+ ],
+ "source": {
+  "module": "captionkit-api",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Richard Huss"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-captionkit-api.git"
+ }
+}

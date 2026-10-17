@@ -1,0 +1,88 @@
+{
+ "format": 1,
+ "id": "m-dhdaudio-ecp",
+ "name": "DHD Audio Series 52 / RM4200D / XD2 / XC2 / SX2",
+ "category": "DHD Audio",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2008,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "toggle_logic_state",
+   "name": "Toggle Logic State",
+   "options": [
+    {
+     "id": "logic_id",
+     "label": "Logic ID",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 65535,
+     "help": "Logic address (0-65535)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0300110e000000{{option.logic_id|u8}}0100000000000000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "request_logic_state",
+   "name": "Request Logic State",
+   "options": [
+    {
+     "id": "logic_id",
+     "label": "Logic ID",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 65535,
+     "help": "Logic address (0-65535)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0200110e000000{{option.logic_id|u8}}0000000000000000",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/daniellippens/companion-module-dhdaudio-ecp",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Daniel Lippens"
+  }
+ ],
+ "source": {
+  "module": "dhdaudio-ecp",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Daniel Lippens"
+  ],
+  "repository": "git+https://github.com/daniellippens/companion-module-dhdaudio-ecp.git"
+ }
+}

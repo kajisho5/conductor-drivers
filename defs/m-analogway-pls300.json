@@ -1,0 +1,352 @@
+{
+ "format": 1,
+ "id": "m-analogway-pls300",
+ "name": "Analog Way PLS 300",
+ "category": "Analog Way",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 10500,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "prot",
+   "label": "Connect with TCP / UDP",
+   "type": "select",
+   "default": "tcp",
+   "choices": [
+    {
+     "id": "udp",
+     "label": "UDP"
+    },
+    {
+     "id": "tcp",
+     "label": "TCP"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "take",
+   "name": "Take",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "1TK \\r\\n 1TK",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "freeze",
+   "name": "Freeze (All Inputs)",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0,1Sf \\r\\n 0,1Sf \\r\\n1,1Sf \\r\\n 1,1Sf \\r\\n2,1Sf \\r\\n 2,1Sf \\r\\n3,1Sf \\r\\n 3,1Sf \\r\\n4,1Sf \\r\\n 4,1Sf \\r\\n5,1Sf \\r\\n 5,1Sf \\r\\n6,1Sf \\r\\n 6,1Sf \\r\\n9,1Sf \\r\\n 9,1Sf \\r\\n10,1Sf \\r\\n 10,1Sf \\r\\n11,1Sf \\r\\n 11,1Sf \\r\\n12,1Sf \\r\\n 12,1Sf \\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fr",
+   "name": "Background Frame",
+   "options": [
+    {
+     "id": "frame",
+     "label": "Frame",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "No Frame"
+      },
+      {
+       "id": "1",
+       "label": "Frame 1"
+      },
+      {
+       "id": "2",
+       "label": "Frame 2"
+      },
+      {
+       "id": "3",
+       "label": "Frame 3"
+      },
+      {
+       "id": "4",
+       "label": "Frame 4"
+      },
+      {
+       "id": "5",
+       "label": "Frame 5"
+      },
+      {
+       "id": "6",
+       "label": "Frame 6"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "1,0,{{option.frame|map}}IN",
+    "encoding": "text"
+   },
+   "maps": {
+    "frame": {
+     "0": "0IN\\r\\n1,0,0",
+     "1": "1IN\\r\\n1,0,1",
+     "2": "2IN\\r\\n1,0,2",
+     "3": "3IN\\r\\n1,0,3",
+     "4": "4IN\\r\\n1,0,4",
+     "5": "5IN\\r\\n1,0,5",
+     "6": "6IN\\r\\n1,0,6"
+    }
+   }
+  },
+  {
+   "id": "ps",
+   "name": "User Preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "3",
+     "choices": [
+      {
+       "id": "3",
+       "label": "Preset 1"
+      },
+      {
+       "id": "4",
+       "label": "Preset 2"
+      },
+      {
+       "id": "5",
+       "label": "Preset 3"
+      },
+      {
+       "id": "6",
+       "label": "Preset 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.preset|map}}Nf \\r\\n 1Nt1Nc",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "3": "3Nf \\r\\n 1Nt1Nc\\r\\n3",
+     "4": "4Nf \\r\\n 1Nt1Nc\\r\\n4",
+     "5": "5Nf \\r\\n 1Nt1Nc\\r\\n5",
+     "6": "6Nf \\r\\n 1Nt1Nc\\r\\n6"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "take",
+   "category": "Program",
+   "name": "Take",
+   "text": "Take",
+   "backgroundColor": "#00cc00",
+   "action": {
+    "definitionId": "take",
+    "options": {}
+   }
+  },
+  {
+   "id": "freeze",
+   "category": "Program",
+   "name": "Freeze (All Inputs)",
+   "text": "Freeze (All Inputs)",
+   "backgroundColor": "#00cc00",
+   "action": {
+    "definitionId": "freeze",
+    "options": {}
+   }
+  },
+  {
+   "id": "frame_0",
+   "category": "Frames",
+   "name": "No Frame",
+   "text": "No\nFrame",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fr",
+    "options": {
+     "frame": "0"
+    }
+   }
+  },
+  {
+   "id": "frame_1",
+   "category": "Frames",
+   "name": "Frame 1",
+   "text": "Fr 1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fr",
+    "options": {
+     "frame": "1"
+    }
+   }
+  },
+  {
+   "id": "frame_2",
+   "category": "Frames",
+   "name": "Frame 2",
+   "text": "Fr 2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fr",
+    "options": {
+     "frame": "2"
+    }
+   }
+  },
+  {
+   "id": "frame_3",
+   "category": "Frames",
+   "name": "Frame 3",
+   "text": "Fr 3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fr",
+    "options": {
+     "frame": "3"
+    }
+   }
+  },
+  {
+   "id": "frame_4",
+   "category": "Frames",
+   "name": "Frame 4",
+   "text": "Fr 4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fr",
+    "options": {
+     "frame": "4"
+    }
+   }
+  },
+  {
+   "id": "frame_5",
+   "category": "Frames",
+   "name": "Frame 5",
+   "text": "Fr 5",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fr",
+    "options": {
+     "frame": "5"
+    }
+   }
+  },
+  {
+   "id": "frame_6",
+   "category": "Frames",
+   "name": "Frame 6",
+   "text": "Fr 6",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fr",
+    "options": {
+     "frame": "6"
+    }
+   }
+  },
+  {
+   "id": "preset_3",
+   "category": "Presets",
+   "name": "Preset 1",
+   "text": "Preset\n1",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ps",
+    "options": {
+     "preset": "3"
+    }
+   }
+  },
+  {
+   "id": "preset_4",
+   "category": "Presets",
+   "name": "Preset 2",
+   "text": "Preset\n2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ps",
+    "options": {
+     "preset": "4"
+    }
+   }
+  },
+  {
+   "id": "preset_5",
+   "category": "Presets",
+   "name": "Preset 3",
+   "text": "Preset\n3",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ps",
+    "options": {
+     "preset": "5"
+    }
+   }
+  },
+  {
+   "id": "preset_6",
+   "category": "Presets",
+   "name": "Preset 4",
+   "text": "Preset\n4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "ps",
+    "options": {
+     "preset": "6"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-analogway-pls300",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Tyler Krupa"
+  }
+ ],
+ "source": {
+  "module": "analogway-pls300",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Tyler Krupa"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-analogway-pls300.git"
+ }
+}

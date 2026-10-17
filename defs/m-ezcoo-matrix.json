@@ -1,0 +1,258 @@
+{
+ "format": 1,
+ "id": "m-ezcoo-matrix",
+ "name": "EZCOO MX44-HAS2 4x4 HDMI Matrix / MX42HS 4x2 HDMI Matrix",
+ "category": "EZCOO",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 23,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "poll_interval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 60000,
+   "min": 300,
+   "max": 300000
+  },
+  {
+   "id": "polled_data",
+   "label": "Use polled data from unit:",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "log_responses",
+   "label": "Debug returned data    :",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "log_tokens",
+   "label": "Debug token data    :",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "switch_output",
+   "name": "Switch Output",
+   "options": [
+    {
+     "id": "output",
+     "label": "Output Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "OUT1"
+      },
+      {
+       "id": "2",
+       "label": "OUT2"
+      },
+      {
+       "id": "3",
+       "label": "OUT3"
+      },
+      {
+       "id": "4",
+       "label": "OUT4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "EZS OUT{{option.output|map}} VS IN1\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  },
+  {
+   "id": "input_output",
+   "name": "Input to Output",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "IN1"
+      },
+      {
+       "id": "2",
+       "label": "IN2"
+      },
+      {
+       "id": "3",
+       "label": "IN3"
+      },
+      {
+       "id": "4",
+       "label": "IN4"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "OUT1"
+      },
+      {
+       "id": "2",
+       "label": "OUT2"
+      },
+      {
+       "id": "3",
+       "label": "OUT3"
+      },
+      {
+       "id": "4",
+       "label": "OUT4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "EZS OUT{{option.output|map}} VS IN{{option.input|map}}\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "input": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "switch_output_1",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT1\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "1"
+    }
+   }
+  },
+  {
+   "id": "switch_output_2",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT2\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "2"
+    }
+   }
+  },
+  {
+   "id": "switch_output_3",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT3\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "3"
+    }
+   }
+  },
+  {
+   "id": "switch_output_4",
+   "category": "Switch Output",
+   "name": "Switch",
+   "text": "OUT4\n<",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switch_output",
+    "options": {
+     "output": "4"
+    }
+   }
+  },
+  {
+   "id": "in-to-out",
+   "category": "In to Out",
+   "name": "In to Out",
+   "text": "IN1 to OUT4",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "input_output",
+    "options": {
+     "input": "1",
+     "output": "4"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-ezcoo-matrix",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jan Bubik"
+  }
+ ],
+ "source": {
+  "module": "ezcoo-matrix",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jan Bubik"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-ezcoo-matrix.git"
+ }
+}

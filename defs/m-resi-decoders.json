@@ -1,0 +1,114 @@
+{
+ "format": 1,
+ "id": "m-resi-decoders",
+ "name": "Resi Decoder",
+ "category": "Resi",
+ "version": "2.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 7788,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "advanced",
+   "label": "Enable Advanced Features",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CC play\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CC pause\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "PAFFB",
+   "name": "Play and Fade From Black",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CC PAFFB\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FTBAP",
+   "name": "Fade To Black and Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CC FTBAP\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FFB",
+   "name": "Fade From Black",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CC FFB\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "FTB",
+   "name": "Fade To Black",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "CC FTB\\n",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-resi-decoders",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "resi-decoders",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-resi-decoders.git"
+ }
+}

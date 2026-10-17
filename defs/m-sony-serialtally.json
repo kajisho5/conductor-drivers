@@ -1,0 +1,3391 @@
+{
+ "format": 1,
+ "id": "m-sony-serialtally",
+ "name": "Sony XVS 9000/8000/7000/6000 / XVS-G1 / MLS-X1",
+ "category": "Sony",
+ "version": "1.3.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 10010,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "model",
+   "label": "Model",
+   "type": "select",
+   "default": "xvs-9000",
+   "choices": [
+    {
+     "id": "xvs-9000",
+     "label": "XVS 9000/8000/7000/6000"
+    },
+    {
+     "id": "xvs-g1",
+     "label": "XVS-G1"
+    },
+    {
+     "id": "mls-x1",
+     "label": "MLS-X1"
+    }
+   ]
+  },
+  {
+   "id": "advanced",
+   "label": "Advanced settings",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "allowCustomCommands",
+   "label": "Allow Custom Commands",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "intervalRate",
+   "label": "Update Interval Rate (ms)",
+   "type": "number",
+   "default": 500,
+   "min": 100,
+   "max": 60000
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "xptME",
+   "name": "XPT: M/E",
+   "options": [
+    {
+     "id": "eff",
+     "label": "M/E Selection",
+     "type": "select",
+     "default": "pp",
+     "choices": [
+      {
+       "id": "pp",
+       "label": "P/P"
+      },
+      {
+       "id": "me1",
+       "label": "M/E 1"
+      },
+      {
+       "id": "me2",
+       "label": "M/E 2"
+      },
+      {
+       "id": "me3",
+       "label": "M/E 3"
+      },
+      {
+       "id": "me4",
+       "label": "M/E 4"
+      },
+      {
+       "id": "me5",
+       "label": "M/E 5"
+      }
+     ]
+    },
+    {
+     "id": "bus",
+     "label": "Bus Selection",
+     "type": "select",
+     "default": "pgm",
+     "choices": [
+      {
+       "id": "pgm",
+       "label": "PGM"
+      },
+      {
+       "id": "pst",
+       "label": "PST"
+      },
+      {
+       "id": "key1_fill",
+       "label": "Key 1 Fill"
+      },
+      {
+       "id": "key1_source",
+       "label": "Key 1 Source"
+      },
+      {
+       "id": "key2_fill",
+       "label": "Key 2 Fill"
+      },
+      {
+       "id": "key2_source",
+       "label": "Key 2 Source"
+      },
+      {
+       "id": "key3_fill",
+       "label": "Key 3 Fill"
+      },
+      {
+       "id": "key3_source",
+       "label": "Key 3 Source"
+      },
+      {
+       "id": "key4_fill",
+       "label": "Key 4 Fill"
+      },
+      {
+       "id": "key4_source",
+       "label": "Key 4 Source"
+      },
+      {
+       "id": "key5_fill",
+       "label": "Key 5 Fill"
+      },
+      {
+       "id": "key5_source",
+       "label": "Key 5 Source"
+      },
+      {
+       "id": "key6_fill",
+       "label": "Key 6 Fill"
+      },
+      {
+       "id": "key6_source",
+       "label": "Key 6 Source"
+      },
+      {
+       "id": "key7_fill",
+       "label": "Key 7 Fill"
+      },
+      {
+       "id": "key7_source",
+       "label": "Key 7 Source"
+      },
+      {
+       "id": "key8_fill",
+       "label": "Key 8 Fill"
+      },
+      {
+       "id": "key8_source",
+       "label": "Key 8 Source"
+      },
+      {
+       "id": "util1",
+       "label": "Utility 1"
+      },
+      {
+       "id": "util2",
+       "label": "Utility 2 / MP2 Sub BKGD A"
+      },
+      {
+       "id": "util3",
+       "label": "Utility 3 / MP2 Sub BKGD B"
+      },
+      {
+       "id": "dme_v",
+       "label": "DME V"
+      },
+      {
+       "id": "dme_k",
+       "label": "DME K"
+      },
+      {
+       "id": "dme_ext",
+       "label": "DME EXT"
+      }
+     ]
+    },
+    {
+     "id": "source",
+     "label": "Source Selection",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Primary 1"
+      },
+      {
+       "id": "2",
+       "label": "Primary 2"
+      },
+      {
+       "id": "3",
+       "label": "Primary 3"
+      },
+      {
+       "id": "4",
+       "label": "Primary 4"
+      },
+      {
+       "id": "5",
+       "label": "Primary 5"
+      },
+      {
+       "id": "6",
+       "label": "Primary 6"
+      },
+      {
+       "id": "7",
+       "label": "Primary 7"
+      },
+      {
+       "id": "8",
+       "label": "Primary 8"
+      },
+      {
+       "id": "9",
+       "label": "Primary 9"
+      },
+      {
+       "id": "10",
+       "label": "Primary 10"
+      },
+      {
+       "id": "11",
+       "label": "Primary 11"
+      },
+      {
+       "id": "12",
+       "label": "Primary 12"
+      },
+      {
+       "id": "13",
+       "label": "Primary 13"
+      },
+      {
+       "id": "14",
+       "label": "Primary 14"
+      },
+      {
+       "id": "15",
+       "label": "Primary 15"
+      },
+      {
+       "id": "16",
+       "label": "Primary 16"
+      },
+      {
+       "id": "17",
+       "label": "Primary 17"
+      },
+      {
+       "id": "18",
+       "label": "Primary 18"
+      },
+      {
+       "id": "19",
+       "label": "Primary 19"
+      },
+      {
+       "id": "20",
+       "label": "Primary 20"
+      },
+      {
+       "id": "21",
+       "label": "Primary 21"
+      },
+      {
+       "id": "22",
+       "label": "Primary 22"
+      },
+      {
+       "id": "23",
+       "label": "Primary 23"
+      },
+      {
+       "id": "24",
+       "label": "Primary 24"
+      },
+      {
+       "id": "25",
+       "label": "Primary 25"
+      },
+      {
+       "id": "26",
+       "label": "Primary 26"
+      },
+      {
+       "id": "27",
+       "label": "Primary 27"
+      },
+      {
+       "id": "28",
+       "label": "Primary 28"
+      },
+      {
+       "id": "29",
+       "label": "Primary 29"
+      },
+      {
+       "id": "30",
+       "label": "Primary 30"
+      },
+      {
+       "id": "31",
+       "label": "Primary 31"
+      },
+      {
+       "id": "32",
+       "label": "Primary 32"
+      },
+      {
+       "id": "33",
+       "label": "Primary 33"
+      },
+      {
+       "id": "34",
+       "label": "Primary 34"
+      },
+      {
+       "id": "35",
+       "label": "Primary 35"
+      },
+      {
+       "id": "36",
+       "label": "Primary 36"
+      },
+      {
+       "id": "37",
+       "label": "Primary 37"
+      },
+      {
+       "id": "38",
+       "label": "Primary 38"
+      },
+      {
+       "id": "39",
+       "label": "Primary 39"
+      },
+      {
+       "id": "40",
+       "label": "Primary 40"
+      },
+      {
+       "id": "41",
+       "label": "Primary 41"
+      },
+      {
+       "id": "42",
+       "label": "Primary 42"
+      },
+      {
+       "id": "43",
+       "label": "Primary 43"
+      },
+      {
+       "id": "44",
+       "label": "Primary 44"
+      },
+      {
+       "id": "45",
+       "label": "Primary 45"
+      },
+      {
+       "id": "46",
+       "label": "Primary 46"
+      },
+      {
+       "id": "47",
+       "label": "Primary 47"
+      },
+      {
+       "id": "48",
+       "label": "Primary 48"
+      },
+      {
+       "id": "49",
+       "label": "Primary 49"
+      },
+      {
+       "id": "50",
+       "label": "Primary 50"
+      },
+      {
+       "id": "51",
+       "label": "Primary 51"
+      },
+      {
+       "id": "52",
+       "label": "Primary 52"
+      },
+      {
+       "id": "53",
+       "label": "Primary 53"
+      },
+      {
+       "id": "54",
+       "label": "Primary 54"
+      },
+      {
+       "id": "55",
+       "label": "Primary 55"
+      },
+      {
+       "id": "56",
+       "label": "Primary 56"
+      },
+      {
+       "id": "57",
+       "label": "Primary 57"
+      },
+      {
+       "id": "58",
+       "label": "Primary 58"
+      },
+      {
+       "id": "59",
+       "label": "Primary 59"
+      },
+      {
+       "id": "60",
+       "label": "Primary 60"
+      },
+      {
+       "id": "61",
+       "label": "Primary 61"
+      },
+      {
+       "id": "62",
+       "label": "Primary 62"
+      },
+      {
+       "id": "63",
+       "label": "Primary 63"
+      },
+      {
+       "id": "64",
+       "label": "Primary 64"
+      },
+      {
+       "id": "65",
+       "label": "Primary 65"
+      },
+      {
+       "id": "66",
+       "label": "Primary 66"
+      },
+      {
+       "id": "67",
+       "label": "Primary 67"
+      },
+      {
+       "id": "68",
+       "label": "Primary 68"
+      },
+      {
+       "id": "69",
+       "label": "Primary 69"
+      },
+      {
+       "id": "70",
+       "label": "Primary 70"
+      },
+      {
+       "id": "71",
+       "label": "Primary 71"
+      },
+      {
+       "id": "72",
+       "label": "Primary 72"
+      },
+      {
+       "id": "73",
+       "label": "Primary 73"
+      },
+      {
+       "id": "74",
+       "label": "Primary 74"
+      },
+      {
+       "id": "75",
+       "label": "Primary 75"
+      },
+      {
+       "id": "76",
+       "label": "Primary 76"
+      },
+      {
+       "id": "77",
+       "label": "Primary 77"
+      },
+      {
+       "id": "78",
+       "label": "Primary 78"
+      },
+      {
+       "id": "79",
+       "label": "Primary 79"
+      },
+      {
+       "id": "80",
+       "label": "Primary 80"
+      },
+      {
+       "id": "81",
+       "label": "Primary 81"
+      },
+      {
+       "id": "82",
+       "label": "Primary 82"
+      },
+      {
+       "id": "83",
+       "label": "Primary 83"
+      },
+      {
+       "id": "84",
+       "label": "Primary 84"
+      },
+      {
+       "id": "85",
+       "label": "Primary 85"
+      },
+      {
+       "id": "86",
+       "label": "Primary 86"
+      },
+      {
+       "id": "87",
+       "label": "Primary 87"
+      },
+      {
+       "id": "88",
+       "label": "Primary 88"
+      },
+      {
+       "id": "89",
+       "label": "Primary 89"
+      },
+      {
+       "id": "90",
+       "label": "Primary 90"
+      },
+      {
+       "id": "91",
+       "label": "Primary 91"
+      },
+      {
+       "id": "92",
+       "label": "Primary 92"
+      },
+      {
+       "id": "93",
+       "label": "Primary 93"
+      },
+      {
+       "id": "94",
+       "label": "Primary 94"
+      },
+      {
+       "id": "95",
+       "label": "Primary 95"
+      },
+      {
+       "id": "96",
+       "label": "Primary 96"
+      },
+      {
+       "id": "97",
+       "label": "Primary 97"
+      },
+      {
+       "id": "98",
+       "label": "Primary 98"
+      },
+      {
+       "id": "99",
+       "label": "Primary 99"
+      },
+      {
+       "id": "100",
+       "label": "Primary 100"
+      },
+      {
+       "id": "101",
+       "label": "Primary 101"
+      },
+      {
+       "id": "102",
+       "label": "Primary 102"
+      },
+      {
+       "id": "103",
+       "label": "Primary 103"
+      },
+      {
+       "id": "104",
+       "label": "Primary 104"
+      },
+      {
+       "id": "105",
+       "label": "Primary 105"
+      },
+      {
+       "id": "106",
+       "label": "Primary 106"
+      },
+      {
+       "id": "107",
+       "label": "Primary 107"
+      },
+      {
+       "id": "108",
+       "label": "Primary 108"
+      },
+      {
+       "id": "109",
+       "label": "Primary 109"
+      },
+      {
+       "id": "110",
+       "label": "Primary 110"
+      },
+      {
+       "id": "111",
+       "label": "Primary 111"
+      },
+      {
+       "id": "112",
+       "label": "Primary 112"
+      },
+      {
+       "id": "113",
+       "label": "Primary 113"
+      },
+      {
+       "id": "114",
+       "label": "Primary 114"
+      },
+      {
+       "id": "115",
+       "label": "Primary 115"
+      },
+      {
+       "id": "116",
+       "label": "Primary 116"
+      },
+      {
+       "id": "117",
+       "label": "Primary 117"
+      },
+      {
+       "id": "118",
+       "label": "Primary 118"
+      },
+      {
+       "id": "119",
+       "label": "Primary 119"
+      },
+      {
+       "id": "120",
+       "label": "Primary 120"
+      },
+      {
+       "id": "121",
+       "label": "Primary 121"
+      },
+      {
+       "id": "122",
+       "label": "Primary 122"
+      },
+      {
+       "id": "123",
+       "label": "Primary 123"
+      },
+      {
+       "id": "124",
+       "label": "Primary 124"
+      },
+      {
+       "id": "125",
+       "label": "Primary 125"
+      },
+      {
+       "id": "126",
+       "label": "Primary 126"
+      },
+      {
+       "id": "127",
+       "label": "Primary 127"
+      },
+      {
+       "id": "128",
+       "label": "Primary 128"
+      },
+      {
+       "id": "129",
+       "label": "Primary 129"
+      },
+      {
+       "id": "130",
+       "label": "Primary 130"
+      },
+      {
+       "id": "131",
+       "label": "Primary 131"
+      },
+      {
+       "id": "132",
+       "label": "Primary 132"
+      },
+      {
+       "id": "133",
+       "label": "Primary 133"
+      },
+      {
+       "id": "134",
+       "label": "Primary 134"
+      },
+      {
+       "id": "135",
+       "label": "Primary 135"
+      },
+      {
+       "id": "136",
+       "label": "Primary 136"
+      },
+      {
+       "id": "137",
+       "label": "Primary 137"
+      },
+      {
+       "id": "138",
+       "label": "Primary 138"
+      },
+      {
+       "id": "139",
+       "label": "Primary 139"
+      },
+      {
+       "id": "140",
+       "label": "Primary 140"
+      },
+      {
+       "id": "141",
+       "label": "Primary 141"
+      },
+      {
+       "id": "142",
+       "label": "Primary 142"
+      },
+      {
+       "id": "143",
+       "label": "Primary 143"
+      },
+      {
+       "id": "144",
+       "label": "Primary 144"
+      },
+      {
+       "id": "145",
+       "label": "Primary 145"
+      },
+      {
+       "id": "146",
+       "label": "Primary 146"
+      },
+      {
+       "id": "147",
+       "label": "Primary 147"
+      },
+      {
+       "id": "148",
+       "label": "Primary 148"
+      },
+      {
+       "id": "149",
+       "label": "Primary 149"
+      },
+      {
+       "id": "150",
+       "label": "Primary 150"
+      },
+      {
+       "id": "151",
+       "label": "Primary 151"
+      },
+      {
+       "id": "152",
+       "label": "Primary 152"
+      },
+      {
+       "id": "153",
+       "label": "Primary 153"
+      },
+      {
+       "id": "154",
+       "label": "Primary 154"
+      },
+      {
+       "id": "155",
+       "label": "Primary 155"
+      },
+      {
+       "id": "156",
+       "label": "Primary 156"
+      },
+      {
+       "id": "157",
+       "label": "Primary 157"
+      },
+      {
+       "id": "158",
+       "label": "Primary 158"
+      },
+      {
+       "id": "159",
+       "label": "Primary 159"
+      },
+      {
+       "id": "160",
+       "label": "Primary 160"
+      },
+      {
+       "id": "165",
+       "label": "FC1"
+      },
+      {
+       "id": "166",
+       "label": "FC2"
+      },
+      {
+       "id": "167",
+       "label": "FC3"
+      },
+      {
+       "id": "168",
+       "label": "FC4"
+      },
+      {
+       "id": "169",
+       "label": "FC5"
+      },
+      {
+       "id": "170",
+       "label": "FC6"
+      },
+      {
+       "id": "171",
+       "label": "FC7"
+      },
+      {
+       "id": "172",
+       "label": "FC8"
+      },
+      {
+       "id": "173",
+       "label": "FC9"
+      },
+      {
+       "id": "174",
+       "label": "FC10"
+      },
+      {
+       "id": "175",
+       "label": "FC11"
+      },
+      {
+       "id": "176",
+       "label": "FC12"
+      },
+      {
+       "id": "177",
+       "label": "FC13"
+      },
+      {
+       "id": "178",
+       "label": "FC14"
+      },
+      {
+       "id": "179",
+       "label": "FC15"
+      },
+      {
+       "id": "180",
+       "label": "FC16"
+      },
+      {
+       "id": "181",
+       "label": "Black"
+      },
+      {
+       "id": "182",
+       "label": "White"
+      },
+      {
+       "id": "183",
+       "label": "Color Bkgd 1"
+      },
+      {
+       "id": "184",
+       "label": "Color Bkgd1-2"
+      },
+      {
+       "id": "185",
+       "label": "Color Bkgd 2"
+      },
+      {
+       "id": "186",
+       "label": "Color Bkgd2-2"
+      },
+      {
+       "id": "187",
+       "label": "FM1"
+      },
+      {
+       "id": "188",
+       "label": "FM2"
+      },
+      {
+       "id": "189",
+       "label": "FM3"
+      },
+      {
+       "id": "190",
+       "label": "FM4"
+      },
+      {
+       "id": "191",
+       "label": "FM5"
+      },
+      {
+       "id": "192",
+       "label": "FM6"
+      },
+      {
+       "id": "193",
+       "label": "FM7"
+      },
+      {
+       "id": "194",
+       "label": "FM8"
+      },
+      {
+       "id": "195",
+       "label": "FM9"
+      },
+      {
+       "id": "196",
+       "label": "FM10"
+      },
+      {
+       "id": "197",
+       "label": "FM11"
+      },
+      {
+       "id": "198",
+       "label": "FM12"
+      },
+      {
+       "id": "199",
+       "label": "FM13"
+      },
+      {
+       "id": "200",
+       "label": "FM14"
+      },
+      {
+       "id": "201",
+       "label": "FM15"
+      },
+      {
+       "id": "202",
+       "label": "FM16"
+      },
+      {
+       "id": "203",
+       "label": "FM17"
+      },
+      {
+       "id": "204",
+       "label": "FM18"
+      },
+      {
+       "id": "205",
+       "label": "FM19"
+      },
+      {
+       "id": "206",
+       "label": "FM20"
+      },
+      {
+       "id": "207",
+       "label": "CCR1"
+      },
+      {
+       "id": "208",
+       "label": "CCR2"
+      },
+      {
+       "id": "209",
+       "label": "CCR3"
+      },
+      {
+       "id": "210",
+       "label": "CCR4"
+      },
+      {
+       "id": "211",
+       "label": "DME MONV"
+      },
+      {
+       "id": "212",
+       "label": "DME MONK"
+      },
+      {
+       "id": "215",
+       "label": "ME1 Out 1"
+      },
+      {
+       "id": "216",
+       "label": "ME1 Out 2"
+      },
+      {
+       "id": "217",
+       "label": "ME1 Out 3"
+      },
+      {
+       "id": "218",
+       "label": "ME1 Out 4"
+      },
+      {
+       "id": "219",
+       "label": "ME1 Out 5"
+      },
+      {
+       "id": "220",
+       "label": "ME1 Out 6"
+      },
+      {
+       "id": "221",
+       "label": "ME 1 Out 7"
+      },
+      {
+       "id": "222",
+       "label": "ME 1 Out 8"
+      },
+      {
+       "id": "223",
+       "label": "ME 1 Out 9"
+      },
+      {
+       "id": "224",
+       "label": "ME 1 Out 10"
+      },
+      {
+       "id": "225",
+       "label": "ME 1 Out 11"
+      },
+      {
+       "id": "226",
+       "label": "ME 1 Out 12"
+      },
+      {
+       "id": "227",
+       "label": "ME 1 ProcV"
+      },
+      {
+       "id": "228",
+       "label": "ME 1 ProcV-2"
+      },
+      {
+       "id": "229",
+       "label": "ME 1 ProcK"
+      },
+      {
+       "id": "230",
+       "label": "ME 1 ProcK-2"
+      },
+      {
+       "id": "231",
+       "label": "ME 2 Out 1"
+      },
+      {
+       "id": "232",
+       "label": "ME 2 Out 2"
+      },
+      {
+       "id": "233",
+       "label": "ME 2 Out 3"
+      },
+      {
+       "id": "234",
+       "label": "ME 2 Out 4"
+      },
+      {
+       "id": "235",
+       "label": "ME 2 Out 5"
+      },
+      {
+       "id": "236",
+       "label": "ME 2 Out 6"
+      },
+      {
+       "id": "237",
+       "label": "ME 2 Out 7"
+      },
+      {
+       "id": "238",
+       "label": "ME 2 Out 8"
+      },
+      {
+       "id": "239",
+       "label": "ME 2 Out 9"
+      },
+      {
+       "id": "240",
+       "label": "ME 2 Out 10"
+      },
+      {
+       "id": "241",
+       "label": "ME 2 Out 11"
+      },
+      {
+       "id": "242",
+       "label": "ME 2 Out 12"
+      },
+      {
+       "id": "243",
+       "label": "ME 2 ProcV"
+      },
+      {
+       "id": "244",
+       "label": "ME 2 ProcV-2"
+      },
+      {
+       "id": "245",
+       "label": "ME 2 ProcK"
+      },
+      {
+       "id": "246",
+       "label": "ME 2 ProcK-2"
+      },
+      {
+       "id": "247",
+       "label": "ME 3 Out 1"
+      },
+      {
+       "id": "248",
+       "label": "ME 3 Out 2"
+      },
+      {
+       "id": "249",
+       "label": "ME 3 Out 3"
+      },
+      {
+       "id": "250",
+       "label": "ME 3 Out 4"
+      },
+      {
+       "id": "251",
+       "label": "ME 3 Out 5"
+      },
+      {
+       "id": "252",
+       "label": "ME 3 Out 6"
+      },
+      {
+       "id": "253",
+       "label": "ME 3 Out 7"
+      },
+      {
+       "id": "254",
+       "label": "ME 3 Out 8"
+      },
+      {
+       "id": "255",
+       "label": "ME 3 Out 9"
+      },
+      {
+       "id": "256",
+       "label": "ME 3 Out 10"
+      },
+      {
+       "id": "257",
+       "label": "ME 3 Out 11"
+      },
+      {
+       "id": "258",
+       "label": "ME 3 Out 12"
+      },
+      {
+       "id": "259",
+       "label": "ME 3 ProcV"
+      },
+      {
+       "id": "260",
+       "label": "ME 3 ProcV-2"
+      },
+      {
+       "id": "261",
+       "label": "ME 3 ProcK"
+      },
+      {
+       "id": "262",
+       "label": "ME 3 ProcK-2"
+      },
+      {
+       "id": "263",
+       "label": "ME 4 Out 1"
+      },
+      {
+       "id": "264",
+       "label": "ME 4 Out 2"
+      },
+      {
+       "id": "265",
+       "label": "ME 4 Out 3"
+      },
+      {
+       "id": "266",
+       "label": "ME 4 Out 4"
+      },
+      {
+       "id": "267",
+       "label": "ME 4 Out 5"
+      },
+      {
+       "id": "268",
+       "label": "ME 4 Out 6"
+      },
+      {
+       "id": "269",
+       "label": "ME 4 Out 7"
+      },
+      {
+       "id": "270",
+       "label": "ME 4 Out 8"
+      },
+      {
+       "id": "271",
+       "label": "ME 4 Out 9"
+      },
+      {
+       "id": "272",
+       "label": "ME 4 Out 10"
+      },
+      {
+       "id": "273",
+       "label": "ME 4 Out 11"
+      },
+      {
+       "id": "274",
+       "label": "ME 4 Out 12"
+      },
+      {
+       "id": "275",
+       "label": "ME 4 ProcV"
+      },
+      {
+       "id": "276",
+       "label": "ME 4 ProcV-2"
+      },
+      {
+       "id": "277",
+       "label": "ME 4 ProcK"
+      },
+      {
+       "id": "278",
+       "label": "ME 4 ProcK-2"
+      },
+      {
+       "id": "279",
+       "label": "ME 5 Out 1"
+      },
+      {
+       "id": "280",
+       "label": "ME 5 Out 2"
+      },
+      {
+       "id": "281",
+       "label": "ME 5 Out 3"
+      },
+      {
+       "id": "282",
+       "label": "ME 5 Out 4"
+      },
+      {
+       "id": "283",
+       "label": "ME 5 Out 5"
+      },
+      {
+       "id": "284",
+       "label": "ME 5 Out 6"
+      },
+      {
+       "id": "285",
+       "label": "ME 5 Out 7"
+      },
+      {
+       "id": "286",
+       "label": "ME 5 Out 8"
+      },
+      {
+       "id": "287",
+       "label": "ME 5 Out 9"
+      },
+      {
+       "id": "288",
+       "label": "ME 5 Out 10"
+      },
+      {
+       "id": "289",
+       "label": "ME 5 Out 11"
+      },
+      {
+       "id": "290",
+       "label": "ME 5 Out 12"
+      },
+      {
+       "id": "291",
+       "label": "ME 5 ProcV"
+      },
+      {
+       "id": "292",
+       "label": "ME 5 ProcV-2"
+      },
+      {
+       "id": "293",
+       "label": "ME 5 ProcK"
+      },
+      {
+       "id": "294",
+       "label": "ME 5 ProcK-2"
+      },
+      {
+       "id": "295",
+       "label": "P/P Out 1"
+      },
+      {
+       "id": "296",
+       "label": "P/P Out 2"
+      },
+      {
+       "id": "297",
+       "label": "P/P Out 3"
+      },
+      {
+       "id": "298",
+       "label": "P/P Out 4"
+      },
+      {
+       "id": "299",
+       "label": "P/P Out 5"
+      },
+      {
+       "id": "300",
+       "label": "P/P Out 6"
+      },
+      {
+       "id": "301",
+       "label": "P/P Out 7"
+      },
+      {
+       "id": "302",
+       "label": "P/P Out 8"
+      },
+      {
+       "id": "303",
+       "label": "P/P Out 9"
+      },
+      {
+       "id": "304",
+       "label": "P/P Out 10"
+      },
+      {
+       "id": "305",
+       "label": "P/P Out 11"
+      },
+      {
+       "id": "306",
+       "label": "P/P Out 12"
+      },
+      {
+       "id": "307",
+       "label": "P/P ProcV"
+      },
+      {
+       "id": "308",
+       "label": "P/P ProcV-2"
+      },
+      {
+       "id": "309",
+       "label": "P/P ProcK"
+      },
+      {
+       "id": "310",
+       "label": "P/P ProcK-2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "04{{option.eff|map}}{{option.bus|map}}00{{option.source|u8}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "eff": {
+     "pp": "00",
+     "me1": "01",
+     "me2": "02",
+     "me3": "03",
+     "me4": "04",
+     "me5": "05"
+    },
+    "bus": {
+     "pgm": "c0",
+     "pst": "c1",
+     "key1_fill": "c7",
+     "key1_source": "c8",
+     "key2_fill": "cd",
+     "key2_source": "ce",
+     "key3_fill": "c9",
+     "key3_source": "ca",
+     "key4_fill": "cb",
+     "key4_source": "cc",
+     "key5_fill": "d0",
+     "key5_source": "d1",
+     "key6_fill": "d6",
+     "key6_source": "d7",
+     "key7_fill": "d2",
+     "key7_source": "d3",
+     "key8_fill": "d4",
+     "key8_source": "d5",
+     "util1": "cf",
+     "util2": "c2",
+     "util3": "c6",
+     "dme_v": "c3",
+     "dme_k": "c4",
+     "dme_ext": "c5"
+    }
+   }
+  },
+  {
+   "id": "xptAUX",
+   "name": "XPT: AUX",
+   "options": [
+    {
+     "id": "aux",
+     "label": "Aux Selection",
+     "type": "select",
+     "default": "aux1",
+     "choices": [
+      {
+       "id": "aux1",
+       "label": "Aux 1"
+      },
+      {
+       "id": "aux2",
+       "label": "Aux 2"
+      },
+      {
+       "id": "aux3",
+       "label": "Aux 3"
+      },
+      {
+       "id": "aux4",
+       "label": "Aux 4"
+      },
+      {
+       "id": "aux5",
+       "label": "Aux 5"
+      },
+      {
+       "id": "aux6",
+       "label": "Aux 6"
+      },
+      {
+       "id": "aux7",
+       "label": "Aux 7"
+      },
+      {
+       "id": "aux8",
+       "label": "Aux 8"
+      },
+      {
+       "id": "aux9",
+       "label": "Aux 9"
+      },
+      {
+       "id": "aux10",
+       "label": "Aux 10"
+      },
+      {
+       "id": "aux11",
+       "label": "Aux 11"
+      },
+      {
+       "id": "aux12",
+       "label": "Aux 12"
+      },
+      {
+       "id": "aux13",
+       "label": "Aux 13"
+      },
+      {
+       "id": "aux14",
+       "label": "Aux 14"
+      },
+      {
+       "id": "aux15",
+       "label": "Aux 15"
+      },
+      {
+       "id": "aux16",
+       "label": "Aux 16"
+      },
+      {
+       "id": "aux17",
+       "label": "Aux 17"
+      },
+      {
+       "id": "aux18",
+       "label": "Aux 18"
+      },
+      {
+       "id": "aux19",
+       "label": "Aux 19"
+      },
+      {
+       "id": "aux20",
+       "label": "Aux 20"
+      },
+      {
+       "id": "aux21",
+       "label": "Aux 21"
+      },
+      {
+       "id": "aux22",
+       "label": "Aux 22"
+      },
+      {
+       "id": "aux23",
+       "label": "Aux 23"
+      },
+      {
+       "id": "aux24",
+       "label": "Aux 24"
+      },
+      {
+       "id": "aux25",
+       "label": "Aux 25"
+      },
+      {
+       "id": "aux26",
+       "label": "Aux 26"
+      },
+      {
+       "id": "aux27",
+       "label": "Aux 27"
+      },
+      {
+       "id": "aux28",
+       "label": "Aux 28"
+      },
+      {
+       "id": "aux29",
+       "label": "Aux 29"
+      },
+      {
+       "id": "aux30",
+       "label": "Aux 30"
+      },
+      {
+       "id": "aux31",
+       "label": "Aux 31"
+      },
+      {
+       "id": "aux32",
+       "label": "Aux 32"
+      },
+      {
+       "id": "aux33",
+       "label": "Aux 33"
+      },
+      {
+       "id": "aux34",
+       "label": "Aux 34"
+      },
+      {
+       "id": "aux35",
+       "label": "Aux 35"
+      },
+      {
+       "id": "aux36",
+       "label": "Aux 36"
+      },
+      {
+       "id": "aux37",
+       "label": "Aux 37"
+      },
+      {
+       "id": "aux38",
+       "label": "Aux 38"
+      },
+      {
+       "id": "aux39",
+       "label": "Aux 39"
+      },
+      {
+       "id": "aux40",
+       "label": "Aux 40"
+      },
+      {
+       "id": "aux41",
+       "label": "Aux 41"
+      },
+      {
+       "id": "aux42",
+       "label": "Aux 42"
+      },
+      {
+       "id": "aux43",
+       "label": "Aux 43"
+      },
+      {
+       "id": "aux44",
+       "label": "Aux 44"
+      },
+      {
+       "id": "aux45",
+       "label": "Aux 45"
+      },
+      {
+       "id": "aux46",
+       "label": "Aux 46"
+      },
+      {
+       "id": "aux47",
+       "label": "Aux 47"
+      },
+      {
+       "id": "aux48",
+       "label": "Aux 48"
+      },
+      {
+       "id": "edit_pvw",
+       "label": "EDIT PVW"
+      }
+     ]
+    },
+    {
+     "id": "source",
+     "label": "Source Selection",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Primary 1"
+      },
+      {
+       "id": "2",
+       "label": "Primary 2"
+      },
+      {
+       "id": "3",
+       "label": "Primary 3"
+      },
+      {
+       "id": "4",
+       "label": "Primary 4"
+      },
+      {
+       "id": "5",
+       "label": "Primary 5"
+      },
+      {
+       "id": "6",
+       "label": "Primary 6"
+      },
+      {
+       "id": "7",
+       "label": "Primary 7"
+      },
+      {
+       "id": "8",
+       "label": "Primary 8"
+      },
+      {
+       "id": "9",
+       "label": "Primary 9"
+      },
+      {
+       "id": "10",
+       "label": "Primary 10"
+      },
+      {
+       "id": "11",
+       "label": "Primary 11"
+      },
+      {
+       "id": "12",
+       "label": "Primary 12"
+      },
+      {
+       "id": "13",
+       "label": "Primary 13"
+      },
+      {
+       "id": "14",
+       "label": "Primary 14"
+      },
+      {
+       "id": "15",
+       "label": "Primary 15"
+      },
+      {
+       "id": "16",
+       "label": "Primary 16"
+      },
+      {
+       "id": "17",
+       "label": "Primary 17"
+      },
+      {
+       "id": "18",
+       "label": "Primary 18"
+      },
+      {
+       "id": "19",
+       "label": "Primary 19"
+      },
+      {
+       "id": "20",
+       "label": "Primary 20"
+      },
+      {
+       "id": "21",
+       "label": "Primary 21"
+      },
+      {
+       "id": "22",
+       "label": "Primary 22"
+      },
+      {
+       "id": "23",
+       "label": "Primary 23"
+      },
+      {
+       "id": "24",
+       "label": "Primary 24"
+      },
+      {
+       "id": "25",
+       "label": "Primary 25"
+      },
+      {
+       "id": "26",
+       "label": "Primary 26"
+      },
+      {
+       "id": "27",
+       "label": "Primary 27"
+      },
+      {
+       "id": "28",
+       "label": "Primary 28"
+      },
+      {
+       "id": "29",
+       "label": "Primary 29"
+      },
+      {
+       "id": "30",
+       "label": "Primary 30"
+      },
+      {
+       "id": "31",
+       "label": "Primary 31"
+      },
+      {
+       "id": "32",
+       "label": "Primary 32"
+      },
+      {
+       "id": "33",
+       "label": "Primary 33"
+      },
+      {
+       "id": "34",
+       "label": "Primary 34"
+      },
+      {
+       "id": "35",
+       "label": "Primary 35"
+      },
+      {
+       "id": "36",
+       "label": "Primary 36"
+      },
+      {
+       "id": "37",
+       "label": "Primary 37"
+      },
+      {
+       "id": "38",
+       "label": "Primary 38"
+      },
+      {
+       "id": "39",
+       "label": "Primary 39"
+      },
+      {
+       "id": "40",
+       "label": "Primary 40"
+      },
+      {
+       "id": "41",
+       "label": "Primary 41"
+      },
+      {
+       "id": "42",
+       "label": "Primary 42"
+      },
+      {
+       "id": "43",
+       "label": "Primary 43"
+      },
+      {
+       "id": "44",
+       "label": "Primary 44"
+      },
+      {
+       "id": "45",
+       "label": "Primary 45"
+      },
+      {
+       "id": "46",
+       "label": "Primary 46"
+      },
+      {
+       "id": "47",
+       "label": "Primary 47"
+      },
+      {
+       "id": "48",
+       "label": "Primary 48"
+      },
+      {
+       "id": "49",
+       "label": "Primary 49"
+      },
+      {
+       "id": "50",
+       "label": "Primary 50"
+      },
+      {
+       "id": "51",
+       "label": "Primary 51"
+      },
+      {
+       "id": "52",
+       "label": "Primary 52"
+      },
+      {
+       "id": "53",
+       "label": "Primary 53"
+      },
+      {
+       "id": "54",
+       "label": "Primary 54"
+      },
+      {
+       "id": "55",
+       "label": "Primary 55"
+      },
+      {
+       "id": "56",
+       "label": "Primary 56"
+      },
+      {
+       "id": "57",
+       "label": "Primary 57"
+      },
+      {
+       "id": "58",
+       "label": "Primary 58"
+      },
+      {
+       "id": "59",
+       "label": "Primary 59"
+      },
+      {
+       "id": "60",
+       "label": "Primary 60"
+      },
+      {
+       "id": "61",
+       "label": "Primary 61"
+      },
+      {
+       "id": "62",
+       "label": "Primary 62"
+      },
+      {
+       "id": "63",
+       "label": "Primary 63"
+      },
+      {
+       "id": "64",
+       "label": "Primary 64"
+      },
+      {
+       "id": "65",
+       "label": "Primary 65"
+      },
+      {
+       "id": "66",
+       "label": "Primary 66"
+      },
+      {
+       "id": "67",
+       "label": "Primary 67"
+      },
+      {
+       "id": "68",
+       "label": "Primary 68"
+      },
+      {
+       "id": "69",
+       "label": "Primary 69"
+      },
+      {
+       "id": "70",
+       "label": "Primary 70"
+      },
+      {
+       "id": "71",
+       "label": "Primary 71"
+      },
+      {
+       "id": "72",
+       "label": "Primary 72"
+      },
+      {
+       "id": "73",
+       "label": "Primary 73"
+      },
+      {
+       "id": "74",
+       "label": "Primary 74"
+      },
+      {
+       "id": "75",
+       "label": "Primary 75"
+      },
+      {
+       "id": "76",
+       "label": "Primary 76"
+      },
+      {
+       "id": "77",
+       "label": "Primary 77"
+      },
+      {
+       "id": "78",
+       "label": "Primary 78"
+      },
+      {
+       "id": "79",
+       "label": "Primary 79"
+      },
+      {
+       "id": "80",
+       "label": "Primary 80"
+      },
+      {
+       "id": "81",
+       "label": "Primary 81"
+      },
+      {
+       "id": "82",
+       "label": "Primary 82"
+      },
+      {
+       "id": "83",
+       "label": "Primary 83"
+      },
+      {
+       "id": "84",
+       "label": "Primary 84"
+      },
+      {
+       "id": "85",
+       "label": "Primary 85"
+      },
+      {
+       "id": "86",
+       "label": "Primary 86"
+      },
+      {
+       "id": "87",
+       "label": "Primary 87"
+      },
+      {
+       "id": "88",
+       "label": "Primary 88"
+      },
+      {
+       "id": "89",
+       "label": "Primary 89"
+      },
+      {
+       "id": "90",
+       "label": "Primary 90"
+      },
+      {
+       "id": "91",
+       "label": "Primary 91"
+      },
+      {
+       "id": "92",
+       "label": "Primary 92"
+      },
+      {
+       "id": "93",
+       "label": "Primary 93"
+      },
+      {
+       "id": "94",
+       "label": "Primary 94"
+      },
+      {
+       "id": "95",
+       "label": "Primary 95"
+      },
+      {
+       "id": "96",
+       "label": "Primary 96"
+      },
+      {
+       "id": "97",
+       "label": "Primary 97"
+      },
+      {
+       "id": "98",
+       "label": "Primary 98"
+      },
+      {
+       "id": "99",
+       "label": "Primary 99"
+      },
+      {
+       "id": "100",
+       "label": "Primary 100"
+      },
+      {
+       "id": "101",
+       "label": "Primary 101"
+      },
+      {
+       "id": "102",
+       "label": "Primary 102"
+      },
+      {
+       "id": "103",
+       "label": "Primary 103"
+      },
+      {
+       "id": "104",
+       "label": "Primary 104"
+      },
+      {
+       "id": "105",
+       "label": "Primary 105"
+      },
+      {
+       "id": "106",
+       "label": "Primary 106"
+      },
+      {
+       "id": "107",
+       "label": "Primary 107"
+      },
+      {
+       "id": "108",
+       "label": "Primary 108"
+      },
+      {
+       "id": "109",
+       "label": "Primary 109"
+      },
+      {
+       "id": "110",
+       "label": "Primary 110"
+      },
+      {
+       "id": "111",
+       "label": "Primary 111"
+      },
+      {
+       "id": "112",
+       "label": "Primary 112"
+      },
+      {
+       "id": "113",
+       "label": "Primary 113"
+      },
+      {
+       "id": "114",
+       "label": "Primary 114"
+      },
+      {
+       "id": "115",
+       "label": "Primary 115"
+      },
+      {
+       "id": "116",
+       "label": "Primary 116"
+      },
+      {
+       "id": "117",
+       "label": "Primary 117"
+      },
+      {
+       "id": "118",
+       "label": "Primary 118"
+      },
+      {
+       "id": "119",
+       "label": "Primary 119"
+      },
+      {
+       "id": "120",
+       "label": "Primary 120"
+      },
+      {
+       "id": "121",
+       "label": "Primary 121"
+      },
+      {
+       "id": "122",
+       "label": "Primary 122"
+      },
+      {
+       "id": "123",
+       "label": "Primary 123"
+      },
+      {
+       "id": "124",
+       "label": "Primary 124"
+      },
+      {
+       "id": "125",
+       "label": "Primary 125"
+      },
+      {
+       "id": "126",
+       "label": "Primary 126"
+      },
+      {
+       "id": "127",
+       "label": "Primary 127"
+      },
+      {
+       "id": "128",
+       "label": "Primary 128"
+      },
+      {
+       "id": "129",
+       "label": "Primary 129"
+      },
+      {
+       "id": "130",
+       "label": "Primary 130"
+      },
+      {
+       "id": "131",
+       "label": "Primary 131"
+      },
+      {
+       "id": "132",
+       "label": "Primary 132"
+      },
+      {
+       "id": "133",
+       "label": "Primary 133"
+      },
+      {
+       "id": "134",
+       "label": "Primary 134"
+      },
+      {
+       "id": "135",
+       "label": "Primary 135"
+      },
+      {
+       "id": "136",
+       "label": "Primary 136"
+      },
+      {
+       "id": "137",
+       "label": "Primary 137"
+      },
+      {
+       "id": "138",
+       "label": "Primary 138"
+      },
+      {
+       "id": "139",
+       "label": "Primary 139"
+      },
+      {
+       "id": "140",
+       "label": "Primary 140"
+      },
+      {
+       "id": "141",
+       "label": "Primary 141"
+      },
+      {
+       "id": "142",
+       "label": "Primary 142"
+      },
+      {
+       "id": "143",
+       "label": "Primary 143"
+      },
+      {
+       "id": "144",
+       "label": "Primary 144"
+      },
+      {
+       "id": "145",
+       "label": "Primary 145"
+      },
+      {
+       "id": "146",
+       "label": "Primary 146"
+      },
+      {
+       "id": "147",
+       "label": "Primary 147"
+      },
+      {
+       "id": "148",
+       "label": "Primary 148"
+      },
+      {
+       "id": "149",
+       "label": "Primary 149"
+      },
+      {
+       "id": "150",
+       "label": "Primary 150"
+      },
+      {
+       "id": "151",
+       "label": "Primary 151"
+      },
+      {
+       "id": "152",
+       "label": "Primary 152"
+      },
+      {
+       "id": "153",
+       "label": "Primary 153"
+      },
+      {
+       "id": "154",
+       "label": "Primary 154"
+      },
+      {
+       "id": "155",
+       "label": "Primary 155"
+      },
+      {
+       "id": "156",
+       "label": "Primary 156"
+      },
+      {
+       "id": "157",
+       "label": "Primary 157"
+      },
+      {
+       "id": "158",
+       "label": "Primary 158"
+      },
+      {
+       "id": "159",
+       "label": "Primary 159"
+      },
+      {
+       "id": "160",
+       "label": "Primary 160"
+      },
+      {
+       "id": "165",
+       "label": "FC1"
+      },
+      {
+       "id": "166",
+       "label": "FC2"
+      },
+      {
+       "id": "167",
+       "label": "FC3"
+      },
+      {
+       "id": "168",
+       "label": "FC4"
+      },
+      {
+       "id": "169",
+       "label": "FC5"
+      },
+      {
+       "id": "170",
+       "label": "FC6"
+      },
+      {
+       "id": "171",
+       "label": "FC7"
+      },
+      {
+       "id": "172",
+       "label": "FC8"
+      },
+      {
+       "id": "173",
+       "label": "FC9"
+      },
+      {
+       "id": "174",
+       "label": "FC10"
+      },
+      {
+       "id": "175",
+       "label": "FC11"
+      },
+      {
+       "id": "176",
+       "label": "FC12"
+      },
+      {
+       "id": "177",
+       "label": "FC13"
+      },
+      {
+       "id": "178",
+       "label": "FC14"
+      },
+      {
+       "id": "179",
+       "label": "FC15"
+      },
+      {
+       "id": "180",
+       "label": "FC16"
+      },
+      {
+       "id": "181",
+       "label": "Black"
+      },
+      {
+       "id": "182",
+       "label": "White"
+      },
+      {
+       "id": "183",
+       "label": "Color Bkgd 1"
+      },
+      {
+       "id": "184",
+       "label": "Color Bkgd1-2"
+      },
+      {
+       "id": "185",
+       "label": "Color Bkgd 2"
+      },
+      {
+       "id": "186",
+       "label": "Color Bkgd2-2"
+      },
+      {
+       "id": "187",
+       "label": "FM1"
+      },
+      {
+       "id": "188",
+       "label": "FM2"
+      },
+      {
+       "id": "189",
+       "label": "FM3"
+      },
+      {
+       "id": "190",
+       "label": "FM4"
+      },
+      {
+       "id": "191",
+       "label": "FM5"
+      },
+      {
+       "id": "192",
+       "label": "FM6"
+      },
+      {
+       "id": "193",
+       "label": "FM7"
+      },
+      {
+       "id": "194",
+       "label": "FM8"
+      },
+      {
+       "id": "195",
+       "label": "FM9"
+      },
+      {
+       "id": "196",
+       "label": "FM10"
+      },
+      {
+       "id": "197",
+       "label": "FM11"
+      },
+      {
+       "id": "198",
+       "label": "FM12"
+      },
+      {
+       "id": "199",
+       "label": "FM13"
+      },
+      {
+       "id": "200",
+       "label": "FM14"
+      },
+      {
+       "id": "201",
+       "label": "FM15"
+      },
+      {
+       "id": "202",
+       "label": "FM16"
+      },
+      {
+       "id": "203",
+       "label": "FM17"
+      },
+      {
+       "id": "204",
+       "label": "FM18"
+      },
+      {
+       "id": "205",
+       "label": "FM19"
+      },
+      {
+       "id": "206",
+       "label": "FM20"
+      },
+      {
+       "id": "207",
+       "label": "CCR1"
+      },
+      {
+       "id": "208",
+       "label": "CCR2"
+      },
+      {
+       "id": "209",
+       "label": "CCR3"
+      },
+      {
+       "id": "210",
+       "label": "CCR4"
+      },
+      {
+       "id": "211",
+       "label": "DME MONV"
+      },
+      {
+       "id": "212",
+       "label": "DME MONK"
+      },
+      {
+       "id": "215",
+       "label": "ME1 Out 1"
+      },
+      {
+       "id": "216",
+       "label": "ME1 Out 2"
+      },
+      {
+       "id": "217",
+       "label": "ME1 Out 3"
+      },
+      {
+       "id": "218",
+       "label": "ME1 Out 4"
+      },
+      {
+       "id": "219",
+       "label": "ME1 Out 5"
+      },
+      {
+       "id": "220",
+       "label": "ME1 Out 6"
+      },
+      {
+       "id": "221",
+       "label": "ME 1 Out 7"
+      },
+      {
+       "id": "222",
+       "label": "ME 1 Out 8"
+      },
+      {
+       "id": "223",
+       "label": "ME 1 Out 9"
+      },
+      {
+       "id": "224",
+       "label": "ME 1 Out 10"
+      },
+      {
+       "id": "225",
+       "label": "ME 1 Out 11"
+      },
+      {
+       "id": "226",
+       "label": "ME 1 Out 12"
+      },
+      {
+       "id": "227",
+       "label": "ME 1 ProcV"
+      },
+      {
+       "id": "228",
+       "label": "ME 1 ProcV-2"
+      },
+      {
+       "id": "229",
+       "label": "ME 1 ProcK"
+      },
+      {
+       "id": "230",
+       "label": "ME 1 ProcK-2"
+      },
+      {
+       "id": "231",
+       "label": "ME 2 Out 1"
+      },
+      {
+       "id": "232",
+       "label": "ME 2 Out 2"
+      },
+      {
+       "id": "233",
+       "label": "ME 2 Out 3"
+      },
+      {
+       "id": "234",
+       "label": "ME 2 Out 4"
+      },
+      {
+       "id": "235",
+       "label": "ME 2 Out 5"
+      },
+      {
+       "id": "236",
+       "label": "ME 2 Out 6"
+      },
+      {
+       "id": "237",
+       "label": "ME 2 Out 7"
+      },
+      {
+       "id": "238",
+       "label": "ME 2 Out 8"
+      },
+      {
+       "id": "239",
+       "label": "ME 2 Out 9"
+      },
+      {
+       "id": "240",
+       "label": "ME 2 Out 10"
+      },
+      {
+       "id": "241",
+       "label": "ME 2 Out 11"
+      },
+      {
+       "id": "242",
+       "label": "ME 2 Out 12"
+      },
+      {
+       "id": "243",
+       "label": "ME 2 ProcV"
+      },
+      {
+       "id": "244",
+       "label": "ME 2 ProcV-2"
+      },
+      {
+       "id": "245",
+       "label": "ME 2 ProcK"
+      },
+      {
+       "id": "246",
+       "label": "ME 2 ProcK-2"
+      },
+      {
+       "id": "247",
+       "label": "ME 3 Out 1"
+      },
+      {
+       "id": "248",
+       "label": "ME 3 Out 2"
+      },
+      {
+       "id": "249",
+       "label": "ME 3 Out 3"
+      },
+      {
+       "id": "250",
+       "label": "ME 3 Out 4"
+      },
+      {
+       "id": "251",
+       "label": "ME 3 Out 5"
+      },
+      {
+       "id": "252",
+       "label": "ME 3 Out 6"
+      },
+      {
+       "id": "253",
+       "label": "ME 3 Out 7"
+      },
+      {
+       "id": "254",
+       "label": "ME 3 Out 8"
+      },
+      {
+       "id": "255",
+       "label": "ME 3 Out 9"
+      },
+      {
+       "id": "256",
+       "label": "ME 3 Out 10"
+      },
+      {
+       "id": "257",
+       "label": "ME 3 Out 11"
+      },
+      {
+       "id": "258",
+       "label": "ME 3 Out 12"
+      },
+      {
+       "id": "259",
+       "label": "ME 3 ProcV"
+      },
+      {
+       "id": "260",
+       "label": "ME 3 ProcV-2"
+      },
+      {
+       "id": "261",
+       "label": "ME 3 ProcK"
+      },
+      {
+       "id": "262",
+       "label": "ME 3 ProcK-2"
+      },
+      {
+       "id": "263",
+       "label": "ME 4 Out 1"
+      },
+      {
+       "id": "264",
+       "label": "ME 4 Out 2"
+      },
+      {
+       "id": "265",
+       "label": "ME 4 Out 3"
+      },
+      {
+       "id": "266",
+       "label": "ME 4 Out 4"
+      },
+      {
+       "id": "267",
+       "label": "ME 4 Out 5"
+      },
+      {
+       "id": "268",
+       "label": "ME 4 Out 6"
+      },
+      {
+       "id": "269",
+       "label": "ME 4 Out 7"
+      },
+      {
+       "id": "270",
+       "label": "ME 4 Out 8"
+      },
+      {
+       "id": "271",
+       "label": "ME 4 Out 9"
+      },
+      {
+       "id": "272",
+       "label": "ME 4 Out 10"
+      },
+      {
+       "id": "273",
+       "label": "ME 4 Out 11"
+      },
+      {
+       "id": "274",
+       "label": "ME 4 Out 12"
+      },
+      {
+       "id": "275",
+       "label": "ME 4 ProcV"
+      },
+      {
+       "id": "276",
+       "label": "ME 4 ProcV-2"
+      },
+      {
+       "id": "277",
+       "label": "ME 4 ProcK"
+      },
+      {
+       "id": "278",
+       "label": "ME 4 ProcK-2"
+      },
+      {
+       "id": "279",
+       "label": "ME 5 Out 1"
+      },
+      {
+       "id": "280",
+       "label": "ME 5 Out 2"
+      },
+      {
+       "id": "281",
+       "label": "ME 5 Out 3"
+      },
+      {
+       "id": "282",
+       "label": "ME 5 Out 4"
+      },
+      {
+       "id": "283",
+       "label": "ME 5 Out 5"
+      },
+      {
+       "id": "284",
+       "label": "ME 5 Out 6"
+      },
+      {
+       "id": "285",
+       "label": "ME 5 Out 7"
+      },
+      {
+       "id": "286",
+       "label": "ME 5 Out 8"
+      },
+      {
+       "id": "287",
+       "label": "ME 5 Out 9"
+      },
+      {
+       "id": "288",
+       "label": "ME 5 Out 10"
+      },
+      {
+       "id": "289",
+       "label": "ME 5 Out 11"
+      },
+      {
+       "id": "290",
+       "label": "ME 5 Out 12"
+      },
+      {
+       "id": "291",
+       "label": "ME 5 ProcV"
+      },
+      {
+       "id": "292",
+       "label": "ME 5 ProcV-2"
+      },
+      {
+       "id": "293",
+       "label": "ME 5 ProcK"
+      },
+      {
+       "id": "294",
+       "label": "ME 5 ProcK-2"
+      },
+      {
+       "id": "295",
+       "label": "P/P Out 1"
+      },
+      {
+       "id": "296",
+       "label": "P/P Out 2"
+      },
+      {
+       "id": "297",
+       "label": "P/P Out 3"
+      },
+      {
+       "id": "298",
+       "label": "P/P Out 4"
+      },
+      {
+       "id": "299",
+       "label": "P/P Out 5"
+      },
+      {
+       "id": "300",
+       "label": "P/P Out 6"
+      },
+      {
+       "id": "301",
+       "label": "P/P Out 7"
+      },
+      {
+       "id": "302",
+       "label": "P/P Out 8"
+      },
+      {
+       "id": "303",
+       "label": "P/P Out 9"
+      },
+      {
+       "id": "304",
+       "label": "P/P Out 10"
+      },
+      {
+       "id": "305",
+       "label": "P/P Out 11"
+      },
+      {
+       "id": "306",
+       "label": "P/P Out 12"
+      },
+      {
+       "id": "307",
+       "label": "P/P ProcV"
+      },
+      {
+       "id": "308",
+       "label": "P/P ProcV-2"
+      },
+      {
+       "id": "309",
+       "label": "P/P ProcK"
+      },
+      {
+       "id": "310",
+       "label": "P/P ProcK-2"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "04{{option.aux|map}}c000{{option.source|u8}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "aux": {
+     "aux1": "30",
+     "aux2": "31",
+     "aux3": "32",
+     "aux4": "33",
+     "aux5": "34",
+     "aux6": "35",
+     "aux7": "36",
+     "aux8": "37",
+     "aux9": "38",
+     "aux10": "39",
+     "aux11": "3a",
+     "aux12": "3b",
+     "aux13": "3c",
+     "aux14": "3d",
+     "aux15": "3e",
+     "aux16": "40",
+     "aux17": "41",
+     "aux18": "42",
+     "aux19": "43",
+     "aux20": "44",
+     "aux21": "45",
+     "aux22": "46",
+     "aux23": "47",
+     "aux24": "48",
+     "aux25": "49",
+     "aux26": "4a",
+     "aux27": "4b",
+     "aux28": "4c",
+     "aux29": "4d",
+     "aux30": "4e",
+     "aux31": "4f",
+     "aux32": "50",
+     "aux33": "51",
+     "aux34": "52",
+     "aux35": "53",
+     "aux36": "54",
+     "aux37": "55",
+     "aux38": "56",
+     "aux39": "57",
+     "aux40": "58",
+     "aux41": "59",
+     "aux42": "5a",
+     "aux43": "5b",
+     "aux44": "5c",
+     "aux45": "5d",
+     "aux46": "5e",
+     "aux47": "5f",
+     "aux48": "60",
+     "edit_pvw": "3f"
+    }
+   }
+  },
+  {
+   "id": "transitionME",
+   "name": "Transition M/E",
+   "options": [
+    {
+     "id": "eff",
+     "label": "M/E Selection",
+     "type": "select",
+     "default": "pp",
+     "choices": [
+      {
+       "id": "pp",
+       "label": "P/P"
+      },
+      {
+       "id": "me1",
+       "label": "M/E 1"
+      },
+      {
+       "id": "me2",
+       "label": "M/E 2"
+      },
+      {
+       "id": "me3",
+       "label": "M/E 3"
+      },
+      {
+       "id": "me4",
+       "label": "M/E 4"
+      },
+      {
+       "id": "me5",
+       "label": "M/E 5"
+      }
+     ]
+    },
+    {
+     "id": "cmd",
+     "label": "Command",
+     "type": "select",
+     "default": "mp2_main",
+     "choices": [
+      {
+       "id": "mp2_main",
+       "label": "MP2 Main, or Standard Config"
+      },
+      {
+       "id": "mp2_sub",
+       "label": "MP2 Sub"
+      },
+      {
+       "id": "mp2_both",
+       "label": "MP2 Main/Sub (Both)"
+      }
+     ]
+    },
+    {
+     "id": "transRate",
+     "label": "Transition Rate (frames)",
+     "type": "number",
+     "default": 30,
+     "min": 0,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "06{{option.eff|map}}{{option.cmd|map}}160000{{option.transRate|u8}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "eff": {
+     "pp": "00",
+     "me1": "01",
+     "me2": "02",
+     "me3": "03",
+     "me4": "04",
+     "me5": "05"
+    },
+    "cmd": {
+     "mp2_main": "f0",
+     "mp2_sub": "f1",
+     "mp2_both": "f2"
+    }
+   }
+  },
+  {
+   "id": "transitionMECancel",
+   "name": "Transition M/E Cancel",
+   "options": [
+    {
+     "id": "eff",
+     "label": "M/E Selection",
+     "type": "select",
+     "default": "pp",
+     "choices": [
+      {
+       "id": "pp",
+       "label": "P/P"
+      },
+      {
+       "id": "me1",
+       "label": "M/E 1"
+      },
+      {
+       "id": "me2",
+       "label": "M/E 2"
+      },
+      {
+       "id": "me3",
+       "label": "M/E 3"
+      },
+      {
+       "id": "me4",
+       "label": "M/E 4"
+      },
+      {
+       "id": "me5",
+       "label": "M/E 5"
+      }
+     ]
+    },
+    {
+     "id": "cmd",
+     "label": "Command",
+     "type": "select",
+     "default": "mp2_main",
+     "choices": [
+      {
+       "id": "mp2_main",
+       "label": "MP2 Main, or Standard Config"
+      },
+      {
+       "id": "mp2_sub",
+       "label": "MP2 Sub"
+      },
+      {
+       "id": "mp2_both",
+       "label": "MP2 Main/Sub (Both)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "04{{option.eff|map}}{{option.cmd|map}}1900",
+    "encoding": "hex"
+   },
+   "maps": {
+    "eff": {
+     "pp": "00",
+     "me1": "01",
+     "me2": "02",
+     "me3": "03",
+     "me4": "04",
+     "me5": "05"
+    },
+    "cmd": {
+     "mp2_main": "f0",
+     "mp2_sub": "f1",
+     "mp2_both": "f2"
+    }
+   }
+  },
+  {
+   "id": "keyOnOff",
+   "name": "Key On/Off",
+   "options": [
+    {
+     "id": "eff",
+     "label": "M/E Selection",
+     "type": "select",
+     "default": "pp",
+     "choices": [
+      {
+       "id": "pp",
+       "label": "P/P"
+      },
+      {
+       "id": "me1",
+       "label": "M/E 1"
+      },
+      {
+       "id": "me2",
+       "label": "M/E 2"
+      },
+      {
+       "id": "me3",
+       "label": "M/E 3"
+      },
+      {
+       "id": "me4",
+       "label": "M/E 4"
+      },
+      {
+       "id": "me5",
+       "label": "M/E 5"
+      }
+     ]
+    },
+    {
+     "id": "key",
+     "label": "Key Number",
+     "type": "select",
+     "default": "key1",
+     "choices": [
+      {
+       "id": "key1",
+       "label": "Key 1"
+      },
+      {
+       "id": "key2",
+       "label": "Key 2"
+      },
+      {
+       "id": "key3",
+       "label": "Key 3"
+      },
+      {
+       "id": "key4",
+       "label": "Key 4"
+      },
+      {
+       "id": "key5",
+       "label": "Key 5"
+      },
+      {
+       "id": "key6",
+       "label": "Key 6"
+      },
+      {
+       "id": "key7",
+       "label": "Key 7"
+      },
+      {
+       "id": "key8",
+       "label": "Key 8"
+      }
+     ]
+    },
+    {
+     "id": "onoff",
+     "label": "On/Off",
+     "type": "select",
+     "default": "on",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "03{{option.eff|map}}{{option.onoff|map}}{{option.key|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "eff": {
+     "pp": "00",
+     "me1": "01",
+     "me2": "02",
+     "me3": "03",
+     "me4": "04",
+     "me5": "05"
+    },
+    "onoff": {
+     "on": "da",
+     "off": "9a"
+    },
+    "key": {
+     "key1": "10",
+     "key2": "30",
+     "key3": "50",
+     "key4": "70",
+     "key5": "90",
+     "key6": "b0",
+     "key7": "d0",
+     "key8": "f0"
+    }
+   }
+  },
+  {
+   "id": "macroRecall",
+   "name": "Macro Recall",
+   "options": [
+    {
+     "id": "macroNumber",
+     "label": "Macro Register Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "062291001700{{option.macroNumber|u8}}",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "macroTake",
+   "name": "Macro Take",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "042290001c",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "gpiIn",
+   "name": "Activate GPI In",
+   "options": [
+    {
+     "id": "gpiNumber",
+     "label": "GPI Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 999
+    },
+    {
+     "id": "gpiState",
+     "label": "GPI State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "High"
+      },
+      {
+       "id": "1",
+       "label": "Low"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "042680{{option.gpiNumber|u8}}{{option.gpiState|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "gpiState": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  },
+  {
+   "id": "gpiOut",
+   "name": "Activate GPI Out",
+   "options": [
+    {
+     "id": "gpiNumber",
+     "label": "GPI Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 999
+    },
+    {
+     "id": "gpiState",
+     "label": "GPI State",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "High"
+      },
+      {
+       "id": "0",
+       "label": "Low"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "042681{{option.gpiNumber|u8}}{{option.gpiState|map}}",
+    "encoding": "hex"
+   },
+   "maps": {
+    "gpiState": {
+     "0": "00",
+     "1": "01"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-sony-serialtally",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "sony-serialtally",
+  "version": "1.3.1",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-sony-serialtally.git"
+ }
+}

@@ -1,0 +1,4082 @@
+{
+ "format": 1,
+ "id": "m-avmediatools-protimer",
+ "name": "AVMediatools ProTimer",
+ "category": "AVMediatools",
+ "version": "2.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:9000",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "enableFeedbacks",
+   "label": "Enable Timer Feedbacks / Polling",
+   "type": "boolean",
+   "default": true,
+   "help": "If unchecked, timer feedbacks and variable updates will be disabled"
+  }
+ ],
+ "actions": [
+  {
+   "id": "start",
+   "name": "Timer start",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/start",
+    "body": ""
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Timer stop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/stop",
+    "body": ""
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Timer pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/pause",
+    "body": ""
+   }
+  },
+  {
+   "id": "pause_toggle",
+   "name": "Timer toggle pause/resume",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/toggle_pause",
+    "body": ""
+   }
+  },
+  {
+   "id": "timer_set",
+   "name": "Timer set",
+   "options": [
+    {
+     "id": "time",
+     "label": "HH:MM:SS",
+     "type": "text",
+     "default": "00:01:00"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/set/{{option.time}}",
+    "body": ""
+   }
+  },
+  {
+   "id": "timer",
+   "name": "Timer (countdown, countdown to zero)",
+   "options": [
+    {
+     "id": "time",
+     "label": "HH:MM:SS",
+     "type": "text",
+     "default": "00:01:00"
+    },
+    {
+     "id": "opt",
+     "label": "Select timer",
+     "type": "select",
+     "default": "countdown",
+     "choices": [
+      {
+       "id": "countdown",
+       "label": "Countdown"
+      },
+      {
+       "id": "countdown_to_zero",
+       "label": "Countdown to zero"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/countdown{{option.opt|map}}/{{option.time}}",
+    "body": ""
+   },
+   "maps": {
+    "opt": {
+     "countdown": "",
+     "countdown_to_zero": "_to_zero"
+    }
+   }
+  },
+  {
+   "id": "timer_countup",
+   "name": "Timer countup",
+   "options": [
+    {
+     "id": "time",
+     "label": "HH:MM:SS",
+     "type": "text",
+     "default": "00:00:00"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/countup/{{option.time}}",
+    "body": ""
+   }
+  },
+  {
+   "id": "timer_countdown_to_time",
+   "name": "Timer countdown to time",
+   "options": [
+    {
+     "id": "time",
+     "label": "HH:MM:SS",
+     "type": "text",
+     "default": "00:00:00"
+    },
+    {
+     "id": "opt",
+     "label": "Clear at zero",
+     "type": "select",
+     "default": "beyondzero/",
+     "choices": [
+      {
+       "id": "",
+       "label": "On"
+      },
+      {
+       "id": "beyondzero/",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/countdown_to_time/{{option.opt|map}}{{option.time}}",
+    "body": ""
+   },
+   "maps": {
+    "opt": {
+     "beyondzero/": "beyondzero/",
+     "": ""
+    }
+   }
+  },
+  {
+   "id": "timer_update",
+   "name": "Timer update",
+   "options": [
+    {
+     "id": "seconds",
+     "label": "Seconds (+/- seconds)",
+     "type": "text",
+     "default": "+30"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/update/{{option.seconds}}",
+    "body": ""
+   }
+  },
+  {
+   "id": "timer_blinking",
+   "name": "Timer blinking",
+   "options": [
+    {
+     "id": "opt",
+     "label": "Select option",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/timer/blinking/{{option.opt|map}}",
+    "body": ""
+   },
+   "maps": {
+    "opt": {
+     "toggle": "toggle",
+     "on": "on",
+     "off": "off"
+    }
+   }
+  },
+  {
+   "id": "blackout",
+   "name": "Screen blackout",
+   "options": [
+    {
+     "id": "val",
+     "label": "Select option",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "on",
+       "label": "On"
+      },
+      {
+       "id": "off",
+       "label": "Off"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/screen/blackout/{{option.val|map}}",
+    "body": ""
+   },
+   "maps": {
+    "val": {
+     "toggle": "toggle",
+     "on": "on",
+     "off": "off"
+    }
+   }
+  },
+  {
+   "id": "message_toggle",
+   "name": "Message toggle",
+   "options": [
+    {
+     "id": "val",
+     "label": "Select option",
+     "type": "select",
+     "default": "toggle",
+     "choices": [
+      {
+       "id": "show",
+       "label": "Show"
+      },
+      {
+       "id": "hide",
+       "label": "Hide"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/message/{{option.val|map}}",
+    "body": ""
+   },
+   "maps": {
+    "val": {
+     "toggle": "toggle",
+     "show": "show",
+     "hide": "hide"
+    }
+   }
+  },
+  {
+   "id": "message_set",
+   "name": "Message set",
+   "options": [
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/message/set/{{option.message}}",
+    "body": ""
+   }
+  },
+  {
+   "id": "message_send",
+   "name": "Message send",
+   "options": [
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/api/message/send/{{option.message}}",
+    "body": ""
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "timer_start",
+   "category": "Basic",
+   "name": "START",
+   "text": "START",
+   "action": {
+    "definitionId": "start",
+    "options": {}
+   }
+  },
+  {
+   "id": "timer_stop",
+   "category": "Basic",
+   "name": "STOP",
+   "text": "STOP",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "timer_pause",
+   "category": "Basic",
+   "name": "PAUSE",
+   "text": "PAUSE",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "timer_pause_toggle",
+   "category": "Basic",
+   "name": "PAUSE TOGGLE",
+   "text": "PAUSE TOGGLE",
+   "action": {
+    "definitionId": "pause_toggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "Blackout_on",
+   "category": "Basic",
+   "name": "BLACK\nOUT ON",
+   "text": "BLACK\nOUT ON",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "val": "on"
+    }
+   }
+  },
+  {
+   "id": "Blackout_off",
+   "category": "Basic",
+   "name": "BLACK\nOUT OFF",
+   "text": "BLACK\nOUT OFF",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "val": "off"
+    }
+   }
+  },
+  {
+   "id": "Blackout_toggle",
+   "category": "Basic",
+   "name": "BLACK\nOUT TOGGLE",
+   "text": "BLACK\nOUT TOGGLE",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "val": "toggle"
+    }
+   }
+  },
+  {
+   "id": "timer_basic_set_1_min",
+   "category": "Basic",
+   "name": "1 min",
+   "text": "1 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:01:00"
+    }
+   }
+  },
+  {
+   "id": "timer_basic_set_5_min",
+   "category": "Basic",
+   "name": "5 min",
+   "text": "5 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:05:00"
+    }
+   }
+  },
+  {
+   "id": "timer_basic_1_min",
+   "category": "Basic",
+   "name": "TIMER\n1 min",
+   "text": "1 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:01:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_basic_5_min",
+   "category": "Basic",
+   "name": "TIMER\n5 min",
+   "text": "5 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:05:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_basic_update_min_1_min",
+   "category": "Basic",
+   "name": "-1 min",
+   "text": "-1 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-60"
+    }
+   }
+  },
+  {
+   "id": "timer_basic_update_plus_1_min",
+   "category": "Basic",
+   "name": "+1 min",
+   "text": "+1 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+60"
+    }
+   }
+  },
+  {
+   "id": "timer_blinking_on",
+   "category": "Basic",
+   "name": "TIMER BLINKING ON",
+   "text": "TIMER BLINKING ON",
+   "action": {
+    "definitionId": "timer_blinking",
+    "options": {
+     "opt": "on"
+    }
+   }
+  },
+  {
+   "id": "timer_blinking_off",
+   "category": "Basic",
+   "name": "TIMER BLINKING OFF",
+   "text": "TIMER BLINKING OFF",
+   "action": {
+    "definitionId": "timer_blinking",
+    "options": {
+     "opt": "off"
+    }
+   }
+  },
+  {
+   "id": "timer_blinking_toggle",
+   "category": "Basic",
+   "name": "TIMER BLINKING TOGGLE",
+   "text": "TIMER BLINKING TOGGLE",
+   "action": {
+    "definitionId": "timer_blinking",
+    "options": {
+     "opt": "toggle"
+    }
+   }
+  },
+  {
+   "id": "timer_count_down_1_min_to_zero",
+   "category": "Basic",
+   "name": "1 min to zero",
+   "text": "1 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:01:00",
+     "opt": "countdown_to_zero"
+    }
+   }
+  },
+  {
+   "id": "timer_time_up",
+   "category": "Basic",
+   "name": "Timer count up",
+   "text": "00:00:00",
+   "action": {
+    "definitionId": "timer_countup",
+    "options": {
+     "time": "00:00:00"
+    }
+   }
+  },
+  {
+   "id": "timer_time_to",
+   "category": "Basic",
+   "name": "Time to 12:00",
+   "text": "12:00",
+   "action": {
+    "definitionId": "timer_countdown_to_time",
+    "options": {
+     "time": "12:00:00",
+     "opt": "beyondzero/"
+    }
+   }
+  },
+  {
+   "id": "message_show",
+   "category": "Message",
+   "name": "Show",
+   "text": "Show",
+   "action": {
+    "definitionId": "message_toggle",
+    "options": {
+     "val": "show"
+    }
+   }
+  },
+  {
+   "id": "message_hide",
+   "category": "Message",
+   "name": "Hide",
+   "text": "Hide",
+   "action": {
+    "definitionId": "message_toggle",
+    "options": {
+     "val": "hide"
+    }
+   }
+  },
+  {
+   "id": "message_toggle",
+   "category": "Message",
+   "name": "Toggle",
+   "text": "Toggle",
+   "action": {
+    "definitionId": "message_toggle",
+    "options": {
+     "val": "toggle"
+    }
+   }
+  },
+  {
+   "id": "set_message",
+   "category": "Message",
+   "name": "Message",
+   "text": "Message",
+   "action": {
+    "definitionId": "message_set",
+    "options": {
+     "message": "Message"
+    }
+   }
+  },
+  {
+   "id": "send_message",
+   "category": "Message",
+   "name": "Message",
+   "text": "Message",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Message"
+    }
+   }
+  },
+  {
+   "id": "send_message_no_time_left",
+   "category": "Message",
+   "name": "No time left!",
+   "text": "No time left!",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "No time left!"
+    }
+   }
+  },
+  {
+   "id": "send_message_please_wrap_up",
+   "category": "Message",
+   "name": "Please_wrap_up!",
+   "text": "Please\nwrap up!",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Please wrap up!"
+    }
+   }
+  },
+  {
+   "id": "send_message_caller_present",
+   "category": "Message",
+   "name": "Caller present",
+   "text": "Caller present",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Caller present"
+    }
+   }
+  },
+  {
+   "id": "send_message_video_is_ready",
+   "category": "Message",
+   "name": "Video is ready",
+   "text": "Video is ready",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Video is ready"
+    }
+   }
+  },
+  {
+   "id": "send_message_powerpoint_ready",
+   "category": "Message",
+   "name": "PowerPoint ready",
+   "text": "PowerPoint ready",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "PowerPoint ready"
+    }
+   }
+  },
+  {
+   "id": "send_message_keynote_ready",
+   "category": "Message",
+   "name": "KeyNote ready",
+   "text": "KeyNote ready",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "KeyNote ready"
+    }
+   }
+  },
+  {
+   "id": "send_message_lets_fill_this_time_gap",
+   "category": "Message",
+   "name": "Let's fill this time gap",
+   "text": ".   Let's\nfill this\ntime gap",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Let's fill this time gap"
+    }
+   }
+  },
+  {
+   "id": "send_message_buy_some_time",
+   "category": "Message",
+   "name": "Buy some time",
+   "text": "Buy some time",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Buy some time"
+    }
+   }
+  },
+  {
+   "id": "send_message_keep_going",
+   "category": "Message",
+   "name": "Keep going",
+   "text": "Keep going",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Keep going"
+    }
+   }
+  },
+  {
+   "id": "send_message_use_the_hand_mic",
+   "category": "Message",
+   "name": "Use the hand mic",
+   "text": "Use the hand mic",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Use the hand mic"
+    }
+   }
+  },
+  {
+   "id": "send_message_break",
+   "category": "Message",
+   "name": "Break",
+   "text": "Break",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Break"
+    }
+   }
+  },
+  {
+   "id": "send_message_live",
+   "category": "Message",
+   "name": "Live!",
+   "text": "Live!",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Live!"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_30_sec",
+   "category": "Update timers",
+   "name": "-30 sec",
+   "text": "-30 sec",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-30"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_30_sec",
+   "category": "Update timers",
+   "name": "+30 sec",
+   "text": "+30 sec",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+30"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_1_min",
+   "category": "Update timers",
+   "name": "-1 min",
+   "text": "-1 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-60"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_1_min",
+   "category": "Update timers",
+   "name": "+1 min",
+   "text": "+1 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+60"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_2_min",
+   "category": "Update timers",
+   "name": "-2 min",
+   "text": "-2 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-120"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_2_min",
+   "category": "Update timers",
+   "name": "+2 min",
+   "text": "+2 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+120"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_3_min",
+   "category": "Update timers",
+   "name": "-3 min",
+   "text": "-3 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-180"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_3_min",
+   "category": "Update timers",
+   "name": "+3 min",
+   "text": "+3 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+180"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_4_min",
+   "category": "Update timers",
+   "name": "-4 min",
+   "text": "-4 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-240"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_4_min",
+   "category": "Update timers",
+   "name": "+4 min",
+   "text": "+4 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+240"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_5_min",
+   "category": "Update timers",
+   "name": "-5 min",
+   "text": "-5 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-300"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_5_min",
+   "category": "Update timers",
+   "name": "+5 min",
+   "text": "+5 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+300"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_6_min",
+   "category": "Update timers",
+   "name": "-6 min",
+   "text": "-6 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-360"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_6_min",
+   "category": "Update timers",
+   "name": "+6 min",
+   "text": "+6 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+360"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_7_min",
+   "category": "Update timers",
+   "name": "-7 min",
+   "text": "-7 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-420"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_7_min",
+   "category": "Update timers",
+   "name": "+7 min",
+   "text": "+7 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+420"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_8_min",
+   "category": "Update timers",
+   "name": "-8 min",
+   "text": "-8 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-480"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_8_min",
+   "category": "Update timers",
+   "name": "+8 min",
+   "text": "+8 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+480"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_9_min",
+   "category": "Update timers",
+   "name": "-9 min",
+   "text": "-9 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-540"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_9_min",
+   "category": "Update timers",
+   "name": "+9 min",
+   "text": "+9 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+540"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_10_min",
+   "category": "Update timers",
+   "name": "-10 min",
+   "text": "-10 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-600"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_10_min",
+   "category": "Update timers",
+   "name": "+10 min",
+   "text": "+10 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+600"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_11_min",
+   "category": "Update timers",
+   "name": "-11 min",
+   "text": "-11 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-660"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_11_min",
+   "category": "Update timers",
+   "name": "+11 min",
+   "text": "+11 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+660"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_12_min",
+   "category": "Update timers",
+   "name": "-12 min",
+   "text": "-12 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-720"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_12_min",
+   "category": "Update timers",
+   "name": "+12 min",
+   "text": "+12 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+720"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_13_min",
+   "category": "Update timers",
+   "name": "-13 min",
+   "text": "-13 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-780"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_13_min",
+   "category": "Update timers",
+   "name": "+13 min",
+   "text": "+13 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+780"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_14_min",
+   "category": "Update timers",
+   "name": "-14 min",
+   "text": "-14 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-840"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_14_min",
+   "category": "Update timers",
+   "name": "+14 min",
+   "text": "+14 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+840"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_15_min",
+   "category": "Update timers",
+   "name": "-15 min",
+   "text": "-15 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-900"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_15_min",
+   "category": "Update timers",
+   "name": "+15 min",
+   "text": "+15 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+900"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_16_min",
+   "category": "Update timers",
+   "name": "-16 min",
+   "text": "-16 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-960"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_16_min",
+   "category": "Update timers",
+   "name": "+16 min",
+   "text": "+16 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+960"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_17_min",
+   "category": "Update timers",
+   "name": "-17 min",
+   "text": "-17 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1020"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_17_min",
+   "category": "Update timers",
+   "name": "+17 min",
+   "text": "+17 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1020"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_18_min",
+   "category": "Update timers",
+   "name": "-18 min",
+   "text": "-18 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1080"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_18_min",
+   "category": "Update timers",
+   "name": "+18 min",
+   "text": "+18 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1080"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_19_min",
+   "category": "Update timers",
+   "name": "-19 min",
+   "text": "-19 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1140"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_19_min",
+   "category": "Update timers",
+   "name": "+19 min",
+   "text": "+19 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1140"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_20_min",
+   "category": "Update timers",
+   "name": "-20 min",
+   "text": "-20 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1200"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_20_min",
+   "category": "Update timers",
+   "name": "+20 min",
+   "text": "+20 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1200"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_21_min",
+   "category": "Update timers",
+   "name": "-21 min",
+   "text": "-21 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1260"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_21_min",
+   "category": "Update timers",
+   "name": "+21 min",
+   "text": "+21 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1260"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_22_min",
+   "category": "Update timers",
+   "name": "-22 min",
+   "text": "-22 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1320"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_22_min",
+   "category": "Update timers",
+   "name": "+22 min",
+   "text": "+22 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1320"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_23_min",
+   "category": "Update timers",
+   "name": "-23 min",
+   "text": "-23 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1380"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_23_min",
+   "category": "Update timers",
+   "name": "+23 min",
+   "text": "+23 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1380"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_24_min",
+   "category": "Update timers",
+   "name": "-24 min",
+   "text": "-24 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1440"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_24_min",
+   "category": "Update timers",
+   "name": "+24 min",
+   "text": "+24 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1440"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_25_min",
+   "category": "Update timers",
+   "name": "-25 min",
+   "text": "-25 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1500"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_25_min",
+   "category": "Update timers",
+   "name": "+25 min",
+   "text": "+25 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1500"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_26_min",
+   "category": "Update timers",
+   "name": "-26 min",
+   "text": "-26 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1560"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_26_min",
+   "category": "Update timers",
+   "name": "+26 min",
+   "text": "+26 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1560"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_27_min",
+   "category": "Update timers",
+   "name": "-27 min",
+   "text": "-27 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1620"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_27_min",
+   "category": "Update timers",
+   "name": "+27 min",
+   "text": "+27 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1620"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_28_min",
+   "category": "Update timers",
+   "name": "-28 min",
+   "text": "-28 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1680"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_28_min",
+   "category": "Update timers",
+   "name": "+28 min",
+   "text": "+28 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1680"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_29_min",
+   "category": "Update timers",
+   "name": "-29 min",
+   "text": "-29 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1740"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_29_min",
+   "category": "Update timers",
+   "name": "+29 min",
+   "text": "+29 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1740"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_30_min",
+   "category": "Update timers",
+   "name": "-30 min",
+   "text": "-30 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1800"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_30_min",
+   "category": "Update timers",
+   "name": "+30 min",
+   "text": "+30 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1800"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_31_min",
+   "category": "Update timers",
+   "name": "-31 min",
+   "text": "-31 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1860"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_31_min",
+   "category": "Update timers",
+   "name": "+31 min",
+   "text": "+31 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1860"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_32_min",
+   "category": "Update timers",
+   "name": "-32 min",
+   "text": "-32 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1920"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_32_min",
+   "category": "Update timers",
+   "name": "+32 min",
+   "text": "+32 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1920"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_33_min",
+   "category": "Update timers",
+   "name": "-33 min",
+   "text": "-33 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-1980"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_33_min",
+   "category": "Update timers",
+   "name": "+33 min",
+   "text": "+33 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+1980"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_34_min",
+   "category": "Update timers",
+   "name": "-34 min",
+   "text": "-34 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2040"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_34_min",
+   "category": "Update timers",
+   "name": "+34 min",
+   "text": "+34 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2040"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_35_min",
+   "category": "Update timers",
+   "name": "-35 min",
+   "text": "-35 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2100"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_35_min",
+   "category": "Update timers",
+   "name": "+35 min",
+   "text": "+35 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2100"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_36_min",
+   "category": "Update timers",
+   "name": "-36 min",
+   "text": "-36 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2160"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_36_min",
+   "category": "Update timers",
+   "name": "+36 min",
+   "text": "+36 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2160"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_37_min",
+   "category": "Update timers",
+   "name": "-37 min",
+   "text": "-37 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2220"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_37_min",
+   "category": "Update timers",
+   "name": "+37 min",
+   "text": "+37 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2220"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_38_min",
+   "category": "Update timers",
+   "name": "-38 min",
+   "text": "-38 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2280"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_38_min",
+   "category": "Update timers",
+   "name": "+38 min",
+   "text": "+38 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2280"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_39_min",
+   "category": "Update timers",
+   "name": "-39 min",
+   "text": "-39 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2340"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_39_min",
+   "category": "Update timers",
+   "name": "+39 min",
+   "text": "+39 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2340"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_40_min",
+   "category": "Update timers",
+   "name": "-40 min",
+   "text": "-40 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2400"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_40_min",
+   "category": "Update timers",
+   "name": "+40 min",
+   "text": "+40 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2400"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_41_min",
+   "category": "Update timers",
+   "name": "-41 min",
+   "text": "-41 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2460"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_41_min",
+   "category": "Update timers",
+   "name": "+41 min",
+   "text": "+41 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2460"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_42_min",
+   "category": "Update timers",
+   "name": "-42 min",
+   "text": "-42 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2520"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_42_min",
+   "category": "Update timers",
+   "name": "+42 min",
+   "text": "+42 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2520"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_43_min",
+   "category": "Update timers",
+   "name": "-43 min",
+   "text": "-43 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2580"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_43_min",
+   "category": "Update timers",
+   "name": "+43 min",
+   "text": "+43 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2580"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_44_min",
+   "category": "Update timers",
+   "name": "-44 min",
+   "text": "-44 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2640"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_44_min",
+   "category": "Update timers",
+   "name": "+44 min",
+   "text": "+44 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2640"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_45_min",
+   "category": "Update timers",
+   "name": "-45 min",
+   "text": "-45 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2700"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_45_min",
+   "category": "Update timers",
+   "name": "+45 min",
+   "text": "+45 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2700"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_46_min",
+   "category": "Update timers",
+   "name": "-46 min",
+   "text": "-46 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2760"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_46_min",
+   "category": "Update timers",
+   "name": "+46 min",
+   "text": "+46 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2760"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_47_min",
+   "category": "Update timers",
+   "name": "-47 min",
+   "text": "-47 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2820"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_47_min",
+   "category": "Update timers",
+   "name": "+47 min",
+   "text": "+47 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2820"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_48_min",
+   "category": "Update timers",
+   "name": "-48 min",
+   "text": "-48 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2880"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_48_min",
+   "category": "Update timers",
+   "name": "+48 min",
+   "text": "+48 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2880"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_49_min",
+   "category": "Update timers",
+   "name": "-49 min",
+   "text": "-49 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-2940"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_49_min",
+   "category": "Update timers",
+   "name": "+49 min",
+   "text": "+49 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+2940"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_50_min",
+   "category": "Update timers",
+   "name": "-50 min",
+   "text": "-50 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3000"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_50_min",
+   "category": "Update timers",
+   "name": "+50 min",
+   "text": "+50 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3000"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_51_min",
+   "category": "Update timers",
+   "name": "-51 min",
+   "text": "-51 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3060"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_51_min",
+   "category": "Update timers",
+   "name": "+51 min",
+   "text": "+51 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3060"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_52_min",
+   "category": "Update timers",
+   "name": "-52 min",
+   "text": "-52 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3120"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_52_min",
+   "category": "Update timers",
+   "name": "+52 min",
+   "text": "+52 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3120"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_53_min",
+   "category": "Update timers",
+   "name": "-53 min",
+   "text": "-53 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3180"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_53_min",
+   "category": "Update timers",
+   "name": "+53 min",
+   "text": "+53 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3180"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_54_min",
+   "category": "Update timers",
+   "name": "-54 min",
+   "text": "-54 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3240"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_54_min",
+   "category": "Update timers",
+   "name": "+54 min",
+   "text": "+54 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3240"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_55_min",
+   "category": "Update timers",
+   "name": "-55 min",
+   "text": "-55 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3300"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_55_min",
+   "category": "Update timers",
+   "name": "+55 min",
+   "text": "+55 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3300"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_56_min",
+   "category": "Update timers",
+   "name": "-56 min",
+   "text": "-56 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3360"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_56_min",
+   "category": "Update timers",
+   "name": "+56 min",
+   "text": "+56 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3360"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_57_min",
+   "category": "Update timers",
+   "name": "-57 min",
+   "text": "-57 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3420"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_57_min",
+   "category": "Update timers",
+   "name": "+57 min",
+   "text": "+57 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3420"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_58_min",
+   "category": "Update timers",
+   "name": "-58 min",
+   "text": "-58 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3480"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_58_min",
+   "category": "Update timers",
+   "name": "+58 min",
+   "text": "+58 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3480"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_59_min",
+   "category": "Update timers",
+   "name": "-59 min",
+   "text": "-59 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3540"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_59_min",
+   "category": "Update timers",
+   "name": "+59 min",
+   "text": "+59 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3540"
+    }
+   }
+  },
+  {
+   "id": "timer_update_minus_1_hour",
+   "category": "Update timers",
+   "name": "-1 hour",
+   "text": "-1 hour",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-3600"
+    }
+   }
+  },
+  {
+   "id": "timer_update_plus_1_hour",
+   "category": "Update timers",
+   "name": "+1 hour",
+   "text": "+1 hour",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+3600"
+    }
+   }
+  },
+  {
+   "id": "timer_30_sec",
+   "category": "Start timers",
+   "name": "30 sec",
+   "text": "30 sec",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:00:30",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_1_min",
+   "category": "Start timers",
+   "name": "1 min",
+   "text": "1 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:01:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_2_min",
+   "category": "Start timers",
+   "name": "2 min",
+   "text": "2 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:02:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_3_min",
+   "category": "Start timers",
+   "name": "3 min",
+   "text": "3 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:03:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_4_min",
+   "category": "Start timers",
+   "name": "4 min",
+   "text": "4 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:04:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_5_min",
+   "category": "Start timers",
+   "name": "5 min",
+   "text": "5 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:05:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_6_min",
+   "category": "Start timers",
+   "name": "6 min",
+   "text": "6 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:06:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_7_min",
+   "category": "Start timers",
+   "name": "7 min",
+   "text": "7 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:07:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_8_min",
+   "category": "Start timers",
+   "name": "8 min",
+   "text": "8 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:08:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_9_min",
+   "category": "Start timers",
+   "name": "9 min",
+   "text": "9 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:09:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_10_min",
+   "category": "Start timers",
+   "name": "10 min",
+   "text": "10 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:10:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_11_min",
+   "category": "Start timers",
+   "name": "11 min",
+   "text": "11 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:11:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_12_min",
+   "category": "Start timers",
+   "name": "12 min",
+   "text": "12 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:12:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_13_min",
+   "category": "Start timers",
+   "name": "13 min",
+   "text": "13 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:13:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_14_min",
+   "category": "Start timers",
+   "name": "14 min",
+   "text": "14 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:14:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_15_min",
+   "category": "Start timers",
+   "name": "15 min",
+   "text": "15 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:15:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_16_min",
+   "category": "Start timers",
+   "name": "16 min",
+   "text": "16 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:16:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_17_min",
+   "category": "Start timers",
+   "name": "17 min",
+   "text": "17 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:17:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_18_min",
+   "category": "Start timers",
+   "name": "18 min",
+   "text": "18 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:18:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_19_min",
+   "category": "Start timers",
+   "name": "19 min",
+   "text": "19 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:19:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_20_min",
+   "category": "Start timers",
+   "name": "20 min",
+   "text": "20 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:20:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_21_min",
+   "category": "Start timers",
+   "name": "21 min",
+   "text": "21 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:21:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_22_min",
+   "category": "Start timers",
+   "name": "22 min",
+   "text": "22 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:22:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_23_min",
+   "category": "Start timers",
+   "name": "23 min",
+   "text": "23 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:23:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_24_min",
+   "category": "Start timers",
+   "name": "24 min",
+   "text": "24 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:24:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_25_min",
+   "category": "Start timers",
+   "name": "25 min",
+   "text": "25 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:25:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_26_min",
+   "category": "Start timers",
+   "name": "26 min",
+   "text": "26 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:26:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_27_min",
+   "category": "Start timers",
+   "name": "27 min",
+   "text": "27 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:27:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_28_min",
+   "category": "Start timers",
+   "name": "28 min",
+   "text": "28 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:28:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_29_min",
+   "category": "Start timers",
+   "name": "29 min",
+   "text": "29 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:29:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_30_min",
+   "category": "Start timers",
+   "name": "30 min",
+   "text": "30 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:30:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_31_min",
+   "category": "Start timers",
+   "name": "31 min",
+   "text": "31 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:31:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_32_min",
+   "category": "Start timers",
+   "name": "32 min",
+   "text": "32 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:32:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_33_min",
+   "category": "Start timers",
+   "name": "33 min",
+   "text": "33 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:33:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_34_min",
+   "category": "Start timers",
+   "name": "34 min",
+   "text": "34 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:34:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_35_min",
+   "category": "Start timers",
+   "name": "35 min",
+   "text": "35 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:35:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_36_min",
+   "category": "Start timers",
+   "name": "36 min",
+   "text": "36 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:36:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_37_min",
+   "category": "Start timers",
+   "name": "37 min",
+   "text": "37 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:37:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_38_min",
+   "category": "Start timers",
+   "name": "38 min",
+   "text": "38 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:38:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_39_min",
+   "category": "Start timers",
+   "name": "39 min",
+   "text": "39 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:39:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_40_min",
+   "category": "Start timers",
+   "name": "40 min",
+   "text": "40 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:40:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_41_min",
+   "category": "Start timers",
+   "name": "41 min",
+   "text": "41 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:41:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_42_min",
+   "category": "Start timers",
+   "name": "42 min",
+   "text": "42 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:42:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_43_min",
+   "category": "Start timers",
+   "name": "43 min",
+   "text": "43 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:43:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_44_min",
+   "category": "Start timers",
+   "name": "44 min",
+   "text": "44 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:44:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_45_min",
+   "category": "Start timers",
+   "name": "45 min",
+   "text": "45 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:45:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_46_min",
+   "category": "Start timers",
+   "name": "46 min",
+   "text": "46 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:46:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_47_min",
+   "category": "Start timers",
+   "name": "47 min",
+   "text": "47 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:47:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_48_min",
+   "category": "Start timers",
+   "name": "48 min",
+   "text": "48 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:48:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_49_min",
+   "category": "Start timers",
+   "name": "49 min",
+   "text": "49 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:49:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_50_min",
+   "category": "Start timers",
+   "name": "50 min",
+   "text": "50 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:50:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_51_min",
+   "category": "Start timers",
+   "name": "51 min",
+   "text": "51 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:51:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_52_min",
+   "category": "Start timers",
+   "name": "52 min",
+   "text": "52 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:52:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_53_min",
+   "category": "Start timers",
+   "name": "53 min",
+   "text": "53 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:53:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_54_min",
+   "category": "Start timers",
+   "name": "54 min",
+   "text": "54 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:54:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_55_min",
+   "category": "Start timers",
+   "name": "55 min",
+   "text": "55 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:55:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_56_min",
+   "category": "Start timers",
+   "name": "56 min",
+   "text": "56 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:56:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_57_min",
+   "category": "Start timers",
+   "name": "57 min",
+   "text": "57 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:57:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_58_min",
+   "category": "Start timers",
+   "name": "58 min",
+   "text": "58 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:58:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_59_min",
+   "category": "Start timers",
+   "name": "59 min",
+   "text": "59 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:59:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_1_hour",
+   "category": "Start timers",
+   "name": "1 hour",
+   "text": "1 hour",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "01:00:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "timer_set_30_sec",
+   "category": "Set timers",
+   "name": "30 sec",
+   "text": "30 sec",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:00:30"
+    }
+   }
+  },
+  {
+   "id": "timer_set_1_min",
+   "category": "Set timers",
+   "name": "1 min",
+   "text": "1 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:01:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_2_min",
+   "category": "Set timers",
+   "name": "2 min",
+   "text": "2 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:02:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_3_min",
+   "category": "Set timers",
+   "name": "3 min",
+   "text": "3 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:03:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_4_min",
+   "category": "Set timers",
+   "name": "4 min",
+   "text": "4 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:04:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_5_min",
+   "category": "Set timers",
+   "name": "5 min",
+   "text": "5 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:05:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_6_min",
+   "category": "Set timers",
+   "name": "6 min",
+   "text": "6 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:06:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_7_min",
+   "category": "Set timers",
+   "name": "7 min",
+   "text": "7 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:07:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_8_min",
+   "category": "Set timers",
+   "name": "8 min",
+   "text": "8 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:08:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_9_min",
+   "category": "Set timers",
+   "name": "9 min",
+   "text": "9 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:09:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_10_min",
+   "category": "Set timers",
+   "name": "10 min",
+   "text": "10 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:10:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_11_min",
+   "category": "Set timers",
+   "name": "11 min",
+   "text": "11 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:11:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_12_min",
+   "category": "Set timers",
+   "name": "12 min",
+   "text": "12 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:12:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_13_min",
+   "category": "Set timers",
+   "name": "13 min",
+   "text": "13 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:13:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_14_min",
+   "category": "Set timers",
+   "name": "14 min",
+   "text": "14 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:14:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_15_min",
+   "category": "Set timers",
+   "name": "15 min",
+   "text": "15 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:15:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_16_min",
+   "category": "Set timers",
+   "name": "16 min",
+   "text": "16 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:16:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_17_min",
+   "category": "Set timers",
+   "name": "17 min",
+   "text": "17 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:17:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_18_min",
+   "category": "Set timers",
+   "name": "18 min",
+   "text": "18 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:18:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_19_min",
+   "category": "Set timers",
+   "name": "19 min",
+   "text": "19 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:19:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_20_min",
+   "category": "Set timers",
+   "name": "20 min",
+   "text": "20 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:20:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_21_min",
+   "category": "Set timers",
+   "name": "21 min",
+   "text": "21 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:21:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_22_min",
+   "category": "Set timers",
+   "name": "22 min",
+   "text": "22 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:22:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_23_min",
+   "category": "Set timers",
+   "name": "23 min",
+   "text": "23 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:23:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_24_min",
+   "category": "Set timers",
+   "name": "24 min",
+   "text": "24 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:24:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_25_min",
+   "category": "Set timers",
+   "name": "25 min",
+   "text": "25 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:25:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_26_min",
+   "category": "Set timers",
+   "name": "26 min",
+   "text": "26 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:26:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_27_min",
+   "category": "Set timers",
+   "name": "27 min",
+   "text": "27 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:27:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_28_min",
+   "category": "Set timers",
+   "name": "28 min",
+   "text": "28 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:28:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_29_min",
+   "category": "Set timers",
+   "name": "29 min",
+   "text": "29 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:29:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_30_min",
+   "category": "Set timers",
+   "name": "30 min",
+   "text": "30 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:30:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_31_min",
+   "category": "Set timers",
+   "name": "31 min",
+   "text": "31 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:31:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_32_min",
+   "category": "Set timers",
+   "name": "32 min",
+   "text": "32 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:32:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_33_min",
+   "category": "Set timers",
+   "name": "33 min",
+   "text": "33 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:33:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_34_min",
+   "category": "Set timers",
+   "name": "34 min",
+   "text": "34 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:34:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_35_min",
+   "category": "Set timers",
+   "name": "35 min",
+   "text": "35 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:35:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_36_min",
+   "category": "Set timers",
+   "name": "36 min",
+   "text": "36 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:36:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_37_min",
+   "category": "Set timers",
+   "name": "37 min",
+   "text": "37 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:37:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_38_min",
+   "category": "Set timers",
+   "name": "38 min",
+   "text": "38 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:38:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_39_min",
+   "category": "Set timers",
+   "name": "39 min",
+   "text": "39 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:39:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_40_min",
+   "category": "Set timers",
+   "name": "40 min",
+   "text": "40 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:40:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_41_min",
+   "category": "Set timers",
+   "name": "41 min",
+   "text": "41 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:41:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_42_min",
+   "category": "Set timers",
+   "name": "42 min",
+   "text": "42 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:42:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_43_min",
+   "category": "Set timers",
+   "name": "43 min",
+   "text": "43 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:43:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_44_min",
+   "category": "Set timers",
+   "name": "44 min",
+   "text": "44 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:44:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_45_min",
+   "category": "Set timers",
+   "name": "45 min",
+   "text": "45 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:45:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_46_min",
+   "category": "Set timers",
+   "name": "46 min",
+   "text": "46 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:46:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_47_min",
+   "category": "Set timers",
+   "name": "47 min",
+   "text": "47 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:47:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_48_min",
+   "category": "Set timers",
+   "name": "48 min",
+   "text": "48 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:48:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_49_min",
+   "category": "Set timers",
+   "name": "49 min",
+   "text": "49 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:49:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_50_min",
+   "category": "Set timers",
+   "name": "50 min",
+   "text": "50 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:50:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_51_min",
+   "category": "Set timers",
+   "name": "51 min",
+   "text": "51 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:51:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_52_min",
+   "category": "Set timers",
+   "name": "52 min",
+   "text": "52 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:52:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_53_min",
+   "category": "Set timers",
+   "name": "53 min",
+   "text": "53 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:53:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_54_min",
+   "category": "Set timers",
+   "name": "54 min",
+   "text": "54 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:54:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_55_min",
+   "category": "Set timers",
+   "name": "55 min",
+   "text": "55 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:55:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_56_min",
+   "category": "Set timers",
+   "name": "56 min",
+   "text": "56 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:56:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_57_min",
+   "category": "Set timers",
+   "name": "57 min",
+   "text": "57 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:57:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_58_min",
+   "category": "Set timers",
+   "name": "58 min",
+   "text": "58 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:58:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_59_min",
+   "category": "Set timers",
+   "name": "59 min",
+   "text": "59 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:59:00"
+    }
+   }
+  },
+  {
+   "id": "timer_set_1_hour",
+   "category": "Set timers",
+   "name": "1 hour",
+   "text": "1 hour",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "01:00:00"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_start",
+   "category": "Basic clean",
+   "name": "START",
+   "text": "START",
+   "action": {
+    "definitionId": "start",
+    "options": {}
+   }
+  },
+  {
+   "id": "clean_timer_stop",
+   "category": "Basic clean",
+   "name": "STOP",
+   "text": "STOP",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "clean_timer_pause",
+   "category": "Basic clean",
+   "name": "PAUSE",
+   "text": "PAUSE",
+   "action": {
+    "definitionId": "pause",
+    "options": {}
+   }
+  },
+  {
+   "id": "clean_timer_pause_toggle",
+   "category": "Basic clean",
+   "name": "PAUSE TOGGLE",
+   "text": "PAUSE TOGGLE",
+   "action": {
+    "definitionId": "pause_toggle",
+    "options": {}
+   }
+  },
+  {
+   "id": "clean_Blackout_on",
+   "category": "Basic clean",
+   "name": "ON",
+   "text": "ON",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "val": "on"
+    }
+   }
+  },
+  {
+   "id": "clean_Blackout_off",
+   "category": "Basic clean",
+   "name": "OFF",
+   "text": "OFF",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "val": "off"
+    }
+   }
+  },
+  {
+   "id": "clean_Blackout_toggle",
+   "category": "Basic clean",
+   "name": "TOGGLE",
+   "text": "TOGGLE",
+   "action": {
+    "definitionId": "blackout",
+    "options": {
+     "val": "toggle"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_set_1_min",
+   "category": "Basic clean",
+   "name": "1 min",
+   "text": "1 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:01:00"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_set_5_min",
+   "category": "Basic clean",
+   "name": "5 min",
+   "text": "5 min",
+   "action": {
+    "definitionId": "timer_set",
+    "options": {
+     "time": "00:05:00"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_1_min",
+   "category": "Basic clean",
+   "name": "1 min",
+   "text": "1 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:01:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_5_min",
+   "category": "Basic clean",
+   "name": "5 min",
+   "text": "5 min",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:05:00",
+     "opt": "countdown"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_basic_update_min_1_min",
+   "category": "Basic clean",
+   "name": "-1 min",
+   "text": "-1 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "-60"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_basic_update_plus_1_min",
+   "category": "Basic clean",
+   "name": "+1 min",
+   "text": "+1 min",
+   "action": {
+    "definitionId": "timer_update",
+    "options": {
+     "seconds": "+60"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_blinking_off",
+   "category": "Basic clean",
+   "name": "BLINKING OFF",
+   "text": "BLINKING OFF",
+   "action": {
+    "definitionId": "timer_blinking",
+    "options": {
+     "opt": "off"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_blinking_on",
+   "category": "Basic clean",
+   "name": "BLINKING ON",
+   "text": "BLINKING ON",
+   "action": {
+    "definitionId": "timer_blinking",
+    "options": {
+     "opt": "on"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_blinking_toggle",
+   "category": "Basic clean",
+   "name": "BLINKING TOGGLE",
+   "text": "BLINKING TOGGLE",
+   "action": {
+    "definitionId": "timer_blinking",
+    "options": {
+     "opt": "toggle"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_count_down_1_min_to_zero",
+   "category": "Basic clean",
+   "name": "1 min\nto\n00:00",
+   "text": "1 min\nto\n00:00",
+   "action": {
+    "definitionId": "timer",
+    "options": {
+     "time": "00:01:00",
+     "opt": "countdown_to_zero"
+    }
+   }
+  },
+  {
+   "id": "clean_add_up_timer",
+   "category": "Basic clean",
+   "name": "00:00:00",
+   "text": "00:00:00",
+   "action": {
+    "definitionId": "timer_countup",
+    "options": {
+     "time": "00:00:00"
+    }
+   }
+  },
+  {
+   "id": "clean_timer_time_to",
+   "category": "Basic clean",
+   "name": "12:00",
+   "text": "12:00",
+   "action": {
+    "definitionId": "timer_countdown_to_time",
+    "options": {
+     "time": "12:00:00",
+     "opt": "beyondzero/"
+    }
+   }
+  },
+  {
+   "id": "clean_message_show",
+   "category": "Basic clean",
+   "name": "Show",
+   "text": "Show",
+   "action": {
+    "definitionId": "message_toggle",
+    "options": {
+     "val": "show"
+    }
+   }
+  },
+  {
+   "id": "clean_message_hide",
+   "category": "Basic clean",
+   "name": "Hide",
+   "text": "Hide",
+   "action": {
+    "definitionId": "message_toggle",
+    "options": {
+     "val": "hide"
+    }
+   }
+  },
+  {
+   "id": "clean_message_toggle",
+   "category": "Basic clean",
+   "name": "Toggle",
+   "text": "Toggle",
+   "action": {
+    "definitionId": "message_toggle",
+    "options": {
+     "val": "toggle"
+    }
+   }
+  },
+  {
+   "id": "clean_set_message",
+   "category": "Basic clean",
+   "name": "Message",
+   "text": "Message",
+   "action": {
+    "definitionId": "message_set",
+    "options": {
+     "message": "Message"
+    }
+   }
+  },
+  {
+   "id": "clean_send_message",
+   "category": "Basic clean",
+   "name": "Message",
+   "text": "Message",
+   "action": {
+    "definitionId": "message_send",
+    "options": {
+     "message": "Message"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-avmediatools-protimer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Sander Kamp, Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "avmediatools-protimer",
+  "version": "2.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Sander Kamp",
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-avmediatools-protimer.git"
+ }
+}

@@ -1,0 +1,1435 @@
+{
+ "format": 1,
+ "id": "m-aja-fs",
+ "name": "AJA FS2 / FS4 / FS-HDR",
+ "category": "AJA",
+ "version": "0.1.3",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_audio_output",
+   "name": "Set Audio Output",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Source",
+     "type": "select",
+     "default": "18",
+     "choices": [
+      {
+       "id": "0",
+       "label": "SDI1 Input"
+      },
+      {
+       "id": "1",
+       "label": "SDI2 Input"
+      },
+      {
+       "id": "2",
+       "label": "SDI3 Input"
+      },
+      {
+       "id": "3",
+       "label": "SDI4 Input"
+      },
+      {
+       "id": "4",
+       "label": "SDI5 Input"
+      },
+      {
+       "id": "5",
+       "label": "SDI6 Input"
+      },
+      {
+       "id": "6",
+       "label": "SDI7 Input"
+      },
+      {
+       "id": "7",
+       "label": "SDI8 Input"
+      },
+      {
+       "id": "8",
+       "label": "AES/EBU In"
+      },
+      {
+       "id": "9",
+       "label": "MADI BNC In"
+      },
+      {
+       "id": "10",
+       "label": "MADI Fiber In"
+      },
+      {
+       "id": "11",
+       "label": "Mix Down 1 L|R"
+      },
+      {
+       "id": "12",
+       "label": "Mix Down 2 L|R"
+      },
+      {
+       "id": "15",
+       "label": "Sig Gen 1KHz"
+      },
+      {
+       "id": "16",
+       "label": "Sig Gen 400Hz"
+      },
+      {
+       "id": "17",
+       "label": "Mute"
+      },
+      {
+       "id": "18",
+       "label": "Map"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_AudioOutputSelect_Vid{{option.output|map}}Embed&value={{option.mode|map}}&configid=0"
+   },
+   "maps": {
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    },
+    "mode": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18"
+    }
+   }
+  },
+  {
+   "id": "set_audio_embed_map",
+   "name": "Set Audio Embed Map",
+   "options": [
+    {
+     "id": "sourceChannel",
+     "label": "Source Channel",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "SDI1 Ch 1"
+      },
+      {
+       "id": "1",
+       "label": "SDI1 Ch 2"
+      },
+      {
+       "id": "2",
+       "label": "SDI1 Ch 3"
+      },
+      {
+       "id": "3",
+       "label": "SDI1 Ch 4"
+      },
+      {
+       "id": "4",
+       "label": "SDI1 Ch 5"
+      },
+      {
+       "id": "5",
+       "label": "SDI1 Ch 6"
+      },
+      {
+       "id": "6",
+       "label": "SDI1 Ch 7"
+      },
+      {
+       "id": "7",
+       "label": "SDI1 Ch 8"
+      },
+      {
+       "id": "8",
+       "label": "SDI1 Ch 9"
+      },
+      {
+       "id": "9",
+       "label": "SDI1 Ch 10"
+      },
+      {
+       "id": "10",
+       "label": "SDI1 Ch 11"
+      },
+      {
+       "id": "11",
+       "label": "SDI1 Ch 12"
+      },
+      {
+       "id": "12",
+       "label": "SDI1 Ch 13"
+      },
+      {
+       "id": "13",
+       "label": "SDI1 Ch 14"
+      },
+      {
+       "id": "14",
+       "label": "SDI1 Ch 15"
+      },
+      {
+       "id": "15",
+       "label": "SDI1 Ch 16"
+      },
+      {
+       "id": "16",
+       "label": "SDI2 Ch 1"
+      },
+      {
+       "id": "17",
+       "label": "SDI2 Ch 2"
+      },
+      {
+       "id": "18",
+       "label": "SDI2 Ch 3"
+      },
+      {
+       "id": "19",
+       "label": "SDI2 Ch 4"
+      },
+      {
+       "id": "20",
+       "label": "SDI2 Ch 5"
+      },
+      {
+       "id": "21",
+       "label": "SDI2 Ch 6"
+      },
+      {
+       "id": "22",
+       "label": "SDI2 Ch 7"
+      },
+      {
+       "id": "23",
+       "label": "SDI2 Ch 8"
+      },
+      {
+       "id": "24",
+       "label": "SDI2 Ch 9"
+      },
+      {
+       "id": "25",
+       "label": "SDI2 Ch 10"
+      },
+      {
+       "id": "26",
+       "label": "SDI2 Ch 11"
+      },
+      {
+       "id": "27",
+       "label": "SDI2 Ch 12"
+      },
+      {
+       "id": "28",
+       "label": "SDI2 Ch 13"
+      },
+      {
+       "id": "29",
+       "label": "SDI2 Ch 14"
+      },
+      {
+       "id": "30",
+       "label": "SDI2 Ch 15"
+      },
+      {
+       "id": "31",
+       "label": "SDI2 Ch 16"
+      },
+      {
+       "id": "32",
+       "label": "SDI3 Ch 1"
+      },
+      {
+       "id": "33",
+       "label": "SDI3 Ch 2"
+      },
+      {
+       "id": "34",
+       "label": "SDI3 Ch 3"
+      },
+      {
+       "id": "35",
+       "label": "SDI3 Ch 4"
+      },
+      {
+       "id": "36",
+       "label": "SDI3 Ch 5"
+      },
+      {
+       "id": "37",
+       "label": "SDI3 Ch 6"
+      },
+      {
+       "id": "38",
+       "label": "SDI3 Ch 7"
+      },
+      {
+       "id": "39",
+       "label": "SDI3 Ch 8"
+      },
+      {
+       "id": "40",
+       "label": "SDI3 Ch 9"
+      },
+      {
+       "id": "41",
+       "label": "SDI3 Ch 10"
+      },
+      {
+       "id": "42",
+       "label": "SDI3 Ch 11"
+      },
+      {
+       "id": "43",
+       "label": "SDI3 Ch 12"
+      },
+      {
+       "id": "44",
+       "label": "SDI3 Ch 13"
+      },
+      {
+       "id": "45",
+       "label": "SDI3 Ch 14"
+      },
+      {
+       "id": "46",
+       "label": "SDI3 Ch 15"
+      },
+      {
+       "id": "47",
+       "label": "SDI3 Ch 16"
+      },
+      {
+       "id": "48",
+       "label": "SDI4 Ch 1"
+      },
+      {
+       "id": "49",
+       "label": "SDI4 Ch 2"
+      },
+      {
+       "id": "50",
+       "label": "SDI4 Ch 3"
+      },
+      {
+       "id": "51",
+       "label": "SDI4 Ch 4"
+      },
+      {
+       "id": "52",
+       "label": "SDI4 Ch 5"
+      },
+      {
+       "id": "53",
+       "label": "SDI4 Ch 6"
+      },
+      {
+       "id": "54",
+       "label": "SDI4 Ch 7"
+      },
+      {
+       "id": "55",
+       "label": "SDI4 Ch 8"
+      },
+      {
+       "id": "56",
+       "label": "SDI4 Ch 9"
+      },
+      {
+       "id": "57",
+       "label": "SDI4 Ch 10"
+      },
+      {
+       "id": "58",
+       "label": "SDI4 Ch 11"
+      },
+      {
+       "id": "59",
+       "label": "SDI4 Ch 12"
+      },
+      {
+       "id": "60",
+       "label": "SDI4 Ch 13"
+      },
+      {
+       "id": "61",
+       "label": "SDI4 Ch 14"
+      },
+      {
+       "id": "62",
+       "label": "SDI4 Ch 15"
+      },
+      {
+       "id": "63",
+       "label": "SDI4 Ch 16"
+      },
+      {
+       "id": "64",
+       "label": "SDI5 Ch 1"
+      },
+      {
+       "id": "65",
+       "label": "SDI5 Ch 2"
+      },
+      {
+       "id": "66",
+       "label": "SDI5 Ch 3"
+      },
+      {
+       "id": "67",
+       "label": "SDI5 Ch 4"
+      },
+      {
+       "id": "68",
+       "label": "SDI5 Ch 5"
+      },
+      {
+       "id": "69",
+       "label": "SDI5 Ch 6"
+      },
+      {
+       "id": "70",
+       "label": "SDI5 Ch 7"
+      },
+      {
+       "id": "71",
+       "label": "SDI5 Ch 8"
+      },
+      {
+       "id": "72",
+       "label": "SDI5 Ch 9"
+      },
+      {
+       "id": "73",
+       "label": "SDI5 Ch 10"
+      },
+      {
+       "id": "74",
+       "label": "SDI5 Ch 11"
+      },
+      {
+       "id": "75",
+       "label": "SDI5 Ch 12"
+      },
+      {
+       "id": "76",
+       "label": "SDI5 Ch 13"
+      },
+      {
+       "id": "77",
+       "label": "SDI5 Ch 14"
+      },
+      {
+       "id": "78",
+       "label": "SDI5 Ch 15"
+      },
+      {
+       "id": "79",
+       "label": "SDI5 Ch 16"
+      },
+      {
+       "id": "80",
+       "label": "SDI6 Ch 1"
+      },
+      {
+       "id": "81",
+       "label": "SDI6 Ch 2"
+      },
+      {
+       "id": "82",
+       "label": "SDI6 Ch 3"
+      },
+      {
+       "id": "83",
+       "label": "SDI6 Ch 4"
+      },
+      {
+       "id": "84",
+       "label": "SDI6 Ch 5"
+      },
+      {
+       "id": "85",
+       "label": "SDI6 Ch 6"
+      },
+      {
+       "id": "86",
+       "label": "SDI6 Ch 7"
+      },
+      {
+       "id": "87",
+       "label": "SDI6 Ch 8"
+      },
+      {
+       "id": "88",
+       "label": "SDI6 Ch 9"
+      },
+      {
+       "id": "89",
+       "label": "SDI6 Ch 10"
+      },
+      {
+       "id": "90",
+       "label": "SDI6 Ch 11"
+      },
+      {
+       "id": "91",
+       "label": "SDI6 Ch 12"
+      },
+      {
+       "id": "92",
+       "label": "SDI6 Ch 13"
+      },
+      {
+       "id": "93",
+       "label": "SDI6 Ch 14"
+      },
+      {
+       "id": "94",
+       "label": "SDI6 Ch 15"
+      },
+      {
+       "id": "95",
+       "label": "SDI6 Ch 16"
+      },
+      {
+       "id": "96",
+       "label": "SDI7 Ch 1"
+      },
+      {
+       "id": "97",
+       "label": "SDI7 Ch 2"
+      },
+      {
+       "id": "98",
+       "label": "SDI7 Ch 3"
+      },
+      {
+       "id": "99",
+       "label": "SDI7 Ch 4"
+      },
+      {
+       "id": "100",
+       "label": "SDI7 Ch 5"
+      },
+      {
+       "id": "101",
+       "label": "SDI7 Ch 6"
+      },
+      {
+       "id": "102",
+       "label": "SDI7 Ch 7"
+      },
+      {
+       "id": "103",
+       "label": "SDI7 Ch 8"
+      },
+      {
+       "id": "104",
+       "label": "SDI7 Ch 9"
+      },
+      {
+       "id": "105",
+       "label": "SDI7 Ch 10"
+      },
+      {
+       "id": "106",
+       "label": "SDI7 Ch 11"
+      },
+      {
+       "id": "107",
+       "label": "SDI7 Ch 12"
+      },
+      {
+       "id": "108",
+       "label": "SDI7 Ch 13"
+      },
+      {
+       "id": "109",
+       "label": "SDI7 Ch 14"
+      },
+      {
+       "id": "110",
+       "label": "SDI7 Ch 15"
+      },
+      {
+       "id": "111",
+       "label": "SDI7 Ch 16"
+      },
+      {
+       "id": "112",
+       "label": "SDI8 Ch 1"
+      },
+      {
+       "id": "113",
+       "label": "SDI8 Ch 2"
+      },
+      {
+       "id": "114",
+       "label": "SDI8 Ch 3"
+      },
+      {
+       "id": "115",
+       "label": "SDI8 Ch 4"
+      },
+      {
+       "id": "116",
+       "label": "SDI8 Ch 5"
+      },
+      {
+       "id": "117",
+       "label": "SDI8 Ch 6"
+      },
+      {
+       "id": "118",
+       "label": "SDI8 Ch 7"
+      },
+      {
+       "id": "119",
+       "label": "SDI8 Ch 8"
+      },
+      {
+       "id": "120",
+       "label": "SDI8 Ch 9"
+      },
+      {
+       "id": "121",
+       "label": "SDI8 Ch 10"
+      },
+      {
+       "id": "122",
+       "label": "SDI8 Ch 11"
+      },
+      {
+       "id": "123",
+       "label": "SDI8 Ch 12"
+      },
+      {
+       "id": "124",
+       "label": "SDI8 Ch 13"
+      },
+      {
+       "id": "125",
+       "label": "SDI8 Ch 14"
+      },
+      {
+       "id": "126",
+       "label": "SDI8 Ch 15"
+      },
+      {
+       "id": "127",
+       "label": "SDI8 Ch 16"
+      },
+      {
+       "id": "128",
+       "label": "AES Ch 1"
+      },
+      {
+       "id": "129",
+       "label": "AES Ch 2"
+      },
+      {
+       "id": "130",
+       "label": "AES Ch 3"
+      },
+      {
+       "id": "131",
+       "label": "AES Ch 4"
+      },
+      {
+       "id": "132",
+       "label": "AES Ch 5"
+      },
+      {
+       "id": "133",
+       "label": "AES Ch 6"
+      },
+      {
+       "id": "134",
+       "label": "AES Ch 7"
+      },
+      {
+       "id": "135",
+       "label": "AES Ch 8"
+      },
+      {
+       "id": "136",
+       "label": "AES Ch 9"
+      },
+      {
+       "id": "137",
+       "label": "AES Ch 10"
+      },
+      {
+       "id": "138",
+       "label": "AES Ch 11"
+      },
+      {
+       "id": "139",
+       "label": "AES Ch 12"
+      },
+      {
+       "id": "140",
+       "label": "AES Ch 13"
+      },
+      {
+       "id": "141",
+       "label": "AES Ch 14"
+      },
+      {
+       "id": "142",
+       "label": "AES Ch 15"
+      },
+      {
+       "id": "143",
+       "label": "AES Ch 16"
+      },
+      {
+       "id": "144",
+       "label": "MADIBNC Ch 1"
+      },
+      {
+       "id": "145",
+       "label": "MADIBNC Ch 2"
+      },
+      {
+       "id": "146",
+       "label": "MADIBNC Ch 3"
+      },
+      {
+       "id": "147",
+       "label": "MADIBNC Ch 4"
+      },
+      {
+       "id": "148",
+       "label": "MADIBNC Ch 5"
+      },
+      {
+       "id": "149",
+       "label": "MADIBNC Ch 6"
+      },
+      {
+       "id": "150",
+       "label": "MADIBNC Ch 7"
+      },
+      {
+       "id": "151",
+       "label": "MADIBNC Ch 8"
+      },
+      {
+       "id": "152",
+       "label": "MADIBNC Ch 9"
+      },
+      {
+       "id": "153",
+       "label": "MADIBNC Ch 10"
+      },
+      {
+       "id": "154",
+       "label": "MADIBNC Ch 11"
+      },
+      {
+       "id": "155",
+       "label": "MADIBNC Ch 12"
+      },
+      {
+       "id": "156",
+       "label": "MADIBNC Ch 13"
+      },
+      {
+       "id": "157",
+       "label": "MADIBNC Ch 14"
+      },
+      {
+       "id": "158",
+       "label": "MADIBNC Ch 15"
+      },
+      {
+       "id": "159",
+       "label": "MADIBNC Ch 16"
+      },
+      {
+       "id": "160",
+       "label": "MADIBNC Ch 17"
+      },
+      {
+       "id": "161",
+       "label": "MADIBNC Ch 18"
+      },
+      {
+       "id": "162",
+       "label": "MADIBNC Ch 19"
+      },
+      {
+       "id": "163",
+       "label": "MADIBNC Ch 20"
+      },
+      {
+       "id": "164",
+       "label": "MADIBNC Ch 21"
+      },
+      {
+       "id": "165",
+       "label": "MADIBNC Ch 22"
+      },
+      {
+       "id": "166",
+       "label": "MADIBNC Ch 23"
+      },
+      {
+       "id": "167",
+       "label": "MADIBNC Ch 24"
+      },
+      {
+       "id": "168",
+       "label": "MADIBNC Ch 25"
+      },
+      {
+       "id": "169",
+       "label": "MADIBNC Ch 26"
+      },
+      {
+       "id": "170",
+       "label": "MADIBNC Ch 27"
+      },
+      {
+       "id": "171",
+       "label": "MADIBNC Ch 28"
+      },
+      {
+       "id": "172",
+       "label": "MADIBNC Ch 29"
+      },
+      {
+       "id": "173",
+       "label": "MADIBNC Ch 30"
+      },
+      {
+       "id": "174",
+       "label": "MADIBNC Ch 31"
+      },
+      {
+       "id": "175",
+       "label": "MADIBNC Ch 32"
+      },
+      {
+       "id": "176",
+       "label": "MADIBNC Ch 33"
+      },
+      {
+       "id": "177",
+       "label": "MADIBNC Ch 34"
+      },
+      {
+       "id": "178",
+       "label": "MADIBNC Ch 35"
+      },
+      {
+       "id": "179",
+       "label": "MADIBNC Ch 36"
+      },
+      {
+       "id": "180",
+       "label": "MADIBNC Ch 37"
+      },
+      {
+       "id": "181",
+       "label": "MADIBNC Ch 38"
+      },
+      {
+       "id": "182",
+       "label": "MADIBNC Ch 39"
+      },
+      {
+       "id": "183",
+       "label": "MADIBNC Ch 40"
+      },
+      {
+       "id": "184",
+       "label": "MADIBNC Ch 41"
+      },
+      {
+       "id": "185",
+       "label": "MADIBNC Ch 42"
+      },
+      {
+       "id": "186",
+       "label": "MADIBNC Ch 43"
+      },
+      {
+       "id": "187",
+       "label": "MADIBNC Ch 44"
+      },
+      {
+       "id": "188",
+       "label": "MADIBNC Ch 45"
+      },
+      {
+       "id": "189",
+       "label": "MADIBNC Ch 46"
+      },
+      {
+       "id": "190",
+       "label": "MADIBNC Ch 47"
+      },
+      {
+       "id": "191",
+       "label": "MADIBNC Ch 48"
+      },
+      {
+       "id": "192",
+       "label": "MADIBNC Ch 49"
+      },
+      {
+       "id": "193",
+       "label": "MADIBNC Ch 50"
+      },
+      {
+       "id": "194",
+       "label": "MADIBNC Ch 51"
+      },
+      {
+       "id": "195",
+       "label": "MADIBNC Ch 52"
+      },
+      {
+       "id": "196",
+       "label": "MADIBNC Ch 53"
+      },
+      {
+       "id": "197",
+       "label": "MADIBNC Ch 54"
+      },
+      {
+       "id": "198",
+       "label": "MADIBNC Ch 55"
+      },
+      {
+       "id": "199",
+       "label": "MADIBNC Ch 56"
+      },
+      {
+       "id": "200",
+       "label": "MADIBNC Ch 57"
+      },
+      {
+       "id": "201",
+       "label": "MADIBNC Ch 58"
+      },
+      {
+       "id": "202",
+       "label": "MADIBNC Ch 59"
+      },
+      {
+       "id": "203",
+       "label": "MADIBNC Ch 60"
+      },
+      {
+       "id": "204",
+       "label": "MADIBNC Ch 61"
+      },
+      {
+       "id": "205",
+       "label": "MADIBNC Ch 62"
+      },
+      {
+       "id": "206",
+       "label": "MADIBNC Ch 63"
+      },
+      {
+       "id": "207",
+       "label": "MADIBNC Ch 64"
+      },
+      {
+       "id": "208",
+       "label": "MADIFIB Ch 1"
+      },
+      {
+       "id": "209",
+       "label": "MADIFIB Ch 2"
+      },
+      {
+       "id": "210",
+       "label": "MADIFIB Ch 3"
+      },
+      {
+       "id": "211",
+       "label": "MADIFIB Ch 4"
+      },
+      {
+       "id": "212",
+       "label": "MADIFIB Ch 5"
+      },
+      {
+       "id": "213",
+       "label": "MADIFIB Ch 6"
+      },
+      {
+       "id": "214",
+       "label": "MADIFIB Ch 7"
+      },
+      {
+       "id": "215",
+       "label": "MADIFIB Ch 8"
+      },
+      {
+       "id": "216",
+       "label": "MADIFIB Ch 9"
+      },
+      {
+       "id": "217",
+       "label": "MADIFIB Ch 10"
+      },
+      {
+       "id": "218",
+       "label": "MADIFIB Ch 11"
+      },
+      {
+       "id": "219",
+       "label": "MADIFIB Ch 12"
+      },
+      {
+       "id": "220",
+       "label": "MADIFIB Ch 13"
+      },
+      {
+       "id": "221",
+       "label": "MADIFIB Ch 14"
+      },
+      {
+       "id": "222",
+       "label": "MADIFIB Ch 15"
+      },
+      {
+       "id": "223",
+       "label": "MADIFIB Ch 16"
+      },
+      {
+       "id": "224",
+       "label": "MADIFIB Ch 17"
+      },
+      {
+       "id": "225",
+       "label": "MADIFIB Ch 18"
+      },
+      {
+       "id": "226",
+       "label": "MADIFIB Ch 19"
+      },
+      {
+       "id": "227",
+       "label": "MADIFIB Ch 20"
+      },
+      {
+       "id": "228",
+       "label": "MADIFIB Ch 21"
+      },
+      {
+       "id": "229",
+       "label": "MADIFIB Ch 22"
+      },
+      {
+       "id": "230",
+       "label": "MADIFIB Ch 23"
+      },
+      {
+       "id": "231",
+       "label": "MADIFIB Ch 24"
+      },
+      {
+       "id": "232",
+       "label": "MADIFIB Ch 25"
+      },
+      {
+       "id": "233",
+       "label": "MADIFIB Ch 26"
+      },
+      {
+       "id": "234",
+       "label": "MADIFIB Ch 27"
+      },
+      {
+       "id": "235",
+       "label": "MADIFIB Ch 28"
+      },
+      {
+       "id": "236",
+       "label": "MADIFIB Ch 29"
+      },
+      {
+       "id": "237",
+       "label": "MADIFIB Ch 30"
+      },
+      {
+       "id": "238",
+       "label": "MADIFIB Ch 31"
+      },
+      {
+       "id": "239",
+       "label": "MADIFIB Ch 32"
+      },
+      {
+       "id": "240",
+       "label": "MADIFIB Ch 33"
+      },
+      {
+       "id": "241",
+       "label": "MADIFIB Ch 34"
+      },
+      {
+       "id": "242",
+       "label": "MADIFIB Ch 35"
+      },
+      {
+       "id": "243",
+       "label": "MADIFIB Ch 36"
+      },
+      {
+       "id": "244",
+       "label": "MADIFIB Ch 37"
+      },
+      {
+       "id": "245",
+       "label": "MADIFIB Ch 38"
+      },
+      {
+       "id": "246",
+       "label": "MADIFIB Ch 39"
+      },
+      {
+       "id": "247",
+       "label": "MADIFIB Ch 40"
+      },
+      {
+       "id": "248",
+       "label": "MADIFIB Ch 41"
+      },
+      {
+       "id": "249",
+       "label": "MADIFIB Ch 42"
+      },
+      {
+       "id": "250",
+       "label": "MADIFIB Ch 43"
+      },
+      {
+       "id": "251",
+       "label": "MADIFIB Ch 44"
+      },
+      {
+       "id": "252",
+       "label": "MADIFIB Ch 45"
+      },
+      {
+       "id": "253",
+       "label": "MADIFIB Ch 46"
+      },
+      {
+       "id": "254",
+       "label": "MADIFIB Ch 47"
+      },
+      {
+       "id": "255",
+       "label": "MADIFIB Ch 48"
+      },
+      {
+       "id": "256",
+       "label": "MADIFIB Ch 49"
+      },
+      {
+       "id": "257",
+       "label": "MADIFIB Ch 50"
+      },
+      {
+       "id": "258",
+       "label": "MADIFIB Ch 51"
+      },
+      {
+       "id": "259",
+       "label": "MADIFIB Ch 52"
+      },
+      {
+       "id": "260",
+       "label": "MADIFIB Ch 53"
+      },
+      {
+       "id": "261",
+       "label": "MADIFIB Ch 54"
+      },
+      {
+       "id": "262",
+       "label": "MADIFIB Ch 55"
+      },
+      {
+       "id": "263",
+       "label": "MADIFIB Ch 56"
+      },
+      {
+       "id": "264",
+       "label": "MADIFIB Ch 57"
+      },
+      {
+       "id": "265",
+       "label": "MADIFIB Ch 58"
+      },
+      {
+       "id": "266",
+       "label": "MADIFIB Ch 59"
+      },
+      {
+       "id": "267",
+       "label": "MADIFIB Ch 60"
+      },
+      {
+       "id": "268",
+       "label": "MADIFIB Ch 61"
+      },
+      {
+       "id": "269",
+       "label": "MADIFIB Ch 62"
+      },
+      {
+       "id": "270",
+       "label": "MADIFIB Ch 63"
+      },
+      {
+       "id": "271",
+       "label": "MADIFIB Ch 64"
+      },
+      {
+       "id": "272",
+       "label": "MixDown 1 L"
+      },
+      {
+       "id": "273",
+       "label": "MixDown 1 R"
+      },
+      {
+       "id": "274",
+       "label": "MixDown 2 L"
+      },
+      {
+       "id": "275",
+       "label": "MixDown 2 R"
+      },
+      {
+       "id": "280",
+       "label": "Sig Gen 1KHz"
+      },
+      {
+       "id": "281",
+       "label": "Sig Gen 400Hz"
+      },
+      {
+       "id": "282",
+       "label": "Mute"
+      }
+     ]
+    },
+    {
+     "id": "output",
+     "label": "Output Port",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Output 1"
+      },
+      {
+       "id": "2",
+       "label": "Output 2"
+      },
+      {
+       "id": "3",
+       "label": "Output 3"
+      },
+      {
+       "id": "4",
+       "label": "Output 4"
+      }
+     ]
+    },
+    {
+     "id": "outputChannel",
+     "label": "Output Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Channel 9"
+      },
+      {
+       "id": "10",
+       "label": "Channel 10"
+      },
+      {
+       "id": "11",
+       "label": "Channel 11"
+      },
+      {
+       "id": "12",
+       "label": "Channel 12"
+      },
+      {
+       "id": "13",
+       "label": "Channel 13"
+      },
+      {
+       "id": "14",
+       "label": "Channel 14"
+      },
+      {
+       "id": "15",
+       "label": "Channel 15"
+      },
+      {
+       "id": "16",
+       "label": "Channel 16"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/config?action=set&paramid=eParamID_AudioOutputCh{{option.outputChannel|map}}_SDI{{option.output|map}}&value={{option.sourceChannel}}&configid=0"
+   },
+   "maps": {
+    "outputChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16"
+    },
+    "output": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aja-fs",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：William Viker"
+  }
+ ],
+ "source": {
+  "module": "aja-fs",
+  "version": "0.1.3",
+  "license": "MIT",
+  "maintainers": [
+   "William Viker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aja-fs.git"
+ }
+}

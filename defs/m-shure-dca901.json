@@ -1,0 +1,1052 @@
+{
+ "format": 1,
+ "id": "m-shure-dca901",
+ "name": "Shure DCA901",
+ "category": "Shure",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2202,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "meteringOn",
+   "label": "Enable Metering?",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "meteringInterval",
+   "label": "Metering Interval (in ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 250,
+   "max": 99999
+  },
+  {
+   "id": "variableFormat",
+   "label": "Variable Format",
+   "type": "select",
+   "default": "units",
+   "choices": [
+    {
+     "id": "units",
+     "label": "Include Units"
+    },
+    {
+     "id": "numeric",
+     "label": "Numeric Only"
+    }
+   ],
+   "help": "Changing this setting will apply to new values received.  To refresh all variables with the new setting, disable and re-enable the connection after saving these settings."
+  }
+ ],
+ "actions": [
+  {
+   "id": "chan_name",
+   "name": "Set channel name",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name (31 characters max)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} CHAN_NAME {{{option.name}}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_chan_name",
+   "name": "Set network audio channel name",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "name",
+     "label": "Name (31 characters max)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} NA_CHAN_NAME {{{option.name}}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_mute",
+   "name": "Set channel mute",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_MUTE {{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    },
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "audio_mute_post_gate",
+   "name": "Set channel mute post gate",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "choice",
+     "label": "Mute/Unmute/Toggle",
+     "type": "select",
+     "default": "ON",
+     "choices": [
+      {
+       "id": "ON",
+       "label": "Mute"
+      },
+      {
+       "id": "OFF",
+       "label": "Unmute"
+      },
+      {
+       "id": "TOGGLE",
+       "label": "Toggle Mute/Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_MUTE_POSTGATE {{option.choice|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    },
+    "choice": {
+     "ON": "ON",
+     "OFF": "OFF",
+     "TOGGLE": "TOGGLE"
+    }
+   }
+  },
+  {
+   "id": "audio_gain",
+   "name": "Set audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -110,
+     "max": 30
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES {{option.gain|lin:10:1100}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_gain_inc",
+   "name": "Increase audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 0.1,
+     "max": 140
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES INC {{option.gain|lin:10:0}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_gain_dec",
+   "name": "Decrease audio gain of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 0.1,
+     "max": 140
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_HI_RES DEC {{option.gain|lin:10:0}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_gain_post_gate",
+   "name": "Set audio gain post gate of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 0,
+     "min": -110,
+     "max": 30
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_POSTGATE {{option.gain|lin:10:1100}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_gain_post_gate_inc",
+   "name": "Increase audio gain post gate of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 0.1,
+     "max": 140
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_POSTGATE INC {{option.gain|lin:10:0}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "audio_gain_post_gate_dec",
+   "name": "Decrease audio gain post gate of channel",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Channel 1"
+      },
+      {
+       "id": "2",
+       "label": "Channel 2"
+      },
+      {
+       "id": "3",
+       "label": "Channel 3"
+      },
+      {
+       "id": "4",
+       "label": "Channel 4"
+      },
+      {
+       "id": "5",
+       "label": "Channel 5"
+      },
+      {
+       "id": "6",
+       "label": "Channel 6"
+      },
+      {
+       "id": "7",
+       "label": "Channel 7"
+      },
+      {
+       "id": "8",
+       "label": "Channel 8"
+      },
+      {
+       "id": "9",
+       "label": "Automix Out Mono"
+      },
+      {
+       "id": "18",
+       "label": "Mix A"
+      },
+      {
+       "id": "19",
+       "label": "Mix B"
+      }
+     ]
+    },
+    {
+     "id": "gain",
+     "label": "Gain Value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": 0.1,
+     "max": 140
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET {{option.channel|map}} AUDIO_GAIN_POSTGATE DEC {{option.gain|lin:10:0}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "channel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "18": "18",
+     "19": "19"
+    }
+   }
+  },
+  {
+   "id": "flash_lights",
+   "name": "Flash lights on the mixer",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET FLASH ON >\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "preset",
+   "name": "Set preset",
+   "options": [
+    {
+     "id": "preset",
+     "label": "Preset",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Preset 1 (Preset 1 (EMPTY))"
+      },
+      {
+       "id": "2",
+       "label": "Preset 2 (Preset 2 (EMPTY))"
+      },
+      {
+       "id": "3",
+       "label": "Preset 3 (Preset 3 (EMPTY))"
+      },
+      {
+       "id": "4",
+       "label": "Preset 4 (Preset 4 (EMPTY))"
+      },
+      {
+       "id": "5",
+       "label": "Preset 5 (Preset 5 (EMPTY))"
+      },
+      {
+       "id": "6",
+       "label": "Preset 6 (Preset 6 (EMPTY))"
+      },
+      {
+       "id": "7",
+       "label": "Preset 7 (Preset 7 (EMPTY))"
+      },
+      {
+       "id": "8",
+       "label": "Preset 8 (Preset 8 (EMPTY))"
+      },
+      {
+       "id": "9",
+       "label": "Preset 9 (7ch Fan Out)"
+      },
+      {
+       "id": "10",
+       "label": "Preset 10 (5.1 SMPTE)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "< SET PRESET {{option.preset|map}} >\\r\\n",
+    "encoding": "text"
+   },
+   "maps": {
+    "preset": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shure-dca901",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Newman"
+  }
+ ],
+ "source": {
+  "module": "shure-dca901",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Newman"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shure-dca901.git"
+ }
+}

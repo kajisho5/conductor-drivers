@@ -1,0 +1,431 @@
+{
+ "format": 1,
+ "id": "m-interspace-mastercuev7",
+ "name": "Interspace Industries MasterCue V7",
+ "category": "Interspace Industries",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "unitId",
+   "label": "MasterCue ID (shown on screen)",
+   "type": "text",
+   "default": "001-123-456"
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_output_action",
+   "name": "Set Output",
+   "options": [
+    {
+     "id": "outputNumber",
+     "label": "Output Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 6
+    },
+    {
+     "id": "outputState",
+     "label": "Setting",
+     "type": "select",
+     "default": "outputOn",
+     "choices": [
+      {
+       "id": "outputOn",
+       "label": "Enabled"
+      },
+      {
+       "id": "outputOff",
+       "label": "Disabled"
+      },
+      {
+       "id": "outputToggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/command/001-123-456",
+    "body": "{\"command\":\"output{{option.outputState|map}}\",\"index\":{{option.outputNumber|lin:1:-1}}}",
+    "contentType": "application/json"
+   },
+   "maps": {
+    "outputState": {
+     "outputOn": "On",
+     "outputOff": "Off",
+     "outputToggle": "Toggle"
+    }
+   }
+  },
+  {
+   "id": "suspend_action",
+   "name": "Suspend All",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/command/001-123-456",
+    "body": "{\"command\":\"suspendOutputs\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "resume_action",
+   "name": "Resume All",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/command/001-123-456",
+    "body": "{\"command\":\"resumeOutputs\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "clear_all_handsets_action",
+   "name": "Clear Handsets",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/command/001-123-456",
+    "body": "{\"command\":\"clearAllHandsets\"}",
+    "contentType": "application/json"
+   }
+  },
+  {
+   "id": "factory_reset_action",
+   "name": "Factory Reset",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/command/001-123-456",
+    "body": "{\"command\":\"factoryReset\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "OutputToggle1",
+   "category": "Outputs",
+   "name": "Output Toggle ",
+   "text": "1\nTOGGLE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 1,
+     "outputState": "outputToggle"
+    }
+   }
+  },
+  {
+   "id": "OutputToggle2",
+   "category": "Outputs",
+   "name": "Output Toggle 2",
+   "text": "2\nTOGGLE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 2,
+     "outputState": "outputToggle"
+    }
+   }
+  },
+  {
+   "id": "OutputToggle3",
+   "category": "Outputs",
+   "name": "Output Toggle 3",
+   "text": "3\nTOGGLE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 3,
+     "outputState": "outputToggle"
+    }
+   }
+  },
+  {
+   "id": "OutputToggle4",
+   "category": "Outputs",
+   "name": "Output Toggle 4",
+   "text": "4\nTOGGLE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 4,
+     "outputState": "outputToggle"
+    }
+   }
+  },
+  {
+   "id": "OutputToggle5",
+   "category": "Outputs",
+   "name": "Output Toggle 5",
+   "text": "5\nTOGGLE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 5,
+     "outputState": "outputToggle"
+    }
+   }
+  },
+  {
+   "id": "OutputToggle6",
+   "category": "Outputs",
+   "name": "Output Toggle 6",
+   "text": "6\nTOGGLE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 6,
+     "outputState": "outputToggle"
+    }
+   }
+  },
+  {
+   "id": "OutputEnable1",
+   "category": "Outputs",
+   "name": "Output Enable 1",
+   "text": "1\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 1,
+     "outputState": "outputOn"
+    }
+   }
+  },
+  {
+   "id": "OutputEnable2",
+   "category": "Outputs",
+   "name": "Output Enable 2",
+   "text": "2\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 2,
+     "outputState": "outputOn"
+    }
+   }
+  },
+  {
+   "id": "OutputEnable3",
+   "category": "Outputs",
+   "name": "Output Enable 3",
+   "text": "3\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 3,
+     "outputState": "outputOn"
+    }
+   }
+  },
+  {
+   "id": "OutputEnable4",
+   "category": "Outputs",
+   "name": "Output Enable 4",
+   "text": "4\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 4,
+     "outputState": "outputOn"
+    }
+   }
+  },
+  {
+   "id": "OutputEnable5",
+   "category": "Outputs",
+   "name": "Output Enable 5",
+   "text": "5\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 5,
+     "outputState": "outputOn"
+    }
+   }
+  },
+  {
+   "id": "OutputEnable6",
+   "category": "Outputs",
+   "name": "Output Enable 6",
+   "text": "6\nON",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 6,
+     "outputState": "outputOn"
+    }
+   }
+  },
+  {
+   "id": "OutputDisable1",
+   "category": "Outputs",
+   "name": "Output Disable ",
+   "text": "1\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 1,
+     "outputState": "outputOff"
+    }
+   }
+  },
+  {
+   "id": "OutputDisable2",
+   "category": "Outputs",
+   "name": "Output Disable 2",
+   "text": "2\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 2,
+     "outputState": "outputOff"
+    }
+   }
+  },
+  {
+   "id": "OutputDisable3",
+   "category": "Outputs",
+   "name": "Output Disable 3",
+   "text": "3\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 3,
+     "outputState": "outputOff"
+    }
+   }
+  },
+  {
+   "id": "OutputDisable4",
+   "category": "Outputs",
+   "name": "Output Disable 4",
+   "text": "4\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 4,
+     "outputState": "outputOff"
+    }
+   }
+  },
+  {
+   "id": "OutputDisable5",
+   "category": "Outputs",
+   "name": "Output Disable 5",
+   "text": "5\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 5,
+     "outputState": "outputOff"
+    }
+   }
+  },
+  {
+   "id": "OutputDisable6",
+   "category": "Outputs",
+   "name": "Output Disable 6",
+   "text": "6\nOFF",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "set_output_action",
+    "options": {
+     "outputNumber": 6,
+     "outputState": "outputOff"
+    }
+   }
+  },
+  {
+   "id": "ClearHandsets",
+   "category": "Handsets",
+   "name": "Clear Handsets",
+   "text": "Clear Handsets",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "clear_all_handsets_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "SuspendAll",
+   "category": "Outputs",
+   "name": "Suspend All",
+   "text": "Suspend All",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "suspend_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "ResumeAll",
+   "category": "Outputs",
+   "name": "Resume All",
+   "text": "Resume All",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "resume_action",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-interspace-mastercuev7",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Luc Heaton, Interspace Industries, Will Dean"
+  }
+ ],
+ "source": {
+  "module": "interspace-mastercuev7",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Luc Heaton",
+   "Interspace Industries",
+   "Will Dean"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-interspace-mastercuev7"
+ }
+}

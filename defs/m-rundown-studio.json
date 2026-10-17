@@ -1,0 +1,265 @@
+{
+ "format": 1,
+ "id": "m-rundown-studio",
+ "name": "Rundown Studio",
+ "category": "Rundown Studio",
+ "version": "1.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://app.rundownstudio.app",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "apiToken",
+   "label": "API Token",
+   "type": "text",
+   "help": "The API token can be taken from your Rundown Studio Dashboard"
+  },
+  {
+   "id": "rundownId",
+   "label": "Rundown ID",
+   "type": "text",
+   "help": "The ID can be found in the URL bar of your Rundown"
+  },
+  {
+   "id": "advancedConfig",
+   "label": "Advanced Configuration",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "apiBaseUrl",
+   "label": "API Base URL",
+   "type": "text",
+   "default": "https://app.rundownstudio.app/api-v0"
+  },
+  {
+   "id": "socketBaseUrl",
+   "label": "Websocket Base URL",
+   "type": "text",
+   "default": "https://socket.rundownstudio.app"
+  },
+  {
+   "id": "socketPath",
+   "label": "Websocket Path",
+   "type": "text",
+   "default": "/api-v0/socket.io"
+  },
+  {
+   "id": "updateInterval",
+   "label": "Update Interval (ms)",
+   "type": "number",
+   "default": 100
+  },
+  {
+   "id": "verbose",
+   "label": "Verbose Mode",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "startRundown",
+   "name": "Start rundown",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api-v0/rundown//start"
+   }
+  },
+  {
+   "id": "pauseRundown",
+   "name": "Pause rundown",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api-v0/rundown//pause"
+   }
+  },
+  {
+   "id": "goToNextCue",
+   "name": "Go to next cue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api-v0/rundown//next"
+   }
+  },
+  {
+   "id": "goToPreviousCue",
+   "name": "Go to previous cue",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api-v0/rundown//previous"
+   }
+  },
+  {
+   "id": "addTime_Seconds",
+   "name": "Add time to current cue",
+   "options": [
+    {
+     "id": "seconds",
+     "label": "Seconds",
+     "type": "number",
+     "default": 30,
+     "min": 1,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api-v0/rundown//cues/active/add?amount={{option.seconds|lin:1000:0}}"
+   }
+  },
+  {
+   "id": "removeTime_Seconds",
+   "name": "Remove time from current cue",
+   "options": [
+    {
+     "id": "seconds",
+     "label": "Seconds",
+     "type": "number",
+     "default": 30,
+     "min": 1,
+     "max": 9999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api-v0/rundown//cues/active/subtract?amount={{option.seconds|lin:1000:0}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "Start",
+   "category": "Transport Controls",
+   "name": "Start Rundown",
+   "text": "Start Rundown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startRundown",
+    "options": {}
+   }
+  },
+  {
+   "id": "Pause",
+   "category": "Transport Controls",
+   "name": "Pause Rundown",
+   "text": "Pause Rundown",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pauseRundown",
+    "options": {}
+   }
+  },
+  {
+   "id": "Next",
+   "category": "Transport Controls",
+   "name": "Go to next",
+   "text": "Go to next",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "goToNextCue",
+    "options": {}
+   }
+  },
+  {
+   "id": "Previous",
+   "category": "Transport Controls",
+   "name": "Go to previous",
+   "text": "Go to previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "goToPreviousCue",
+    "options": {}
+   }
+  },
+  {
+   "id": "currentCueAddOneMin",
+   "category": "Current Cue",
+   "name": "Current Cue: Add 1 minute",
+   "text": "+1 min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "addTime_Seconds",
+    "options": {
+     "seconds": 60
+    }
+   }
+  },
+  {
+   "id": "currentCueAddFiveMin",
+   "category": "Current Cue",
+   "name": "Current Cue: Add 5 minute",
+   "text": "+5 min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "addTime_Seconds",
+    "options": {
+     "seconds": 300
+    }
+   }
+  },
+  {
+   "id": "currentCueRemoveOneMin",
+   "category": "Current Cue",
+   "name": "Current Cue: Remove 1 minute",
+   "text": "-1 min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "removeTime_Seconds",
+    "options": {
+     "seconds": 60
+    }
+   }
+  },
+  {
+   "id": "currentCueRemoveFiveMin",
+   "category": "Current Cue",
+   "name": "Current Cue: Remove 5 minute",
+   "text": "-5 min",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "removeTime_Seconds",
+    "options": {
+     "seconds": 300
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-rundown-studio",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John Barker, Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "rundown-studio",
+  "version": "1.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "John Barker",
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-rundown-studio.git"
+ }
+}

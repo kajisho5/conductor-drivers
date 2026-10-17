@@ -1,0 +1,450 @@
+{
+ "format": 1,
+ "id": "m-zoom-tiles",
+ "name": "Zoom Tiles",
+ "category": "Zoom",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 3456,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "blockByUserName",
+   "name": "Block by User Name",
+   "options": [
+    {
+     "id": "userName",
+     "label": "User Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/userName/block",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unBlockByUserName",
+   "name": "UnBlock by User Name",
+   "options": [
+    {
+     "id": "userName",
+     "label": "User Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/userName/unBlock",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "startCaptureEngine",
+   "name": "Start Capture Engine",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/startCaptureEngine",
+    "args": []
+   }
+  },
+  {
+   "id": "stopCaptureEngine",
+   "name": "Stop Capture Engine",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/stopCaptureEngine",
+    "args": []
+   }
+  },
+  {
+   "id": "loadConfiguration",
+   "name": "Load Configuration",
+   "options": [
+    {
+     "id": "filePath",
+     "label": "Absolute Configuration Path",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/loadConfiguration",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.filePath}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "favoriteByUserName",
+   "name": "Favorite by User Name",
+   "options": [
+    {
+     "id": "userName",
+     "label": "User Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/userName/favorite",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "favoriteByIndex",
+   "name": "Favorite by Index",
+   "options": [
+    {
+     "id": "galleryIndex",
+     "label": "Gallery Index",
+     "type": "text",
+     "default": "1"
+    },
+    {
+     "id": "tileIndex",
+     "label": "Tile Index",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/tileIndex/favorite",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.galleryIndex}}"
+     },
+     {
+      "type": "i",
+      "value": "{{option.tileIndex}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "unFavoriteByUserName",
+   "name": "UnFavorite by User Name",
+   "options": [
+    {
+     "id": "userName",
+     "label": "User Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/userName/unFavorite",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.userName}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "enableGallery",
+   "name": "Enable Gallery",
+   "options": [
+    {
+     "id": "galleryIndex",
+     "label": "Gallery #",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/enableGallery",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.galleryIndex}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "disableGallery",
+   "name": "Disable Gallery",
+   "options": [
+    {
+     "id": "galleryIndex",
+     "label": "Gallery #",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/disableGallery",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.galleryIndex}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "startQueueTimer",
+   "name": "Start Queue Timer",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/startQueueTimer",
+    "args": []
+   }
+  },
+  {
+   "id": "stopQueueTimer",
+   "name": "Stop Queue Timer",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/stopQueueTimer",
+    "args": []
+   }
+  },
+  {
+   "id": "activateHolePunch",
+   "name": "Activate Hole Punch",
+   "options": [
+    {
+     "id": "galleryIndex",
+     "label": "Gallery #",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/activateHolePunch",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.galleryIndex}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "deactivateHolePunch",
+   "name": "Deactivate Hole Punch",
+   "options": [
+    {
+     "id": "galleryIndex",
+     "label": "Gallery #",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/deactivateHolePunch",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.galleryIndex}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "startPMI",
+   "name": "Start Personal Meeting ID",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/startPMI",
+    "args": []
+   }
+  },
+  {
+   "id": "startIM",
+   "name": "Start Instant Meeting",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/startIM",
+    "args": []
+   }
+  },
+  {
+   "id": "joinMeeting",
+   "name": "Join Meeting",
+   "options": [
+    {
+     "id": "meetingID",
+     "label": "Meeting ID",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "password",
+     "label": "Password(optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/joinMeeting",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.meetingID}}"
+     },
+     {
+      "type": "s",
+      "value": "{{option.password}}"
+     },
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "zakJoin",
+   "name": "ZAK Join Meeting",
+   "options": [
+    {
+     "id": "zak",
+     "label": "Zak",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "meetingID",
+     "label": "Meeting ID",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "password",
+     "label": "Password(optional)",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/zakJoin",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.zak}}"
+     },
+     {
+      "type": "s",
+      "value": "{{option.meetingID}}"
+     },
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     },
+     {
+      "type": "s",
+      "value": "{{option.password}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "leaveMeeting",
+   "name": "Leave Meeting",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/tiles/leaveMeeting",
+    "args": []
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-zoom-tiles",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Justin James"
+  }
+ ],
+ "source": {
+  "module": "zoom-tiles",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Justin James"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-zoom-tiles.git"
+ }
+}

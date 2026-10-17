@@ -1,0 +1,105 @@
+{
+ "format": 1,
+ "id": "m-openweather-rest",
+ "name": "OpenWeather Current Weather API",
+ "category": "OpenWeather",
+ "version": "3.1.2",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.openweathermap.org",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "apikey",
+   "label": "API Key",
+   "type": "text",
+   "help": "Enter your API Key from OpenWeathermap.com."
+  },
+  {
+   "id": "location",
+   "label": "Location",
+   "type": "text",
+   "help": "Weather Location to Display"
+  },
+  {
+   "id": "units",
+   "label": "Measurement Units",
+   "type": "select",
+   "default": "i",
+   "choices": [
+    {
+     "id": "i",
+     "label": "Fahrenheit and MPH"
+    },
+    {
+     "id": "m",
+     "label": "Celsius and kPH"
+    }
+   ]
+  },
+  {
+   "id": "tz",
+   "label": "Timezone",
+   "type": "select",
+   "default": "l",
+   "choices": [
+    {
+     "id": "l",
+     "label": "Times use location configured above"
+    },
+    {
+     "id": "h",
+     "label": "Times use local (Companion) time"
+    },
+    {
+     "id": "u",
+     "label": "Times are UTC"
+    }
+   ]
+  },
+  {
+   "id": "refresh",
+   "label": "Refresh Frequency",
+   "type": "text",
+   "default": "20",
+   "help": "Reload current weather after # of minutes"
+  }
+ ],
+ "actions": [
+  {
+   "id": "refresh",
+   "name": "Refresh",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/data/2.5/weather?q=&appid="
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-openweather-rest",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：John A Knight Jr"
+  }
+ ],
+ "source": {
+  "module": "openweather-rest",
+  "version": "3.1.2",
+  "license": "MIT",
+  "maintainers": [
+   "John A Knight Jr"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-openweather-rest.git"
+ }
+}

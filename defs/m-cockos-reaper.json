@@ -1,0 +1,339 @@
+{
+ "format": 1,
+ "id": "m-cockos-reaper",
+ "name": "Cockos REAPER",
+ "category": "Cockos",
+ "version": "2.4.1",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "feedbackPort",
+   "label": "Feedback Port",
+   "type": "number",
+   "default": 9000,
+   "min": 1,
+   "max": 65535,
+   "help": "The port REAPER is sending OSC to"
+  },
+  {
+   "id": "refreshOnInit",
+   "label": "Refresh On Start",
+   "type": "boolean",
+   "default": true,
+   "help": "If enabled, a \"Control surface: Refresh all surfaces\" command will be sent to reaper on start."
+  },
+  {
+   "id": "numberOfTracks",
+   "label": "Number of Tracks",
+   "type": "number",
+   "default": 8,
+   "min": 1,
+   "max": 512,
+   "help": "Sets the number of tracks per bank"
+  },
+  {
+   "id": "numberOfFx",
+   "label": "Number of FX",
+   "type": "number",
+   "default": 8,
+   "min": 1,
+   "max": 512,
+   "help": "Sets the number of FX per track"
+  }
+ ],
+ "actions": [
+  {
+   "id": "record",
+   "name": "Record",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/record",
+    "args": []
+   }
+  },
+  {
+   "id": "play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/play",
+    "args": []
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/stop",
+    "args": []
+   }
+  },
+  {
+   "id": "pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/pause",
+    "args": []
+   }
+  },
+  {
+   "id": "start_rewind",
+   "name": "Rewind (Start)",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/rewind",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stop_rewind",
+   "name": "Rewind (Stop)",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/rewind",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "start_forward",
+   "name": "Fast Forward (Start)",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/forward",
+    "args": [
+     {
+      "type": "i",
+      "value": "1"
+     }
+    ]
+   }
+  },
+  {
+   "id": "stop_forward",
+   "name": "Fast Forward (Stop)",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/forward",
+    "args": [
+     {
+      "type": "i",
+      "value": "0"
+     }
+    ]
+   }
+  },
+  {
+   "id": "click",
+   "name": "Toggle Click/Metronome",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/click",
+    "args": []
+   }
+  },
+  {
+   "id": "repeat",
+   "name": "Toggle Repeat",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/repeat",
+    "args": []
+   }
+  },
+  {
+   "id": "goto_marker",
+   "name": "Go To Marker",
+   "options": [
+    {
+     "id": "marker",
+     "label": "Marker Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1024
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/marker/{{option.marker}}",
+    "args": []
+   }
+  },
+  {
+   "id": "goto_region",
+   "name": "Go To Region",
+   "options": [
+    {
+     "id": "region",
+     "label": "Region Number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1024
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/region/{{option.region}}",
+    "args": []
+   }
+  },
+  {
+   "id": "autorecarm",
+   "name": "Autoarm Record",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/autorecarm",
+    "args": []
+   }
+  },
+  {
+   "id": "soloreset",
+   "name": "Reset Solos",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/soloreset",
+    "args": []
+   }
+  },
+  {
+   "id": "custom_action",
+   "name": "Custom Action",
+   "options": [
+    {
+     "id": "action_cmd_id",
+     "label": "Action Command ID",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/str",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.action_cmd_id}}"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "play",
+   "category": "Transport",
+   "name": "Play",
+   "text": "Play",
+   "backgroundColor": "#003300",
+   "action": {
+    "definitionId": "play",
+    "options": {}
+   }
+  },
+  {
+   "id": "stop",
+   "category": "Transport",
+   "name": "Stop",
+   "text": "Stop",
+   "backgroundColor": "#1d1d1d",
+   "action": {
+    "definitionId": "stop",
+    "options": {}
+   }
+  },
+  {
+   "id": "record",
+   "category": "Transport",
+   "name": "Record",
+   "text": "Record",
+   "backgroundColor": "#3b0000",
+   "action": {
+    "definitionId": "record",
+    "options": {}
+   }
+  },
+  {
+   "id": "repeat",
+   "category": "Transport",
+   "name": "Toggle Repeat",
+   "text": "Toggle Repeat",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "repeat",
+    "options": {}
+   }
+  },
+  {
+   "id": "click",
+   "category": "Transport",
+   "name": "Toggle Click/Metronome",
+   "text": "Toggle Click/Metronome",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "click",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-cockos-reaper",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Oliver Herman, Oded Davidov"
+  }
+ ],
+ "source": {
+  "module": "cockos-reaper",
+  "version": "2.4.1",
+  "license": "MIT",
+  "maintainers": [
+   "Oliver Herman",
+   "Oded Davidov"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-cockos-reaper.git"
+ }
+}

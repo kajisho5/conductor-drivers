@@ -1,0 +1,139 @@
+{
+ "format": 1,
+ "id": "m-softron-multicamlogger",
+ "name": "Softron Multicam Logger",
+ "category": "Softron",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8888",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "pollEnabled",
+   "label": "Enable Polling",
+   "type": "boolean",
+   "default": false,
+   "help": "When enabled variables will be updated automatically"
+  },
+  {
+   "id": "pollInterval",
+   "label": "Polling Interval (ms)",
+   "type": "number",
+   "default": 1000,
+   "min": 10,
+   "help": "Lower values will update variables more often and also increase the load on Companion and Multicam Logger"
+  }
+ ],
+ "actions": [
+  {
+   "id": "start_logging",
+   "name": "Start Logging",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/start"
+   }
+  },
+  {
+   "id": "stop_logging",
+   "name": "Stop Logging",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/stop"
+   }
+  },
+  {
+   "id": "change_angle",
+   "name": "Change Angle (Take)",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/change_angle"
+   }
+  },
+  {
+   "id": "set_program",
+   "name": "Set Program",
+   "options": [
+    {
+     "id": "angle",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/change_angle?program=0"
+   }
+  },
+  {
+   "id": "set_preview",
+   "name": "Set Preview",
+   "options": [
+    {
+     "id": "angle",
+     "label": "Input",
+     "type": "select",
+     "default": "0",
+     "choices": []
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/change_angle?preview=0"
+   }
+  },
+  {
+   "id": "add_marker",
+   "name": "Add Marker",
+   "options": [
+    {
+     "id": "markerText",
+     "label": "Marker Text",
+     "type": "text",
+     "default": "",
+     "help": "Makers can only be added when logging is running"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/add_marker?name={{option.markerText}}"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-softron-multicamlogger",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel"
+  }
+ ],
+ "source": {
+  "module": "softron-multicamlogger",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-softron-multicamlogger.git"
+ }
+}

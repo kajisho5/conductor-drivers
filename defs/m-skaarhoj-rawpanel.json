@@ -263,6 +263,24 @@
      "Webserver=0": "0"
     }
    }
+  },
+  {
+   "id": "CustomCommand",
+   "name": "Custom Command",
+   "options": [
+    {
+     "id": "cmd",
+     "label": "Command:",
+     "type": "text",
+     "default": "",
+     "help": "Custom rawpanel commands in string form"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.cmd}}\\n",
+    "encoding": "text"
+   }
   }
  ],
  "feedbacks": [],

@@ -1,0 +1,229 @@
+{
+ "format": 1,
+ "id": "m-glensound-divine",
+ "name": "Glensound Divine",
+ "category": "Glensound",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 41161,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "controllerId",
+   "label": "Controller ID",
+   "type": "text",
+   "default": "42495446"
+  },
+  {
+   "id": "fastMeters",
+   "label": "Fast Meters",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "mix_selection",
+   "name": "Mix Selection",
+   "options": [
+    {
+     "id": "mix_selection",
+     "label": "Channel",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "Channel 1"
+      },
+      {
+       "id": "02",
+       "label": "Channel 2"
+      },
+      {
+       "id": "03",
+       "label": "Channel 3"
+      },
+      {
+       "id": "04",
+       "label": "Channel 4"
+      },
+      {
+       "id": "05",
+       "label": "Channels 1-2"
+      },
+      {
+       "id": "06",
+       "label": "Channels 3-4"
+      },
+      {
+       "id": "07",
+       "label": "Channels 1-4"
+      }
+     ],
+     "help": "Variables must return a value between 01 and 07"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "4753204374726c00140003034249544605{{option.mix_selection|map}}0000",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mix_selection": {
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07"
+    }
+   }
+  },
+  {
+   "id": "mix_enable",
+   "name": "Mix Enable",
+   "options": [
+    {
+     "id": "mix_enable",
+     "label": "Channel",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "Channel 1"
+      },
+      {
+       "id": "02",
+       "label": "Channel 2"
+      },
+      {
+       "id": "03",
+       "label": "Channel 3"
+      },
+      {
+       "id": "04",
+       "label": "Channel 4"
+      },
+      {
+       "id": "05",
+       "label": "Channels 1-2"
+      },
+      {
+       "id": "06",
+       "label": "Channels 3-4"
+      },
+      {
+       "id": "07",
+       "label": "Channels 1-4"
+      }
+     ],
+     "help": "Variables must return a value between 01 and 07"
+    },
+    {
+     "id": "mix_enable_mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "01",
+     "choices": [
+      {
+       "id": "01",
+       "label": "Enable"
+      },
+      {
+       "id": "00",
+       "label": "Disable"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "4753204374726c00140003034249544606{{option.mix_enable|map}}{{option.mix_enable_mode|map}}00",
+    "encoding": "hex"
+   },
+   "maps": {
+    "mix_enable": {
+     "01": "01",
+     "02": "02",
+     "03": "03",
+     "04": "04",
+     "05": "05",
+     "06": "06",
+     "07": "07"
+    },
+    "mix_enable_mode": {
+     "01": "01",
+     "00": "00"
+    }
+   }
+  },
+  {
+   "id": "set_volume",
+   "name": "Set Volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 127,
+     "help": "Each step is 0.5dB"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "4753204374726c0014000303424954460e{{option.volume|u8}}0000",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "unset_mute",
+   "name": "Unmute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "4753204374726c0014000303424954460e460000",
+    "encoding": "hex"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-glensound-divine",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel, Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "glensound-divine",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel",
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-glensound-divine.git"
+ }
+}

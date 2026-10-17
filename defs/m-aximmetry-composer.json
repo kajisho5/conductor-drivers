@@ -1,0 +1,154 @@
+{
+ "format": 1,
+ "id": "m-aximmetry-composer",
+ "name": "Aximmetry Composer",
+ "category": "Aximmetry",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:21463",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "pressButton",
+   "name": "Press Button",
+   "options": [
+    {
+     "id": "module",
+     "label": "Module",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "button",
+     "label": "Button",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><action type=\"ComposerCtrBoardPressButtonAction\" Module=\"undefined\" Button=\"{{option.button}}\" />"
+   }
+  },
+  {
+   "id": "setButton",
+   "name": "Set Button",
+   "options": [
+    {
+     "id": "module",
+     "label": "Module",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "button",
+     "label": "Button",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "state",
+     "label": "State",
+     "type": "boolean",
+     "default": false
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><action type=\"ComposerCtrBoardSetButtonAction\" Module=\"undefined\" Button=\"{{option.button}}\" State=\"{{option.state|map}}e\" />"
+   },
+   "maps": {
+    "state": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "setPinValue",
+   "name": "Set Pin Value",
+   "options": [
+    {
+     "id": "module",
+     "label": "Module",
+     "type": "select",
+     "choices": []
+    },
+    {
+     "id": "pin",
+     "label": "Pin",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><action type=\"ComposerSetPinValueAction\" Module=\"undefined\" Pin=\"{{option.pin}}\" Value=\"{{option.value}}\" />"
+   }
+  },
+  {
+   "id": "findModules",
+   "name": "Refresh Module List",
+   "options": [
+    {
+     "id": "moduleRoot",
+     "label": "Module Root",
+     "type": "text",
+     "default": "Root\\"
+    },
+    {
+     "id": "wildcard",
+     "label": "Wildcard",
+     "type": "text",
+     "default": "*"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/",
+    "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><action type=\"ComposerFindModulesAction\" Module=\"{{option.moduleRoot}}\" NamePattern=\"{{option.wildcard}}\" Recursive=\"False\" />"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aximmetry-composer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Daniel"
+  }
+ ],
+ "source": {
+  "module": "aximmetry-composer",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Daniel"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aximmetry-composer.git"
+ }
+}

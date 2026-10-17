@@ -1,0 +1,761 @@
+{
+ "format": 1,
+ "id": "m-anomes-millumin",
+ "name": "Anomes Millumin 2 / Millumin 3 / Millumin 4",
+ "category": "Anomes",
+ "version": "4.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "rx_port",
+   "label": "Receive port",
+   "type": "number",
+   "default": 8000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "timeLayerName",
+   "label": "Name of the layer to track time",
+   "type": "text",
+   "default": "layer"
+  },
+  {
+   "id": "trackMultipleLayers",
+   "label": "Enable tracking of multiple layer (comma separated list)",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "Action_LaunchOrStopColumn_ByIndex",
+   "name": "Launch or Stop Column by Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4096
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/launchOrStopColumn",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.index}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_LaunchOrStopColumn_ByName",
+   "name": "Launch or Stop Column by Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/launchOrStopColumn",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_LaunchColumn_ByIndex",
+   "name": "Launch Column by Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4096
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/launchColumn",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.index}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_LaunchColumn_ByName",
+   "name": "Launch Column by Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/launchColumn",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_StopColumn",
+   "name": "Stop Column",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/stopColumn",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_LaunchPreviousColumn",
+   "name": "Launch Previous Column",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/launchPreviousColumn",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_LaunchNextColumn",
+   "name": "Launch Next Column",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/launchNextColumn",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_Pause",
+   "name": "Pause",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/pause",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_Play",
+   "name": "Play",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/play",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_PlayOrPause",
+   "name": "Play or Pause",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/playOrPause",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_GoToTime",
+   "name": "Go to Time",
+   "options": [
+    {
+     "id": "time",
+     "label": "Time",
+     "type": "number",
+     "default": 0,
+     "min": -65535,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/goToTime",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.time}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_GoToTimelineSegment",
+   "name": "Go to Timeline Segment",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/goToTimelineSegment",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectBoard_ByIndex",
+   "name": "Select Board By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4096
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/selectBoard",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.index}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectBoard_ByName",
+   "name": "Select Board By Index",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/selectBoard",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectLayer_ByIndex",
+   "name": "Select Layer By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4096
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/selectLayer",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.index}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectLayer_ByName",
+   "name": "Select Layer By Index",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/selectLayer",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectLight_ByIndex",
+   "name": "Select Light By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4096
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/selectLight",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.index}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectLight_ByName",
+   "name": "Select Light By Index",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/selectLight",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SetMasterVideo",
+   "name": "Set Master Video",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "number",
+     "default": 0,
+     "min": -65535,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/masterVideo",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.value}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SetMasterAudio",
+   "name": "Set Master Audio",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "number",
+     "default": 0,
+     "min": -65535,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/masterAudio",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.value}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SetMasterDMX",
+   "name": "Set Master MDX",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "number",
+     "default": 0,
+     "min": -65535,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/masterDMX",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.value}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_EnterFullscreen",
+   "name": "Enter Fullscreen",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/enterFullscreen",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_ExitFullscreen",
+   "name": "Exit Fullscreen",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/exitFullscreen",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_DisplayTestCard",
+   "name": "Display TestCard",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/displayTestCard",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_HideTestCard",
+   "name": "Hide TestCard",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/hideTestCard",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_DisableWorkspace",
+   "name": "Disable Workspace",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/disableWorkspace",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_EnableWorkspace",
+   "name": "Enable Workspace",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/enableWorkspace",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_OpenProject",
+   "name": "Open Project",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/openProject",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SaveProject",
+   "name": "Save Project",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/saveProject",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SaveProjectAs",
+   "name": "Save Project As",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/action/saveProject",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_Quit",
+   "name": "Quit",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/action/quit",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_RestartMedia",
+   "name": "Selected Layer / Restart Media",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/startMedia",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_StartMedia_ByIndex",
+   "name": "Selected Layer / Start Media by Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4096
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/startMedia",
+    "args": [
+     {
+      "type": "i",
+      "value": "{{option.index}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_StartMedia_ByName",
+   "name": "Selected Layer / Start Media by Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/startMedia",
+    "args": [
+     {
+      "type": "s",
+      "value": "{{option.name}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_PauseMedia",
+   "name": "Selected Layer / Pause Media",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/pauseMedia",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_PlayOrPauseMedia",
+   "name": "Selected Layer / Start or Pause Media",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/startOrPauseMedia",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_StartOrPauseMedia",
+   "name": "Selected Layer / Stop Media",
+   "options": [],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/stopMedia",
+    "args": []
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_GoToMediaTime",
+   "name": "Selected Layer / Go to Media Time",
+   "options": [
+    {
+     "id": "time",
+     "label": "Time",
+     "type": "number",
+     "default": 0,
+     "min": -65535,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/media/time",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.time}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_GoToMediaNormalizedTime",
+   "name": "Selected Layer / Go to Media Normalized Time",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "number",
+     "default": 0,
+     "min": -65535,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/media/normalizedTime",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.value}}"
+     }
+    ]
+   }
+  },
+  {
+   "id": "Action_SelectedLayer_SetMediaSpeed",
+   "name": "Selected Layer / Set Media Speed",
+   "options": [
+    {
+     "id": "value",
+     "label": "Value",
+     "type": "number",
+     "default": 0,
+     "min": -65535,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "osc",
+    "address": "/selectedLayer/media/speed",
+    "args": [
+     {
+      "type": "f",
+      "value": "{{option.value}}"
+     }
+    ]
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-anomes-millumin",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Per Røine, Jeffrey Davidsz, Matteo Piccina, Millumin"
+  }
+ ],
+ "source": {
+  "module": "anomes-millumin",
+  "version": "4.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Per Røine",
+   "Jeffrey Davidsz",
+   "Matteo Piccina",
+   "Millumin"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-anomes-millumin.git"
+ }
+}

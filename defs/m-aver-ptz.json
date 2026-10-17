@@ -1,0 +1,2118 @@
+{
+ "format": 1,
+ "id": "m-aver-ptz",
+ "name": "Aver PTZ",
+ "category": "Aver",
+ "version": "1.2.0",
+ "minAppVersion": "0.6.0",
+ "transport": "udp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 52381,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "isviscaoverip",
+   "label": "VISCA over IP",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "zoom_in_action",
+   "name": "Zoom In",
+   "options": [
+    {
+     "id": "zoom_in",
+     "label": "Select Level",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 (low)"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7 (high)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.zoom_in|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "zoom_in": {
+     "0": "018101040720",
+     "1": "028101040721",
+     "2": "038101040722",
+     "3": "048101040723",
+     "4": "058101040724",
+     "5": "008101040725",
+     "6": "068101040726",
+     "7": "078101040727"
+    }
+   }
+  },
+  {
+   "id": "zoom_out_action",
+   "name": "Zoom Out",
+   "options": [
+    {
+     "id": "zoom_out",
+     "label": "Select Level",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "0",
+       "label": "0 (low)"
+      },
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      },
+      {
+       "id": "5",
+       "label": "5"
+      },
+      {
+       "id": "6",
+       "label": "6"
+      },
+      {
+       "id": "7",
+       "label": "7 (high)"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.zoom_out|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "zoom_out": {
+     "0": "098101040730",
+     "1": "0a8101040731",
+     "2": "0b8101040732",
+     "3": "0c8101040733",
+     "4": "0d8101040734",
+     "5": "088101040735",
+     "6": "0e8101040736",
+     "7": "0f8101040737"
+    }
+   }
+  },
+  {
+   "id": "zoom_stop_action",
+   "name": "Zoom Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000108101040700ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "wb_action",
+   "name": "White Balance",
+   "options": [
+    {
+     "id": "white_balance",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "3500",
+     "choices": [
+      {
+       "id": "3500",
+       "label": "Auto"
+      },
+      {
+       "id": "3504",
+       "label": "ATW"
+      },
+      {
+       "id": "3501",
+       "label": "Indoor"
+      },
+      {
+       "id": "3502",
+       "label": "Outdoor"
+      },
+      {
+       "id": "3503",
+       "label": "One Push WB mode"
+      },
+      {
+       "id": "3505",
+       "label": "Manual"
+      },
+      {
+       "id": "1005",
+       "label": "One Push WB trigger"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.white_balance|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "white_balance": {
+     "1005": "258101041005",
+     "3500": "1f8101043500",
+     "3501": "218101043501",
+     "3502": "228101043502",
+     "3503": "238101043503",
+     "3504": "208101043504",
+     "3505": "248101043505"
+    }
+   }
+  },
+  {
+   "id": "red_gain_action",
+   "name": "Red Gain",
+   "options": [
+    {
+     "id": "red_gain",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "0302",
+     "choices": [
+      {
+       "id": "0302",
+       "label": "Up"
+      },
+      {
+       "id": "0303",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.red_gain|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "red_gain": {
+     "0302": "268101040302",
+     "0303": "278101040303"
+    }
+   }
+  },
+  {
+   "id": "blue_gain_action",
+   "name": "Blue Gain",
+   "options": [
+    {
+     "id": "blue_gain",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "0402",
+     "choices": [
+      {
+       "id": "0402",
+       "label": "Up"
+      },
+      {
+       "id": "0403",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.blue_gain|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "blue_gain": {
+     "0402": "288101040402",
+     "0403": "298101040403"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_action",
+   "name": "Auto Exposure",
+   "options": [
+    {
+     "id": "auto_exposure",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "00",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Full Auto"
+      },
+      {
+       "id": "03",
+       "label": "Manual"
+      },
+      {
+       "id": "0A",
+       "label": "Shutter Priority"
+      },
+      {
+       "id": "0B",
+       "label": "Iris Priority"
+      },
+      {
+       "id": "0D",
+       "label": "Bright"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.auto_exposure|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_exposure": {
+     "00": "2a8101043900",
+     "03": "2b8101043903",
+     "0A": "2c810104390a",
+     "0B": "2d810104390b",
+     "0D": "2e810104390d"
+    }
+   }
+  },
+  {
+   "id": "shutter_action",
+   "name": "Shutter",
+   "options": [
+    {
+     "id": "shutter",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.shutter|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "shutter": {
+     "02": "2f8101040a02",
+     "03": "308101040a03"
+    }
+   }
+  },
+  {
+   "id": "iris_action",
+   "name": "Iris",
+   "options": [
+    {
+     "id": "iris",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.iris|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "iris": {
+     "02": "318101040b02",
+     "03": "328101040b03"
+    }
+   }
+  },
+  {
+   "id": "gain_action",
+   "name": "Gain",
+   "options": [
+    {
+     "id": "gain",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.gain|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "gain": {
+     "02": "338101040c02",
+     "03": "348101040c03"
+    }
+   }
+  },
+  {
+   "id": "bright_action",
+   "name": "Bright",
+   "options": [
+    {
+     "id": "bright",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.bright|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "bright": {
+     "02": "358101040d02",
+     "03": "368101040d03"
+    }
+   }
+  },
+  {
+   "id": "exposure_comp_action",
+   "name": "Exposure Compensation",
+   "options": [
+    {
+     "id": "exposure_comp",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "Up"
+      },
+      {
+       "id": "03",
+       "label": "Down"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.exposure_comp|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "exposure_comp": {
+     "02": "378101040e02",
+     "03": "388101040e03"
+    }
+   }
+  },
+  {
+   "id": "backlight_action",
+   "name": "Backlight",
+   "options": [
+    {
+     "id": "backlight",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.backlight|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "backlight": {
+     "02": "398101043302",
+     "03": "3a8101043303"
+    }
+   }
+  },
+  {
+   "id": "menu_action",
+   "name": "Menu On/Off",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000488101060610ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "osd_action",
+   "name": "On Screen Display",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000e000000498101043f015fff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "wdr_action",
+   "name": "Wide Dynamic Range",
+   "options": [
+    {
+     "id": "wdr",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.wdr|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "wdr": {
+     "02": "5b8101043d02",
+     "03": "5c8101043d03"
+    }
+   }
+  },
+  {
+   "id": "menu_enter_action",
+   "name": "Menu Enter",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "010000100000005d81017e01020001ff",
+    "encoding": "hex"
+   }
+  },
+  {
+   "id": "tally_action",
+   "name": "Tally Lamp",
+   "options": [
+    {
+     "id": "tally_lamp",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "01000010000000{{option.tally_lamp|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "tally_lamp": {
+     "02": "5e81017e010a0002",
+     "03": "5f81017e010a0003"
+    }
+   }
+  },
+  {
+   "id": "freeze_action",
+   "name": "Freeze",
+   "options": [
+    {
+     "id": "freeze",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      },
+      {
+       "id": "22",
+       "label": "Preset On"
+      },
+      {
+       "id": "23",
+       "label": "Preset Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.freeze|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "freeze": {
+     "22": "628101046222",
+     "23": "638101046223",
+     "02": "608101046202",
+     "03": "618101046203"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_action",
+   "name": "Auto Tracking",
+   "options": [
+    {
+     "id": "auto_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.auto_tracking|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_tracking": {
+     "02": "648101047d02",
+     "03": "658101047d03"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_v1_action",
+   "name": "Auto Tracking v1",
+   "options": [
+    {
+     "id": "auto_tracking_v1",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000e000000{{option.auto_tracking_v1|map}}00ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_tracking_v1": {
+     "02": "668101047d02",
+     "03": "678101047d03"
+    }
+   }
+  },
+  {
+   "id": "frame_tracking_action",
+   "name": "Frame Tracking",
+   "options": [
+    {
+     "id": "frame_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "00",
+       "label": "Framing Start"
+      },
+      {
+       "id": "02",
+       "label": "Auto Framing Mode"
+      },
+      {
+       "id": "03",
+       "label": "Manual Framing Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000e000000{{option.frame_tracking|map}}00ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "frame_tracking": {
+     "02": "688101047d02",
+     "00": "698101047d00",
+     "03": "6a8101047d03"
+    }
+   }
+  },
+  {
+   "id": "audio_tracking_action",
+   "name": "Audio Tracking",
+   "options": [
+    {
+     "id": "audio_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "04",
+     "choices": [
+      {
+       "id": "04",
+       "label": "Audio Tracking Mode"
+      },
+      {
+       "id": "05",
+       "label": "Audio Frame Mode"
+      },
+      {
+       "id": "06",
+       "label": "Audio Preset Tracking Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000e000000{{option.audio_tracking|map}}00ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "audio_tracking": {
+     "04": "6b8101047d04",
+     "05": "6c8101047d05",
+     "06": "6d8101047d06"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_action",
+   "name": "Tracking Control Mode",
+   "options": [
+    {
+     "id": "tracking_control",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "A4",
+     "choices": [
+      {
+       "id": "A0",
+       "label": "Full Body"
+      },
+      {
+       "id": "A1",
+       "label": "Upper Body"
+      },
+      {
+       "id": "A2",
+       "label": "Tracking Point"
+      },
+      {
+       "id": "A3",
+       "label": "Multi-presenter"
+      },
+      {
+       "id": "A4",
+       "label": "Presenter Mode"
+      },
+      {
+       "id": "A5",
+       "label": "Zone Mode"
+      },
+      {
+       "id": "A6",
+       "label": "Hybrid Mode"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000e000000{{option.tracking_control|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "tracking_control": {
+     "A4": "6e8101043f01a4",
+     "A0": "6f8101043f01a0",
+     "A1": "708101043f01a1",
+     "A2": "718101043f01a2",
+     "A3": "728101043f01a3",
+     "A5": "738101043f01a5",
+     "A6": "748101043f01a6"
+    }
+   }
+  },
+  {
+   "id": "multi_presenter_action",
+   "name": "Multi-presenter",
+   "options": [
+    {
+     "id": "multi_presenter",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.multi_presenter|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "multi_presenter": {
+     "02": "75810104a902",
+     "03": "76810104a903"
+    }
+   }
+  },
+  {
+   "id": "autozoom_action",
+   "name": "Auto Zoom",
+   "options": [
+    {
+     "id": "auto_zoom",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.auto_zoom|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_zoom": {
+     "02": "7a810104a002",
+     "03": "7b810104a003"
+    }
+   }
+  },
+  {
+   "id": "effective_tracking_action",
+   "name": "Effective Tracking Area",
+   "options": [
+    {
+     "id": "effective_tracking",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.effective_tracking|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "effective_tracking": {
+     "02": "7c810104a102",
+     "03": "7d810104a103"
+    }
+   }
+  },
+  {
+   "id": "rtmp_action",
+   "name": "RTMP",
+   "options": [
+    {
+     "id": "rtmp",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.rtmp|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "rtmp": {
+     "02": "7e810104a202",
+     "03": "7f810104a203"
+    }
+   }
+  },
+  {
+   "id": "video_mode_action",
+   "name": "Video Mode",
+   "options": [
+    {
+     "id": "video_mode",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "00",
+       "label": "IP+Stream"
+      },
+      {
+       "id": "01",
+       "label": "USB Only"
+      },
+      {
+       "id": "02",
+       "label": "NDI Only"
+      },
+      {
+       "id": "03",
+       "label": "Streaming Only"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.video_mode|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "video_mode": {
+     "02": "80810104a302",
+     "00": "81810104a300",
+     "01": "82810104a301",
+     "03": "83810104a303"
+    }
+   }
+  },
+  {
+   "id": "presets_affect_action",
+   "name": "Preset Affects PTZ & Focus",
+   "options": [
+    {
+     "id": "presets_affect",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.presets_affect|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "presets_affect": {
+     "02": "84810104a502",
+     "03": "85810104a503"
+    }
+   }
+  },
+  {
+   "id": "relative_zoom_action",
+   "name": "Relative Zoom Ratio",
+   "options": [
+    {
+     "id": "relative_zoom",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.relative_zoom|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "relative_zoom": {
+     "02": "86810104a602",
+     "03": "87810104a603"
+    }
+   }
+  },
+  {
+   "id": "auto_tilt_action",
+   "name": "Auto Tilt",
+   "options": [
+    {
+     "id": "auto_tilt",
+     "label": "Select Configuration Type",
+     "type": "select",
+     "default": "02",
+     "choices": [
+      {
+       "id": "02",
+       "label": "On"
+      },
+      {
+       "id": "03",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0100000c000000{{option.auto_tilt|map}}ff",
+    "encoding": "hex"
+   },
+   "maps": {
+    "auto_tilt": {
+     "02": "88810104a702",
+     "03": "89810104a703"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "auto_exposure_bright",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Auto Exposure Bright",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "0D"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_full_auto",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Auto Exposure Full Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "00"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_iris_priority",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Auto Exposure Iris Priority",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "0B"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_manual",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Auto Exposure Manual",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_exposure_shutter_priority",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Auto Exposure Shutter Priority",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_exposure_action",
+    "options": {
+     "auto_exposure": "0A"
+    }
+   }
+  },
+  {
+   "id": "gain_up",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Gain +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gain_action",
+    "options": {
+     "gain": "02"
+    }
+   }
+  },
+  {
+   "id": "gain_down",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Gain -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "gain_action",
+    "options": {
+     "gain": "03"
+    }
+   }
+  },
+  {
+   "id": "blue_gain_up",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Blue Gain +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "blue_gain_action",
+    "options": {
+     "blue_gain": "0402"
+    }
+   }
+  },
+  {
+   "id": "blue_gain_down",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Blue Gain -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "blue_gain_action",
+    "options": {
+     "blue_gain": "0403"
+    }
+   }
+  },
+  {
+   "id": "red_gain_up",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Red Gain +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "red_gain_action",
+    "options": {
+     "red_gain": "0302"
+    }
+   }
+  },
+  {
+   "id": "red_gain_down",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Red Gain -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "red_gain_action",
+    "options": {
+     "red_gain": "0303"
+    }
+   }
+  },
+  {
+   "id": "exposure_comp_up",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Exposure Comp +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposure_comp_action",
+    "options": {
+     "exposure_comp": "02"
+    }
+   }
+  },
+  {
+   "id": "exposure_comp_down",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Exposure Comp -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "exposure_comp_action",
+    "options": {
+     "exposure_comp": "03"
+    }
+   }
+  },
+  {
+   "id": "iris_up",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Iris +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "iris_action",
+    "options": {
+     "iris": "02"
+    }
+   }
+  },
+  {
+   "id": "iris_down",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Iris -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "iris_action",
+    "options": {
+     "iris": "03"
+    }
+   }
+  },
+  {
+   "id": "shutter_up",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Shutter +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutter_action",
+    "options": {
+     "shutter": "02"
+    }
+   }
+  },
+  {
+   "id": "shutter_down",
+   "category": "Exposure",
+   "name": "My Button",
+   "text": "Shutter -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "shutter_action",
+    "options": {
+     "shutter": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_zoom_on",
+   "category": "Lens",
+   "name": "My Button",
+   "text": "Auto Zoom On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "autozoom_action",
+    "options": {
+     "auto_zoom": "02"
+    }
+   }
+  },
+  {
+   "id": "auto_zoom_off",
+   "category": "Lens",
+   "name": "My Button",
+   "text": "Auto Zoom Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "autozoom_action",
+    "options": {
+     "auto_zoom": "03"
+    }
+   }
+  },
+  {
+   "id": "relative_zoom_on",
+   "category": "Lens",
+   "name": "My Button",
+   "text": "Relative Zoom On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "relative_zoom_action",
+    "options": {
+     "relative_zoom": "02"
+    }
+   }
+  },
+  {
+   "id": "relative_zoom_off",
+   "category": "Lens",
+   "name": "My Button",
+   "text": "Relative Zoom Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "relative_zoom_action",
+    "options": {
+     "relative_zoom": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_tilt_on",
+   "category": "Pan/Tilt",
+   "name": "My Button",
+   "text": "Auto Tilt On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tilt_action",
+    "options": {
+     "auto_tilt": "02"
+    }
+   }
+  },
+  {
+   "id": "auto_tilt_off",
+   "category": "Pan/Tilt",
+   "name": "My Button",
+   "text": "Auto Tilt Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tilt_action",
+    "options": {
+     "auto_tilt": "03"
+    }
+   }
+  },
+  {
+   "id": "backlight_on",
+   "category": "System",
+   "name": "My Button",
+   "text": "Backlight On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "backlight_action",
+    "options": {
+     "backlight": "02"
+    }
+   }
+  },
+  {
+   "id": "backlight_off",
+   "category": "System",
+   "name": "My Button",
+   "text": "Backlight Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "backlight_action",
+    "options": {
+     "backlight": "03"
+    }
+   }
+  },
+  {
+   "id": "bright_up",
+   "category": "System",
+   "name": "My Button",
+   "text": "Brightness +",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "bright_action",
+    "options": {
+     "bright": "02"
+    }
+   }
+  },
+  {
+   "id": "bright_down",
+   "category": "System",
+   "name": "My Button",
+   "text": "Brightness -",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "bright_action",
+    "options": {
+     "bright": "03"
+    }
+   }
+  },
+  {
+   "id": "freeze_on",
+   "category": "System",
+   "name": "My Button",
+   "text": "Freeze On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "02"
+    }
+   }
+  },
+  {
+   "id": "freeze_off",
+   "category": "System",
+   "name": "My Button",
+   "text": "Freeze Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "03"
+    }
+   }
+  },
+  {
+   "id": "freeze_preset_on",
+   "category": "System",
+   "name": "My Button",
+   "text": "Freeze Preset On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "22"
+    }
+   }
+  },
+  {
+   "id": "freeze_preset_off",
+   "category": "System",
+   "name": "My Button",
+   "text": "Freeze Preset Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "freeze_action",
+    "options": {
+     "freeze": "23"
+    }
+   }
+  },
+  {
+   "id": "menu_enter",
+   "category": "System",
+   "name": "My Button",
+   "text": "Menu Enter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "menu_enter_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "menu_action",
+   "category": "System",
+   "name": "My Button",
+   "text": "Menu On/Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "menu_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "on_screen_display",
+   "category": "System",
+   "name": "My Button",
+   "text": "On Screen Display",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "osd_action",
+    "options": {}
+   }
+  },
+  {
+   "id": "preset_affects_ptz_zoom_on",
+   "category": "System",
+   "name": "My Button",
+   "text": "Presets Affect PTZ & Zoom On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "presets_affect_action",
+    "options": {
+     "presets_affect": "02"
+    }
+   }
+  },
+  {
+   "id": "preset_affects_ptz_zoom_off",
+   "category": "System",
+   "name": "My Button",
+   "text": "Presets Affect PTZ & Zoom Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "presets_affect_action",
+    "options": {
+     "presets_affect": "03"
+    }
+   }
+  },
+  {
+   "id": "rtmp_on",
+   "category": "System",
+   "name": "My Button",
+   "text": "RTMP On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rtmp_action",
+    "options": {
+     "rtmp": "02"
+    }
+   }
+  },
+  {
+   "id": "rtmp_off",
+   "category": "System",
+   "name": "My Button",
+   "text": "RTMP Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "rtmp_action",
+    "options": {
+     "rtmp": "03"
+    }
+   }
+  },
+  {
+   "id": "video_mode_ip_stream",
+   "category": "System",
+   "name": "My Button",
+   "text": "VM IP+Stream",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_mode_action",
+    "options": {
+     "video_mode": "00"
+    }
+   }
+  },
+  {
+   "id": "video_mode_ndi",
+   "category": "System",
+   "name": "My Button",
+   "text": "VM NDI",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_mode_action",
+    "options": {
+     "video_mode": "02"
+    }
+   }
+  },
+  {
+   "id": "video_mode_stream",
+   "category": "System",
+   "name": "My Button",
+   "text": "VM Streaming",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_mode_action",
+    "options": {
+     "video_mode": "03"
+    }
+   }
+  },
+  {
+   "id": "video_mode_usb",
+   "category": "System",
+   "name": "My Button",
+   "text": "VM USB",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "video_mode_action",
+    "options": {
+     "video_mode": "01"
+    }
+   }
+  },
+  {
+   "id": "tally_lamp_on",
+   "category": "System",
+   "name": "My Button",
+   "text": "Tally Lamp On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tally_action",
+    "options": {
+     "tally_lamp": "02"
+    }
+   }
+  },
+  {
+   "id": "tally_lamp_off",
+   "category": "System",
+   "name": "My Button",
+   "text": "Tally Lamp Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tally_action",
+    "options": {
+     "tally_lamp": "03"
+    }
+   }
+  },
+  {
+   "id": "wide_dynamic_range_on",
+   "category": "System",
+   "name": "My Button",
+   "text": "Wide Dynamic Range On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wdr_action",
+    "options": {
+     "wdr": "02"
+    }
+   }
+  },
+  {
+   "id": "wide_dynamic_range_off",
+   "category": "System",
+   "name": "My Button",
+   "text": "Wide Dynamic Range Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wdr_action",
+    "options": {
+     "wdr": "03"
+    }
+   }
+  },
+  {
+   "id": "audio_frame_mode",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Audio Frame Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio_tracking_action",
+    "options": {
+     "audio_tracking": "05"
+    }
+   }
+  },
+  {
+   "id": "audio_preset_tracking",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Audio Preset Tracking Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio_tracking_action",
+    "options": {
+     "audio_tracking": "06"
+    }
+   }
+  },
+  {
+   "id": "audio_tracking_mode",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Audio Tracking Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "audio_tracking_action",
+    "options": {
+     "audio_tracking": "04"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_on",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Auto Tracking On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tracking_action",
+    "options": {
+     "auto_tracking": "02"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_off",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Auto Tracking Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tracking_action",
+    "options": {
+     "auto_tracking": "03"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_v1_on",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Auto Tracking V1 On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tracking_v1_action",
+    "options": {
+     "auto_tracking_v1": "02"
+    }
+   }
+  },
+  {
+   "id": "auto_tracking_v1_off",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Auto Tracking V1 Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "auto_tracking_v1_action",
+    "options": {
+     "auto_tracking_v1": "03"
+    }
+   }
+  },
+  {
+   "id": "effective_tracking_on",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Effective Tracking Area On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "effective_tracking_action",
+    "options": {
+     "effective_tracking": "02"
+    }
+   }
+  },
+  {
+   "id": "effective_tracking_off",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Effective Tracking Area Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "effective_tracking_action",
+    "options": {
+     "effective_tracking": "03"
+    }
+   }
+  },
+  {
+   "id": "frame_tracking_auto",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Auto Framing Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "frame_tracking_action",
+    "options": {
+     "frame_tracking": "02"
+    }
+   }
+  },
+  {
+   "id": "frame_tracking_manual",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Manual Framing Mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "frame_tracking_action",
+    "options": {
+     "frame_tracking": "03"
+    }
+   }
+  },
+  {
+   "id": "frame_tracking_start",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Framing Start",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "frame_tracking_action",
+    "options": {
+     "frame_tracking": "00"
+    }
+   }
+  },
+  {
+   "id": "multi_presenter_on",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Multi-presenter On",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multi_presenter_action",
+    "options": {
+     "multi_presenter": "02"
+    }
+   }
+  },
+  {
+   "id": "multi_presenter_off",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Multi-presenter Off",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "multi_presenter_action",
+    "options": {
+     "multi_presenter": "03"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_mode_hybrid",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Tracking Hybrid",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tracking_control_action",
+    "options": {
+     "tracking_control": "A6"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_mode_full_body",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Tracking Full Body",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tracking_control_action",
+    "options": {
+     "tracking_control": "A0"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_mode_multipresenter",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Tracking Multipresenter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tracking_control_action",
+    "options": {
+     "tracking_control": "A3"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_mode_presenter",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Tracking Presenter",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tracking_control_action",
+    "options": {
+     "tracking_control": "A4"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_mode_tracking_point",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Tracking Point",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tracking_control_action",
+    "options": {
+     "tracking_control": "A2"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_mode_upper_body",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Tracking Upper Body",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tracking_control_action",
+    "options": {
+     "tracking_control": "A1"
+    }
+   }
+  },
+  {
+   "id": "tracking_control_mode_zone",
+   "category": "Tracking",
+   "name": "My Button",
+   "text": "Tracking Zone",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "tracking_control_action",
+    "options": {
+     "tracking_control": "A5"
+    }
+   }
+  },
+  {
+   "id": "wb_auto",
+   "category": "White Balance",
+   "name": "My Button",
+   "text": "WB Auto",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3500"
+    }
+   }
+  },
+  {
+   "id": "wb_atw",
+   "category": "White Balance",
+   "name": "My Button",
+   "text": "WB ATW",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3504"
+    }
+   }
+  },
+  {
+   "id": "wb_indoor",
+   "category": "White Balance",
+   "name": "My Button",
+   "text": "WB Indoor",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3501"
+    }
+   }
+  },
+  {
+   "id": "wb_outdoor",
+   "category": "White Balance",
+   "name": "My Button",
+   "text": "WB Outdoor",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3502"
+    }
+   }
+  },
+  {
+   "id": "wb_1_push_wb_mode",
+   "category": "White Balance",
+   "name": "My Button",
+   "text": "1 push WB mode",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "3503"
+    }
+   }
+  },
+  {
+   "id": "wb_1_push_trigger",
+   "category": "White Balance",
+   "name": "My Button",
+   "text": "1 push trigger",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wb_action",
+    "options": {
+     "white_balance": "1005"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-aver-ptz",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Colbix"
+  }
+ ],
+ "source": {
+  "module": "aver-ptz",
+  "version": "1.2.0",
+  "license": "MIT",
+  "maintainers": [
+   "Colbix"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-aver-ptz.git"
+ }
+}

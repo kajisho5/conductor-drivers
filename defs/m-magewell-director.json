@@ -1,0 +1,1005 @@
+{
+ "format": 1,
+ "id": "m-magewell-director",
+ "name": "Magewell Director Mini",
+ "category": "Magewell",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8080",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "httpPort",
+   "label": "Port",
+   "type": "number",
+   "default": 8080,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "bgm_first",
+   "name": "BGM: First",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/bgm/first"
+   }
+  },
+  {
+   "id": "bgm_last",
+   "name": "BGM: Last",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/bgm/last"
+   }
+  },
+  {
+   "id": "bgm_next",
+   "name": "BGM: Next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/bgm/next"
+   }
+  },
+  {
+   "id": "bgm_pause",
+   "name": "BGM: Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/bgm/pause"
+   }
+  },
+  {
+   "id": "bgm_play",
+   "name": "BGM: Play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/bgm/play"
+   }
+  },
+  {
+   "id": "bgm_previous",
+   "name": "BGM: Previous",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/bgm/previous"
+   }
+  },
+  {
+   "id": "gfx_on_by_index",
+   "name": "GFX: On By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/actionByIndex?index={{option.index}}&on=true"
+   }
+  },
+  {
+   "id": "gfx_off_by_index",
+   "name": "GFX: Off By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/actionByIndex?index={{option.index}}&on=false"
+   }
+  },
+  {
+   "id": "gfx_on_by_name",
+   "name": "GFX: On By Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/actionByName?name={{option.name}}&on=true"
+   }
+  },
+  {
+   "id": "gfx_off_by_name",
+   "name": "GFX: Off By Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/actionByName?name={{option.name}}&on=false"
+   }
+  },
+  {
+   "id": "gfx_clear",
+   "name": "GFX: Clear",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/clear"
+   }
+  },
+  {
+   "id": "timer_pause",
+   "name": "Timer Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/countdown/pause"
+   }
+  },
+  {
+   "id": "timer_play",
+   "name": "Timer Play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/countdown/play"
+   }
+  },
+  {
+   "id": "timer_reset",
+   "name": "Timer Reset",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/countdown/reset"
+   }
+  },
+  {
+   "id": "stopwatch_pause",
+   "name": "Stopwatch Pause",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/stopwatch/pause"
+   }
+  },
+  {
+   "id": "stopwatch_play",
+   "name": "Stopwatch Play",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/stopwatch/play"
+   }
+  },
+  {
+   "id": "stopwatch_reset",
+   "name": "Stopwatch Reset",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/gfx/stopwatch/reset"
+   }
+  },
+  {
+   "id": "screenshot",
+   "name": "Screenshot",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/record/screenshot"
+   }
+  },
+  {
+   "id": "start_recording",
+   "name": "Start Recording",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/record/start"
+   }
+  },
+  {
+   "id": "stop_recording",
+   "name": "Stop Recording",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/record/stop"
+   }
+  },
+  {
+   "id": "scene_next",
+   "name": "Scene: Next",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/next"
+   }
+  },
+  {
+   "id": "scene_previous",
+   "name": "Scene: Previous",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/previous"
+   }
+  },
+  {
+   "id": "scene_first",
+   "name": "Scene: First",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/first"
+   }
+  },
+  {
+   "id": "scene_last",
+   "name": "Scene: Last",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/last"
+   }
+  },
+  {
+   "id": "scene_freeze",
+   "name": "Scene: Freeze",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/freeze"
+   }
+  },
+  {
+   "id": "scene_unfreeze",
+   "name": "Scene: Unfreeze",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/unfreeze"
+   }
+  },
+  {
+   "id": "scene_play_video",
+   "name": "Scene: Play Video",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/playVideo"
+   }
+  },
+  {
+   "id": "scene_pause_video",
+   "name": "Scene: Pause Video",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/pauseVideo"
+   }
+  },
+  {
+   "id": "scene_toggle_off_ftb",
+   "name": "Scene: Toggle Off FTB",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/toggleOffFTB"
+   }
+  },
+  {
+   "id": "scene_toggle_on_ftb",
+   "name": "Scene: Toggle On FTB",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/toggleOnFTB"
+   }
+  },
+  {
+   "id": "scene_switch_by_index",
+   "name": "Scene: Switch By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/switchByIndex?index={{option.index}}"
+   }
+  },
+  {
+   "id": "scene_switch_by_name",
+   "name": "Scene: Switch By Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/scene/switchByName?name={{option.name}}"
+   }
+  },
+  {
+   "id": "show_switch_by_index",
+   "name": "Show: Switch By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/show/switchByIndex?index={{option.index}}"
+   }
+  },
+  {
+   "id": "show_switch_by_name",
+   "name": "Show: Switch By Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/show/switchByName?name={{option.name}}"
+   }
+  },
+  {
+   "id": "stream_start_by_index",
+   "name": "Stream: Start By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/stream/actionByIndex?index={{option.index}}&start=true"
+   }
+  },
+  {
+   "id": "stream_stop_by_index",
+   "name": "Stream: Stop By Index",
+   "options": [
+    {
+     "id": "index",
+     "label": "Index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/stream/actionByIndex?index={{option.index}}&start=false"
+   }
+  },
+  {
+   "id": "stream_start_by_name",
+   "name": "Stream: Start By Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/stream/actionByName?name={{option.name}}&start=true"
+   }
+  },
+  {
+   "id": "stream_stop_by_name",
+   "name": "Stream: Stop By Name",
+   "options": [
+    {
+     "id": "name",
+     "label": "Name",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/stream/actionByName?name={{option.name}}&start=false"
+   }
+  },
+  {
+   "id": "stream_stop_all",
+   "name": "Stream: Stop All",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/stream/stopAll"
+   }
+  },
+  {
+   "id": "reboot",
+   "name": "System: Reboot Director",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/system/reboot"
+   }
+  },
+  {
+   "id": "shutdown",
+   "name": "System: Shutdown Director",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/system/shutdown"
+   }
+  },
+  {
+   "id": "set_volume_mute",
+   "name": "Volume: Mute Channel",
+   "options": [
+    {
+     "id": "audioChannel",
+     "label": "Audio Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor"
+      },
+      {
+       "id": "3",
+       "label": "Program"
+      },
+      {
+       "id": "1792",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2048",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "512",
+       "label": "Mic"
+      },
+      {
+       "id": "2",
+       "label": "Video Clip"
+      },
+      {
+       "id": "768",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "1536",
+       "label": "BGM"
+      }
+     ],
+     "help": "Which audio device?"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/volume/setState?type={{option.audioChannel|map}}&state=1"
+   },
+   "maps": {
+    "audioChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "512": "512",
+     "768": "768",
+     "1536": "1536",
+     "1792": "1792",
+     "2048": "2048"
+    }
+   }
+  },
+  {
+   "id": "set_volume_unmute",
+   "name": "Volume: Unmute Channel",
+   "options": [
+    {
+     "id": "audioChannel",
+     "label": "Audio Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor"
+      },
+      {
+       "id": "3",
+       "label": "Program"
+      },
+      {
+       "id": "1792",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2048",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "512",
+       "label": "Mic"
+      },
+      {
+       "id": "2",
+       "label": "Video Clip"
+      },
+      {
+       "id": "768",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "1536",
+       "label": "BGM"
+      }
+     ],
+     "help": "Which audio device?"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/volume/setState?type={{option.audioChannel|map}}&state=0"
+   },
+   "maps": {
+    "audioChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "512": "512",
+     "768": "768",
+     "1536": "1536",
+     "1792": "1792",
+     "2048": "2048"
+    }
+   }
+  },
+  {
+   "id": "set_volume_afv",
+   "name": "Volume: Enable AFV on Channel",
+   "options": [
+    {
+     "id": "audioChannel",
+     "label": "Audio Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor"
+      },
+      {
+       "id": "3",
+       "label": "Program"
+      },
+      {
+       "id": "1792",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2048",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "512",
+       "label": "Mic"
+      },
+      {
+       "id": "2",
+       "label": "Video Clip"
+      },
+      {
+       "id": "768",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "1536",
+       "label": "BGM"
+      }
+     ],
+     "help": "Which audio device?"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/volume/setState?type={{option.audioChannel|map}}&state=2"
+   },
+   "maps": {
+    "audioChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "512": "512",
+     "768": "768",
+     "1536": "1536",
+     "1792": "1792",
+     "2048": "2048"
+    }
+   }
+  },
+  {
+   "id": "set_volume_zero",
+   "name": "Volume: Set Volume to Zero",
+   "options": [
+    {
+     "id": "audioChannel",
+     "label": "Audio Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor"
+      },
+      {
+       "id": "3",
+       "label": "Program"
+      },
+      {
+       "id": "1792",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2048",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "512",
+       "label": "Mic"
+      },
+      {
+       "id": "2",
+       "label": "Video Clip"
+      },
+      {
+       "id": "768",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "1536",
+       "label": "BGM"
+      }
+     ],
+     "help": "Which audio device?"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/volume/setVolume?type={{option.audioChannel|map}}&volume=0"
+   },
+   "maps": {
+    "audioChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "512": "512",
+     "768": "768",
+     "1536": "1536",
+     "1792": "1792",
+     "2048": "2048"
+    }
+   }
+  },
+  {
+   "id": "set_volume_level",
+   "name": "Volume: Set Volume to a Level between -40 and 10",
+   "options": [
+    {
+     "id": "audioChannel",
+     "label": "Audio Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor"
+      },
+      {
+       "id": "3",
+       "label": "Program"
+      },
+      {
+       "id": "1792",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2048",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "512",
+       "label": "Mic"
+      },
+      {
+       "id": "2",
+       "label": "Video Clip"
+      },
+      {
+       "id": "768",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "1536",
+       "label": "BGM"
+      }
+     ],
+     "help": "Which audio device?"
+    },
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "number",
+     "default": 0,
+     "min": -40,
+     "max": 10
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/volume/setVolume?type={{option.audioChannel|map}}&volume={{option.volume}}"
+   },
+   "maps": {
+    "audioChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "512": "512",
+     "768": "768",
+     "1536": "1536",
+     "1792": "1792",
+     "2048": "2048"
+    }
+   }
+  },
+  {
+   "id": "volume_increase_channel",
+   "name": "Volume: Increase Channel Volume By Step",
+   "options": [
+    {
+     "id": "audioChannel",
+     "label": "Audio Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor"
+      },
+      {
+       "id": "3",
+       "label": "Program"
+      },
+      {
+       "id": "1792",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2048",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "512",
+       "label": "Mic"
+      },
+      {
+       "id": "2",
+       "label": "Video Clip"
+      },
+      {
+       "id": "768",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "1536",
+       "label": "BGM"
+      }
+     ],
+     "help": "Which audio device?"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/volume/setVolume?type={{option.audioChannel|map}}&volume=2"
+   },
+   "maps": {
+    "audioChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "512": "512",
+     "768": "768",
+     "1536": "1536",
+     "1792": "1792",
+     "2048": "2048"
+    }
+   }
+  },
+  {
+   "id": "volume_decrease_channel",
+   "name": "Volume: Decrease Channel Volume By Step",
+   "options": [
+    {
+     "id": "audioChannel",
+     "label": "Audio Channel",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Monitor"
+      },
+      {
+       "id": "3",
+       "label": "Program"
+      },
+      {
+       "id": "1792",
+       "label": "HDMI 1"
+      },
+      {
+       "id": "2048",
+       "label": "HDMI 2"
+      },
+      {
+       "id": "512",
+       "label": "Mic"
+      },
+      {
+       "id": "2",
+       "label": "Video Clip"
+      },
+      {
+       "id": "768",
+       "label": "Bluetooth"
+      },
+      {
+       "id": "1536",
+       "label": "BGM"
+      }
+     ],
+     "help": "Which audio device?"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/V1.0/volume/setVolume?type={{option.audioChannel|map}}&volume=0"
+   },
+   "maps": {
+    "audioChannel": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "512": "512",
+     "768": "768",
+     "1536": "1536",
+     "1792": "1792",
+     "2048": "2048"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-magewell-director",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joel Krauska, Ryan Mawhinney"
+  }
+ ],
+ "source": {
+  "module": "magewell-director",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joel Krauska",
+   "Ryan Mawhinney"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-magewell-director.git"
+ }
+}

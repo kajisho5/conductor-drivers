@@ -1,0 +1,631 @@
+{
+ "format": 1,
+ "id": "m-allenheath-ahm",
+ "name": "Allen & Heath AHM",
+ "category": "Allen & Heath",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "tcp",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 51325,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "ahm_type",
+   "label": "Type of Device (Re-enable required after change)",
+   "type": "select",
+   "default": "ahm64",
+   "choices": [
+    {
+     "id": "ahm64",
+     "label": "AHM-64"
+    },
+    {
+     "id": "ahm32",
+     "label": "AHM-32"
+    },
+    {
+     "id": "ahm16",
+     "label": "AHM-16"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "inc_dec_zn_zn_send_level",
+   "name": "Increment/Decrement Zone to Zone Send Level",
+   "options": [
+    {
+     "id": "incdec_ch_number",
+     "label": "Zone",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Zone 1"
+      },
+      {
+       "id": "1",
+       "label": "Zone 2"
+      },
+      {
+       "id": "2",
+       "label": "Zone 3"
+      },
+      {
+       "id": "3",
+       "label": "Zone 4"
+      },
+      {
+       "id": "4",
+       "label": "Zone 5"
+      },
+      {
+       "id": "5",
+       "label": "Zone 6"
+      },
+      {
+       "id": "6",
+       "label": "Zone 7"
+      },
+      {
+       "id": "7",
+       "label": "Zone 8"
+      },
+      {
+       "id": "8",
+       "label": "Zone 9"
+      },
+      {
+       "id": "9",
+       "label": "Zone 10"
+      },
+      {
+       "id": "10",
+       "label": "Zone 11"
+      },
+      {
+       "id": "11",
+       "label": "Zone 12"
+      },
+      {
+       "id": "12",
+       "label": "Zone 13"
+      },
+      {
+       "id": "13",
+       "label": "Zone 14"
+      },
+      {
+       "id": "14",
+       "label": "Zone 15"
+      },
+      {
+       "id": "15",
+       "label": "Zone 16"
+      },
+      {
+       "id": "16",
+       "label": "Zone 17"
+      },
+      {
+       "id": "17",
+       "label": "Zone 18"
+      },
+      {
+       "id": "18",
+       "label": "Zone 19"
+      },
+      {
+       "id": "19",
+       "label": "Zone 20"
+      },
+      {
+       "id": "20",
+       "label": "Zone 21"
+      },
+      {
+       "id": "21",
+       "label": "Zone 22"
+      },
+      {
+       "id": "22",
+       "label": "Zone 23"
+      },
+      {
+       "id": "23",
+       "label": "Zone 24"
+      },
+      {
+       "id": "24",
+       "label": "Zone 25"
+      },
+      {
+       "id": "25",
+       "label": "Zone 26"
+      },
+      {
+       "id": "26",
+       "label": "Zone 27"
+      },
+      {
+       "id": "27",
+       "label": "Zone 28"
+      },
+      {
+       "id": "28",
+       "label": "Zone 29"
+      },
+      {
+       "id": "29",
+       "label": "Zone 30"
+      },
+      {
+       "id": "30",
+       "label": "Zone 31"
+      },
+      {
+       "id": "31",
+       "label": "Zone 32"
+      },
+      {
+       "id": "32",
+       "label": "Zone 33"
+      },
+      {
+       "id": "33",
+       "label": "Zone 34"
+      },
+      {
+       "id": "34",
+       "label": "Zone 35"
+      },
+      {
+       "id": "35",
+       "label": "Zone 36"
+      },
+      {
+       "id": "36",
+       "label": "Zone 37"
+      },
+      {
+       "id": "37",
+       "label": "Zone 38"
+      },
+      {
+       "id": "38",
+       "label": "Zone 39"
+      },
+      {
+       "id": "39",
+       "label": "Zone 40"
+      },
+      {
+       "id": "40",
+       "label": "Zone 41"
+      },
+      {
+       "id": "41",
+       "label": "Zone 42"
+      },
+      {
+       "id": "42",
+       "label": "Zone 43"
+      },
+      {
+       "id": "43",
+       "label": "Zone 44"
+      },
+      {
+       "id": "44",
+       "label": "Zone 45"
+      },
+      {
+       "id": "45",
+       "label": "Zone 46"
+      },
+      {
+       "id": "46",
+       "label": "Zone 47"
+      },
+      {
+       "id": "47",
+       "label": "Zone 48"
+      },
+      {
+       "id": "48",
+       "label": "Zone 49"
+      },
+      {
+       "id": "49",
+       "label": "Zone 50"
+      },
+      {
+       "id": "50",
+       "label": "Zone 51"
+      },
+      {
+       "id": "51",
+       "label": "Zone 52"
+      },
+      {
+       "id": "52",
+       "label": "Zone 53"
+      },
+      {
+       "id": "53",
+       "label": "Zone 54"
+      },
+      {
+       "id": "54",
+       "label": "Zone 55"
+      },
+      {
+       "id": "55",
+       "label": "Zone 56"
+      },
+      {
+       "id": "56",
+       "label": "Zone 57"
+      },
+      {
+       "id": "57",
+       "label": "Zone 58"
+      },
+      {
+       "id": "58",
+       "label": "Zone 59"
+      },
+      {
+       "id": "59",
+       "label": "Zone 60"
+      },
+      {
+       "id": "60",
+       "label": "Zone 61"
+      },
+      {
+       "id": "61",
+       "label": "Zone 62"
+      },
+      {
+       "id": "62",
+       "label": "Zone 63"
+      },
+      {
+       "id": "63",
+       "label": "Zone 64"
+      }
+     ]
+    },
+    {
+     "id": "incdec",
+     "label": "Increment/Decrement",
+     "type": "select",
+     "default": "inc",
+     "choices": [
+      {
+       "id": "inc",
+       "label": "Increment"
+      },
+      {
+       "id": "dec",
+       "label": "Decrement"
+      }
+     ]
+    },
+    {
+     "id": "number",
+     "label": "Zone",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Zone 1"
+      },
+      {
+       "id": "1",
+       "label": "Zone 2"
+      },
+      {
+       "id": "2",
+       "label": "Zone 3"
+      },
+      {
+       "id": "3",
+       "label": "Zone 4"
+      },
+      {
+       "id": "4",
+       "label": "Zone 5"
+      },
+      {
+       "id": "5",
+       "label": "Zone 6"
+      },
+      {
+       "id": "6",
+       "label": "Zone 7"
+      },
+      {
+       "id": "7",
+       "label": "Zone 8"
+      },
+      {
+       "id": "8",
+       "label": "Zone 9"
+      },
+      {
+       "id": "9",
+       "label": "Zone 10"
+      },
+      {
+       "id": "10",
+       "label": "Zone 11"
+      },
+      {
+       "id": "11",
+       "label": "Zone 12"
+      },
+      {
+       "id": "12",
+       "label": "Zone 13"
+      },
+      {
+       "id": "13",
+       "label": "Zone 14"
+      },
+      {
+       "id": "14",
+       "label": "Zone 15"
+      },
+      {
+       "id": "15",
+       "label": "Zone 16"
+      },
+      {
+       "id": "16",
+       "label": "Zone 17"
+      },
+      {
+       "id": "17",
+       "label": "Zone 18"
+      },
+      {
+       "id": "18",
+       "label": "Zone 19"
+      },
+      {
+       "id": "19",
+       "label": "Zone 20"
+      },
+      {
+       "id": "20",
+       "label": "Zone 21"
+      },
+      {
+       "id": "21",
+       "label": "Zone 22"
+      },
+      {
+       "id": "22",
+       "label": "Zone 23"
+      },
+      {
+       "id": "23",
+       "label": "Zone 24"
+      },
+      {
+       "id": "24",
+       "label": "Zone 25"
+      },
+      {
+       "id": "25",
+       "label": "Zone 26"
+      },
+      {
+       "id": "26",
+       "label": "Zone 27"
+      },
+      {
+       "id": "27",
+       "label": "Zone 28"
+      },
+      {
+       "id": "28",
+       "label": "Zone 29"
+      },
+      {
+       "id": "29",
+       "label": "Zone 30"
+      },
+      {
+       "id": "30",
+       "label": "Zone 31"
+      },
+      {
+       "id": "31",
+       "label": "Zone 32"
+      },
+      {
+       "id": "32",
+       "label": "Zone 33"
+      },
+      {
+       "id": "33",
+       "label": "Zone 34"
+      },
+      {
+       "id": "34",
+       "label": "Zone 35"
+      },
+      {
+       "id": "35",
+       "label": "Zone 36"
+      },
+      {
+       "id": "36",
+       "label": "Zone 37"
+      },
+      {
+       "id": "37",
+       "label": "Zone 38"
+      },
+      {
+       "id": "38",
+       "label": "Zone 39"
+      },
+      {
+       "id": "39",
+       "label": "Zone 40"
+      },
+      {
+       "id": "40",
+       "label": "Zone 41"
+      },
+      {
+       "id": "41",
+       "label": "Zone 42"
+      },
+      {
+       "id": "42",
+       "label": "Zone 43"
+      },
+      {
+       "id": "43",
+       "label": "Zone 44"
+      },
+      {
+       "id": "44",
+       "label": "Zone 45"
+      },
+      {
+       "id": "45",
+       "label": "Zone 46"
+      },
+      {
+       "id": "46",
+       "label": "Zone 47"
+      },
+      {
+       "id": "47",
+       "label": "Zone 48"
+      },
+      {
+       "id": "48",
+       "label": "Zone 49"
+      },
+      {
+       "id": "49",
+       "label": "Zone 50"
+      },
+      {
+       "id": "50",
+       "label": "Zone 51"
+      },
+      {
+       "id": "51",
+       "label": "Zone 52"
+      },
+      {
+       "id": "52",
+       "label": "Zone 53"
+      },
+      {
+       "id": "53",
+       "label": "Zone 54"
+      },
+      {
+       "id": "54",
+       "label": "Zone 55"
+      },
+      {
+       "id": "55",
+       "label": "Zone 56"
+      },
+      {
+       "id": "56",
+       "label": "Zone 57"
+      },
+      {
+       "id": "57",
+       "label": "Zone 58"
+      },
+      {
+       "id": "58",
+       "label": "Zone 59"
+      },
+      {
+       "id": "59",
+       "label": "Zone 60"
+      },
+      {
+       "id": "60",
+       "label": "Zone 61"
+      },
+      {
+       "id": "61",
+       "label": "Zone 62"
+      },
+      {
+       "id": "62",
+       "label": "Zone 63"
+      },
+      {
+       "id": "63",
+       "label": "Zone 64"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "f000001a501201000104{{option.incdec_ch_number|u8}}01{{option.number|u8}}{{option.incdec|map}}f7",
+    "encoding": "hex"
+   },
+   "maps": {
+    "incdec": {
+     "inc": "7f",
+     "dec": "3f"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-allenheath-ahm",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz, Jonas Arnold, Bryce Seifert"
+  }
+ ],
+ "source": {
+  "module": "allenheath-ahm",
+  "version": "2.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz",
+   "Jonas Arnold",
+   "Bryce Seifert"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-allenheath-ahm.git"
+ }
+}

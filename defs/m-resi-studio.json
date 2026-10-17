@@ -1,0 +1,109 @@
+{
+ "format": 1,
+ "id": "m-resi-studio",
+ "name": "Resi Studio",
+ "category": "Resi",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.resi.io",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "clientId",
+   "label": "Client ID",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "clientSecret",
+   "label": "Client Secret",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "goLive",
+   "name": "Go Live",
+   "options": [
+    {
+     "id": "encoder",
+     "label": "Encoder",
+     "type": "select",
+     "default": "default",
+     "choices": [
+      {
+       "id": "default",
+       "label": "Default Encoder"
+      }
+     ]
+    },
+    {
+     "id": "destinationGroup",
+     "label": "Destination Group",
+     "type": "select",
+     "default": "default",
+     "choices": [
+      {
+       "id": "default",
+       "label": "Default Destination Group"
+      }
+     ]
+    },
+    {
+     "id": "title",
+     "label": "Title",
+     "type": "text",
+     "default": "Live Stream",
+     "help": "Title for the live stream"
+    },
+    {
+     "id": "description",
+     "label": "Description",
+     "type": "text",
+     "default": "",
+     "help": "Description for the live stream"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/v1/schedules/live",
+    "body": "{\"encoderId\":\"default\",\"destinationGroupId\":\"default\",\"title\":\"{{option.title}}\",\"description\":\"{{option.description}}\"}",
+    "contentType": "application/json"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-resi-studio",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "resi-studio",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-resi-studio.git"
+ }
+}
