@@ -1,0 +1,62 @@
+{
+ "format": 1,
+ "id": "m-attend2it-speakertimer",
+ "name": "Attend2IT Speakertimer.co.uk",
+ "category": "Attend2IT",
+ "version": "1.0.0-beta3",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "https://api.speakertimer.co.uk:8083",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "license",
+   "label": "Custom license (optional)",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "timer",
+   "label": "Timer ID",
+   "type": "text",
+   "default": "101"
+  }
+ ],
+ "actions": [
+  {
+   "id": "start_up",
+   "name": "Start Countup",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/socket.io/?EIO=4&transport=polling&t=rmhn3a2u"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-attend2it-speakertimer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Gareth Risdale"
+  }
+ ],
+ "source": {
+  "module": "attend2it-speakertimer",
+  "version": "1.0.0-beta3",
+  "license": "MIT",
+  "maintainers": [
+   "Gareth Risdale"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-attend2it-speakertimer.git"
+ }
+}

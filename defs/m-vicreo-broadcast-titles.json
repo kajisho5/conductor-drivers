@@ -1,0 +1,394 @@
+{
+ "format": 1,
+ "id": "m-vicreo-broadcast-titles",
+ "name": "VICREO Broadcast Titles",
+ "category": "VICREO",
+ "version": "1.0.0",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8080,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "reconnectInterval",
+   "label": "Reconnect Interval (seconds)",
+   "type": "number",
+   "default": 5,
+   "min": 1,
+   "max": 60
+  }
+ ],
+ "actions": [
+  {
+   "id": "navigate_up",
+   "name": "Navigate Up",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"up\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "navigate_down",
+   "name": "Navigate Down",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"down\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "select_row",
+   "name": "Select Row",
+   "options": [
+    {
+     "id": "index",
+     "label": "Row Index (0-based)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"select\",\"params\":{\"index\":{{option.index}}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "select_row_1based",
+   "name": "Select Row (1-based)",
+   "options": [
+    {
+     "id": "row",
+     "label": "Row Number (1-based)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"select\",\"params\":{\"index\":{{option.row|lin:1:-1}}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "go_live",
+   "name": "Go Live",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"live\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clear_output",
+   "name": "Clear Output",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"clear\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "refresh_data",
+   "name": "Refresh Data",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"refresh\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "get_sheets",
+   "name": "Get Sheets",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"sheets\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "select_and_live",
+   "name": "Select Row and Go Live",
+   "options": [
+    {
+     "id": "row",
+     "label": "Row Number (1-based)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 1000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"select\",\"params\":{\"index\":{{option.row|lin:1:-1}}}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"command\":\"live\"}",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
+   "id": "next_and_live",
+   "name": "Next Row and Go Live",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"down\"}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"command\":\"live\"}",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
+   "id": "previous_and_live",
+   "name": "Previous Row and Go Live",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"up\"}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"command\":\"live\"}",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
+   "id": "go_live_row",
+   "name": "Go Live with Specific Row",
+   "options": [
+    {
+     "id": "row",
+     "label": "Row Number (1-based) - can use variables",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"command\":\"select\",\"params\":{\"index\":{{option.row|lin:1:-1}}}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"command\":\"live\"}",
+     "encoding": "text"
+    }
+   ]
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "navigate_up",
+   "category": "Navigation",
+   "name": "Up",
+   "text": "⬆️\nUP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate_up",
+    "options": {}
+   }
+  },
+  {
+   "id": "navigate_down",
+   "category": "Navigation",
+   "name": "Down",
+   "text": "⬇️\nDOWN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "navigate_down",
+    "options": {}
+   }
+  },
+  {
+   "id": "go_live",
+   "category": "Output",
+   "name": "Go Live",
+   "text": "🔴\nLIVE",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "go_live",
+    "options": {}
+   }
+  },
+  {
+   "id": "clear_output",
+   "category": "Output",
+   "name": "Clear",
+   "text": "⚫\nCLEAR",
+   "backgroundColor": "#323232",
+   "action": {
+    "definitionId": "clear_output",
+    "options": {}
+   }
+  },
+  {
+   "id": "next_and_live",
+   "category": "Quick Actions",
+   "name": "Next & Live",
+   "text": "⬇️🔴\nNEXT\nLIVE",
+   "backgroundColor": "#960096",
+   "action": {
+    "definitionId": "next_and_live",
+    "options": {}
+   }
+  },
+  {
+   "id": "previous_and_live",
+   "category": "Quick Actions",
+   "name": "Previous & Live",
+   "text": "⬆️🔴\nPREV\nLIVE",
+   "backgroundColor": "#960096",
+   "action": {
+    "definitionId": "previous_and_live",
+    "options": {}
+   }
+  },
+  {
+   "id": "refresh_data",
+   "category": "Data",
+   "name": "Refresh data",
+   "text": "🔄\nREFRESH",
+   "backgroundColor": "#646400",
+   "action": {
+    "definitionId": "refresh_data",
+    "options": {}
+   }
+  },
+  {
+   "id": "selected_row_live",
+   "category": "Navigation",
+   "name": "Go Live with Selected Row",
+   "text": "🔴",
+   "backgroundColor": "#323296",
+   "action": {
+    "definitionId": "go_live",
+    "options": {}
+   }
+  },
+  {
+   "id": "row_1",
+   "category": "Row Selection",
+   "name": "Row 1",
+   "text": "1",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "select_and_live",
+    "options": {
+     "row": 1
+    }
+   }
+  },
+  {
+   "id": "row_2",
+   "category": "Row Selection",
+   "name": "Row 2",
+   "text": "2",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "select_and_live",
+    "options": {
+     "row": 2
+    }
+   }
+  },
+  {
+   "id": "row_3",
+   "category": "Row Selection",
+   "name": "Row 3",
+   "text": "3",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "select_and_live",
+    "options": {
+     "row": 3
+    }
+   }
+  },
+  {
+   "id": "row_4",
+   "category": "Row Selection",
+   "name": "Row 4",
+   "text": "4",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "select_and_live",
+    "options": {
+     "row": 4
+    }
+   }
+  },
+  {
+   "id": "row_5",
+   "category": "Row Selection",
+   "name": "Row 5",
+   "text": "5",
+   "backgroundColor": "#006400",
+   "action": {
+    "definitionId": "select_and_live",
+    "options": {
+     "row": 5
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-vicreo-broadcast-titles",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "vicreo-broadcast-titles",
+  "version": "1.0.0",
+  "license": "MIT",
+  "maintainers": [
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-vicreo-broadcast-titles.git"
+ }
+}

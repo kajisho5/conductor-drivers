@@ -1,0 +1,1019 @@
+{
+ "format": 1,
+ "id": "m-red-rcp2",
+ "name": "RED RCP2 Camera Control",
+ "category": "RED",
+ "version": "1.1.3",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 9998,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "increase_exposure_adjust",
+   "name": "Increase Exposure Adjust",
+   "options": [
+    {
+     "id": "amount",
+     "label": "Amount to increase (e.g. 0.250)",
+     "type": "number",
+     "default": 0.25,
+     "min": -8,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"EXPOSURE_ADJUST\",\"value\":{{option.amount|lin:1000:0}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "decrease_exposure_adjust",
+   "name": "Decrease Exposure Adjust",
+   "options": [
+    {
+     "id": "amount",
+     "label": "Amount to decrease (e.g. 0.250)",
+     "type": "number",
+     "default": 0.25,
+     "min": -8,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"EXPOSURE_ADJUST\",\"value\":{{option.amount|lin:-1000:0}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_exposure_adjust",
+   "name": "Set Exposure Adjust (Static)",
+   "options": [
+    {
+     "id": "value",
+     "label": "Target Exposure Adjust Value",
+     "type": "number",
+     "default": 0,
+     "min": -8,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"EXPOSURE_ADJUST\",\"value\":{{option.value|lin:1000:0}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_white_balance",
+   "name": "Set White Balance",
+   "options": [
+    {
+     "id": "white_balance",
+     "label": "White Balance (Kelvin)",
+     "type": "select",
+     "default": "5600",
+     "choices": [
+      {
+       "id": "2000",
+       "label": "2000K"
+      },
+      {
+       "id": "2100",
+       "label": "2100K"
+      },
+      {
+       "id": "2200",
+       "label": "2200K"
+      },
+      {
+       "id": "2300",
+       "label": "2300K"
+      },
+      {
+       "id": "2400",
+       "label": "2400K"
+      },
+      {
+       "id": "2500",
+       "label": "2500K"
+      },
+      {
+       "id": "2600",
+       "label": "2600K"
+      },
+      {
+       "id": "2700",
+       "label": "2700K"
+      },
+      {
+       "id": "2800",
+       "label": "2800K"
+      },
+      {
+       "id": "2900",
+       "label": "2900K"
+      },
+      {
+       "id": "3000",
+       "label": "3000K"
+      },
+      {
+       "id": "3100",
+       "label": "3100K"
+      },
+      {
+       "id": "3200",
+       "label": "3200K"
+      },
+      {
+       "id": "3300",
+       "label": "3300K"
+      },
+      {
+       "id": "3400",
+       "label": "3400K"
+      },
+      {
+       "id": "3500",
+       "label": "3500K"
+      },
+      {
+       "id": "3600",
+       "label": "3600K"
+      },
+      {
+       "id": "3700",
+       "label": "3700K"
+      },
+      {
+       "id": "3800",
+       "label": "3800K"
+      },
+      {
+       "id": "3900",
+       "label": "3900K"
+      },
+      {
+       "id": "4000",
+       "label": "4000K"
+      },
+      {
+       "id": "4100",
+       "label": "4100K"
+      },
+      {
+       "id": "4200",
+       "label": "4200K"
+      },
+      {
+       "id": "4300",
+       "label": "4300K"
+      },
+      {
+       "id": "4400",
+       "label": "4400K"
+      },
+      {
+       "id": "4500",
+       "label": "4500K"
+      },
+      {
+       "id": "4600",
+       "label": "4600K"
+      },
+      {
+       "id": "4700",
+       "label": "4700K"
+      },
+      {
+       "id": "4800",
+       "label": "4800K"
+      },
+      {
+       "id": "4900",
+       "label": "4900K"
+      },
+      {
+       "id": "5000",
+       "label": "5000K"
+      },
+      {
+       "id": "5100",
+       "label": "5100K"
+      },
+      {
+       "id": "5200",
+       "label": "5200K"
+      },
+      {
+       "id": "5300",
+       "label": "5300K"
+      },
+      {
+       "id": "5400",
+       "label": "5400K"
+      },
+      {
+       "id": "5500",
+       "label": "5500K"
+      },
+      {
+       "id": "5600",
+       "label": "5600K"
+      },
+      {
+       "id": "5700",
+       "label": "5700K"
+      },
+      {
+       "id": "5800",
+       "label": "5800K"
+      },
+      {
+       "id": "5900",
+       "label": "5900K"
+      },
+      {
+       "id": "6000",
+       "label": "6000K"
+      },
+      {
+       "id": "6100",
+       "label": "6100K"
+      },
+      {
+       "id": "6200",
+       "label": "6200K"
+      },
+      {
+       "id": "6300",
+       "label": "6300K"
+      },
+      {
+       "id": "6400",
+       "label": "6400K"
+      },
+      {
+       "id": "6500",
+       "label": "6500K"
+      },
+      {
+       "id": "6600",
+       "label": "6600K"
+      },
+      {
+       "id": "6700",
+       "label": "6700K"
+      },
+      {
+       "id": "6800",
+       "label": "6800K"
+      },
+      {
+       "id": "6900",
+       "label": "6900K"
+      },
+      {
+       "id": "7000",
+       "label": "7000K"
+      },
+      {
+       "id": "7100",
+       "label": "7100K"
+      },
+      {
+       "id": "7200",
+       "label": "7200K"
+      },
+      {
+       "id": "7300",
+       "label": "7300K"
+      },
+      {
+       "id": "7400",
+       "label": "7400K"
+      },
+      {
+       "id": "7500",
+       "label": "7500K"
+      },
+      {
+       "id": "7600",
+       "label": "7600K"
+      },
+      {
+       "id": "7700",
+       "label": "7700K"
+      },
+      {
+       "id": "7800",
+       "label": "7800K"
+      },
+      {
+       "id": "7900",
+       "label": "7900K"
+      },
+      {
+       "id": "8000",
+       "label": "8000K"
+      },
+      {
+       "id": "8100",
+       "label": "8100K"
+      },
+      {
+       "id": "8200",
+       "label": "8200K"
+      },
+      {
+       "id": "8300",
+       "label": "8300K"
+      },
+      {
+       "id": "8400",
+       "label": "8400K"
+      },
+      {
+       "id": "8500",
+       "label": "8500K"
+      },
+      {
+       "id": "8600",
+       "label": "8600K"
+      },
+      {
+       "id": "8700",
+       "label": "8700K"
+      },
+      {
+       "id": "8800",
+       "label": "8800K"
+      },
+      {
+       "id": "8900",
+       "label": "8900K"
+      },
+      {
+       "id": "9000",
+       "label": "9000K"
+      },
+      {
+       "id": "9100",
+       "label": "9100K"
+      },
+      {
+       "id": "9200",
+       "label": "9200K"
+      },
+      {
+       "id": "9300",
+       "label": "9300K"
+      },
+      {
+       "id": "9400",
+       "label": "9400K"
+      },
+      {
+       "id": "9500",
+       "label": "9500K"
+      },
+      {
+       "id": "9600",
+       "label": "9600K"
+      },
+      {
+       "id": "9700",
+       "label": "9700K"
+      },
+      {
+       "id": "9800",
+       "label": "9800K"
+      },
+      {
+       "id": "9900",
+       "label": "9900K"
+      },
+      {
+       "id": "10000",
+       "label": "10000K"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"COLOR_TEMPERATURE\",\"value\":{{option.white_balance}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_iso",
+   "name": "Set ISO",
+   "options": [
+    {
+     "id": "iso",
+     "label": "ISO",
+     "type": "select",
+     "default": "800",
+     "choices": [
+      {
+       "id": "200",
+       "label": "200"
+      },
+      {
+       "id": "250",
+       "label": "250"
+      },
+      {
+       "id": "320",
+       "label": "320"
+      },
+      {
+       "id": "400",
+       "label": "400"
+      },
+      {
+       "id": "500",
+       "label": "500"
+      },
+      {
+       "id": "640",
+       "label": "640"
+      },
+      {
+       "id": "800",
+       "label": "800"
+      },
+      {
+       "id": "1000",
+       "label": "1000"
+      },
+      {
+       "id": "1280",
+       "label": "1280"
+      },
+      {
+       "id": "1600",
+       "label": "1600"
+      },
+      {
+       "id": "2000",
+       "label": "2000"
+      },
+      {
+       "id": "2560",
+       "label": "2560"
+      },
+      {
+       "id": "3200",
+       "label": "3200"
+      },
+      {
+       "id": "4000",
+       "label": "4000"
+      },
+      {
+       "id": "5120",
+       "label": "5120"
+      },
+      {
+       "id": "6400",
+       "label": "6400"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"ISO\",\"value\":{{option.iso|map}}0}",
+    "encoding": "text"
+   },
+   "maps": {
+    "iso": {
+     "200": "20",
+     "250": "25",
+     "320": "32",
+     "400": "40",
+     "500": "50",
+     "640": "64",
+     "800": "80",
+     "1000": "100",
+     "1280": "128",
+     "1600": "160",
+     "2000": "200",
+     "2560": "256",
+     "3200": "320",
+     "4000": "400",
+     "5120": "512",
+     "6400": "640"
+    }
+   }
+  },
+  {
+   "id": "set_sensor_fps",
+   "name": "Set Sensor Frame Rate",
+   "options": [
+    {
+     "id": "fps",
+     "label": "Sensor Frame Rate",
+     "type": "select",
+     "default": "24000",
+     "choices": [
+      {
+       "id": "23976",
+       "label": "23.976 FPS"
+      },
+      {
+       "id": "24000",
+       "label": "24 FPS"
+      },
+      {
+       "id": "25000",
+       "label": "25 FPS"
+      },
+      {
+       "id": "29970",
+       "label": "29.97 FPS"
+      },
+      {
+       "id": "30000",
+       "label": "30 FPS"
+      },
+      {
+       "id": "48000",
+       "label": "48 FPS"
+      },
+      {
+       "id": "50000",
+       "label": "50 FPS"
+      },
+      {
+       "id": "59940",
+       "label": "59.94 FPS"
+      },
+      {
+       "id": "60000",
+       "label": "60 FPS"
+      },
+      {
+       "id": "120000",
+       "label": "120 FPS"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"SENSOR_FRAME_RATE\",\"value\":{{option.fps|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "fps": {
+     "23976": "23976",
+     "24000": "24000",
+     "25000": "25000",
+     "29970": "29970",
+     "30000": "30000",
+     "48000": "48000",
+     "50000": "50000",
+     "59940": "59940",
+     "60000": "60000",
+     "120000": "120000"
+    }
+   }
+  },
+  {
+   "id": "set_record_format",
+   "name": "Set Record Format",
+   "options": [
+    {
+     "id": "record_format",
+     "label": "Record Format",
+     "type": "select",
+     "default": "6",
+     "choices": [
+      {
+       "id": "6",
+       "label": "8K 16:9 (Full Frame)"
+      },
+      {
+       "id": "7",
+       "label": "8K 16:9 (HD)"
+      },
+      {
+       "id": "8",
+       "label": "8K 21:9"
+      },
+      {
+       "id": "9",
+       "label": "8K 2.39:1"
+      },
+      {
+       "id": "10",
+       "label": "7K 16:9 (Full Frame)"
+      },
+      {
+       "id": "11",
+       "label": "7K 16:9 (HD)"
+      },
+      {
+       "id": "12",
+       "label": "7K 21:9"
+      },
+      {
+       "id": "13",
+       "label": "7K 2.39:1"
+      },
+      {
+       "id": "0",
+       "label": "6K 16:9 (Full Frame)"
+      },
+      {
+       "id": "3",
+       "label": "6K 16:9 (HD)"
+      },
+      {
+       "id": "5",
+       "label": "6K 2.39:1"
+      },
+      {
+       "id": "14",
+       "label": "6K 21:9"
+      },
+      {
+       "id": "1",
+       "label": "5K 16:9"
+      },
+      {
+       "id": "2",
+       "label": "4K 16:9"
+      },
+      {
+       "id": "4",
+       "label": "2K 16:9"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"RECORD_FORMAT\",\"value\":{{option.record_format|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "record_format": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14"
+    }
+   }
+  },
+  {
+   "id": "start_record",
+   "name": "Start Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"RECORD_STATE\",\"value\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop_record",
+   "name": "Stop Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"RECORD_STATE\",\"value\":0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggle_record",
+   "name": "Toggle Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"RECORD_STATE\",\"value\":2}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "send_command",
+   "name": "Send Generic Command",
+   "options": [
+    {
+     "id": "data",
+     "label": "Data",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.data}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_camera_id",
+   "name": "Set Camera ID",
+   "options": [
+    {
+     "id": "camera_id",
+     "label": "Camera ID (alphanumeric, max 63 chars)",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"CAMERA_ID\",\"value\":\"{{option.camera_id}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_reel_number",
+   "name": "Set Reel Number",
+   "options": [
+    {
+     "id": "reel",
+     "label": "Reel Number (1-999)",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 999
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"REEL_NUMBER\",\"value\":{{option.reel}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_camera_position",
+   "name": "Set Camera Position",
+   "options": [
+    {
+     "id": "position",
+     "label": "Camera Position (Letter)",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "A"
+      },
+      {
+       "id": "1",
+       "label": "B"
+      },
+      {
+       "id": "2",
+       "label": "C"
+      },
+      {
+       "id": "3",
+       "label": "D"
+      },
+      {
+       "id": "4",
+       "label": "E"
+      },
+      {
+       "id": "5",
+       "label": "F"
+      },
+      {
+       "id": "6",
+       "label": "G"
+      },
+      {
+       "id": "7",
+       "label": "H"
+      },
+      {
+       "id": "8",
+       "label": "I"
+      },
+      {
+       "id": "9",
+       "label": "J"
+      },
+      {
+       "id": "10",
+       "label": "K"
+      },
+      {
+       "id": "11",
+       "label": "L"
+      },
+      {
+       "id": "12",
+       "label": "M"
+      },
+      {
+       "id": "13",
+       "label": "N"
+      },
+      {
+       "id": "14",
+       "label": "O"
+      },
+      {
+       "id": "15",
+       "label": "P"
+      },
+      {
+       "id": "16",
+       "label": "Q"
+      },
+      {
+       "id": "17",
+       "label": "R"
+      },
+      {
+       "id": "18",
+       "label": "S"
+      },
+      {
+       "id": "19",
+       "label": "T"
+      },
+      {
+       "id": "20",
+       "label": "U"
+      },
+      {
+       "id": "21",
+       "label": "V"
+      },
+      {
+       "id": "22",
+       "label": "W"
+      },
+      {
+       "id": "23",
+       "label": "X"
+      },
+      {
+       "id": "24",
+       "label": "Y"
+      },
+      {
+       "id": "25",
+       "label": "Z"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"CAMERA_POSITION\",\"value\":{{option.position|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "position": {
+     "0": "0",
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4",
+     "5": "5",
+     "6": "6",
+     "7": "7",
+     "8": "8",
+     "9": "9",
+     "10": "10",
+     "11": "11",
+     "12": "12",
+     "13": "13",
+     "14": "14",
+     "15": "15",
+     "16": "16",
+     "17": "17",
+     "18": "18",
+     "19": "19",
+     "20": "20",
+     "21": "21",
+     "22": "22",
+     "23": "23",
+     "24": "24",
+     "25": "25"
+    }
+   }
+  },
+  {
+   "id": "toggle_lut_sdi1",
+   "name": "Toggle LUT on SDI 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"ENABLE_CAMERA_LUT_SDI_1\",\"value\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggle_lut_sdi2",
+   "name": "Toggle LUT on SDI 2",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"ENABLE_CAMERA_LUT_SDI_2\",\"value\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "enable_lut_sdi1",
+   "name": "Enable LUT on SDI 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"ENABLE_CAMERA_LUT_SDI_1\",\"value\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disable_lut_sdi1",
+   "name": "Disable LUT on SDI 1",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"ENABLE_CAMERA_LUT_SDI_1\",\"value\":0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "enable_lut_sdi2",
+   "name": "Enable LUT on SDI 2",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"ENABLE_CAMERA_LUT_SDI_2\",\"value\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disable_lut_sdi2",
+   "name": "Disable LUT on SDI 2",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"rcp_set\",\"id\":\"ENABLE_CAMERA_LUT_SDI_2\",\"value\":0}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-red-rcp2",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Seth Haberman"
+  }
+ ],
+ "source": {
+  "module": "red-rcp2",
+  "version": "1.1.3",
+  "license": "MIT",
+  "maintainers": [
+   "Seth Haberman"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-red-rcp2.git"
+ }
+}

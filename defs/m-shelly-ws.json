@@ -1,0 +1,189 @@
+{
+ "format": 1,
+ "id": "m-shelly-ws",
+ "name": "Shelly Plus 1 / Shelly Plus 1PM / Shelly Plus 2PM / Shelly Pro 1 / Shelly Pro…",
+ "category": "Shelly",
+ "version": "1.1.2",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/rpc",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "reconnect",
+   "label": "Reconnect",
+   "type": "boolean",
+   "default": true,
+   "help": "Reconnect on WebSocket error (after 5 secs)"
+  },
+  {
+   "id": "password",
+   "label": "Password (optional)",
+   "type": "text"
+  },
+  {
+   "id": "shellyProduct",
+   "label": "Shelly Product",
+   "type": "select",
+   "default": "0",
+   "choices": [
+    {
+     "id": "0",
+     "label": "Shelly Plus 1"
+    },
+    {
+     "id": "1",
+     "label": "Shelly Plus 1PM"
+    },
+    {
+     "id": "2",
+     "label": "Shelly Plus 2PM Relay Mode"
+    },
+    {
+     "id": "3",
+     "label": "Shelly Plus 2PM Roller Mode"
+    },
+    {
+     "id": "4",
+     "label": "Shelly Pro 1"
+    },
+    {
+     "id": "5",
+     "label": "Shelly Pro 1PM"
+    },
+    {
+     "id": "6",
+     "label": "Shelly Pro 2"
+    },
+    {
+     "id": "7",
+     "label": "Shelly Pro 2PM Relay Mode"
+    },
+    {
+     "id": "8",
+     "label": "Shelly Pro 2PM Roller Mode"
+    },
+    {
+     "id": "9",
+     "label": "Shelly Pro 3"
+    },
+    {
+     "id": "10",
+     "label": "Shelly Pro 4PM"
+    },
+    {
+     "id": "11",
+     "label": "Shelly Pro Dual Cover PM"
+    },
+    {
+     "id": "12",
+     "label": "Shelly Plus I4"
+    }
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "id": "switchRelay",
+   "name": "Set relay state",
+   "options": [
+    {
+     "id": "selectedRelay",
+     "label": "Relay",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Relay 1"
+      }
+     ]
+    },
+    {
+     "id": "selectedRelayState",
+     "label": "Relay State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "On"
+      },
+      {
+       "id": "1",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"id\":1,\"src\":\"user_1\",\"method\":\"Switch.Set\",\"params\":{\"id\":1,\"on\":{{option.selectedRelayState|map}}e}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedRelayState": {
+     "0": "tru",
+     "1": "fals"
+    }
+   }
+  },
+  {
+   "id": "toggleRelay",
+   "name": "Toggle relay state",
+   "options": [
+    {
+     "id": "selectedRelay",
+     "label": "Relay",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Relay 1"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"id\":1,\"src\":\"user_1\",\"method\":\"Switch.Set\",\"params\":{\"id\":1,\"on\":true}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-shelly-ws",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "shelly-ws",
+  "version": "1.1.2",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-shelly-ws.git"
+ }
+}

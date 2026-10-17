@@ -1,0 +1,217 @@
+{
+ "format": 1,
+ "id": "m-modulopi-moduloplayer",
+ "name": "Modulo Pi Modulo Player",
+ "category": "Modulo Pi",
+ "version": "4.0.8",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8080,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "sdEnable",
+   "label": "Enable Spydog",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "sdPort",
+   "label": "Spydog Port",
+   "type": "number",
+   "default": 8081,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "pollInterval",
+   "label": "Polling interval (ms) (default: 250, min: 100, 0 for disabled)",
+   "type": "number",
+   "default": 1000,
+   "min": 0,
+   "max": 60000
+  }
+ ],
+ "actions": [
+  {
+   "id": "launch_task",
+   "name": "Launch Task {uuid}",
+   "options": [
+    {
+     "id": "task",
+     "label": "Task ID",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"doaction.task\", \"params\": {\\n            \"uuid\": \"{{option.task}}\",\\n            \"action\": \"launch\"\\n            },\"id\": 2}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "save",
+   "name": "Save Show",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\": \"2.0\", \"method\": \"doaction.show\", \"params\": {\"action\": \"save\"}, \"id\": 0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "backup",
+   "name": "Backup Show",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\": \"2.0\", \"method\": \"doaction.show\", \"params\": {\"action\": \"backup\"}, \"id\": 0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "rescan_medias",
+   "name": "Rescan Medias",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\": \"2.0\", \"method\": \"doaction.show\", \"params\": {\"action\": \"rescanmedia\"}, \"id\": 0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "remove_missing_medias",
+   "name": "Remove Missing Medias",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\": \"2.0\", \"method\": \"doaction.show\", \"params\": {\"action\": \"removemissingmedia\"}, \"id\": 0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "rescan_medias_force",
+   "name": "Rescan Medias Force",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\": \"2.0\", \"method\": \"doaction.show\", \"params\": {\"action\": \"rescanmediaforce\"}, \"id\": 0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "send_show_to_remote",
+   "name": "Send show to all remotes",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"jsonrpc\": \"2.0\", \"method\": \"doaction.show\", \"params\": {\"action\": \"sendshowtoremote\"}, \"id\": 0}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Show",
+   "name": "Save",
+   "text": "Save",
+   "backgroundColor": "#2a2a2a",
+   "action": {
+    "definitionId": "save",
+    "options": {}
+   }
+  },
+  {
+   "id": "1",
+   "category": "Show",
+   "name": "Backup",
+   "text": "Backup",
+   "backgroundColor": "#2a2a2a",
+   "action": {
+    "definitionId": "backup",
+    "options": {}
+   }
+  },
+  {
+   "id": "2",
+   "category": "Show",
+   "name": "Rescan Medias",
+   "text": "Rescan Medias",
+   "backgroundColor": "#2a2a2a",
+   "action": {
+    "definitionId": "rescan_medias",
+    "options": {}
+   }
+  },
+  {
+   "id": "3",
+   "category": "Show",
+   "name": "Rescan Medias Force",
+   "text": "Rescan Medias Force",
+   "backgroundColor": "#2a2a2a",
+   "action": {
+    "definitionId": "rescan_medias_force",
+    "options": {}
+   }
+  },
+  {
+   "id": "4",
+   "category": "Show",
+   "name": "Remove Missing Medias",
+   "text": "Remove Missing Medias",
+   "backgroundColor": "#2a2a2a",
+   "action": {
+    "definitionId": "remove_missing_medias",
+    "options": {}
+   }
+  },
+  {
+   "id": "5",
+   "category": "Show",
+   "name": "Send Show to All Remotes",
+   "text": "Send Show to All Remotes",
+   "backgroundColor": "#2a2a2a",
+   "action": {
+    "definitionId": "send_show_to_remote",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-modulopi-moduloplayer",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Nicolas Keesst, Per Røine"
+  }
+ ],
+ "source": {
+  "module": "modulopi-moduloplayer",
+  "version": "4.0.8",
+  "license": "MIT",
+  "maintainers": [
+   "Nicolas Keesst",
+   "Per Røine"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-modulopi-moduloplayer.git"
+ }
+}

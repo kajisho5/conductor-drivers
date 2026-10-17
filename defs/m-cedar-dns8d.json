@@ -1,0 +1,133 @@
+{
+ "format": 1,
+ "id": "m-cedar-dns8d",
+ "name": "Cedar DNS 8D",
+ "category": "Cedar",
+ "version": "1.0.7",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/info.ws",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "interval",
+   "label": "Poll Interval (mS)",
+   "type": "number",
+   "default": 40,
+   "min": 40,
+   "max": 1000
+  }
+ ],
+ "actions": [
+  {
+   "id": "globalLearn",
+   "name": "Global Learn",
+   "options": [
+    {
+     "id": "value",
+     "label": "Learn",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<dns8><chan idx=\"0\"><name/><bias/><atten/><dns/></chan><chan idx=\"1\"><name/><bias/><atten/><dns/></chan><chan idx=\"2\"><name/><bias/><atten/><dns/></chan><chan idx=\"3\"><name/><bias/><atten/><dns/></chan><chan idx=\"4\"><name/><bias/><atten/><dns/></chan><chan idx=\"5\"><name/><bias/><atten/><dns/></chan><chan idx=\"6\"><name/><bias/><atten/><dns/></chan><chan idx=\"7\"><name/><bias/><atten/><dns/></chan><group idx=\"0\"><name/><bias/><atten/><band idx=\"0\"><bias/><atten/></band><band idx=\"1\"><bias/><atten/></band><band idx=\"2\"><bias/><atten/></band><band idx=\"3\"><bias/><atten/></band><band idx=\"4\"><bias/><atten/></band><band idx=\"5\"><bias/><atten/></band></group><global learn=\"{{option.value|map}}\"/></dns8>",
+    "encoding": "text"
+   },
+   "maps": {
+    "value": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "globalOn",
+   "name": "Global On",
+   "options": [
+    {
+     "id": "value",
+     "label": "On",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<dns8><chan idx=\"0\"><name/><bias/><atten/><dns/></chan><chan idx=\"1\"><name/><bias/><atten/><dns/></chan><chan idx=\"2\"><name/><bias/><atten/><dns/></chan><chan idx=\"3\"><name/><bias/><atten/><dns/></chan><chan idx=\"4\"><name/><bias/><atten/><dns/></chan><chan idx=\"5\"><name/><bias/><atten/><dns/></chan><chan idx=\"6\"><name/><bias/><atten/><dns/></chan><chan idx=\"7\"><name/><bias/><atten/><dns/></chan><group idx=\"0\"><name/><bias/><atten/><band idx=\"0\"><bias/><atten/></band><band idx=\"1\"><bias/><atten/></band><band idx=\"2\"><bias/><atten/></band><band idx=\"3\"><bias/><atten/></band><band idx=\"4\"><bias/><atten/></band><band idx=\"5\"><bias/><atten/></band></group><global on=\"{{option.value|map}}\"/></dns8>",
+    "encoding": "text"
+   },
+   "maps": {
+    "value": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-cedar-dns8d",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "cedar-dns8d",
+  "version": "1.0.7",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-cedar-dns8d.git"
+ }
+}

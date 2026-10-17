@@ -28,6 +28,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | arri-tally | 2.0.2 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-arri-tally.git |
 | aten-matrix | 2.0.2 | MIT | Noah Callaway | https://github.com/bitfocus/companion-module-aten-matrix.git |
 | atlasied-atmosphere | 1.2.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-atlasied-atmosphere.git |
+| attend2it-speakertimer | 1.0.0-beta3 | MIT | Gareth Risdale | https://github.com/bitfocus/companion-module-attend2it-speakertimer.git |
 | audac-mtx | 2.0.0 | MIT | Jelle van Abbema | https://github.com/bitfocus/companion-module-audac-mtx.get |
 | aver-ptz | 1.2.0 | MIT | Colbix | https://github.com/bitfocus/companion-module-aver-ptz.git |
 | avmediatools-protimer | 2.0.1 | MIT | Sander Kamp, Jeffrey Davidsz | https://github.com/bitfocus/companion-module-avmediatools-protimer.git |
@@ -36,7 +37,6 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | axeltechnology-xradio | 1.0.5 | MIT | Ruslan Rolkin | https://https://github.com/bitfocus/companion-module-axeltechnology-xradio.git |
 | aximmetry-composer | 1.0.0 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-aximmetry-composer.git |
 | axis-ptz | 2.1.0 | MIT | Andreas H. Thomsen, Per Røine, Joseph Adams | https://github.com/bitfocus/companion-module-axis-ptz.git |
-| barco-clickshare | 2.1.0 | MIT | Bryan Crotaz | https://github.com/bitfocus/companion-module-barco-clickshare.git |
 | barco-dp | 2.0.2 | MIT | Jeffrey Davidsz | https://github.com/bitfocus/companion-module-barco-dp.git |
 | barco-eventmaster-xml | 2.0.1 | MIT | Jeffrey Davidsz | https://github.com/bitfocus/companion-module-barco-eventmaster-xml.git |
 | barco-pds | 2.0.1 | MIT | Dorian Meid | https://github.com/bitfocus/companion-module-barco-pds.git |
@@ -48,6 +48,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | betr-support | 2.0.2 | MIT | Vishnu CR | https://github.com/bitfocus/companion-module-betr-support.git |
 | biamp-tesira | 2.0.1 | MIT | Adrian Davis, Joseph Adams, David Stevens, Tim Terry, Bjorn Peterson | https://github.com/bitfocus/companion-module-biamp-tesira.git |
 | binary-moipcontroller | 1.2.0 | MIT | Britt Ryan | https://github.com/bitfocus/companion-module-binary-moipcontroller.git |
+| bitfocusas-listener | 1.0.3 | MIT | William Viker | https://github.com/bitfocus/companion-module-bitfocusas-listener.git |
 | blackbox-boxilla | 2.0.0 | MIT | Jeffrey Davidsz, Håkon Nessjøen | https://github.com/bitfocus/companion-module-blackbox-boxilla.git |
 | bmd-gpi-and-tally-interface | 1.0.1 | MIT | Balint Halla | https://github.com/bitfocus/companion-module-bmd-gpi-and-tally-interface.git |
 | bmd-multiview4 | 2.0.0 | MIT | Per Røine, Keith Rocheck, Joseph Adams | https://github.com/bitfocus/companion-module-bmd-multiview4.git |
@@ -55,7 +56,6 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | bmd-ultimatte | 2.1.1 | MIT | Joseph Adams, Skyler Ehly | https://github.com/bitfocus/companion-module-bmd-ultimatte.git |
 | bmd-videohub | 2.6.0 | MIT | William Viker | https://github.com/bitfocus/companion-module-bmd-videohub.git |
 | bmd-webpresenter | 2.1.1 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-bmd-webpresenter.git |
-| boinx-mimolive | 2.0.0 | MIT | Stephen Harrison | https://github.com/bitfocus/companion-module-boinx-mimolive.git |
 | borealis-vor | 1.0.0 | MIT | Asher Robinson | https://github.com/bitfocus/companion-module-borealis-vor |
 | boxcast-api | 1.0.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-boxcast-api.git |
 | brompton-tessera | 2.2.0 | MIT | Seraphin Gnehm | https://github.com/bitfocus/companion-module-brompton-tessera.git |
@@ -66,13 +66,16 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | captionkit-api | 1.0.1 | MIT | Richard Huss | https://github.com/bitfocus/companion-module-captionkit-api.git |
 | casparcg-server | 2.1.2 | ISC | Håkon Nessjøen | https://github.com/bitfocus/companion-module-casparcg-server.git |
 | castr-api | 1.0.0 | MIT | Dimitri Tarassenko | https://github.com/m1tk4/companion-module-castr-api.git |
+| cedar-dns8d | 1.0.7 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-cedar-dns8d.git |
 | chamsys-magicq-osc | 3.1.1 | MIT | Per Røine | https://github.com/bitfocus/companion-module-chamsys-magicq-osc.git |
 | chamsys-magicq-udp | 2.1.0 | MIT | Per Røine | https://github.com/bitfocus/companion-module-chamsys-magicq-udp.git |
 | christie-projector | 4.1.0 | MIT | Joseph Adams, Per Røine, Andreas Thomsen | https://github.com/bitfocus/companion-module-christie-projector.git |
 | christie-spyder | 2.3.0 | ISC | Per Røine, John A Knight, Jr | https://github.com/bitfocus/companion-module-christie-spyder.git |
+| churchapps-freeshow | 1.1.0 | MIT | Kristoffer Vassbø | https://github.com/bitfocus/companion-module-churchapps-freeshow.git |
 | chyronhego-lyric | 1.0.2 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-chyronhego-lyric.git |
 | cinegy-capture | 1.1.5 | MIT | Leopold Strobl | https://github.com/bitfocus/companion-module-cinegy-capture.git |
 | classx-mixboard | 1.2.0 | MIT | Dar-dev | https://github.com/bitfocus/companion-module-classx-mixboard.git |
+| clearcom-station-ic | 1.0.3 | MIT | Andrew Broughton | https://github.com/bitfocus/companion-module-clearcom-station-ic.git |
 | cockos-reaper | 2.4.1 | MIT | Oliver Herman, Oded Davidov | https://github.com/bitfocus/companion-module-cockos-reaper.git |
 | coda-linus | 1.0.3 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-coda-linus.git |
 | colorlight-grandshow | 1.0.3 | MIT | wuwei | https://github.com/bitfocus/companion-module-colorlight-grandshow.git |
@@ -94,6 +97,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | disguise-smc | 2.0.0 | MIT | Jelle van Abbema | https://github.com/bitfocus/companion-module-disguise-smc.git |
 | dolby-cinemaprocessor | 2.0.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-dolby-cinemaprocessor.git |
 | dtvideolabs-playbackproplus | 2.1.0 | MIT | Per Røine, Greg Oseid | https://github.com/bitfocus/companion-module-dtvideolabs-playbackproplus.git |
+| easyrecord-cgcontrol | 1.1.0 | MIT | Johan Falkenström | https://github.com/bitfocus/companion-module-easyrecord-cgcontrol.git |
 | elgato-keylight | 3.0.0 | MIT | Justin James | https://github.com/bitfocus/companion-module-elgato-keylight.git |
 | emotimo-st4 | 1.0.5 | MIT | Jacob | https://github.com/bitfocus/companion-module-emotimo-st4.git |
 | epson-businesspj | 2.1.0 | MIT | Arthur Penner, Joseph Adams | https://github.com/bitfocus/companion-module-epson-businesspj.git |
@@ -127,6 +131,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | haivision-kbencoder | 2.0.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-haivision-kbencoder.git |
 | hdkatov-visca | 1.0.2 | MIT | TONY | https://github.com/bitfocus/companion-module-hdkatov-visca.git |
 | hdtv-wolfpackgreen | 1.4.1 | MIT | Justin James | https://github.com/bitfocus/companion-module-hdtv-wolfpackgreen.git |
+| highpass-accompaniment | 1.2.1 | MIT | Marcin Wardecki | https://github.com/bitfocus/companion-module-highpass-accompaniment.git |
 | ibm-watson | 1.0.1 | MIT | InertiaImpact | https://github.com/bitfocus/companion-module-ibm-watson.git |
 | iccms-sib | 1.0.2 | MIT | Dmitrii Peredera | https://github.com/bitfocus/companion-module-iccms-sib.git |
 | ictag-easyvideo | 1.1.0 | MIT | digitalMIDIA | https://github.com/bitfocus/companion-module-ictag-easyvideo.git |
@@ -142,6 +147,8 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | ipl-ocp | 4.0.0 | MIT | Vincent Lee, Inkfarer | https://github.com/bitfocus/companion-module-ipl-ocp.git |
 | irisdown-countdowntimer | 2.0.0 | MIT | Jeffrey Davidsz | https://github.com/bitfocus/companion-module-irisdown-countdowntimer.git |
 | irisdown-remoteshowcontrol | 2.0.0 | MIT | Per Røine | https://github.com/bitfocus/companion-module-irisdown-remoteshowcontrol.git |
+| josephadams-scriptlauncher | 1.9.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-josephadams-scriptlauncher.git |
+| joy-playdeck | 4.2.9 | MIT | Andreas H. Thomsen <>, Nick Semenov | https://github.com/bitfocus/companion-module-joy-playdeck.git |
 | justmacros-lua | 2.0.3 | MIT | Keith Rocheck | https://github.com/bitfocus/companion-module-justmacros-lua.git |
 | kenku-fm | 1.0.1 | MIT | Schemen | https://github.com/bitfocus/companion-module-kenku-fm.git |
 | klang-app | 1.0.2 | MIT | Pål-Magnus Slåtto | https://github.com/bitfocus/companion-module-klang-app.git |
@@ -149,6 +156,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | klvr-chargerpro | 2.0.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-klvr-chargerpro.git |
 | kxwell-ptz | 1.0.0 | MIT | Joseph Adams | https://github.com/josephdadams/companion-module-kxwell-ptz.git |
 | leolabs-ableset | 1.7.3 | MIT | Léo Bernard | https://github.com/bitfocus/companion-module-leolabs-ableset.git |
+| leonreucher-vstopowerpoint | 1.1.0 | MIT | Leon Reucher | https://github.com/bitfocus/companion-module-leonreucher-vstopowerpoint.git |
 | lgtv-prodisplay | 1.0.1 | MIT | Joseph Adams | https://github.com/josephdadams/companion-module-lgtv-prodisplay.git |
 | lofas-ndistudioclock | 0.1.0 | MIT |  | https://github.com/bitfocus/companion-module-lofas-ndistudioclock.git |
 | luminex-gigacore | 1.0.1 | MIT | Stijn Geysen | https://github.com/bitfocus/companion-module-luminex-gigacore.git |
@@ -160,8 +168,10 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | malighting-grandma2 | 2.3.0 | MIT | John Knight, Jr, William Viker | https://github.com/bitfocus/companion-module-malighting-grandma2.git |
 | malighting-msc | 1.4.0 | MIT | Christian Volmering, John Knight, Jr | https://github.com/bitfocus/companion-module-malighting-msc.git |
 | matrox-monarch | 3.0.2 | MIT | Todd Eichel, Bevan Kay, Bert Bredewold | https://github.com/bitfocus/companion-module-matrox-monarch.git |
+| microsoft-teams | 1.3.0 | MIT | Leon Reucher, Shaun Padt | https://github.com/bitfocus/companion-module-microsoft-teams.git |
 | middlethings-middlecontrol | 3.2.1 | MIT | Jean T | https://github.com/bitfocus/companion-module-middlethings-middlecontrol.git |
 | mixtech-theatremix | 2.1.3 | MIT | James Holt, Anthony Hunt | https://github.com/bitfocus/companion-module-mixtech-theatremix.git |
+| modulopi-moduloplayer | 4.0.8 | MIT | Nicolas Keesst, Per Røine | https://github.com/bitfocus/companion-module-modulopi-moduloplayer.git |
 | monteiro-cronosdown | 1.2.1 | MIT | Bruno Monteiro | https://github.com/bitfocus/companion-module-monteiro-cronosdown.git |
 | monteiro-pptvideo | 1.3.1 | MIT | Bruno Monteiro | https://github.com/bitfocus/companion-module-monteiro-pptvideo.git |
 | moxa-e2200series | 1.0.6 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-moxa-e2200series.git |
@@ -182,6 +192,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | novastar-mediaserver | 1.4.2 | MIT | Novastar | https://github.com/bitfocus/companion-module-novastar-mediaserver |
 | novastar-mxreal3 | 1.0.1 | MIT | NovaStar | https://github.com/bitfocus/companion-module-novastar-mxreal3 |
 | novastar-switcher | 2.1.0 | MIT | NovaStar | https://github.com/bitfocus/companion-module-novastar-switcher.git |
+| nrk-sofie-chef | 1.0.1 | MIT | Peter Newman | https://github.com/bitfocus/companion-module-nrk-sofie-chef.git |
 | obsbot-osc | 1.1.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-obsbot-osc.git |
 | odyssey-insight | 1.0.1 | MIT | Odyssey Development | https://github.com/bitfocus/companion-module-odyssey-insight.git |
 | openweather-rest | 3.1.2 | MIT | John A Knight Jr | https://github.com/bitfocus/companion-module-openweather-rest.git |
@@ -206,11 +217,15 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | ptzoptics-visca | 3.5.0 | MIT | Jeff Walden | https://github.com/bitfocus/companion-module-ptzoptics-visca.git |
 | purelink-pt-ma-hd44m | 1.0.4 | MIT | Adrien RENARD | https://github.com/bitfocus/companion-module-purelink-pt-ma-hd44m.git |
 | radiodj-rest | 2.0.2 | MIT | Keith Rocheck | https://github.com/bitfocus/companion-module-radiodj-rest.git |
+| rationalacoustics-smaart3 | 2.1.2 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-rationalacoustics-smaart3.git |
+| red-rcp2 | 1.1.3 | MIT | Seth Haberman | https://github.com/bitfocus/companion-module-red-rcp2.git |
+| renewedvision-propresenter | 3.0.2 | MIT | Daniel Owen, Oliver Herrmann, Jeffrey Davidsz | https://github.com/bitfocus/companion-module-renewedvision-propresenter.git |
 | resi-decoders | 2.0.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-resi-decoders.git |
 | resi-studio | 1.0.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-resi-studio.git |
 | resolume-arena | 3.12.0 | MIT | Oliver Herman, Axel Bergmans | https://github.com/bitfocus/companion-module-resolume-arena.git |
 | rgblink-mini | 2.1.0 | MIT | Marcin Gumułka, Krzysztof Foszcz | https://github.com/bitfocus/companion-module-rgblink-mini.git |
 | rgblink-vsp628pro | 1.0.1 | MIT | Marcin Gumułka | https://github.com/bitfocus/companion-module-rgblink-vsp628pro.git |
+| riedel-smartpanel | 1.0.1 | MIT | Riedel Communications | https://github.com/bitfocus/companion-module-riedel-smartpanel |
 | roku-tv | 2.0.5 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roku-tv.git |
 | roland-v600uhd | 2.1.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roland-v600uhd.git |
 | roland-xs84h | 3.0.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-roland-xs84h.git |
@@ -221,7 +236,9 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | sennheiser-digital6000 | 1.0.7 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-sennheiser-digital6000.git |
 | sennheiser-ewdx | 1.0.5 | MIT | Leon Reucher | https://github.com/bitfocus/companion-module-sennheiser-ewdx.git |
 | sevenpointtechnologies-7pointaudio | 1.1.0 | MIT | Jeff Ball | https://github.com/bitfocus/companion-module-sevenpointtechnologies-7pointaudio.git |
+| sgl-dct | 1.0.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-sgl-dct.git |
 | shelly-http | 1.0.2 | MIT | Leon Reucher | https://github.com/bitfocus/companion-module-shelly-http.git |
+| shelly-ws | 1.1.2 | MIT | Leon Reucher | https://github.com/bitfocus/companion-module-shelly-ws.git |
 | shure-chargers | 1.0.1 | MIT | Alexander Kettner | https://github.com/bitfocus/companion-module-shure-chargers.git |
 | shure-dca901 | 1.0.1 | MIT | Peter Newman | https://github.com/bitfocus/companion-module-shure-dca901.git |
 | shure-mxa910 | 2.0.1 | MIT | Joseph Adams, Dorian Meid | https://github.com/bitfocus/companion-module-shure-mxa910.git |
@@ -247,6 +264,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | sony-bravia-simpleip | 1.1.0 | MIT | Elliot Matson | https://github.com/bitfocus/companion-module-sony-bravia-simpleip.git |
 | sony-serialtally | 1.3.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-sony-serialtally.git |
 | sony-visca | 2.7.5 | MIT | Greg Oseid, Yuri Vidal, Per Røine | https://github.com/bitfocus/companion-module-sony-visca.git |
+| soundcraft-ui | 3.10.0 | MIT | Ferdinand Malcher, Christian Himmler | https://github.com/bitfocus/companion-module-soundcraft-ui.git |
 | sounddevices-pixnet | 2.0.1 | MIT | Keith Rocheck | https://github.com/bitfocus/companion-module-sounddevices-pixnet.git |
 | spx-graphics-controller | 2.0.0 | MIT | Jeffrey Devidz | https://github.com/bitfocus/companion-module-spx-graphics-controller.git |
 | stagetimerio-api | 2.3.1 | MIT | Lukas Hermann | https://github.com/bitfocus/companion-module-stagetimerio-api.git |
@@ -255,6 +273,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | syncer-live | 1.0.0 | MIT | Tobias Messner | https://github.com/bitfocus/companion-module-syncer-live.git |
 | tascam-bdmp1 | 1.0.0 | MIT | Christian Volmering | https://github.com/bitfocus/companion-module-tascam-bdmp1.git |
 | tasmota-http | 1.0.4 | MIT | jens frank | https://github.com/bitfocus/companion-module-tasmota-http.git |
+| techministry-spotifycontroller | 2.3.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-techministry-spotifycontroller.git |
 | telestream-prism | 1.3.1 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-telestream-prism.git |
 | televic-confero | 1.0.0 | MIT | Stijn Bryq | https://github.com/bitfocus/companion-module-televic-confero.git |
 | telos-25-seven-program-delay-manager | 1.1.1 | MIT | Chris Lane | https://github.com/bitfocus/companion-module-telos-25-seven-program-delay-manager |
@@ -267,7 +286,9 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | toolsonair-justincapture | 1.1.0 | MIT | Christian Schabasser, Joseph Adams | https://github.com/bitfocus/companion-module-toolsonair-justincapture.git |
 | tslproducts-usp3 | 1.1.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-tslproducts-usp3.git |
 | ubiquiti-unifi | 2.0.3 | MIT | Todd Murphy, Julian Waller | https://github.com/bitfocus/companion-module-ubiquiti-unifi.git |
+| uts-remotevolume | 1.1.0 | MIT | Leon Reucher | https://github.com/bitfocus/companion-module-uts-remotevolume.git |
 | vbaudio-voicemeeter | 2.2.1 | MIT | Jeff Martin | https://github.com/bitfocus/companion-module-vbaudio-voicemeeter.git |
+| vicreo-broadcast-titles | 1.0.0 | MIT | Jeffrey Davidsz | https://github.com/bitfocus/companion-module-vicreo-broadcast-titles.git |
 | vicreo-hotkey | 4.7.3 | MIT | Jeffrey Davidsz | https://github.com/bitfocus/companion-module-vicreo-hotkey.git |
 | videolan-vlc | 2.7.0 | MIT | Håkon Nessjøen, John A Knight Jr | https://github.com/bitfocus/companion-module-videolan-vlc.git |
 | visualproductions-iocore | 1.0.0 | MIT | Bryce Seifert | https://github.com/bitfocus/companion-module-visualproductions-iocore.git |
@@ -279,6 +300,7 @@ defs/ の定義は、次の公開モジュールの動作を自動で記録し�
 | vizrt-tcp-engine-trio | 2.0.0 | MIT | Christian Da Cruz | https://github.com/bitfocus/companion-module-vizrt-tcp-engine-trio.git |
 | vyv-photon | 2.1.0 | MIT | Per Roine, David Fox | https://github.com/bitfocus/companion-module-vyv-photon.git |
 | wheatstone-wheatnet | 1.0.1 | MIT | Eugen | https://github.com/bitfocus/companion-module-wheatstone-wheatnet.git |
+| wled-websocket | 1.0.3 | MIT | Leon Reucher | https://github.com/bitfocus/companion-module-wled-websocket.git |
 | wordnik-api | 1.0.1 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-wordnik-api.git |
 | yamaha-rcp | 3.5.10 | MIT |  | https://github.com/bitfocus/companion-module-yamaha-rcp.git |
 | zoom-osc-iso | 4.9.1 | MIT | Justin James | https://github.com/bitfocus/companion-module-zoom-osc-iso.git |

@@ -53,14 +53,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/v1/stop?room_id=YOUR-ID&api_key=YOUR-KEY"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/v1/socket.io/?EIO=4&transport=polling&t=q74v1h5u"
-    }
-   ]
+   }
   },
   {
    "id": "start_or_stop",
@@ -431,6 +424,32 @@
    }
   },
   {
+   "id": "show_or_hide_message",
+   "name": "Message: Toggle visibility",
+   "options": [
+    {
+     "id": "index",
+     "label": "Message index",
+     "type": "number",
+     "default": "",
+     "min": 1,
+     "max": 99,
+     "help": "Index of a message to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second message from the top, set `index=2`. Leave blank to target active or first message."
+    },
+    {
+     "id": "message_id",
+     "label": "Message ID",
+     "type": "text",
+     "help": "The ID of the message you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/show_or_hide_message?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&message_id={{option.message_id}}"
+   }
+  },
+  {
    "id": "test_auth",
    "name": "Utility: Test auth",
    "options": [],
@@ -688,6 +707,19 @@
     "definitionId": "start_timer",
     "options": {
      "index": 2
+    }
+   }
+  },
+  {
+   "id": "Show/hide message",
+   "category": "Message",
+   "name": "Show/hide message",
+   "text": "Toggle",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "show_or_hide_message",
+    "options": {
+     "index": ""
     }
    }
   },

@@ -1,0 +1,308 @@
+{
+ "format": 1,
+ "id": "m-leonreucher-vstopowerpoint",
+ "name": "Leon Reucher PowerPoint Remote VSTO WebSocket",
+ "category": "Leon Reucher",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/ws",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "reconnect",
+   "label": "Reconnect",
+   "type": "boolean",
+   "default": true,
+   "help": "Reconnect on WebSocket error (after 5 secs)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "startPresentation",
+   "name": "Begin Presentation",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"slideShowActive\":true}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "endPresentation",
+   "name": "End Presentation",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"slideShowActive\":false}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "nextSlide",
+   "name": "Next slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"next\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "previousSlide",
+   "name": "Previous slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"previous\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "firstSlide",
+   "name": "First slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"first\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lastSlide",
+   "name": "Last slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"last\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "goToSlide",
+   "name": "Go to slide",
+   "options": [
+    {
+     "id": "targetSlide",
+     "label": "Slide number",
+     "type": "number",
+     "default": 1,
+     "min": 1
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"currentSlide\":{{option.targetSlide}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "openPresentation",
+   "name": "Open presentation",
+   "options": [
+    {
+     "id": "targetPath",
+     "label": "Path to presentation",
+     "type": "text"
+    },
+    {
+     "id": "closeOthers",
+     "label": "Close all other files",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"openPresentation\",\"path\":\"{{option.targetPath}}\",\"closeOthers\":{{option.closeOthers|map}}e}",
+    "encoding": "text"
+   },
+   "maps": {
+    "closeOthers": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "closeAll",
+   "name": "Close all presentations",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"closeAll\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "blackout",
+   "name": "Control Blackout",
+   "options": [
+    {
+     "id": "targetAction",
+     "label": "Format",
+     "type": "select",
+     "default": "blackout",
+     "choices": [
+      {
+       "id": "blackout",
+       "label": "Black Out"
+      },
+      {
+       "id": "whiteout",
+       "label": "White Out"
+      },
+      {
+       "id": "showPresentation",
+       "label": "Continue Presentation"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"{{option.targetAction|map}}\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "targetAction": {
+     "blackout": "blackout",
+     "whiteout": "whiteout",
+     "showPresentation": "showPresentation"
+    }
+   }
+  },
+  {
+   "id": "hideUnhideSlide",
+   "name": "Hide/Unhide Slide",
+   "options": [
+    {
+     "id": "slideId",
+     "label": "Slide ID (starting at 1)",
+     "type": "number",
+     "default": 1,
+     "min": 1
+    },
+    {
+     "id": "targetAction",
+     "label": "Format",
+     "type": "select",
+     "default": "hideSlide",
+     "choices": [
+      {
+       "id": "hideSlide",
+       "label": "Hide"
+      },
+      {
+       "id": "unhideSlide",
+       "label": "Unhide"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"{{option.targetAction|map}}hideSlide\",\"slideId\":{{option.slideId}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "targetAction": {
+     "hideSlide": "",
+     "unhideSlide": "un"
+    }
+   }
+  },
+  {
+   "id": "unhideAllSlides",
+   "name": "Unhide all slides",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"unhideAllSlides\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleLaserPointer",
+   "name": "Control Laser Pointer",
+   "options": [
+    {
+     "id": "targetAction",
+     "label": "Action",
+     "type": "select",
+     "default": "showLaserPointer",
+     "choices": [
+      {
+       "id": "showLaserPointer",
+       "label": "Show"
+      },
+      {
+       "id": "hideLaserPointer",
+       "label": "Hide"
+      },
+      {
+       "id": "toggleLaserPointer",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"{{option.targetAction|map}}LaserPointer\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "targetAction": {
+     "showLaserPointer": "show",
+     "hideLaserPointer": "hide",
+     "toggleLaserPointer": "toggle"
+    }
+   }
+  },
+  {
+   "id": "eraseDrawings",
+   "name": "Erase drawings",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"eraseDrawings\"}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-leonreucher-vstopowerpoint",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "leonreucher-vstopowerpoint",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-leonreucher-vstopowerpoint.git"
+ }
+}

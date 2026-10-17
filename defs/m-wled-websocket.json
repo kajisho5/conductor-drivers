@@ -1,0 +1,156 @@
+{
+ "format": 1,
+ "id": "m-wled-websocket",
+ "name": "WLED",
+ "category": "WLED",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/ws",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "reconnect",
+   "label": "Reconnect",
+   "type": "boolean",
+   "default": true,
+   "help": "Reconnect on WebSocket error (after 5 secs)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "setState",
+   "name": "Turn On / Turn Off / Toggle",
+   "options": [
+    {
+     "id": "selectedState",
+     "label": "State",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Turn On"
+      },
+      {
+       "id": "1",
+       "label": "Turn Off"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"on\":{{option.selectedState|map}}e}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedState": {
+     "0": "tru",
+     "1": "fals",
+     "2": "tru"
+    }
+   }
+  },
+  {
+   "id": "setBrightness",
+   "name": "Set Brightness",
+   "options": [
+    {
+     "id": "targetBrightness",
+     "label": "Brightness",
+     "type": "number",
+     "default": 127,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"bri\":{{option.targetBrightness}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "setSegBrightness",
+   "name": "Set Segment Brightness",
+   "options": [
+    {
+     "id": "selectedSegment",
+     "label": "Segment",
+     "type": "text",
+     "default": "0"
+    },
+    {
+     "id": "targetBrightness",
+     "label": "Brightness",
+     "type": "number",
+     "default": 127,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"seg\":{\"id\":1,\"bri\":{{option.targetBrightness}}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadPreset",
+   "name": "Load Preset",
+   "options": [
+    {
+     "id": "targetPreset",
+     "label": "Preset",
+     "type": "number",
+     "default": 1,
+     "min": 0
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"ps\":{{option.targetPreset}}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-wled-websocket",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "wled-websocket",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-wled-websocket.git"
+ }
+}

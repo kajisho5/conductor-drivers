@@ -66,13 +66,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"illumination.{{option.p1|map}}\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"illumination.{{option.p1|map}}\",\"id\":\"1\",\"params\":{},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    },
    "maps": {
     "p1": {
-     "illumination.ignite": "ignite\",\"id\":\"10",
-     "illumination.extinguish": "extinguish\",\"id\":\"11"
+     "illumination.ignite": "ignite",
+     "illumination.extinguish": "extinguish"
     }
    }
   },
@@ -99,13 +99,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"property.set\",\"id\":\"1{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"ui.osd\",\"value\":\"{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    },
    "maps": {
     "p1": {
-     "true": "2\",\"params\":{\"property\":\"ui.osd\",\"value\":\"tru",
-     "false": "3\",\"params\":{\"property\":\"ui.osd\",\"value\":\"fals"
+     "true": "tru",
+     "false": "fals"
     }
    }
   },
@@ -132,13 +132,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"property.set\",\"id\":\"1{{option.p1|map}}\"},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"image.window.main.source\",\"value\":\"L1 {{option.p1|map}}\"},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    },
    "maps": {
     "p1": {
-     "L1 HDMI": "4\",\"params\":{\"property\":\"image.window.main.source\",\"value\":\"L1 HDMI",
-     "L1 Displayport": "5\",\"params\":{\"property\":\"image.window.main.source\",\"value\":\"L1 Displayport"
+     "L1 HDMI": "HDMI",
+     "L1 Displayport": "Displayport"
     }
    }
   },
@@ -165,13 +165,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"property.set\",\"id\":\"1{{option.p1|map}}\"},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"optics.shutter.target\",\"value\":\"{{option.p1|map}}\"},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    },
    "maps": {
     "p1": {
-     "Open": "6\",\"params\":{\"property\":\"optics.shutter.target\",\"value\":\"Open",
-     "Closed": "7\",\"params\":{\"property\":\"optics.shutter.target\",\"value\":\"Closed"
+     "Open": "Open",
+     "Closed": "Closed"
     }
    }
   },
@@ -181,7 +181,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"optics.shutter.toggle\",\"id\":\"18\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"optics.shutter.toggle\",\"id\":\"1\",\"params\":{},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    }
   },
@@ -208,13 +208,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"property.set\",\"id\":\"{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"image.testpattern.show\",\"value\":\"{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    },
    "maps": {
     "p1": {
-     "true": "19\",\"params\":{\"property\":\"image.testpattern.show\",\"value\":\"tru",
-     "false": "20\",\"params\":{\"property\":\"image.testpattern.show\",\"value\":\"fals"
+     "true": "tru",
+     "false": "fals"
     }
    }
   },
@@ -241,13 +241,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"property.set\",\"id\":\"2{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"ui.stealthmode\",\"value\":\"{{option.p1|map}}e\"},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    },
    "maps": {
     "p1": {
-     "true": "1\",\"params\":{\"property\":\"ui.stealthmode\",\"value\":\"tru",
-     "false": "2\",\"params\":{\"property\":\"ui.stealthmode\",\"value\":\"fals"
+     "true": "tru",
+     "false": "fals"
     }
    }
   },
@@ -257,7 +257,159 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"ui.togglestealthmode\",\"id\":\"23\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"ui.togglestealthmode\",\"id\":\"1\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "lens_zoom",
+   "name": "Zoom lens",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Direction",
+     "type": "select",
+     "default": "optics.zoom.stepforward",
+     "choices": [
+      {
+       "id": "optics.zoom.stepforward",
+       "label": "Forward"
+      },
+      {
+       "id": "optics.zoom.stepreverse",
+       "label": "Back"
+      }
+     ]
+    },
+    {
+     "id": "p2",
+     "label": "Steps (1-100)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"optics.zoom.step{{option.p1|map}}\",\"id\":\"1\",\"params\":{\"steps\":{{option.p2}}},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "optics.zoom.stepforward": "forward",
+     "optics.zoom.stepreverse": "reverse"
+    }
+   }
+  },
+  {
+   "id": "lens_focus",
+   "name": "Focus lens",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Direction",
+     "type": "select",
+     "default": "optics.focus.stepforward",
+     "choices": [
+      {
+       "id": "optics.focus.stepforward",
+       "label": "Forward"
+      },
+      {
+       "id": "optics.focus.stepreverse",
+       "label": "Back"
+      }
+     ]
+    },
+    {
+     "id": "p2",
+     "label": "Steps (1-100)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"optics.focus.step{{option.p1|map}}\",\"id\":\"1\",\"params\":{\"steps\":{{option.p2}}},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "optics.focus.stepforward": "forward",
+     "optics.focus.stepreverse": "reverse"
+    }
+   }
+  },
+  {
+   "id": "lens_shift",
+   "name": "Shift lens",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Direction",
+     "type": "select",
+     "default": "optics.lensshift.vertical.stepforward",
+     "choices": [
+      {
+       "id": "optics.lensshift.vertical.stepforward",
+       "label": "Up"
+      },
+      {
+       "id": "optics.lensshift.vertical.stepreverse",
+       "label": "Down"
+      },
+      {
+       "id": "optics.lensshift.horizontal.stepforward",
+       "label": "Left"
+      },
+      {
+       "id": "optics.lensshift.horizontal.stepreverse",
+       "label": "Right"
+      }
+     ]
+    },
+    {
+     "id": "p2",
+     "label": "Steps (1-100)",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"optics.lensshift.{{option.p1|map}}\",\"id\":\"1\",\"params\":{\"steps\":{{option.p2}}},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p1": {
+     "optics.lensshift.vertical.stepforward": "vertical.stepforward",
+     "optics.lensshift.vertical.stepreverse": "vertical.stepreverse",
+     "optics.lensshift.horizontal.stepforward": "horizontal.stepforward",
+     "optics.lensshift.horizontal.stepreverse": "horizontal.stepreverse"
+    }
+   }
+  },
+  {
+   "id": "laser_power",
+   "name": "Laser power",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Laser Power [Steps (15-100)]",
+     "type": "number",
+     "default": 100,
+     "min": 15,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"illumination.sources.laser.power\",\"value\":{{option.p1}}},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    }
   },
@@ -296,17 +448,387 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"optics.{{option.p1|map}}\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"optics.{{option.p1|map}}\",\"id\":\"1\",\"params\":{},\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    },
    "maps": {
     "p1": {
-     "optics.zoom.calibrate": "zoom.calibrate\",\"id\":\"47",
-     "optics.focus.calibrate": "focus.calibrate\",\"id\":\"48",
-     "optics.lensshift.vertical.calibrate": "lensshift.vertical.calibrate\",\"id\":\"49",
-     "optics.lensshift.horizontal.calibrate": "lensshift.horizontal.calibrate\",\"id\":\"50",
-     "optics.shifttocenter": "shifttocenter\",\"id\":\"51"
+     "optics.zoom.calibrate": "zoom.calibrate",
+     "optics.focus.calibrate": "focus.calibrate",
+     "optics.lensshift.vertical.calibrate": "lensshift.vertical.calibrate",
+     "optics.lensshift.horizontal.calibrate": "lensshift.horizontal.calibrate",
+     "optics.shifttocenter": "shifttocenter"
     }
+   }
+  },
+  {
+   "id": "rc_shift",
+   "name": "Remote Shift lens",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Direction",
+     "type": "select",
+     "default": "RC_SHIFT_UP",
+     "choices": [
+      {
+       "id": "RC_SHIFT_UP",
+       "label": "up"
+      },
+      {
+       "id": "RC_SHIFT_DOWN",
+       "label": "down"
+      },
+      {
+       "id": "RC_SHIFT_LEFT",
+       "label": "left"
+      },
+      {
+       "id": "RC_SHIFT_RIGHT",
+       "label": "right"
+      }
+     ]
+    },
+    {
+     "id": "p2",
+     "label": "Press/Release",
+     "type": "select",
+     "default": "keydispatcher.sendpressevent",
+     "choices": [
+      {
+       "id": "keydispatcher.sendpressevent",
+       "label": "Press"
+      },
+      {
+       "id": "keydispatcher.sendreleaseevent",
+       "label": "Release"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"keydispatcher.send{{option.p2|map}}event\",\"id\":\"1\",\"params\":{\"key\":\"RC_SHIFT_{{option.p1|map}}\"},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "p2": {
+     "keydispatcher.sendpressevent": "press",
+     "keydispatcher.sendreleaseevent": "release"
+    },
+    "p1": {
+     "RC_SHIFT_UP": "UP",
+     "RC_SHIFT_DOWN": "DOWN",
+     "RC_SHIFT_LEFT": "LEFT",
+     "RC_SHIFT_RIGHT": "RIGHT"
+    }
+   }
+  },
+  {
+   "id": "optics_zoom_target",
+   "name": "Zoom target",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Zoom target value (0-65535)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"optics.zoom.target\",\"value\":{{option.p1}}},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "optics_focus_target",
+   "name": "Focus target",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Focus target value (0-65535)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"optics.focus.target\",\"value\":{{option.p1}}},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "optics_lensshift_vertical_target",
+   "name": "Vertical lens shift target",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Vertical lens shift target value (0-65535)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"optics.lensshift.vertical.target\",\"value\":{{option.p1}}},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "optics_lensshift_horizontal_target",
+   "name": "Horizontal lens shift target",
+   "options": [
+    {
+     "id": "p1",
+     "label": "Horizontal lens shift target value (0-65535)",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 65535
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"property.set\",\"id\":\"1\",\"params\":{\"property\":\"optics.lensshift.horizontal.target\",\"value\":{{option.p1}}},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "remoteKey",
+   "name": "Send remote button",
+   "options": [
+    {
+     "id": "key",
+     "label": "Button from remote controller",
+     "type": "select",
+     "default": "RC_OK",
+     "choices": [
+      {
+       "id": "RC_SHUTTER_OPEN",
+       "label": "Shutter Open"
+      },
+      {
+       "id": "RC_SHUTTER_CLOSE",
+       "label": "Shutter Close"
+      },
+      {
+       "id": "RC_POWER_ON",
+       "label": "Power ON"
+      },
+      {
+       "id": "RC_POWER_OFF",
+       "label": "Power OFF"
+      },
+      {
+       "id": "RC_OSD",
+       "label": "OSD"
+      },
+      {
+       "id": "RC_LCD",
+       "label": "LCD"
+      },
+      {
+       "id": "RC_PATTERN",
+       "label": "Pattern"
+      },
+      {
+       "id": "RC_RGB",
+       "label": "RGB"
+      },
+      {
+       "id": "RC_ZOOM_PLUS",
+       "label": "Zoom +"
+      },
+      {
+       "id": "RC_ZOOM_MINUS",
+       "label": "Zoom -"
+      },
+      {
+       "id": "RC_SHIFT_UP",
+       "label": "Lens Up"
+      },
+      {
+       "id": "RC_SHIFT_DOWN",
+       "label": "Lens Down"
+      },
+      {
+       "id": "RC_SHIFT_LEFT",
+       "label": "Lens Left"
+      },
+      {
+       "id": "RC_SHIFT_RIGHT",
+       "label": "Lens Right"
+      },
+      {
+       "id": "RC_FOCUS_PLUS",
+       "label": "Focus +"
+      },
+      {
+       "id": "RC_FOCUS_MINUS",
+       "label": "Focus -"
+      },
+      {
+       "id": "RC_MENU",
+       "label": "Menu"
+      },
+      {
+       "id": "RC_DEFAULT",
+       "label": "Default"
+      },
+      {
+       "id": "RC_BACK",
+       "label": "Back"
+      },
+      {
+       "id": "RC_UP",
+       "label": "Up"
+      },
+      {
+       "id": "RC_LEFT",
+       "label": "Left"
+      },
+      {
+       "id": "RC_OK",
+       "label": "Ok"
+      },
+      {
+       "id": "RC_RIGHT",
+       "label": "Right"
+      },
+      {
+       "id": "RC_DOWN",
+       "label": "Down"
+      },
+      {
+       "id": "RC_ADDRESS",
+       "label": "Address"
+      },
+      {
+       "id": "RC_INPUT",
+       "label": "Input"
+      },
+      {
+       "id": "RC_MACRO",
+       "label": "Macro"
+      },
+      {
+       "id": "RC_1",
+       "label": "1"
+      },
+      {
+       "id": "RC_2",
+       "label": "2"
+      },
+      {
+       "id": "RC_3",
+       "label": "3"
+      },
+      {
+       "id": "RC_4",
+       "label": "4"
+      },
+      {
+       "id": "RC_5",
+       "label": "5"
+      },
+      {
+       "id": "RC_6",
+       "label": "6"
+      },
+      {
+       "id": "RC_7",
+       "label": "7"
+      },
+      {
+       "id": "RC_8",
+       "label": "8"
+      },
+      {
+       "id": "RC_9",
+       "label": "9"
+      },
+      {
+       "id": "RC_0",
+       "label": "0"
+      },
+      {
+       "id": "RC_ASTERISK",
+       "label": "Asterisk"
+      },
+      {
+       "id": "RC_NUMBER",
+       "label": "Number"
+      },
+      {
+       "id": "KP_LEFT",
+       "label": "KP Left"
+      },
+      {
+       "id": "KP_UP",
+       "label": "KP Up"
+      },
+      {
+       "id": "KP_OK",
+       "label": "KP Ok"
+      },
+      {
+       "id": "KP_RIGHT",
+       "label": "KP Right"
+      },
+      {
+       "id": "KP_DOWN",
+       "label": "KP Down"
+      },
+      {
+       "id": "KP_MENU",
+       "label": "KP Menu"
+      },
+      {
+       "id": "KP_POWER",
+       "label": "KP Power"
+      },
+      {
+       "id": "KP_BACK",
+       "label": "KP Back"
+      },
+      {
+       "id": "KP_OSD",
+       "label": "KP OSD"
+      },
+      {
+       "id": "KP_LENS",
+       "label": "KP Lens"
+      },
+      {
+       "id": "KP_PATTERN",
+       "label": "KP Pattern"
+      },
+      {
+       "id": "KP_SHUTTER",
+       "label": "KP Shutter"
+      },
+      {
+       "id": "KP_INPUT",
+       "label": "KP Input"
+      },
+      {
+       "id": "KP_STANDBY",
+       "label": "KP Standby"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"keydispatcher.sendclickevent\",\"id\":\"1\",\"params\":{\"key\":\"{{option.key}}\"},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
    }
   },
   {
@@ -315,7 +837,24 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "{\"method\":\"system.resetall\",\"id\":\"120\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "data": "{\"method\":\"system.resetall\",\"id\":\"1\",\"params\":{},\"jsonrpc\":\"2.0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "activateProfile",
+   "name": "Activate Profile",
+   "options": [
+    {
+     "id": "profile",
+     "label": "Profile Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"method\":\"profile.activateprofile\",\"id\":\"1\",\"params\":\"{{option.profile}}\",\"jsonrpc\":\"2.0\"}",
     "encoding": "text"
    }
   }
@@ -358,6 +897,118 @@
    "action": {
     "definitionId": "shutter_toggle",
     "options": {}
+   }
+  },
+  {
+   "id": "3",
+   "category": "Lens Control",
+   "name": "Lens Zoom Forward",
+   "text": "Zoom Forward",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_zoom",
+    "options": {
+     "p1": "optics.zoom.stepforward",
+     "p2": 1
+    }
+   }
+  },
+  {
+   "id": "4",
+   "category": "Lens Control",
+   "name": "Lens Zoom Back",
+   "text": "Zoom Back",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_zoom",
+    "options": {
+     "p1": "optics.zoom.stepreverse",
+     "p2": 1
+    }
+   }
+  },
+  {
+   "id": "5",
+   "category": "Lens Control",
+   "name": "Lens Focus Forward",
+   "text": "Focus Forward",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_focus",
+    "options": {
+     "p1": "optics.focus.stepforward",
+     "p2": 1
+    }
+   }
+  },
+  {
+   "id": "6",
+   "category": "Lens Control",
+   "name": "Lens Focus Back",
+   "text": "Focus Back",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_focus",
+    "options": {
+     "p1": "optics.focus.stepreverse",
+     "p2": 1
+    }
+   }
+  },
+  {
+   "id": "7",
+   "category": "Lens Control",
+   "name": "Lens Shift Up",
+   "text": "Shift Up",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_shift",
+    "options": {
+     "p1": "optics.lensshift.vertical.stepforward",
+     "p2": 1
+    }
+   }
+  },
+  {
+   "id": "8",
+   "category": "Lens Control",
+   "name": "Lens Shift Down",
+   "text": "Shift Down",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_shift",
+    "options": {
+     "p1": "optics.lensshift.vertical.stepreverse",
+     "p2": 1
+    }
+   }
+  },
+  {
+   "id": "9",
+   "category": "Lens Control",
+   "name": "Lens Shift Left",
+   "text": "Shift Left",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_shift",
+    "options": {
+     "p1": "optics.lensshift.horizontal.stepforward",
+     "p2": 1
+    }
+   }
+  },
+  {
+   "id": "10",
+   "category": "Lens Control",
+   "name": "Lens Shift Right",
+   "text": "Shift Right",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "lens_shift",
+    "options": {
+     "p1": "optics.lensshift.horizontal.stepreverse",
+     "p2": 1
+    }
    }
   },
   {
@@ -422,6 +1073,751 @@
     "definitionId": "lens_calibrate",
     "options": {
      "p1": "optics.shifttocenter"
+    }
+   }
+  },
+  {
+   "id": "16",
+   "category": "Remote Lens",
+   "name": "Remote Lense Shift up",
+   "text": "Remote Shift up",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "rc_shift",
+    "options": {
+     "p1": "RC_SHIFT_UP",
+     "p2": "Press"
+    }
+   }
+  },
+  {
+   "id": "17",
+   "category": "Remote Lens",
+   "name": "Remote Lense Shift down",
+   "text": "Remote Shift down",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "rc_shift",
+    "options": {
+     "p1": "RC_SHIFT_DOWN",
+     "p2": "Press"
+    }
+   }
+  },
+  {
+   "id": "18",
+   "category": "Remote Lens",
+   "name": "Remote Lense Shift left",
+   "text": "Remote Shift left",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "rc_shift",
+    "options": {
+     "p1": "RC_SHIFT_LEFT",
+     "p2": "Press"
+    }
+   }
+  },
+  {
+   "id": "19",
+   "category": "Remote Lens",
+   "name": "Remote Lense Shift right",
+   "text": "Remote Shift right",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "rc_shift",
+    "options": {
+     "p1": "RC_SHIFT_RIGHT",
+     "p2": "Press"
+    }
+   }
+  },
+  {
+   "id": "20",
+   "category": "Remote",
+   "name": "Remote Shutter Open",
+   "text": "Remote Shutter Open",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_SHUTTER_OPEN"
+    }
+   }
+  },
+  {
+   "id": "21",
+   "category": "Remote",
+   "name": "Remote Shutter Close",
+   "text": "Remote Shutter Close",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_SHUTTER_CLOSE"
+    }
+   }
+  },
+  {
+   "id": "22",
+   "category": "Remote",
+   "name": "Remote Power ON",
+   "text": "Remote Power ON",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_POWER_ON"
+    }
+   }
+  },
+  {
+   "id": "23",
+   "category": "Remote",
+   "name": "Remote Power OFF",
+   "text": "Remote Power OFF",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_POWER_OFF"
+    }
+   }
+  },
+  {
+   "id": "24",
+   "category": "Remote",
+   "name": "Remote OSD",
+   "text": "Remote OSD",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_OSD"
+    }
+   }
+  },
+  {
+   "id": "25",
+   "category": "Remote",
+   "name": "Remote LCD",
+   "text": "Remote LCD",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_LCD"
+    }
+   }
+  },
+  {
+   "id": "26",
+   "category": "Remote",
+   "name": "Remote Pattern",
+   "text": "Remote Pattern",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_PATTERN"
+    }
+   }
+  },
+  {
+   "id": "27",
+   "category": "Remote",
+   "name": "Remote RGB",
+   "text": "Remote RGB",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_RGB"
+    }
+   }
+  },
+  {
+   "id": "28",
+   "category": "Remote",
+   "name": "Remote Zoom +",
+   "text": "Remote Zoom +",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_ZOOM_PLUS"
+    }
+   }
+  },
+  {
+   "id": "29",
+   "category": "Remote",
+   "name": "Remote Zoom -",
+   "text": "Remote Zoom -",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_ZOOM_MINUS"
+    }
+   }
+  },
+  {
+   "id": "30",
+   "category": "Remote",
+   "name": "Remote Lens Up",
+   "text": "Remote Lens Up",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_SHIFT_UP"
+    }
+   }
+  },
+  {
+   "id": "31",
+   "category": "Remote",
+   "name": "Remote Lens Down",
+   "text": "Remote Lens Down",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_SHIFT_DOWN"
+    }
+   }
+  },
+  {
+   "id": "32",
+   "category": "Remote",
+   "name": "Remote Lens Left",
+   "text": "Remote Lens Left",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_SHIFT_LEFT"
+    }
+   }
+  },
+  {
+   "id": "33",
+   "category": "Remote",
+   "name": "Remote Lens Right",
+   "text": "Remote Lens Right",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_SHIFT_RIGHT"
+    }
+   }
+  },
+  {
+   "id": "34",
+   "category": "Remote",
+   "name": "Remote Focus +",
+   "text": "Remote Focus +",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_FOCUS_PLUS"
+    }
+   }
+  },
+  {
+   "id": "35",
+   "category": "Remote",
+   "name": "Remote Focus -",
+   "text": "Remote Focus -",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_FOCUS_MINUS"
+    }
+   }
+  },
+  {
+   "id": "36",
+   "category": "Remote",
+   "name": "Remote Menu",
+   "text": "Remote Menu",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_MENU"
+    }
+   }
+  },
+  {
+   "id": "37",
+   "category": "Remote",
+   "name": "Remote Default",
+   "text": "Remote Default",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_DEFAULT"
+    }
+   }
+  },
+  {
+   "id": "38",
+   "category": "Remote",
+   "name": "Remote Back",
+   "text": "Remote Back",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_BACK"
+    }
+   }
+  },
+  {
+   "id": "39",
+   "category": "Remote",
+   "name": "Remote Up",
+   "text": "Remote Up",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_UP"
+    }
+   }
+  },
+  {
+   "id": "40",
+   "category": "Remote",
+   "name": "Remote Left",
+   "text": "Remote Left",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_LEFT"
+    }
+   }
+  },
+  {
+   "id": "41",
+   "category": "Remote",
+   "name": "Remote Ok",
+   "text": "Remote Ok",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_OK"
+    }
+   }
+  },
+  {
+   "id": "42",
+   "category": "Remote",
+   "name": "Remote Right",
+   "text": "Remote Right",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_RIGHT"
+    }
+   }
+  },
+  {
+   "id": "43",
+   "category": "Remote",
+   "name": "Remote Down",
+   "text": "Remote Down",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_DOWN"
+    }
+   }
+  },
+  {
+   "id": "44",
+   "category": "Remote",
+   "name": "Remote Address",
+   "text": "Remote Address",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_ADDRESS"
+    }
+   }
+  },
+  {
+   "id": "45",
+   "category": "Remote",
+   "name": "Remote Input",
+   "text": "Remote Input",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_INPUT"
+    }
+   }
+  },
+  {
+   "id": "46",
+   "category": "Remote",
+   "name": "Remote Macro",
+   "text": "Remote Macro",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_MACRO"
+    }
+   }
+  },
+  {
+   "id": "47",
+   "category": "Remote",
+   "name": "Remote 1",
+   "text": "Remote 1",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_1"
+    }
+   }
+  },
+  {
+   "id": "48",
+   "category": "Remote",
+   "name": "Remote 2",
+   "text": "Remote 2",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_2"
+    }
+   }
+  },
+  {
+   "id": "49",
+   "category": "Remote",
+   "name": "Remote 3",
+   "text": "Remote 3",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_3"
+    }
+   }
+  },
+  {
+   "id": "50",
+   "category": "Remote",
+   "name": "Remote 4",
+   "text": "Remote 4",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_4"
+    }
+   }
+  },
+  {
+   "id": "51",
+   "category": "Remote",
+   "name": "Remote 5",
+   "text": "Remote 5",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_5"
+    }
+   }
+  },
+  {
+   "id": "52",
+   "category": "Remote",
+   "name": "Remote 6",
+   "text": "Remote 6",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_6"
+    }
+   }
+  },
+  {
+   "id": "53",
+   "category": "Remote",
+   "name": "Remote 7",
+   "text": "Remote 7",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_7"
+    }
+   }
+  },
+  {
+   "id": "54",
+   "category": "Remote",
+   "name": "Remote 8",
+   "text": "Remote 8",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_8"
+    }
+   }
+  },
+  {
+   "id": "55",
+   "category": "Remote",
+   "name": "Remote 9",
+   "text": "Remote 9",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_9"
+    }
+   }
+  },
+  {
+   "id": "56",
+   "category": "Remote",
+   "name": "Remote 0",
+   "text": "Remote 0",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_0"
+    }
+   }
+  },
+  {
+   "id": "57",
+   "category": "Remote",
+   "name": "Remote Asterisk",
+   "text": "Remote Asterisk",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_ASTERISK"
+    }
+   }
+  },
+  {
+   "id": "58",
+   "category": "Remote",
+   "name": "Remote Number",
+   "text": "Remote Number",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "RC_NUMBER"
+    }
+   }
+  },
+  {
+   "id": "59",
+   "category": "Remote",
+   "name": "Remote KP Left",
+   "text": "Remote KP Left",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_LEFT"
+    }
+   }
+  },
+  {
+   "id": "60",
+   "category": "Remote",
+   "name": "Remote KP Up",
+   "text": "Remote KP Up",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_UP"
+    }
+   }
+  },
+  {
+   "id": "61",
+   "category": "Remote",
+   "name": "Remote KP Ok",
+   "text": "Remote KP Ok",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_OK"
+    }
+   }
+  },
+  {
+   "id": "62",
+   "category": "Remote",
+   "name": "Remote KP Right",
+   "text": "Remote KP Right",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_RIGHT"
+    }
+   }
+  },
+  {
+   "id": "63",
+   "category": "Remote",
+   "name": "Remote KP Down",
+   "text": "Remote KP Down",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_DOWN"
+    }
+   }
+  },
+  {
+   "id": "64",
+   "category": "Remote",
+   "name": "Remote KP Menu",
+   "text": "Remote KP Menu",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_MENU"
+    }
+   }
+  },
+  {
+   "id": "65",
+   "category": "Remote",
+   "name": "Remote KP Power",
+   "text": "Remote KP Power",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_POWER"
+    }
+   }
+  },
+  {
+   "id": "66",
+   "category": "Remote",
+   "name": "Remote KP Back",
+   "text": "Remote KP Back",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_BACK"
+    }
+   }
+  },
+  {
+   "id": "67",
+   "category": "Remote",
+   "name": "Remote KP OSD",
+   "text": "Remote KP OSD",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_OSD"
+    }
+   }
+  },
+  {
+   "id": "68",
+   "category": "Remote",
+   "name": "Remote KP Lens",
+   "text": "Remote KP Lens",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_LENS"
+    }
+   }
+  },
+  {
+   "id": "69",
+   "category": "Remote",
+   "name": "Remote KP Pattern",
+   "text": "Remote KP Pattern",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_PATTERN"
+    }
+   }
+  },
+  {
+   "id": "70",
+   "category": "Remote",
+   "name": "Remote KP Shutter",
+   "text": "Remote KP Shutter",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_SHUTTER"
+    }
+   }
+  },
+  {
+   "id": "71",
+   "category": "Remote",
+   "name": "Remote KP Input",
+   "text": "Remote KP Input",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_INPUT"
+    }
+   }
+  },
+  {
+   "id": "72",
+   "category": "Remote",
+   "name": "Remote KP Standby",
+   "text": "Remote KP Standby",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "remoteKey",
+    "options": {
+     "p1": "KP_STANDBY"
     }
    }
   },
@@ -586,6 +1982,19 @@
    "action": {
     "definitionId": "factory",
     "options": {}
+   }
+  },
+  {
+   "id": "88",
+   "category": "System",
+   "name": "Activate Profile",
+   "text": "Activate Profile",
+   "backgroundColor": "#ebebeb",
+   "action": {
+    "definitionId": "activateProfile",
+    "options": {
+     "profile": ""
+    }
    }
   }
  ],

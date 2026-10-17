@@ -1,0 +1,144 @@
+{
+ "format": 1,
+ "id": "m-nrk-sofie-chef",
+ "name": "NRK Sofie Chef",
+ "category": "NRK",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 5271,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "apiKey",
+   "label": "API Key (Pre-shared key)",
+   "type": "text"
+  },
+  {
+   "id": "reconnect",
+   "label": "Reconnect",
+   "type": "boolean",
+   "default": true,
+   "help": "Reconnect on WebSocket error (after 5 secs)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "playUrl",
+   "name": "Play URL",
+   "options": [
+    {
+     "id": "windowId",
+     "label": "Window",
+     "type": "text",
+     "default": "default"
+    },
+    {
+     "id": "url",
+     "label": "URL",
+     "type": "text"
+    },
+    {
+     "id": "jsCode",
+     "label": "JavaScript Code",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"msgId\":1,\"type\":\"playurl\",\"windowId\":\"default\",\"url\":\"{{option.url}}\",\"jsCode\":\"{{option.jsCode}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "restart",
+   "name": "Restart",
+   "options": [
+    {
+     "id": "windowId",
+     "label": "Window",
+     "type": "text",
+     "default": "default"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"msgId\":1,\"type\":\"restart\",\"windowId\":\"default\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "Stop",
+   "options": [
+    {
+     "id": "windowId",
+     "label": "Window",
+     "type": "text",
+     "default": "default"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"msgId\":1,\"type\":\"stop\",\"windowId\":\"default\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "execute",
+   "name": "Execute",
+   "options": [
+    {
+     "id": "windowId",
+     "label": "Window",
+     "type": "text",
+     "default": "default"
+    },
+    {
+     "id": "jsCode",
+     "label": "JavaScript Code",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"msgId\":1,\"type\":\"execute\",\"windowId\":\"default\",\"jsCode\":\"{{option.jsCode}}\"}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-nrk-sofie-chef",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Peter Newman"
+  }
+ ],
+ "source": {
+  "module": "nrk-sofie-chef",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Peter Newman"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-nrk-sofie-chef.git"
+ }
+}

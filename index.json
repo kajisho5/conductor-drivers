@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-10-17T01:47:59.002Z",
+ "generatedAt": "2026-10-17T02:29:24.441Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -88,7 +88,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 17,
-   "bytes": 10100
+   "bytes": 10228
   },
   {
    "id": "m-aja-kipro",
@@ -264,7 +264,18 @@
    "minAppVersion": "0.6.0",
    "actions": 15,
    "allActions": 24,
-   "bytes": 10082
+   "bytes": 10067
+  },
+  {
+   "id": "m-attend2it-speakertimer",
+   "name": "Attend2IT Speakertimer.co.uk",
+   "category": "Attend2IT",
+   "transport": "http",
+   "version": "1.0.0-beta3",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 10,
+   "bytes": 1384
   },
   {
    "id": "m-audac-mtx",
@@ -355,17 +366,6 @@
    "bytes": 72926
   },
   {
-   "id": "m-barco-clickshare",
-   "name": "Barco Clickshare",
-   "category": "Barco",
-   "transport": "http",
-   "version": "2.1.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 1,
-   "bytes": 1578
-  },
-  {
    "id": "m-barco-dp",
    "name": "Barco DP Projector",
    "category": "Barco",
@@ -405,9 +405,9 @@
    "transport": "tcp",
    "version": "2.3.0",
    "minAppVersion": "0.6.0",
-   "actions": 10,
+   "actions": 21,
    "allActions": 22,
-   "bytes": 12601
+   "bytes": 39272
   },
   {
    "id": "m-bbc-raven",
@@ -487,6 +487,17 @@
    "bytes": 4038
   },
   {
+   "id": "m-bitfocusas-listener",
+   "name": "Bitfocus Listener",
+   "category": "Bitfocus",
+   "transport": "ws",
+   "version": "1.0.3",
+   "minAppVersion": "0.6.0",
+   "actions": 13,
+   "allActions": 14,
+   "bytes": 6529
+  },
+  {
    "id": "m-blackbox-boxilla",
    "name": "Blackbox Boxilla",
    "category": "Blackbox",
@@ -564,17 +575,6 @@
    "bytes": 7209
   },
   {
-   "id": "m-boinx-mimolive",
-   "name": "Boinx mimoLive",
-   "category": "Boinx",
-   "transport": "http",
-   "version": "2.0.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 7,
-   "bytes": 2219
-  },
-  {
    "id": "m-borealis-vor",
    "name": "Borealis Solutions Vor",
    "category": "Borealis Solutions",
@@ -583,7 +583,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 12,
-   "bytes": 5550
+   "bytes": 5548
   },
   {
    "id": "m-boxcast-api",
@@ -614,9 +614,9 @@
    "transport": "http",
    "version": "2.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 9,
+   "actions": 10,
    "allActions": 11,
-   "bytes": 4149
+   "bytes": 16119
   },
   {
    "id": "m-cablematters-matrix",
@@ -685,6 +685,17 @@
    "bytes": 2372
   },
   {
+   "id": "m-cedar-dns8d",
+   "name": "Cedar DNS 8D",
+   "category": "Cedar",
+   "transport": "ws",
+   "version": "1.0.7",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 10,
+   "bytes": 3724
+  },
+  {
    "id": "m-chamsys-magicq-osc",
    "name": "ChamSys MagicQ",
    "category": "ChamSys",
@@ -729,6 +740,17 @@
    "bytes": 6584
   },
   {
+   "id": "m-churchapps-freeshow",
+   "name": "ChurchApps FreeShow",
+   "category": "ChurchApps",
+   "transport": "http",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 42,
+   "bytes": 1386
+  },
+  {
    "id": "m-chyronhego-lyric",
    "name": "ChyronHego Lyric",
    "category": "ChyronHego",
@@ -760,6 +782,17 @@
    "actions": 9,
    "allActions": 16,
    "bytes": 9513
+  },
+  {
+   "id": "m-clearcom-station-ic",
+   "name": "Clear-Com Station-IC",
+   "category": "Clear-Com",
+   "transport": "ws",
+   "version": "1.0.3",
+   "minAppVersion": "0.6.0",
+   "actions": 5,
+   "allActions": 6,
+   "bytes": 7028
   },
   {
    "id": "m-cockos-reaper",
@@ -858,7 +891,7 @@
    "minAppVersion": "0.6.0",
    "actions": 6,
    "allActions": 50,
-   "bytes": 9963
+   "bytes": 9971
   },
   {
    "id": "m-dashare-multiplay",
@@ -977,9 +1010,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 7,
+   "actions": 6,
    "allActions": 11,
-   "bytes": 3611
+   "bytes": 3412
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -991,6 +1024,17 @@
    "actions": 45,
    "allActions": 45,
    "bytes": 14114
+  },
+  {
+   "id": "m-easyrecord-cgcontrol",
+   "name": "Easyrecord CG control",
+   "category": "Easyrecord",
+   "transport": "ws",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 2,
+   "bytes": 2304
   },
   {
    "id": "m-elgato-keylight",
@@ -1045,7 +1089,7 @@
    "minAppVersion": "0.6.0",
    "actions": 10,
    "allActions": 10,
-   "bytes": 36836
+   "bytes": 36833
   },
   {
    "id": "m-etc-eos",
@@ -1356,6 +1400,17 @@
    "bytes": 19666
   },
   {
+   "id": "m-highpass-accompaniment",
+   "name": "HighPass AcCompaniment",
+   "category": "HighPass",
+   "transport": "ws",
+   "version": "1.2.1",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 7,
+   "bytes": 1646
+  },
+  {
    "id": "m-ibm-watson",
    "name": "IBM Watson",
    "category": "IBM",
@@ -1496,7 +1551,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 20,
-   "bytes": 1396
+   "bytes": 1500
   },
   {
    "id": "m-irisdown-countdowntimer",
@@ -1521,6 +1576,28 @@
    "bytes": 5066
   },
   {
+   "id": "m-josephadams-scriptlauncher",
+   "name": "Joseph Adams Script Launcher",
+   "category": "Joseph Adams",
+   "transport": "http",
+   "version": "1.9.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 77,
+   "bytes": 1425
+  },
+  {
+   "id": "m-joy-playdeck",
+   "name": "JOY event & media Playdeck",
+   "category": "JOY event & media",
+   "transport": "ws",
+   "version": "4.2.9",
+   "minAppVersion": "0.6.0",
+   "actions": 57,
+   "allActions": 57,
+   "bytes": 117196
+  },
+  {
    "id": "m-justmacros-lua",
    "name": "JustMacros LUA",
    "category": "JustMacros",
@@ -1538,9 +1615,9 @@
    "transport": "http",
    "version": "1.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 11,
+   "actions": 8,
    "allActions": 13,
-   "bytes": 5723
+   "bytes": 4422
   },
   {
    "id": "m-klang-app",
@@ -1598,6 +1675,17 @@
    "bytes": 6240
   },
   {
+   "id": "m-leonreucher-vstopowerpoint",
+   "name": "Leon Reucher PowerPoint Remote VSTO WebSocket",
+   "category": "Leon Reucher",
+   "transport": "ws",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 14,
+   "allActions": 14,
+   "bytes": 6082
+  },
+  {
    "id": "m-lgtv-prodisplay",
    "name": "LG Pro Display",
    "category": "LG",
@@ -1628,7 +1716,7 @@
    "minAppVersion": "0.6.0",
    "actions": 7,
    "allActions": 12,
-   "bytes": 17870
+   "bytes": 17840
   },
   {
    "id": "m-luminex-luminode",
@@ -1719,6 +1807,17 @@
    "bytes": 4700
   },
   {
+   "id": "m-microsoft-teams",
+   "name": "Microsoft Teams",
+   "category": "Microsoft",
+   "transport": "ws",
+   "version": "1.3.0",
+   "minAppVersion": "0.6.0",
+   "actions": 6,
+   "allActions": 6,
+   "bytes": 4944
+  },
+  {
    "id": "m-middlethings-middlecontrol",
    "name": "Middle Things Middle Control",
    "category": "Middle Things",
@@ -1739,6 +1838,17 @@
    "actions": 21,
    "allActions": 25,
    "bytes": 11405
+  },
+  {
+   "id": "m-modulopi-moduloplayer",
+   "name": "Modulo Pi Modulo Player",
+   "category": "Modulo Pi",
+   "transport": "ws",
+   "version": "4.0.8",
+   "minAppVersion": "0.6.0",
+   "actions": 7,
+   "allActions": 23,
+   "bytes": 4876
   },
   {
    "id": "m-monteiro-cronosdown",
@@ -1961,6 +2071,17 @@
    "bytes": 5471
   },
   {
+   "id": "m-nrk-sofie-chef",
+   "name": "NRK Sofie Chef",
+   "category": "NRK",
+   "transport": "ws",
+   "version": "1.0.1",
+   "minAppVersion": "0.6.0",
+   "actions": 4,
+   "allActions": 4,
+   "bytes": 2871
+  },
+  {
    "id": "m-obsbot-osc",
    "name": "OBSBOT Center App / Tail 2 / Tail Air / Tiny / Tiny 4K / Tiny 2 / Tiny 2 Lite…",
    "category": "OBSBOT",
@@ -2143,9 +2264,9 @@
    "transport": "http",
    "version": "1.0.3",
    "minAppVersion": "0.6.0",
-   "actions": 17,
+   "actions": 15,
    "allActions": 22,
-   "bytes": 7656
+   "bytes": 6445
   },
   {
    "id": "m-powersoft-amplifiers",
@@ -2189,7 +2310,7 @@
    "minAppVersion": "0.6.0",
    "actions": 3,
    "allActions": 5,
-   "bytes": 68571
+   "bytes": 12402
   },
   {
    "id": "m-ptzoptics-visca",
@@ -2223,6 +2344,39 @@
    "actions": 14,
    "allActions": 14,
    "bytes": 5547
+  },
+  {
+   "id": "m-rationalacoustics-smaart3",
+   "name": "Rational Acoustics Smaart V8.3 - V8.5 / Smaart Di 2.1 and newer",
+   "category": "Rational Acoustics",
+   "transport": "ws",
+   "version": "2.1.2",
+   "minAppVersion": "0.6.0",
+   "actions": 23,
+   "allActions": 32,
+   "bytes": 10839
+  },
+  {
+   "id": "m-red-rcp2",
+   "name": "RED RCP2 Camera Control",
+   "category": "RED",
+   "transport": "ws",
+   "version": "1.1.3",
+   "minAppVersion": "0.6.0",
+   "actions": 20,
+   "allActions": 21,
+   "bytes": 17764
+  },
+  {
+   "id": "m-renewedvision-propresenter",
+   "name": "Renewed Vision ProPresenter",
+   "category": "Renewed Vision",
+   "transport": "ws",
+   "version": "3.0.2",
+   "minAppVersion": "0.6.0",
+   "actions": 30,
+   "allActions": 41,
+   "bytes": 21378
   },
   {
    "id": "m-resi-decoders",
@@ -2278,6 +2432,17 @@
    "actions": 5,
    "allActions": 12,
    "bytes": 6304
+  },
+  {
+   "id": "m-riedel-smartpanel",
+   "name": "Riedel Communications Smart Panel",
+   "category": "Riedel Communications",
+   "transport": "ws",
+   "version": "1.0.1",
+   "minAppVersion": "0.6.0",
+   "actions": 9,
+   "allActions": 20,
+   "bytes": 7527
   },
   {
    "id": "m-roku-tv",
@@ -2390,6 +2555,17 @@
    "bytes": 7623
   },
   {
+   "id": "m-sgl-dct",
+   "name": "SGL DCT",
+   "category": "SGL",
+   "transport": "ws",
+   "version": "1.0.0",
+   "minAppVersion": "0.6.0",
+   "actions": 10,
+   "allActions": 23,
+   "bytes": 8854
+  },
+  {
    "id": "m-shelly-http",
    "name": "Shelly 1 / Shelly 2.5 / Shelly Dimmer1/2 / Shelly RGBW2",
    "category": "Shelly",
@@ -2399,6 +2575,17 @@
    "actions": 3,
    "allActions": 3,
    "bytes": 2202
+  },
+  {
+   "id": "m-shelly-ws",
+   "name": "Shelly Plus 1 / Shelly Plus 1PM / Shelly Plus 2PM / Shelly Pro 1 / Shelly Pro…",
+   "category": "Shelly",
+   "transport": "ws",
+   "version": "1.1.2",
+   "minAppVersion": "0.6.0",
+   "actions": 2,
+   "allActions": 2,
+   "bytes": 3547
   },
   {
    "id": "m-shure-chargers",
@@ -2676,6 +2863,17 @@
    "bytes": 43720
   },
   {
+   "id": "m-soundcraft-ui",
+   "name": "Soundcraft Ui12 / Ui16 / Ui24R",
+   "category": "Soundcraft",
+   "transport": "ws",
+   "version": "3.10.0",
+   "minAppVersion": "0.6.0",
+   "actions": 33,
+   "allActions": 65,
+   "bytes": 22083
+  },
+  {
    "id": "m-sounddevices-pixnet",
    "name": "Sound Devices PIXNET",
    "category": "Sound Devices",
@@ -2704,9 +2902,9 @@
    "transport": "http",
    "version": "2.3.1",
    "minAppVersion": "0.6.0",
-   "actions": 27,
+   "actions": 28,
    "allActions": 32,
-   "bytes": 16006
+   "bytes": 16911
   },
   {
    "id": "m-studiocoast-vmix",
@@ -2715,9 +2913,9 @@
    "transport": "tcp",
    "version": "4.2.0",
    "minAppVersion": "0.6.0",
-   "actions": 64,
+   "actions": 65,
    "allActions": 129,
-   "bytes": 112102
+   "bytes": 114004
   },
   {
    "id": "m-symetrix-dsp",
@@ -2762,6 +2960,17 @@
    "actions": 2,
    "allActions": 2,
    "bytes": 2245
+  },
+  {
+   "id": "m-techministry-spotifycontroller",
+   "name": "Tech Ministry Spotify Controller",
+   "category": "Tech Ministry",
+   "transport": "http",
+   "version": "2.3.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 19,
+   "bytes": 1534
   },
   {
    "id": "m-telestream-prism",
@@ -2896,6 +3105,17 @@
    "bytes": 2602
   },
   {
+   "id": "m-uts-remotevolume",
+   "name": "UTS Remote Volume",
+   "category": "UTS",
+   "transport": "ws",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 5,
+   "allActions": 5,
+   "bytes": 3735
+  },
+  {
    "id": "m-vbaudio-voicemeeter",
    "name": "VBAudio Voicemeeter",
    "category": "VBAudio",
@@ -2905,6 +3125,17 @@
    "actions": 5,
    "allActions": 29,
    "bytes": 5612
+  },
+  {
+   "id": "m-vicreo-broadcast-titles",
+   "name": "VICREO Broadcast Titles",
+   "category": "VICREO",
+   "transport": "ws",
+   "version": "1.0.0",
+   "minAppVersion": "0.6.0",
+   "actions": 12,
+   "allActions": 14,
+   "bytes": 7571
   },
   {
    "id": "m-vicreo-hotkey",
@@ -3026,6 +3257,17 @@
    "actions": 13,
    "allActions": 16,
    "bytes": 15812
+  },
+  {
+   "id": "m-wled-websocket",
+   "name": "WLED",
+   "category": "WLED",
+   "transport": "ws",
+   "version": "1.0.3",
+   "minAppVersion": "0.6.0",
+   "actions": 4,
+   "allActions": 7,
+   "bytes": 2946
   },
   {
    "id": "m-wordnik-api",

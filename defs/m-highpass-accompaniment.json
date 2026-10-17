@@ -1,0 +1,78 @@
+{
+ "format": 1,
+ "id": "m-highpass-accompaniment",
+ "name": "HighPass AcCompaniment",
+ "category": "HighPass",
+ "version": "1.2.1",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8877,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "reconnect",
+   "label": "Attempt Reconnect",
+   "type": "boolean",
+   "default": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "stop_all",
+   "name": "Stop All Audio",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"stopAllCues\",\"payload\":{\"behavior\":\"fade_out_and_stop\"}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "20",
+   "category": "Controls",
+   "name": "Stop All Audio",
+   "text": "STOP ALL",
+   "backgroundColor": "#c80000",
+   "action": {
+    "definitionId": "stop_all",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-highpass-accompaniment",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Marcin Wardecki"
+  }
+ ],
+ "source": {
+  "module": "highpass-accompaniment",
+  "version": "1.2.1",
+  "license": "MIT",
+  "maintainers": [
+   "Marcin Wardecki"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-highpass-accompaniment.git"
+ }
+}

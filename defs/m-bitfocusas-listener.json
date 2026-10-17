@@ -1,0 +1,333 @@
+{
+ "format": 1,
+ "id": "m-bitfocusas-listener",
+ "name": "Bitfocus Listener",
+ "category": "Bitfocus",
+ "version": "1.0.3",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/ws",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 12001,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "default": ""
+  }
+ ],
+ "actions": [
+  {
+   "id": "key_press",
+   "name": "Key Press",
+   "options": [
+    {
+     "id": "key",
+     "label": "Key to Press",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"keyPress\",\"key\":\"{{option.key}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "key_down",
+   "name": "Key Down",
+   "options": [
+    {
+     "id": "key",
+     "label": "Key to Press Down",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"keyDown\",\"key\":\"{{option.key}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "key_up",
+   "name": "Key Up",
+   "options": [
+    {
+     "id": "key",
+     "label": "Key to Release",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"keyUp\",\"key\":\"{{option.key}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "key_combination",
+   "name": "Key Combination Press",
+   "options": [
+    {
+     "id": "key",
+     "label": "Key",
+     "type": "text",
+     "default": "tab"
+    },
+    {
+     "id": "modifiers",
+     "label": "Modifiers (comma separated)",
+     "type": "text",
+     "default": "alt"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"keyCombinationPress\",\"key\":\"{{option.key}}\",\"modifiers\":[\"{{option.modifiers}}\"]}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "osx_key_press_process",
+   "name": "OSX Key Press Process (OSX only)",
+   "options": [
+    {
+     "id": "key",
+     "label": "Key",
+     "type": "text",
+     "default": "tab"
+    },
+    {
+     "id": "modifiers",
+     "label": "Modifiers (comma separated)",
+     "type": "text",
+     "default": "alt"
+    },
+    {
+     "id": "processName",
+     "label": "Process Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"osxKeyPressProcess\",\"key\":\"{{option.key}}\",\"modifiers\":[\"{{option.modifiers}}\"],\"processName\":\"{{option.processName}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "key_string",
+   "name": "Key String",
+   "options": [
+    {
+     "id": "msg",
+     "label": "String to Type",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"keyString\",\"msg\":\"{{option.msg}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "shell_command",
+   "name": "Shell Command",
+   "options": [
+    {
+     "id": "shell",
+     "label": "Shell Command",
+     "type": "text",
+     "default": "dir"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"shellRun\",\"shell\":\"{{option.shell}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "open_file",
+   "name": "Open File",
+   "options": [
+    {
+     "id": "path",
+     "label": "File Path",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"fileOpen\",\"path\":\"{{option.path}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "set_mouse_position",
+   "name": "Set Mouse Position",
+   "options": [
+    {
+     "id": "x",
+     "label": "X Position",
+     "type": "number",
+     "default": 500,
+     "min": 0,
+     "max": 2000
+    },
+    {
+     "id": "y",
+     "label": "Y Position",
+     "type": "number",
+     "default": 500,
+     "min": 0,
+     "max": 2000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mousePositionSet\",\"x\":\"{{option.x}}\",\"y\":\"{{option.y}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "get_mouse_position",
+   "name": "Get Mouse Position",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mousePositionGet\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mouse_click",
+   "name": "Mouse Click",
+   "options": [
+    {
+     "id": "button",
+     "label": "Button",
+     "type": "select",
+     "default": "left",
+     "choices": [
+      {
+       "id": "left",
+       "label": "Left"
+      },
+      {
+       "id": "right",
+       "label": "Right"
+      }
+     ]
+    },
+    {
+     "id": "double",
+     "label": "Double Click",
+     "type": "select",
+     "default": "false",
+     "choices": [
+      {
+       "id": "false",
+       "label": "No"
+      },
+      {
+       "id": "true",
+       "label": "Yes"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"mouseClick\",\"button\":\"{{option.button|map}}t\",\"double\":\"{{option.double|map}}e\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "button": {
+     "left": "lef",
+     "right": "righ"
+    },
+    "double": {
+     "false": "fals",
+     "true": "tru"
+    }
+   }
+  },
+  {
+   "id": "subscribe",
+   "name": "Subscribe",
+   "options": [
+    {
+     "id": "subType",
+     "label": "Subscription Type (e.g., mousePosition or sysInfo)",
+     "type": "text",
+     "default": "mousePosition"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"subscribe\",\"name\":\"{{option.subType}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unsubscribe",
+   "name": "Unsubscribe",
+   "options": [
+    {
+     "id": "subType",
+     "label": "Subscription Type (e.g., mousePosition or sysInfo)",
+     "type": "text",
+     "default": "mousePosition"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"type\":\"unsubscribe\",\"name\":\"{{option.subType}}\"}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-bitfocusas-listener",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：William Viker"
+  }
+ ],
+ "source": {
+  "module": "bitfocusas-listener",
+  "version": "1.0.3",
+  "license": "MIT",
+  "maintainers": [
+   "William Viker"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-bitfocusas-listener.git"
+ }
+}

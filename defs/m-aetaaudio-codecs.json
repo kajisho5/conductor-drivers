@@ -1713,8 +1713,8 @@
    },
    "maps": {
     "imp": {
-     "0": "0AT&VAT#SUPAT&VAT#SUP",
-     "1": "1"
+     "0": "0AT&VAT#SUPAT&V",
+     "1": "1AT#SUP"
     }
    }
   },

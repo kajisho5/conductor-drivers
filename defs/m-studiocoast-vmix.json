@@ -2626,8 +2626,8 @@
    }
   },
   {
-   "id": "videoCallVideoSource",
-   "name": "VideoCall - Select Video Source",
+   "id": "videoCallAudioSource",
+   "name": "VideoCall - Select Audio Source",
    "options": [
     {
      "id": "input",
@@ -2638,45 +2638,65 @@
     },
     {
      "id": "value",
-     "label": "Select Output",
+     "label": "Bus",
      "type": "select",
-     "default": "Output1",
+     "default": "BusA",
      "choices": [
       {
-       "id": "Output1",
-       "label": "Output 1"
+       "id": "Master",
+       "label": "Master"
       },
       {
-       "id": "Output2",
-       "label": "Output 2"
+       "id": "Headphones",
+       "label": "Headphones"
       },
       {
-       "id": "Output3",
-       "label": "Output 3"
+       "id": "BusA",
+       "label": "A"
       },
       {
-       "id": "Output4",
-       "label": "Output 4"
+       "id": "BusB",
+       "label": "B"
       },
       {
-       "id": "None",
-       "label": "None"
+       "id": "BusC",
+       "label": "C"
+      },
+      {
+       "id": "BusD",
+       "label": "D"
+      },
+      {
+       "id": "BusE",
+       "label": "E"
+      },
+      {
+       "id": "BusF",
+       "label": "F"
+      },
+      {
+       "id": "BusG",
+       "label": "G"
       }
      ]
     }
    ],
    "send": {
     "kind": "bytes",
-    "data": "FUNCTION videoCallVideoSource input={{option.input}}&value={{option.value|map}}\\r\\n",
+    "data": "FUNCTION videoCallAudioSource input={{option.input}}&value={{option.value|map}}\\r\\n",
     "encoding": "text"
    },
    "maps": {
     "value": {
-     "Output1": "Output1",
-     "Output2": "Output2",
-     "Output3": "Output3",
-     "Output4": "Output4",
-     "None": "None"
+     "BusA": "BusA",
+     "Master": "Master",
+     "Headphones": "Headphones",
+     "BusB": "BusB",
+     "BusC": "BusC",
+     "BusD": "BusD",
+     "BusE": "BusE",
+     "BusF": "BusF",
+     "BusG": "BusG"
     }
    }
   },
@@ -2770,6 +2790,30 @@
      "zoomMuteSelf": "",
      "zoomUnMuteSelf": "Un"
     }
+   }
+  },
+  {
+   "id": "zoomSelectParticipantByName",
+   "name": "Zoom - Select Participant by Name",
+   "options": [
+    {
+     "id": "input",
+     "label": "Input",
+     "type": "text",
+     "default": "1",
+     "help": "Number, Name, or GUID"
+    },
+    {
+     "id": "value",
+     "label": "Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "FUNCTION zoomSelectParticipantByName input={{option.input}}&value={{option.value}}\\r\\n",
+    "encoding": "text"
    }
   }
  ],
@@ -2893,72 +2937,128 @@
    }
   },
   {
-   "id": "124",
+   "id": "114",
    "category": "vMix Call",
-   "name": "Video\nSource\nOutput 1",
-   "text": "Video\nSource\nOutput 1",
+   "name": "Audio\nSource\nMaster",
+   "text": "Audio\nSource\nMaster",
    "backgroundColor": "#000000",
    "action": {
-    "definitionId": "videoCallVideoSource",
+    "definitionId": "videoCallAudioSource",
     "options": {
      "input": "",
-     "value": "Output1"
+     "value": "Master"
     }
    }
   },
   {
-   "id": "125",
+   "id": "115",
    "category": "vMix Call",
-   "name": "Video\nSource\nOutput 2",
-   "text": "Video\nSource\nOutput 2",
+   "name": "Audio\nSource\nHeadphones",
+   "text": "Audio\nSource\nHeadphones",
    "backgroundColor": "#000000",
    "action": {
-    "definitionId": "videoCallVideoSource",
+    "definitionId": "videoCallAudioSource",
     "options": {
      "input": "",
-     "value": "Output2"
+     "value": "Headphones"
     }
    }
   },
   {
-   "id": "126",
+   "id": "116",
    "category": "vMix Call",
-   "name": "Video\nSource\nOutput 3",
-   "text": "Video\nSource\nOutput 3",
+   "name": "Audio\nSource\nBus A",
+   "text": "Audio\nSource\nBus A",
    "backgroundColor": "#000000",
    "action": {
-    "definitionId": "videoCallVideoSource",
+    "definitionId": "videoCallAudioSource",
     "options": {
      "input": "",
-     "value": "Output3"
+     "value": "BusA"
     }
    }
   },
   {
-   "id": "127",
+   "id": "117",
    "category": "vMix Call",
-   "name": "Video\nSource\nOutput 4",
-   "text": "Video\nSource\nOutput 4",
+   "name": "Audio\nSource\nBus B",
+   "text": "Audio\nSource\nBus B",
    "backgroundColor": "#000000",
    "action": {
-    "definitionId": "videoCallVideoSource",
+    "definitionId": "videoCallAudioSource",
     "options": {
      "input": "",
-     "value": "Output4"
+     "value": "BusB"
     }
    }
   },
   {
-   "id": "128",
+   "id": "118",
    "category": "vMix Call",
-   "name": "Video\nSource\nNone",
-   "text": "Video\nSource\nNone",
+   "name": "Audio\nSource\nBus C",
+   "text": "Audio\nSource\nBus C",
    "backgroundColor": "#000000",
    "action": {
-    "definitionId": "videoCallVideoSource",
+    "definitionId": "videoCallAudioSource",
     "options": {
      "input": "",
-     "value": "None"
+     "value": "BusC"
+    }
+   }
+  },
+  {
+   "id": "119",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus D",
+   "text": "Audio\nSource\nBus D",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusD"
+    }
+   }
+  },
+  {
+   "id": "120",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus E",
+   "text": "Audio\nSource\nBus E",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusE"
+    }
+   }
+  },
+  {
+   "id": "121",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus F",
+   "text": "Audio\nSource\nBus F",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusF"
+    }
+   }
+  },
+  {
+   "id": "122",
+   "category": "vMix Call",
+   "name": "Audio\nSource\nBus G",
+   "text": "Audio\nSource\nBus G",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "videoCallAudioSource",
+    "options": {
+     "input": "",
+     "value": "BusG"
     }
    }
   },

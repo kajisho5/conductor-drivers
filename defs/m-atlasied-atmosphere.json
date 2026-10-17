@@ -57,7 +57,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"SourceGain_{{option.number}}\",\"pct\":{{option.percent}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"SourceGain_{{option.number}}\",\"pct\":{{option.percent}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -81,7 +81,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"SourceMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"SourceMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":1}\\n",
     "encoding": "text"
    },
    "maps": {
@@ -111,7 +111,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"MixGain_{{option.number}}\",\"pct\":{{option.percent}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"MixGain_{{option.number}}\",\"pct\":{{option.percent}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -135,7 +135,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"MixMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"MixMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":1}\\n",
     "encoding": "text"
    },
    "maps": {
@@ -165,7 +165,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"ZoneGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"ZoneGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -189,7 +189,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"ZoneGain_{{option.number}}\",\"val\":{{option.value|lin:-1:0}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"ZoneGain_{{option.number}}\",\"val\":{{option.value|lin:-1:0}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -213,7 +213,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"ZoneMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"ZoneMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":1}\\n",
     "encoding": "text"
    },
    "maps": {
@@ -243,7 +243,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -267,7 +267,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -291,7 +291,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value|lin:-1:0}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"bmp\",\"params\":[{\"param\":\"GroupGain_{{option.number}}\",\"val\":{{option.value|lin:-1:0}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -315,7 +315,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupMute_{{option.number}}\",\"val\":{{option.mute|map}}}],\"id\":1}\\n",
     "encoding": "text"
    },
    "maps": {
@@ -345,7 +345,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"ZoneSource_{{option.zone_number}}\",\"val\":{{option.source_number}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"ZoneSource_{{option.zone_number}}\",\"val\":{{option.source_number}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -369,7 +369,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupSource_{{option.group_number}}\",\"val\":{{option.source_number}}}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"GroupSource_{{option.group_number}}\",\"val\":{{option.source_number}}}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -386,7 +386,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"RecallRoutine_{{option.number}}\",\"val\":1}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"RecallRoutine_{{option.number}}\",\"val\":1}],\"id\":1}\\n",
     "encoding": "text"
    }
   },
@@ -403,7 +403,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"RecallScene_{{option.number}}\",\"val\":1}],\"id\":10}\\n",
+    "data": "{\"jsonrpc\":\"2.0\",\"method\":\"set\",\"params\":[{\"param\":\"RecallScene_{{option.number}}\",\"val\":1}],\"id\":1}\\n",
     "encoding": "text"
    }
   }

@@ -1,0 +1,234 @@
+{
+ "format": 1,
+ "id": "m-microsoft-teams",
+ "name": "Microsoft Teams",
+ "category": "Microsoft",
+ "version": "1.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/?token=&protocol-version=2.0.0&manufacturer=Bitfocus&device=Companion&app=Companion-Microsoft%20Teams&app-version=1.0.2",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 8124,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "apiVersion",
+   "label": "API Version",
+   "type": "select",
+   "default": "2.0.0",
+   "choices": [
+    {
+     "id": "1.0.0",
+     "label": "1.0.0, Microsoft Teams Classic"
+    },
+    {
+     "id": "2.0.0",
+     "label": "2.0.0, Microsoft Teams (For Work or School)"
+    }
+   ],
+   "help": "Select the version of Teams to accommodate the differently supported APIs"
+  },
+  {
+   "id": "apiToken",
+   "label": "MS Teams API Token",
+   "type": "text"
+  },
+  {
+   "id": "reconnect",
+   "label": "Reconnect",
+   "type": "boolean",
+   "default": true,
+   "help": "Reconnect on WebSocket error (after 5 secs)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "toggleMute",
+   "name": "Toggle mute",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"toggle-mute\",\"parameters\":{},\"requestId\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleVideo",
+   "name": "Toggle video",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"toggle-video\",\"parameters\":{},\"requestId\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "leaveMeeting",
+   "name": "Leave meeting",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"leave-call\",\"parameters\":{},\"requestId\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleBackgroundBlur",
+   "name": "Toggle background blur",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"toggle-background-blur\",\"parameters\":{},\"requestId\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleHand",
+   "name": "Toggle raising hand",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"toggle-hand\",\"parameters\":{},\"requestId\":1}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "reaction",
+   "name": "Reaction",
+   "options": [
+    {
+     "id": "selectedReaction",
+     "label": "Reaction",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Applause"
+      },
+      {
+       "id": "1",
+       "label": "Laugh"
+      },
+      {
+       "id": "2",
+       "label": "Like"
+      },
+      {
+       "id": "3",
+       "label": "Heart"
+      },
+      {
+       "id": "4",
+       "label": "Wow"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"send-reaction\",\"parameters\":{\"type\":\"{{option.selectedReaction|map}}\"},\"requestId\":1}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedReaction": {
+     "0": "applause",
+     "1": "laugh",
+     "2": "like",
+     "3": "love",
+     "4": "wow"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "toggle-mute",
+   "category": "Buttons",
+   "name": "Toggle Mute",
+   "text": "Toggle Mute",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "toggleMute",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle-camera",
+   "category": "Buttons",
+   "name": "Toggle Camera",
+   "text": "Toggle Camera",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "toggleVideo",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle-blur",
+   "category": "Buttons",
+   "name": "Toggle Background Blur",
+   "text": "Toggle Background Blur",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "toggleBackgroundBlur",
+    "options": {}
+   }
+  },
+  {
+   "id": "toggle-hand",
+   "category": "Buttons",
+   "name": "Toggle Background Blur",
+   "text": "Toggle Background Blur",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "toggleHand",
+    "options": {}
+   }
+  },
+  {
+   "id": "leave-meeting",
+   "category": "Buttons",
+   "name": "Leave Meeting",
+   "text": "Leave Meeting",
+   "backgroundColor": "#424242",
+   "action": {
+    "definitionId": "leaveMeeting",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-microsoft-teams",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher, Shaun Padt"
+  }
+ ],
+ "source": {
+  "module": "microsoft-teams",
+  "version": "1.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher",
+   "Shaun Padt"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-microsoft-teams.git"
+ }
+}

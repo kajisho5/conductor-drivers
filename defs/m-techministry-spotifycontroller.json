@@ -1,0 +1,68 @@
+{
+ "format": 1,
+ "id": "m-techministry-spotifycontroller",
+ "name": "Tech Ministry Spotify Controller",
+ "category": "Tech Ministry",
+ "version": "2.3.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:8801",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling (experimental)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollingrate",
+   "label": "Polling Rate (in ms)",
+   "type": "text",
+   "default": "1000"
+  },
+  {
+   "id": "verbose",
+   "label": "Enable Verbose Logging",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "mute",
+   "name": "Volume Mute",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q57fpJH&b64=1"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-techministry-spotifycontroller",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
+  }
+ ],
+ "source": {
+  "module": "techministry-spotifycontroller",
+  "version": "2.3.0",
+  "license": "MIT",
+  "maintainers": [
+   "Joseph Adams"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-techministry-spotifycontroller.git"
+ }
+}

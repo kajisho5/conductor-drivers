@@ -18,37 +18,6 @@
  ],
  "actions": [
   {
-   "id": "play_playlist",
-   "name": "Play Playlist",
-   "options": [
-    {
-     "id": "id",
-     "label": "Playlist ID",
-     "type": "text",
-     "default": ""
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "PUT",
-    "path": "/v1/playlist/play",
-    "body": "{\"id\":\"{{option.id}}\"}",
-    "contentType": "application/json"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/v1/playlist/playback"
-    },
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/v1/playlist/playback"
-    }
-   ]
-  },
-  {
    "id": "playlist_toggle_playback",
    "name": "Playlist: Toggle Play/Pause",
    "options": [],
@@ -233,44 +202,6 @@
      "path": "/v1/playlist/playback"
     }
    ]
-  },
-  {
-   "id": "soundboard_play_sound",
-   "name": "Soundboard: Play Sound",
-   "options": [
-    {
-     "id": "id",
-     "label": "Sound ID",
-     "type": "text",
-     "default": ""
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "PUT",
-    "path": "/v1/soundboard/play",
-    "body": "{\"id\":\"{{option.id}}\"}",
-    "contentType": "application/json"
-   }
-  },
-  {
-   "id": "soundboard_stop_sound",
-   "name": "Soundboard: Stop Sound",
-   "options": [
-    {
-     "id": "id",
-     "label": "Sound ID",
-     "type": "text",
-     "default": ""
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "PUT",
-    "path": "/v1/soundboard/stop",
-    "body": "{\"id\":\"{{option.id}}\"}",
-    "contentType": "application/json"
-   }
   }
  ],
  "feedbacks": [],

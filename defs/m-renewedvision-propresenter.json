@@ -1,0 +1,871 @@
+{
+ "format": 1,
+ "id": "m-renewedvision-propresenter",
+ "name": "Renewed Vision ProPresenter",
+ "category": "Renewed Vision",
+ "version": "3.0.2",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/remote",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 20652,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "pass",
+   "label": "ProPresenter Remote Controller Password",
+   "type": "text"
+  },
+  {
+   "id": "use_sd",
+   "label": "Connect to Stage Display?",
+   "type": "select",
+   "default": "no",
+   "choices": [
+    {
+     "id": "no",
+     "label": "No"
+    },
+    {
+     "id": "yes",
+     "label": "Yes"
+    }
+   ]
+  },
+  {
+   "id": "sdport",
+   "label": "Stage Display App Port",
+   "type": "text",
+   "default": "",
+   "help": "Optionally set in ProPresenter Preferences. ProPresenter Port (above) will be used if left blank."
+  },
+  {
+   "id": "sdpass",
+   "label": "Stage Display App Password",
+   "type": "text"
+  },
+  {
+   "id": "indexOfClockToWatch",
+   "label": "Index of Clock to Watch",
+   "type": "text",
+   "default": "0",
+   "help": "Index of clock to watch.  Dynamic variable \"watched_clock_current_time\" will be updated with current value once every second."
+  },
+  {
+   "id": "GUIDOfStageDisplayScreenToWatch",
+   "label": "Pro7 Stage Display Screen To Monitor Layout",
+   "type": "text",
+   "default": "",
+   "help": "Pro7 Stage Display Screen To Monitor Layout - (This list is refreshed the next time you EDIT config, after a succesful connection)"
+  },
+  {
+   "id": "sendPresentationCurrentMsgs",
+   "label": "Send Presentation Info Requests To ProPresenter",
+   "type": "select",
+   "default": "yes",
+   "choices": [
+    {
+     "id": "no",
+     "label": "No"
+    },
+    {
+     "id": "yes",
+     "label": "Yes"
+    }
+   ],
+   "help": "You may want to turn this off for Pro7 as it can cause performance issues - Turning it off will mean the module does not update the dynamic variables: remaining_slides, total_slides or presentation_na"
+  },
+  {
+   "id": "typeOfPresentationRequest",
+   "label": "Type of Presentation Info Requests",
+   "type": "select",
+   "default": "auto",
+   "choices": [
+    {
+     "id": "auto",
+     "label": "Automatic"
+    },
+    {
+     "id": "manual",
+     "label": "Manual"
+    }
+   ],
+   "help": "Manual may workaround performance issues for some users - give it a try"
+  },
+  {
+   "id": "clientVersion",
+   "label": "ProRemote Client Version",
+   "type": "text",
+   "default": "701",
+   "help": "No need to update this - unless trying to work around an issue with connectivity for future Pro7 releases."
+  },
+  {
+   "id": "looksPolling",
+   "label": "Looks Polling",
+   "type": "select",
+   "default": "disabled",
+   "choices": [
+    {
+     "id": "disabled",
+     "label": "Disabled"
+    },
+    {
+     "id": "enabled",
+     "label": "Enabled"
+    }
+   ],
+   "help": "Poll ProPresenter Looks info once per second to enable Feedback for Active Look"
+  },
+  {
+   "id": "timerPolling",
+   "label": "Timer Polling",
+   "type": "select",
+   "default": "disabled",
+   "choices": [
+    {
+     "id": "disabled",
+     "label": "Disabled"
+    },
+    {
+     "id": "enabled",
+     "label": "Enabled"
+    }
+   ],
+   "help": "Poll ProPresenter Timers values once per second to enable timer feedback. This workaround is only needed for some versions of Pro7 on MacOS - eg 7.9.2, 7.10, 7.10.2..."
+  },
+  {
+   "id": "control_follower",
+   "label": "Auto-Control Follower ProPresenter?",
+   "type": "select",
+   "default": "no",
+   "choices": [
+    {
+     "id": "no",
+     "label": "No"
+    },
+    {
+     "id": "yes",
+     "label": "Yes"
+    }
+   ]
+  },
+  {
+   "id": "followerhost",
+   "label": "Follower-ProPresenter IP",
+   "type": "text",
+   "default": ""
+  },
+  {
+   "id": "followerport",
+   "label": "Follower-ProPresenter Port",
+   "type": "text",
+   "default": "20652"
+  },
+  {
+   "id": "followerpass",
+   "label": "Follower-ProPresenter Remote Password",
+   "type": "text"
+  }
+ ],
+ "actions": [
+  {
+   "id": "next",
+   "name": "Next Slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"presentationTriggerNext\",\"presentationDestination\":\"0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "last",
+   "name": "Previous Slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"presentationTriggerPrevious\",\"presentationDestination\":\"0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "slideLabel",
+   "name": "Specific Slide With Label",
+   "options": [
+    {
+     "id": "playlistName",
+     "label": "Playlist Name",
+     "type": "text",
+     "help": "Find the first playlist with that matches this playlist name (Supports variable)"
+    },
+    {
+     "id": "presentationName",
+     "label": "Presentation Name",
+     "type": "text",
+     "help": "Find the first presentation (in above playlist) that matches this presentation name (Supports variable or text with wildcard char *)"
+    },
+    {
+     "id": "slideLabel",
+     "label": "Slide With Label",
+     "type": "text",
+     "help": "Find the first slide (in above presentation) with matching *Slide Label* and trigger that slide (Supports variable)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"playlistRequestAll\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "groupSlide",
+   "name": "Specific Slide In A Group",
+   "options": [
+    {
+     "id": "groupName",
+     "label": "Group(s) Name",
+     "type": "text",
+     "help": "Specify the Name of the Group with the slide you want to trigger (Supports variable or multiple group names separated by |)"
+    },
+    {
+     "id": "slideNumber",
+     "label": "Slide Number (Within Group)",
+     "type": "text",
+     "default": "1",
+     "help": "Which slide in the group? (Supports variable)"
+    },
+    {
+     "id": "presentationPath",
+     "label": "Presentation Path (Leave Blank for Current)",
+     "type": "text",
+     "default": "",
+     "help": "Leave this blank to target the current presentation (Supports variable)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"presentationRequest\",\"presentationPath\":\"{{option.presentationPath}}\",\"presentationSlideQuality\":0}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearall",
+   "name": "Clear All",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearAll\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearslide",
+   "name": "Clear Slide",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearText\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearprops",
+   "name": "Clear Props",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearProps\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearaudio",
+   "name": "Clear Audio",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearAudio\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearbackground",
+   "name": "Clear Background",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearVideo\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cleartelestrator",
+   "name": "Clear Telestrator",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearTelestrator\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cleartologo",
+   "name": "Clear to Logo",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearToLogo\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearAnnouncements",
+   "name": "Clear Announcements",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearAnnouncements\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearMessages",
+   "name": "Clear Messages",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clearMessages\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stageDisplayLayout",
+   "name": "Pro6 Stage Display Layout",
+   "options": [
+    {
+     "id": "index",
+     "label": "Pro6 Stage Display Index",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"stageDisplaySetIndex\",\"stageDisplayIndex\":\"{{option.index}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pro7StageDisplayLayout",
+   "name": "Pro7 Stage Display Layout",
+   "options": [
+    {
+     "id": "pro7StageScreenUUID",
+     "label": "Pro7 Stage Display Screen",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Connect to Pro7 to Update"
+      }
+     ],
+     "help": "Choose which stage display screen you want to update layout"
+    },
+    {
+     "id": "pro7StageLayoutUUID",
+     "label": "Pro7 Stage Display Layout",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Connect to Pro7 to Update"
+      }
+     ],
+     "help": "Choose the new stage display layout to apply"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"stageDisplayChangeLayout\",\"stageScreenUUID\":\"0\",\"stageLayoutUUID\":\"0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pro7SetLook",
+   "name": "Pro7 Set Look",
+   "options": [
+    {
+     "id": "pro7LookUUID",
+     "label": "Look",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Connect to Pro7 to Update"
+      }
+     ],
+     "help": "Choose which Look to make live"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"looksTrigger\",\"lookID\":\"0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pro7TriggerMacro",
+   "name": "Pro7 Trigger Macro",
+   "options": [
+    {
+     "id": "pro7MacroUUID",
+     "label": "Macro",
+     "type": "select",
+     "default": "",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Connect to Pro7 to Update"
+      }
+     ],
+     "help": "Choose which Macro to trigger"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"macrosTrigger\",\"macroID\":\"0\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stageDisplayMessage",
+   "name": "Stage Display Message",
+   "options": [
+    {
+     "id": "message",
+     "label": "Message",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"stageDisplaySendMessage\",\"stageDisplayMessage\":\"{{option.message}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stageDisplayHideMessage",
+   "name": "Stage Display Hide Message",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"stageDisplayHideMessage\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clockStart",
+   "name": "Start Clock",
+   "options": [
+    {
+     "id": "clockIndex",
+     "label": "Clock Number",
+     "type": "text",
+     "default": "0",
+     "help": "Zero based index of countdown clock - first one is 0, second one is 1 and so on..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clockStart\",\"clockIndex\":\"{{option.clockIndex}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clockStop",
+   "name": "Stop Clock",
+   "options": [
+    {
+     "id": "clockIndex",
+     "label": "Clock Number",
+     "type": "text",
+     "default": "0",
+     "help": "Zero based index of countdown clock - first one is 0, second one is 1 and so on..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clockStop\",\"clockIndex\":\"{{option.clockIndex}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clockReset",
+   "name": "Reset Clock",
+   "options": [
+    {
+     "id": "clockIndex",
+     "label": "Clock Number",
+     "type": "text",
+     "default": "0",
+     "help": "Zero based index of countdown clock - first one is 0, second one is 1 and so on..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clockReset\",\"clockIndex\":\"{{option.clockIndex}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clockUpdate",
+   "name": "Update Clock",
+   "options": [
+    {
+     "id": "clockName",
+     "label": "New Name For Clock",
+     "type": "text",
+     "default": "Timer",
+     "help": "If this does not match the existing clock name, the clock name will be updated/renamed. Enter the existing clock name to leave it unchanged."
+    },
+    {
+     "id": "clockIndex",
+     "label": "Clock Number",
+     "type": "text",
+     "default": "0",
+     "help": "Zero based index of countdown clock - first one is 0, second one is 1 and so on..."
+    },
+    {
+     "id": "clockTime",
+     "label": "Countdown Duration, Elapsed Start Time or Countdown To Time",
+     "type": "text",
+     "default": "00:05:00",
+     "help": "New duration (or time) for countdown clocks. Also used as optional starting time for elapsed time clocks. Formatted as HH:MM:SS - but you can also use other (shorthand) formats, see the README for mor"
+    },
+    {
+     "id": "clockOverRun",
+     "label": "Over Run",
+     "type": "select",
+     "default": "false",
+     "choices": [
+      {
+       "id": "false",
+       "label": "False"
+      },
+      {
+       "id": "true",
+       "label": "True"
+      }
+     ]
+    },
+    {
+     "id": "clockType",
+     "label": "Clock Type",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "Countdown Timer"
+      },
+      {
+       "id": "1",
+       "label": "Countdown To Time"
+      },
+      {
+       "id": "2",
+       "label": "Elapsed Time"
+      }
+     ],
+     "help": "If the clock specified by the Clock Number is not of this type it will be UPDATED/CONVERTED this type."
+    },
+    {
+     "id": "clockTimePeriodFormat",
+     "label": "Clock Time Format",
+     "type": "select",
+     "default": "0",
+     "choices": [
+      {
+       "id": "0",
+       "label": "AM"
+      },
+      {
+       "id": "1",
+       "label": "PM"
+      },
+      {
+       "id": "2",
+       "label": "24Hr (Pro7 Only)"
+      }
+     ],
+     "help": "Only Required for Countdown To Time Clock - otherwise this is ignored."
+    },
+    {
+     "id": "clockElapsedTime",
+     "label": "Elapsed End Time",
+     "type": "text",
+     "default": "00:10:00",
+     "help": "Only Required for Elapsed Time Clock - otherwise this is ignored."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"clockUpdate\",\"clockIndex\":\"{{option.clockIndex}}\",\"clockTime\":\"{{option.clockTime}}\",\"clockOverrun\":\"{{option.clockOverRun|map}}e\",\"clockType\":\"{{option.clockType|map}}\",\"clockIsPM\":\"{{option.clockTimePeriodFormat|map}}\",\"clockElapsedTime\":\"{{option.clockElapsedTime}}\",\"clockName\":\"{{option.clockName}}\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "clockOverRun": {
+     "false": "fals",
+     "true": "tru"
+    },
+    "clockType": {
+     "0": "0",
+     "1": "1",
+     "2": "2"
+    },
+    "clockTimePeriodFormat": {
+     "0": "0\",\"clockTimePeriodFormat\":\"0",
+     "1": "1\",\"clockTimePeriodFormat\":\"1",
+     "2": "2\",\"clockTimePeriodFormat\":\"2"
+    }
+   }
+  },
+  {
+   "id": "messageSend",
+   "name": "Show Message",
+   "options": [
+    {
+     "id": "messageIndex",
+     "label": "Message Index",
+     "type": "text",
+     "default": "0",
+     "help": "Zero based index of message to show - first one is 0, second one is 1 and so on...(Supports variable)"
+    },
+    {
+     "id": "messageKeys",
+     "label": "Comma Separated List Of Message Token Names",
+     "type": "text",
+     "default": "",
+     "help": "Comma separated, list of message token names used in the message.  Associated values are given below. Use double commas (,,) to insert an actual comma in a token name. (WARNING! - A simple typo here c"
+    },
+    {
+     "id": "messageValues",
+     "label": "Comma Separated List Of Message Token Values",
+     "type": "text",
+     "default": "",
+     "help": "Comma separated, list of values for each message token above. Use double commas (,,) to insert an actual comma in a token value. You can optionally use a single variable. (Supports variable. WARNING! "
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"messageSend\",\"messageIndex\":\"{{option.messageIndex}}\",\"messageKeys\":[\"{{option.messageKeys}}\"],\"messageValues\":[\"{{option.messageValues}}\"]}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "messageHide",
+   "name": "Hide Message",
+   "options": [
+    {
+     "id": "messageIndex",
+     "label": "Message Index",
+     "type": "text",
+     "default": "0",
+     "help": "Zero based index of message to hide - first one is 0, second one is 1 and so on...(Supports variable)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"messageHide\",\"messageIndex\":\"{{option.messageIndex}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "audioStartCue",
+   "name": "Audio Start Cue",
+   "options": [
+    {
+     "id": "audioChildPath",
+     "label": "Audio Item Playlist Path",
+     "type": "text",
+     "default": "",
+     "help": "PresentationPath format - See the README for more information"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"audioStartCue\",\"audioChildPath\":\"{{option.audioChildPath}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "audioPlayPause",
+   "name": "Audio Play/Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"audioPlayPause\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timelinePlayPause",
+   "name": "Timeline Play/Pause",
+   "options": [
+    {
+     "id": "presentationPath",
+     "label": "Presentation Path",
+     "type": "text",
+     "default": "",
+     "help": "PresentationPath format - See the README for more information"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"timelinePlayPause\",\"presentationPath\":\"{{option.presentationPath}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "timelineRewind",
+   "name": "Timeline Rewind",
+   "options": [
+    {
+     "id": "presentationPath",
+     "label": "Presentation Path",
+     "type": "text",
+     "default": "",
+     "help": "PresentationPath format - See the README for more information"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"timelineRewind\",\"presentationPath\":\"{{option.presentationPath}}\"}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "customAction",
+   "name": "Custom Action (Support Use Only)",
+   "options": [
+    {
+     "id": "customAction",
+     "label": "Custom Action",
+     "type": "text",
+     "default": "{\"action\":\"customAction\",\"customProperty\":\"customValue\"}",
+     "help": "Advanced use only. Must be a valid JSON action message that ProPresenter understands. An invalid message or even one little mistake can lead to crashes and data loss."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.customAction}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "displayname",
+   "category": "Stage Display",
+   "name": "This button displays the name of current stage display layout. Pressing it will ",
+   "text": "This button displays the name of current",
+   "backgroundColor": "#9900ff",
+   "action": {
+    "definitionId": "stageDisplayLayout",
+    "options": {
+     "index": 0
+    }
+   }
+  },
+  {
+   "id": "select_layout",
+   "category": "Stage Display",
+   "name": "This button will activate the selected (by index) stage display layout.",
+   "text": "Select Layout",
+   "backgroundColor": "#9900ff",
+   "action": {
+    "definitionId": "stageDisplayLayout",
+    "options": {
+     "index": 0
+    }
+   }
+  },
+  {
+   "id": "clock_start",
+   "category": "Countdown Clocks",
+   "name": "This button will START a clock selected by index (0-based). If you change the in",
+   "text": "Start\nClock 0",
+   "backgroundColor": "#009933",
+   "action": {
+    "definitionId": "clockStart",
+    "options": {
+     "clockIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "clock_stop",
+   "category": "Countdown Clocks",
+   "name": "This button will STOP a clock selected by index (0-based). If you change the ind",
+   "text": "Stop\nClock 0",
+   "backgroundColor": "#cc0000",
+   "action": {
+    "definitionId": "clockStop",
+    "options": {
+     "clockIndex": "0"
+    }
+   }
+  },
+  {
+   "id": "clock_reset",
+   "category": "Countdown Clocks",
+   "name": "This button will RESET a clock selected by index (0-based). If you change the in",
+   "text": "Reset\nClock 0",
+   "backgroundColor": "#ff6600",
+   "action": {
+    "definitionId": "clockReset",
+    "options": {
+     "clockIndex": "0"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-renewedvision-propresenter",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Daniel Owen, Oliver Herrmann, Jeffrey Davidsz"
+  }
+ ],
+ "source": {
+  "module": "renewedvision-propresenter",
+  "version": "3.0.2",
+  "license": "MIT",
+  "maintainers": [
+   "Daniel Owen",
+   "Oliver Herrmann",
+   "Jeffrey Davidsz"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-renewedvision-propresenter.git"
+ }
+}

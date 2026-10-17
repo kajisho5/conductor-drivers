@@ -1,0 +1,362 @@
+{
+ "format": 1,
+ "id": "m-riedel-smartpanel",
+ "name": "Riedel Communications Smart Panel",
+ "category": "Riedel Communications",
+ "version": "1.0.1",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/websocket",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "fetchAlarmHistory",
+   "name": "Fetch Alarm History",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/StatusInfo/FetchAlarmHistory\",\"body\":{}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "updatePtpSettings",
+   "name": "Update PTP Settings",
+   "options": [
+    {
+     "id": "domain",
+     "label": "PTP Domain",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255
+    },
+    {
+     "id": "hybridMode",
+     "label": "Hybrid Mode",
+     "type": "boolean",
+     "default": true
+    },
+    {
+     "id": "timeReceiverOnly",
+     "label": "Time Receiver Only",
+     "type": "boolean",
+     "default": true
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/Ptp/UpdatePtpSettings\",\"body\":{\"domain\":{{option.domain}},\"hybridMode\":{{option.hybridMode|map}}e,\"timeReceiverOnly\":{{option.timeReceiverOnly|map}}e}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "hybridMode": {
+     "true": "tru",
+     "false": "fals"
+    },
+    "timeReceiverOnly": {
+     "true": "tru",
+     "false": "fals"
+    }
+   }
+  },
+  {
+   "id": "setPtpDomain",
+   "name": "Set PTP Domain",
+   "options": [
+    {
+     "id": "domain",
+     "label": "PTP Domain",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 255
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/Ptp/UpdatePtpSettings\",\"body\":{\"domain\":{{option.domain}},\"hybridMode\":true,\"timeReceiverOnly\":true}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "enableControlPanel",
+   "name": "Enable Control Panel",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/ControlPanelApp/Enable\",\"body\":{}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disableControlPanel",
+   "name": "Disable Control Panel",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/ControlPanelApp/Disable\",\"body\":{}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleControlPanel",
+   "name": "Toggle Control Panel",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/ControlPanelApp/Enable\",\"body\":{}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "enableNmos",
+   "name": "Enable NMOS",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/Nmos/Enable\",\"body\":{}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disableNmos",
+   "name": "Disable NMOS",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/Nmos/Disable\",\"body\":{}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleNmos",
+   "name": "Toggle NMOS",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"topic\":\"/Nmos/Enable\",\"body\":{}}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "action_fetch_alarm_history",
+   "category": "Actions",
+   "name": "Alarm History",
+   "text": "ALARM\nHISTORY",
+   "backgroundColor": "#800000",
+   "action": {
+    "definitionId": "fetchAlarmHistory",
+    "options": {}
+   }
+  },
+  {
+   "id": "control_panel_status",
+   "category": "Control Panel",
+   "name": "Control Panel Status",
+   "text": "Control\nPanel",
+   "backgroundColor": "#808080",
+   "action": {
+    "definitionId": "toggleControlPanel",
+    "options": {}
+   }
+  },
+  {
+   "id": "control_panel_enable",
+   "category": "Control Panel",
+   "name": "Enable Control Panel",
+   "text": "ENABLE\nCTRL PANEL",
+   "backgroundColor": "#008000",
+   "action": {
+    "definitionId": "enableControlPanel",
+    "options": {}
+   }
+  },
+  {
+   "id": "control_panel_disable",
+   "category": "Control Panel",
+   "name": "Disable Control Panel",
+   "text": "DISABLE\nCTRL PANEL",
+   "backgroundColor": "#800000",
+   "action": {
+    "definitionId": "disableControlPanel",
+    "options": {}
+   }
+  },
+  {
+   "id": "nmos_status",
+   "category": "NMOS",
+   "name": "NMOS Status",
+   "text": "NMOS",
+   "backgroundColor": "#808080",
+   "action": {
+    "definitionId": "toggleNmos",
+    "options": {}
+   }
+  },
+  {
+   "id": "nmos_enable",
+   "category": "NMOS",
+   "name": "Enable NMOS",
+   "text": "ENABLE\nNMOS",
+   "backgroundColor": "#008000",
+   "action": {
+    "definitionId": "enableNmos",
+    "options": {}
+   }
+  },
+  {
+   "id": "nmos_disable",
+   "category": "NMOS",
+   "name": "Disable NMOS",
+   "text": "DISABLE\nNMOS",
+   "backgroundColor": "#800000",
+   "action": {
+    "definitionId": "disableNmos",
+    "options": {}
+   }
+  },
+  {
+   "id": "ptp_set_domain_0",
+   "category": "PTP",
+   "name": "Set PTP Domain 0",
+   "text": "PTP\nDomain 0",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 0
+    }
+   }
+  },
+  {
+   "id": "ptp_set_domain_1",
+   "category": "PTP",
+   "name": "Set PTP Domain 1",
+   "text": "PTP\nDomain 1",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 1
+    }
+   }
+  },
+  {
+   "id": "ptp_set_domain_2",
+   "category": "PTP",
+   "name": "Set PTP Domain 2",
+   "text": "PTP\nDomain 2",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 2
+    }
+   }
+  },
+  {
+   "id": "ptp_set_domain_3",
+   "category": "PTP",
+   "name": "Set PTP Domain 3",
+   "text": "PTP\nDomain 3",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 3
+    }
+   }
+  },
+  {
+   "id": "ptp_set_domain_4",
+   "category": "PTP",
+   "name": "Set PTP Domain 4",
+   "text": "PTP\nDomain 4",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 4
+    }
+   }
+  },
+  {
+   "id": "ptp_set_domain_5",
+   "category": "PTP",
+   "name": "Set PTP Domain 5",
+   "text": "PTP\nDomain 5",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 5
+    }
+   }
+  },
+  {
+   "id": "ptp_set_domain_6",
+   "category": "PTP",
+   "name": "Set PTP Domain 6",
+   "text": "PTP\nDomain 6",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 6
+    }
+   }
+  },
+  {
+   "id": "ptp_set_domain_7",
+   "category": "PTP",
+   "name": "Set PTP Domain 7",
+   "text": "PTP\nDomain 7",
+   "backgroundColor": "#000080",
+   "action": {
+    "definitionId": "setPtpDomain",
+    "options": {
+     "domain": 7
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-riedel-smartpanel",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Riedel Communications"
+  }
+ ],
+ "source": {
+  "module": "riedel-smartpanel",
+  "version": "1.0.1",
+  "license": "MIT",
+  "maintainers": [
+   "Riedel Communications"
+  ],
+  "repository": "https://github.com/bitfocus/companion-module-riedel-smartpanel"
+ }
+}

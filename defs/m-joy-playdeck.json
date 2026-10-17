@@ -1,0 +1,5821 @@
+{
+ "format": 1,
+ "id": "m-joy-playdeck",
+ "name": "JOY event & media Playdeck",
+ "category": "JOY event & media",
+ "version": "4.2.9",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 11411,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "version",
+   "label": "Version",
+   "type": "select",
+   "default": "4.2b9",
+   "choices": [
+    {
+     "id": "4.2b9",
+     "label": "4.2b9"
+    },
+    {
+     "id": "4.1b16",
+     "label": "4.1b16"
+    },
+    {
+     "id": "4.1b14",
+     "label": "4.1b14"
+    },
+    {
+     "id": "4.1b11",
+     "label": "4.1b11"
+    },
+    {
+     "id": "3.8b13",
+     "label": "3.8b13"
+    },
+    {
+     "id": "3.8b8",
+     "label": "3.8b8"
+    },
+    {
+     "id": "3.8b4",
+     "label": "3.8b4"
+    },
+    {
+     "id": "3.7b11",
+     "label": "3.7b11"
+    },
+    {
+     "id": "3.7b4",
+     "label": "3.7b4"
+    },
+    {
+     "id": "3.6b18",
+     "label": "3.6b18"
+    },
+    {
+     "id": "3.6b6",
+     "label": "3.6b6"
+    },
+    {
+     "id": "3.5b12",
+     "label": "3.5b12"
+    },
+    {
+     "id": "3.5b3",
+     "label": "3.5b3"
+    },
+    {
+     "id": "3.4b8",
+     "label": "3.4b8"
+    },
+    {
+     "id": "3.2b12",
+     "label": "3.2b12"
+    },
+    {
+     "id": "3.2b11",
+     "label": "3.2b11"
+    },
+    {
+     "id": "3.2b8",
+     "label": "3.2b8"
+    },
+    {
+     "id": "3.2b2",
+     "label": "3.2b2"
+    }
+   ]
+  },
+  {
+   "id": "isAdvanced",
+   "label": "Advanced (Manual Mode)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "isWS",
+   "label": "Enable WS Connection",
+   "type": "boolean",
+   "default": true
+  },
+  {
+   "id": "isTCPCommands",
+   "label": "Enable TCP Commands",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "tcpPortCommands",
+   "label": "TCP Port (Default: 11375)",
+   "type": "number",
+   "default": 11375,
+   "min": 0,
+   "max": 65535
+  },
+  {
+   "id": "isTCPEvents",
+   "label": "Enable TCP Events",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "tcpPortEvents",
+   "label": "TCP Port (Default: 11376)",
+   "type": "number",
+   "default": 11376,
+   "min": 0,
+   "max": 65535
+  }
+ ],
+ "actions": [
+  {
+   "id": "customcommand",
+   "name": "UTILS - Custom Command",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "COMMAND:",
+     "type": "text",
+     "help": "Write custom command like <{command}|{playlist_id}|?{block_id}|?{clip_id}"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{{option.arg1}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "wait",
+   "name": "UTILS - WAIT",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "TIME (MS):",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<wait|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cue",
+   "name": "CONTROL - CUE",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<cue|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cueid",
+   "name": "CONTROL - CUE ID",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "ID:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<cueid|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cuelist",
+   "name": "CONTROL -  CUE (LIST)",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "PLAYLIST:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Left Playlist"
+      },
+      {
+       "id": "2",
+       "label": "Right Playlist"
+      }
+     ]
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<cuelist|{{option.arg1|map}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "arg1": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "cueflex",
+   "name": "CONTROL - CUE Flex",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "PATTERN:",
+     "type": "text",
+     "help": "PATTERN is a flexible naming construction.\n- b#5 (Block 5)\n- b:myname (First Blockname containing \"myname\")\n- c#5 OR c:myname (Same for Clips)\n- p:HH:MM:SS:FF (Clip Position as Timestamp)\n- b#5 c:myna"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<cueflex|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "play",
+   "name": "CONTROL - PLAY",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<play|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "playid",
+   "name": "CONTROL - PLAY ID",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "ID:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<playid|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "playlist",
+   "name": "CONTROL -  PLAY (LIST)",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "PLAYLIST:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Left Playlist"
+      },
+      {
+       "id": "2",
+       "label": "Right Playlist"
+      }
+     ]
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<playlist|{{option.arg1|map}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "arg1": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "playflex",
+   "name": "CONTROL - PLAY Flex",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "PATTERN:",
+     "type": "text",
+     "help": "PATTERN is a flexible naming construction.\n- b#5 (Block 5)\n- b:myname (First Blockname containing \"myname\")\n- c#5 OR c:myname (Same for Clips)\n- p:HH:MM:SS:FF (Clip Position as Timestamp)\n- b#5 c:myna"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<playflex|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fadein",
+   "name": "CONTROL - FADE-IN",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<fadein|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fadeinid",
+   "name": "CONTROL - FADE-IN ID",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "ID:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<fadeinid|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fadeinlist",
+   "name": "CONTROL -  FADE-IN (LIST)",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "PLAYLIST:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Left Playlist"
+      },
+      {
+       "id": "2",
+       "label": "Right Playlist"
+      }
+     ]
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<fadeinlist|{{option.arg1|map}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "arg1": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "fadeinflex",
+   "name": "CONTROL - FADE-IN Flex",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "PATTERN:",
+     "type": "text",
+     "help": "PATTERN is a flexible naming construction.\n- b#5 (Block 5)\n- b:myname (First Blockname containing \"myname\")\n- c#5 OR c:myname (Same for Clips)\n- p:HH:MM:SS:FF (Clip Position as Timestamp)\n- b#5 c:myna"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<fadeinflex|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cuenext",
+   "name": "CONTROL - CUE Next Clip",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<cuenext|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "cuenextblock",
+   "name": "CONTROL - CUE Next Block",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<cuenextblock|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "playnext",
+   "name": "CONTROL - PLAY Next Clip",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<playnext|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "playnextblock",
+   "name": "CONTROL - PLAY Next Block",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<playnextblock|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "switchchannel",
+   "name": "CONTROL - SWITCH Channel for the List",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "PLAYLIST:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Left Playlist"
+      },
+      {
+       "id": "2",
+       "label": "Right Playlist"
+      }
+     ]
+    },
+    {
+     "id": "arg2",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<switchchannel|{{option.arg1|map}}|{{option.arg2}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "arg1": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "select",
+   "name": "CONTROL - SELECT per Channel",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<select|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "selectlist",
+   "name": "CONTROL - SELECT per List",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "PLAYLIST:",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "Left Playlist"
+      },
+      {
+       "id": "2",
+       "label": "Right Playlist"
+      }
+     ]
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<selectlist|{{option.arg1|map}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   },
+   "maps": {
+    "arg1": {
+     "1": "1",
+     "2": "2"
+    }
+   }
+  },
+  {
+   "id": "selectid",
+   "name": "CONTROL - SELECT per UID",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "UID:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<selectid|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "pause",
+   "name": "CONTROL - PAUSE",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<pause|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stop",
+   "name": "CONTROL - STOP",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stop|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fadeout",
+   "name": "CONTROL - FADE-OUT",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<fadeout|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "position",
+   "name": "CONTROL - POSITION",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "TIMESTAMP:",
+     "type": "text",
+     "help": "TIMESTAMP format is HH:MM:SS:FF, but can be shortened to SS:FF"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<position|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "saveposition",
+   "name": "CONTROL - SAVE POSITION",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<saveposition|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "recallposition",
+   "name": "CONTROL - RECALL POSITION",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<recallposition|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "fadeedit",
+   "name": "CONTROL - FADE EDIT",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "TIME (MS):",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 100000
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<fadeedit|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "selectNext",
+   "name": "CONTROL - SELECT Next CLIP",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<moveselect|{{option.arg1}}|1>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "selectPrevious",
+   "name": "CONTROL - SELECT Previous CLIP",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<moveselect|{{option.arg1}}|-1>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "marknext",
+   "name": "CONTROL - MARK Next Clip",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<marknext|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "activate",
+   "name": "CONTROL - ACTIVATE Clip ",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<activate|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "disable",
+   "name": "CONTROL - DISABLE Clip ",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<disable|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loop",
+   "name": "CONTROL - LOOP Clip ",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<loop|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unloop",
+   "name": "CONTROL - UNLOOP Clip ",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<unloop|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mute",
+   "name": "CONTROL - MUTE Clip ",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<mute|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unmute",
+   "name": "CONTROL - UNMUTE Clip ",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "BLOCK:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    },
+    {
+     "id": "arg3",
+     "label": "CLIP:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<unmute|{{option.arg1}}|{{option.arg2}}|{{option.arg3}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startoverlay",
+   "name": "ASSETS - START OVERLAY",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "OVERLAY:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<startoverlay|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startaction",
+   "name": "ASSETS - START ACTION",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "ACTION:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<startaction|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopoverlay",
+   "name": "ASSETS - STOP OVERLAY",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "OVERLAY:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stopoverlay|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopaction",
+   "name": "ASSETS - STOP ACTION",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "ACTION:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stopaction|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopalloverlays",
+   "name": "ASSETS - STOP OVERLAYS",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stopalloverlays|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopallactions",
+   "name": "ASSETS - STOP ACTIONS",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stopallactions|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startdesktop",
+   "name": "ASSETS - START DESKTOP",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<startdesktop|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startstream",
+   "name": "ASSETS - START STREAM",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "STREAM ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 15
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<startstream|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startrecord",
+   "name": "ASSETS - START RECORD",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "RECORD ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<startrecord|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopdesktop",
+   "name": "ASSETS - STOP DESKTOP",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stopdesktop|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopstream",
+   "name": "ASSETS - STOP STREAM",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "STREAM ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 15
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stopstream|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stoprecord",
+   "name": "ASSETS - STOP RECORD",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "RECORD ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 4
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<stoprecord|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadproject",
+   "name": "ASSETS - LOAD PROJECT",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "FILENAME:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<loadproject|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "appendproject",
+   "name": "ASSETS - APPEND PROJECT",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "FILENAME:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<appendproject|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mutechannel",
+   "name": "ASSETS - MUTE CHANNEL",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<mutechannel|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "muteinput",
+   "name": "ASSETS - MUTE INPUT",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "INPUT:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<muteinput|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unmutechannel",
+   "name": "ASSETS - UNMUTE CHANNEL",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<unmutechannel|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "unmuteinput",
+   "name": "ASSETS - UNMUTE INPUT",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "INPUT:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<unmuteinput|{{option.arg1}}>",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleoverlay",
+   "name": "ASSETS - TOGGLE OVERLAY",
+   "options": [
+    {
+     "id": "arg1",
+     "label": "CHANNEL ID:",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 8
+    },
+    {
+     "id": "arg2",
+     "label": "OVERLAY:",
+     "type": "text",
+     "help": "Here might be any string value..."
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "<toggleoverlay|{{option.arg1}}|{{option.arg2}}>",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "preset_assets_muteinput_muteinput",
+   "category": "Assets",
+   "name": "MUTE INPUT",
+   "text": "MUTE INPUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "muteinput",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_assets_muteinput_unmuteinput",
+   "category": "Assets",
+   "name": "UNMUTE INPUT",
+   "text": "UNMUTE INPUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmuteinput",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_assets_project_appendproject",
+   "category": "Assets",
+   "name": "APPEND PROJECT",
+   "text": "APPEND PROJECT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "appendproject",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_assets_project_loadproject",
+   "category": "Assets",
+   "name": "LOAD PROJECT",
+   "text": "LOAD PROJECT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loadproject",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_assets_record_startrecord",
+   "category": "Assets",
+   "name": "START RECORD",
+   "text": "START RECORD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startrecord",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_assets_record_stoprecord",
+   "category": "Assets",
+   "name": "STOP RECORD",
+   "text": "STOP RECORD",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stoprecord",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_assets_stream_startstream",
+   "category": "Assets",
+   "name": "START STREAM",
+   "text": "START STREAM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startstream",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_assets_stream_stopstream",
+   "category": "Assets",
+   "name": "STOP STREAM",
+   "text": "STOP STREAM",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopstream",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_activate",
+   "category": "Channel 1",
+   "name": "#1\nACTIVATE Clip ",
+   "text": "#1\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_cue",
+   "category": "Channel 1",
+   "name": "#1\nCUE",
+   "text": "#1\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_cuenext",
+   "category": "Channel 1",
+   "name": "#1\nCUE Next Clip",
+   "text": "#1\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_cuenextblock",
+   "category": "Channel 1",
+   "name": "#1\nCUE Next Block",
+   "text": "#1\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_disable",
+   "category": "Channel 1",
+   "name": "#1\nDISABLE Clip ",
+   "text": "#1\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_fadeedit",
+   "category": "Channel 1",
+   "name": "#1\nFADE EDIT",
+   "text": "#1\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_fadein",
+   "category": "Channel 1",
+   "name": "#1\nFADE-IN",
+   "text": "#1\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_fadeout",
+   "category": "Channel 1",
+   "name": "#1\nFADE-OUT",
+   "text": "#1\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_loop",
+   "category": "Channel 1",
+   "name": "#1\nLOOP Clip ",
+   "text": "#1\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_marknext",
+   "category": "Channel 1",
+   "name": "#1\nMARK Next Clip",
+   "text": "#1\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_pause",
+   "category": "Channel 1",
+   "name": "#1\nPAUSE",
+   "text": "#1\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_play",
+   "category": "Channel 1",
+   "name": "#1\nPLAY",
+   "text": "#1\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_playnext",
+   "category": "Channel 1",
+   "name": "#1\nPLAY Next Clip",
+   "text": "#1\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_playnextblock",
+   "category": "Channel 1",
+   "name": "#1\nPLAY Next Block",
+   "text": "#1\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_select",
+   "category": "Channel 1",
+   "name": "#1\nSELECT per Channel",
+   "text": "#1\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_selectNext",
+   "category": "Channel 1",
+   "name": "#1\nSELECT Next CLIP",
+   "text": "#1\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_selectPrevious",
+   "category": "Channel 1",
+   "name": "#1\nSELECT Previous CLIP",
+   "text": "#1\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_stop",
+   "category": "Channel 1",
+   "name": "#1\nSTOP",
+   "text": "#1\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_0_Standard_unloop",
+   "category": "Channel 1",
+   "name": "#1\nUNLOOP Clip ",
+   "text": "#1\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_action_startaction",
+   "category": "Channel 1",
+   "name": "#1\nSTART ACTION",
+   "text": "#1\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_action_stopaction",
+   "category": "Channel 1",
+   "name": "#1\nSTOP ACTION",
+   "text": "#1\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_action_stopallactions",
+   "category": "Channel 1",
+   "name": "#1\nSTOP ACTIONS",
+   "text": "#1\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_desktop_startdesktop",
+   "category": "Channel 1",
+   "name": "#1\nSTART DESKTOP",
+   "text": "#1\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_desktop_stopdesktop",
+   "category": "Channel 1",
+   "name": "#1\nSTOP DESKTOP",
+   "text": "#1\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_flex_cueflex",
+   "category": "Channel 1",
+   "name": "#1\nCUE Flex",
+   "text": "#1\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_flex_fadeinflex",
+   "category": "Channel 1",
+   "name": "#1\nFADE-IN Flex",
+   "text": "#1\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_flex_playflex",
+   "category": "Channel 1",
+   "name": "#1\nPLAY Flex",
+   "text": "#1\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_mute_mute",
+   "category": "Channel 1",
+   "name": "#1\nMUTE Clip ",
+   "text": "#1\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_mute_mutechannel",
+   "category": "Channel 1",
+   "name": "#1\nMUTE CHANNEL",
+   "text": "#1\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_mute_unmute",
+   "category": "Channel 1",
+   "name": "#1\nUNMUTE Clip ",
+   "text": "#1\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_mute_unmutechannel",
+   "category": "Channel 1",
+   "name": "#1\nUNMUTE CHANNEL",
+   "text": "#1\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_overlay_startoverlay",
+   "category": "Channel 1",
+   "name": "#1\nSTART OVERLAY",
+   "text": "#1\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_overlay_stopalloverlays",
+   "category": "Channel 1",
+   "name": "#1\nSTOP OVERLAYS",
+   "text": "#1\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_overlay_stopoverlay",
+   "category": "Channel 1",
+   "name": "#1\nSTOP OVERLAY",
+   "text": "#1\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_overlay_toggleoverlay",
+   "category": "Channel 1",
+   "name": "#1\nTOGGLE OVERLAY",
+   "text": "#1\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_position_position",
+   "category": "Channel 1",
+   "name": "#1\nPOSITION",
+   "text": "#1\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_position_recallposition",
+   "category": "Channel 1",
+   "name": "#1\nRECALL POSITION",
+   "text": "#1\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_1_position_saveposition",
+   "category": "Channel 1",
+   "name": "#1\nSAVE POSITION",
+   "text": "#1\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 1
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_activate",
+   "category": "Channel 2",
+   "name": "#2\nACTIVATE Clip ",
+   "text": "#2\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_cue",
+   "category": "Channel 2",
+   "name": "#2\nCUE",
+   "text": "#2\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_cuenext",
+   "category": "Channel 2",
+   "name": "#2\nCUE Next Clip",
+   "text": "#2\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_cuenextblock",
+   "category": "Channel 2",
+   "name": "#2\nCUE Next Block",
+   "text": "#2\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_disable",
+   "category": "Channel 2",
+   "name": "#2\nDISABLE Clip ",
+   "text": "#2\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_fadeedit",
+   "category": "Channel 2",
+   "name": "#2\nFADE EDIT",
+   "text": "#2\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_fadein",
+   "category": "Channel 2",
+   "name": "#2\nFADE-IN",
+   "text": "#2\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_fadeout",
+   "category": "Channel 2",
+   "name": "#2\nFADE-OUT",
+   "text": "#2\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_loop",
+   "category": "Channel 2",
+   "name": "#2\nLOOP Clip ",
+   "text": "#2\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_marknext",
+   "category": "Channel 2",
+   "name": "#2\nMARK Next Clip",
+   "text": "#2\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_pause",
+   "category": "Channel 2",
+   "name": "#2\nPAUSE",
+   "text": "#2\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_play",
+   "category": "Channel 2",
+   "name": "#2\nPLAY",
+   "text": "#2\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_playnext",
+   "category": "Channel 2",
+   "name": "#2\nPLAY Next Clip",
+   "text": "#2\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_playnextblock",
+   "category": "Channel 2",
+   "name": "#2\nPLAY Next Block",
+   "text": "#2\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_select",
+   "category": "Channel 2",
+   "name": "#2\nSELECT per Channel",
+   "text": "#2\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_selectNext",
+   "category": "Channel 2",
+   "name": "#2\nSELECT Next CLIP",
+   "text": "#2\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_selectPrevious",
+   "category": "Channel 2",
+   "name": "#2\nSELECT Previous CLIP",
+   "text": "#2\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_stop",
+   "category": "Channel 2",
+   "name": "#2\nSTOP",
+   "text": "#2\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_0_Standard_unloop",
+   "category": "Channel 2",
+   "name": "#2\nUNLOOP Clip ",
+   "text": "#2\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_action_startaction",
+   "category": "Channel 2",
+   "name": "#2\nSTART ACTION",
+   "text": "#2\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_action_stopaction",
+   "category": "Channel 2",
+   "name": "#2\nSTOP ACTION",
+   "text": "#2\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_action_stopallactions",
+   "category": "Channel 2",
+   "name": "#2\nSTOP ACTIONS",
+   "text": "#2\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_desktop_startdesktop",
+   "category": "Channel 2",
+   "name": "#2\nSTART DESKTOP",
+   "text": "#2\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_desktop_stopdesktop",
+   "category": "Channel 2",
+   "name": "#2\nSTOP DESKTOP",
+   "text": "#2\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_flex_cueflex",
+   "category": "Channel 2",
+   "name": "#2\nCUE Flex",
+   "text": "#2\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_flex_fadeinflex",
+   "category": "Channel 2",
+   "name": "#2\nFADE-IN Flex",
+   "text": "#2\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_flex_playflex",
+   "category": "Channel 2",
+   "name": "#2\nPLAY Flex",
+   "text": "#2\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_mute_mute",
+   "category": "Channel 2",
+   "name": "#2\nMUTE Clip ",
+   "text": "#2\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_mute_mutechannel",
+   "category": "Channel 2",
+   "name": "#2\nMUTE CHANNEL",
+   "text": "#2\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_mute_unmute",
+   "category": "Channel 2",
+   "name": "#2\nUNMUTE Clip ",
+   "text": "#2\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_mute_unmutechannel",
+   "category": "Channel 2",
+   "name": "#2\nUNMUTE CHANNEL",
+   "text": "#2\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_overlay_startoverlay",
+   "category": "Channel 2",
+   "name": "#2\nSTART OVERLAY",
+   "text": "#2\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_overlay_stopalloverlays",
+   "category": "Channel 2",
+   "name": "#2\nSTOP OVERLAYS",
+   "text": "#2\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_overlay_stopoverlay",
+   "category": "Channel 2",
+   "name": "#2\nSTOP OVERLAY",
+   "text": "#2\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_overlay_toggleoverlay",
+   "category": "Channel 2",
+   "name": "#2\nTOGGLE OVERLAY",
+   "text": "#2\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_position_position",
+   "category": "Channel 2",
+   "name": "#2\nPOSITION",
+   "text": "#2\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_position_recallposition",
+   "category": "Channel 2",
+   "name": "#2\nRECALL POSITION",
+   "text": "#2\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_2_position_saveposition",
+   "category": "Channel 2",
+   "name": "#2\nSAVE POSITION",
+   "text": "#2\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 2
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_activate",
+   "category": "Channel 3",
+   "name": "#3\nACTIVATE Clip ",
+   "text": "#3\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_cue",
+   "category": "Channel 3",
+   "name": "#3\nCUE",
+   "text": "#3\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_cuenext",
+   "category": "Channel 3",
+   "name": "#3\nCUE Next Clip",
+   "text": "#3\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_cuenextblock",
+   "category": "Channel 3",
+   "name": "#3\nCUE Next Block",
+   "text": "#3\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_disable",
+   "category": "Channel 3",
+   "name": "#3\nDISABLE Clip ",
+   "text": "#3\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_fadeedit",
+   "category": "Channel 3",
+   "name": "#3\nFADE EDIT",
+   "text": "#3\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_fadein",
+   "category": "Channel 3",
+   "name": "#3\nFADE-IN",
+   "text": "#3\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_fadeout",
+   "category": "Channel 3",
+   "name": "#3\nFADE-OUT",
+   "text": "#3\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_loop",
+   "category": "Channel 3",
+   "name": "#3\nLOOP Clip ",
+   "text": "#3\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_marknext",
+   "category": "Channel 3",
+   "name": "#3\nMARK Next Clip",
+   "text": "#3\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_pause",
+   "category": "Channel 3",
+   "name": "#3\nPAUSE",
+   "text": "#3\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_play",
+   "category": "Channel 3",
+   "name": "#3\nPLAY",
+   "text": "#3\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_playnext",
+   "category": "Channel 3",
+   "name": "#3\nPLAY Next Clip",
+   "text": "#3\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_playnextblock",
+   "category": "Channel 3",
+   "name": "#3\nPLAY Next Block",
+   "text": "#3\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_select",
+   "category": "Channel 3",
+   "name": "#3\nSELECT per Channel",
+   "text": "#3\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_selectNext",
+   "category": "Channel 3",
+   "name": "#3\nSELECT Next CLIP",
+   "text": "#3\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_selectPrevious",
+   "category": "Channel 3",
+   "name": "#3\nSELECT Previous CLIP",
+   "text": "#3\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_stop",
+   "category": "Channel 3",
+   "name": "#3\nSTOP",
+   "text": "#3\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_0_Standard_unloop",
+   "category": "Channel 3",
+   "name": "#3\nUNLOOP Clip ",
+   "text": "#3\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_action_startaction",
+   "category": "Channel 3",
+   "name": "#3\nSTART ACTION",
+   "text": "#3\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_action_stopaction",
+   "category": "Channel 3",
+   "name": "#3\nSTOP ACTION",
+   "text": "#3\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_action_stopallactions",
+   "category": "Channel 3",
+   "name": "#3\nSTOP ACTIONS",
+   "text": "#3\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_desktop_startdesktop",
+   "category": "Channel 3",
+   "name": "#3\nSTART DESKTOP",
+   "text": "#3\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_desktop_stopdesktop",
+   "category": "Channel 3",
+   "name": "#3\nSTOP DESKTOP",
+   "text": "#3\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_flex_cueflex",
+   "category": "Channel 3",
+   "name": "#3\nCUE Flex",
+   "text": "#3\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_flex_fadeinflex",
+   "category": "Channel 3",
+   "name": "#3\nFADE-IN Flex",
+   "text": "#3\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_flex_playflex",
+   "category": "Channel 3",
+   "name": "#3\nPLAY Flex",
+   "text": "#3\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_mute_mute",
+   "category": "Channel 3",
+   "name": "#3\nMUTE Clip ",
+   "text": "#3\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_mute_mutechannel",
+   "category": "Channel 3",
+   "name": "#3\nMUTE CHANNEL",
+   "text": "#3\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_mute_unmute",
+   "category": "Channel 3",
+   "name": "#3\nUNMUTE Clip ",
+   "text": "#3\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_mute_unmutechannel",
+   "category": "Channel 3",
+   "name": "#3\nUNMUTE CHANNEL",
+   "text": "#3\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_overlay_startoverlay",
+   "category": "Channel 3",
+   "name": "#3\nSTART OVERLAY",
+   "text": "#3\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_overlay_stopalloverlays",
+   "category": "Channel 3",
+   "name": "#3\nSTOP OVERLAYS",
+   "text": "#3\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_overlay_stopoverlay",
+   "category": "Channel 3",
+   "name": "#3\nSTOP OVERLAY",
+   "text": "#3\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_overlay_toggleoverlay",
+   "category": "Channel 3",
+   "name": "#3\nTOGGLE OVERLAY",
+   "text": "#3\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_position_position",
+   "category": "Channel 3",
+   "name": "#3\nPOSITION",
+   "text": "#3\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_position_recallposition",
+   "category": "Channel 3",
+   "name": "#3\nRECALL POSITION",
+   "text": "#3\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_3_position_saveposition",
+   "category": "Channel 3",
+   "name": "#3\nSAVE POSITION",
+   "text": "#3\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 3
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_activate",
+   "category": "Channel 4",
+   "name": "#4\nACTIVATE Clip ",
+   "text": "#4\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_cue",
+   "category": "Channel 4",
+   "name": "#4\nCUE",
+   "text": "#4\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_cuenext",
+   "category": "Channel 4",
+   "name": "#4\nCUE Next Clip",
+   "text": "#4\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_cuenextblock",
+   "category": "Channel 4",
+   "name": "#4\nCUE Next Block",
+   "text": "#4\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_disable",
+   "category": "Channel 4",
+   "name": "#4\nDISABLE Clip ",
+   "text": "#4\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_fadeedit",
+   "category": "Channel 4",
+   "name": "#4\nFADE EDIT",
+   "text": "#4\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_fadein",
+   "category": "Channel 4",
+   "name": "#4\nFADE-IN",
+   "text": "#4\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_fadeout",
+   "category": "Channel 4",
+   "name": "#4\nFADE-OUT",
+   "text": "#4\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_loop",
+   "category": "Channel 4",
+   "name": "#4\nLOOP Clip ",
+   "text": "#4\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_marknext",
+   "category": "Channel 4",
+   "name": "#4\nMARK Next Clip",
+   "text": "#4\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_pause",
+   "category": "Channel 4",
+   "name": "#4\nPAUSE",
+   "text": "#4\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_play",
+   "category": "Channel 4",
+   "name": "#4\nPLAY",
+   "text": "#4\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_playnext",
+   "category": "Channel 4",
+   "name": "#4\nPLAY Next Clip",
+   "text": "#4\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_playnextblock",
+   "category": "Channel 4",
+   "name": "#4\nPLAY Next Block",
+   "text": "#4\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_select",
+   "category": "Channel 4",
+   "name": "#4\nSELECT per Channel",
+   "text": "#4\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_selectNext",
+   "category": "Channel 4",
+   "name": "#4\nSELECT Next CLIP",
+   "text": "#4\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_selectPrevious",
+   "category": "Channel 4",
+   "name": "#4\nSELECT Previous CLIP",
+   "text": "#4\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_stop",
+   "category": "Channel 4",
+   "name": "#4\nSTOP",
+   "text": "#4\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_0_Standard_unloop",
+   "category": "Channel 4",
+   "name": "#4\nUNLOOP Clip ",
+   "text": "#4\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_action_startaction",
+   "category": "Channel 4",
+   "name": "#4\nSTART ACTION",
+   "text": "#4\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_action_stopaction",
+   "category": "Channel 4",
+   "name": "#4\nSTOP ACTION",
+   "text": "#4\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_action_stopallactions",
+   "category": "Channel 4",
+   "name": "#4\nSTOP ACTIONS",
+   "text": "#4\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_desktop_startdesktop",
+   "category": "Channel 4",
+   "name": "#4\nSTART DESKTOP",
+   "text": "#4\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_desktop_stopdesktop",
+   "category": "Channel 4",
+   "name": "#4\nSTOP DESKTOP",
+   "text": "#4\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_flex_cueflex",
+   "category": "Channel 4",
+   "name": "#4\nCUE Flex",
+   "text": "#4\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_flex_fadeinflex",
+   "category": "Channel 4",
+   "name": "#4\nFADE-IN Flex",
+   "text": "#4\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_flex_playflex",
+   "category": "Channel 4",
+   "name": "#4\nPLAY Flex",
+   "text": "#4\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_mute_mute",
+   "category": "Channel 4",
+   "name": "#4\nMUTE Clip ",
+   "text": "#4\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_mute_mutechannel",
+   "category": "Channel 4",
+   "name": "#4\nMUTE CHANNEL",
+   "text": "#4\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_mute_unmute",
+   "category": "Channel 4",
+   "name": "#4\nUNMUTE Clip ",
+   "text": "#4\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_mute_unmutechannel",
+   "category": "Channel 4",
+   "name": "#4\nUNMUTE CHANNEL",
+   "text": "#4\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_overlay_startoverlay",
+   "category": "Channel 4",
+   "name": "#4\nSTART OVERLAY",
+   "text": "#4\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_overlay_stopalloverlays",
+   "category": "Channel 4",
+   "name": "#4\nSTOP OVERLAYS",
+   "text": "#4\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_overlay_stopoverlay",
+   "category": "Channel 4",
+   "name": "#4\nSTOP OVERLAY",
+   "text": "#4\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_overlay_toggleoverlay",
+   "category": "Channel 4",
+   "name": "#4\nTOGGLE OVERLAY",
+   "text": "#4\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_position_position",
+   "category": "Channel 4",
+   "name": "#4\nPOSITION",
+   "text": "#4\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_position_recallposition",
+   "category": "Channel 4",
+   "name": "#4\nRECALL POSITION",
+   "text": "#4\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_4_position_saveposition",
+   "category": "Channel 4",
+   "name": "#4\nSAVE POSITION",
+   "text": "#4\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 4
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_activate",
+   "category": "Channel 5",
+   "name": "#5\nACTIVATE Clip ",
+   "text": "#5\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_cue",
+   "category": "Channel 5",
+   "name": "#5\nCUE",
+   "text": "#5\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_cuenext",
+   "category": "Channel 5",
+   "name": "#5\nCUE Next Clip",
+   "text": "#5\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_cuenextblock",
+   "category": "Channel 5",
+   "name": "#5\nCUE Next Block",
+   "text": "#5\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_disable",
+   "category": "Channel 5",
+   "name": "#5\nDISABLE Clip ",
+   "text": "#5\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_fadeedit",
+   "category": "Channel 5",
+   "name": "#5\nFADE EDIT",
+   "text": "#5\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_fadein",
+   "category": "Channel 5",
+   "name": "#5\nFADE-IN",
+   "text": "#5\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_fadeout",
+   "category": "Channel 5",
+   "name": "#5\nFADE-OUT",
+   "text": "#5\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_loop",
+   "category": "Channel 5",
+   "name": "#5\nLOOP Clip ",
+   "text": "#5\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_marknext",
+   "category": "Channel 5",
+   "name": "#5\nMARK Next Clip",
+   "text": "#5\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_pause",
+   "category": "Channel 5",
+   "name": "#5\nPAUSE",
+   "text": "#5\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_play",
+   "category": "Channel 5",
+   "name": "#5\nPLAY",
+   "text": "#5\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_playnext",
+   "category": "Channel 5",
+   "name": "#5\nPLAY Next Clip",
+   "text": "#5\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_playnextblock",
+   "category": "Channel 5",
+   "name": "#5\nPLAY Next Block",
+   "text": "#5\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_select",
+   "category": "Channel 5",
+   "name": "#5\nSELECT per Channel",
+   "text": "#5\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_selectNext",
+   "category": "Channel 5",
+   "name": "#5\nSELECT Next CLIP",
+   "text": "#5\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_selectPrevious",
+   "category": "Channel 5",
+   "name": "#5\nSELECT Previous CLIP",
+   "text": "#5\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_stop",
+   "category": "Channel 5",
+   "name": "#5\nSTOP",
+   "text": "#5\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_0_Standard_unloop",
+   "category": "Channel 5",
+   "name": "#5\nUNLOOP Clip ",
+   "text": "#5\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_action_startaction",
+   "category": "Channel 5",
+   "name": "#5\nSTART ACTION",
+   "text": "#5\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_action_stopaction",
+   "category": "Channel 5",
+   "name": "#5\nSTOP ACTION",
+   "text": "#5\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_action_stopallactions",
+   "category": "Channel 5",
+   "name": "#5\nSTOP ACTIONS",
+   "text": "#5\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_desktop_startdesktop",
+   "category": "Channel 5",
+   "name": "#5\nSTART DESKTOP",
+   "text": "#5\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_desktop_stopdesktop",
+   "category": "Channel 5",
+   "name": "#5\nSTOP DESKTOP",
+   "text": "#5\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_flex_cueflex",
+   "category": "Channel 5",
+   "name": "#5\nCUE Flex",
+   "text": "#5\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_flex_fadeinflex",
+   "category": "Channel 5",
+   "name": "#5\nFADE-IN Flex",
+   "text": "#5\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_flex_playflex",
+   "category": "Channel 5",
+   "name": "#5\nPLAY Flex",
+   "text": "#5\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_mute_mute",
+   "category": "Channel 5",
+   "name": "#5\nMUTE Clip ",
+   "text": "#5\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_mute_mutechannel",
+   "category": "Channel 5",
+   "name": "#5\nMUTE CHANNEL",
+   "text": "#5\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_mute_unmute",
+   "category": "Channel 5",
+   "name": "#5\nUNMUTE Clip ",
+   "text": "#5\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_mute_unmutechannel",
+   "category": "Channel 5",
+   "name": "#5\nUNMUTE CHANNEL",
+   "text": "#5\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_overlay_startoverlay",
+   "category": "Channel 5",
+   "name": "#5\nSTART OVERLAY",
+   "text": "#5\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_overlay_stopalloverlays",
+   "category": "Channel 5",
+   "name": "#5\nSTOP OVERLAYS",
+   "text": "#5\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_overlay_stopoverlay",
+   "category": "Channel 5",
+   "name": "#5\nSTOP OVERLAY",
+   "text": "#5\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_overlay_toggleoverlay",
+   "category": "Channel 5",
+   "name": "#5\nTOGGLE OVERLAY",
+   "text": "#5\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_position_position",
+   "category": "Channel 5",
+   "name": "#5\nPOSITION",
+   "text": "#5\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_position_recallposition",
+   "category": "Channel 5",
+   "name": "#5\nRECALL POSITION",
+   "text": "#5\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_5_position_saveposition",
+   "category": "Channel 5",
+   "name": "#5\nSAVE POSITION",
+   "text": "#5\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 5
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_activate",
+   "category": "Channel 6",
+   "name": "#6\nACTIVATE Clip ",
+   "text": "#6\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_cue",
+   "category": "Channel 6",
+   "name": "#6\nCUE",
+   "text": "#6\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_cuenext",
+   "category": "Channel 6",
+   "name": "#6\nCUE Next Clip",
+   "text": "#6\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_cuenextblock",
+   "category": "Channel 6",
+   "name": "#6\nCUE Next Block",
+   "text": "#6\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_disable",
+   "category": "Channel 6",
+   "name": "#6\nDISABLE Clip ",
+   "text": "#6\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_fadeedit",
+   "category": "Channel 6",
+   "name": "#6\nFADE EDIT",
+   "text": "#6\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_fadein",
+   "category": "Channel 6",
+   "name": "#6\nFADE-IN",
+   "text": "#6\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_fadeout",
+   "category": "Channel 6",
+   "name": "#6\nFADE-OUT",
+   "text": "#6\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_loop",
+   "category": "Channel 6",
+   "name": "#6\nLOOP Clip ",
+   "text": "#6\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_marknext",
+   "category": "Channel 6",
+   "name": "#6\nMARK Next Clip",
+   "text": "#6\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_pause",
+   "category": "Channel 6",
+   "name": "#6\nPAUSE",
+   "text": "#6\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_play",
+   "category": "Channel 6",
+   "name": "#6\nPLAY",
+   "text": "#6\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_playnext",
+   "category": "Channel 6",
+   "name": "#6\nPLAY Next Clip",
+   "text": "#6\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_playnextblock",
+   "category": "Channel 6",
+   "name": "#6\nPLAY Next Block",
+   "text": "#6\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_select",
+   "category": "Channel 6",
+   "name": "#6\nSELECT per Channel",
+   "text": "#6\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_selectNext",
+   "category": "Channel 6",
+   "name": "#6\nSELECT Next CLIP",
+   "text": "#6\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_selectPrevious",
+   "category": "Channel 6",
+   "name": "#6\nSELECT Previous CLIP",
+   "text": "#6\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_stop",
+   "category": "Channel 6",
+   "name": "#6\nSTOP",
+   "text": "#6\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_0_Standard_unloop",
+   "category": "Channel 6",
+   "name": "#6\nUNLOOP Clip ",
+   "text": "#6\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_action_startaction",
+   "category": "Channel 6",
+   "name": "#6\nSTART ACTION",
+   "text": "#6\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_action_stopaction",
+   "category": "Channel 6",
+   "name": "#6\nSTOP ACTION",
+   "text": "#6\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_action_stopallactions",
+   "category": "Channel 6",
+   "name": "#6\nSTOP ACTIONS",
+   "text": "#6\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_desktop_startdesktop",
+   "category": "Channel 6",
+   "name": "#6\nSTART DESKTOP",
+   "text": "#6\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_desktop_stopdesktop",
+   "category": "Channel 6",
+   "name": "#6\nSTOP DESKTOP",
+   "text": "#6\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_flex_cueflex",
+   "category": "Channel 6",
+   "name": "#6\nCUE Flex",
+   "text": "#6\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_flex_fadeinflex",
+   "category": "Channel 6",
+   "name": "#6\nFADE-IN Flex",
+   "text": "#6\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_flex_playflex",
+   "category": "Channel 6",
+   "name": "#6\nPLAY Flex",
+   "text": "#6\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_mute_mute",
+   "category": "Channel 6",
+   "name": "#6\nMUTE Clip ",
+   "text": "#6\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_mute_mutechannel",
+   "category": "Channel 6",
+   "name": "#6\nMUTE CHANNEL",
+   "text": "#6\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_mute_unmute",
+   "category": "Channel 6",
+   "name": "#6\nUNMUTE Clip ",
+   "text": "#6\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_mute_unmutechannel",
+   "category": "Channel 6",
+   "name": "#6\nUNMUTE CHANNEL",
+   "text": "#6\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_overlay_startoverlay",
+   "category": "Channel 6",
+   "name": "#6\nSTART OVERLAY",
+   "text": "#6\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_overlay_stopalloverlays",
+   "category": "Channel 6",
+   "name": "#6\nSTOP OVERLAYS",
+   "text": "#6\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_overlay_stopoverlay",
+   "category": "Channel 6",
+   "name": "#6\nSTOP OVERLAY",
+   "text": "#6\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_overlay_toggleoverlay",
+   "category": "Channel 6",
+   "name": "#6\nTOGGLE OVERLAY",
+   "text": "#6\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_position_position",
+   "category": "Channel 6",
+   "name": "#6\nPOSITION",
+   "text": "#6\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_position_recallposition",
+   "category": "Channel 6",
+   "name": "#6\nRECALL POSITION",
+   "text": "#6\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_6_position_saveposition",
+   "category": "Channel 6",
+   "name": "#6\nSAVE POSITION",
+   "text": "#6\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 6
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_activate",
+   "category": "Channel 7",
+   "name": "#7\nACTIVATE Clip ",
+   "text": "#7\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_cue",
+   "category": "Channel 7",
+   "name": "#7\nCUE",
+   "text": "#7\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_cuenext",
+   "category": "Channel 7",
+   "name": "#7\nCUE Next Clip",
+   "text": "#7\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_cuenextblock",
+   "category": "Channel 7",
+   "name": "#7\nCUE Next Block",
+   "text": "#7\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_disable",
+   "category": "Channel 7",
+   "name": "#7\nDISABLE Clip ",
+   "text": "#7\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_fadeedit",
+   "category": "Channel 7",
+   "name": "#7\nFADE EDIT",
+   "text": "#7\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_fadein",
+   "category": "Channel 7",
+   "name": "#7\nFADE-IN",
+   "text": "#7\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_fadeout",
+   "category": "Channel 7",
+   "name": "#7\nFADE-OUT",
+   "text": "#7\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_loop",
+   "category": "Channel 7",
+   "name": "#7\nLOOP Clip ",
+   "text": "#7\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_marknext",
+   "category": "Channel 7",
+   "name": "#7\nMARK Next Clip",
+   "text": "#7\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_pause",
+   "category": "Channel 7",
+   "name": "#7\nPAUSE",
+   "text": "#7\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_play",
+   "category": "Channel 7",
+   "name": "#7\nPLAY",
+   "text": "#7\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_playnext",
+   "category": "Channel 7",
+   "name": "#7\nPLAY Next Clip",
+   "text": "#7\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_playnextblock",
+   "category": "Channel 7",
+   "name": "#7\nPLAY Next Block",
+   "text": "#7\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_select",
+   "category": "Channel 7",
+   "name": "#7\nSELECT per Channel",
+   "text": "#7\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_selectNext",
+   "category": "Channel 7",
+   "name": "#7\nSELECT Next CLIP",
+   "text": "#7\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_selectPrevious",
+   "category": "Channel 7",
+   "name": "#7\nSELECT Previous CLIP",
+   "text": "#7\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_stop",
+   "category": "Channel 7",
+   "name": "#7\nSTOP",
+   "text": "#7\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_0_Standard_unloop",
+   "category": "Channel 7",
+   "name": "#7\nUNLOOP Clip ",
+   "text": "#7\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_action_startaction",
+   "category": "Channel 7",
+   "name": "#7\nSTART ACTION",
+   "text": "#7\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_action_stopaction",
+   "category": "Channel 7",
+   "name": "#7\nSTOP ACTION",
+   "text": "#7\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_action_stopallactions",
+   "category": "Channel 7",
+   "name": "#7\nSTOP ACTIONS",
+   "text": "#7\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_desktop_startdesktop",
+   "category": "Channel 7",
+   "name": "#7\nSTART DESKTOP",
+   "text": "#7\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_desktop_stopdesktop",
+   "category": "Channel 7",
+   "name": "#7\nSTOP DESKTOP",
+   "text": "#7\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_flex_cueflex",
+   "category": "Channel 7",
+   "name": "#7\nCUE Flex",
+   "text": "#7\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_flex_fadeinflex",
+   "category": "Channel 7",
+   "name": "#7\nFADE-IN Flex",
+   "text": "#7\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_flex_playflex",
+   "category": "Channel 7",
+   "name": "#7\nPLAY Flex",
+   "text": "#7\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_mute_mute",
+   "category": "Channel 7",
+   "name": "#7\nMUTE Clip ",
+   "text": "#7\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_mute_mutechannel",
+   "category": "Channel 7",
+   "name": "#7\nMUTE CHANNEL",
+   "text": "#7\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_mute_unmute",
+   "category": "Channel 7",
+   "name": "#7\nUNMUTE Clip ",
+   "text": "#7\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_mute_unmutechannel",
+   "category": "Channel 7",
+   "name": "#7\nUNMUTE CHANNEL",
+   "text": "#7\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_overlay_startoverlay",
+   "category": "Channel 7",
+   "name": "#7\nSTART OVERLAY",
+   "text": "#7\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_overlay_stopalloverlays",
+   "category": "Channel 7",
+   "name": "#7\nSTOP OVERLAYS",
+   "text": "#7\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_overlay_stopoverlay",
+   "category": "Channel 7",
+   "name": "#7\nSTOP OVERLAY",
+   "text": "#7\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_overlay_toggleoverlay",
+   "category": "Channel 7",
+   "name": "#7\nTOGGLE OVERLAY",
+   "text": "#7\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_position_position",
+   "category": "Channel 7",
+   "name": "#7\nPOSITION",
+   "text": "#7\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_position_recallposition",
+   "category": "Channel 7",
+   "name": "#7\nRECALL POSITION",
+   "text": "#7\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_7_position_saveposition",
+   "category": "Channel 7",
+   "name": "#7\nSAVE POSITION",
+   "text": "#7\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 7
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_activate",
+   "category": "Channel 8",
+   "name": "#8\nACTIVATE Clip ",
+   "text": "#8\nACTIVATE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "activate",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_cue",
+   "category": "Channel 8",
+   "name": "#8\nCUE",
+   "text": "#8\nCUE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cue",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_cuenext",
+   "category": "Channel 8",
+   "name": "#8\nCUE Next Clip",
+   "text": "#8\nCUE Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenext",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_cuenextblock",
+   "category": "Channel 8",
+   "name": "#8\nCUE Next Block",
+   "text": "#8\nCUE Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuenextblock",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_disable",
+   "category": "Channel 8",
+   "name": "#8\nDISABLE Clip ",
+   "text": "#8\nDISABLE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "disable",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_fadeedit",
+   "category": "Channel 8",
+   "name": "#8\nFADE EDIT",
+   "text": "#8\nFADE EDIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeedit",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_fadein",
+   "category": "Channel 8",
+   "name": "#8\nFADE-IN",
+   "text": "#8\nFADE-IN",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadein",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_fadeout",
+   "category": "Channel 8",
+   "name": "#8\nFADE-OUT",
+   "text": "#8\nFADE-OUT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeout",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_loop",
+   "category": "Channel 8",
+   "name": "#8\nLOOP Clip ",
+   "text": "#8\nLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "loop",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_marknext",
+   "category": "Channel 8",
+   "name": "#8\nMARK Next Clip",
+   "text": "#8\nMARK Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "marknext",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_pause",
+   "category": "Channel 8",
+   "name": "#8\nPAUSE",
+   "text": "#8\nPAUSE",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "pause",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_play",
+   "category": "Channel 8",
+   "name": "#8\nPLAY",
+   "text": "#8\nPLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "play",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_playnext",
+   "category": "Channel 8",
+   "name": "#8\nPLAY Next Clip",
+   "text": "#8\nPLAY Next Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnext",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_playnextblock",
+   "category": "Channel 8",
+   "name": "#8\nPLAY Next Block",
+   "text": "#8\nPLAY Next Block",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playnextblock",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_select",
+   "category": "Channel 8",
+   "name": "#8\nSELECT per Channel",
+   "text": "#8\nSELECT per Channel",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "select",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_selectNext",
+   "category": "Channel 8",
+   "name": "#8\nSELECT Next CLIP",
+   "text": "#8\nSELECT Next CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectNext",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_selectPrevious",
+   "category": "Channel 8",
+   "name": "#8\nSELECT Previous CLIP",
+   "text": "#8\nSELECT Previous CLIP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectPrevious",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_stop",
+   "category": "Channel 8",
+   "name": "#8\nSTOP",
+   "text": "#8\nSTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stop",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_0_Standard_unloop",
+   "category": "Channel 8",
+   "name": "#8\nUNLOOP Clip ",
+   "text": "#8\nUNLOOP Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unloop",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_action_startaction",
+   "category": "Channel 8",
+   "name": "#8\nSTART ACTION",
+   "text": "#8\nSTART ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startaction",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_action_stopaction",
+   "category": "Channel 8",
+   "name": "#8\nSTOP ACTION",
+   "text": "#8\nSTOP ACTION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopaction",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_action_stopallactions",
+   "category": "Channel 8",
+   "name": "#8\nSTOP ACTIONS",
+   "text": "#8\nSTOP ACTIONS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopallactions",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_desktop_startdesktop",
+   "category": "Channel 8",
+   "name": "#8\nSTART DESKTOP",
+   "text": "#8\nSTART DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startdesktop",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_desktop_stopdesktop",
+   "category": "Channel 8",
+   "name": "#8\nSTOP DESKTOP",
+   "text": "#8\nSTOP DESKTOP",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopdesktop",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_flex_cueflex",
+   "category": "Channel 8",
+   "name": "#8\nCUE Flex",
+   "text": "#8\nCUE Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueflex",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_flex_fadeinflex",
+   "category": "Channel 8",
+   "name": "#8\nFADE-IN Flex",
+   "text": "#8\nFADE-IN Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinflex",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_flex_playflex",
+   "category": "Channel 8",
+   "name": "#8\nPLAY Flex",
+   "text": "#8\nPLAY Flex",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playflex",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_mute_mute",
+   "category": "Channel 8",
+   "name": "#8\nMUTE Clip ",
+   "text": "#8\nMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_mute_mutechannel",
+   "category": "Channel 8",
+   "name": "#8\nMUTE CHANNEL",
+   "text": "#8\nMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "mutechannel",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_mute_unmute",
+   "category": "Channel 8",
+   "name": "#8\nUNMUTE Clip ",
+   "text": "#8\nUNMUTE Clip",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmute",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_mute_unmutechannel",
+   "category": "Channel 8",
+   "name": "#8\nUNMUTE CHANNEL",
+   "text": "#8\nUNMUTE CHANNEL",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "unmutechannel",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_overlay_startoverlay",
+   "category": "Channel 8",
+   "name": "#8\nSTART OVERLAY",
+   "text": "#8\nSTART OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "startoverlay",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_overlay_stopalloverlays",
+   "category": "Channel 8",
+   "name": "#8\nSTOP OVERLAYS",
+   "text": "#8\nSTOP OVERLAYS",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopalloverlays",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_overlay_stopoverlay",
+   "category": "Channel 8",
+   "name": "#8\nSTOP OVERLAY",
+   "text": "#8\nSTOP OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "stopoverlay",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_overlay_toggleoverlay",
+   "category": "Channel 8",
+   "name": "#8\nTOGGLE OVERLAY",
+   "text": "#8\nTOGGLE OVERLAY",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "toggleoverlay",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_position_position",
+   "category": "Channel 8",
+   "name": "#8\nPOSITION",
+   "text": "#8\nPOSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "position",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_position_recallposition",
+   "category": "Channel 8",
+   "name": "#8\nRECALL POSITION",
+   "text": "#8\nRECALL POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "recallposition",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_channel_8_position_saveposition",
+   "category": "Channel 8",
+   "name": "#8\nSAVE POSITION",
+   "text": "#8\nSAVE POSITION",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "saveposition",
+    "options": {
+     "arg1": 8
+    }
+   }
+  },
+  {
+   "id": "preset_list_left_cuelist",
+   "category": "Lists",
+   "name": "Left\n CUE (LIST)",
+   "text": "Left\n CUE (LIST)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuelist",
+    "options": {
+     "arg1": "1"
+    }
+   }
+  },
+  {
+   "id": "preset_list_left_fadeinlist",
+   "category": "Lists",
+   "name": "Left\n FADE-IN (LIST)",
+   "text": "Left\n FADE-IN (LIST)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinlist",
+    "options": {
+     "arg1": "1"
+    }
+   }
+  },
+  {
+   "id": "preset_list_left_playlist",
+   "category": "Lists",
+   "name": "Left\n PLAY (LIST)",
+   "text": "Left\n PLAY (LIST)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playlist",
+    "options": {
+     "arg1": "1"
+    }
+   }
+  },
+  {
+   "id": "preset_list_left_selectlist",
+   "category": "Lists",
+   "name": "Left\nSELECT per List",
+   "text": "Left\nSELECT per List",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectlist",
+    "options": {
+     "arg1": "1"
+    }
+   }
+  },
+  {
+   "id": "preset_list_left_switchchannel",
+   "category": "Lists",
+   "name": "Left\nSWITCH Channel for the List",
+   "text": "Left\nSWITCH Channel for the List",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switchchannel",
+    "options": {
+     "arg1": "1"
+    }
+   }
+  },
+  {
+   "id": "preset_list_right_cuelist",
+   "category": "Lists",
+   "name": "Right\n CUE (LIST)",
+   "text": "Right\n CUE (LIST)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cuelist",
+    "options": {
+     "arg1": "2"
+    }
+   }
+  },
+  {
+   "id": "preset_list_right_fadeinlist",
+   "category": "Lists",
+   "name": "Right\n FADE-IN (LIST)",
+   "text": "Right\n FADE-IN (LIST)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinlist",
+    "options": {
+     "arg1": "2"
+    }
+   }
+  },
+  {
+   "id": "preset_list_right_playlist",
+   "category": "Lists",
+   "name": "Right\n PLAY (LIST)",
+   "text": "Right\n PLAY (LIST)",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playlist",
+    "options": {
+     "arg1": "2"
+    }
+   }
+  },
+  {
+   "id": "preset_list_right_selectlist",
+   "category": "Lists",
+   "name": "Right\nSELECT per List",
+   "text": "Right\nSELECT per List",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectlist",
+    "options": {
+     "arg1": "2"
+    }
+   }
+  },
+  {
+   "id": "preset_list_right_switchchannel",
+   "category": "Lists",
+   "name": "Right\nSWITCH Channel for the List",
+   "text": "Right\nSWITCH Channel for the List",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "switchchannel",
+    "options": {
+     "arg1": "2"
+    }
+   }
+  },
+  {
+   "id": "preset_uid_cueid",
+   "category": "UID",
+   "name": "CUE ID",
+   "text": "CUE ID",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "cueid",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_uid_fadeinid",
+   "category": "UID",
+   "name": "FADE-IN ID",
+   "text": "FADE-IN ID",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "fadeinid",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_uid_playid",
+   "category": "UID",
+   "name": "PLAY ID",
+   "text": "PLAY ID",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "playid",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_uid_selectid",
+   "category": "UID",
+   "name": "SELECT per UID",
+   "text": "SELECT per UID",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "selectid",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_utils_scripting_customcommand",
+   "category": "Utils",
+   "name": "Custom Command",
+   "text": "Custom Command",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "customcommand",
+    "options": {
+     "arg1": ""
+    }
+   }
+  },
+  {
+   "id": "preset_utils_scripting_wait",
+   "category": "Utils",
+   "name": "WAIT",
+   "text": "WAIT",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "wait",
+    "options": {
+     "arg1": ""
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-joy-playdeck",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Andreas H. Thomsen <>, Nick Semenov"
+  }
+ ],
+ "source": {
+  "module": "joy-playdeck",
+  "version": "4.2.9",
+  "license": "MIT",
+  "maintainers": [
+   "Andreas H. Thomsen <>",
+   "Nick Semenov"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-joy-playdeck.git"
+ }
+}

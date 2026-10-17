@@ -1,0 +1,1189 @@
+{
+ "format": 1,
+ "id": "m-soundcraft-ui",
+ "name": "Soundcraft Ui12 / Ui16 / Ui24R",
+ "category": "Soundcraft",
+ "version": "3.10.0",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 80,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "enableFaderLevelVars",
+   "label": "Enable Fader Level variables (dB)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "enableFaderLevelVarsPct",
+   "label": "Enable Fader Level variables (%)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "enablePanVars",
+   "label": "Enable PAN variables",
+   "type": "boolean",
+   "default": false
+  }
+ ],
+ "actions": [
+  {
+   "id": "changemastervalue",
+   "name": "Master: Change fader value (relative)",
+   "options": [
+    {
+     "id": "value",
+     "label": "Change value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^m.mix^1",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mutemasterchannel",
+   "name": "Master channels: Mute",
+   "options": [
+    {
+     "id": "channelType",
+     "label": "Channel Type",
+     "type": "select",
+     "default": "i",
+     "choices": [
+      {
+       "id": "i",
+       "label": "Input"
+      },
+      {
+       "id": "l",
+       "label": "Line Input"
+      },
+      {
+       "id": "p",
+       "label": "Player"
+      },
+      {
+       "id": "f",
+       "label": "FX"
+      },
+      {
+       "id": "s",
+       "label": "Sub Group"
+      },
+      {
+       "id": "a",
+       "label": "AUX Master"
+      },
+      {
+       "id": "v",
+       "label": "VCA"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "2",
+       "label": "Toggle"
+      },
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.mute^{{option.mute|map}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.mute^{{option.mute|map}}",
+     "encoding": "text"
+    }
+   ],
+   "maps": {
+    "channelType": {
+     "i": "i",
+     "l": "l",
+     "p": "p",
+     "f": "f",
+     "s": "s",
+     "a": "a",
+     "v": "v"
+    },
+    "mute": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "muteauxchannel",
+   "name": "AUX channels: Mute",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    },
+    {
+     "id": "channelType",
+     "label": "Channel Type",
+     "type": "select",
+     "default": "i",
+     "choices": [
+      {
+       "id": "i",
+       "label": "Input"
+      },
+      {
+       "id": "l",
+       "label": "Line Input"
+      },
+      {
+       "id": "p",
+       "label": "Player"
+      },
+      {
+       "id": "f",
+       "label": "FX"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "2",
+       "label": "Toggle"
+      },
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.mute^{{option.mute|map}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.mute^{{option.mute|map}}",
+     "encoding": "text"
+    },
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.mute^{{option.mute|map}}",
+     "encoding": "text"
+    },
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.mute^{{option.mute|map}}",
+     "encoding": "text"
+    }
+   ],
+   "maps": {
+    "channelType": {
+     "i": "i",
+     "l": "l",
+     "p": "p",
+     "f": "f"
+    },
+    "mute": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "setauxchannelpost",
+   "name": "AUX channels: Set PRE/POST",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    },
+    {
+     "id": "channelType",
+     "label": "Channel Type",
+     "type": "select",
+     "default": "i",
+     "choices": [
+      {
+       "id": "i",
+       "label": "Input"
+      },
+      {
+       "id": "l",
+       "label": "Line Input"
+      },
+      {
+       "id": "p",
+       "label": "Player"
+      },
+      {
+       "id": "f",
+       "label": "FX"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "post",
+     "label": "PRE/POST",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "PRE"
+      },
+      {
+       "id": "1",
+       "label": "POST"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.post^{{option.post|map}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.post^{{option.post|map}}",
+     "encoding": "text"
+    },
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.post^{{option.post|map}}",
+     "encoding": "text"
+    },
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.post^{{option.post|map}}",
+     "encoding": "text"
+    }
+   ],
+   "maps": {
+    "channelType": {
+     "i": "i",
+     "l": "l",
+     "p": "p",
+     "f": "f"
+    },
+    "post": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "setauxchannelpostproc",
+   "name": "AUX channels: Set POST PROC",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    },
+    {
+     "id": "channelType",
+     "label": "Channel Type",
+     "type": "select",
+     "default": "i",
+     "choices": [
+      {
+       "id": "i",
+       "label": "Input"
+      },
+      {
+       "id": "l",
+       "label": "Line Input"
+      },
+      {
+       "id": "p",
+       "label": "Player"
+      },
+      {
+       "id": "f",
+       "label": "FX"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "postproc",
+     "label": "POST PROC",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.postproc^{{option.postproc|map}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.postproc^{{option.postproc|map}}",
+     "encoding": "text"
+    },
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.postproc^{{option.postproc|map}}",
+     "encoding": "text"
+    },
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.aux.{{option.bus|lin:1:-1}}.postproc^{{option.postproc|map}}",
+     "encoding": "text"
+    }
+   ],
+   "maps": {
+    "channelType": {
+     "i": "i",
+     "l": "l",
+     "p": "p",
+     "f": "f"
+    },
+    "postproc": {
+     "0": "0",
+     "1": "1"
+    }
+   }
+  },
+  {
+   "id": "changevolumebusvalue",
+   "name": "SOLO/Headphone Bus: Change volume (relative)",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus",
+     "type": "select",
+     "default": "solo",
+     "choices": [
+      {
+       "id": "solo",
+       "label": "SOLO"
+      },
+      {
+       "id": "hp1",
+       "label": "Headphone 1"
+      },
+      {
+       "id": "hp2",
+       "label": "Headphone 2"
+      }
+     ]
+    },
+    {
+     "id": "value",
+     "label": "Change value (dB)",
+     "type": "number",
+     "default": 3,
+     "min": -100,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^settings.{{option.bus|map}}^1",
+    "encoding": "text"
+   },
+   "maps": {
+    "bus": {
+     "solo": "solovol",
+     "hp1": "hpvol.0",
+     "hp2": "hpvol.1"
+    }
+   }
+  },
+  {
+   "id": "mutefxchannel",
+   "name": "FX channels: Mute",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    },
+    {
+     "id": "channelType",
+     "label": "Channel Type",
+     "type": "select",
+     "default": "i",
+     "choices": [
+      {
+       "id": "i",
+       "label": "Input"
+      },
+      {
+       "id": "l",
+       "label": "Line Input"
+      },
+      {
+       "id": "p",
+       "label": "Player"
+      },
+      {
+       "id": "s",
+       "label": "Sub Group"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "2",
+       "label": "Toggle"
+      },
+      {
+       "id": "1",
+       "label": "Mute"
+      },
+      {
+       "id": "0",
+       "label": "Unmute"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.fx.{{option.bus|lin:1:-1}}.mute^{{option.mute|map}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.fx.{{option.bus|lin:1:-1}}.mute^{{option.mute|map}}",
+     "encoding": "text"
+    }
+   ],
+   "maps": {
+    "channelType": {
+     "i": "i",
+     "l": "l",
+     "p": "p",
+     "s": "s"
+    },
+    "mute": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "setfxchannelpost",
+   "name": "FX channels: Set PRE/POST",
+   "options": [
+    {
+     "id": "bus",
+     "label": "Bus number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 10
+    },
+    {
+     "id": "channelType",
+     "label": "Channel Type",
+     "type": "select",
+     "default": "i",
+     "choices": [
+      {
+       "id": "i",
+       "label": "Input"
+      },
+      {
+       "id": "l",
+       "label": "Line Input"
+      },
+      {
+       "id": "p",
+       "label": "Player"
+      },
+      {
+       "id": "s",
+       "label": "Sub Group"
+      }
+     ]
+    },
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "post",
+     "label": "PRE/POST",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "0",
+       "label": "PRE"
+      },
+      {
+       "id": "1",
+       "label": "POST"
+      },
+      {
+       "id": "2",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.fx.{{option.bus|lin:1:-1}}.post^{{option.post|map}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^{{option.channelType|map}}.{{option.channel|lin:1:-1}}.fx.{{option.bus|lin:1:-1}}.post^{{option.post|map}}",
+     "encoding": "text"
+    }
+   ],
+   "maps": {
+    "channelType": {
+     "i": "i",
+     "l": "l",
+     "p": "p",
+     "s": "s"
+    },
+    "post": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "setfxbpm",
+   "name": "FX: Set BPM",
+   "options": [
+    {
+     "id": "bpm",
+     "label": "BPM",
+     "type": "number",
+     "default": 120,
+     "min": 20,
+     "max": 400
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^f.1.bpm^{{option.bpm}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^f.2.bpm^{{option.bpm}}",
+     "encoding": "text"
+    },
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^f.3.bpm^{{option.bpm}}",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
+   "id": "mediaplay",
+   "name": "Media Player: Play/Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MEDIA_PLAY",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mediastop",
+   "name": "Media Player: Stop",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MEDIA_STOP",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mediapause",
+   "name": "Media Player: Pause",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MEDIA_PAUSE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "medianext",
+   "name": "Media Player: Next track",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MEDIA_NEXT",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mediaprev",
+   "name": "Media Player: Previous track",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MEDIA_PREV",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mediaswitchplist",
+   "name": "Media Player: Switch Playlist",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "text",
+     "default": "~all~"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MEDIA_SWITCH_PLIST^{{option.playlist}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mediaswitchtrack",
+   "name": "Media Player: Switch Track",
+   "options": [
+    {
+     "id": "playlist",
+     "label": "Playlist",
+     "type": "text",
+     "default": "~all~"
+    },
+    {
+     "id": "track",
+     "label": "Track/File",
+     "type": "text"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MEDIA_SWITCH_TRACK^{{option.playlist}}^{{option.track}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mediasetplaymode",
+   "name": "Media Player: Set play mode (MANUAL/AUTO)",
+   "options": [
+    {
+     "id": "mode",
+     "label": "Mode",
+     "type": "select",
+     "default": "manual",
+     "choices": [
+      {
+       "id": "manual",
+       "label": "MANUAL"
+      },
+      {
+       "id": "auto",
+       "label": "AUTO"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^settings.playMode^{{option.mode|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mode": {
+     "manual": "0",
+     "auto": "3"
+    }
+   }
+  },
+  {
+   "id": "mediasetshuffle",
+   "name": "Media Player: Set shuffle",
+   "options": [
+    {
+     "id": "shuffle",
+     "label": "Shuffle",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "2",
+       "label": "Toggle"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^settings.shuffle^{{option.shuffle|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "shuffle": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "dualtrackrecordstart",
+   "name": "2-Track Recording: Record Start",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::RECTOGGLE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "dualtrackrecordtoggle",
+   "name": "2-Track Recording: Record Toggle",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::RECTOGGLE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mtkplay",
+   "name": "Multitrack: Play/Pause Playback",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MTK_PLAY",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mtkpause",
+   "name": "Multitrack: Stop Playback",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MTK_STOP",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mtkstop",
+   "name": "Multitrack: Pause Playback",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MTK_PAUSE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mtkrecordstart",
+   "name": "Multitrack: Start Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MTK_REC_TOGGLE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mtkrecordtoggle",
+   "name": "Multitrack: Toggle Recording",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::MTK_REC_TOGGLE",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mtksoundcheck",
+   "name": "Multitrack: Activate/deactivate soundcheck",
+   "options": [
+    {
+     "id": "state",
+     "label": "Activate/deactivate",
+     "type": "select",
+     "default": "2",
+     "choices": [
+      {
+       "id": "2",
+       "label": "Toggle"
+      },
+      {
+       "id": "1",
+       "label": "On"
+      },
+      {
+       "id": "0",
+       "label": "Off"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^var.mtk.soundcheck^{{option.state|map}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "state": {
+     "0": "0",
+     "1": "1",
+     "2": "1"
+    }
+   }
+  },
+  {
+   "id": "mutegroupclear",
+   "name": "MUTE Groups/ALL/FX: Clear",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^mgmask^0",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^mgmask^1",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
+   "id": "loadshow",
+   "name": "Shows: Load Show",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Name",
+     "type": "text",
+     "default": "Default"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::LOADSHOW^{{option.show}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadsnapshot",
+   "name": "Shows: Load Snapshot",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Name",
+     "type": "text",
+     "default": "Default"
+    },
+    {
+     "id": "snapshot",
+     "label": "Snapshot Name",
+     "type": "text",
+     "default": "* Init *"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::LOADSNAPSHOT^{{option.show}}^{{option.snapshot}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "loadcue",
+   "name": "Shows: Load Cue",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Name",
+     "type": "text",
+     "default": "Default"
+    },
+    {
+     "id": "cue",
+     "label": "Cue Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::LOADCUE^{{option.show}}^{{option.cue}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "savesnapshot",
+   "name": "Shows: Save Snapshot",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Name",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "snapshot",
+     "label": "Snapshot Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SAVESNAPSHOT^{{option.show}}^{{option.snapshot}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "savecue",
+   "name": "Shows: Save Cue",
+   "options": [
+    {
+     "id": "show",
+     "label": "Show Name",
+     "type": "text",
+     "default": ""
+    },
+    {
+     "id": "cue",
+     "label": "Cue Name",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SAVECUE^{{option.show}}^{{option.cue}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "automixassigngrouptochannel",
+   "name": "Automix: Assign channel to automix group",
+   "options": [
+    {
+     "id": "channel",
+     "label": "Channel number",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 24
+    },
+    {
+     "id": "group",
+     "label": "Automix Group",
+     "type": "select",
+     "default": "none",
+     "choices": [
+      {
+       "id": "a",
+       "label": "A"
+      },
+      {
+       "id": "b",
+       "label": "B"
+      },
+      {
+       "id": "none",
+       "label": "None / Remove"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "3:::SETD^i.{{option.channel|lin:1:-1}}.amixgroup^{{option.group|map}}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "3:::SETD^i.{{option.channel|lin:1:-1}}.amixgroup^{{option.group|map}}",
+     "encoding": "text"
+    }
+   ],
+   "maps": {
+    "group": {
+     "none": "-1",
+     "a": "0",
+     "b": "1"
+    }
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-soundcraft-ui",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Ferdinand Malcher, Christian Himmler"
+  }
+ ],
+ "source": {
+  "module": "soundcraft-ui",
+  "version": "3.10.0",
+  "license": "MIT",
+  "maintainers": [
+   "Ferdinand Malcher",
+   "Christian Himmler"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-soundcraft-ui.git"
+ }
+}

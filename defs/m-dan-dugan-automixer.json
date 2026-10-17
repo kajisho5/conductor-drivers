@@ -421,7 +421,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "SNN\\r\\n",
+    "data": "SNN\\r\\nGS\\r\\n",
     "encoding": "text"
    }
   },

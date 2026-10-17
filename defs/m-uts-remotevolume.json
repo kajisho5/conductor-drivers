@@ -1,0 +1,202 @@
+{
+ "format": 1,
+ "id": "m-uts-remotevolume",
+ "name": "UTS Remote Volume",
+ "category": "UTS",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 2501,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "reconnect",
+   "label": "Reconnect",
+   "type": "boolean",
+   "default": true,
+   "help": "Reconnect on WebSocket error (after 5 secs)"
+  }
+ ],
+ "actions": [
+  {
+   "id": "set_volume",
+   "name": "Set Volume [absolute]",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "number",
+     "default": 50,
+     "min": 0,
+     "max": 100
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"setVolume\",\"value\":{{option.volume}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "increaseVolume",
+   "name": "Increase Volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Increase by",
+     "type": "number",
+     "default": 10,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"increaseVolume\",\"value\":{{option.volume}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "decreaseVolume",
+   "name": "Decrease Volume",
+   "options": [
+    {
+     "id": "volume",
+     "label": "Decrease by",
+     "type": "number",
+     "default": 10,
+     "min": 1,
+     "max": 99
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"decreaseVolume\",\"value\":{{option.volume}}}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "mute",
+   "name": "Set Mute",
+   "options": [
+    {
+     "id": "mute",
+     "label": "Mute",
+     "type": "select",
+     "default": "mute",
+     "choices": [
+      {
+       "id": "mute",
+       "label": "Mute"
+      },
+      {
+       "id": "unmute",
+       "label": "Unmute"
+      },
+      {
+       "id": "toggle",
+       "label": "Toggle"
+      }
+     ]
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"{{option.mute|map}}ute\"}",
+    "encoding": "text"
+   },
+   "maps": {
+    "mute": {
+     "mute": "m",
+     "unmute": "unm",
+     "toggle": "toggleM"
+    }
+   }
+  },
+  {
+   "id": "getState",
+   "name": "Get latest Data",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"getState\"}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "0",
+   "category": "Volume",
+   "name": "+10%",
+   "text": "+10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "increaseVolume",
+    "options": {
+     "volume": 10
+    }
+   }
+  },
+  {
+   "id": "1",
+   "category": "Volume",
+   "name": "-10%",
+   "text": "-10%",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "decreaseVolume",
+    "options": {
+     "volume": 10
+    }
+   }
+  },
+  {
+   "id": "2",
+   "category": "Mute",
+   "name": "Toggle Mute",
+   "text": "Unmuted",
+   "backgroundColor": "#00ff00",
+   "action": {
+    "definitionId": "mute",
+    "options": {
+     "mute": "toggle"
+    }
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-uts-remotevolume",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Leon Reucher"
+  }
+ ],
+ "source": {
+  "module": "uts-remotevolume",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Leon Reucher"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-uts-remotevolume.git"
+ }
+}

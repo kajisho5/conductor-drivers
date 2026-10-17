@@ -347,7 +347,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261017_0135"
+    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261017_0216"
    }
   },
   {
@@ -362,6 +362,11 @@
     "contentType": "application/x-www-form-urlencoded"
    },
    "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
     {
      "kind": "http",
      "method": "GET",

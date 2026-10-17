@@ -1,0 +1,463 @@
+{
+ "format": 1,
+ "id": "m-rationalacoustics-smaart3",
+ "name": "Rational Acoustics Smaart V8.3 - V8.5 / Smaart Di 2.1 and newer",
+ "category": "Rational Acoustics",
+ "version": "2.1.2",
+ "minAppVersion": "0.6.0",
+ "transport": "ws",
+ "wsPath": "/api/v3/",
+ "configFields": [
+  {
+   "id": "host",
+   "label": "IP アドレス",
+   "type": "text",
+   "placeholder": "192.168.0.10",
+   "pattern": "^[A-Za-z0-9.:\\-]+$",
+   "mono": true
+  },
+  {
+   "id": "port",
+   "label": "ポート",
+   "type": "number",
+   "default": 26000,
+   "min": 1,
+   "max": 65535
+  },
+  {
+   "id": "password",
+   "label": "Password",
+   "type": "text",
+   "help": "If authentication is not used leave password blank"
+  }
+ ],
+ "actions": [
+  {
+   "id": "resetAvg",
+   "name": "Reset Average",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"set\",\"target\":\"activeMeasurements\",\"properties\":[{\"runningAverage\":0}],\"sequenceNumber\":5}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startGenerator",
+   "name": "Start signal generator",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"set\",\"target\":\"signalGenerator\",\"properties\":[{\"active\":true}],\"sequenceNumber\":15}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopGenerator",
+   "name": "Stop signal generator",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"set\",\"target\":\"signalGenerator\",\"properties\":[{\"active\":false}],\"sequenceNumber\":16}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "startTrackingAll",
+   "name": "Start delay tracking for current tab",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"set\",\"target\":{\"measurementName\":\"allTransferFunctionMeasurements\"},\"properties\":[{\"trackingDelay\":true}],\"sequenceNumber\":21}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "stopTrackingAll",
+   "name": "Stop delay tracking for current tab",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"set\",\"target\":{\"measurementName\":\"allTransferFunctionMeasurements\"},\"properties\":[{\"trackingDelay\":false}],\"sequenceNumber\":22}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "zoomX",
+   "name": "Zoom X Axis",
+   "options": [
+    {
+     "id": "selectedDirection",
+     "label": "Direction",
+     "type": "select",
+     "default": "+",
+     "choices": [
+      {
+       "id": "+",
+       "label": "In"
+      },
+      {
+       "id": "-",
+       "label": "Out"
+      }
+     ],
+     "help": "Which direction do you want?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"option + command{{option.selectedDirection|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedDirection": {
+     "+": "+\"}],\"sequenceNumber\":23",
+     "-": "-\"}],\"sequenceNumber\":24"
+    }
+   }
+  },
+  {
+   "id": "zoomY",
+   "name": "Zoom Y Axis",
+   "options": [
+    {
+     "id": "selectedDirection",
+     "label": "Direction",
+     "type": "select",
+     "default": "+",
+     "choices": [
+      {
+       "id": "+",
+       "label": "In"
+      },
+      {
+       "id": "-",
+       "label": "Out"
+      }
+     ],
+     "help": "Which direction do you want?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"{{option.selectedDirection|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedDirection": {
+     "+": "+\"}],\"sequenceNumber\":25",
+     "-": "-\"}],\"sequenceNumber\":26"
+    }
+   }
+  },
+  {
+   "id": "setZoomPreset",
+   "name": "Set Zoom Preset",
+   "options": [
+    {
+     "id": "zoomPreset",
+     "label": "Preset",
+     "type": "select",
+     "default": "5",
+     "choices": [
+      {
+       "id": "5",
+       "label": "Default zoom"
+      },
+      {
+       "id": "1",
+       "label": "Zoom 1"
+      },
+      {
+       "id": "2",
+       "label": "Zoom 2"
+      },
+      {
+       "id": "3",
+       "label": "Zoom 3"
+      },
+      {
+       "id": "4",
+       "label": "Zoom 4"
+      }
+     ],
+     "help": "Which zoom preset do you want?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"option + {{option.zoomPreset|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "zoomPreset": {
+     "1": "1\"}],\"sequenceNumber\":31",
+     "2": "2\"}],\"sequenceNumber\":32",
+     "3": "3\"}],\"sequenceNumber\":33",
+     "4": "4\"}],\"sequenceNumber\":34",
+     "5": "5\"}],\"sequenceNumber\":30"
+    }
+   }
+  },
+  {
+   "id": "cycleZOrder",
+   "name": "Cycle Z Order",
+   "options": [
+    {
+     "id": "selectedDirection",
+     "label": "Direction",
+     "type": "select",
+     "default": "forward",
+     "choices": [
+      {
+       "id": "forward",
+       "label": "Forward"
+      },
+      {
+       "id": "backward",
+       "label": "Backward"
+      }
+     ],
+     "help": "Which direction do you want?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"{{option.selectedDirection|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedDirection": {
+     "forward": "Z\"}],\"sequenceNumber\":40",
+     "backward": "shift + Z\"}],\"sequenceNumber\":41"
+    }
+   }
+  },
+  {
+   "id": "hideTrace",
+   "name": "Hide Trace",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"H\"}],\"sequenceNumber\":42}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "hideAllTraces",
+   "name": "Hide All Traces",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"shift + command + H\"}],\"sequenceNumber\":43}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "togglePeakHold",
+   "name": "Toggle Peak Hold",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"P\"}],\"sequenceNumber\":44}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleInputMeters",
+   "name": "Toggle Input Meters",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"shift + E\"}],\"sequenceNumber\":45}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"action\":\"get\",\"sequenceNumber\":46}",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
+   "id": "toggleInputMeterOrientation",
+   "name": "Toggle Input Meter Orientation",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"shift + option + E\"}],\"sequenceNumber\":47}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleSPLHistory",
+   "name": "Toggle SPL History",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"option + H\"}],\"sequenceNumber\":48}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleMeters",
+   "name": "Toggle SPL Meters",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"E\"}],\"sequenceNumber\":49}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearTraceOffset",
+   "name": "Clear Top Trace Y Offset",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"Y\"}],\"sequenceNumber\":66}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearAllTraceOffset",
+   "name": "Clear All Y Offsets",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + Y\"}],\"sequenceNumber\":67}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "toggleBar",
+   "name": "Toggle Bar",
+   "options": [
+    {
+     "id": "selectedBar",
+     "label": "Bar",
+     "type": "select",
+     "default": "O",
+     "choices": [
+      {
+       "id": "O",
+       "label": "Control"
+      },
+      {
+       "id": "U",
+       "label": "Command"
+      },
+      {
+       "id": "B",
+       "label": "Data"
+      }
+     ],
+     "help": "Which direction do you want?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"{{option.selectedBar|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedBar": {
+     "O": "O\"}],\"sequenceNumber\":68",
+     "U": "U\"}],\"sequenceNumber\":69",
+     "B": "B\"}],\"sequenceNumber\":70"
+    }
+   }
+  },
+  {
+   "id": "lockCursorToPeak",
+   "name": "Lock Cursor To Peak",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + P\"}],\"sequenceNumber\":71}",
+    "encoding": "text"
+   }
+  },
+  {
+   "id": "clearLockedCursor",
+   "name": "Clear Locked Cursor",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + X\"}],\"sequenceNumber\":72}",
+    "encoding": "text"
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"action\":\"get\",\"sequenceNumber\":73}",
+     "encoding": "text"
+    }
+   ]
+  },
+  {
+   "id": "moveLockedCursor",
+   "name": "Move Locked Cursor",
+   "options": [
+    {
+     "id": "selectedDirection",
+     "label": "Direction",
+     "type": "select",
+     "default": "left",
+     "choices": [
+      {
+       "id": "left",
+       "label": "Left"
+      },
+      {
+       "id": "right",
+       "label": "Right"
+      }
+     ],
+     "help": "Which direction do you want?"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + cursor {{option.selectedDirection|map}}}",
+    "encoding": "text"
+   },
+   "maps": {
+    "selectedDirection": {
+     "left": "left\"}],\"sequenceNumber\":74",
+     "right": "right\"}],\"sequenceNumber\":75"
+    }
+   }
+  },
+  {
+   "id": "cyclePlot",
+   "name": "Cycle Preferred Plot",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"M\"}],\"sequenceNumber\":76}",
+    "encoding": "text"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-rationalacoustics-smaart3",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Phillip Ivan Pietruschka"
+  }
+ ],
+ "source": {
+  "module": "rationalacoustics-smaart3",
+  "version": "2.1.2",
+  "license": "MIT",
+  "maintainers": [
+   "Phillip Ivan Pietruschka"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-rationalacoustics-smaart3.git"
+ }
+}

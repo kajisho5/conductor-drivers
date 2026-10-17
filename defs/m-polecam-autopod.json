@@ -105,17 +105,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23APC7FFF7FFF&res=1"
-   }
-  },
-  {
-   "id": "ptSpeedD",
-   "name": "Up/Down/Left/Right - Speed Down",
-   "options": [],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/cgi-bin/aw_ptz?cmd=%23RER&res=1"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23D1&res=1"
+    }
+   ]
   },
   {
    "id": "splitDualLeg",
@@ -135,7 +132,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R11&res=1"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23APC&res=1"
+    }
+   ]
   },
   {
    "id": "dualLeg",
@@ -155,53 +159,6 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R16&res=1"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23AXI&res=1"
-    }
-   ]
-  },
-  {
-   "id": "autoCalibrate",
-   "name": "Set autocalibration",
-   "options": [
-    {
-     "id": "val",
-     "label": "Auto calibration",
-     "type": "select",
-     "default": "0",
-     "choices": [
-      {
-       "id": "0",
-       "label": "Off"
-      },
-      {
-       "id": "1",
-       "label": "On"
-      }
-     ]
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/cgi-bin/aw_ptz?cmd=%23D1{{option.val|map}}&res=1"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23D1&res=1"
-    }
-   ],
-   "maps": {
-    "val": {
-     "0": "0",
-     "1": "1"
-    }
    }
   },
   {
@@ -212,14 +169,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R14&res=1"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/cgi-bin/aw_ptz?cmd=%23APC&res=1"
-    }
-   ]
+   }
   },
   {
    "id": "stopDemoMode",
@@ -239,7 +189,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/cgi-bin/aw_ptz?cmd=%23R18&res=1"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/cgi-bin/aw_ptz?cmd=%23RER&res=1"
+    }
+   ]
   },
   {
    "id": "reboot",
@@ -263,17 +220,6 @@
    "backgroundColor": "#000000",
    "action": {
     "definitionId": "home",
-    "options": {}
-   }
-  },
-  {
-   "id": "pan-tilt-speed-down",
-   "category": "Up/Down/Left/Right",
-   "name": "Speed Down",
-   "text": "SPEED\nDOWN",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "ptSpeedD",
     "options": {}
    }
   },
@@ -363,19 +309,6 @@
    "action": {
     "definitionId": "calib",
     "options": {}
-   }
-  },
-  {
-   "id": "autocal",
-   "category": "Options/Operations",
-   "name": "Autocalibrate",
-   "text": "Auto calibrate:",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "autoCalibrate",
-    "options": {
-     "val": "1"
-    }
    }
   }
  ],
