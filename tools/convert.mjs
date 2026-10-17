@@ -121,6 +121,7 @@ export function convertModule(raw) {
     converted: 0,
     reasons: {},
     errors: raw.errors,
+    chatty: raw.chatty === true,
     truncated: raw.truncated,
   };
   // 表示名に出せない名前（元のソフトの名前）のモジュールは入れない
@@ -159,6 +160,11 @@ export function convertModule(raw) {
     const runs = byAction.get(def.id);
     if (!runs) {
       report.reasons['not-run'] = (report.reasons['not-run'] ?? 0) + 1;
+      continue;
+    }
+    // 受け皿の返事の目印が送る内容に出てきた動作は、機器の返事（ログインの鍵など）に頼っているので変換しない
+    if (runs.some((r) => JSON.stringify(r.sends).includes('QZTOKEN0') || JSON.stringify(r.sends).includes(Buffer.from('QZTOKEN0').toString('hex')))) {
+      report.reasons['session-token'] = (report.reasons['session-token'] ?? 0) + 1;
       continue;
     }
     const res = deriveAction(def, runs, transport);
@@ -294,7 +300,9 @@ export function convertModule(raw) {
         title: `公開 OSS のモジュールから自動変換（${m.license}）`,
         url: String(m.repository ?? '').replace(/^git\+/, '').replace(/\.git$/, ''),
         status: '推測',
-        note: `送る内容だけを変換。実機では未確認。作者：${(m.maintainers ?? []).join(', ') || '不明'}`,
+        note: `送る内容だけを変換。実機では未確認。作者：${(m.maintainers ?? []).join(', ') || '不明'}${
+          raw.chatty ? '。機器の返事（あいさつ・ログイン）を待ってから送るモジュールで、返事の中身は推測。ログインが要る機器では動かないことがある' : ''
+        }`,
       },
     ],
     source: { module: m.id, version: m.version, license: m.license, maintainers: m.maintainers, repository: m.repository },

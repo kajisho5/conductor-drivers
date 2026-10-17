@@ -43,8 +43,32 @@ function listen(server) {
   return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve(server.address().port)));
 }
 
+/**
+ * 2 回目の実行（1 回目に何も送らなかったモジュール）で使う、よくある返事。
+ * 返事を待ってから送るモジュール（ログイン・あいさつ待ち）を先へ進めるためのもので、機器の状態は返さない。
+ * 返事の中の目印（QZTOKEN0）が送る内容に出てきたら、その動作は「機器の返事に頼る」として変換しない（convert.mjs）
+ */
+export const SESSION_MARK = 'QZTOKEN0';
+const CHATTY = {
+  onConnect: () => `Welcome\r\nlogin: `,
+  onLine: (line) => (line.trim() ? `${line.trim()}\r\nOK\r\n` : null),
+  split: /\r?\n|\r/,
+};
+const CHATTY_HTTP_BODY = JSON.stringify({
+  status: 0,
+  result: 0,
+  success: true,
+  ok: true,
+  code: 200,
+  token: SESSION_MARK,
+  access_token: SESSION_MARK,
+  sessionId: SESSION_MARK,
+  session: SESSION_MARK,
+  data: {},
+});
+
 /** 受け皿（TCP は読み捨て、HTTP は 200 {} を返す） */
-async function startSinks(onCapture, responder) {
+async function startSinks(onCapture, responder, chatty = false) {
   const sockets = new Set();
   const tcp = createTcpServer((s) => {
     sockets.add(s);
@@ -95,7 +119,7 @@ async function startSinks(onCapture, responder) {
         at: Date.now(),
       });
       res.writeHead(200, { 'content-type': 'application/json' });
-      res.end('{}');
+      res.end(chatty ? CHATTY_HTTP_BODY : '{}');
     });
   });
   // http.request 経由の WebSocket：握手に応じて、届いたフレームを記録する
@@ -146,6 +170,20 @@ export function buildConfig(fields) {
         String(f.regex ?? '').includes('25[0-5]'));
     const looksPort = /port/i.test(f.id) || /\bport\b/i.test(label);
     const empty = f.default === undefined || f.default === '' || f.default === null;
+    // URL の欄（generic-websocket など）：空なら目印の IP の URL を入れる
+    const looksUrl = f.type === 'textinput' && (/(^|_)(url|uri|endpoint)$/i.test(f.id) || /\b(url|uri)\b/i.test(label));
+    // 見つけた機器から選ぶ欄（ip の dropdown）：選択肢が無ければ目印の IP
+    const looksHostPick = f.type === 'dropdown' && /^(host|ip|ipaddress|address|device)$/i.test(f.id) && !(f.choices?.length > 0);
+    if (looksUrl && (empty || !String(f.default).includes('://') || /localhost|127\.0\.0\.1/.test(String(f.default)))) {
+      const ws = /ws|websocket|socket/i.test(`${f.id} ${label} ${f.default ?? ''}`);
+      config[f.id] = `${ws ? 'ws' : 'http'}://${MARKER_HOST}:${nextPort}/`;
+      nextPort += 1;
+      continue;
+    }
+    if (looksHostPick) {
+      config[f.id] = MARKER_HOST;
+      continue;
+    }
     if (looksHost) config[f.id] = MARKER_HOST;
     else if (looksPort && empty && (f.type === 'textinput' || f.type === 'number')) {
       // 空のポート欄があると接続しないモジュールがあるので、仮の番号を入れる
@@ -160,7 +198,7 @@ export function buildConfig(fields) {
   return config;
 }
 
-export async function runModule(moduleDir, { log = () => undefined } = {}) {
+export async function runModule(moduleDir, { log = () => undefined, chatty = false } = {}) {
   const started = Date.now();
   const manifestPath = path.join(moduleDir, 'companion', 'manifest.json');
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
@@ -217,7 +255,7 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
     }
     bucket.push(ev);
   };
-  const sinks = await startSinks(capture, responderFor(manifest.id));
+  const sinks = await startSinks(capture, responderFor(manifest.id) ?? (chatty ? CHATTY : null), chatty);
 
   const child = spawn(process.execPath, ['--require', path.join(HERE, 'capture.cjs'), entry], {
     cwd: moduleDir,
@@ -420,7 +458,13 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {
   const [moduleDir, outFile] = process.argv.slice(2);
-  const res = await runModule(path.resolve(moduleDir), { log: (s) => console.log(s) });
+  let res = await runModule(path.resolve(moduleDir), { log: (s) => console.log(s) });
+  // 何も送らなかったモジュールは、よくある返事をする受け皿でもう一度動かし、送った方を残す
+  const sent = (r) => r.runs.filter((x) => x.sends.length > 0).length;
+  if (res.actionDefs.length > 0 && sent(res) === 0) {
+    const again = await runModule(path.resolve(moduleDir), { log: (s) => console.log(`${s} (chatty)`), chatty: true });
+    if (sent(again) > 0) res = { ...again, chatty: true };
+  }
   writeFileSync(outFile, JSON.stringify(res));
   process.exit(0);
 }
