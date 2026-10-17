@@ -10,7 +10,7 @@
  * フィルタは左から順にかける（例 {{option.x|lin:-1:100|pad3|hexstr}}）。
  */
 
-const TOKEN = /\{\{\s*(option|config)\.([A-Za-z0-9_\-]+)((?:\|[a-z0-9]+(?::-?[0-9.e+-]+)*)*)\s*\}\}/g;
+const TOKEN = /\{\{\s*(option|config)\.([A-Za-z0-9_\-]+)((?:\|(?:plus:[A-Za-z0-9_]+|[a-z0-9]+(?::-?[0-9.e+-]+)*))*)\s*\}\}/g;
 
 export function formatNumber(x) {
   if (!Number.isFinite(x)) return '0';
@@ -94,7 +94,12 @@ export function renderTemplate(tpl, ctx) {
     if (v === undefined) v = '';
     if (typeof v === 'boolean') v = v ? 'true' : 'false';
     let s = String(v);
-    for (const f of filters.split('|').filter(Boolean)) s = applyFilter(s, f, ctx.maps?.[key]);
+    for (const f of filters.split('|').filter(Boolean)) {
+      // plus:名前 … 同じ範囲（option / config）の別の値を足す（アプリの renderTemplate と同じ）
+      const plus = /^plus:([A-Za-z0-9_]+)$/.exec(f);
+      if (plus) s = String(Number(s) + Number(src[plus[1]] ?? 0));
+      else s = applyFilter(s, f, ctx.maps?.[key]);
+    }
     return s;
   });
 }
