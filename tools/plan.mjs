@@ -70,6 +70,46 @@ export function variantValues(opt, base, index) {
   }
 }
 
+/** 数として入る欄（数・数の文字）の基準の値 */
+function numericBase(o, v) {
+  if (o.type === 'number') return Number(v);
+  if (o.type === 'textinput' && typeof v === 'string' && /^-?\d+$/.test(v)) return Number(v);
+  return null;
+}
+
+/**
+ * 数として入る欄が 2 つ以上あり、基準の値が近い（差が 2 以下）と、送られたバイト列のどこがどの欄か区別できない
+ * （例：X=1・Y=1 が両方 "0" になる → overlap）。2 つ目以降を範囲内で離れた値にずらす。
+ */
+export function distinctNumericBases(options, base) {
+  const used = [];
+  for (const o of options) {
+    const n = numericBase(o, base[o.id]);
+    if (n === null || !Number.isFinite(n)) continue;
+    const near = (x) => used.some((u) => Math.abs(u - x) <= 2);
+    if (!near(n)) {
+      used.push(n);
+      continue;
+    }
+    const min = o.type === 'number' && typeof o.min === 'number' ? o.min : 0;
+    const max = o.type === 'number' && typeof o.max === 'number' ? o.max : 1e9;
+    let pick = null;
+    for (const d of [5, 11, 17, 23, 29, 41, -5, -11]) {
+      const c = n + d;
+      if (c >= min && c <= max && !near(c)) {
+        pick = c;
+        break;
+      }
+    }
+    if (pick === null) {
+      used.push(n);
+      continue;
+    }
+    base[o.id] = o.type === 'number' ? pick : String(pick);
+    used.push(pick);
+  }
+}
+
 /** 決まった順の疑似乱数（検算の組み合わせを毎回同じにする） */
 function rng(seed) {
   let s = seed >>> 0 || 1;
@@ -87,6 +127,7 @@ export function planAction(def) {
   options.forEach((o, i) => {
     base[o.id] = baseValue(o, i);
   });
+  distinctNumericBases(options, base);
   const runs = [{ actionId: def.id, role: 'base', options: { ...base } }];
   const variantsById = {};
   options.forEach((o, i) => {

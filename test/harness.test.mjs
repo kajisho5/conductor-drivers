@@ -173,3 +173,19 @@ test('WebSocket のフレームを読む・JSON の通し番号をそろえる',
   assert.equal(r.messages[0].text, payload.toString());
   assert.equal(normalizeCounters(r.messages[0].text), '{"op":6,"d":{"requestId":"1","requestType":"SetScene"}}');
 });
+
+test('数の欄の基準の値が近いと離す（overlap を避ける）', async () => {
+  const { planAction } = await import('../tools/plan.mjs');
+  const runs = planAction({
+    id: 'a',
+    options: [
+      { id: 'x', type: 'textinput', default: '1' },
+      { id: 'y', type: 'textinput', default: '1' },
+      { id: 'v', type: 'number', default: 0, min: 0, max: 1 },
+    ],
+  });
+  const b = runs[0].options;
+  assert.equal(b.x, '1');
+  assert.equal(b.y, '6');
+  assert.equal(b.v, 0);
+});
