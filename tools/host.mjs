@@ -23,8 +23,9 @@ const LIMITS = {
   settleQuietMs: 120,
   settleMinMs: 60,
   settleMaxMs: 1500,
-  moduleMs: Number(process.env.MODULE_TIME_LIMIT_MS || 8 * 60 * 1000),
-  maxRuns: 1500,
+  moduleMs: Number(process.env.MODULE_TIME_LIMIT_MS || 15 * 60 * 1000),
+  maxRuns: 4000,
+  actionMs: 2500,
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -275,7 +276,7 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
     out.configFields = cfg?.fields ?? [];
     out.config = buildConfig(out.configFields);
     bucket = [];
-    await call('init', { label: 'conn1', isFirstInit: false, config: out.config, secrets: {}, lastUpgradeIndex: 9999 }, 20000);
+    await call('init', { label: 'conn1', isFirstInit: false, config: out.config, secrets: {}, lastUpgradeIndex: 9999, actions: {}, feedbacks: {} }, 20000);
     await sleep(LIMITS.idleMs);
     out.initSends = bucket.filter((e) => e.t !== 'tcp-connect');
     out.connects = bucket.filter((e) => e.t === 'tcp-connect');
@@ -284,18 +285,25 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
     const plan = planRuns(out.actionDefs, { maxRuns: LIMITS.maxRuns });
     out.truncated = plan.truncated;
     let n = 0;
+    /** 基準の実行で何も送らない・失敗した動作は、値を変えても同じなので残りを飛ばす */
+    let skipAction = null;
     for (const item of plan.runs) {
       if (deadline()) {
         out.truncated = true;
         break;
       }
+      if (item.actionId === skipAction) continue;
       bucket = [];
       let error;
       try {
-        const res = await call('executeAction', {
-          action: { id: `act${++n}`, controlId: 'bank:1-1', actionId: item.actionId, options: item.options },
-          surfaceId: undefined,
-        });
+        const res = await call(
+          'executeAction',
+          {
+            action: { id: `act${++n}`, controlId: 'bank:1-1', actionId: item.actionId, options: item.options },
+            surfaceId: undefined,
+          },
+          LIMITS.actionMs,
+        );
         if (res && res.success === false) error = res.errorMessage ?? 'failed';
       } catch (e) {
         error = e instanceof Error ? e.message : String(e);
@@ -304,6 +312,7 @@ export async function runModule(moduleDir, { log = () => undefined } = {}) {
       const sends = bucket.filter((e) => e.t !== 'tcp-connect' && !background.has(`${e.t}|${e.hex ?? `${e.method} ${e.url} ${e.body}`}`));
       const connects = bucket.filter((e) => e.t === 'tcp-connect');
       out.runs.push({ actionId: item.actionId, role: item.role, optionId: item.optionId, options: item.options, sends, connects, error });
+      if (item.role === 'base' && (error || sends.length === 0)) skipAction = item.actionId;
       if (exited) throw new Error(`module exited (${exited.code ?? exited.signal})`);
     }
     out.status = 'ok';

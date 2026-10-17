@@ -5,10 +5,18 @@
  *   {{option.x|padN}}                    … 0 埋めで N 桁
  *   {{option.x|hexstr}}                  … 文字列を UTF-8 の 16 進に
  *   {{option.x|u8}} |u16be |u16le |u32be |u32le |i16be |f32be … 数を 16 進のバイト列に
- * フィルタは左から順にかける（例 {{option.x|pad3|hexstr}}）。
+ *   {{option.x|lin:a:b}}                 … a×値＋b（例 100 − 速さ は lin:-1:100）
+ *   {{option.x|hexu}} |hexl              … 数を 16 進の文字に（大文字・小文字）
+ * フィルタは左から順にかける（例 {{option.x|lin:-1:100|pad3|hexstr}}）。
  */
 
-const TOKEN = /\{\{\s*(option|config)\.([A-Za-z0-9_\-]+)((?:\|[a-z0-9]+)*)\s*\}\}/g;
+const TOKEN = /\{\{\s*(option|config)\.([A-Za-z0-9_\-]+)((?:\|[a-z0-9]+(?::-?[0-9.e+-]+)*)*)\s*\}\}/g;
+
+export function formatNumber(x) {
+  if (!Number.isFinite(x)) return '0';
+  const r = Math.round(x * 1e6) / 1e6;
+  return Object.is(r, -0) ? '0' : String(r);
+}
 
 function hexOf(bytes) {
   return Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('');
@@ -27,11 +35,18 @@ function intBytes(n, size, little, signed) {
 
 export function applyFilter(value, filter, mapping) {
   const s = value === undefined || value === null ? '' : String(value);
+  const lin = /^lin:(-?[0-9.e+-]+):(-?[0-9.e+-]+)$/.exec(filter);
+  if (lin) return formatNumber(Number(s) * Number(lin[1]) + Number(lin[2]));
+  if (filter === 'hexu' || filter === 'hexl') {
+    const n = Math.trunc(Number(s));
+    const h = (n < 0 ? 0 : n).toString(16);
+    return filter === 'hexu' ? h.toUpperCase() : h;
+  }
   if (filter === 'map') {
     if (mapping && Object.prototype.hasOwnProperty.call(mapping, s)) return mapping[s];
     return '';
   }
-  const pad = /^pad(\d)$/.exec(filter);
+  const pad = /^pad(\d+)$/.exec(filter);
   if (pad) {
     const neg = s.startsWith('-');
     const body = neg ? s.slice(1) : s;

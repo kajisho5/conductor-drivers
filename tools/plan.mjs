@@ -54,7 +54,8 @@ export function numberVariants(opt, base) {
 export function variantValues(opt, base, index) {
   switch (opt.type) {
     case 'textinput':
-      return [`QV${index}yz`];
+      // 文字の目印と、数として使う欄のための数 2 つ
+      return [`QV${index}yz`, '37', '52'];
     case 'number':
       return numberVariants(opt, Number(base));
     case 'dropdown':

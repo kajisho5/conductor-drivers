@@ -50,7 +50,8 @@ net.Socket.prototype.connect = function (...args) {
     options = { port: args[0], host: typeof args[1] === 'string' ? args[1] : 'localhost' };
     cb = typeof args[1] === 'function' ? args[1] : args[2];
   }
-  if (!options || options.path || (options.host === '127.0.0.1' && Number(options.port) === SINK_TCP)) {
+  const toSink = options && options.host === '127.0.0.1' && (Number(options.port) === SINK_TCP || Number(options.port) === SINK_HTTP);
+  if (!options || options.path || toSink) {
     return origConnect.apply(this, args);
   }
   const host = String(options.host ?? 'localhost');

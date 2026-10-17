@@ -97,3 +97,64 @@ test('模擬モジュールを動かして定義を作る', { timeout: 120000 },
   assert.equal(def.presets[0].backgroundColor, '#ff0000');
   assert.equal(def.id, 'm-demo-sw-a');
 });
+
+test('a×値＋b と 0 埋め（100 − 速さ）', () => {
+  const def = { id: 'pan', options: [{ type: 'number', id: 'speed', default: 30 }] };
+  const runs = [
+    { role: 'base', options: { speed: 30 }, sends: [tcp('#01P70\r')] },
+    { role: 'variant', optionId: 'speed', options: { speed: 37 }, sends: [tcp('#01P63\r')] },
+    { role: 'variant', optionId: 'speed', options: { speed: 49 }, sends: [tcp('#01P51\r')] },
+  ];
+  const r = deriveBytesAction(def, runs, 'tcp');
+  assert.equal(r.ok, true, r.reason);
+  assert.equal(r.send.data, '#01P{{option.speed|lin:-1:100}}\\r');
+});
+
+test('数として使う文字の欄（目印の文字は NaN になる）', () => {
+  const def = { id: 'go', options: [{ type: 'textinput', id: 'pb', default: '1' }] };
+  const runs = [
+    { role: 'base', options: { pb: '1' }, sends: [tcp('GO 1\r')] },
+    { role: 'variant', optionId: 'pb', options: { pb: 'QV0yz' }, sends: [tcp('GO NaN\r')] },
+    { role: 'variant', optionId: 'pb', options: { pb: '37' }, sends: [tcp('GO 37\r')] },
+    { role: 'variant', optionId: 'pb', options: { pb: '52' }, sends: [tcp('GO 52\r')] },
+  ];
+  const r = deriveBytesAction(def, runs, 'tcp');
+  assert.equal(r.ok, true, r.reason);
+  assert.equal(r.send.data, 'GO {{option.pb}}\\r');
+});
+
+test('OSC は宛先と引数ごとのテンプレートにする', () => {
+  const osc = (addr, f) => {
+    const pad = (s) => {
+      const b = Buffer.from(`${s}\0`);
+      return Buffer.concat([b, Buffer.alloc((4 - (b.length % 4)) % 4)]);
+    };
+    const fb = Buffer.alloc(4);
+    fb.writeFloatBE(f);
+    return { t: 'udp', host: '10.11.12.13', port: 10024, hex: Buffer.concat([pad(addr), pad(',f'), fb]).toString('hex') };
+  };
+  const def = { id: 'fader', options: [{ type: 'number', id: 'ch', default: 1, min: 1, max: 32 }, { type: 'number', id: 'lvl', default: 50, min: 0, max: 100 }] };
+  const runs = [
+    { role: 'base', options: { ch: 1, lvl: 50 }, sends: [osc('/ch/01/mix/fader', 0.5)] },
+    { role: 'variant', optionId: 'ch', options: { ch: 8, lvl: 50 }, sends: [osc('/ch/08/mix/fader', 0.5)] },
+    { role: 'variant', optionId: 'ch', options: { ch: 21, lvl: 50 }, sends: [osc('/ch/21/mix/fader', 0.5)] },
+    { role: 'variant', optionId: 'lvl', options: { ch: 1, lvl: 57 }, sends: [osc('/ch/01/mix/fader', 0.57)] },
+    { role: 'variant', optionId: 'lvl', options: { ch: 1, lvl: 70 }, sends: [osc('/ch/01/mix/fader', 0.7)] },
+    { role: 'combo', options: { ch: 21, lvl: 70 }, sends: [osc('/ch/21/mix/fader', 0.7)] },
+  ];
+  const r = deriveBytesAction(def, runs, 'udp');
+  assert.equal(r.ok, true, r.reason);
+  assert.equal(r.send.kind, 'osc');
+  assert.equal(r.send.address, '/ch/{{option.ch|pad2}}/mix/fader');
+  assert.deepEqual(r.send.args, [{ type: 'f', value: '{{option.lvl|lin:0.01:0}}' }]);
+});
+
+test('選択肢が多くても数として入っていれば使う', () => {
+  const choices = Array.from({ length: 80 }, (_v, i) => ({ id: String(i + 1) }));
+  const def = { id: 'key', options: [{ type: 'dropdown', id: 'k', default: '11', choices }] };
+  const runs = [{ role: 'base', options: { k: '11' }, sends: [tcp('KEY(11)\r\n')] }];
+  for (const c of choices.slice(0, 48)) if (c.id !== '11') runs.push({ role: 'variant', optionId: 'k', options: { k: c.id }, sends: [tcp(`KEY(${c.id})\r\n`)] });
+  const r = deriveBytesAction(def, runs, 'tcp');
+  assert.equal(r.ok, true, r.reason);
+  assert.equal(r.send.data, 'KEY({{option.k}})\\r\\n');
+});
