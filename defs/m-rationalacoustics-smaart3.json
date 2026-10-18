@@ -117,8 +117,8 @@
    }
   },
   {
-   "id": "zoomXY",
-   "name": "Zoom X & Y Axis",
+   "id": "zoomY",
+   "name": "Zoom Y Axis",
    "options": [
     {
      "id": "selectedDirection",
@@ -140,13 +140,13 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command{{option.selectedDirection|map}}}",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"{{option.selectedDirection|map}}}",
     "encoding": "text"
    },
    "maps": {
     "selectedDirection": {
-     "+": "+\"}],\"sequenceNumber\":28",
-     "-": "-\"}],\"sequenceNumber\":29"
+     "+": "+\"}],\"sequenceNumber\":25",
+     "-": "-\"}],\"sequenceNumber\":26"
     }
    }
   },

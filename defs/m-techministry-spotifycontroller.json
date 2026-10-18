@@ -1,9 +1,9 @@
 {
  "format": 1,
- "id": "m-techministry-tallyarbiter",
- "name": "Tech Ministry Tally Arbiter",
+ "id": "m-techministry-spotifycontroller",
+ "name": "Tech Ministry Spotify Controller",
  "category": "Tech Ministry",
- "version": "2.2.1",
+ "version": "2.3.0",
  "minAppVersion": "0.6.0",
  "transport": "http",
  "configFields": [
@@ -11,9 +11,21 @@
    "id": "baseUrl",
    "label": "URL の先頭",
    "type": "text",
-   "default": "http://192.168.0.10:4455",
+   "default": "http://192.168.0.10:8801",
    "placeholder": "http://192.168.0.10",
    "mono": true
+  },
+  {
+   "id": "polling",
+   "label": "Enable Polling (experimental)",
+   "type": "boolean",
+   "default": false
+  },
+  {
+   "id": "pollingrate",
+   "label": "Polling Rate (in ms)",
+   "type": "text",
+   "default": "1000"
   },
   {
    "id": "verbose",
@@ -24,26 +36,13 @@
  ],
  "actions": [
   {
-   "id": "flash_device",
-   "name": "Flash All Listener Clients of a Device",
-   "options": [
-    {
-     "id": "device",
-     "label": "Device",
-     "type": "select",
-     "default": "0",
-     "choices": [
-      {
-       "id": "0",
-       "label": "(Select a Device)"
-      }
-     ]
-    }
-   ],
+   "id": "next",
+   "name": "Next Track",
+   "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=Q58mQ1r&b64=1"
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q5GpAjx&b64=1"
    }
   }
  ],
@@ -52,18 +51,18 @@
  "evidence": [
   {
    "title": "公開 OSS のモジュールから自動変換（MIT）",
-   "url": "https://github.com/bitfocus/companion-module-techministry-tallyarbiter",
+   "url": "https://github.com/bitfocus/companion-module-techministry-spotifycontroller",
    "status": "推測",
    "note": "送る内容だけを変換。実機では未確認。作者：Joseph Adams"
   }
  ],
  "source": {
-  "module": "techministry-tallyarbiter",
-  "version": "2.2.1",
+  "module": "techministry-spotifycontroller",
+  "version": "2.3.0",
   "license": "MIT",
   "maintainers": [
    "Joseph Adams"
   ],
-  "repository": "git+https://github.com/bitfocus/companion-module-techministry-tallyarbiter.git"
+  "repository": "git+https://github.com/bitfocus/companion-module-techministry-spotifycontroller.git"
  }
 }

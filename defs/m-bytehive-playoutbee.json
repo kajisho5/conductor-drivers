@@ -25,7 +25,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/api/play"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/socket.io/?EIO=4&transport=polling&t=Q5Gol31&b64=1"
+    }
+   ]
   },
   {
    "id": "pause",
@@ -101,6 +108,25 @@
     "kind": "http",
     "method": "GET",
     "path": "/api/goto/{{option.time}}"
+   }
+  },
+  {
+   "id": "last",
+   "name": "Go to last ",
+   "options": [
+    {
+     "id": "time",
+     "label": "Time",
+     "type": "number",
+     "default": 0,
+     "min": 0,
+     "max": 999999
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/last/{{option.time}}"
    }
   },
   {
@@ -210,29 +236,6 @@
      "270": "27",
      "360": "36"
     }
-   }
-  },
-  {
-   "id": "volume",
-   "name": "Set Volume of Asset",
-   "options": [
-    {
-     "id": "clip",
-     "label": "Clip",
-     "type": "text",
-     "default": "0"
-    },
-    {
-     "id": "volume",
-     "label": "Volume",
-     "type": "text",
-     "default": "0"
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/api/asset/{{option.clip}}/volume/{{option.volume}}"
    }
   }
  ],

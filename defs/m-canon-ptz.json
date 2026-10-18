@@ -3974,6 +3974,16 @@
    }
   },
   {
+   "id": "stopCustomTrace",
+   "name": "Trace - Stop Custom Trace Loop",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/control.cgi?p=1&p.ptztime=10000"
+   }
+  },
+  {
    "id": "traceStop",
    "name": "Trace - Stop",
    "options": [

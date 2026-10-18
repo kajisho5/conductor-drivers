@@ -1,0 +1,74 @@
+{
+ "format": 1,
+ "id": "m-churchapps-freeshow",
+ "name": "ChurchApps FreeShow",
+ "category": "ChurchApps",
+ "version": "1.1.0",
+ "minAppVersion": "0.6.0",
+ "transport": "http",
+ "configFields": [
+  {
+   "id": "baseUrl",
+   "label": "URL の先頭",
+   "type": "text",
+   "default": "http://192.168.0.10:5505",
+   "placeholder": "http://192.168.0.10",
+   "mono": true
+  }
+ ],
+ "actions": [
+  {
+   "id": "clear_all",
+   "name": "Clear all",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/socket.io/?EIO=4&transport=polling&t=azne42ol"
+   }
+  }
+ ],
+ "feedbacks": [],
+ "variables": [],
+ "presets": [
+  {
+   "id": "clear_all",
+   "category": "Common",
+   "name": "Clear all",
+   "text": "✖",
+   "backgroundColor": "#640808",
+   "action": {
+    "definitionId": "clear_all",
+    "options": {}
+   }
+  },
+  {
+   "id": "clear_all_2",
+   "category": "Clear",
+   "name": "Clear All",
+   "text": "Clear All",
+   "backgroundColor": "#640808",
+   "action": {
+    "definitionId": "clear_all",
+    "options": {}
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "title": "公開 OSS のモジュールから自動変換（MIT）",
+   "url": "https://github.com/bitfocus/companion-module-churchapps-freeshow",
+   "status": "推測",
+   "note": "送る内容だけを変換。実機では未確認。作者：Kristoffer Vassbø"
+  }
+ ],
+ "source": {
+  "module": "churchapps-freeshow",
+  "version": "1.1.0",
+  "license": "MIT",
+  "maintainers": [
+   "Kristoffer Vassbø"
+  ],
+  "repository": "git+https://github.com/bitfocus/companion-module-churchapps-freeshow.git"
+ }
+}
