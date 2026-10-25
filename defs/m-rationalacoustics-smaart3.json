@@ -261,14 +261,7 @@
     "kind": "bytes",
     "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"P\"}],\"sequenceNumber\":44}",
     "encoding": "text"
-   },
-   "more": [
-    {
-     "kind": "bytes",
-     "data": "{\"action\":\"get\",\"sequenceNumber\":45}",
-     "encoding": "text"
-    }
-   ]
+   }
   },
   {
    "id": "toggleInputMeters",
@@ -276,9 +269,16 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"shift + E\"}],\"sequenceNumber\":46}",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"shift + E\"}],\"sequenceNumber\":45}",
     "encoding": "text"
-   }
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"action\":\"get\",\"sequenceNumber\":46}",
+     "encoding": "text"
+    }
+   ]
   },
   {
    "id": "toggleInputMeterOrientation",
@@ -308,40 +308,6 @@
     "kind": "bytes",
     "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"E\"}],\"sequenceNumber\":49}",
     "encoding": "text"
-   }
-  },
-  {
-   "id": "moveFrontTrace",
-   "name": "Trace Y Offset",
-   "options": [
-    {
-     "id": "selectedDirection",
-     "label": "Direction",
-     "type": "select",
-     "default": "up",
-     "choices": [
-      {
-       "id": "up",
-       "label": "Up"
-      },
-      {
-       "id": "down",
-       "label": "Down"
-      }
-     ],
-     "help": "Which direction do you want?"
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + cursor {{option.selectedDirection|map}}}",
-    "encoding": "text"
-   },
-   "maps": {
-    "selectedDirection": {
-     "up": "up\"}],\"sequenceNumber\":64",
-     "down": "down\"}],\"sequenceNumber\":65"
-    }
    }
   },
   {
@@ -411,14 +377,7 @@
     "kind": "bytes",
     "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + P\"}],\"sequenceNumber\":71}",
     "encoding": "text"
-   },
-   "more": [
-    {
-     "kind": "bytes",
-     "data": "{\"action\":\"get\",\"sequenceNumber\":72}",
-     "encoding": "text"
-    }
-   ]
+   }
   },
   {
    "id": "clearLockedCursor",
@@ -426,9 +385,16 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + X\"}],\"sequenceNumber\":73}",
+    "data": "{\"action\":\"issueCommand\",\"properties\":[{\"keypress\":\"command + X\"}],\"sequenceNumber\":72}",
     "encoding": "text"
-   }
+   },
+   "more": [
+    {
+     "kind": "bytes",
+     "data": "{\"action\":\"get\",\"sequenceNumber\":73}",
+     "encoding": "text"
+    }
+   ]
   },
   {
    "id": "moveLockedCursor",

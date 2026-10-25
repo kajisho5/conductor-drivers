@@ -1,49 +1,48 @@
 # 変換の結果
 
-作成：2026-10-18T21:08:09.501Z
+作成：2026-10-25T21:12:30.950Z
 
 | 結果 | 数 | 意味 |
 |---|---|---|
-| full | 89 | 全部の動作を送れる |
-| partial | 204 | 一部の動作を送れる |
-| list-only | 42 | 動作の一覧は取れたが、送る内容を作れなかった |
-| no-send | 230 | 動作を実行しても何も送らなかった（返事待ち・独自の接続手順など） |
-| failed / crashed | 17 | モジュールが起動しなかった |
+| full | 90 | 全部の動作を送れる |
+| partial | 201 | 一部の動作を送れる |
+| list-only | 41 | 動作の一覧は取れたが、送る内容を作れなかった |
+| no-send | 233 | 動作を実行しても何も送らなかった（返事待ち・独自の接続手順など） |
+| failed / crashed | 16 | モジュールが起動しなかった |
 | excluded-name | 4 | 元のソフトの名前の機器（表示名に出せないので除外） |
 | license | 2 | ライセンスが再利用を許していないので除外 |
-| builtin | 12 | アプリに組み込みの定義がある（送れる動作は builtin/ に出し、組み込みの定義へ足す） |
+| builtin | 13 | アプリに組み込みの定義がある（送れる動作は builtin/ に出し、組み込みの定義へ足す） |
 | 合計 | 600 | |
 
-送れる動作：3906 / 8403
+送れる動作：3909 / 8419
 
 ## 送れなかった理由（動作の数）
 
-- no-send: 818
-- error: 231
-- overlap: 217
-- text-slot: 193
+- no-send: 801
+- error: 247
+- overlap: 216
+- text-slot: 194
 - not-run: 143
-- number-slot: 124
+- number-slot: 126
 - verify-mismatch: 95
-- option-breaks-send: 60
+- option-breaks-send: 56
 - osc-no-send: 54
-- verify-no-send: 32
 - verify-path: 31
+- verify-no-send: 28
 - parts-origin-differs: 27
 - map-twice: 22
 - two-options-one-arg: 20
 - path-overlap: 13
-- part0-number-slot: 12
+- verify-multi-request: 12
 - body-number-slot: 12
-- verify-multi-request: 11
 - too-many-choices: 11
 - part0-osc-address-overlap: 11
+- part0-number-slot: 11
 - body-text-slot: 10
 - part0-osc-string-overlap: 10
 - verify-body: 10
 - osc-multi-datagram: 9
 - osc-address-text-slot: 9
-- parts-map-differs: 8
 - part0-verify-osc-address: 8
 - verify-osc-float: 8
 - path-number-slot: 8
@@ -52,6 +51,7 @@
 - osc-string-number-slot: 6
 - origin-differs: 5
 - multi-request: 5
+- parts-map-differs: 5
 - osc-arg-count: 4
 - multi-datagram: 4
 - part0-option-breaks-send: 4
@@ -64,6 +64,7 @@
 - part0-osc-multi-datagram: 2
 - part0-map-twice: 2
 - osc-address-overlap: 2
+- part1-path-text-slot: 2
 - osc-string-text-slot: 2
 - part0-overlap: 2
 - osc-type-text-slot: 1
@@ -75,14 +76,13 @@
 - osc-string-overlap: 1
 - part0-verify-osc-int: 1
 - part1-path-number-slot: 1
-- part0-path-text-slot: 1
-- part1-path-text-slot: 1
 - verify-osc-address: 1
 - osc-number: 1
 - part0-body-text-slot: 1
 - part0-body-number-slot: 1
 - part1-verify-osc-int: 1
 - part0-verify-path: 1
+- part0-text-slot: 1
 - part0-verify-mismatch: 1
 - part0-verify-no-send: 1
 - origin-varies: 1
@@ -106,7 +106,7 @@
 | aimedia-lexilive | AI Media Lexi Live | no-send | 0 / 4 | MIT |
 | aja-dante-12gam | AJA DANTE 12GAM | no-send | 0 / 1 | MIT |
 | aja-fs | AJA FS2 / FS4 / FS-HDR | full | 2 / 2 | MIT |
-| aja-helo | AJA HELO | partial | 13 / 17 | MIT |
+| aja-helo | AJA HELO | partial | 14 / 17 | MIT |
 | aja-kipro | AJA Ki Pro / Ki Pro Ultra | partial | 20 / 21 | MIT |
 | aja-kumo | AJA Kumo | partial | 4 / 5 | MIT |
 | allenheath-ahm | Allen & Heath AHM | partial | 4 / 14 | MIT |
@@ -205,12 +205,12 @@
 | broadlink-remote | BroadLink RM4 Pro | no-send | 0 / 2 | MIT |
 | brompton-tessera | Brompton Technology Tessera LED Processor Control | partial | 22 / 55 | MIT |
 | bss-soundweb | BSS Soundweb London | no-send | 0 / 4 | MIT |
-| bytehive-playoutbee | ByteHive PlayoutBee | partial | 10 / 11 | ISC |
+| bytehive-playoutbee | ByteHive PlayoutBee | full | 11 / 11 | ISC |
 | cablematters-matrix | Cable Matters Matrix | partial | 2 / 3 | MIT |
 | cablematters-matrix | Cable Matters Matrix | partial | 2 / 3 | MIT |
 | calrec-cscp | Calrec CSCP | list-only | 0 / 6 | MIT |
 | camstreamer-camstreamer | camstreamer Camera | no-send | 0 / 0 | MIT |
-| canon-ptz | Canon CR-N300 / CR-N500 / CR-N700 / CR-X300 / CR-X500 / XF605 / C300 MkIII / … | partial | 79 / 107 | MIT |
+| canon-ptz | Canon CR-N300 / CR-N500 / CR-N700 / CR-X300 / CR-X500 / XF605 / C300 MkIII / … | partial | 78 / 107 | MIT |
 | canon-xf | Canon XF405 / XF705 / C100 / C200 / Browser Remote | no-send | 0 / 34 | MIT |
 | captionkit-api | CaptionKit API | full | 2 / 2 | MIT |
 | casparcg-server | CasparCG Server | partial | 1 / 15 | ISC |
@@ -222,7 +222,7 @@
 | chilibytes-pdfosc | ChiliBytes PDFOSC | no-send | 0 / 7 | MIT |
 | christie-projector | Christie Projector | full | 67 / 67 | MIT |
 | christie-spyder | Christie Spyder X20/X80 | full | 9 / 9 | ISC |
-| churchapps-freeshow | ChurchApps FreeShow | partial | 1 / 42 | MIT |
+| churchapps-freeshow | ChurchApps FreeShow | list-only | 0 / 42 | MIT |
 | chyronhego-lyric | ChyronHego Lyric | partial | 3 / 8 | MIT |
 | cinegy-capture | Cinegy Capture | partial | 2 / 3 | MIT |
 | cisco-roomos | Cisco RoomOS | list-only | 0 / 32 | MIT |
@@ -242,7 +242,7 @@
 | cvmeventi-countdown | CVM Eventi Countdown | failed | 0 / 0 | MIT |
 | cyberpower-pdu | CyberPower PDU | partial | 2 / 5 | MIT |
 | dahuasecurity-ptz | dahua PTZ Camera | partial | 13 / 15 | MIT |
-| dan-dugan-automixer | Dan Dugan Sound Design Model M / Model N | partial | 5 / 50 | MIT |
+| dan-dugan-automixer | Dan Dugan Sound Design Model M / Model N | partial | 6 / 50 | MIT |
 | dashare-multiplay | da-share MultiPlay | full | 15 / 15 | MIT |
 | dashare-multiplay3 | da-Share MultiPlay 3 | no-send | 0 / 15 | MIT |
 | dataton-watchout-json | Dataton Watchout 7 | no-send | 0 / 0 | MIT |
@@ -360,7 +360,7 @@
 | highpass-upc | HighPass UPC -Ultimate Presentation Control | no-send | 0 / 15 | MIT |
 | hive-beebox | Hive Beeblade / Beebox | no-send | 0 / 7 | MIT |
 | hollyland-solidcom | Hollyland Solidcom | no-send | 0 / 4 | MIT |
-| hologfx-holographics | hologfx.io Holographics | list-only | 0 / 6 | MIT |
+| hologfx-holographics | hologfx.io Holographics | no-send | 0 / 6 | MIT |
 | homeassistant-server | Home Assistant Server | no-send | 0 / 15 | MIT |
 | ibm-watson | IBM Watson | partial | 5 / 6 | MIT |
 | iccms-sib | IC Control Media & Sport AB Sport In The Box | partial | 2 / 3 | MIT |
@@ -379,11 +379,11 @@
 | interspace-mastercuev7 | Interspace Industries MasterCue V7 | partial | 5 / 10 | MIT |
 | iobroker-ws | ioBroker WebSockets | no-send | 0 / 5 | MIT |
 | ioversal-vertex | ioversal Vertex | partial | 10 / 12 | MIT |
-| ipl-ocp | Inkling Performance Labs Overlay Control Panel | partial | 1 / 20 | MIT |
+| ipl-ocp | Inkling Performance Labs Overlay Control Panel | partial | 3 / 20 | MIT |
 | irisdown-countdowntimer | Irisdown Countdown Timer | full | 9 / 9 | MIT |
 | irisdown-remoteshowcontrol | Irisdown Remote Show Control | partial | 9 / 10 | MIT |
 | josephadams-gamepadio | Joseph Adams gamepad-io | list-only | 0 / 22 | MIT |
-| josephadams-scriptlauncher | Joseph Adams Script Launcher | list-only | 0 / 77 | MIT |
+| josephadams-scriptlauncher | Joseph Adams Script Launcher | partial | 1 / 77 | MIT |
 | joy-playdeck | JOY event & media Playdeck | full | 57 / 57 | MIT |
 | jozeemedia-jcounter | Jozee Media Solutions J-Counter | no-send | 0 / 4 | MIT |
 | julusian-test | Julusian Test | no-send | 0 / 1 | MIT |
@@ -521,14 +521,14 @@
 | qsys-remote-control | Q-Sys | list-only | 0 / 25 | MIT |
 | radiodj-rest | RadioDJ REST API | full | 14 / 14 | MIT |
 | raspberry-gpio | Raspberry Pi foundation RPi GPIO | no-send | 0 / 0 | MIT |
-| rationalacoustics-smaart3 | Rational Acoustics Smaart V8.3 - V8.5 / Smaart Di 2.1 and newer | partial | 24 / 32 | MIT |
+| rationalacoustics-smaart3 | Rational Acoustics Smaart V8.3 - V8.5 / Smaart Di 2.1 and newer | partial | 23 / 32 | MIT |
 | red-rcp2 | RED RCP2 Camera Control | partial | 20 / 21 | MIT |
 | renewedvision-propresenter-api | Renewed Vision ProPresenter API | no-send | 0 / 0 | MIT |
 | renewedvision-propresenter | Renewed Vision ProPresenter | partial | 30 / 41 | MIT |
 | renewedvision-pvp | Renewed Vision PVP 3 | list-only | 0 / 29 | MIT |
 | resi-decoders | Resi Decoder | full | 6 / 6 | MIT |
 | resi-studio | Resi Studio | partial | 1 / 2 | MIT |
-| resolume-arena | Resolume Arena | partial | 2 / 42 | MIT |
+| resolume-arena | Resolume Arena | builtin | 2 / 42 | MIT |
 | restream-api | Restream API | no-send | 0 / 0 | MIT |
 | rgblink-mini | RGBlink mini/mini+ | partial | 8 / 18 | MIT |
 | rgblink-vsp628pro | RGBlink VSP 628pro | partial | 5 / 12 | MIT |
@@ -537,7 +537,7 @@
 | riedel-smartpanel | Riedel Communications Smart Panel | partial | 9 / 20 | MIT |
 | rode-rcv | RØDECaster Video (RCV) | no-send | 0 / 15 | MIT |
 | rogueamoeba-farrago | Rogue Amoeba Farrago | no-send | 0 / 23 | MIT |
-| roku-tv | Roku TV | partial | 5 / 8 | MIT |
+| roku-tv | Roku TV | partial | 6 / 8 | MIT |
 | roland-p20hd | Roland P-20HD | list-only | 0 / 24 | MIT |
 | roland-v160hd | Roland V-160HD | builtin | 49 / 76 | MIT |
 | roland-v600uhd | Roland V-600UHD | partial | 16 / 17 | MIT |
@@ -562,7 +562,7 @@
 | shure-chargers | Shure SBRC / SB-220 / SB-240 | full | 3 / 3 | MIT |
 | shure-dca901 | Shure DCA901 | full | 12 / 12 | MIT |
 | shure-mxa910 | Shure MXA910 / MXA920 | partial | 10 / 11 | MIT |
-| shure-mxcw | Shure Microflex Complete Wireless (MXCW) | partial | 36 / 38 | MIT |
+| shure-mxcw | Shure Microflex Complete Wireless (MXCW) | partial | 37 / 38 | MIT |
 | shure-mxn5 | Shure MXN-5 | partial | 8 / 10 | MIT |
 | shure-mxw | Shure Microflex (MXW) | full | 10 / 10 | MIT |
 | shure-p300 | Shure P300 | full | 4 / 4 | MIT |
@@ -591,7 +591,7 @@
 | sonos-speakers | Sonos Speakers | no-send | 0 / 0 | MIT |
 | sony-bravia-simpleip | Sony Bravia Simple IP | partial | 4 / 7 | MIT |
 | sony-bravia | Sony Bravia | no-send | 0 / 7 | MIT |
-| sony-cled |  | crashed | 0 / 0 |  |
+| sony-cled | Sony ZRCT-300 | list-only | 0 / 16 | MIT |
 | sony-ptz | Sony BRC-AM7 / SRG-A40 / SRG-A12 / ILME-FR7 | list-only | 0 / 22 | MIT |
 | sony-serialtally | Sony XVS 9000/8000/7000/6000 / XVS-G1 / MLS-X1 | partial | 9 / 11 | MIT |
 | sony-srg-a12 | Sony SRG-A12 | no-send | 0 / 29 | MIT |
@@ -608,7 +608,7 @@
 | stagetec-rcp | StageTec XDIP / NXC-T | list-only | 0 / 4 | MIT |
 | stagetec-xci | Stagetec XCI03 | no-send | 0 / 2 | MIT |
 | stagetimerio-api | stagetimer.io Stagetimer API | partial | 27 / 32 | MIT |
-| studiocoast-vmix | StudioCoast vMix | builtin | 64 / 129 | MIT |
+| studiocoast-vmix | StudioCoast vMix | builtin | 63 / 129 | MIT |
 | symetrix-dsp | Symetrix DSP | partial | 7 / 8 | MIT |
 | syncer-live | Zusor Syncer.live | full | 1 / 1 | MIT |
 | tagvs-mcs | TAG Video Systems MCS | no-send | 0 / 11 | MIT |
@@ -617,9 +617,9 @@
 | tascam-cd400u | Tascam CD-400U / CD-400U DAB | no-send | 0 / 17 | MIT |
 | tascam-da-6400 | Tascam DA-6400 / DA-6400dp | no-send | 0 / 41 | MIT |
 | tasmota-http | Tasmota HTTP | full | 2 / 2 | MIT |
-| techministry-beacon | Tech Ministry Beacon | list-only | 0 / 6 | MIT |
-| techministry-midirelay | Tech Ministry MIDI Relay | list-only | 0 / 10 | MIT |
-| techministry-spotifycontroller | Tech Ministry Spotify Controller | partial | 1 / 19 | MIT |
+| techministry-beacon | Tech Ministry Beacon | no-send | 0 / 6 | MIT |
+| techministry-midirelay | Tech Ministry MIDI Relay | no-send | 0 / 10 | MIT |
+| techministry-spotifycontroller | Tech Ministry Spotify Controller | list-only | 0 / 19 | MIT |
 | techministry-tallyarbiter | Tech Ministry Tally Arbiter | no-send | 0 / 3 | MIT |
 | techministry-timekeeper | Tech Ministry TimeKeeper | list-only | 0 / 8 | MIT |
 | telegram-bot | Telegram Bot | no-send | 0 / 0 | MIT |

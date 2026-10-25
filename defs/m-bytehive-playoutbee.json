@@ -25,14 +25,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/api/play"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/socket.io/?EIO=4&transport=polling&t=Q5Gol31&b64=1"
-    }
-   ]
+   }
   },
   {
    "id": "pause",
@@ -236,6 +229,29 @@
      "270": "27",
      "360": "36"
     }
+   }
+  },
+  {
+   "id": "volume",
+   "name": "Set Volume of Asset",
+   "options": [
+    {
+     "id": "clip",
+     "label": "Clip",
+     "type": "text",
+     "default": "0"
+    },
+    {
+     "id": "volume",
+     "label": "Volume",
+     "type": "text",
+     "default": "0"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/api/asset/{{option.clip}}/volume/{{option.volume}}"
    }
   }
  ],

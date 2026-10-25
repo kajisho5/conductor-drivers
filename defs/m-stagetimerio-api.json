@@ -90,8 +90,8 @@
    }
   },
   {
-   "id": "previous",
-   "name": "Transport: Previous",
+   "id": "next",
+   "name": "Transport: Next",
    "options": [
     {
      "id": "autostart",
@@ -104,7 +104,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/v1/previous?room_id=YOUR-ID&api_key=YOUR-KEY{{option.autostart|map}}"
+    "path": "/v1/next?room_id=YOUR-ID&api_key=YOUR-KEY{{option.autostart|map}}"
    },
    "maps": {
     "autostart": {
@@ -270,6 +270,32 @@
    }
   },
   {
+   "id": "start_timer",
+   "name": "Timer: Start",
+   "options": [
+    {
+     "id": "index",
+     "label": "Timer index",
+     "type": "number",
+     "default": 1,
+     "min": 1,
+     "max": 99,
+     "help": "Index of a timer to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second timer from the top, set `index=2`."
+    },
+    {
+     "id": "timer_id",
+     "label": "Timer ID",
+     "type": "text",
+     "help": "The ID of the timer you want to target."
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/v1/start_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
+   }
+  },
+  {
    "id": "stop_timer",
    "name": "Timer: Stop",
    "options": [
@@ -293,32 +319,6 @@
     "kind": "http",
     "method": "GET",
     "path": "/v1/stop_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
-   }
-  },
-  {
-   "id": "start_or_stop_timer",
-   "name": "Timer: Toggle playback",
-   "options": [
-    {
-     "id": "index",
-     "label": "Timer index",
-     "type": "number",
-     "default": 1,
-     "min": 1,
-     "max": 99,
-     "help": "Index of a timer to target in a room. Note: Index is not zero-based, it starts at 1. Example: To target the second timer from the top, set `index=2`."
-    },
-    {
-     "id": "timer_id",
-     "label": "Timer ID",
-     "type": "text",
-     "help": "The ID of the timer you want to target."
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/v1/start_or_stop_timer?room_id=YOUR-ID&api_key=YOUR-KEY&index={{option.index}}&timer_id={{option.timer_id}}"
    }
   },
   {
@@ -504,13 +504,13 @@
    }
   },
   {
-   "id": "Previous",
+   "id": "Next",
    "category": "Transport",
-   "name": "Previous",
-   "text": "Previous",
+   "name": "Next",
+   "text": "Next",
    "backgroundColor": "#000000",
    "action": {
-    "definitionId": "previous",
+    "definitionId": "next",
     "options": {}
    }
   },
@@ -659,6 +659,19 @@
     "definitionId": "reset_timer",
     "options": {
      "index": 1
+    }
+   }
+  },
+  {
+   "id": "Start a timer",
+   "category": "Timer",
+   "name": "Start a timer",
+   "text": "Start #2",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "start_timer",
+    "options": {
+     "index": 2
     }
    }
   },

@@ -312,6 +312,34 @@
      "ChannelDown": "ChannelDown"
     }
    }
+  },
+  {
+   "id": "custom",
+   "name": "Send A Custom Command",
+   "options": [
+    {
+     "id": "command",
+     "label": "Command",
+     "type": "text",
+     "default": ""
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "POST",
+    "path": "/keypress/Lit_5",
+    "body": "",
+    "contentType": "text/plain;charset=UTF-8"
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "POST",
+     "path": "/keypress/Lit_Q",
+     "body": "",
+     "contentType": "text/plain;charset=UTF-8"
+    }
+   ]
   }
  ],
  "feedbacks": [],

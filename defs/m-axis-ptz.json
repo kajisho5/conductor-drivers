@@ -90,7 +90,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove={{option.speed|lin:-1:0}},0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove={{option.speed|lin:-1:0}},0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -109,7 +109,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove={{option.speed}},0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove={{option.speed}},0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -128,7 +128,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,{{option.speed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,{{option.speed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -147,7 +147,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,{{option.speed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,{{option.speed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -157,7 +157,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouspantiltmove=0,0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -176,7 +176,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?move=home&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?move=home&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -195,7 +195,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove={{option.zoomspeed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove={{option.zoomspeed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -214,7 +214,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove={{option.zoomspeed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove={{option.zoomspeed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -224,7 +224,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove=0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuouszoommove=0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -243,7 +243,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove={{option.speed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove={{option.speed}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -262,7 +262,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove={{option.speed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove={{option.speed|lin:-1:0}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -272,7 +272,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove=0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?continuousfocusmove=0&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    }
   },
@@ -299,7 +299,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?autofocus=o{{option.bol|map}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?autofocus=o{{option.bol|map}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    },
    "maps": {
@@ -720,7 +720,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?setserverpresetno={{option.val|map}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?setserverpresetno={{option.val|map}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    },
    "maps": {
@@ -1238,7 +1238,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "GET /axis-cgi/com/ptz.cgi?gotoserverpresetno={{option.val|map}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 6.17; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
+    "data": "GET /axis-cgi/com/ptz.cgi?gotoserverpresetno={{option.val|map}}&camera=1 HTTP/1.1\\r\\nhost: 10.11.12.13\\r\\nconnection: keep-alive\\r\\nuser-agent: node-urllib/3.0.0 Node.js/22.23.3 (Linux 7.0; x64)\\r\\nauthorization: Basic Og==\\r\\n\\r\\n",
     "encoding": "text"
    },
    "maps": {
