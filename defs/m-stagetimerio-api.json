@@ -114,21 +114,27 @@
    }
   },
   {
-   "id": "add_time",
-   "name": "Transport: Add time",
+   "id": "previous",
+   "name": "Transport: Previous",
    "options": [
     {
-     "id": "amount",
-     "label": "Amount",
-     "type": "text",
-     "default": "1m",
-     "help": "An amount of time specified by a number followed by a divison of time. Eg. `5s` for 5 seconds, `10m` for 10 minutes, etc."
+     "id": "autostart",
+     "label": "Autostart",
+     "type": "boolean",
+     "default": false,
+     "help": "Set to `true` to automatically start the timer after the action is triggered."
     }
    ],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/v1/add_time?room_id=YOUR-ID&api_key=YOUR-KEY&amount={{option.amount}}"
+    "path": "/v1/previous?room_id=YOUR-ID&api_key=YOUR-KEY{{option.autostart|map}}"
+   },
+   "maps": {
+    "autostart": {
+     "false": "",
+     "true": "&autostart=true"
+    }
    }
   },
   {
@@ -504,6 +510,17 @@
    }
   },
   {
+   "id": "Previous",
+   "category": "Transport",
+   "name": "Previous",
+   "text": "Previous",
+   "backgroundColor": "#000000",
+   "action": {
+    "definitionId": "previous",
+    "options": {}
+   }
+  },
+  {
    "id": "Next",
    "category": "Transport",
    "name": "Next",
@@ -512,19 +529,6 @@
    "action": {
     "definitionId": "next",
     "options": {}
-   }
-  },
-  {
-   "id": "+1min",
-   "category": "Transport",
-   "name": "+1min",
-   "text": "+1min",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "add_time",
-    "options": {
-     "amount": "1m"
-    }
    }
   },
   {
@@ -541,19 +545,6 @@
    }
   },
   {
-   "id": "+30s",
-   "category": "Transport",
-   "name": "+30s",
-   "text": "+30s",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "add_time",
-    "options": {
-     "amount": "30s"
-    }
-   }
-  },
-  {
    "id": "-30s",
    "category": "Transport",
    "name": "-30s",
@@ -563,19 +554,6 @@
     "definitionId": "subtract_time",
     "options": {
      "amount": "30s"
-    }
-   }
-  },
-  {
-   "id": "+5min",
-   "category": "Transport",
-   "name": "+5min",
-   "text": "+5min",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "add_time",
-    "options": {
-     "amount": "5m"
     }
    }
   },

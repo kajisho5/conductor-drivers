@@ -2548,25 +2548,9 @@
    }
   },
   {
-   "id": "videoCallConnect",
-   "name": "VideoCall - Connect / Reconnect",
+   "id": "virtualSet",
+   "name": "VirtualSet - Zoom To Selected Preset",
    "options": [
-    {
-     "id": "functionID",
-     "label": "Select Output",
-     "type": "select",
-     "default": "VideoCallConnect",
-     "choices": [
-      {
-       "id": "VideoCallConnect",
-       "label": "Connect"
-      },
-      {
-       "id": "VideoCallReconnect",
-       "label": "Reconnect"
-      }
-     ]
-    },
     {
      "id": "input",
      "label": "Input",
@@ -2575,27 +2559,41 @@
      "help": "Number, Name, or GUID"
     },
     {
-     "id": "name",
-     "label": "Name",
-     "type": "text",
-     "default": ""
-    },
-    {
-     "id": "password",
-     "label": "Password",
-     "type": "text",
-     "default": ""
+     "id": "value",
+     "label": "Preset (1-4)",
+     "type": "select",
+     "default": "1",
+     "choices": [
+      {
+       "id": "1",
+       "label": "1"
+      },
+      {
+       "id": "2",
+       "label": "2"
+      },
+      {
+       "id": "3",
+       "label": "3"
+      },
+      {
+       "id": "4",
+       "label": "4"
+      }
+     ]
     }
    ],
    "send": {
     "kind": "bytes",
-    "data": "VideoCall{{option.functionID|map}}undefined\\r\\n",
+    "data": "FUNCTION SelectIndex Input=undefined&Value={{option.value|map}}\\r\\n",
     "encoding": "text"
    },
    "maps": {
-    "functionID": {
-     "VideoCallConnect": "ConnectInput=",
-     "VideoCallReconnect": "ReconnectInput=undefined&Value=undefined,"
+    "value": {
+     "1": "1",
+     "2": "2",
+     "3": "3",
+     "4": "4"
     }
    }
   },

@@ -237,7 +237,7 @@
   "reasons": {
    "verify-path": 1,
    "verify-multi-request": 1,
-   "part0-path-overlap": 1
+   "path-overlap": 1
   },
   "errors": [],
   "chatty": false,
@@ -1781,12 +1781,14 @@
   "license": "ISC",
   "status": "ok",
   "actions": 11,
-  "converted": 11,
-  "reasons": {},
+  "converted": 9,
+  "reasons": {
+   "verify-multi-request": 2
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "full"
+  "result": "partial"
  },
  {
   "id": "cablematters-matrix",
@@ -1829,9 +1831,9 @@
   "actions": 6,
   "converted": 0,
   "reasons": {
-   "number-slot": 3,
+   "number-slot": 4,
    "overlap": 1,
-   "no-send": 2
+   "no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -1862,13 +1864,12 @@
   "converted": 78,
   "reasons": {
    "no-send": 18,
-   "verify-multi-request": 3,
+   "verify-multi-request": 4,
    "error": 1,
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part1-path-text-slot": 2,
-   "parts-map-differs": 1
+   "part1-path-text-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -2049,16 +2050,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 42,
-  "converted": 0,
+  "converted": 1,
   "reasons": {
    "no-send": 40,
-   "verify-no-send": 1,
    "error": 1
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "partial"
  },
  {
   "id": "chyronhego-lyric",
@@ -2369,7 +2369,8 @@
    "overlap": 21,
    "option-breaks-send": 9,
    "text-slot": 2,
-   "number-slot": 7,
+   "number-slot": 6,
+   "verify-mismatch": 1,
    "no-send": 5
   },
   "errors": [],
@@ -3000,8 +3001,8 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 5,
-   "text-slot": 1,
+   "option-breaks-send": 4,
+   "text-slot": 2,
    "no-send": 1
   },
   "errors": [],
@@ -4467,9 +4468,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 20,
-  "converted": 3,
+  "converted": 2,
   "reasons": {
-   "no-send": 17
+   "no-send": 18
   },
   "errors": [],
   "chatty": false,
@@ -4516,11 +4517,11 @@
   "converted": 0,
   "reasons": {
    "error": 9,
-   "verify-no-send": 1,
-   "no-send": 12
+   "no-send": 11,
+   "verify-no-send": 2
   },
   "errors": [],
-  "chatty": true,
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -4533,8 +4534,8 @@
   "actions": 77,
   "converted": 1,
   "reasons": {
-   "no-send": 74,
-   "verify-no-send": 2
+   "no-send": 75,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -6445,8 +6446,7 @@
   "converted": 15,
   "reasons": {
    "no-send": 3,
-   "parts-map-differs": 1,
-   "verify-multi-request": 1,
+   "parts-map-differs": 2,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -6642,12 +6642,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 32,
-  "converted": 23,
+  "converted": 24,
   "reasons": {
-   "option-breaks-send": 4,
+   "option-breaks-send": 5,
    "text-slot": 2,
-   "parts-map-differs": 2,
-   "part0-text-slot": 1
+   "parts-map-differs": 1
   },
   "errors": [],
   "chatty": false,
@@ -6898,9 +6897,10 @@
   "license": "MIT",
   "status": "error",
   "actions": 8,
-  "converted": 6,
+  "converted": 5,
   "reasons": {
-   "multi-request": 2
+   "multi-request": 2,
+   "no-send": 1
   },
   "errors": [
    "module exited (1)"
@@ -7154,11 +7154,10 @@
   "actions": 25,
   "converted": 18,
   "reasons": {
-   "part0-option-breaks-send": 1,
+   "part0-option-breaks-send": 2,
    "option-breaks-send": 3,
    "text-slot": 1,
-   "number-slot": 1,
-   "part0-overlap": 1
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -7733,19 +7732,11 @@
  },
  {
   "id": "sony-cled",
-  "name": "Sony ZRCT-300",
-  "manufacturer": "Sony",
-  "license": "MIT",
-  "status": "ok",
-  "actions": 16,
-  "converted": 0,
-  "reasons": {
-   "error": 16
-  },
-  "errors": [],
-  "chatty": true,
-  "truncated": false,
-  "result": "list-only"
+  "result": "crashed",
+  "errors": [
+   "host exited 1",
+   "sony-cled: ok actions=16 runs=16 44553ms\nsony-cled: ok actions=16 runs=16 68950ms (chatty)\nfile:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468\n  writeFileSync(outFile, JSON.stringify(res));\n                              ^\n\nRangeError: Invalid string length\n    at JSON.stringify (<anonymous>)\n    at file:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468:31\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n\nNode.js v22.23.4\n"
+  ]
  },
  {
   "id": "sony-ptz",
@@ -7992,9 +7983,8 @@
   "actions": 32,
   "converted": 27,
   "reasons": {
-   "parts-map-differs": 1,
    "verify-multi-request": 3,
-   "path-overlap": 1
+   "path-overlap": 2
   },
   "errors": [],
   "chatty": false,
@@ -8010,9 +8000,9 @@
   "actions": 129,
   "converted": 63,
   "reasons": {
-   "text-slot": 14,
+   "text-slot": 13,
    "option-breaks-send": 3,
-   "verify-mismatch": 16,
+   "verify-mismatch": 17,
    "no-send": 19,
    "overlap": 11,
    "too-many-choices": 1,
@@ -8147,11 +8137,14 @@
   "status": "ok",
   "actions": 6,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 5,
+   "verify-no-send": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-midirelay",
@@ -8161,11 +8154,14 @@
   "status": "ok",
   "actions": 10,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 9,
+   "verify-no-send": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-spotifycontroller",
@@ -8191,12 +8187,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 3,
-  "converted": 0,
-  "reasons": {},
+  "converted": 1,
+  "reasons": {
+   "no-send": 1,
+   "error": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "techministry-timekeeper",
@@ -8212,7 +8211,7 @@
    "error": 1
   },
   "errors": [],
-  "chatty": false,
+  "chatty": true,
   "truncated": false,
   "result": "list-only"
  },

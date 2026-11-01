@@ -71,6 +71,7 @@ defs/・builtin/ の定義は、次の公開モジュールの動作を自動で
 | chamsys-magicq-udp | 2.1.0 | MIT | Per Røine | https://github.com/bitfocus/companion-module-chamsys-magicq-udp.git |
 | christie-projector | 4.1.0 | MIT | Joseph Adams, Per Røine, Andreas Thomsen | https://github.com/bitfocus/companion-module-christie-projector.git |
 | christie-spyder | 2.3.0 | ISC | Per Røine, John A Knight, Jr | https://github.com/bitfocus/companion-module-christie-spyder.git |
+| churchapps-freeshow | 1.1.0 | MIT | Kristoffer Vassbø | https://github.com/bitfocus/companion-module-churchapps-freeshow.git |
 | chyronhego-lyric | 1.0.2 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-chyronhego-lyric.git |
 | cinegy-capture | 1.1.5 | MIT | Leopold Strobl | https://github.com/bitfocus/companion-module-cinegy-capture.git |
 | classx-mixboard | 1.2.0 | MIT | Dar-dev | https://github.com/bitfocus/companion-module-classx-mixboard.git |
@@ -277,6 +278,7 @@ defs/・builtin/ の定義は、次の公開モジュールの動作を自動で
 | syncer-live | 1.0.0 | MIT | Tobias Messner | https://github.com/bitfocus/companion-module-syncer-live.git |
 | tascam-bdmp1 | 1.0.0 | MIT | Christian Volmering | https://github.com/bitfocus/companion-module-tascam-bdmp1.git |
 | tasmota-http | 1.0.4 | MIT | jens frank | https://github.com/bitfocus/companion-module-tasmota-http.git |
+| techministry-tallyarbiter | 2.2.1 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-techministry-tallyarbiter.git |
 | telestream-prism | 1.3.1 | MIT | Phillip Ivan Pietruschka | https://github.com/bitfocus/companion-module-telestream-prism.git |
 | televic-confero | 1.0.0 | MIT | Stijn Bryq | https://github.com/bitfocus/companion-module-televic-confero.git |
 | telos-25-seven-program-delay-manager | 1.1.1 | MIT | Chris Lane | https://github.com/bitfocus/companion-module-telos-25-seven-program-delay-manager |

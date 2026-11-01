@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-10-25T21:12:30.950Z",
+ "generatedAt": "2026-11-01T22:24:59.282Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -88,7 +88,7 @@
    "minAppVersion": "0.6.0",
    "actions": 14,
    "allActions": 17,
-   "bytes": 11413
+   "bytes": 11687
   },
   {
    "id": "m-aja-kipro",
@@ -548,9 +548,9 @@
    "transport": "http",
    "version": "2.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 11,
+   "actions": 9,
    "allActions": 11,
-   "bytes": 16990
+   "bytes": 4149
   },
   {
    "id": "m-cablematters-matrix",
@@ -674,6 +674,17 @@
    "bytes": 6584
   },
   {
+   "id": "m-churchapps-freeshow",
+   "name": "ChurchApps FreeShow",
+   "category": "ChurchApps",
+   "transport": "http",
+   "version": "1.1.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 42,
+   "bytes": 1386
+  },
+  {
    "id": "m-chyronhego-lyric",
    "name": "ChyronHego Lyric",
    "category": "ChyronHego",
@@ -792,7 +803,7 @@
    "minAppVersion": "0.6.0",
    "actions": 2,
    "allActions": 5,
-   "bytes": 1880
+   "bytes": 1882
   },
   {
    "id": "m-dahuasecurity-ptz",
@@ -1461,9 +1472,9 @@
    "transport": "http",
    "version": "4.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 3,
+   "actions": 2,
    "allActions": 20,
-   "bytes": 1640
+   "bytes": 1382
   },
   {
    "id": "m-irisdown-countdowntimer",
@@ -1496,7 +1507,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 77,
-   "bytes": 1425
+   "bytes": 1427
   },
   {
    "id": "m-joy-playdeck",
@@ -2275,9 +2286,9 @@
    "transport": "ws",
    "version": "2.1.2",
    "minAppVersion": "0.6.0",
-   "actions": 23,
+   "actions": 24,
    "allActions": 32,
-   "bytes": 10839
+   "bytes": 11571
   },
   {
    "id": "m-red-rcp2",
@@ -2363,9 +2374,9 @@
    "transport": "http",
    "version": "2.0.5",
    "minAppVersion": "0.6.0",
-   "actions": 6,
+   "actions": 5,
    "allActions": 8,
-   "bytes": 10150
+   "bytes": 9641
   },
   {
    "id": "m-roland-v600uhd",
@@ -2816,7 +2827,7 @@
    "minAppVersion": "0.6.0",
    "actions": 27,
    "allActions": 32,
-   "bytes": 16383
+   "bytes": 15981
   },
   {
    "id": "m-symetrix-dsp",
@@ -2861,6 +2872,17 @@
    "actions": 2,
    "allActions": 2,
    "bytes": 2245
+  },
+  {
+   "id": "m-techministry-tallyarbiter",
+   "name": "Tech Ministry Tally Arbiter",
+   "category": "Tech Ministry",
+   "transport": "http",
+   "version": "2.2.1",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 3,
+   "bytes": 1519
   },
   {
    "id": "m-telestream-prism",

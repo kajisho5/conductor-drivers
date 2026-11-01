@@ -30,13 +30,13 @@
  ],
  "actions": [
   {
-   "id": "macToggleDarkMode",
-   "name": "Mac | Toggle Dark Mode",
+   "id": "macHideAllApps",
+   "name": "Mac | Hide All Applications",
    "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=b98hse2i"
+    "path": "/socket.io/?EIO=4&transport=polling&t=dxf7oft3"
    }
   }
  ],
