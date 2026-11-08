@@ -30,13 +30,13 @@
  ],
  "actions": [
   {
-   "id": "show_clock",
-   "name": "Show Clock Time",
+   "id": "next_slide",
+   "name": "Next Slide",
    "options": [],
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=dvxg59ws"
+    "path": "/socket.io/?EIO=4&transport=polling&t=e52ldoxg"
    }
   }
  ],

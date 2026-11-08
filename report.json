@@ -233,10 +233,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 17,
-  "converted": 14,
+  "converted": 13,
   "reasons": {
    "verify-path": 1,
    "verify-multi-request": 1,
+   "parts-map-differs": 1,
    "path-overlap": 1
   },
   "errors": [],
@@ -251,9 +252,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 21,
-  "converted": 20,
+  "converted": 19,
   "reasons": {
-   "verify-multi-request": 1
+   "verify-multi-request": 2
   },
   "errors": [],
   "chatty": false,
@@ -1783,7 +1784,8 @@
   "actions": 11,
   "converted": 9,
   "reasons": {
-   "verify-multi-request": 2
+   "part1-path-text-slot": 1,
+   "verify-multi-request": 1
   },
   "errors": [],
   "chatty": false,
@@ -1831,9 +1833,9 @@
   "actions": 6,
   "converted": 0,
   "reasons": {
-   "number-slot": 4,
+   "number-slot": 3,
    "overlap": 1,
-   "no-send": 1
+   "no-send": 2
   },
   "errors": [],
   "chatty": false,
@@ -1861,15 +1863,16 @@
   "license": "MIT",
   "status": "ok",
   "actions": 107,
-  "converted": 78,
+  "converted": 79,
   "reasons": {
    "no-send": 18,
-   "verify-multi-request": 4,
+   "verify-multi-request": 3,
    "error": 1,
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part1-path-text-slot": 2
+   "part1-path-text-slot": 1,
+   "parts-map-differs": 1
   },
   "errors": [],
   "chatty": false,
@@ -2050,15 +2053,16 @@
   "license": "MIT",
   "status": "ok",
   "actions": 42,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 40,
+   "no-send": 39,
+   "verify-no-send": 2,
    "error": 1
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "chyronhego-lyric",
@@ -2366,12 +2370,11 @@
   "actions": 50,
   "converted": 6,
   "reasons": {
-   "overlap": 21,
-   "option-breaks-send": 9,
-   "text-slot": 2,
-   "number-slot": 6,
-   "verify-mismatch": 1,
-   "no-send": 5
+   "overlap": 19,
+   "option-breaks-send": 11,
+   "number-slot": 7,
+   "no-send": 6,
+   "text-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -2583,10 +2586,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 4,
-  "converted": 2,
+  "converted": 1,
   "reasons": {
    "verify-mismatch": 1,
-   "number-slot": 1
+   "number-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -4175,12 +4178,14 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 0,
-  "reasons": {},
+  "converted": 1,
+  "reasons": {
+   "no-send": 5
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "partial"
  },
  {
   "id": "homeassistant-server",
@@ -4468,9 +4473,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 20,
-  "converted": 2,
+  "converted": 1,
   "reasons": {
-   "no-send": 18
+   "no-send": 18,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -4517,11 +4523,11 @@
   "converted": 0,
   "reasons": {
    "error": 9,
-   "no-send": 11,
-   "verify-no-send": 2
+   "no-send": 12,
+   "verify-no-send": 1
   },
   "errors": [],
-  "chatty": false,
+  "chatty": true,
   "truncated": false,
   "result": "list-only"
  },
@@ -4532,15 +4538,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 77,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
    "no-send": 75,
-   "verify-no-send": 1
+   "verify-no-send": 2
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "joy-playdeck",
@@ -6445,8 +6451,9 @@
   "actions": 22,
   "converted": 15,
   "reasons": {
-   "no-send": 3,
-   "parts-map-differs": 2,
+   "verify-no-send": 1,
+   "no-send": 2,
+   "verify-multi-request": 2,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -6642,11 +6649,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 32,
-  "converted": 24,
+  "converted": 23,
   "reasons": {
-   "option-breaks-send": 5,
+   "option-breaks-send": 4,
    "text-slot": 2,
-   "parts-map-differs": 1
+   "parts-map-differs": 2,
+   "part0-text-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -7154,10 +7162,11 @@
   "actions": 25,
   "converted": 18,
   "reasons": {
-   "part0-option-breaks-send": 2,
+   "part0-option-breaks-send": 1,
    "option-breaks-send": 3,
    "text-slot": 1,
-   "number-slot": 1
+   "number-slot": 1,
+   "part0-overlap": 1
   },
   "errors": [],
   "chatty": false,
@@ -7732,11 +7741,19 @@
  },
  {
   "id": "sony-cled",
-  "result": "crashed",
-  "errors": [
-   "host exited 1",
-   "sony-cled: ok actions=16 runs=16 44553ms\nsony-cled: ok actions=16 runs=16 68950ms (chatty)\nfile:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468\n  writeFileSync(outFile, JSON.stringify(res));\n                              ^\n\nRangeError: Invalid string length\n    at JSON.stringify (<anonymous>)\n    at file:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468:31\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n\nNode.js v22.23.4\n"
-  ]
+  "name": "Sony ZRCT-300",
+  "manufacturer": "Sony",
+  "license": "MIT",
+  "status": "ok",
+  "actions": 16,
+  "converted": 0,
+  "reasons": {
+   "error": 16
+  },
+  "errors": [],
+  "chatty": true,
+  "truncated": false,
+  "result": "list-only"
  },
  {
   "id": "sony-ptz",
@@ -7983,8 +8000,9 @@
   "actions": 32,
   "converted": 27,
   "reasons": {
+   "part1-path-text-slot": 1,
    "verify-multi-request": 3,
-   "path-overlap": 2
+   "path-overlap": 1
   },
   "errors": [],
   "chatty": false,
@@ -8187,15 +8205,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 3,
-  "converted": 1,
-  "reasons": {
-   "no-send": 1,
-   "error": 1
-  },
+  "converted": 0,
+  "reasons": {},
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "no-send"
  },
  {
   "id": "techministry-timekeeper",
@@ -8205,15 +8220,11 @@
   "status": "ok",
   "actions": 8,
   "converted": 0,
-  "reasons": {
-   "no-send": 6,
-   "verify-no-send": 1,
-   "error": 1
-  },
+  "reasons": {},
   "errors": [],
-  "chatty": true,
+  "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "no-send"
  },
  {
   "id": "telegram-bot",

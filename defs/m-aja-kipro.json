@@ -197,23 +197,6 @@
    }
   },
   {
-   "id": "eraseClip",
-   "name": "Erase Clip By Name",
-   "options": [
-    {
-     "id": "idx",
-     "label": "Clip Name",
-     "type": "text",
-     "default": ""
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/config?action=set&paramid=eParamID_ClipToDelete&value={{option.idx}}&configid=0"
-   }
-  },
-  {
    "id": "eraseClipByDrop",
    "name": "Erase Clip By List",
    "options": [
@@ -228,14 +211,7 @@
     "kind": "http",
     "method": "GET",
     "path": "/config?action=set&paramid=eParamID_ClipToDelete&value=&configid=0"
-   },
-   "more": [
-    {
-     "kind": "http",
-     "method": "GET",
-     "path": "/json?action=connect&configid=0"
-    }
-   ]
+   }
   },
   {
    "id": "customTake",

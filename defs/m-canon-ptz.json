@@ -3974,6 +3974,23 @@
    }
   },
   {
+   "id": "deletePset",
+   "name": "Preset - Delete (by number)",
+   "options": [
+    {
+     "id": "val",
+     "label": "Preset Number",
+     "type": "text",
+     "default": "1"
+    }
+   ],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/-wvhttp-01-/preset/set?p={{option.val}}&all=disabled"
+   }
+  },
+  {
    "id": "traceStop",
    "name": "Trace - Stop",
    "options": [

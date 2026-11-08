@@ -347,7 +347,7 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261101_2210"
+    "path": "/config?action=set&paramid=eParamID_FilenamePrefix&value=20261108_2215"
    }
   },
   {
@@ -371,41 +371,23 @@
      "kind": "http",
      "method": "GET",
      "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
+    },
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/config?action=get&paramid=eParamID_RegisterRecallResult"
     }
    ]
-  },
-  {
-   "id": "schedulerEnabled",
-   "name": "Scheduler Control",
-   "options": [
-    {
-     "id": "enabled",
-     "label": "Enable or Disable Scheduler",
-     "type": "select",
-     "default": "SchedulerEnabled&value=0",
-     "choices": [
-      {
-       "id": "SchedulerEnabled&value=0",
-       "label": "Disabled"
-      },
-      {
-       "id": "SchedulerEnabled&value=1",
-       "label": "Enabled"
-      }
-     ]
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/config?action=set&paramid=eParamID_SchedulerEnabled&value={{option.enabled|map}}"
-   },
-   "maps": {
-    "enabled": {
-     "SchedulerEnabled&value=0": "0",
-     "SchedulerEnabled&value=1": "1"
-    }
-   }
   },
   {
    "id": "schedulerActivity",

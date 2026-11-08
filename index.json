@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-11-01T22:24:59.282Z",
+ "generatedAt": "2026-11-08T22:29:53.316Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -86,9 +86,9 @@
    "transport": "http",
    "version": "2.4.2",
    "minAppVersion": "0.6.0",
-   "actions": 14,
+   "actions": 13,
    "allActions": 17,
-   "bytes": 11687
+   "bytes": 11368
   },
   {
    "id": "m-aja-kipro",
@@ -97,9 +97,9 @@
    "transport": "http",
    "version": "3.4.0",
    "minAppVersion": "0.6.0",
-   "actions": 20,
+   "actions": 19,
    "allActions": 21,
-   "bytes": 9944
+   "bytes": 9486
   },
   {
    "id": "m-aja-kumo",
@@ -231,7 +231,7 @@
    "minAppVersion": "0.6.0",
    "actions": 1,
    "allActions": 10,
-   "bytes": 1388
+   "bytes": 1383
   },
   {
    "id": "m-audac-mtx",
@@ -581,9 +581,9 @@
    "transport": "http",
    "version": "2.4.0",
    "minAppVersion": "0.6.0",
-   "actions": 78,
+   "actions": 79,
    "allActions": 107,
-   "bytes": 107879
+   "bytes": 108204
   },
   {
    "id": "m-captionkit-api",
@@ -672,17 +672,6 @@
    "actions": 9,
    "allActions": 9,
    "bytes": 6584
-  },
-  {
-   "id": "m-churchapps-freeshow",
-   "name": "ChurchApps FreeShow",
-   "category": "ChurchApps",
-   "transport": "http",
-   "version": "1.1.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 42,
-   "bytes": 1386
   },
   {
    "id": "m-chyronhego-lyric",
@@ -911,9 +900,9 @@
    "transport": "tcp",
    "version": "1.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 2,
+   "actions": 1,
    "allActions": 4,
-   "bytes": 1867
+   "bytes": 1465
   },
   {
    "id": "m-disguise-mtc",
@@ -1334,6 +1323,17 @@
    "bytes": 1646
   },
   {
+   "id": "m-hologfx-holographics",
+   "name": "hologfx.io Holographics",
+   "category": "hologfx.io",
+   "transport": "http",
+   "version": "2.0.2",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 6,
+   "bytes": 1939
+  },
+  {
    "id": "m-ibm-watson",
    "name": "IBM Watson",
    "category": "IBM",
@@ -1472,9 +1472,9 @@
    "transport": "http",
    "version": "4.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 2,
+   "actions": 1,
    "allActions": 20,
-   "bytes": 1382
+   "bytes": 1169
   },
   {
    "id": "m-irisdown-countdowntimer",
@@ -1497,17 +1497,6 @@
    "actions": 9,
    "allActions": 10,
    "bytes": 5066
-  },
-  {
-   "id": "m-josephadams-scriptlauncher",
-   "name": "Joseph Adams Script Launcher",
-   "category": "Joseph Adams",
-   "transport": "http",
-   "version": "1.9.0",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 77,
-   "bytes": 1427
   },
   {
    "id": "m-joy-playdeck",
@@ -2200,7 +2189,7 @@
    "minAppVersion": "0.6.0",
    "actions": 15,
    "allActions": 22,
-   "bytes": 6445
+   "bytes": 6323
   },
   {
    "id": "m-powersoft-amplifiers",
@@ -2286,9 +2275,9 @@
    "transport": "ws",
    "version": "2.1.2",
    "minAppVersion": "0.6.0",
-   "actions": 24,
+   "actions": 23,
    "allActions": 32,
-   "bytes": 11571
+   "bytes": 10839
   },
   {
    "id": "m-red-rcp2",
@@ -2872,17 +2861,6 @@
    "actions": 2,
    "allActions": 2,
    "bytes": 2245
-  },
-  {
-   "id": "m-techministry-tallyarbiter",
-   "name": "Tech Ministry Tally Arbiter",
-   "category": "Tech Ministry",
-   "transport": "http",
-   "version": "2.2.1",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 3,
-   "bytes": 1519
   },
   {
    "id": "m-telestream-prism",
