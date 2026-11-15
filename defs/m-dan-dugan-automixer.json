@@ -393,7 +393,7 @@
    ],
    "send": {
     "kind": "bytes",
-    "data": "SNR,Factory Defaults\\r\\n",
+    "data": "SNR,Factory Defaults\\r\\nGS\\r\\n",
     "encoding": "text"
    }
   },
@@ -421,7 +421,7 @@
    "options": [],
    "send": {
     "kind": "bytes",
-    "data": "SNN\\r\\nGS\\r\\n",
+    "data": "SNN\\r\\n",
     "encoding": "text"
    }
   },
@@ -550,8 +550,8 @@
      "GSA": "A",
      "GSS": "S",
      "GSI": "I",
-     "GSO": "O\\r\\nGS",
-     "GSM": "M",
+     "GSO": "O",
+     "GSM": "\\r\\nGSM",
      "GSN": "N",
      "GSX": "X"
     }

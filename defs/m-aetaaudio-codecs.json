@@ -937,25 +937,6 @@
    }
   },
   {
-   "id": "setRedialRetries",
-   "name": "Set Redial Retries",
-   "options": [
-    {
-     "id": "retries",
-     "label": "Retries",
-     "type": "number",
-     "default": 1,
-     "min": 0,
-     "max": 20
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "AT#NBR={{option.retries}}",
-    "encoding": "text"
-   }
-  },
-  {
    "id": "setRedialWaitTime",
    "name": "Set Redial Wait Time",
    "options": [
@@ -1193,7 +1174,7 @@
      "0": "0",
      "1": "1",
      "2": "2",
-     "3": "3AT&VAT#SUPAT&VAT#SUP"
+     "3": "3"
     }
    }
   },
@@ -1226,7 +1207,7 @@
    "maps": {
     "clk": {
      "0": "0",
-     "1": "1"
+     "1": "1AT&VAT#SUPAT&VAT#SUP"
     }
    }
   },
@@ -1681,7 +1662,7 @@
    "maps": {
     "zin": {
      "0": "0",
-     "1": "1AT&VAT#SUPAT&VAT#SUP"
+     "1": "1"
     }
    }
   },
@@ -1714,7 +1695,7 @@
    "maps": {
     "imp": {
      "0": "0",
-     "1": "1"
+     "1": "1AT&VAT#SUPAT&VAT#SUP"
     }
    }
   },

@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-11-08T22:29:53.316Z",
+ "generatedAt": "2026-11-15T23:12:01.603Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -53,9 +53,9 @@
    "transport": "tcp",
    "version": "1.1.1-beta",
    "minAppVersion": "0.6.0",
-   "actions": 51,
+   "actions": 50,
    "allActions": 58,
-   "bytes": 31472
+   "bytes": 31145
   },
   {
    "id": "m-agf-characterworks",
@@ -88,7 +88,7 @@
    "minAppVersion": "0.6.0",
    "actions": 13,
    "allActions": 17,
-   "bytes": 11368
+   "bytes": 10856
   },
   {
    "id": "m-aja-kipro",
@@ -97,9 +97,9 @@
    "transport": "http",
    "version": "3.4.0",
    "minAppVersion": "0.6.0",
-   "actions": 19,
+   "actions": 20,
    "allActions": 21,
-   "bytes": 9486
+   "bytes": 9944
   },
   {
    "id": "m-aja-kumo",
@@ -221,17 +221,6 @@
    "actions": 15,
    "allActions": 24,
    "bytes": 10067
-  },
-  {
-   "id": "m-attend2it-speakertimer",
-   "name": "Attend2IT Speakertimer.co.uk",
-   "category": "Attend2IT",
-   "transport": "http",
-   "version": "1.0.0-beta3",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 10,
-   "bytes": 1383
   },
   {
    "id": "m-audac-mtx",
@@ -416,9 +405,9 @@
    "transport": "tcp",
    "version": "2.0.3",
    "minAppVersion": "0.6.0",
-   "actions": 3,
+   "actions": 4,
    "allActions": 6,
-   "bytes": 5439
+   "bytes": 5647
   },
   {
    "id": "m-biamp-tesira",
@@ -517,7 +506,7 @@
    "minAppVersion": "0.6.0",
    "actions": 12,
    "allActions": 12,
-   "bytes": 5550
+   "bytes": 5548
   },
   {
    "id": "m-boxcast-api",
@@ -548,9 +537,9 @@
    "transport": "http",
    "version": "2.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 9,
+   "actions": 11,
    "allActions": 11,
-   "bytes": 4149
+   "bytes": 16990
   },
   {
    "id": "m-cablematters-matrix",
@@ -581,9 +570,9 @@
    "transport": "http",
    "version": "2.4.0",
    "minAppVersion": "0.6.0",
-   "actions": 79,
+   "actions": 78,
    "allActions": 107,
-   "bytes": 108204
+   "bytes": 107879
   },
   {
    "id": "m-captionkit-api",
@@ -900,9 +889,9 @@
    "transport": "tcp",
    "version": "1.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 2,
    "allActions": 4,
-   "bytes": 1465
+   "bytes": 1867
   },
   {
    "id": "m-disguise-mtc",
@@ -933,9 +922,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 6,
+   "actions": 7,
    "allActions": 11,
-   "bytes": 3412
+   "bytes": 3611
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -1001,7 +990,7 @@
    "minAppVersion": "0.6.0",
    "actions": 8,
    "allActions": 10,
-   "bytes": 6000
+   "bytes": 5997
   },
   {
    "id": "m-etc-eos",
@@ -1323,17 +1312,6 @@
    "bytes": 1646
   },
   {
-   "id": "m-hologfx-holographics",
-   "name": "hologfx.io Holographics",
-   "category": "hologfx.io",
-   "transport": "http",
-   "version": "2.0.2",
-   "minAppVersion": "0.6.0",
-   "actions": 1,
-   "allActions": 6,
-   "bytes": 1939
-  },
-  {
    "id": "m-ibm-watson",
    "name": "IBM Watson",
    "category": "IBM",
@@ -1497,6 +1475,17 @@
    "actions": 9,
    "allActions": 10,
    "bytes": 5066
+  },
+  {
+   "id": "m-josephadams-scriptlauncher",
+   "name": "Joseph Adams Script Launcher",
+   "category": "Joseph Adams",
+   "transport": "http",
+   "version": "1.9.0",
+   "minAppVersion": "0.6.0",
+   "actions": 1,
+   "allActions": 77,
+   "bytes": 1403
   },
   {
    "id": "m-joy-playdeck",
@@ -2189,7 +2178,7 @@
    "minAppVersion": "0.6.0",
    "actions": 15,
    "allActions": 22,
-   "bytes": 6323
+   "bytes": 6445
   },
   {
    "id": "m-powersoft-amplifiers",
@@ -2231,9 +2220,9 @@
    "transport": "http",
    "version": "2.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 3,
+   "actions": 2,
    "allActions": 5,
-   "bytes": 68571
+   "bytes": 10951
   },
   {
    "id": "m-ptzoptics-visca",
@@ -2816,7 +2805,7 @@
    "minAppVersion": "0.6.0",
    "actions": 27,
    "allActions": 32,
-   "bytes": 15981
+   "bytes": 16411
   },
   {
    "id": "m-symetrix-dsp",

@@ -44,6 +44,26 @@
     "data": "0300110e000000{{option.logic_id|u8}}0100000000000000",
     "encoding": "hex"
    }
+  },
+  {
+   "id": "request_logic_state",
+   "name": "Request Logic State",
+   "options": [
+    {
+     "id": "logic_id",
+     "label": "Logic ID",
+     "type": "number",
+     "default": 1,
+     "min": 0,
+     "max": 65535,
+     "help": "Logic address (0-65535)"
+    }
+   ],
+   "send": {
+    "kind": "bytes",
+    "data": "0200110e000000{{option.logic_id|u8}}0000000000000000",
+    "encoding": "hex"
+   }
   }
  ],
  "feedbacks": [],

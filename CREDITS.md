@@ -28,7 +28,6 @@ defs/・builtin/ の定義は、次の公開モジュールの動作を自動で
 | arri-tally | 2.0.2 | MIT | Peter Daniel | https://github.com/bitfocus/companion-module-arri-tally.git |
 | aten-matrix | 2.0.2 | MIT | Noah Callaway | https://github.com/bitfocus/companion-module-aten-matrix.git |
 | atlasied-atmosphere | 1.2.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-atlasied-atmosphere.git |
-| attend2it-speakertimer | 1.0.0-beta3 | MIT | Gareth Risdale | https://github.com/bitfocus/companion-module-attend2it-speakertimer.git |
 | audac-mtx | 2.0.0 | MIT | Jelle van Abbema | https://github.com/bitfocus/companion-module-audac-mtx.get |
 | aver-ptz | 1.2.0 | MIT | Colbix | https://github.com/bitfocus/companion-module-aver-ptz.git |
 | avmediatools-protimer | 2.0.1 | MIT | Sander Kamp, Jeffrey Davidsz | https://github.com/bitfocus/companion-module-avmediatools-protimer.git |
@@ -131,7 +130,6 @@ defs/・builtin/ の定義は、次の公開モジュールの動作を自動で
 | hdkatov-visca | 1.0.2 | MIT | TONY | https://github.com/bitfocus/companion-module-hdkatov-visca.git |
 | hdtv-wolfpackgreen | 1.4.1 | MIT | Justin James | https://github.com/bitfocus/companion-module-hdtv-wolfpackgreen.git |
 | highpass-accompaniment | 1.2.1 | MIT | Marcin Wardecki | https://github.com/bitfocus/companion-module-highpass-accompaniment.git |
-| hologfx-holographics | 2.0.2 | MIT | Floris Porro, Joseph Adams | https://github.com/bitfocus/companion-module-hologfx-holographics.git |
 | ibm-watson | 1.0.1 | MIT | InertiaImpact | https://github.com/bitfocus/companion-module-ibm-watson.git |
 | iccms-sib | 1.0.2 | MIT | Dmitrii Peredera | https://github.com/bitfocus/companion-module-iccms-sib.git |
 | ictag-easyvideo | 1.1.0 | MIT | digitalMIDIA | https://github.com/bitfocus/companion-module-ictag-easyvideo.git |
@@ -147,6 +145,7 @@ defs/・builtin/ の定義は、次の公開モジュールの動作を自動で
 | ipl-ocp | 4.0.0 | MIT | Vincent Lee, Inkfarer | https://github.com/bitfocus/companion-module-ipl-ocp.git |
 | irisdown-countdowntimer | 2.0.0 | MIT | Jeffrey Davidsz | https://github.com/bitfocus/companion-module-irisdown-countdowntimer.git |
 | irisdown-remoteshowcontrol | 2.0.0 | MIT | Per Røine | https://github.com/bitfocus/companion-module-irisdown-remoteshowcontrol.git |
+| josephadams-scriptlauncher | 1.9.0 | MIT | Joseph Adams | https://github.com/bitfocus/companion-module-josephadams-scriptlauncher.git |
 | joy-playdeck | 4.2.9 | MIT | Andreas H. Thomsen <>, Nick Semenov | https://github.com/bitfocus/companion-module-joy-playdeck.git |
 | justmacros-lua | 2.0.3 | MIT | Keith Rocheck | https://github.com/bitfocus/companion-module-justmacros-lua.git |
 | kenku-fm | 1.0.1 | MIT | Schemen | https://github.com/bitfocus/companion-module-kenku-fm.git |

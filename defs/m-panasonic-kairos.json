@@ -370,8 +370,8 @@
      "pause": "pause",
      "step_forward": "step_forward",
      "fast_forward": "fast_forward",
-     "end": "end\\r\\n",
-     "repeat=0": "repeat=0",
+     "end": "end",
+     "repeat=0": "repeat=0\\r\\n",
      "repeat=1": "repeat=1"
     }
    }

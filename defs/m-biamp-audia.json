@@ -200,6 +200,16 @@
    }
   },
   {
+   "id": "incFaderLevelStop",
+   "name": "Stop Increasing Fader Level",
+   "options": [],
+   "send": {
+    "kind": "bytes",
+    "data": "DEC 52 FDRLVL QV3yz 52 37\\r\\n",
+    "encoding": "text"
+   }
+  },
+  {
    "id": "faderMute",
    "name": "Fader Mute",
    "options": [

@@ -129,11 +129,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 58,
-  "converted": 51,
+  "converted": 50,
   "reasons": {
    "no-send": 3,
    "text-slot": 1,
-   "verify-mismatch": 3
+   "verify-mismatch": 3,
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -236,8 +237,7 @@
   "converted": 13,
   "reasons": {
    "verify-path": 1,
-   "verify-multi-request": 1,
-   "parts-map-differs": 1,
+   "verify-multi-request": 2,
    "path-overlap": 1
   },
   "errors": [],
@@ -252,9 +252,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 21,
-  "converted": 19,
+  "converted": 20,
   "reasons": {
-   "verify-multi-request": 2
+   "verify-multi-request": 1
   },
   "errors": [],
   "chatty": false,
@@ -620,14 +620,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 10,
-  "converted": 1,
+  "converted": 0,
   "reasons": {
-   "no-send": 9
+   "no-send": 9,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "list-only"
  },
  {
   "id": "audac-mtx",
@@ -1301,11 +1302,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 3,
+  "converted": 4,
   "reasons": {
    "error": 1,
-   "number-slot": 1,
-   "no-send": 1
+   "number-slot": 1
   },
   "errors": [],
   "chatty": true,
@@ -1586,9 +1586,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 18,
-  "converted": 5,
+  "converted": 4,
   "reasons": {
    "no-send": 11,
+   "verify-mismatch": 1,
    "text-slot": 1,
    "overlap": 1
   },
@@ -1782,15 +1783,12 @@
   "license": "ISC",
   "status": "ok",
   "actions": 11,
-  "converted": 9,
-  "reasons": {
-   "part1-path-text-slot": 1,
-   "verify-multi-request": 1
-  },
+  "converted": 11,
+  "reasons": {},
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "full"
  },
  {
   "id": "cablematters-matrix",
@@ -1834,8 +1832,7 @@
   "converted": 0,
   "reasons": {
    "number-slot": 3,
-   "overlap": 1,
-   "no-send": 2
+   "no-send": 3
   },
   "errors": [],
   "chatty": false,
@@ -1863,16 +1860,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 107,
-  "converted": 79,
+  "converted": 78,
   "reasons": {
    "no-send": 18,
-   "verify-multi-request": 3,
+   "verify-multi-request": 4,
    "error": 1,
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part1-path-text-slot": 1,
-   "parts-map-differs": 1
+   "part1-path-text-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -2055,8 +2051,8 @@
   "actions": 42,
   "converted": 0,
   "reasons": {
-   "no-send": 39,
-   "verify-no-send": 2,
+   "no-send": 40,
+   "verify-no-send": 1,
    "error": 1
   },
   "errors": [],
@@ -2370,10 +2366,11 @@
   "actions": 50,
   "converted": 6,
   "reasons": {
-   "overlap": 19,
-   "option-breaks-send": 11,
-   "number-slot": 7,
-   "no-send": 6,
+   "overlap": 22,
+   "option-breaks-send": 10,
+   "number-slot": 5,
+   "verify-mismatch": 1,
+   "no-send": 5,
    "text-slot": 1
   },
   "errors": [],
@@ -2586,10 +2583,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 4,
-  "converted": 1,
+  "converted": 2,
   "reasons": {
    "verify-mismatch": 1,
-   "number-slot": 2
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -2717,10 +2714,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 6,
+  "converted": 7,
   "reasons": {
    "number-slot": 2,
-   "no-send": 2,
+   "no-send": 1,
    "text-slot": 1
   },
   "errors": [],
@@ -3004,9 +3001,9 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 4,
+   "option-breaks-send": 3,
    "text-slot": 2,
-   "no-send": 1
+   "no-send": 2
   },
   "errors": [],
   "chatty": false,
@@ -3553,7 +3550,8 @@
   "actions": 2,
   "converted": 0,
   "reasons": {
-   "number-slot": 2
+   "option-breaks-send": 1,
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -4178,14 +4176,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 1,
-  "reasons": {
-   "no-send": 5
-  },
+  "converted": 0,
+  "reasons": {},
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "partial"
+  "result": "no-send"
  },
  {
   "id": "homeassistant-server",
@@ -4527,7 +4523,7 @@
    "verify-no-send": 1
   },
   "errors": [],
-  "chatty": true,
+  "chatty": false,
   "truncated": false,
   "result": "list-only"
  },
@@ -4538,15 +4534,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 77,
-  "converted": 0,
+  "converted": 1,
   "reasons": {
-   "no-send": 75,
+   "no-send": 74,
    "verify-no-send": 2
   },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "partial"
  },
  {
   "id": "joy-playdeck",
@@ -6451,9 +6447,8 @@
   "actions": 22,
   "converted": 15,
   "reasons": {
-   "verify-no-send": 1,
-   "no-send": 2,
-   "verify-multi-request": 2,
+   "no-send": 3,
+   "parts-map-differs": 2,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -6522,10 +6517,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 5,
-  "converted": 3,
+  "converted": 2,
   "reasons": {
-   "no-send": 1,
-   "verify-no-send": 1
+   "verify-no-send": 2,
+   "no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -7741,19 +7736,11 @@
  },
  {
   "id": "sony-cled",
-  "name": "Sony ZRCT-300",
-  "manufacturer": "Sony",
-  "license": "MIT",
-  "status": "ok",
-  "actions": 16,
-  "converted": 0,
-  "reasons": {
-   "error": 16
-  },
-  "errors": [],
-  "chatty": true,
-  "truncated": false,
-  "result": "list-only"
+  "result": "crashed",
+  "errors": [
+   "host exited 1",
+   "sony-cled: ok actions=16 runs=16 44551ms\nsony-cled: ok actions=16 runs=16 69514ms (chatty)\nfile:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468\n  writeFileSync(outFile, JSON.stringify(res));\n                              ^\n\nRangeError: Invalid string length\n    at JSON.stringify (<anonymous>)\n    at file:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468:31\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n\nNode.js v22.23.4\n"
+  ]
  },
  {
   "id": "sony-ptz",
@@ -8000,9 +7987,8 @@
   "actions": 32,
   "converted": 27,
   "reasons": {
-   "part1-path-text-slot": 1,
    "verify-multi-request": 3,
-   "path-overlap": 1
+   "path-overlap": 2
   },
   "errors": [],
   "chatty": false,
@@ -8016,15 +8002,15 @@
   "license": "MIT",
   "status": "ok",
   "actions": 129,
-  "converted": 63,
+  "converted": 64,
   "reasons": {
-   "text-slot": 13,
-   "option-breaks-send": 3,
+   "text-slot": 15,
+   "option-breaks-send": 4,
    "verify-mismatch": 17,
    "no-send": 19,
-   "overlap": 11,
+   "overlap": 8,
    "too-many-choices": 1,
-   "number-slot": 2
+   "number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -8155,14 +8141,11 @@
   "status": "ok",
   "actions": 6,
   "converted": 0,
-  "reasons": {
-   "no-send": 5,
-   "verify-no-send": 1
-  },
+  "reasons": {},
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "no-send"
  },
  {
   "id": "techministry-midirelay",
@@ -8189,14 +8172,11 @@
   "status": "ok",
   "actions": 19,
   "converted": 0,
-  "reasons": {
-   "no-send": 18,
-   "verify-no-send": 1
-  },
+  "reasons": {},
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "no-send"
  },
  {
   "id": "techministry-tallyarbiter",
@@ -8220,11 +8200,15 @@
   "status": "ok",
   "actions": 8,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 6,
+   "verify-no-send": 1,
+   "error": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "telegram-bot",
