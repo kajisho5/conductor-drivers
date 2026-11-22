@@ -48,7 +48,7 @@
     "kind": "http",
     "method": "POST",
     "path": "/api/v2/write?org=&bucket=&precision=ns",
-    "body": "example,tag1=value1,tag2=value2 value=0 1794783520326629928\nexample,tag1=value1,tag2=value2 value=\"0\" 1794783520448746515\nexample,tag1=value1,tag2=value2 field=T 1794783520571590893\nexampleMeasurement,tag1=value1,tag2=value2 field1=1234.5,field2=\"value2\" 1794783520695000000",
+    "body": "example,tag1=value1,tag2=value2 value=0 1795390867384244565\nexample,tag1=value1,tag2=value2 value=\"0\" 1795390867506820011\nexample,tag1=value1,tag2=value2 field=T 1795390867628733644\nexampleMeasurement,tag1=value1,tag2=value2 field1=1234.5,field2=\"value2\" 1795390867751000000",
     "contentType": "text/plain; charset=utf-8"
    }
   }

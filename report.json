@@ -129,12 +129,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 58,
-  "converted": 50,
+  "converted": 51,
   "reasons": {
    "no-send": 3,
    "text-slot": 1,
-   "verify-mismatch": 3,
-   "number-slot": 1
+   "verify-mismatch": 3
   },
   "errors": [],
   "chatty": false,
@@ -234,10 +233,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 17,
-  "converted": 13,
+  "converted": 12,
   "reasons": {
    "verify-path": 1,
-   "verify-multi-request": 2,
+   "verify-multi-request": 1,
+   "part0-verify-multi-request": 1,
+   "parts-map-differs": 1,
    "path-overlap": 1
   },
   "errors": [],
@@ -284,9 +285,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 14,
-  "converted": 4,
+  "converted": 3,
   "reasons": {
-   "overlap": 9,
+   "overlap": 10,
    "too-many-choices": 1
   },
   "errors": [],
@@ -1302,10 +1303,11 @@
   "license": "MIT",
   "status": "ok",
   "actions": 6,
-  "converted": 4,
+  "converted": 3,
   "reasons": {
    "error": 1,
-   "number-slot": 1
+   "number-slot": 1,
+   "no-send": 1
   },
   "errors": [],
   "chatty": true,
@@ -1783,12 +1785,14 @@
   "license": "ISC",
   "status": "ok",
   "actions": 11,
-  "converted": 11,
-  "reasons": {},
+  "converted": 10,
+  "reasons": {
+   "verify-multi-request": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "full"
+  "result": "partial"
  },
  {
   "id": "cablematters-matrix",
@@ -1863,12 +1867,13 @@
   "converted": 78,
   "reasons": {
    "no-send": 18,
-   "verify-multi-request": 4,
+   "verify-multi-request": 3,
    "error": 1,
    "part1-path-number-slot": 1,
    "verify-no-send": 2,
    "multi-request": 1,
-   "part1-path-text-slot": 2
+   "part1-path-text-slot": 2,
+   "parts-map-differs": 1
   },
   "errors": [],
   "chatty": false,
@@ -2051,8 +2056,8 @@
   "actions": 42,
   "converted": 0,
   "reasons": {
-   "no-send": 40,
-   "verify-no-send": 1,
+   "verify-no-send": 2,
+   "no-send": 39,
    "error": 1
   },
   "errors": [],
@@ -2364,14 +2369,13 @@
   "license": "MIT",
   "status": "ok",
   "actions": 50,
-  "converted": 6,
+  "converted": 5,
   "reasons": {
-   "overlap": 22,
-   "option-breaks-send": 10,
-   "number-slot": 5,
-   "verify-mismatch": 1,
-   "no-send": 5,
-   "text-slot": 1
+   "overlap": 19,
+   "option-breaks-send": 13,
+   "text-slot": 1,
+   "number-slot": 7,
+   "no-send": 5
   },
   "errors": [],
   "chatty": false,
@@ -2714,10 +2718,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 11,
-  "converted": 7,
+  "converted": 6,
   "reasons": {
    "number-slot": 2,
-   "no-send": 1,
+   "no-send": 2,
    "text-slot": 1
   },
   "errors": [],
@@ -3001,9 +3005,9 @@
   "actions": 7,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 3,
+   "option-breaks-send": 4,
    "text-slot": 2,
-   "no-send": 2
+   "no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -3276,7 +3280,8 @@
   "converted": 0,
   "reasons": {
    "option-breaks-send": 3,
-   "text-slot": 2
+   "text-slot": 1,
+   "part0-number-slot": 1
   },
   "errors": [],
   "chatty": false,
@@ -3550,8 +3555,7 @@
   "actions": 2,
   "converted": 0,
   "reasons": {
-   "option-breaks-send": 1,
-   "number-slot": 1
+   "number-slot": 2
   },
   "errors": [],
   "chatty": false,
@@ -4469,10 +4473,9 @@
   "license": "MIT",
   "status": "ok",
   "actions": 20,
-  "converted": 1,
+  "converted": 2,
   "reasons": {
-   "no-send": 18,
-   "verify-no-send": 1
+   "no-send": 18
   },
   "errors": [],
   "chatty": false,
@@ -4534,10 +4537,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 77,
-  "converted": 1,
+  "converted": 2,
   "reasons": {
    "no-send": 74,
-   "verify-no-send": 2
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -6448,7 +6451,8 @@
   "converted": 15,
   "reasons": {
    "no-send": 3,
-   "parts-map-differs": 2,
+   "parts-map-differs": 1,
+   "verify-multi-request": 1,
    "part0-verify-multi-request": 2
   },
   "errors": [],
@@ -6517,10 +6521,10 @@
   "license": "MIT",
   "status": "ok",
   "actions": 5,
-  "converted": 2,
+  "converted": 3,
   "reasons": {
-   "verify-no-send": 2,
-   "no-send": 1
+   "no-send": 1,
+   "verify-no-send": 1
   },
   "errors": [],
   "chatty": false,
@@ -7739,7 +7743,7 @@
   "result": "crashed",
   "errors": [
    "host exited 1",
-   "sony-cled: ok actions=16 runs=16 44551ms\nsony-cled: ok actions=16 runs=16 69514ms (chatty)\nfile:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468\n  writeFileSync(outFile, JSON.stringify(res));\n                              ^\n\nRangeError: Invalid string length\n    at JSON.stringify (<anonymous>)\n    at file:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468:31\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n\nNode.js v22.23.4\n"
+   "sony-cled: ok actions=16 runs=16 44540ms\nsony-cled: ok actions=16 runs=16 70427ms (chatty)\nfile:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468\n  writeFileSync(outFile, JSON.stringify(res));\n                              ^\n\nRangeError: Invalid string length\n    at JSON.stringify (<anonymous>)\n    at file:///home/runner/work/conductor-drivers/conductor-drivers/tools/host.mjs:468:31\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n\nNode.js v22.23.5\n"
   ]
  },
  {
@@ -7987,8 +7991,8 @@
   "actions": 32,
   "converted": 27,
   "reasons": {
-   "verify-multi-request": 3,
-   "path-overlap": 2
+   "verify-multi-request": 2,
+   "path-overlap": 3
   },
   "errors": [],
   "chatty": false,
@@ -8002,12 +8006,12 @@
   "license": "MIT",
   "status": "ok",
   "actions": 129,
-  "converted": 64,
+  "converted": 63,
   "reasons": {
-   "text-slot": 15,
-   "option-breaks-send": 4,
+   "text-slot": 16,
+   "option-breaks-send": 5,
    "verify-mismatch": 17,
-   "no-send": 19,
+   "no-send": 18,
    "overlap": 8,
    "too-many-choices": 1,
    "number-slot": 1
@@ -8141,11 +8145,14 @@
   "status": "ok",
   "actions": 6,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 5,
+   "verify-no-send": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-midirelay",
@@ -8172,11 +8179,14 @@
   "status": "ok",
   "actions": 19,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 18,
+   "verify-no-send": 1
+  },
   "errors": [],
-  "chatty": false,
+  "chatty": true,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-tallyarbiter",
@@ -8186,11 +8196,14 @@
   "status": "ok",
   "actions": 3,
   "converted": 0,
-  "reasons": {},
+  "reasons": {
+   "no-send": 2,
+   "error": 1
+  },
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "no-send"
+  "result": "list-only"
  },
  {
   "id": "techministry-timekeeper",
@@ -8200,15 +8213,11 @@
   "status": "ok",
   "actions": 8,
   "converted": 0,
-  "reasons": {
-   "no-send": 6,
-   "verify-no-send": 1,
-   "error": 1
-  },
+  "reasons": {},
   "errors": [],
   "chatty": false,
   "truncated": false,
-  "result": "list-only"
+  "result": "no-send"
  },
  {
   "id": "telegram-bot",

@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generatedAt": "2026-11-15T23:12:01.603Z",
+ "generatedAt": "2026-11-22T23:54:23.390Z",
  "drivers": [
   {
    "id": "m-ableton-osc",
@@ -53,9 +53,9 @@
    "transport": "tcp",
    "version": "1.1.1-beta",
    "minAppVersion": "0.6.0",
-   "actions": 50,
+   "actions": 51,
    "allActions": 58,
-   "bytes": 31145
+   "bytes": 31472
   },
   {
    "id": "m-agf-characterworks",
@@ -86,9 +86,9 @@
    "transport": "http",
    "version": "2.4.2",
    "minAppVersion": "0.6.0",
-   "actions": 13,
+   "actions": 12,
    "allActions": 17,
-   "bytes": 10856
+   "bytes": 9826
   },
   {
    "id": "m-aja-kipro",
@@ -119,9 +119,9 @@
    "transport": "tcp",
    "version": "2.3.0",
    "minAppVersion": "0.6.0",
-   "actions": 4,
+   "actions": 3,
    "allActions": 14,
-   "bytes": 1344090
+   "bytes": 1333012
   },
   {
    "id": "m-analogway-coreplay",
@@ -405,9 +405,9 @@
    "transport": "tcp",
    "version": "2.0.3",
    "minAppVersion": "0.6.0",
-   "actions": 4,
+   "actions": 3,
    "allActions": 6,
-   "bytes": 5647
+   "bytes": 5439
   },
   {
    "id": "m-biamp-tesira",
@@ -537,9 +537,9 @@
    "transport": "http",
    "version": "2.1.0",
    "minAppVersion": "0.6.0",
-   "actions": 11,
+   "actions": 10,
    "allActions": 11,
-   "bytes": 16990
+   "bytes": 16260
   },
   {
    "id": "m-cablematters-matrix",
@@ -801,9 +801,9 @@
    "transport": "tcp",
    "version": "1.1.3",
    "minAppVersion": "0.6.0",
-   "actions": 6,
+   "actions": 5,
    "allActions": 50,
-   "bytes": 9971
+   "bytes": 9274
   },
   {
    "id": "m-dashare-multiplay",
@@ -922,9 +922,9 @@
    "transport": "tcp",
    "version": "2.0.1",
    "minAppVersion": "0.6.0",
-   "actions": 7,
+   "actions": 6,
    "allActions": 11,
-   "bytes": 3611
+   "bytes": 3412
   },
   {
    "id": "m-dtvideolabs-playbackproplus",
@@ -1450,9 +1450,9 @@
    "transport": "http",
    "version": "4.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 2,
    "allActions": 20,
-   "bytes": 1169
+   "bytes": 1382
   },
   {
    "id": "m-irisdown-countdowntimer",
@@ -1483,9 +1483,9 @@
    "transport": "http",
    "version": "1.9.0",
    "minAppVersion": "0.6.0",
-   "actions": 1,
+   "actions": 2,
    "allActions": 77,
-   "bytes": 1403
+   "bytes": 1637
   },
   {
    "id": "m-joy-playdeck",
@@ -2220,9 +2220,9 @@
    "transport": "http",
    "version": "2.0.0",
    "minAppVersion": "0.6.0",
-   "actions": 2,
+   "actions": 3,
    "allActions": 5,
-   "bytes": 10951
+   "bytes": 68571
   },
   {
    "id": "m-ptzoptics-visca",
@@ -2805,7 +2805,7 @@
    "minAppVersion": "0.6.0",
    "actions": 27,
    "allActions": 32,
-   "bytes": 16411
+   "bytes": 16120
   },
   {
    "id": "m-symetrix-dsp",

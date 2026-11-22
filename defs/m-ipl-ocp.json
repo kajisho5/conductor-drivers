@@ -24,7 +24,17 @@
    "send": {
     "kind": "http",
     "method": "GET",
-    "path": "/socket.io/?EIO=4&transport=polling&t=Q7XRoY8&b64=1"
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q85eeyH&b64=1"
+   }
+  },
+  {
+   "id": "swap_colour",
+   "name": "Swap scoreboard color.",
+   "options": [],
+   "send": {
+    "kind": "http",
+    "method": "GET",
+    "path": "/socket.io/?EIO=4&transport=polling&t=Q85ef8b&b64=1"
    }
   }
  ],

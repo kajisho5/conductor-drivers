@@ -558,7 +558,7 @@
     "kind": "http",
     "method": "POST",
     "path": "/api/ABCD/graphic/undefined/update",
-    "body": "{\"refreshCount\":1794783561133}",
+    "body": "{\"refreshCount\":1795390907299}",
     "contentType": "application/json"
    }
   },
@@ -829,7 +829,7 @@
     "kind": "http",
     "method": "POST",
     "path": "/api/ABCD/graphic/undefined/update",
-    "body": "{\"removePinCount\":1794783565435}",
+    "body": "{\"removePinCount\":1795390911628}",
     "contentType": "application/json"
    }
   },

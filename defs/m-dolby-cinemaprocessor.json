@@ -76,16 +76,6 @@
    }
   },
   {
-   "id": "fader_decrease_stop",
-   "name": "Stop Decreasing Fader Level",
-   "options": [],
-   "send": {
-    "kind": "bytes",
-    "data": "fader_level=84\\r\\n",
-    "encoding": "text"
-   }
-  },
-  {
    "id": "set_format_button",
    "name": "Set Format Button",
    "options": [

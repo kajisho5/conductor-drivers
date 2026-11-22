@@ -2560,61 +2560,6 @@
    }
   },
   {
-   "id": "videoCallVideoSource",
-   "name": "VideoCall - Select Video Source",
-   "options": [
-    {
-     "id": "input",
-     "label": "Input",
-     "type": "text",
-     "default": "1",
-     "help": "Number, Name, or GUID"
-    },
-    {
-     "id": "value",
-     "label": "Select Output",
-     "type": "select",
-     "default": "Output1",
-     "choices": [
-      {
-       "id": "Output1",
-       "label": "Output 1"
-      },
-      {
-       "id": "Output2",
-       "label": "Output 2"
-      },
-      {
-       "id": "Output3",
-       "label": "Output 3"
-      },
-      {
-       "id": "Output4",
-       "label": "Output 4"
-      },
-      {
-       "id": "None",
-       "label": "None"
-      }
-     ]
-    }
-   ],
-   "send": {
-    "kind": "bytes",
-    "data": "FUNCTION videoCallVideoSource input={{option.input}}&value={{option.value|map}}\\r\\n",
-    "encoding": "text"
-   },
-   "maps": {
-    "value": {
-     "Output1": "Output1",
-     "Output2": "Output2",
-     "Output3": "Output3",
-     "Output4": "Output4",
-     "None": "None"
-    }
-   }
-  },
-  {
    "id": "videoCallConnect",
    "name": "VideoCall - Connect / Reconnect",
    "options": [
@@ -2973,76 +2918,6 @@
     "options": {
      "input": "",
      "value": "BusG"
-    }
-   }
-  },
-  {
-   "id": "124",
-   "category": "vMix Call",
-   "name": "Video\nSource\nOutput 1",
-   "text": "Video\nSource\nOutput 1",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "videoCallVideoSource",
-    "options": {
-     "input": "",
-     "value": "Output1"
-    }
-   }
-  },
-  {
-   "id": "125",
-   "category": "vMix Call",
-   "name": "Video\nSource\nOutput 2",
-   "text": "Video\nSource\nOutput 2",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "videoCallVideoSource",
-    "options": {
-     "input": "",
-     "value": "Output2"
-    }
-   }
-  },
-  {
-   "id": "126",
-   "category": "vMix Call",
-   "name": "Video\nSource\nOutput 3",
-   "text": "Video\nSource\nOutput 3",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "videoCallVideoSource",
-    "options": {
-     "input": "",
-     "value": "Output3"
-    }
-   }
-  },
-  {
-   "id": "127",
-   "category": "vMix Call",
-   "name": "Video\nSource\nOutput 4",
-   "text": "Video\nSource\nOutput 4",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "videoCallVideoSource",
-    "options": {
-     "input": "",
-     "value": "Output4"
-    }
-   }
-  },
-  {
-   "id": "128",
-   "category": "vMix Call",
-   "name": "Video\nSource\nNone",
-   "text": "Video\nSource\nNone",
-   "backgroundColor": "#000000",
-   "action": {
-    "definitionId": "videoCallVideoSource",
-    "options": {
-     "input": "",
-     "value": "None"
     }
    }
   },

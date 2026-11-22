@@ -45,7 +45,14 @@
     "kind": "http",
     "method": "GET",
     "path": "/api/stop"
-   }
+   },
+   "more": [
+    {
+     "kind": "http",
+     "method": "GET",
+     "path": "/socket.io/?EIO=4&transport=polling&t=Q85eRAG&b64=1"
+    }
+   ]
   },
   {
    "id": "next",
@@ -120,61 +127,6 @@
     "kind": "http",
     "method": "GET",
     "path": "/api/last/{{option.time}}"
-   }
-  },
-  {
-   "id": "setAction",
-   "name": "Set Action of Asset",
-   "options": [
-    {
-     "id": "clip",
-     "label": "Clip",
-     "type": "text",
-     "default": "0"
-    },
-    {
-     "id": "action",
-     "label": "Action",
-     "type": "select",
-     "default": "true",
-     "choices": [
-      {
-       "id": "0",
-       "label": "pause"
-      },
-      {
-       "id": "1",
-       "label": "playNext"
-      },
-      {
-       "id": "2",
-       "label": "next"
-      },
-      {
-       "id": "3",
-       "label": "loop"
-      },
-      {
-       "id": "4",
-       "label": "reset"
-      }
-     ]
-    }
-   ],
-   "send": {
-    "kind": "http",
-    "method": "GET",
-    "path": "/api/asset/{{option.clip}}/action/{{option.action|map}}"
-   },
-   "maps": {
-    "action": {
-     "0": "0",
-     "1": "1",
-     "2": "2",
-     "3": "3",
-     "4": "4",
-     "true": "true"
-    }
    }
   },
   {
